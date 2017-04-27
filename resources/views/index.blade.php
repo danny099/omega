@@ -356,16 +356,8 @@
             <li class="active"><a href="{{ url('administrativas') }}"><i class="fa fa-circle-o"></i>Administrativa</a></li>
             <li><a href="{{ url('usuarios') }}"><i class="fa fa-circle-o"></i>Usuarios</a></li>
             <li><a href="{{ url('clientes') }}"><i class="fa fa-circle-o"></i>Clientes</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i>Pagos2</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i>Pagos5</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i>Pagos3</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i>Pagos107</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i>Pagos17</a></li>
-
-
           </ul>
         </li>
-
       </ul>
     </section>
     <!-- /.sidebar -->
