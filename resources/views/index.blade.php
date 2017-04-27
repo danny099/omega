@@ -356,7 +356,7 @@
             <li class="active"><a href="{{ url('administrativas') }}"><i class="fa fa-circle-o"></i>Administrativa</a></li>
             <li><a href="{{ url('usuarios') }}"><i class="fa fa-circle-o"></i>Usuarios</a></li>
             <li><a href="{{ url('clientes') }}"><i class="fa fa-circle-o"></i>Clientes</a></li>
-
+            <li><a href="#"><i class="fa fa-circle-o"></i>Pagos</a></li>
           </ul>
         </li>
 
