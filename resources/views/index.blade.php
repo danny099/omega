@@ -358,6 +358,7 @@
             <li><a href="{{ url('clientes') }}"><i class="fa fa-circle-o"></i>Clientes</a></li>
             <li><a href="#"><i class="fa fa-circle-o"></i>Pagos2</a></li>
             <li><a href="#"><i class="fa fa-circle-o"></i>Pagos5</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i>Pagos3</a></li>
           </ul>
         </li>
 
