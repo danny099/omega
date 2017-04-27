@@ -359,6 +359,8 @@
             <li><a href="#"><i class="fa fa-circle-o"></i>Pagos2</a></li>
             <li><a href="#"><i class="fa fa-circle-o"></i>Pagos5</a></li>
             <li><a href="#"><i class="fa fa-circle-o"></i>Pagos3</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i>Pagos10</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i>Pagos13</a></li>
           </ul>
         </li>
 
