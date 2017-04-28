@@ -63,7 +63,7 @@
 
 @endsection
 @section('modales')
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Large modal</button>
+
   <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
@@ -88,7 +88,7 @@
             @endif
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form" action="{{ url('administrativas') }}" method="post">
+
               {{ csrf_field() }}
               <div class="box-body">
                 <div class="col-md-4">
@@ -154,9 +154,7 @@
                     <div class="col-md-11">
                       <input type="number" class="form-control" placeholder= "Ingrese valor" name="otrosi">
                     </div>
-                    <div class="col-md-1">
-                      <a class="btn btn-warning" data-toggle="modal" href="#" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-plus"></i></a>
-                    </div>
+
                     <div class="form-group">
                       <br>
                       <br>
@@ -231,12 +229,7 @@
                   </div>
                 </div>
 
-                <div class="col-md-1">
-                  <div class="form-group">
-                    <br>
-                    <a class="btn btn-primary" data-toggle="modal" href="#" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-plus"></i></a>
-                  </div>
-                </div>
+
 
                 <div class="col-md-12">
                   <center> <h4 class="box-title">Alcance: proceso de distribucion</h4> </center>
@@ -283,12 +276,7 @@
                   </div>
                 </div>
 
-                <div class="col-md-1">
-                  <div class="form-group">
-                    <br>
-                    <a class="btn btn-primary" data-toggle="modal" href="#" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-plus"></i></a>
-                  </div>
-                </div>
+
 
                 <div class="col-md-12">
                   <center> <h4 class="box-title">Alcance: proceso de uso final</h4> </center>
@@ -338,27 +326,22 @@
                   </div>
                 </div>
 
-                <div class="col-md-1">
-                  <div class="form-group">
-                    <br>
-                    <a class="btn btn-primary" data-toggle="modal" href="#" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-plus"></i></a>
-                  </div>
-                </div>
+
 
                 <div class="col-md-12">
                   <center> <h4 class="box-title">Resumen de estado administrativo del proyecto</h4> </center>
                 </div>
 
                 <div class="col-md-12">
-                  <textarea name="name" rows="4" cols="250" name="resumen"></textarea>
+                  <center><textarea name="name" rows="4" cols="100" name="resumen"></textarea></center>
                 </div>
               </div>
-                <div class="box-footer">
-                  <button type="submit" class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;"  >Agregar</button>
-                </div>
-              </form>
+
+
             </div>
+
           </div>
+
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
@@ -366,8 +349,10 @@
         </div>
       </div>
       <!-- /.modal-content -->
+
     </div>
     <!-- /.modal-dialog -->
+
   </div>
 @endsection
 <!-- Button trigger modal -->

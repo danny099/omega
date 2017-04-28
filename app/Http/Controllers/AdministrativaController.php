@@ -76,12 +76,8 @@ class AdministrativaController extends Controller
        Transformacion::create($transformacion);
        $trans = Transformacion::all();
        $lastId_trans = $trans->last()->id;
-     }else {
-       $lastId_trans ="";
+       $input['transformacion_id'] = $lastId_trans;
      }
-
-
-
      /* -------------------------proceso distribuscion------------------------------*/
      $distribucion['descripcion'] = Request::input('descripcion_dis');
      $distribucion['tipo'] = Request::input('tipo_dis');
@@ -93,11 +89,9 @@ class AdministrativaController extends Controller
        Distribucion::create($distribucion);
        $distri = Distribucion::all();
        $lastId_distri = $distri->last()->id;
-     }else {
-       $lastId_distri ="";
+       $input['distribucion_id'] = $lastId_distri;
+
      }
-
-
 
      /* -------------------------proceso punto de uso final------------------------------*/
      $pu['descripcion'] = Request::input('descripcion_pu');
@@ -110,10 +104,8 @@ class AdministrativaController extends Controller
        Pu_final::create($pu);
        $puf = Pu_final::all();
        $lastId_pufinal = $puf->last()->id;
-     }else {
-       $lastId_pufinal ="";
+       $input['pu_final_id'] = $lastId_pufinal;
      }
-
 
      /* -------------------------proceso punto de uso final------------------------------*/
      $input['codigo_proyecto'] = Request::input('codigo');
@@ -129,9 +121,6 @@ class AdministrativaController extends Controller
      $input['valor_contrato_final'] = Request::input('contrato_final');
      $input['plan_pago'] = Request::input('plan_pago');
      $input['resumen'] = Request::input('resumen');
-     $input['transformacion_id'] = $lastId_trans;
-     $input['distribucion_id'] = $lastId_distri;
-     $input['pu_final_id'] = $lastId_pufinal;
 
 
      $codigorepe = Administrativa::where('codigo_proyecto',Request::input('codigo'))->get();
