@@ -74,10 +74,13 @@ class AdministrativaController extends Controller
 
      if(!empty($transformacion['descripcion']) && !empty($transformacion['tipo']) && !empty($transformacion['capacidad']) && !empty($transformacion['unidad'] ) && !empty($transformacion['cantidad'])){
        Transformacion::create($transformacion);
+       $trans = Transformacion::all();
+       $lastId_trans = $trans->last()->id;
+     }else {
+       $lastId_trans ="";
      }
 
-     $trans = Transformacion::all();
-     $lastId_trans = $trans->last()->id;
+
 
      /* -------------------------proceso distribuscion------------------------------*/
      $distribucion['descripcion'] = Request::input('descripcion_dis');
@@ -87,12 +90,14 @@ class AdministrativaController extends Controller
      $distribucion['cantidad'] = Request::input('cantidad_dis');
 
      if(!empty($transformacion['descripcion']) && !empty($distribucion['tipo']) && !empty($distribucion['capacidad']) && !empty($distribucion['unidad'] ) && !empty($distribucion['cantidad'])){
-
+       Distribucion::create($distribucion);
+       $distri = Distribucion::all();
+       $lastId_distri = $distri->last()->id;
+     }else {
+       $lastId_distri ="";
      }
 
-     Distribucion::create($distribucion);
-     $distri = Distribucion::all();
-     $lastId_distri = $distri->last()->id;
+
 
      /* -------------------------proceso punto de uso final------------------------------*/
      $pu['descripcion'] = Request::input('descripcion_pu');
@@ -101,9 +106,14 @@ class AdministrativaController extends Controller
      $pu['unidad'] = Request::input('unidad_pu_final');
      $pu['cantidad'] = Request::input('cantidad_pu');
 
-     Pu_final::create($pu);
-     $puf = Pu_final::all();
-     $lastId_pufinal = $puf->last()->id;
+     if(!empty($pu['descripcion']) && !empty($pu['tipo']) && !empty($pu['capacidad']) && !empty($pu['unidad'] ) && !empty($pu['cantidad'])){
+       Pu_final::create($pu);
+       $puf = Pu_final::all();
+       $lastId_pufinal = $puf->last()->id;
+     }else {
+       $lastId_pufinal ="";
+     }
+
 
      /* -------------------------proceso punto de uso final------------------------------*/
      $input['codigo_proyecto'] = Request::input('codigo');
