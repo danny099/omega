@@ -72,7 +72,10 @@ class AdministrativaController extends Controller
      $transformacion['unidad'] = Request::input('unidad_transformacion');
      $transformacion['cantidad'] = Request::input('cantidad');
 
-     Transformacion::create($transformacion);
+     if(!empty($transformacion['descripcion']) && !empty($transformacion['tipo']) && !empty($transformacion['capacidad']) && !empty($transformacion['unidad'] ) && !empty($transformacion['cantidad'])){
+       Transformacion::create($transformacion);
+     }
+
      $trans = Transformacion::all();
      $lastId_trans = $trans->last()->id;
 
@@ -82,6 +85,10 @@ class AdministrativaController extends Controller
      $distribucion['capacidad'] = Request::input('capacidad_dis');
      $distribucion['unidad'] = Request::input('unidad_distribucion');
      $distribucion['cantidad'] = Request::input('cantidad_dis');
+
+     if(!empty($transformacion['descripcion']) && !empty($distribucion['tipo']) && !empty($distribucion['capacidad']) && !empty($distribucion['unidad'] ) && !empty($distribucion['cantidad'])){
+
+     }
 
      Distribucion::create($distribucion);
      $distri = Distribucion::all();
