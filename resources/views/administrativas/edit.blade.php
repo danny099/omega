@@ -80,7 +80,7 @@
         {!! Form::label('otrosi', 'Otro si:') !!}
         <div class="form-group ">
           <div class="col-md-11">
-            {!! Form::number('otrosi',$administrativas->otrosi->valor, ['class' => 'form-control' , 'required' => 'required']) !!}
+            {!! Form::number('otrosi',$administrativas->otrosi->valor, ['class' => 'form-control' ]) !!}
           </div>
           <div class="col-md-1">
             <a class="btn btn-warning" data-toggle="modal" href="#" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-plus"></i></a>
@@ -148,7 +148,7 @@
       <div class="col-md-1">
         <div class="form-group">
           <center><label >{!! Form::label('cantidad', 'Cantidad') !!}</label></center>
-          {!! Form::number('cantidad', $administrativas->transformacion->cantidad, ['class' => 'form-control' , 'required' => 'required']) !!}
+          {!! Form::number('cantidad', $administrativas->transformacion->cantidad, ['class' => 'form-control' ]) !!}
         </div>
       </div>
 
@@ -205,7 +205,7 @@
       <div class="col-md-1">
         <div class="form-group">
           <center>{!! Form::label('cantidad_dis', 'Cantidad') !!}</center>
-          {!! Form::text('cantidad_dis', $administrativas->distribucion->cantidad, ['class' => 'form-control' , 'required' => 'required']) !!}
+          {!! Form::text('cantidad_dis',  $administrativas->distribucion->cantidad, ['class' => 'form-control' ]) !!}
         </div>
       </div>
 
@@ -260,7 +260,7 @@
       <div class="col-md-1">
         <div class="form-group">
           <center>{!! Form::label('cantidad_pu', 'Cantidad') !!}</center>
-          {!! Form::text('cantidad_pu',null, ['class' => 'form-control' , 'required' => 'required']) !!}
+          {!! Form::text('cantidad_pu', $administrativas->pu_final->cantidad, ['class' => 'form-control' ]) !!}
         </div>
       </div>
 
@@ -276,7 +276,7 @@
       </div>
 
       <div class="col-md-12">
-        <textarea name="name" rows="4" cols="250" name="resumen" value="{{ $administrativas->resumen}}"></textarea>
+        <textarea  rows="4" cols="250" name="resumen" value="{{ $administrativas->resumen}}"></textarea>
       </div>
     </div>
       <div class="box-footer">

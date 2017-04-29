@@ -8,7 +8,7 @@ class Pu_final extends Model
 {
   protected $table = 'pu_final';
 
-  protected $fillable = ['id','descripcion','tipo','capacidad','unidad','cantidad'];
+  protected $fillable = ['id','descripcion','tipo','unidad','cantidad'];
 
   public $timestamps = false;
 

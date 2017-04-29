@@ -77,6 +77,7 @@ class AdministrativaController extends Controller
        $trans = Transformacion::all();
        $lastId_trans = $trans->last()->id;
        $input['transformacion_id'] = $lastId_trans;
+
      }
      /* -------------------------proceso distribuscion------------------------------*/
      $distribucion['descripcion'] = Request::input('descripcion_dis');
@@ -85,7 +86,7 @@ class AdministrativaController extends Controller
      $distribucion['unidad'] = Request::input('unidad_distribucion');
      $distribucion['cantidad'] = Request::input('cantidad_dis');
 
-     if(!empty($transformacion['descripcion']) && !empty($distribucion['tipo']) && !empty($distribucion['capacidad']) && !empty($distribucion['unidad'] ) && !empty($distribucion['cantidad'])){
+     if(!empty($distribucion['descripcion']) && !empty($distribucion['tipo'])  && !empty($distribucion['unidad'] ) && !empty($distribucion['cantidad'])){
        Distribucion::create($distribucion);
        $distri = Distribucion::all();
        $lastId_distri = $distri->last()->id;
@@ -100,7 +101,7 @@ class AdministrativaController extends Controller
      $pu['unidad'] = Request::input('unidad_pu_final');
      $pu['cantidad'] = Request::input('cantidad_pu');
 
-     if(!empty($pu['descripcion']) && !empty($pu['tipo']) && !empty($pu['capacidad']) && !empty($pu['unidad'] ) && !empty($pu['cantidad'])){
+     if(!empty($pu['descripcion']) && !empty($pu['tipo'])  && !empty($pu['unidad'] ) && !empty($pu['cantidad'])){
        Pu_final::create($pu);
        $puf = Pu_final::all();
        $lastId_pufinal = $puf->last()->id;
@@ -121,6 +122,9 @@ class AdministrativaController extends Controller
      $input['valor_contrato_final'] = Request::input('contrato_final');
      $input['plan_pago'] = Request::input('plan_pago');
      $input['resumen'] = Request::input('resumen');
+
+
+
 
 
      $codigorepe = Administrativa::where('codigo_proyecto',Request::input('codigo'))->get();
@@ -205,23 +209,24 @@ class AdministrativaController extends Controller
     */
    public function destroy($id)
    {
-      $otrosis = Otrosi::findOrFail($id);
-      $otrosis->delete();
 
-      $transformacion = Transformacion::findOrFail($id);
-      $transformacion->delete();
-
-      $distribucion = Distribucion::findOrFail($id);
-      $distribucion->delete();
-
-      $pu_final = Pu_final::findOrFail($id);
-      $pu_final->delete();
 
       $administrativas = Administrativa::findOrFail($id);
       $administrativas->delete();
        Session::flash('message', 'Proyecto eliminado eliminado');
        Session::flash('class', 'danger');
        return redirect('administrativas');
+       $otrosis = Otrosi::findOrFail($id);
+       $otrosis->delete();
+
+       $transformacion = Transformacion::findOrFail($id);
+       $transformacion->delete();
+
+       $distribucion = Distribucion::findOrFail($id);
+       $distribucion->delete();
+
+       $pu_final = Pu_final::findOrFail($id);
+       $pu_final->delete();
    }
 
 }

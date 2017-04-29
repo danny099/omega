@@ -8,7 +8,7 @@ class Distribucion extends Model
 {
   protected $table = 'distribucion';
 
-    protected $fillable = ['id','descripcion','tipo','capacidad','unidad','cantidad'];
+    protected $fillable = ['id','descripcion','tipo','unidad','cantidad'];
 
   public $timestamps = false;
 
