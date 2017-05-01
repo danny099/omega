@@ -9,6 +9,7 @@
             <table id="example1" class="table table-bordered table-striped">
               <thead>
               <tr>
+                <th>id</th>
                 <th>Codigo del proyecto</th>
                 <th>Nombre del proyecto</th>
                 <th>Fecha del contrato</th>
@@ -19,8 +20,9 @@
               </thead>
 
                 <tbody>
-                  @foreach($administrativas as $administrativa)
+                  @foreach($administrativas as $key => $administrativa)
                 <tr>
+                  <td>{{ $key }}</td>
                   <td>{{$administrativa->codigo_proyecto}}</td>
                   <td>{{$administrativa->nombre_proyecto}}
                   </td>
@@ -30,7 +32,7 @@
                   <td>
                       <a href="{{ route('administrativas.edit', $administrativa->id) }}"><i class="glyphicon glyphicon-pencil"></i></a>
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      <a href="" data-toggle="modal" data-target=".bs-example-modal-lg"><i class="glyphicon glyphicon-eye-open"></i></a>
+                      <a href="" data-toggle="modal" data-target=".bs-example-modal-lg-{{ $key }}"><i class="glyphicon glyphicon-eye-open"></i></a>
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                       <a href="{{ url('deleteadminstrativa') }}/{{ $administrativa->id }}" onClick="javascript: return confirm('Esta seguro de eliminar registro?');"><i class="glyphicon glyphicon-minus-sign"></i></a>
 
@@ -64,7 +66,7 @@
 @endsection
 @section('modales')
 
-  <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal fade bs-example-modal-lg-{{ $key }}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -77,15 +79,6 @@
             <div class="box-header with-border">
               <center> <h3 class="box-title">Datos del proyecto</h3> </center>
             </div>
-            @if(Session::has('message'))
-              <div id="alert">
-                <div class="col-sm-12 hr hr-18 hr-double dotted"></div>
-                <div class="col-sm-4 col-xs-12 col-sm-offset-4 alert alert-{{Session::get('class')}}">
-                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                  {{Session::get('message')}}
-                </div>
-              </div>
-            @endif
             <!-- /.box-header -->
             <!-- form start -->
 
@@ -94,17 +87,17 @@
                 <div class="col-md-4">
                   <div class="form-group">
                     <label >Codigo del proyecto:</label>
-                    <input id="phone" type="text" class="form-control" value="CPS-____-___" pattern="^\+CPS(\s+)?\(?(17|25|29|33|44)\)?(\s+)?[0-9]{3}-?[0-9]{2}-?[0-9]{2}$" // phones at Belarus placeholder="Ingrese codigo" name="codigo" required>
+                    <input id="phone" type="text" class="form-control" value="{{ $administrativa->codigo_proyecto}}" pattern="^\+CPS(\s+)?\(?(17|25|29|33|44)\)?(\s+)?[0-9]{3}-?[0-9]{2}-?[0-9]{2}$" // phones at Belarus placeholder="Ingrese codigo" name="codigo" required>
 
 
                   </div>
                   <div class="form-group">
                     <label >nombre del proyecto</label>
-                    <input type="text" class="form-control" placeholder="Ingrese nombre" name="nombre">
+                    <input type="text" class="form-control" placeholder="Ingrese nombre" name="nombre" value="{{ $administrativa->nombre_proyecto}}">
                   </div>
                   <div class="form-group">
                     <label >Fecha del contrato:</label>
-                    <input type="date" class="form-control" name="fecha">
+                    <input type="date" class="form-control" name="fecha" value="{{ $administrativa->fecha_contrato}}">
                   </div>
                   <div class="form-group">
                     <label >Cliente</label>
@@ -120,7 +113,7 @@
                 <div class="col-md-4">
                   <div class="form-group">
                     <label >Propietario</label>
-                    <input type="text" class="form-control" placeholder="Ingresa propietario" name="propietario">
+                    <input type="text" class="form-control" placeholder="Ingresa propietario" name="propietario" value="{{ $administrativa->propietario}}">
                   </div>
 
                   <div class="form-group">
@@ -147,19 +140,19 @@
 
                   <div class="form-group">
                     <label >Valor contrato inicial</label>
-                    <input type="number" class="form-control" placeholder= "Ingrese valor" name="contrato_inicial">
+                    <input type="number" class="form-control" placeholder= "Ingrese valor" name="contrato_inicial" value="{{ $administrativa->valor_contrato_inicial}}">
                   </div>
                   <label >Otro si</label>
                   <div class="form-group ">
                     <div class="col-md-11">
-                      <input type="number" class="form-control" placeholder= "Ingrese valor" name="otrosi">
+                      <input type="number" class="form-control" placeholder= "Ingrese valor" name="otrosi" value="{{ $administrativa->otrosi->valor}}">
                     </div>
 
                     <div class="form-group">
                       <br>
                       <br>
                       <label >Valor contrato final</label>
-                      <input type="number" class="form-control" placeholder= "Ingrese valor" name="contrato_final">
+                      <input type="number" class="form-control" placeholder= "Ingrese valor" name="contrato_final"  value="{{ $administrativa->valor_contrato_final}}>
                     </div>
                     <div class="form-group">
                       <label >Plan de pago</label>
