@@ -5,10 +5,9 @@ use App\Administrativa;
 use App\Cliente;
 use App\Otrosi;
 use App\Distribucion;
+use App\Departamento;
 use App\Transformacion;
 use App\Pu_final;
-use App\Departamento;
-use App\Municipio;
 use Request;
 use Session;
 use Illuminate\Support\Facades\Validator;
@@ -35,7 +34,12 @@ class AdministrativaController extends Controller
       return view('administrativas.index',compact('administrativas'));        //
     }
 
-
+    public function getMuni(Request $request, $id){
+        if($request->ajax()){
+            $municipios = Municipios::municipios($id);
+            return response()->json($municipios);
+        }
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -53,12 +57,6 @@ class AdministrativaController extends Controller
        return view('administrativas.create',compact('clientes','otrosis','distribuciones','transformaciones','pu_finales','departamentos'));
    }
 
-   public function getMuni(Request $request, $id){
-       if($request->ajax()){
-           $municipio = Municipio::municipio($id);
-           return response()->json($municipio);
-       }
-   }
    /**
     * Store a newly created resource in storage.
     *
@@ -164,6 +162,7 @@ class AdministrativaController extends Controller
    public function show($id)
    {
      $administrativa = Administrativa::find($id);
+
      return view('administrativas.show',compact('administrativa'));
    }
 
@@ -199,11 +198,18 @@ class AdministrativaController extends Controller
        $administrativas = Administrativa::findOrFail($id);
        $input = Request::all();
 
-
+       $codigorepe = Administrativa::where('codigo_proyecto',Request::input('codigo'))->get();
+       if ($codigorepe->count() == 1) {
+         Session::flash('message', 'el codigo ya esta registrado no se puede modificar!');
+         Session::flash('class', 'danger');
+         return redirect()->route('administrativas.index');
+       }
+       else {
          $administrativas->update($input);
          Session::flash('message', 'Contrato editado!');
          Session::flash('class', 'success');
          return redirect()->route('administrativas.index');
+       }
 
    }
 

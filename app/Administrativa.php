@@ -25,7 +25,7 @@ class Administrativa extends Model
     return $this->belongsTo('App\Transformacion');
   }
 
-  public function distribucion(){
+  public function distribuciones(){
     return $this->belongsTo('App\Distribucion');
   }
 

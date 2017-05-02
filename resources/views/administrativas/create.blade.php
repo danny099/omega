@@ -291,7 +291,6 @@
     </div>
       <div class="box-footer">
         <button type="submit" data-target="#pagos" data-toggle="modal" class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;">Agregar</button>
-        <input onclick="pregunta()" type=button data-target="" data-toggle="" value="Enviar">
       </div>
 
 
