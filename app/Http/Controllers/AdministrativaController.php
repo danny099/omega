@@ -6,6 +6,7 @@ use App\Cliente;
 use App\Otrosi;
 use App\Distribucion;
 use App\Departamento;
+use App\Municipio;
 use App\Transformacion;
 use App\Pu_final;
 use Request;
@@ -28,18 +29,13 @@ class AdministrativaController extends Controller
       $distribuciones = Distribucion::all();
       $transformaciones = Transformacion::all();
       $pu_finales = Pu_final::all();
-      /*$departamentos = Departamento::all()*/
+
 
 
       return view('administrativas.index',compact('administrativas'));        //
     }
 
-    public function getMuni(Request $request, $id){
-        if($request->ajax()){
-            $municipios = Municipios::municipios($id);
-            return response()->json($municipios);
-        }
-    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -55,6 +51,13 @@ class AdministrativaController extends Controller
        $pu_finales=Pu_final::all();
        $departamentos = Departamento::all();
        return view('administrativas.create',compact('clientes','otrosis','distribuciones','transformaciones','pu_finales','departamentos'));
+   }
+
+   public function getMuni(Request $request, $id){
+       if($request->ajax()){
+           $municipio = Municipio::municipio($id);
+           return response()->json($municipio);
+       }
    }
 
    /**

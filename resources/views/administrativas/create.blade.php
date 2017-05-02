@@ -63,7 +63,7 @@
 
         </div>
         <div class="form-group">
-          <label >Ciudad</label>
+          <label >Municipio</label>
             {!! Form::select('municipio', ['placeholder'=>'selecciona'],null,['class' => 'form-control' , 'required' => 'required'],['id'=>'municipio']) !!}
         </div>
         <div class="form-group">
@@ -78,12 +78,12 @@
 
         <div class="form-group">
           <label >Valor contrato inicial</label>
-          <input type="number" id="ini" class="form-control" placeholder= "Ingrese valor" name="contrato_inicial" onkeyup="sumar()" onchange="format(this)" >
+          <input type="number" id="ini" class="form-control" placeholder= "Ingrese valor" name="contrato_inicial" onkeyup="sumar()" >
         </div>
         <label >Otro si</label>
         <div class="form-group ">
           <div class="col-md-11">
-            <input type="number" class="form-control" placeholder= "Ingrese valor" name="otrosi">
+            <input type="number" class="form-control" id="otrosi" placeholder= "Ingrese valor" name="otrosi"  onkeyup="sumar()" >
           </div>
           <div class="col-md-1">
             <a class="btn btn-warning" data-toggle="modal" href="#" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-plus"></i></a>
@@ -92,7 +92,7 @@
             <br>
             <br>
             <label >Valor contrato final</label>
-            <input type="number" class="form-control" id="fin" readonly="readonly" placeholder= "Ingrese valor" name="contrato_final" onkeyup="format(this)" onchange="format(this)" >
+            <input type="number" class="form-control" id="fin" readonly="readonly" placeholder= "Ingrese valor" name="contrato_final"   >
           </div>
           <div class="form-group">
             <label >Plan de pago</label>
@@ -331,23 +331,13 @@
   }
 
   function sumar(){
-    var valor = (document.getElementById('ini').value);
+    var valor = parseInt(document.getElementById('ini').value);
+    var valor2 = parseInt(document.getElementById('otrosi').value);
     var resultado = valor*1.19;
     document.getElementById('fin').value = resultado ;
       }
-      function format(input)
-        {
-        var num = input.value.replace(/\./g,'');
-        if(!isNaN(num)){
-        num = num.toString().split('').reverse().join('').replace(/(?=\d*\.?)(\d{3})/g,'$1.');
-        num = num.split('').reverse().join('').replace(/^[\.]/,'');
-        input.value = num;
-        }
 
-        else{ alert('Solo se permiten numeros');
-        input.value = input.value.replace(/[^\d\.]*/g,'');
-        }
-   }
+
 </script>
 
 <script type="text/javascript">
