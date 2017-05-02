@@ -347,7 +347,7 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
         <li class="header">Modulos</li>
-        <li class="active treeview">
+        <li class="treeview">
           <a href="#">
             <i class="fa fa-dashboard"></i> <span>Administrativa</span>
             <span class="pull-right-container">
@@ -356,6 +356,21 @@
           </a>
           <ul class="treeview-menu">
             <li class="active"><a href="{{ url('administrativas') }}"><i class="fa fa-circle-o"></i>Administrativa</a></li>
+
+          </ul>
+        </li>
+      </ul>
+      <ul class="sidebar-menu">
+
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-dashboard"></i> <span>Modulo1</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+
             <li><a href="{{ url('usuarios') }}"><i class="fa fa-circle-o"></i>Usuarios</a></li>
             <li><a href="{{ url('clientes') }}"><i class="fa fa-circle-o"></i>Clientes</a></li>
           </ul>

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Distribucion;
+
 use Illuminate\Http\Request;
 
 class DistribucionController extends Controller
@@ -13,11 +13,7 @@ class DistribucionController extends Controller
      */
     public function index()
     {
-      $distribuciones=Distribucion::all();
-
-      return view('distribucion.index',compact('distribuciones'));
-
-
+        //
     }
 
     /**

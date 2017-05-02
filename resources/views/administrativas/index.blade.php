@@ -70,13 +70,7 @@
                 </tbody>
 
               <tfoot>
-              <tr>
-                <th>Codigo del proyecto</th>
-                <th>Nombre del proyecto</th>
-                <th>Fecha del contrato</th>
-                <th>Cliente</th>
-                <th>Valor final del contrato</th>
-              </tr>
+            
               </tfoot>
             </table>
           </div>
