@@ -7,6 +7,8 @@ use App\Otrosi;
 use App\Distribucion;
 use App\Transformacion;
 use App\Pu_final;
+use App\Departamentos;
+use App\Municipios;
 use Request;
 use Session;
 use Illuminate\Support\Facades\Validator;
@@ -27,9 +29,17 @@ class AdministrativaController extends Controller
       $distribuciones=Distribucion::all();
       $transformaciones=Transformacion::all();
       $pu_finales=Pu_final::all();
+      $estados=Estados::all();
 
 
-      return view('administrativas.index',compact('administrativas','clientes','otrosis','distribuciones','transformaciones','pu_finales'));        //
+      return view('administrativas.index',compact('administrativas','clientes','otrosis','distribuciones','transformaciones','pu_finales','estados'));        //
+    }
+
+    public function getMuni(Request $request, $id){
+        if($request->ajax()){
+            $municipios = Municipios::municipios($id);
+            return response()->json($municipios);
+        }
     }
 
     /**
