@@ -7,6 +7,8 @@ use App\Otrosi;
 use App\Distribucion;
 use App\Transformacion;
 use App\Pu_final;
+use App\Departamento;
+use App\Municipio;
 use Request;
 use Session;
 use Illuminate\Support\Facades\Validator;
@@ -33,12 +35,7 @@ class AdministrativaController extends Controller
       return view('administrativas.index',compact('administrativas'));        //
     }
 
-    public function getMuni(Request $request, $id){
-        if($request->ajax()){
-            $municipios = Municipios::municipios($id);
-            return response()->json($municipios);
-        }
-    }
+
 
     /**
      * Show the form for creating a new resource.
