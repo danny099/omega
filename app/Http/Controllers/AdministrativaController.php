@@ -52,9 +52,16 @@ class AdministrativaController extends Controller
        $distribuciones=Distribucion::all();
        $transformaciones=Transformacion::all();
        $pu_finales=Pu_final::all();
-       return view('administrativas.create',compact('clientes','otrosis','distribuciones','transformaciones','pu_finales'));
+       $departamentos = Departamento::all();
+       return view('administrativas.create',compact('clientes','otrosis','distribuciones','transformaciones','pu_finales','departamentos'));
    }
 
+   public function getMuni(Request $request, $id){
+       if($request->ajax()){
+           $municipio = Municipio::municipio($id);
+           return response()->json($municipio);
+       }
+   }
    /**
     * Store a newly created resource in storage.
     *
