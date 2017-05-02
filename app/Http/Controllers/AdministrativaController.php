@@ -23,16 +23,16 @@ class AdministrativaController extends Controller
      */
     public function index()
     {
-      $administrativas=Administrativa::all();
-      $clientes=Cliente::all();
-      $otrosis=Otrosi::all();
-      $distribuciones=Distribucion::all();
-      $transformaciones=Transformacion::all();
-      $pu_finales=Pu_final::all();
-      $estados=Estados::all();
+      $administrativas = Administrativa::all();
+      $clientes = Cliente::all();
+      $otrosis = Otrosi::all();
+      $distribuciones = Distribucion::all();
+      $transformaciones = Transformacion::all();
+      $pu_finales = Pu_final::all();
+      $departamentos = Departamentos::all();
 
 
-      return view('administrativas.index',compact('administrativas','clientes','otrosis','distribuciones','transformaciones','pu_finales','estados'));        //
+      return view('administrativas.index',compact('administrativas','clientes','otrosis','distribuciones','transformaciones','pu_finales','departamentos'));        //
     }
 
     public function getMuni(Request $request, $id){
