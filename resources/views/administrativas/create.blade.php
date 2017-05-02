@@ -290,13 +290,13 @@
       </div>
     </div>
       <div class="box-footer">
-        <!-- <button type="submit" class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;">Agregar</button>-->
-        <input type=button data-target=".bs-example-modal-sm" data-toggle="modal" value="Enviar">
+        <button type="submit" data-target="#pagos" data-toggle="modal" class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;">Agregar</button>
+        <input onclick="pregunta()" type=button data-target="" data-toggle="" value="Enviar">
       </div>
 
 
-      <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-        <div class="modal-dialog modal-sm" role="document">
+      <div class="modal fade" id="pagos" tabindex="-1" role="dialog">
+          <div class="modal-dialog" role="document">
           <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -304,7 +304,7 @@
               </div>
               <div class="modal-body">
 
-
+                <h1>¿Desea hacer un pago?</h1>
 
               </div>
               <div class="modal-footer">
