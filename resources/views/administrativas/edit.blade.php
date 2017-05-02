@@ -122,7 +122,9 @@
         <div class="form-group">
           <center><label >Tipo</label></center>
           <select class="form-control" name="tipo">
-
+            <option value="tipo_poste">tipo poste</option>
+            <option value="tipo_interior">tipo interior</option>
+            <option value="tipo_exterior">tipo exterior</option>
           </select>
         </div>
       </div>
@@ -131,6 +133,11 @@
         <div class="form-group">
           <center><label >Capacidad</label></center>
           <select class="form-control" name="capacidad">
+
+            <option value="5KVA">5KVA</option>
+            <option value="10KVA">10KVA</option>
+            <option value="15KVA">15KVA</option>
+            <option value="150KVA">150KVA</option>
 
           </select>
         </div>
@@ -170,6 +177,8 @@
         <div class="form-group">
           <select class="form-control" name="descripcion_dis">
 
+            <option value="Inspeccion retie proceso de distribucion en MT">Inspeccion retie proceso de distribucion en MT</option>
+            <option value="Inspeccion retie proceso de distribucion en BT">Inspeccion retie proceso de distribucion en BT</option>
           </select>
         </div>
       </div>
@@ -179,18 +188,14 @@
           <center><label >Tipo</label></center>
           <select class="form-control" name="tipo_dis">
 
-          </select>
-        </div>
-      </div>
-
-      <div class="col-md-3">
-        <div class="form-group">
-          <center><label >Capacidad</label></center>
-          <select class="form-control" name="capacidad_dis">
+            <option value="aerea">tipo Aerea</option>
+            <option value="subterranea">tipo subterranea</option>
 
           </select>
         </div>
       </div>
+
+
 
       <div class="col-md-1">
         <div class="form-group">
@@ -226,6 +231,9 @@
         <div class="form-group">
           <select class="form-control"name="descripcion_pu">
 
+            <option value="Inspeccion retie proceso uso final residencial">Inspeccion retie proceso uso final residencial</option>
+            <option value="Inspeccion retie proceso uso final comercial">Inspeccion retie proceso uso final comercial</option>
+
           </select>
         </div>
       </div>
@@ -235,18 +243,16 @@
           <center><label >Tipo</label></center>
           <select class="form-control" name="tipo_pu">
 
-          </select>
-        </div>
-      </div>
-
-      <div class="col-md-3">
-        <div class="form-group">
-          <center><label >Capacidad</label></center>
-          <select class="form-control" name="capacidad_pu">
+            <option value="Casa">Casa</option>
+            <option value="Apartamentos">Apartamentos</option>
+            <option value="Zona comun">Zona comun</option>
+            <option value="Local comercial">Local comercial</option>
+            <option value="Punto fijo">Punto fijo</option>
 
           </select>
         </div>
       </div>
+
 
       <div class="col-md-1">
         <div class="form-group">
@@ -276,11 +282,11 @@
       </div>
 
       <div class="col-md-12">
-        <textarea  rows="4" cols="250" name="resumen" value="{{ $administrativas->resumen}}"></textarea>
+        <textarea  rows="4" cols="250" name="resumen" value="{{ $administrativas->resumen}}">{{ $administrativas->resumen}}</textarea>
       </div>
     </div>
       <div class="box-footer">
-        <button type="submit" class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;"  >Agregar</button>
+        <button type="submit" class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;">Agregar</button>
       </div>
     {!! Form::close() !!}
   </div>

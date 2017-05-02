@@ -7,8 +7,6 @@ use App\Otrosi;
 use App\Distribucion;
 use App\Transformacion;
 use App\Pu_final;
-use App\Departamentos;
-use App\Municipios;
 use Request;
 use Session;
 use Illuminate\Support\Facades\Validator;
@@ -29,10 +27,10 @@ class AdministrativaController extends Controller
       $distribuciones = Distribucion::all();
       $transformaciones = Transformacion::all();
       $pu_finales = Pu_final::all();
-      $departamentos = Departamentos::all();
+      /*$departamentos = Departamento::all()*/
 
 
-      return view('administrativas.index',compact('administrativas','clientes','otrosis','distribuciones','transformaciones','pu_finales','departamentos'));        //
+      return view('administrativas.index',compact('administrativas'));        //
     }
 
     public function getMuni(Request $request, $id){
@@ -161,7 +159,8 @@ class AdministrativaController extends Controller
     */
    public function show($id)
    {
-       //
+     $administrativa = Administrativa::find($id);
+     return view('administrativas.show',compact('administrativa'));
    }
 
    /**

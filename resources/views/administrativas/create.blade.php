@@ -17,7 +17,7 @@
   @endif
   <!-- /.box-header -->
   <!-- form start -->
-  <form role="form" action="{{ url('administrativas') }}" method="post">
+  <form role="form" name="form1" action="{{ url('administrativas') }}" method="post">
     {{ csrf_field() }}
     <div class="box-body">
       <div class="col-md-4">
@@ -288,8 +288,32 @@
       </div>
     </div>
       <div class="box-footer">
-        <button type="submit" class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;"  >Agregar</button>
+        <!-- <button type="submit" class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;">Agregar</button>-->
+        <input type=button data-target=".bs-example-modal-sm" data-toggle="modal" value="Enviar">
       </div>
+
+
+      <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog modal-sm" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+              </div>
+              <div class="modal-body">
+
+
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary pull-right" onclick="pregunta()" data-dismiss="modal">Cerrar</button>
+              </div>
+            </div>
+
+          </div>
+          <!-- /.modal-content -->
+
+        </div>
     </form>
   </div>
 </div>
@@ -298,5 +322,11 @@
 @endsection
 
 @section('scripts')
-
+<script type="text/javascript">
+  function pregunta(){
+    if (confirm('¿Estas seguro de enviar este formulario?')){
+       document.form.submit()
+    }
+  }
+</script>
 @endsection
