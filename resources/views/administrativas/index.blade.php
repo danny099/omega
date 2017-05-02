@@ -33,7 +33,7 @@
                   <td>
                       <a href="{{ route('administrativas.edit', $administrativa->id) }}"><i class="glyphicon glyphicon-pencil"></i></a>
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      <a href="{{ route('administrativas.show', $administrativa->id) }}" data-toggle="" data-target=""><i class="glyphicon glyphicon-eye-open"></i></a>
+                      <a href="{{ route('administrativas.show', $administrativa->id) }}" data-toggle="model" data-target="fade bs-example-modal-lg-{{ $key }}"><i class="glyphicon glyphicon-eye-open"></i></a>
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                       <a href="{{ url('deleteadminstrativa') }}/{{ $administrativa->id }}" onClick="javascript: return confirm('Esta seguro de eliminar registro?');"><i class="glyphicon glyphicon-minus-sign"></i></a>
 
