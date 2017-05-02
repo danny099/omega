@@ -117,30 +117,12 @@ class ClienteController extends Controller
       $cliente = Cliente::findOrFail($id);
       $input = Request::all();
 
-      $cedularepe = Cliente::where('cedula',Request::input('cedula'))->get();
-      $nitrepe = Cliente::where('nit',Request::input('nit'))->get();
-      $emailrepe = Cliente::where('email',Request::input('email'))->get();
-      if ($cedularepe->count() == 1) {
-        Session::flash('message', 'la cedula ya esta registrada no se puede editar!');
-        Session::flash('class', 'danger');
-        return redirect()->route('clientes.index');
-      }
-      else if ($nitrepe->count() == 1) {
-        Session::flash('message', 'el nit ya esta registrado no se puede editar!');
-        Session::flash('class', 'danger');
-        return redirect()->route('clientes.index');
-      }
-      else if ($emailrepe->count() == 1) {
-        Session::flash('message', 'el email ya esta registrado no se puede editar!');
-        Session::flash('class', 'danger');
-        return redirect()->route('clientes.index');
-      }
-      else {
+
         $cliente->update($input);
         Session::flash('message', 'Cliente  editado!');
         Session::flash('class', 'success');
         return redirect()->route('clientes.index');
-      }
+      
 
 
 

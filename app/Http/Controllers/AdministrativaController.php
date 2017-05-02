@@ -199,18 +199,11 @@ class AdministrativaController extends Controller
        $administrativas = Administrativa::findOrFail($id);
        $input = Request::all();
 
-       $codigorepe = Administrativa::where('codigo_proyecto',Request::input('codigo'))->get();
-       if ($codigorepe->count() == 1) {
-         Session::flash('message', 'el codigo ya esta registrado no se puede modificar!');
-         Session::flash('class', 'danger');
-         return redirect()->route('administrativas.index');
-       }
-       else {
+
          $administrativas->update($input);
          Session::flash('message', 'Contrato editado!');
          Session::flash('class', 'success');
          return redirect()->route('administrativas.index');
-       }
 
    }
 

@@ -93,7 +93,7 @@
           </div>
           <div class="form-group">
             {!! Form::label('plan_pago', 'Plan de pagos:') !!}
-            {!! Form::number('plan_pago',$administrativas->plan_pago, ['class' => 'form-control' , 'required' => 'required']) !!}
+            {!! Form::text('plan_pago',$administrativas->plan_pago, ['class' => 'form-control' , 'required' => 'required']) !!}
           </div>
         </div>
       </div>
@@ -201,7 +201,7 @@
         <div class="form-group">
           <center>{!! Form::label('plan_pago', 'Unidad') !!}</center>
           <center>
-            <input type="text" class="form-control" value="Und"  readonly=”readonly” name="unidad_distribucion">
+            <input type="text" class="form-control" value="km"  readonly=”readonly” name="unidad_distribucion">
 
           </center>
         </div>

@@ -96,7 +96,7 @@
           </div>
           <div class="form-group">
             <label >Plan de pago</label>
-            <input type="number" class="form-control" placeholder= "Ingrese valor" name="plan_pago">
+            <input type="text" class="form-control" placeholder= "Ingrese valor" name="plan_pago">
           </div>
         </div>
       </div>

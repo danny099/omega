@@ -111,24 +111,11 @@ class UsuarioController extends Controller
         $usuario = Usuario::findOrFail($id);
         $input = Request::all();
 
-        $cedularepe = Usuario::where('cedula',Request::input('cedula'))->get();
-        $emailrepe = Usuario::where('email',Request::input('email'))->get();
-        if ($cedularepe->count() == 1) {
-          Session::flash('message', 'la cedula ya esta registrada no se puede editar!');
-          Session::flash('class', 'danger');
-          return redirect()->route('usuarios.index');
-        }
-        else if ($emailrepe->count() == 1) {
-          Session::flash('message', 'el email ya esta registrado no se puede editar!');
-          Session::flash('class', 'danger');
-          return redirect()->route('usuarios.index');
-        }
-        else {
           $usuario->update($input);
           Session::flash('message', 'Usuario editado!');
           Session::flash('class', 'success');
           return redirect()->route('usuarios.index');
-        }
+
 
     }
 
