@@ -635,6 +635,7 @@
 
 
 <script src="{{url('plugins/jQuery/jquery-2.2.3.min.js')}}"></script>
+<script src="{{url('plugins/jQuery/dropdown.js')}}"></script>
 <!-- Bootstrap 3.3.6 -->
 <script src="{{url('bootstrap/js/bootstrap.min.js')}}"></script>
 <!-- DataTables -->

@@ -71,4 +71,5 @@ Route::group(['middleware' => 'auth'],function(){
   Route::get('deleteusuarios/{id}','UsuarioController@destroy');
   /**************************************************************/
   /**************************************************************/
+	Route::get('municipio/{id}','AdministrativaController@getMuni');
 });

@@ -54,15 +54,17 @@
 
         <div class="form-group">
           <label >Departamento</label>
-          <select class="form-control" name="departamento">
+            <select class="form-control" name="departamento">
+              @foreach($departamentos as $departamento)
+              <option value="{{ $departamento->id }}">{{$departamento->nombre}}</option>
+              @endforeach
+            </select>
 
-          </select>
+
         </div>
         <div class="form-group">
           <label >Ciudad</label>
-          <select class="form-control" name="municipio">
-
-          </select>
+            {!! Form::select('municipio', ['placeholder'=>'selecciona'],null,['class' => 'form-control' , 'required' => 'required'],['id'=>'municipio']) !!}
         </div>
         <div class="form-group">
           <label >Tipo de zona</label>
@@ -328,5 +330,14 @@
        document.form.submit()
     }
   }
+</script>
+<script type="text/javascript">
+$("#departamento").change(function(event){
+  $.get("municipio/"+event.target.value+"",function(response,state){
+    for(i=0; i<response.length; i++){
+      $("#municipio").append("<option value='"+response[i].id+"'> "+response[i].name+"</option>");
+    }
+  });
+});
 </script>
 @endsection
