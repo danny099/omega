@@ -69,90 +69,15 @@ class AdministrativaController extends Controller
     */
    public function store(Request $request)
    {
-     $input = Request::all();
+     $input = $request->all();
 
+     foreach ($otrosi->$request->otrosi as $otro)
+      {
+        Otrosi::create($datos);
+      }
 
      /* -------------------------otrosi------------------------------*/
-     $otrosi['valor'] = Request::input('otrosi');
 
-     Otrosi::create($otrosi);
-     $othetsi = Otrosi::all();
-     $lastId_otrosi = $othetsi->last()->id;
-
-     /* -------------------------proceso transformacion------------------------------*/
-     $transformacion['descripcion'] = Request::input('descripcion');
-     $transformacion['tipo'] = Request::input('tipo');
-     $transformacion['capacidad'] = Request::input('capacidad');
-     $transformacion['unidad'] = Request::input('unidad_transformacion');
-     $transformacion['cantidad'] = Request::input('cantidad');
-
-     if(!empty($transformacion['descripcion']) && !empty($transformacion['tipo']) && !empty($transformacion['capacidad']) && !empty($transformacion['unidad'] ) && !empty($transformacion['cantidad'])){
-       Transformacion::create($transformacion);
-       $trans = Transformacion::all();
-       $lastId_trans = $trans->last()->id;
-       $input['transformacion_id'] = $lastId_trans;
-
-     }
-     /* -------------------------proceso distribuscion------------------------------*/
-     $distribucion['descripcion'] = Request::input('descripcion_dis');
-     $distribucion['tipo'] = Request::input('tipo_dis');
-     $distribucion['capacidad'] = Request::input('capacidad_dis');
-     $distribucion['unidad'] = Request::input('unidad_distribucion');
-     $distribucion['cantidad'] = Request::input('cantidad_dis');
-
-     if(!empty($distribucion['descripcion']) && !empty($distribucion['tipo'])  && !empty($distribucion['unidad'] ) && !empty($distribucion['cantidad'])){
-       Distribucion::create($distribucion);
-       $distri = Distribucion::all();
-       $lastId_distri = $distri->last()->id;
-       $input['distribucion_id'] = $lastId_distri;
-
-     }
-
-     /* -------------------------proceso punto de uso final------------------------------*/
-     $pu['descripcion'] = Request::input('descripcion_pu');
-     $pu['tipo'] = Request::input('tipo_pu');
-     $pu['capacidad'] = Request::input('capacidad_pu');
-     $pu['unidad'] = Request::input('unidad_pu_final');
-     $pu['cantidad'] = Request::input('cantidad_pu');
-
-     if(!empty($pu['descripcion']) && !empty($pu['tipo'])  && !empty($pu['unidad'] ) && !empty($pu['cantidad'])){
-       Pu_final::create($pu);
-       $puf = Pu_final::all();
-       $lastId_pufinal = $puf->last()->id;
-       $input['pu_final_id'] = $lastId_pufinal;
-     }
-
-     /* -------------------------proceso punto de uso final------------------------------*/
-     $input['codigo_proyecto'] = Request::input('codigo');
-     $input['nombre_proyecto'] = Request::input('nombre');
-     $input['fecha_contrato'] = Request::input('fecha');
-     $input['cliente_id'] = Request::input('cliente_id');
-     $input['propietario'] = Request::input('propietario');
-     $input['departamento'] = Request::input('departamento');
-     $input['municipio'] = Request::input('municipio');
-     $input['tipo_zona'] = Request::input('zona');
-     $input['valor_contrato_inicial'] = Request::input('contrato_inicial');
-     $input['otrosi_id'] = $lastId_otrosi;
-     $input['valor_contrato_final'] = Request::input('contrato_final');
-     $input['plan_pago'] = Request::input('plan_pago');
-     $input['resumen'] = Request::input('resumen');
-
-
-
-
-
-     $codigorepe = Administrativa::where('codigo_proyecto',Request::input('codigo'))->get();
-     if ($codigorepe->count() == 1) {
-       Session::flash('message', 'el codigo ya esta registrado!');
-       Session::flash('class', 'danger');
-       return redirect()->route('administrativas.create');
-     }
-     else {
-       Administrativa::create($input);
-       Session::flash('message', 'Contrato creado correctamente!');
-       Session::flash('class', 'success');
-       return redirect()->route('administrativas.index');
-     }
 
 
    }
