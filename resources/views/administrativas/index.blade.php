@@ -32,7 +32,7 @@
                     <td>
                         <a href="{{ route('administrativas.edit', $administrativa->id) }}"><i class="glyphicon glyphicon-pencil"></i></a>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="{{ route('administrativas.show', $administrativa->id) }}" data-toggle="" data-target="fade bs-example-modal-lg-{{ $key }}"><i class="glyphicon glyphicon-eye-open"></i></a>
+                        <a href="{{ route('administrativas.show', $administrativa->id) }}" data-toggle="model" data-target="fade bs-example-modal-lg-{{ $key }}"><i class="glyphicon glyphicon-eye-open"></i></a>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <!-- <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Open Modal</button> -->
                         <a href="#myModal" data-toggle="modal" data-target=""><i class="fa fa-money"></i></a>
@@ -51,9 +51,16 @@
                             <h4 class="modal-title">Pagos</h4>
                           </div>
                           <div class="modal-body">
-
+                            <center><h4> ¿Desea anexar un pago? </h4></center>
+                            <br>
+                            <center>
+                              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal2" name="button">Consignacion</button>
+                              <button type="button" class="btn btn-primary" name="button">Cuenta de Cobro</button>
+                              <button type="button" class="btn btn-primary" name="button">Factura</button>
+                            </center>
                           </div>
                           <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                           </div>
                         </div>
                       </div>
@@ -61,22 +68,16 @@
                     <!-- fin modal -->
                 </div>
 
-                <!-- /.modal-dialog -->
-
                 <!-- inicio modal 2 -->
-                  <div class="modal fade" id="myModal2" role="dialog">
-                    <div class="modal-dialog">
-                      <!-- Modal content-->
+                  <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
                       <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal">&times;</button>
-                          <h4 class="modal-title">Modal Header</h4>
-                        </div>
+
                         <div class="modal-body">
-                          <p>Some text in the modal.</p>
+                          @include('consignaciones.create')
                         </div>
                         <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                          
                         </div>
                       </div>
                     </div>
