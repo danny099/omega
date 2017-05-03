@@ -82,8 +82,16 @@
         </div>
         <label >Otro si</label>
         <div class="form-group ">
+<<<<<<< .mine
+          <div class="col-md-11">[]
+            <input type="number" class="form-control" id="otrosi" placeholder= "Ingrese valor" name="otrosi"  onkeyup="sumar()" >
+||||||| .r44
+          <div class="col-md-11">
+            <input type="number" class="form-control" id="otrosi" placeholder= "Ingrese valor" name="otrosi"  onkeyup="sumar()" >
+=======
           <div class="col-md-11" id="tblprod">
             <input type="number" class="form-control" id="otrosi[]" placeholder= "Ingrese valor" name="otrosi[]"  onkeyup="sumar()" >
+>>>>>>> .r47
           </div>
 
           <div class="col-md-1">
