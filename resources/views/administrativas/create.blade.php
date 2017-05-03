@@ -82,16 +82,8 @@
         </div>
         <label >Otro si</label>
         <div class="form-group ">
-<<<<<<< .mine
-          <div class="col-md-11">[]
-            <input type="number" class="form-control" id="otrosi" placeholder= "Ingrese valor" name="otrosi"  onkeyup="sumar()" >
-||||||| .r44
-          <div class="col-md-11">
-            <input type="number" class="form-control" id="otrosi" placeholder= "Ingrese valor" name="otrosi"  onkeyup="sumar()" >
-=======
           <div class="col-md-11" id="tblprod">
             <input type="number" class="form-control" id="otrosi[]" placeholder= "Ingrese valor" name="otrosi[]"  onkeyup="sumar()" >
->>>>>>> .r47
           </div>
 
           <div class="col-md-1">
@@ -299,7 +291,7 @@
       </div>
     </div>
       <div class="box-footer">
-        <button type="submit" data-target="" data-toggle="  " class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;">Agregar</button>
+        <button type="submit" data-target="" data-toggle="" class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;">Agregar</button>
       </div>
 
 
@@ -338,15 +330,12 @@
        document.form.submit()
     }
   }
-
   function sumar(){
     var valor = parseInt(document.getElementById('ini').value);
     var valor2 = parseInt(document.getElementById('otrosi').value);
     var resultado = valor*1.19;
     document.getElementById('fin').value = resultado ;
       }
-
-
 </script>
 
   <script type="text/javascript">
@@ -354,14 +343,8 @@
         var count = 1;
        $(document).on("click","#btnadd",function( event ) {
         count++;
-          $('#tblprod').before('<div class="col-md-11" id="tblprod"><input type="number" class="form-control" id="otrosi[]" placeholder= "Ingrese valor" name="otrosi[]"  onkeyup="sumar()" > </div>   <div class="col-md-1"><a class="btn btn-warning delete" id="btnadd[]" data-toggle="modal" href="#" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-minus"></i></a></div><br><br><br>');
+          $('#tblprod').before('<div class="col-md-11" id="tblprod[]"><input type="number" class="form-control" id="otrosi[]" placeholder= "Ingrese valor" name="otrosi[]"  onkeyup="sumar()" > </div>   <div class="col-md-1"><a class="btn btn-warning" id="btnadd2" data-toggle="modal" href="#" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-minus"></i></a></div><br><br><br>');
           event.preventDefault();
-       });
-
-       $(document).on("click",".delete",function( event ) {
-       $(this).closest("div").remove();
-       $('#tblprod').remove();
-          return false;
        });
     });
   </script>
