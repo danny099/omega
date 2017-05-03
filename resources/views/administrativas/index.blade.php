@@ -24,8 +24,7 @@
                 @foreach($administrativas as $key => $administrativa)
                   <tr>
                     <td>{{$administrativa->codigo_proyecto}}</td>
-                    <td>{{$administrativa->nombre_proyecto}}
-                    </td>
+                    <td>{{$administrativa->nombre_proyecto}}</td>
                     <td>{{$administrativa->fecha_contrato}}</td>
                     <td> {{$administrativa->cliente->nombre}}</td>
                     <td>{{$administrativa->valor_contrato_final}}</td>
@@ -39,7 +38,6 @@
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <a href="{{ url('deleteadminstrativa') }}/{{ $administrativa->id }}" onClick="javascript: return confirm('Esta seguro de eliminar registro?');"><i class="glyphicon glyphicon-minus-sign"></i></a>
                     </td>
-                    <td></td>
                   </tr>
                   <!-- inicio modal 1 -->
                     <div class="modal fade" id="myModal" role="dialog">
@@ -77,7 +75,7 @@
                           @include('consignaciones.create')
                         </div>
                         <div class="modal-footer">
-                          
+
                         </div>
                       </div>
                     </div>

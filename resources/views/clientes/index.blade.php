@@ -28,6 +28,7 @@
                 <th>Telefono</th>
                 <th>Direccion</th>
                 <th>Email</th>
+                <th>Aciones</th>
               </tr>
               </thead>
 
@@ -41,8 +42,12 @@
                   <td>{{ $cliente->telefono }}</td>
                   <td>{{ $cliente->direccion }}</td>
                   <td>{{ $cliente->email }}</td>
-                  <td><a href="{{ route('clientes.edit', $cliente->id) }}"><i class="glyphicon glyphicon-pencil"></i></a></td>
-                  <td><a href="{{ url('deleteclientes') }}/{{ $cliente->id }}" onClick="javascript: return confirm('Esta seguro de eliminar registro?');"><i class="glyphicon glyphicon-minus-sign"></i></a></td>
+                  <td>
+                    <a href="{{ route('clientes.edit', $cliente->id) }}"><i class="glyphicon glyphicon-pencil"></i></a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="{{ url('deleteclientes') }}/{{ $cliente->id }}" onClick="javascript: return confirm('Esta seguro de eliminar registro?');"><i class="glyphicon glyphicon-minus-sign"></i></a>
+                  </td>
+
 
                 </tr>
 

@@ -38,8 +38,12 @@
                   <td>{{ $usuario->apellidos }}</td>
                   <td>{{ $usuario->email }}</td>
                   <td>{{ $usuario->roles->rol }}</td>
-                  <td><a href="{{ route('usuarios.edit', $usuario->id) }}"><i class="glyphicon glyphicon-pencil"></i></a></td>
-                  <td><a href="{{ url('deleteusuarios') }}/{{ $usuario->id }}" onClick="javascript: return confirm('Esta seguro de eliminar registro?');"><i class="glyphicon glyphicon-minus-sign"></i></a></td>
+                  <td>
+                    <a href="{{ route('usuarios.edit', $usuario->id) }}"><i class="glyphicon glyphicon-pencil"></i></a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="{{ url('deleteusuarios') }}/{{ $usuario->id }}" onClick="javascript: return confirm('Esta seguro de eliminar registro?');"><i class="glyphicon glyphicon-minus-sign"></i></a>
+                  </td>
+                  <td></td>
 
                 </tr>
 
