@@ -332,7 +332,6 @@
   }
   function sumar(){
     var valor = parseInt(document.getElementById('ini').value);
-    var valor2 = parseInt(document.getElementById('otrosi').value);
     var resultado = valor*1.19;
     document.getElementById('fin').value = resultado ;
       }
@@ -343,7 +342,7 @@
         var count = 1;
        $(document).on("click","#btnadd",function( event ) {
         count++;
-          $('#tblprod').before('<div class="col-md-11" id="tblprod"><input type="number" class="form-control" id="otrosi[]" placeholder= "Ingrese valor" name="otrosi[]"  onkeyup="sumar()" > </div>   <div class="col-md-1"><a class="btn btn-warning delete" id="btnadd[]" data-toggle="modal" href="#" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-minus"></i></a></div><br><br><br>');
+          $('#tblprod').after('<div class="col-md-11" id="tblprod"><input type="number" class="form-control" id="otrosi[]" placeholder= "Ingrese valor" name="otrosi[]"  onkeyup="sumar()" > </div>   <div class="col-md-1"><a class="btn btn-warning delete" id="btnadd[]" data-toggle="modal" href="#" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-minus"></i></a></div><br><br><br>');
           event.preventDefault();
        });
        $(document).on("click",".delete",function( event ) {
