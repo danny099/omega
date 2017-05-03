@@ -53,7 +53,8 @@ class AdministrativaController extends Controller
        return view('administrativas.create',compact('clientes','otrosis','distribuciones','transformaciones','pu_finales','departamentos'));
    }
 
-   public function getMuni(Request $request, $id){
+//
+  public function getMuni(Request $request, $id){
        if($request->ajax()){
            $municipio = Municipio::municipio($id);
            return response()->json($municipio);

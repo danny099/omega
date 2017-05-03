@@ -82,11 +82,12 @@
         </div>
         <label >Otro si</label>
         <div class="form-group ">
-          <div class="col-md-11">
-            <input type="number" class="form-control" id="otrosi" placeholder= "Ingrese valor" name="otrosi"  onkeyup="sumar()" >
+          <div class="col-md-11" id="tblprod">
+            <input type="number" class="form-control" id="otrosi[]" placeholder= "Ingrese valor" name="otrosi[]"  onkeyup="sumar()" >
           </div>
+
           <div class="col-md-1">
-            <a class="btn btn-warning" data-toggle="modal" href="#" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-plus"></i></a>
+            <a class="btn btn-warning" id="btnadd" data-toggle="modal" href="#" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-plus"></i></a>
           </div>
           <div class="form-group">
             <br>
@@ -340,13 +341,16 @@
 
 </script>
 
-<script type="text/javascript">
-$("#departamento").change(function(event){
-  $.get("municipio/"+event.target.value+"",function(response,state){
-    for(i=0; i<response.length; i++){
-      $("#municipio").append("<option value='"+response[i].id+"'> "+response[i].name+"</option>");
-    }
-  });
-});
-</script>
+  <script type="text/javascript">
+    $(function() {
+        var count = 1;
+       $(document).on("click","#btnadd",function( event ) {
+        count++;
+          $('#tblprod').before('<div class="col-md-11" id="tblprod[]"><input type="number" class="form-control" id="otrosi[]" placeholder= "Ingrese valor" name="otrosi[]"  onkeyup="sumar()" > </div>   <div class="col-md-1"><a class="btn btn-warning" id="btnadd2" data-toggle="modal" href="#" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-minus"></i></a></div><br><br><br>');
+          event.preventDefault();
+       });
+    });
+  </script>
+
+
 @endsection

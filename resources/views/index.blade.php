@@ -54,6 +54,7 @@
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
+
 </head>
 <body class="hold-transition skin-blue sidebar-mini" style="padding: 0px !important;">
 <div class="wrapper">
@@ -283,7 +284,7 @@
                   {{Auth::User()->nombres}} {{Auth::User()->apellidos}}
                 </p>
               </li>
-              <!-- Menu Body  
+              <!-- Menu Body
               <li class="user-body">
                 <div class="row">
                   <div class="col-xs-4 text-center">
