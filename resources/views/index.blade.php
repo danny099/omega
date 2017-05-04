@@ -646,8 +646,6 @@
 
 @yield('scripts')
 <!-- jQuery 2.2.3 -->
-
-
 <script src="{{url('plugins/jQuery/jquery-2.2.3.min.js')}}"></script>
 <script src="{{url('plugins/jQuery/dropdown.js')}}"></script>
 <!-- Bootstrap 3.3.6 -->
@@ -664,6 +662,8 @@
 <!-- AdminLTE for demo purposes -->
 <script src="{{url('dist/js/demo.js')}}"></script>
 <!-- page script -->
+
+
 <script>
   $(function () {
     $("#example1").DataTable();

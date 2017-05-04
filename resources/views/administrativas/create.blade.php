@@ -182,8 +182,7 @@
       <div class="col-md-3">
         <div class="form-group">
           <center><label >Descripcion</label></center>
-          <select class="form-control" name="descripcion_dis">
-
+          <select class="form-control" name="descripcion_dis[]">
             <option value="Inspeccion retie proceso de distribucion en MT">Inspeccion retie proceso de distribucion en MT</option>
             <option value="Inspeccion retie proceso de distribucion en BT">Inspeccion retie proceso de distribucion en BT</option>
           </select>
@@ -193,7 +192,7 @@
       <div class="col-md-3">
         <div class="form-group">
           <center><label >Tipo</label></center>
-          <select class="form-control" name="tipo_dis">
+          <select class="form-control" name="tipo_dis[]">
 
             <option value="aerea">tipo Aerea</option>
             <option value="subterranea">tipo subterranea</option>
@@ -208,7 +207,7 @@
         <div class="form-group">
           <center><label >Unidad</label></center>
           <center>
-            <input type="text" class="form-control" value="km"  readonly=”readonly” name="unidad_distribucion"style="text-align:center">
+            <input type="text" class="form-control" value="km"  readonly=”readonly” name="unidad_distribucion[]"style="text-align:center">
           </center>
         </div>
       </div>
@@ -216,14 +215,14 @@
       <div class="col-md-2">
         <div class="form-group">
           <center><label >Cantidad</label></center>
-          <input type="text" class="form-control" placeholder= "Cantidad" name="cantidad_dis">
+          <input type="text" class="form-control" placeholder= "Cantidad" name="cantidad_dis[]">
         </div>
       </div>
 
-      <div class="col-md-1">
+      <div class="col-md-1" id="tblprod3" >
         <div class="form-group">
           <br>
-          <a class="btn btn-primary" data-toggle="modal" href="#" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-plus"></i></a>
+          <a class="btn btn-primary" data-toggle="modal" id="btnadd3" href="#" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-plus"></i></a>
         </div>
       </div>
 
@@ -335,6 +334,8 @@
     var resultado = valor*1.19;
     document.getElementById('fin').value = resultado ;
       }
+
+
 </script>
 
   <script type="text/javascript">
@@ -359,6 +360,15 @@
         $('#tblprod2').after(' <div class="col-md-1" id="tblprod2"><div class="form-group"><br><a class="btn btn-primary delete2" data-toggle="modal" href="#"  style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-minus"></i></a></div></div>');
           event.preventDefault();
        });
+         $(document).on("click",".delete2",function( event ) {
+         $(this).closest("div").remove();
+         $('#quitar1').remove();
+         $('#quitar2').remove();
+         $('#quitar3').remove();
+         $('#quitar4').remove();
+         $('#quitar5').remove();
+            return false;
+         });
     });
 
 
@@ -366,7 +376,7 @@
         var count = 1;
        $(document).on("click","#btnadd2",function( event ) {
         count++;
-        $('#tblprod2').after('<div class="col-md-1"><div class="form-group"><center><label >Cantidad</label></center><input type="text" class="form-control" placeholder= "Cantidad" name="cantidad[]"></div></div>');
+        $('#tblprod2').after('<div class="col-md-1" id="quitar1"><div class="form-group"><center><label >Cantidad</label></center><input type="text" class="form-control" placeholder= "Cantidad" name="cantidad[]"></div></div>');
           event.preventDefault();
        });
     });
@@ -375,7 +385,7 @@
         var count = 1;
        $(document).on("click","#btnadd2",function( event ) {
         count++;
-        $('#tblprod2').after('<div class="col-md-1"><div class="form-group"><center><label>Unidad</label></center><center><input style="text-align:center;" type="text" class="form-control" value="Und"  readonly=”readonly” name="unidad_transformacion[]"></center></div></div>');
+        $('#tblprod2').after('<div class="col-md-1" id="quitar2"><div class="form-group"><center><label>Unidad</label></center><center><input style="text-align:center;" type="text" class="form-control" value="Und"  readonly=”readonly” name="unidad_transformacion[]"></center></div></div>');
           event.preventDefault();
        });
     });
@@ -384,7 +394,7 @@
         var count = 1;
        $(document).on("click","#btnadd2",function( event ) {
         count++;
-        $('#tblprod2').after('<div class="col-md-3"><div class="form-group"><center><label >Capacidad</label></center><select class="form-control" name="capacidad[]"><option value="5KVA">5KVA</option><option value="10KVA">10KVA</option><option value="15KVA">15KVA</option><option value="150KVA">150KVA</option></select></div></div>');
+        $('#tblprod2').after('<div class="col-md-3" id="quitar3"><div class="form-group"><center><label >Capacidad</label></center><select class="form-control" name="capacidad[]"><option value="5KVA">5KVA</option><option value="10KVA">10KVA</option><option value="15KVA">15KVA</option><option value="150KVA">150KVA</option></select></div></div>');
           event.preventDefault();
        });
     });
@@ -393,7 +403,7 @@
         var count = 1;
        $(document).on("click","#btnadd2",function( event ) {
         count++;
-        $('#tblprod2').after('<div class="col-md-3"><div class="form-group"><center><label >Tipo</label></center><select class="form-control" name="tipo[]"><option value="tipo_poste">tipo poste</option><option value="tipo_interior">tipo interior</option><option value="tipo_exterior">tipo exterior</option></select></div></div>');
+        $('#tblprod2').after('<div class="col-md-3" id="quitar4"><div class="form-group"><center><label >Tipo</label></center><select class="form-control" name="tipo[]"><option value="tipo_poste">tipo poste</option><option value="tipo_interior">tipo interior</option><option value="tipo_exterior">tipo exterior</option></select></div></div>');
           event.preventDefault();
        });
     });
@@ -402,10 +412,67 @@
         var count = 1;
        $(document).on("click","#btnadd2",function( event ) {
         count++;
-        $('#tblprod2').after('<div class="col-md-3"><div class="form-group"><center><label >Descripcion</label></center><input type="text" class="form-control" value="Inspecion RETIE proceso de transformacion"  readonly=”readonly” name="descripcion"></div</div>');
+        $('#tblprod2').after('<div class="col-md-3" id="quitar5"><div class="form-group"><center><label >Descripcion</label></center><input type="text" class="form-control" value="Inspecion RETIE proceso de transformacion"  readonly=”readonly” name="descripcion"></div</div>');
           event.preventDefault();
        });
     });
+
+
+        $(function() {
+            var count = 1;
+           $(document).on("click","#btnadd3",function( event ) {
+            count++;
+            $('#tblprod3').after(' <div class="col-md-1" id="tblprod2"><div class="form-group"><br><a class="btn btn-primary delete3" data-toggle="modal" href="#"  style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-minus"></i></a></div></div>');
+              event.preventDefault();
+           });
+             $(document).on("click",".delete3",function( event ) {
+             $(this).closest("div").remove();
+             $('#quitar6').remove();
+             $('#quitar7').remove();
+             $('#quitar8').remove();
+             $('#quitar9').remove();
+                return false;
+             });
+        });
+
+
+        $(function() {
+            var count = 1;
+           $(document).on("click","#btnadd3",function( event ) {
+            count++;
+            $('#tblprod3').after('<div class="col-md-2 " id="quitar6"><div class="form-group"><center><label >Cantidad</label></center><input type="text" class="form-control" placeholder= "Cantidad" name="cantidad_dis[]"></div></div>');
+              event.preventDefault();
+           });
+        });
+
+        $(function() {
+            var count = 1;
+           $(document).on("click","#btnadd3",function( event ) {
+            count++;
+            $('#tblprod3').after('<div class="col-md-2 " id="quitar7"><div class="form-group"><center><label >Unidad</label></center><center><input type="text" class="form-control" value="km"  readonly=”readonly” name="unidad_distribucion[]"style="text-align:center"></center></div></div>');
+              event.preventDefault();
+           });
+        });
+
+
+
+        $(function() {
+            var count = 1;
+           $(document).on("click","#btnadd3",function( event ) {
+            count++;
+            $('#tblprod3').after('<div class="col-md-3 " id="quitar8"><div class="form-group"><center><label >Tipo</label></center><select class="form-control" name="tipo_dis[]"><option value="aerea">tipo Aerea</option><option value="subterranea">tipo subterranea</option></select></div></div>');
+              event.preventDefault();
+           });
+        });
+
+        $(function() {
+            var count = 1;
+           $(document).on("click","#btnadd3",function( event ) {
+            count++;
+            $('#tblprod3').after('<div class="col-md-3 " id="quitar9"><div class="form-group"><center><label >Descripcion</label></center><select class="form-control" name="descripcion_dis[]"><option value="Inspeccion retie proceso de distribucion en MT">Inspeccion retie proceso de distribucion en MT</option><option value="Inspeccion retie proceso de distribucion en BT">Inspeccion retie proceso de distribucion en BT</option></select></div></div>');
+              event.preventDefault();
+           });
+        });
 
 
 
@@ -413,10 +480,21 @@
 
     </script>
 
-
-
-
-
-
+    <!-- jQuery 2.2.3 -->
+    <script src="../../plugins/jQuery/jquery-2.2.3.min.js"></script>
+    <!-- Bootstrap 3.3.6 -->
+    <script src="../../bootstrap/js/bootstrap.min.js"></script>
+    <!-- DataTables -->
+    <script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="../../plugins/datatables/dataTables.bootstrap.min.js"></script>
+    <!-- SlimScroll -->
+    <script src="../../plugins/slimScroll/jquery.slimscroll.min.js"></script>
+    <!-- FastClick -->
+    <script src="../../plugins/fastclick/fastclick.js"></script>
+    <!-- AdminLTE App -->
+    <script src="../../dist/js/app.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="../../dist/js/demo.js"></script>
+    <!-- page script -->
 
 @endsection
