@@ -7,6 +7,7 @@
       <div class="container">
         <div class="col-md-12 well">
           <a class="btn btn-primary" data-toggle="modal" href="{{ url('administrativas/create') }}"><i class="fa fa-user-plus"></i> Crear Contrato</a>
+          <a href="javascript:history.back()" class="btn btn-primary pull-right">Atras</a>
           <div class="box-body">
             <table id="example1" class="table table-bordered table-striped">
               <thead>

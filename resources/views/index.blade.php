@@ -357,8 +357,8 @@
           </ul>
         </li>
       </ul>
+      @if ( Auth::user()->rol_id == 1)
       <ul class="sidebar-menu">
-
         <li class="treeview">
           <a href="#">
             <i class="fa fa-dashboard"></i> <span>Modulo1</span>
@@ -373,6 +373,8 @@
           </ul>
         </li>
       </ul>
+      @endif
+
     </section>
     <!-- /.sidebar -->
   </aside>

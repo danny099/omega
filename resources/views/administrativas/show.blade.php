@@ -1,9 +1,12 @@
 @extends('index')
 @section('contenido')
 <div class="box box-primary">
+  <a href="javascript:history.back()" class="btn btn-primary pull-right">Atras</a>
+  
   <div class="box-header with-border">
     <center> <h3 class="box-title">Datos del proyecto</h3> </center>
   </div>
+
   <!-- /.box-header -->
   <!-- form start -->
 

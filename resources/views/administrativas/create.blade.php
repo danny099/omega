@@ -3,9 +3,12 @@
 @section('contenido')
 
 <div class="box box-primary">
+
+
   <div class="box-header with-border">
     <center> <h3 class="box-title">Datos del proyecto</h3> </center>
   </div>
+    <a href="javascript:history.back()" class="btn btn-primary pull-right">Atras</a>
   @if(Session::has('message'))
     <div id="alert">
       <div class="col-sm-12 hr hr-18 hr-double dotted"></div>
@@ -85,6 +88,8 @@
           <div class="col-md-11" id="tblprod">
             <input type="number" class="form-control" id="otrosi[]" placeholder= "Ingrese valor" name="otrosi[]"  onkeyup="sumar()" >
           </div>
+
+
 
           <div class="col-md-1">
             <a class="btn btn-warning" id="btnadd" data-toggle="modal" href="#" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-plus"></i></a>
