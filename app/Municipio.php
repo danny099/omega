@@ -18,8 +18,5 @@ class Municipio extends Model
     return $this->belongsTo('App\Departamento');
   }
 
-  public static function municipio($id){
-    return Municipio::where('departamento_id','=',$id)
-    ->get();
-  }
+  
 }
