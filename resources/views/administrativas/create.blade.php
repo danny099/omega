@@ -113,13 +113,12 @@
   </div>
 
     <div class="box-body">
+    <div class="col-md-12">
+
       <div class="col-md-3">
         <div class="form-group">
           <center><label >Descripcion</label></center>
-        </div>
-        <div class="form-group">
           <input type="text" class="form-control" value="Inspecion RETIE proceso de transformacion"  readonly=”readonly” name="descripcion">
-
         </div>
       </div>
 
@@ -170,7 +169,7 @@
           <a class="btn btn-primary" data-toggle="modal" href="#" id="btnadd2" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-plus"></i></a>
         </div>
       </div>
-
+</div>
       <div class="col-md-12">
         <center> <h4 class="box-title">Alcance: proceso de distribucion</h4> </center>
       </div>
@@ -178,8 +177,6 @@
       <div class="col-md-3">
         <div class="form-group">
           <center><label >Descripcion</label></center>
-        </div>
-        <div class="form-group">
           <select class="form-control" name="descripcion_dis">
 
             <option value="Inspeccion retie proceso de distribucion en MT">Inspeccion retie proceso de distribucion en MT</option>
@@ -231,8 +228,6 @@
       <div class="col-md-3">
         <div class="form-group">
           <center><label >Descripcion</label></center>
-        </div>
-        <div class="form-group">
           <select class="form-control"name="descripcion_pu">
 
             <option value="Inspeccion retie proceso uso final residencial">Inspeccion retie proceso uso final residencial</option>
@@ -356,7 +351,7 @@
         var count = 1;
        $(document).on("click","#btnadd2",function( event ) {
         count++;
-        $('#tblprod2').after(' <div class="col-md-1" id="tblprod2"><div class="form-group"><br><a class="btn btn-primary" data-toggle="modal" href="#" id="btnadd2" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-minus"></i></a></div></div>');
+        $('#tblprod2').after(' <div class="col-md-1" id="tblprod2"><div class="form-group"><br><a class="btn btn-primary delete 2" data-toggle="modal" href="#"  style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-minus"></i></a></div></div>');
           event.preventDefault();
        });
     });
@@ -402,7 +397,7 @@
         var count = 1;
        $(document).on("click","#btnadd2",function( event ) {
         count++;
-        $('#tblprod2').after('<div class="col-md-3"><div class="form-group"><center><label >Descripcion</label></center></div><div class="form-group"><input type="text" class="form-control" value="Inspecion RETIE proceso de transformacion"  readonly=”readonly” name="descripcion"></div</div>');
+        $('#tblprod2').after('<div class="col-md-3"><div class="form-group"><center><label >Descripcion</label></center><input type="text" class="form-control" value="Inspecion RETIE proceso de transformacion"  readonly=”readonly” name="descripcion"></div</div>');
           event.preventDefault();
        });
     });
