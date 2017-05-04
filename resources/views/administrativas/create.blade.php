@@ -13,6 +13,7 @@
   <div class="box-header with-border">
     <center> <h3 class="box-title">Datos del proyecto</h3> </center>
   </div>
+    <a href="javascript:history.back()" class="btn btn-primary pull-right">Atras</a>
   @if(Session::has('message'))
     <div id="alert">
       <div class="col-sm-12 hr hr-18 hr-double dotted"></div>
@@ -540,16 +541,13 @@
            });
         });
 
-        jQuery(function($){
-          $("#codigo").mask("999-999-999");
-        });
+
 
     </script>
 
     <!-- jQuery 2.2.3 -->
     <script src="../../plugins/jQuery/jquery-2.2.3.min.js"></script>
-    <!-- masked inputs -->
-    <script src="../../plugins/jQuery/jquery.maskedinput.min.js" type="text/javascript"></script>
+
     <!-- Bootstrap 3.3.6 -->
     <script src="../../bootstrap/js/bootstrap.min.js"></script>
     <!-- DataTables -->
