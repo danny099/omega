@@ -126,7 +126,7 @@
       <div class="col-md-3">
         <div class="form-group">
           <center><label >Tipo</label></center>
-          <select class="form-control" name="tipo">
+          <select class="form-control" name="tipo[]">
             <option value="tipo_poste">tipo poste</option>
             <option value="tipo_interior">tipo interior</option>
             <option value="tipo_exterior">tipo exterior</option>
@@ -137,7 +137,7 @@
       <div class="col-md-3">
         <div class="form-group">
           <center><label >Capacidad</label></center>
-          <select class="form-control" name="capacidad">
+          <select class="form-control" name="capacidad[]">
 
             <option value="5KVA">5KVA</option>
             <option value="10KVA">10KVA</option>
@@ -152,7 +152,7 @@
         <div class="form-group">
           <center><label>Unidad</label></center>
           <center>
-            <input style="text-align:center;" type="text" class="form-control" value="Und"  readonly=”readonly” name="unidad_transformacion">
+            <input style="text-align:center;" type="text" class="form-control" value="Und"  readonly=”readonly” name="unidad_transformacion[]">
           </center>
         </div>
       </div>
@@ -160,14 +160,14 @@
       <div class="col-md-1">
         <div class="form-group">
           <center><label >Cantidad</label></center>
-          <input type="text" class="form-control" placeholder= "Cantidad" name="cantidad">
+          <input type="text" class="form-control" placeholder= "Cantidad" name="cantidad[]">
         </div>
       </div>
 
-      <div class="col-md-1">
+      <div class="col-md-1" id="tblprod2">
         <div class="form-group">
           <br>
-          <a class="btn btn-primary" data-toggle="modal" href="#" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-plus"></i></a>
+          <a class="btn btn-primary" data-toggle="modal" href="#" id="btnadd2" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-plus"></i></a>
         </div>
       </div>
 
@@ -342,7 +342,7 @@
         var count = 1;
        $(document).on("click","#btnadd",function( event ) {
         count++;
-          $('#tblprod').after('<div class="col-md-11" id="tblprod"><input type="number" class="form-control" id="otrosi[]" placeholder= "Ingrese valor" name="otrosi[]"  onkeyup="sumar()" > </div>   <div class="col-md-1"><a class="btn btn-warning delete" id="btnadd[]" data-toggle="modal" href="#" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-minus"></i></a></div><br><br><br>');
+        $('#tblprod').before('<div class="col-md-11" id="tblprod"><input type="number" class="form-control" id="otrosi[]" placeholder= "Ingrese valor" name="otrosi[]"  onkeyup="sumar()" > </div>   <div class="col-md-1"><a class="btn btn-warning delete" id="btnadd[]" data-toggle="modal" href="#" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-minus"></i></a></div><br><br><br>');
           event.preventDefault();
        });
        $(document).on("click",".delete",function( event ) {
@@ -351,7 +351,72 @@
           return false;
        });
     });
-  </script>
+
+    $(function() {
+        var count = 1;
+       $(document).on("click","#btnadd2",function( event ) {
+        count++;
+        $('#tblprod2').after(' <div class="col-md-1" id="tblprod2"><div class="form-group"><br><a class="btn btn-primary" data-toggle="modal" href="#" id="btnadd2" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-minus"></i></a></div></div>');
+          event.preventDefault();
+       });
+    });
+
+
+    $(function() {
+        var count = 1;
+       $(document).on("click","#btnadd2",function( event ) {
+        count++;
+        $('#tblprod2').after('<div class="col-md-1"><div class="form-group"><center><label >Cantidad</label></center><input type="text" class="form-control" placeholder= "Cantidad" name="cantidad[]"></div></div>');
+          event.preventDefault();
+       });
+    });
+
+    $(function() {
+        var count = 1;
+       $(document).on("click","#btnadd2",function( event ) {
+        count++;
+        $('#tblprod2').after('<div class="col-md-1"><div class="form-group"><center><label>Unidad</label></center><center><input style="text-align:center;" type="text" class="form-control" value="Und"  readonly=”readonly” name="unidad_transformacion[]"></center></div></div>');
+          event.preventDefault();
+       });
+    });
+
+    $(function() {
+        var count = 1;
+       $(document).on("click","#btnadd2",function( event ) {
+        count++;
+        $('#tblprod2').after('<div class="col-md-3"><div class="form-group"><center><label >Capacidad</label></center><select class="form-control" name="capacidad[]"><option value="5KVA">5KVA</option><option value="10KVA">10KVA</option><option value="15KVA">15KVA</option><option value="150KVA">150KVA</option></select></div></div>');
+          event.preventDefault();
+       });
+    });
+
+    $(function() {
+        var count = 1;
+       $(document).on("click","#btnadd2",function( event ) {
+        count++;
+        $('#tblprod2').after('<div class="col-md-3"><div class="form-group"><center><label >Tipo</label></center><select class="form-control" name="tipo[]"><option value="tipo_poste">tipo poste</option><option value="tipo_interior">tipo interior</option><option value="tipo_exterior">tipo exterior</option></select></div></div>');
+          event.preventDefault();
+       });
+    });
+
+    $(function() {
+        var count = 1;
+       $(document).on("click","#btnadd2",function( event ) {
+        count++;
+        $('#tblprod2').after('<div class="col-md-3"><div class="form-group"><center><label >Descripcion</label></center></div><div class="form-group"><input type="text" class="form-control" value="Inspecion RETIE proceso de transformacion"  readonly=”readonly” name="descripcion"></div</div>');
+          event.preventDefault();
+       });
+    });
+
+
+
+
+
+    </script>
+
+
+
+
+
 
 
 @endsection
