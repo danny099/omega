@@ -8,7 +8,7 @@ class Transformacion extends Model
 {
   protected $table = 'transformacion';
 
-  protected $fillable = ['id','descripcion','tipo','capacidad','unidad','cantidad'];
+  protected $fillable = ['id','descripcion','tipo','capacidad','unidad','cantidad','administrativa_id'];
 
   public $timestamps = false;
 

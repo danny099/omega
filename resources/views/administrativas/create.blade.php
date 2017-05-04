@@ -2,6 +2,11 @@
 
 @section('contenido')
 
+<ol class="breadcrumb">
+  <li><a href="{{ url('index') }}">Inicio</a></li>
+  <li><a href="{{ url('administrativas') }}">Administrativa</a></li>
+  <li class="active">Crear Proyecto</li>
+</ol>
 <div class="box box-primary">
 
 
@@ -131,6 +136,7 @@
         <div class="form-group">
           <center><label >Tipo</label></center>
           <select class="form-control" name="tipo[]">
+            <option value="">Seleccione..</option>
             <option value="tipo_poste">tipo poste</option>
             <option value="tipo_interior">tipo interior</option>
             <option value="tipo_exterior">tipo exterior</option>

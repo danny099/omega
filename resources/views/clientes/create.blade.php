@@ -2,6 +2,11 @@
 
 @section('contenido')
 
+  <ol class="breadcrumb">
+    <li><a href="{{ url('index') }}">Inicio</a></li>
+    <li><a href="{{ url('clientes') }}">Clientes</a></li>
+    <li class="active">Crear Cliente</li>
+  </ol>
   <div class="container">
     <div class="box box-primary">
       <div class="box-header with-border">

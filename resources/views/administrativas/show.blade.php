@@ -1,16 +1,19 @@
 @extends('index')
 @section('contenido')
+
+<ol class="breadcrumb">
+  <li><a href="{{ url('index') }}">Inicio</a></li>
+  <li><a href="{{ url('administrativas') }}">Administrativa</a></li>
+  <li class="active">Datos del proyecto</li>
+</ol>
 <div class="box box-primary">
   <a href="javascript:history.back()" class="btn btn-primary pull-right">Atras</a>
-  
+
   <div class="box-header with-border">
     <center> <h3 class="box-title">Datos del proyecto</h3> </center>
   </div>
-
   <!-- /.box-header -->
   <!-- form start -->
-
-
     <div class="box-body">
       <div class="col-md-4">
         <div class="form-group">

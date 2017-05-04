@@ -3,7 +3,10 @@
 
 @section('contenido')
 
-
+      <ol class="breadcrumb">
+        <li><a href="{{ url('index') }}">Inicio</a></li>
+        <li class="active">Administrativa</li>
+      </ol>
       <div class="container">
         <div class="col-md-12 well">
           <a class="btn btn-primary" data-toggle="modal" href="{{ url('administrativas/create') }}"><i class="fa fa-user-plus"></i> Crear Contrato</a>

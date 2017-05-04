@@ -9,7 +9,7 @@ class Administrativa extends Model
   protected $table = 'administrativa';
 
   protected $fillable = ['id','codigo_proyecto','nombre_proyecto','fecha_contrato','cliente_id',
-  'propietario','municipio_id','departamento','tipo_zona','valor_contrato_inicial','otrosi_id','valor_contrato_final','plan_pago','resumen','transformacion_id','distribucion_id','pu_final_id'];
+  'propietario','municipio_id','departamento','tipo_zona','valor_contrato_inicial','valor_contrato_final','plan_pago','resumen'];
 
   public $timestamps = false;
 

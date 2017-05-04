@@ -1,7 +1,11 @@
 @extends('index')
 
 @section('contenido')
-
+<ol class="breadcrumb">
+  <li><a href="{{ url('index') }}">Inicio</a></li>
+  <li><a href="{{ url('administrativas') }}">Administrativa</a></li>
+  <li class="active">Editar Proyecto</li>
+</ol>
 <div class="box box-primary">
   <div class="box-header with-border">
     <center> <h3 class="box-title">Datos del proyecto</h3> </center>
