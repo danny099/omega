@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Request;
+
 use App\Usuario;
 use App\Rol;
 use Hash;
 use Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Http\Request;
 
 class UsuarioController extends Controller
 {
@@ -43,16 +44,17 @@ class UsuarioController extends Controller
     public function store(Request $request)
     {
 
-        $input = Request::all();
-        $input['cedula'] =Request::input('cedula');
-        $input['nombres'] =Request::input('nombres');
-        $input['apellidos'] =Request::input('apellidos');
-        $input['email'] =Request::input('email');
-        $input['password'] = Hash::make($input['password']);
+        $usuarios = $request->all();
+
+        $usuarios['cedula'] = $request->cedula;
+        $usuarios['nombres'] = $request->nombres;
+        $usuarios['apellidos'] = $request->apellidos;
+        $usuarios['email'] = $request->email;
+        $usuarios['password'] = Hash::make($request->password);
 
 
-        $cedularepe = Usuario::where('cedula',Request::input('cedula'))->get();
-        $emailrepe = Usuario::where('email',Request::input('email'))->get();
+        $cedularepe = Usuario::where('cedula',$request->cedula);
+        $emailrepe = Usuario::where('email',$request->email);
         if ($cedularepe->count() == 1) {
           Session::flash('message', 'la cedula ya esta registrada!');
           Session::flash('class', 'danger');
@@ -64,7 +66,7 @@ class UsuarioController extends Controller
           return redirect()->route('usuarios.create');
         }
         else {
-          Usuario::create($input);
+          Usuario::create($usuarios);
           Session::flash('message', 'Usuario creado correctamente!');
           Session::flash('class', 'success');
           return redirect()->route('usuarios.index');
@@ -92,9 +94,7 @@ class UsuarioController extends Controller
     public function edit($id)
     {
         $usuarios = Usuario::findOrFail($id);
-
         $roles = Rol::pluck('rol','id');
-
         return view('usuarios.edit',compact('usuarios','roles'));
     }
 
@@ -109,12 +109,13 @@ class UsuarioController extends Controller
     {
 
         $usuario = Usuario::findOrFail($id);
-        $input = Request::all();
+        $input = $request->all();
+        $input['password'] = Hash::make($request->password);
 
-          $usuario->update($input);
-          Session::flash('message', 'Usuario editado!');
-          Session::flash('class', 'success');
-          return redirect()->route('usuarios.index');
+        $usuario->update($input);
+        Session::flash('message', 'Usuario editado!');
+        Session::flash('class', 'success');
+        return redirect()->route('usuarios.index');
 
 
     }
