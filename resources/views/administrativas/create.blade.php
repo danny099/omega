@@ -13,7 +13,6 @@
   <div class="box-header with-border">
     <center> <h3 class="box-title">Datos del proyecto</h3> </center>
   </div>
-    <a href="javascript:history.back()" class="btn btn-primary pull-right">Atras</a>
   @if(Session::has('message'))
     <div id="alert">
       <div class="col-sm-12 hr hr-18 hr-double dotted"></div>
