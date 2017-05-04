@@ -8,7 +8,7 @@ class Otrosi extends Model
 {
   protected $table = 'otrosi';
 
-  protected $fillable = ['id','valor'];
+  protected $fillable = ['id','valor','administrativa_id'];
 
   public $timestamps = false;
 
