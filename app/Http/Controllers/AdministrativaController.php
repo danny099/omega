@@ -70,6 +70,7 @@ class AdministrativaController extends Controller
    public function store(Request $request)
    {
      $input = $request->all();
+
      //  ********************************************************************************
      //  ********************************************************************************
     //  almacenar en un arreglo los datos provenientes desde el formulario de datos basicos
@@ -86,20 +87,31 @@ class AdministrativaController extends Controller
      $administrativa['plan_pago'] = $request->plan_pago;
      $administrativa['resumen'] = $request->resumen;
 
-     //  ********************************************************************************
-     //  ********************************************************************************
+    //  funcion para crear el registro en la base datos con los campos traidos del formulario para el area de administrativa
+    Administrativa::create($administrativa);
+    //  funcion para traer todos los registros de administrativa
+     $admin = Administrativa::all();
 
+    //  funcion para traer el ultimo registro de administrativa
+     $lastId_admin = $admin->last()->id;
+
+
+
+     //  ********************************************************************************
     //  codigo para insertar los otrosi que vienen desde un arreglo y recorrerlo para hacer el create
     foreach ($request->otrosi as $otro)
-     {
-       Otrosi::create(['valor'=>$otro]);
-     }
-
-     //  ********************************************************************************
+    {
+      Otrosi::create(['valor'=>$otro,'administrativa_id'=>$lastId_admin]);
+    }
      //  ********************************************************************************
 
-     
+     $transformacion['descripcion'] = $request->descripcion;
+     $transformacion['tipo'] = $request->tipo;
+     $transformacion['capacidad'] = $request->capacidad;
+     $transformacion['unidad'] = $request->unidad;
+     $transformacion['cantidad'] = $request->cantidad;
 
+     //  ********************************************************************************
 
    }
 
@@ -125,7 +137,6 @@ class AdministrativaController extends Controller
    public function edit($id)
    {
        $administrativas = Administrativa::findOrFail($id);
-
        $clientes=Cliente::all();
        $otrosis=Otrosi::all();
        $distribuciones=Distribucion::all();
@@ -133,7 +144,6 @@ class AdministrativaController extends Controller
        $pu_finales=Pu_final::all();
 
        return view('administrativas.edit',compact('administrativas','clientes','otrosis','distribuciones','transformaciones','pu_finales'));
-
    }
 
    /**
