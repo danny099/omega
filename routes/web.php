@@ -64,14 +64,15 @@ Route::group(['middleware' => 'auth'],function(){
   /**************************************************************/
   Route::resource('administrativas','AdministrativaController');
   Route::get('deleteadminstrativa/{id}','AdministrativaController@destroy');
-
+	
+	Route::get('selectmuni','AdministrativaController@getMuni');
   /**************************************************************/
   /**************************************************************/
   Route::resource('usuarios','UsuarioController');
   Route::get('deleteusuarios/{id}','UsuarioController@destroy');
   /**************************************************************/
   /**************************************************************/
-	Route::get('municipio/{id}','AdministrativaController@getMuni');
+
 	/**************************************************************/
 	/**************************************************************/
 	Route::resource('consignaciones','ConsignacionController');
