@@ -43,7 +43,7 @@ class AdministrativaController extends Controller
      * @return \Illuminate\Http\Response
      */
      public function create()
-   {
+     {
        $clientes=Cliente::all();
        $otrosis=Otrosi::all();
        $distribuciones=Distribucion::all();
@@ -51,15 +51,13 @@ class AdministrativaController extends Controller
        $pu_finales=Pu_final::all();
        $departamentos = Departamento::all();
        return view('administrativas.create',compact('clientes','otrosis','distribuciones','transformaciones','pu_finales','departamentos'));
-   }
+     }
 
-//
-  public function getMuni(Request $request, $id){
-       if($request->ajax()){
-           $municipio = Municipio::municipio($id);
-           return response()->json($municipio);
-       }
-   }
+     public function getMuni(Request $request){
+
+       $data = Municipio::select('nombre','id')->where('departamento_id',$request->id)->get();
+       return response()->json($data);
+     }
 
    /**
     * Store a newly created resource in storage.
@@ -67,8 +65,8 @@ class AdministrativaController extends Controller
     * @param  \Illuminate\Http\Request  $request
     * @return \Illuminate\Http\Response
     */
-   public function store(Request $request)
-   {
+    public function store(Request $request)
+    {
      $input = $request->all();
 
      //  ********************************************************************************
