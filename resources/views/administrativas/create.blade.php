@@ -280,15 +280,15 @@
         </div>
       </div>
 
-      <div class="col-md-1">
+      <div class="col-md-1" id="tblprod4">
         <div class="form-group">
           <br>
-          <a class="btn btn-primary" data-toggle="modal" href="#" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-plus"></i></a>
+          <a class="btn btn-primary" data-toggle="modal" href="#" id="btnadd4" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-plus"></i></a>
         </div>
       </div>
 
       <div class="col-md-12">
-        <center> <h4 class="box-title">Resumen de estado administrativo del proyecto</h4> </center>
+        <center> <h4 class="box-title">Observaciones de estado administrativo del proyecto</h4> </center>
       </div>
 
       <div class="col-md-12">
@@ -481,6 +481,65 @@
         });
 
 
+
+
+
+        $(function() {
+            var count = 1;
+           $(document).on("click","#btnadd4",function( event ) {
+            count++;
+            $('#tblprod4').after(' <div class="col-md-1" ><div class="form-group"><br><a class="btn btn-primary delete4" data-toggle="modal" href="#"  style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-minus"></i></a></div></div>');
+              event.preventDefault();
+           });
+             $(document).on("click",".delete4",function( event ) {
+             $(this).closest("div").remove();
+             $('#quitar10').remove();
+             $('#quitar11').remove();
+             $('#quitar12').remove();
+             $('#quitar13').remove();
+                return false;
+             });
+        });
+
+
+        $(function() {
+            var count = 1;
+           $(document).on("click","#btnadd4",function( event ) {
+            count++;
+            $('#tblprod4').after('<div class="col-md-2"id="quitar10"><div class="form-group"><center><label >Cantidad</label></center><input type="text" class="form-control" placeholder= "Cantidad" name="cantidad_pu"></div></div>');
+              event.preventDefault();
+           });
+        });
+        $(function() {
+            var count = 1;
+           $(document).on("click","#btnadd4",function( event ) {
+            count++;
+            $('#tblprod4').after('<div class="col-md-2" id="quitar11"><div class="form-group"><center><label >Unidad</label></center><center><input style="text-align:center;" type="text" class="form-control" value="Und"  readonly=”readonly” name="unidad_pu_final"></center></div></div>');
+              event.preventDefault();
+           });
+        });
+
+
+
+        $(function() {
+            var count = 1;
+           $(document).on("click","#btnadd4",function( event ) {
+            count++;
+            $('#tblprod4').after('<div class="col-md-3" id="quitar12"><div class="form-group"><center><label >Tipo</label></center><select class="form-control" name="tipo_pu"><option value="Casa">Casa</option><option value="Apartamentos">Apartamentos</option><option value="Zona comun">Zona comun</option><option value="Local comercial">Local comercial</option><option value="Punto fijo">Punto fijo</option></select></div></div>');
+              event.preventDefault();
+           });
+        });
+
+
+
+        $(function() {
+            var count = 1;
+           $(document).on("click","#btnadd4",function( event ) {
+            count++;
+            $('#tblprod4').after('<div class="col-md-3" id="quitar13"><div class="form-group"><center><label >Descripcion</label></center><select class="form-control"name="descripcion_pu"><option value="Inspeccion retie proceso uso final residencial">Inspeccion retie proceso uso final residencial</option><option value="Inspeccion retie proceso uso final comercial">Inspeccion retie proceso uso final comercial</option></select></div></div>');
+              event.preventDefault();
+           });
+        });
 
 
 
