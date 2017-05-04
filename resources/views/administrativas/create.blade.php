@@ -62,17 +62,17 @@
 
         <div class="form-group">
           <label >Departamento</label>
-            <select class="form-control" name="departamento">
+            <select class="form-control" name="departamento" id="departamento">
               @foreach($departamentos as $departamento)
               <option value="{{ $departamento->id }}">{{$departamento->nombre}}</option>
               @endforeach
             </select>
-
-
         </div>
         <div class="form-group">
-          <label >Municipio</label>
-            {!! Form::select('municipio', ['placeholder'=>'selecciona'],null,['class' => 'form-control' , 'required' => 'required'],['id'=>'municipio']) !!}
+          <label >Municipios</label>
+            <select class="form-control" name="municipio" id="municipio">
+              <option value=""></option>
+            </select>
         </div>
         <div class="form-group">
           <label >Tipo de zona</label>
@@ -329,6 +329,38 @@
 @endsection
 
 @section('scripts')
+<script type="text/javascript">
+  $(document).ready(function(){
+    $(document).on('change','#departamento',function(){
+
+      var dep_id = $(this).val();
+      var div = $(this).parents();
+      var op=" ";
+      $.ajax({
+        type:'get',
+        url:'{{ url('selectmuni')}}',
+        data:{'id':dep_id},
+        success:function(data){
+          console.log(data);
+          op+='<option value="0" selected disabled>Seleccione</option>';
+
+          for (var i = 0; i < data.length; i++) {
+            op+='<option value="' +data[i].id+ '">' +data[i].nombre+ '</option>'
+          }
+
+          div.find('#municipio').html(" ");
+          div.find('#municipio').append("op");
+
+        },
+        error:function(){
+
+        }
+      });
+    });
+  });
+</script>
+
+
 <script type="text/javascript">
   function pregunta(){
     if (confirm('¿Estas seguro de enviar este formulario?')){
