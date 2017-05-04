@@ -30,7 +30,7 @@
       <div class="col-md-4">
         <div class="form-group">
           <label >Codigo del proyecto:</label>
-          <input id="phone" type="text" class="form-control"   name="codigo" required>
+          <input id="codigo" type="text" class="form-control"   name="codigo" required>
 
 
         </div>
@@ -540,12 +540,16 @@
            });
         });
 
-
+        jQuery(function($){
+          $("#codigo").mask("999-999-999");
+        });
 
     </script>
 
     <!-- jQuery 2.2.3 -->
     <script src="../../plugins/jQuery/jquery-2.2.3.min.js"></script>
+    <!-- masked inputs -->
+    <script src="../../plugins/jQuery/jquery.maskedinput.min.js" type="text/javascript"></script>
     <!-- Bootstrap 3.3.6 -->
     <script src="../../bootstrap/js/bootstrap.min.js"></script>
     <!-- DataTables -->
