@@ -125,8 +125,10 @@ class AdministrativaController extends Controller
    {
       //  funcion que permite acceder al modelo y este a su ves ir a la base de datos y encontrar un registro
        $administrativa = Administrativa::find($id);
+       dd($administrativa);
+       die();
       //  funcion que permite retornar una vista con los datos ya buscados
-       return view('administrativas.show',compact('administrativa'));
+       return view('administrativas.show',compact('administrativa','data'));
    }
 
    /**
