@@ -72,10 +72,31 @@ class AdministrativaController extends Controller
     {
        $input = $request->all();
 
+      //  dd($input);s
+      //  die();
+      //  for ($i=0; $i<count($input['transformacion']['descripcion']); $i++) {
+      //   //  echo $input['transformacion']['descripcion'][$i].' '.$input['transformacion']['tipo'][$i].' '.$input['transformacion']['capacidad'][$i].' '.$input['transformacion']['cantidad'][$i].'<br>';
+      //    $datos[] = $input['transformacion']['descripcion'][$i];
+      //    $datos[] = $input['transformacion']['tipo'][$i];
+      //    $datos[] = $input['transformacion']['capacidad'][$i];
+      //    $datos[] = $input['transformacion']['cantidad'][$i];
+       //
+      //   //  Transformacion::create(['descripcion'=>$descripcion,'tipo'=>$tipo,'capacidad'=>$capacidad,'cantidad'=>$cantidad]);
+      //   //  transformacion::create(['valor'=>$otro,'administrativa_id'=>$lastId_admin]);
+      //   Transformacion::create($datos);
+       //
+      //  }
+       //
+      //  dd($datos);
+      //  die();
+
+
+
        for ($i=0; $i<count($input['transformacion']['descripcion']); $i++) {
          echo $input['transformacion']['descripcion'][$i].' '.$input['transformacion']['tipo'][$i].' '.$input['transformacion']['capacidad'][$i].' '.$input['transformacion']['cantidad'][$i].'<br>';
        }
        die();
+
 
 
 
@@ -98,7 +119,7 @@ class AdministrativaController extends Controller
 
       //  funcion para crear el registro en la base datos con los campos traidos del formulario para el area de administrativa
        Administrativa::create($administrativa);
-       return redirect()->route('administrativas.index');
+      //  return redirect()->route('administrativas.index');
 
       //  funcion para traer todos los registros de administrativa
        $admin = Administrativa::all();
@@ -112,11 +133,46 @@ class AdministrativaController extends Controller
           Otrosi::create(['valor'=>$otro,'administrativa_id'=>$lastId_admin]);
         }
 
-       $transformacion['descripcion'] = $request->descripcion;
-       $transformacion['tipo'] = $request->tipo;
-       $transformacion['capacidad'] = $request->capacidad;
-       $transformacion['unidad'] = $request->unidad;
-       $transformacion['cantidad'] = $request->cantidad;
+
+        for ($i=0; $i<count($input['transformacion']['descripcion']); $i++) {
+         //  echo $input['transformacion']['descripcion'][$i].' '.$input['transformacion']['tipo'][$i].' '.$input['transformacion']['capacidad'][$i].' '.$input['transformacion']['cantidad'][$i].'<br>';
+          $datos1['descripcion'] = $input['transformacion']['descripcion'][$i];
+          $datos1['tipo'] = $input['transformacion']['tipo'][$i];
+          $datos1['capacidad'] = $input['transformacion']['capacidad'][$i];
+          $datos1['unidad_transformacion'] = $input['transformacion']['unidad_transformacion'][$i];
+          $datos1['cantidad'] = $input['transformacion']['cantidad'][$i];
+          $datos1['administrativa_id'] = $lastId_admin;
+
+          // Transformacion::create('descripcion'=>$datos['descripcion'],'tipo'=>$datos['tipo'],'capacidad'=>$datos['capacidad'],'unidad_transformacion'=>$datos['unidad'],'cantidad'=>$datos['cantidad'],'administrativa_id'=>$datos['administrativa_id']);
+          Transformacion::create($datos1);
+        }
+
+        for ($i=0; $i<count($input['distribucion']['descripcion_dis']); $i++) {
+          $datos2['descripcion_dis'] = $input['distribucion']['descripcion_dis'][$i];
+          $datos2['tipo_dis'] = $input['distribucion']['tipo_dis'][$i];
+          $datos2['unidad_distribucion'] = $input['distribucion']['unidad_distribucion'][$i];
+          $datos2['cantidad_dis'] = $input['distribucion']['cantidad_dis'][$i];
+          $datos2['administrativa_id'] = $lastId_admin;
+
+          // Transformacion::create('descripcion'=>$datos['descripcion'],'tipo'=>$datos['tipo'],'capacidad'=>$datos['capacidad'],'unidad_transformacion'=>$datos['unidad'],'cantidad'=>$datos['cantidad'],'administrativa_id'=>$datos['administrativa_id']);
+          Distribucion::create($datos2);
+
+        }
+
+        for ($i=0; $i<count($input['pu_final']['descripcion_pu']); $i++) {
+         //  echo $input['transformacion']['descripcion'][$i].' '.$input['transformacion']['tipo'][$i].' '.$input['transformacion']['capacidad'][$i].' '.$input['transformacion']['cantidad'][$i].'<br>';
+          $datos3['descripcion_pu'] = $input['pu_final']['descripcion_pu'][$i];
+          $datos3['tipo_pu'] = $input['pu_final']['tipo_pu'][$i];
+          $datos3['unidad_pu_final'] = $input['pu_final']['unidad_pu_final'][$i];
+          $datos3['cantidad_pu'] = $input['pu_final']['cantidad_pu'][$i];
+          $datos3['administrativa_id'] = $lastId_admin;
+
+          // Transformacion::create('descripcion'=>$datos['descripcion'],'tipo'=>$datos['tipo'],'capacidad'=>$datos['capacidad'],'unidad_transformacion'=>$datos['unidad'],'cantidad'=>$datos['cantidad'],'administrativa_id'=>$datos['administrativa_id']);
+          Pu_final::create($datos3);
+        }
+
+
+
 
 
    }
