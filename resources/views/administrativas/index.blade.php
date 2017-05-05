@@ -34,7 +34,7 @@
                     <td>
                         <a href="{{ route('administrativas.edit', $administrativa->id) }}"><i class="glyphicon glyphicon-pencil"></i></a>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="{{ route('administrativas.show', $administrativa->id) }}" data-toggle="model" data-target="fade bs-example-modal-lg-{{ $key }}"><i class="glyphicon glyphicon-eye-open"></i></a>
+                        <a href="{{ route('administrativas.show', $administrativa->id) }}" data-toggle="model" data-target="show-{{ $key }}"><i class="glyphicon glyphicon-eye-open"></i></a>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <!-- <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Open Modal</button> -->
                         <a href="#myModal" data-toggle="modal" data-target=""><i class="fa fa-money"></i></a>
@@ -83,6 +83,10 @@
                       </div>
                     </div>
                   </div>
+                  <!-- fin modal -->
+
+                  <!-- inicio modal 2 -->
+
                   <!-- fin modal -->
               </div>
 
