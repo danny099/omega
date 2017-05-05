@@ -384,9 +384,9 @@
   }
 
   function sumar(){
-    var inicial = parseInt(document.getElementById('ini').value);
-    var adicional = parseInt(document.getElementById('adicional').value);
-    var resultado = inicial*1.19;
+    var valor = parseInt(document.getElementById('ini').value);
+
+    var resultado = valor*1.19;
     var iva = valor*0.19;
     document.getElementById('iva').value = iva ;
     document.getElementById('fin').value = resultado ;
