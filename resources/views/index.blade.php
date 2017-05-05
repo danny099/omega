@@ -628,7 +628,7 @@
 <!-- AdminLTE App -->
 <script src="{{url('dist/js/app.min.js')}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="{{url('dist/js/pages/dashboard.js')}}"></script>
+<!-- <script src="{{url('dist/js/pages/dashboard.js')}}"></script> -->
 <!-- AdminLTE for demo purposes -->
 <script src="{{url('dist/js/demo.js')}}"></script>
 
@@ -639,7 +639,12 @@
 <script src="{{url('bootstrap/js/bootstrap.min.js')}}"></script>
 <!-- DataTables -->
 <script src="{{url('plugins/datatables/jquery.dataTables.min.js')}}"></script>
+<script src=""></script>
 <script src="{{url('plugins/datatables/dataTables.bootstrap.min.js')}}"></script>
+<script src=""></script>
+
+<link rel="stylesheet" type="text/css" href="{{url('plugins/datatables/dataTables.bootstrap.css')}}">
+<link rel="stylesheet" type="text/css" href="{{url('plugins/datatables/jquery.dataTables.css')}}">
 <!-- SlimScroll -->
 <script src="{{url('plugins/slimScroll/jquery.slimscroll.min.js')}}"></script>
 <!-- FastClick -->

@@ -32,8 +32,6 @@
         <div class="form-group">
           <label >Codigo del proyecto:</label>
           <input id="codigo" type="text" class="form-control" placeholder="Ingrese codigo"  name="codigo" required>
-
-
         </div>
         <div class="form-group">
           <label >nombre del proyecto</label>
@@ -83,7 +81,6 @@
         </div>
 
       </div>
-
 
       <div class="col-md-4">
 
@@ -143,14 +140,14 @@
       <div class="col-md-3">
         <div class="form-group">
           <center><label >Descripcion</label></center>
-          <input type="text" class="form-control" value="Inspecion RETIE proceso de transformacion"  readonly=”readonly” name="descripcion">
+          <input type="text" class="form-control" value="Inspecion RETIE proceso de transformacion"  readonly=”readonly” name="transformacion[descripcion][]">
         </div>
       </div>
 
       <div class="col-md-3">
         <div class="form-group">
           <center><label >Tipo</label></center>
-          <select class="form-control" name="tipo[]">
+          <select class="form-control" name="transformacion[tipo][]">
             <option value="">Seleccione..</option>
             <option value="tipo_poste">tipo poste</option>
             <option value="tipo_interior">tipo interior</option>
@@ -162,7 +159,7 @@
       <div class="col-md-3">
         <div class="form-group">
           <center><label >Capacidad</label></center>
-          <select class="form-control" name="capacidad[]">
+          <select class="form-control" name="transformacion[capacidad][]">
 
             <option value="5KVA">5KVA</option>
             <option value="10KVA">10KVA</option>
@@ -177,7 +174,7 @@
         <div class="form-group">
           <center><label>Unidad</label></center>
           <center>
-            <input style="text-align:center;" type="text" class="form-control" value="Und"  readonly=”readonly” name="unidad_transformacion[]">
+            <input style="text-align:center;" type="text" class="form-control" value="Und"  readonly=”readonly” name="transformacion[unidad_transformacion][]">
           </center>
         </div>
       </div>
@@ -185,7 +182,7 @@
       <div class="col-md-1">
         <div class="form-group">
           <center><label >Cantidad</label></center>
-          <input type="text" class="form-control" placeholder= "Cantidad" name="cantidad[]">
+          <input type="text" class="form-control" placeholder= "Cantidad" name="transformacion[cantidad][]">
         </div>
       </div>
 
@@ -447,7 +444,7 @@
         var count = 1;
        $(document).on("click","#btnadd2",function( event ) {
         count++;
-        $('#tblprod2').after('<div class="col-md-1" id="quitar1"><div class="form-group"><center><label >Cantidad</label></center><input type="text" class="form-control" placeholder= "Cantidad" name="cantidad[]"></div></div>');
+        $('#tblprod2').after('<div class="col-md-1" id="quitar1"><div class="form-group"><center><label >Cantidad</label></center><input type="text" class="form-control" placeholder= "Cantidad" name="transformacion[cantidad][]"></div></div>');
           event.preventDefault();
        });
     });
@@ -456,7 +453,7 @@
         var count = 1;
        $(document).on("click","#btnadd2",function( event ) {
         count++;
-        $('#tblprod2').after('<div class="col-md-1" id="quitar2"><div class="form-group"><center><label>Unidad</label></center><center><input style="text-align:center;" type="text" class="form-control" value="Und"  readonly=”readonly” name="unidad_transformacion[]"></center></div></div>');
+        $('#tblprod2').after('<div class="col-md-1" id="quitar2"><div class="form-group"><center><label>Unidad</label></center><center><input style="text-align:center;" type="text" class="form-control" value="Und"  readonly=”readonly” name="transformacion[unidad_transformacion][]"></center></div></div>');
           event.preventDefault();
        });
     });
@@ -465,7 +462,7 @@
         var count = 1;
        $(document).on("click","#btnadd2",function( event ) {
         count++;
-        $('#tblprod2').after('<div class="col-md-3" id="quitar3"><div class="form-group"><center><label >Capacidad</label></center><select class="form-control" name="capacidad[]"><option value="5KVA">5KVA</option><option value="10KVA">10KVA</option><option value="15KVA">15KVA</option><option value="150KVA">150KVA</option></select></div></div>');
+        $('#tblprod2').after('<div class="col-md-3" id="quitar3"><div class="form-group"><center><label >Capacidad</label></center><select class="form-control" name="transformacion[capacidad][]"><option value="5KVA">5KVA</option><option value="10KVA">10KVA</option><option value="15KVA">15KVA</option><option value="150KVA">150KVA</option></select></div></div>');
           event.preventDefault();
        });
     });
@@ -474,7 +471,7 @@
         var count = 1;
        $(document).on("click","#btnadd2",function( event ) {
         count++;
-        $('#tblprod2').after('<div class="col-md-3" id="quitar4"><div class="form-group"><center><label >Tipo</label></center><select class="form-control" name="tipo[]"><option value="tipo_poste">tipo poste</option><option value="tipo_interior">tipo interior</option><option value="tipo_exterior">tipo exterior</option></select></div></div>');
+        $('#tblprod2').after('<div class="col-md-3" id="quitar4"><div class="form-group"><center><label >Tipo</label></center><select class="form-control" name="transformacion[tipo][]"><option value="tipo_poste">tipo poste</option><option value="tipo_interior">tipo interior</option><option value="tipo_exterior">tipo exterior</option></select></div></div>');
           event.preventDefault();
        });
     });
@@ -483,7 +480,7 @@
         var count = 1;
        $(document).on("click","#btnadd2",function( event ) {
         count++;
-        $('#tblprod2').after('<div class="col-md-3" id="quitar5"><div class="form-group"><center><label >Descripcion</label></center><input type="text" class="form-control" value="Inspecion RETIE proceso de transformacion"  readonly=”readonly” name="descripcion"></div</div>');
+        $('#tblprod2').after('<div class="col-md-3" id="quitar5"><div class="form-group"><center><label >Descripcion</label></center><input type="text" class="form-control" value="Inspecion RETIE proceso de transformacion"  readonly=”readonly” name="transformacion[descripcion][]"></div</div>');
           event.preventDefault();
        });
     });

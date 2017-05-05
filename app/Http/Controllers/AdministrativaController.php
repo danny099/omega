@@ -72,6 +72,13 @@ class AdministrativaController extends Controller
     {
        $input = $request->all();
 
+       for ($i=0; $i<count($input['transformacion']['descripcion']); $i++) {
+         echo $input['transformacion']['descripcion'][$i].' '.$input['transformacion']['tipo'][$i].' '.$input['transformacion']['capacidad'][$i].' '.$input['transformacion']['cantidad'][$i].'<br>';
+       }
+       die();
+
+
+
        //  ********************************************************************************
        //  ********************************************************************************
       //  almacenar en un arreglo $administrativa los datos provenientes desde el formulario de datos basicos
