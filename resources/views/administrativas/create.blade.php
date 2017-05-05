@@ -202,7 +202,7 @@
       <div class="col-md-3">
         <div class="form-group">
           <center><label >Descripcion</label></center>
-          <select class="form-control" name="descripcion_dis[]">
+          <select class="form-control" name="distribucion[descripcion_dis][]">
             <option value="Inspeccion retie proceso de distribucion en MT">Inspeccion retie proceso de distribucion en MT</option>
             <option value="Inspeccion retie proceso de distribucion en BT">Inspeccion retie proceso de distribucion en BT</option>
           </select>
@@ -212,7 +212,7 @@
       <div class="col-md-3">
         <div class="form-group">
           <center><label >Tipo</label></center>
-          <select class="form-control" name="tipo_dis[]">
+          <select class="form-control" name="distribucion[tipo_dis][]">
 
             <option value="aerea">tipo Aerea</option>
             <option value="subterranea">tipo subterranea</option>
@@ -227,7 +227,7 @@
         <div class="form-group">
           <center><label >Unidad</label></center>
           <center>
-            <input type="text" class="form-control" value="km"  readonly=”readonly” name="unidad_distribucion[]"style="text-align:center">
+            <input type="text" class="form-control" value="km"  readonly=”readonly” name="distribucion[unidad_distribucion][]"style="text-align:center">
           </center>
         </div>
       </div>
@@ -235,7 +235,7 @@
       <div class="col-md-2">
         <div class="form-group">
           <center><label >Cantidad</label></center>
-          <input type="text" class="form-control" placeholder= "Cantidad" name="cantidad_dis[]">
+          <input type="text" class="form-control" placeholder= "Cantidad" name="distribucion[cantidad_dis][]">
         </div>
       </div>
 
@@ -252,7 +252,7 @@
       <div class="col-md-3">
         <div class="form-group">
           <center><label >Descripcion</label></center>
-          <select class="form-control"name="descripcion_pu">
+          <select class="form-control"name="pu_final[descripcion_pu][]">
 
             <option value="Inspeccion retie proceso uso final residencial">Inspeccion retie proceso uso final residencial</option>
             <option value="Inspeccion retie proceso uso final comercial">Inspeccion retie proceso uso final comercial</option>
@@ -264,7 +264,7 @@
       <div class="col-md-3">
         <div class="form-group">
           <center><label >Tipo</label></center>
-          <select class="form-control" name="tipo_pu">
+          <select class="form-control" name="pu_final[tipo_pu][]">
 
             <option value="Casa">Casa</option>
             <option value="Apartamentos">Apartamentos</option>
@@ -276,13 +276,11 @@
         </div>
       </div>
 
-
-
       <div class="col-md-2">
         <div class="form-group">
           <center><label >Unidad</label></center>
           <center>
-            <input style="text-align:center;" type="text" class="form-control" value="Und"  readonly=”readonly” name="unidad_pu_final">
+            <input style="text-align:center;" type="text" class="form-control" value="Und"  readonly=”readonly” name="pu_final[unidad_pu_final][]">
           </center>
         </div>
       </div>
@@ -290,7 +288,7 @@
       <div class="col-md-2">
         <div class="form-group">
           <center><label >Cantidad</label></center>
-          <input type="text" class="form-control" placeholder= "Cantidad" name="cantidad_pu">
+          <input type="text" class="form-control" placeholder= "Cantidad" name="pu_final[cantidad_pu][]">
         </div>
       </div>
 
@@ -510,7 +508,7 @@
             var count = 1;
            $(document).on("click","#btnadd3",function( event ) {
             count++;
-            $('#tblprod3').after('<div class="col-md-2 " id="quitar6"><div class="form-group"><center><label >Cantidad</label></center><input type="text" class="form-control" placeholder= "Cantidad" name="cantidad_dis[]"></div></div>');
+            $('#tblprod3').after('<div class="col-md-2 " id="quitar6"><div class="form-group"><center><label >Cantidad</label></center><input type="text" class="form-control" placeholder= "Cantidad" name="distribucion[cantidad_dis][]"></div></div>');
               event.preventDefault();
            });
         });
@@ -519,7 +517,7 @@
             var count = 1;
            $(document).on("click","#btnadd3",function( event ) {
             count++;
-            $('#tblprod3').after('<div class="col-md-2 " id="quitar7"><div class="form-group"><center><label >Unidad</label></center><center><input type="text" class="form-control" value="km"  readonly=”readonly” name="unidad_distribucion[]"style="text-align:center"></center></div></div>');
+            $('#tblprod3').after('<div class="col-md-2 " id="quitar7"><div class="form-group"><center><label >Unidad</label></center><center><input type="text" class="form-control" value="km"  readonly=”readonly” name="distribucion[unidad_distribucion][]"style="text-align:center"></center></div></div>');
               event.preventDefault();
            });
         });
@@ -530,7 +528,7 @@
             var count = 1;
            $(document).on("click","#btnadd3",function( event ) {
             count++;
-            $('#tblprod3').after('<div class="col-md-3 " id="quitar8"><div class="form-group"><center><label >Tipo</label></center><select class="form-control" name="tipo_dis[]"><option value="aerea">tipo Aerea</option><option value="subterranea">tipo subterranea</option></select></div></div>');
+            $('#tblprod3').after('<div class="col-md-3 " id="quitar8"><div class="form-group"><center><label >Tipo</label></center><select class="form-control" name="distribucion[tipo_dis][]"><option value="aerea">tipo Aerea</option><option value="subterranea">tipo subterranea</option></select></div></div>');
               event.preventDefault();
            });
         });
@@ -539,7 +537,7 @@
             var count = 1;
            $(document).on("click","#btnadd3",function( event ) {
             count++;
-            $('#tblprod3').after('<div class="col-md-3 " id="quitar9"><div class="form-group"><center><label >Descripcion</label></center><select class="form-control" name="descripcion_dis[]"><option value="Inspeccion retie proceso de distribucion en MT">Inspeccion retie proceso de distribucion en MT</option><option value="Inspeccion retie proceso de distribucion en BT">Inspeccion retie proceso de distribucion en BT</option></select></div></div>');
+            $('#tblprod3').after('<div class="col-md-3 " id="quitar9"><div class="form-group"><center><label >Descripcion</label></center><select class="form-control" name="distribucion[descripcion_dis][]"><option value="Inspeccion retie proceso de distribucion en MT">Inspeccion retie proceso de distribucion en MT</option><option value="Inspeccion retie proceso de distribucion en BT">Inspeccion retie proceso de distribucion en BT</option></select></div></div>');
               event.preventDefault();
            });
         });
@@ -570,7 +568,7 @@
             var count = 1;
            $(document).on("click","#btnadd4",function( event ) {
             count++;
-            $('#tblprod4').after('<div class="col-md-2"id="quitar10"><div class="form-group"><center><label >Cantidad</label></center><input type="text" class="form-control" placeholder= "Cantidad" name="cantidad_pu"></div></div>');
+            $('#tblprod4').after('<div class="col-md-2"id="quitar10"><div class="form-group"><center><label >Cantidad</label></center><input type="text" class="form-control" placeholder= "Cantidad" name="pu_final[cantidad_pu][]"></div></div>');
               event.preventDefault();
            });
         });
@@ -578,18 +576,7 @@
             var count = 1;
            $(document).on("click","#btnadd4",function( event ) {
             count++;
-            $('#tblprod4').after('<div class="col-md-2" id="quitar11"><div class="form-group"><center><label >Unidad</label></center><center><input style="text-align:center;" type="text" class="form-control" value="Und"  readonly=”readonly” name="unidad_pu_final"></center></div></div>');
-              event.preventDefault();
-           });
-        });
-
-
-
-        $(function() {
-            var count = 1;
-           $(document).on("click","#btnadd4",function( event ) {
-            count++;
-            $('#tblprod4').after('<div class="col-md-3" id="quitar12"><div class="form-group"><center><label >Tipo</label></center><select class="form-control" name="tipo_pu"><option value="Casa">Casa</option><option value="Apartamentos">Apartamentos</option><option value="Zona comun">Zona comun</option><option value="Local comercial">Local comercial</option><option value="Punto fijo">Punto fijo</option></select></div></div>');
+            $('#tblprod4').after('<div class="col-md-2" id="quitar11"><div class="form-group"><center><label >Unidad</label></center><center><input style="text-align:center;" type="text" class="form-control" value="Und"  readonly=”readonly” name="pu_final[unidad_pu_final][]"></center></div></div>');
               event.preventDefault();
            });
         });
@@ -600,7 +587,18 @@
             var count = 1;
            $(document).on("click","#btnadd4",function( event ) {
             count++;
-            $('#tblprod4').after('<div class="col-md-3" id="quitar13"><div class="form-group"><center><label >Descripcion</label></center><select class="form-control"name="descripcion_pu"><option value="Inspeccion retie proceso uso final residencial">Inspeccion retie proceso uso final residencial</option><option value="Inspeccion retie proceso uso final comercial">Inspeccion retie proceso uso final comercial</option></select></div></div>');
+            $('#tblprod4').after('<div class="col-md-3" id="quitar12"><div class="form-group"><center><label >Tipo</label></center><select class="form-control" name="pu_final[tipo_pu][]"><option value="Casa">Casa</option><option value="Apartamentos">Apartamentos</option><option value="Zona comun">Zona comun</option><option value="Local comercial">Local comercial</option><option value="Punto fijo">Punto fijo</option></select></div></div>');
+              event.preventDefault();
+           });
+        });
+
+
+
+        $(function() {
+            var count = 1;
+           $(document).on("click","#btnadd4",function( event ) {
+            count++;
+            $('#tblprod4').after('<div class="col-md-3" id="quitar13"><div class="form-group"><center><label >Descripcion</label></center><select class="form-control"name="pu_final[descripcion_pu][]"><option value="Inspeccion retie proceso uso final residencial">Inspeccion retie proceso uso final residencial</option><option value="Inspeccion retie proceso uso final comercial">Inspeccion retie proceso uso final comercial</option></select></div></div>');
               event.preventDefault();
            });
         });
