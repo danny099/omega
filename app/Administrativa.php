@@ -32,8 +32,8 @@ class Administrativa extends Model
     return $this->belongsTo('App\Pu_final');
   }
 
-  public function municipio(){
-    return $this->belongsTo('App\Municipio');
+  public function departamento(){
+    return $this->belongsTo('App\Departamento');
   }
 
   public function factura(){

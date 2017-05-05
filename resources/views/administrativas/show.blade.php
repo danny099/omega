@@ -41,15 +41,11 @@
 
         <div class="form-group">
           <label >Departamento</label>
-          <input type="text" class="form-control" readonly="readonly" placeholder="" name="departamento" value="{{ $administrativa->departamento->nombre}}">
-
-
+          <input type="text" class="form-control" readonly="readonly" placeholder="" name="departamento" value="{{ $administrativa->departamento->nombre }}">
         </div>
         <div class="form-group">
           <label >Ciudad</label>
-          <select class="form-control" name="municipio">
-
-          </select>
+          <input type="text" class="form-control" readonly="readonly" placeholder="" name="departamento" value="{{ $administrativa->departamento->municipio->nombre }}">
         </div>
         <div class="form-group">
           <label >Tipo de zona</label>

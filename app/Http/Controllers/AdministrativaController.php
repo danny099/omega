@@ -91,6 +91,7 @@ class AdministrativaController extends Controller
 
       //  funcion para crear el registro en la base datos con los campos traidos del formulario para el area de administrativa
        Administrativa::create($administrativa);
+       return redirect()->route('administrativas.index');
 
       //  funcion para traer todos los registros de administrativa
        $admin = Administrativa::all();
@@ -124,7 +125,6 @@ class AdministrativaController extends Controller
    {
       //  funcion que permite acceder al modelo y este a su ves ir a la base de datos y encontrar un registro
        $administrativa = Administrativa::find($id);
-
       //  funcion que permite retornar una vista con los datos ya buscados
        return view('administrativas.show',compact('administrativa'));
    }
