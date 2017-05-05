@@ -71,6 +71,8 @@
         <div class="form-group">
           <label >Tipo de zona</label>
           <select class="form-control" name="zona">
+              <option value="Urbana">Urbana</option>
+              <option value="Rural">Rural</option>
 
           </select>
         </div>
@@ -397,7 +399,7 @@
         var count = 1;
        $(document).on("click","#btnadd",function( event ) {
         count++;
-        $('#tblprod').after('<div class="col-md-11" id="quitar17"><input type="number" class="form-control" id="otrosi[]" placeholder= "Ingrese valor" name="otrosi[]"  onkeyup="sumar()" > </div>   <div class="col-md-1" id="quitar18"><a class="btn btn-warning delete" id="btnadd[]" data-toggle="modal" href="#" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-minus"></i></a></div><br><br><br>');
+        $('#tblprod').after('<div class="col-md-11" id="quitar17"><input type="number" class="form-control" id="otrosi[]" placeholder= "Ingrese valor" name="otrosi[]"  onkeyup="sumar()" > </div>   <div class="col-md-1" id="quitar18"><a class="btn btn-warning delete" id="btnadd[]" data-toggle="modal" href="#" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-minus"></i></a></div>');
           event.preventDefault();
        });
        $(document).on("click",".delete",function( event ) {
@@ -411,7 +413,7 @@
         var count = 1;
        $(document).on("click","#btnadd5",function( event ) {
         count++;
-        $('#tblprod5').after('<div class="col-md-11" id="quitar15"><input type="number" class="form-control" id="adicional[]" placeholder= "Ingrese valor" name="adicional[]"  onkeyup="sumar()" > </div>   <div class="col-md-1" id="quitar16"><a class="btn btn-warning delete5" id="btnadd[]" data-toggle="modal" href="#" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-minus"></i></a></div><br><br><br>');
+        $('#tblprod5').after('<div class="col-md-11" id="quitar15"><input type="number" class="form-control" id="adicional[]" placeholder= "Ingrese valor" name="adicional[]"  onkeyup="sumar()" > </div>   <div class="col-md-1" id="quitar16"><a class="btn btn-warning delete5" id="btnadd[]" data-toggle="modal" href="#" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-minus"></i></a></div>');
           event.preventDefault();
        });
        $(document).on("click",".delete5",function( event ) {

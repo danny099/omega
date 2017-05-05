@@ -8,7 +8,7 @@
         <li class="active">Administrativa</li>
       </ol>
       <div class="container">
-        <div class="col-md-12 well">
+        <div class="col-md-11 well">
           <a class="btn btn-primary" data-toggle="modal" href="{{ url('administrativas/create') }}"><i class="fa fa-user-plus"></i> Crear Contrato</a>
           <div class="box-body">
             <table id="example1" class="table table-bordered table-striped">
