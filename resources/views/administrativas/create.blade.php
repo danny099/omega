@@ -13,7 +13,7 @@
   <div class="box-header with-border">
     <center> <h3 class="box-title">Datos del proyecto</h3> </center>
   </div>
-    <a href="javascript:history.back()" class="btn btn-primary pull-right">Atras</a>
+
   @if(Session::has('message'))
     <div id="alert">
       <div class="col-sm-12 hr hr-18 hr-double dotted"></div>
@@ -55,10 +55,6 @@
       </div>
 
       <div class="col-md-4">
-        <div class="form-group">
-          <label >Propietario</label>
-          <input type="text" class="form-control" placeholder="Ingresa propietario" name="propietario">
-        </div>
 
         <div class="form-group">
           <label >Departamento</label>
@@ -80,31 +76,50 @@
 
           </select>
         </div>
+
+        <div class="form-group">
+          <label >Valor antes del iva</label>
+          <input type="number" id="ini" class="form-control" placeholder= "Ingrese valor" name="contrato_inicial" onkeyup="sumar()" >
+        </div>
+
       </div>
+
 
       <div class="col-md-4">
 
         <div class="form-group">
-          <label >Valor contrato inicial</label>
-          <input type="number" id="ini" class="form-control" placeholder= "Ingrese valor" name="contrato_inicial" onkeyup="sumar()" >
+          <label >Valor iva</label>
+          <input type="number" class="form-control" id="iva" readonly="readonly" placeholder= "valor iva" name="iva"   >
         </div>
+
+        <label >Valor adicional</label>
+        <div class="form-group ">
+          <div class="col-md-11" >
+            <input type="number" class="form-control" id="adicional[]" placeholder= "Ingrese valor" name="adicional"  onkeyup="sumar()" >
+          </div>
+
+          <div class="col-md-1" id="tblprod5">
+            <a class="btn btn-warning" id="btnadd5" data-toggle="modal" href="#" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-plus"></i></a>
+          </div>
+
         <label >Otro si</label>
         <div class="form-group ">
-          <div class="col-md-11" id="tblprod">
+          <div class="col-md-11" >
             <input type="number" class="form-control" id="otrosi[]" placeholder= "Ingrese valor" name="otrosi[]"  onkeyup="sumar()" >
           </div>
 
-
-
-          <div class="col-md-1">
+          <div class="col-md-1" id="tblprod">
             <a class="btn btn-warning" id="btnadd" data-toggle="modal" href="#" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-plus"></i></a>
           </div>
+
+
           <div class="form-group">
             <br>
             <br>
             <label >Valor contrato final</label>
-            <input type="number" class="form-control" id="fin" readonly="readonly" placeholder= "Ingrese valor" name="contrato_final"   >
+            <input type="number" class="form-control" id="fin" readonly="readonly" placeholder= "Valor final" name="contrato_final"   >
           </div>
+
           <div class="form-group">
             <label >Plan de pago</label>
             <input type="text" class="form-control" placeholder= "Ingrese valor" name="plan_pago">
@@ -370,6 +385,8 @@
   function sumar(){
     var valor = parseInt(document.getElementById('ini').value);
     var resultado = valor*1.19;
+    var iva = valor*0.19;
+    document.getElementById('iva').value = iva ;
     document.getElementById('fin').value = resultado ;
       }
 
@@ -381,13 +398,27 @@
         var count = 1;
        $(document).on("click","#btnadd",function( event ) {
         count++;
-        $('#tblprod').before('<div class="col-md-11" id="tblprod"><input type="number" class="form-control" id="otrosi[]" placeholder= "Ingrese valor" name="otrosi[]"  onkeyup="sumar()" > </div>   <div class="col-md-1"><a class="btn btn-warning delete" id="btnadd[]" data-toggle="modal" href="#" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-minus"></i></a></div><br><br><br>');
+        $('#tblprod').after('<div class="col-md-11" id="quitar17"><input type="number" class="form-control" id="otrosi[]" placeholder= "Ingrese valor" name="otrosi[]"  onkeyup="sumar()" > </div>   <div class="col-md-1" id="quitar18"><a class="btn btn-warning delete" id="btnadd[]" data-toggle="modal" href="#" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-minus"></i></a></div><br><br><br>');
           event.preventDefault();
        });
        $(document).on("click",".delete",function( event ) {
-       $(this).closest("div").remove();
-       $('#tblprod').remove();
+         $('#quitar17').remove();
+         $('#quitar18').remove();
           return false;
+       });
+    });
+
+    $(function() {
+        var count = 1;
+       $(document).on("click","#btnadd5",function( event ) {
+        count++;
+        $('#tblprod5').after('<div class="col-md-11" id="quitar15"><input type="number" class="form-control" id="adicional[]" placeholder= "Ingrese valor" name="adicional[]"  onkeyup="sumar()" > </div>   <div class="col-md-1" id="quitar16"><a class="btn btn-warning delete5" id="btnadd[]" data-toggle="modal" href="#" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-minus"></i></a></div><br><br><br>');
+          event.preventDefault();
+       });
+       $(document).on("click",".delete5",function( event ) {
+         $('#quitar16').remove();
+         $('#quitar15').remove();
+            return false;
        });
     });
 
