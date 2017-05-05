@@ -9,7 +9,7 @@ class Administrativa extends Model
   protected $table = 'administrativa';
 
   protected $fillable = ['id','codigo_proyecto','nombre_proyecto','fecha_contrato','cliente_id',
-  'propietario','municipio_id','departamento','tipo_zona','valor_contrato_inicial','valor_contrato_final','plan_pago','resumen'];
+  'propietario','departamento_id','municipio','tipo_zona','valor_contrato_inicial','valor_contrato_final','plan_pago','resumen'];
 
   public $timestamps = false;
 
@@ -33,8 +33,8 @@ class Administrativa extends Model
     return $this->belongsTo('App\Pu_final');
   }
 
-  public function municipio(){
-    return $this->belongsTo('App\Municipio');
+  public function departamento(){
+    return $this->belongsTo('App\Departamento');
   }
 
   public function factura(){
