@@ -31,7 +31,7 @@
       <div class="col-md-4">
         <div class="form-group">
           <label >Codigo del proyecto:</label>
-          <input id="codigo" type="text" class="form-control"   name="codigo" required>
+          <input id="codigo" type="text" class="form-control" placeholder="Ingrese codigo"  name="codigo" required>
 
 
         </div>
@@ -95,7 +95,7 @@
         <label >Valor adicional</label>
         <div class="form-group ">
           <div class="col-md-11" >
-            <input type="number" class="form-control" id="adicional[]" placeholder= "Ingrese valor" name="adicional"  onkeyup="sumar()" >
+            <input type="number" class="form-control" id="adicional" placeholder= "Ingrese valor" name="adicional"  onkeyup="sumar()" >
           </div>
 
           <div class="col-md-1" id="tblprod5">
@@ -382,9 +382,11 @@
        document.form.submit()
     }
   }
+
   function sumar(){
-    var valor = parseInt(document.getElementById('ini').value);
-    var resultado = valor*1.19;
+    var inicial = parseInt(document.getElementById('ini').value);
+    var adicional = parseInt(document.getElementById('adicional').value);
+    var resultado = inicial*1.19;
     var iva = valor*0.19;
     document.getElementById('iva').value = iva ;
     document.getElementById('fin').value = resultado ;
