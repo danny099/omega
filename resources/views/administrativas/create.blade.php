@@ -364,7 +364,7 @@
           }
 
           div.find('#municipio').html(" ");
-          div.find('#municipio').append("op");
+          div.find('#municipio').append(op);
 
         },
         error:function(){
