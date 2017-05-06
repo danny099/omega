@@ -25,7 +25,7 @@
   <!-- Bootstrap 3.3.6 -->
   <link rel="stylesheet" href=" {{ url('bootstrap/css/bootstrap.css')}}">
 
-  <link rel="stylesheet" href=" {{ url('bootstrap/css/bootstrap.min.css')}}">
+
   <!-- Font Awesome -->
   <link rel="stylesheet" href=" {{ url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css')}}">
   <!-- Ionicons -->
