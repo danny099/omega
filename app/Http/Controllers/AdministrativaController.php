@@ -72,34 +72,6 @@ class AdministrativaController extends Controller
     {
        $input = $request->all();
 
-      //  dd($input);s
-      //  die();
-      //  for ($i=0; $i<count($input['transformacion']['descripcion']); $i++) {
-      //   //  echo $input['transformacion']['descripcion'][$i].' '.$input['transformacion']['tipo'][$i].' '.$input['transformacion']['capacidad'][$i].' '.$input['transformacion']['cantidad'][$i].'<br>';
-      //    $datos[] = $input['transformacion']['descripcion'][$i];
-      //    $datos[] = $input['transformacion']['tipo'][$i];
-      //    $datos[] = $input['transformacion']['capacidad'][$i];
-      //    $datos[] = $input['transformacion']['cantidad'][$i];
-       //
-      //   //  Transformacion::create(['descripcion'=>$descripcion,'tipo'=>$tipo,'capacidad'=>$capacidad,'cantidad'=>$cantidad]);
-      //   //  transformacion::create(['valor'=>$otro,'administrativa_id'=>$lastId_admin]);
-      //   Transformacion::create($datos);
-       //
-      //  }
-       //
-      //  dd($datos);
-      //  die();
-
-
-
-       for ($i=0; $i<count($input['transformacion']['descripcion']); $i++) {
-         echo $input['transformacion']['descripcion'][$i].' '.$input['transformacion']['tipo'][$i].' '.$input['transformacion']['capacidad'][$i].' '.$input['transformacion']['cantidad'][$i].'<br>';
-       }
-       die();
-
-
-
-
        //  ********************************************************************************
        //  ********************************************************************************
       //  almacenar en un arreglo $administrativa los datos provenientes desde el formulario de datos basicos
@@ -135,7 +107,6 @@ class AdministrativaController extends Controller
 
 
         for ($i=0; $i<count($input['transformacion']['descripcion']); $i++) {
-         //  echo $input['transformacion']['descripcion'][$i].' '.$input['transformacion']['tipo'][$i].' '.$input['transformacion']['capacidad'][$i].' '.$input['transformacion']['cantidad'][$i].'<br>';
           $datos1['descripcion'] = $input['transformacion']['descripcion'][$i];
           $datos1['tipo'] = $input['transformacion']['tipo'][$i];
           $datos1['capacidad'] = $input['transformacion']['capacidad'][$i];
@@ -143,7 +114,6 @@ class AdministrativaController extends Controller
           $datos1['cantidad'] = $input['transformacion']['cantidad'][$i];
           $datos1['administrativa_id'] = $lastId_admin;
 
-          // Transformacion::create('descripcion'=>$datos['descripcion'],'tipo'=>$datos['tipo'],'capacidad'=>$datos['capacidad'],'unidad_transformacion'=>$datos['unidad'],'cantidad'=>$datos['cantidad'],'administrativa_id'=>$datos['administrativa_id']);
           Transformacion::create($datos1);
         }
 
