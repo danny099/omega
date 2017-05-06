@@ -106,15 +106,23 @@ class AdministrativaController extends Controller
         }
 
 
-        for ($i=0; $i<count($input['transformacion']['descripcion']); $i++) {
-          $datos1['descripcion'] = $input['transformacion']['descripcion'][$i];
-          $datos1['tipo'] = $input['transformacion']['tipo'][$i];
-          $datos1['capacidad'] = $input['transformacion']['capacidad'][$i];
-          $datos1['unidad_transformacion'] = $input['transformacion']['unidad_transformacion'][$i];
-          $datos1['cantidad'] = $input['transformacion']['cantidad'][$i];
-          $datos1['administrativa_id'] = $lastId_admin;
+        for ($i=0; $i<count($input['transformacion']['descripcion']); $i++){
 
-          Transformacion::create($datos1);
+            for ($j=0; $j<count($input['transformacion']['descripcion']); $j++) {
+              if (!empty($input['transformacion']['descripcion'][$j]) && !empty($input['transformacion']['tipo'][$j]) &&
+                  !empty($input['transformacion']['capacidad'][$j]) && !empty($input['transformacion']['unidad_transformacion'][$j]) &&
+                  !empty($input['transformacion']['cantidad'][$j])) {
+
+                    $datos1['descripcion'] = $input['transformacion']['descripcion'][$j];
+                    $datos1['tipo'] = $input['transformacion']['tipo'][$j];
+                    $datos1['capacidad'] = $input['transformacion']['capacidad'][$j];
+                    $datos1['unidad_transformacion'] = $input['transformacion']['unidad_transformacion'][$j];
+                    $datos1['cantidad'] = $input['transformacion']['cantidad'][$j];
+                    $datos1['administrativa_id'] = $lastId_admin;
+
+                    Transformacion::create($datos1);
+              }
+            }
         }
 
         for ($i=0; $i<count($input['distribucion']['descripcion_dis']); $i++) {
