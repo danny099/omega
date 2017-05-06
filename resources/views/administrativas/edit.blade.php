@@ -26,79 +26,187 @@
 
     <div class="box-body">
       <div class="col-md-4">
-        <div class="form-group">
-          {!! Form::label('codigo', 'Codigo del proyecto:') !!}
-          {!! Form::text('codigo', $administrativas->codigo_proyecto, ['class' => 'form-control' , 'required' => 'required']) !!}
-        </div>
-        <div class="form-group">
-          {!! Form::label('nombre', 'Nombre del proyecto') !!}
-          {!! Form::text('nombre', $administrativas->nombre_proyecto, ['class' => 'form-control' , 'required' => 'required']) !!}
-        </div>
+
+        @if($administrativas->codigo_proyecto != null)
+          <div class="form-group">
+            {!! Form::label('codigo', 'Codigo del proyecto:') !!}
+            {!! Form::text('codigo', $administrativas->codigo_proyecto, ['class' => 'form-control' , 'required' => 'required']) !!}
+          </div>
+        @else
+          <div class="form-group">
+            {!! Form::label('codigo', 'Codigo del proyecto:') !!}
+            {!! Form::text('codigo', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+          </div>
+        @endif
+
+        @if($administrativas->nombre_proyecto != null)
+          <div class="form-group">
+            {!! Form::label('nombre', 'Nombre del proyecto') !!}
+            {!! Form::text('nombre', $administrativas->nombre_proyecto, ['class' => 'form-control' , 'required' => 'required']) !!}
+          </div>
+        @else
+          <div class="form-group">
+            {!! Form::label('nombre', 'Nombre del proyecto') !!}
+            {!! Form::text('nombre',null, ['class' => 'form-control' , 'required' => 'required']) !!}
+          </div>
+        @endif
+
+        @if($administrativas->fecha_contrato != null)
         <div class="form-group">
           {!! Form::label('fecha', 'Fecha del contrato:') !!}
           {!! Form::date('fecha', $administrativas->fecha_contrato, ['class' => 'form-control' , 'required' => 'required']) !!}
         </div>
-        <div class="form-group">
-          <label >Cliente</label>
-          <select class="form-control" name="cliente_id">
-            @foreach($clientes as $cliente)
-            <option value="{{ $cliente->id }}">{{$cliente->nombre}}</option>
-            @endforeach
-          </select>
-        </div>
+        @else
+          <div class="form-group">
+            {!! Form::label('fecha', 'Fecha del contrato:') !!}
+            {!! Form::date('fecha',null, ['class' => 'form-control' , 'required' => 'required']) !!}
+          </div>
+        @endif
+
+        @if($administrativas->cliente_id != null)
+          <div class="form-group">
+            <label >Cliente</label>
+            <select class="form-control" name="cliente_id">
+              @foreach($clientes as $cliente)
+              <option value="{{ $cliente->id }}">{{$cliente->nombre}}</option>
+              @endforeach
+            </select>
+          </div>
+        @else
+          <div class="form-group">
+            <label >Cliente</label>
+            <select class="form-control" name="cliente_id">
+              @foreach($clientes as $cliente)
+              <option value="">Seleccione</option>
+              <option value="{{ $cliente->id }}">{{$cliente->nombre}}</option>
+              @endforeach
+            </select>
+          </div>
+        @endif
 
       </div>
 
       <div class="col-md-4">
+
+        @if($administrativas->propietario != null)
         <div class="form-group">
           {!! Form::label('propietario', 'Propietario:') !!}
           {!! Form::text('propietario', $administrativas->propietario, ['class' => 'form-control' , 'required' => 'required']) !!}
         </div>
+        @else
+          <div class="form-group">
+            {!! Form::label('propietario', 'Propietario:') !!}
+            {!! Form::text('propietario',null, ['class' => 'form-control' , 'required' => 'required']) !!}
+          </div>
+        @endif
 
-        <div class="form-group">
-          <label >Departamento</label>
-          <select class="form-control" name="departamento">
-          </select>
-        </div>
-        <div class="form-group">
-          <label >Ciudad</label>
-          <select class="form-control" name="municipio">
+        @if($administrativas->departamento != null)
+          <div class="form-group">
+            <label >Departamento</label>
+            <select class="form-control" name="departamento">
+            </select>
+          </div>
+        @else
+          <div class="form-group">
+            <label >Departamento</label>
+            <select class="form-control" name="departamento">
+            </select>
+          </div>
+        @endif
 
-          </select>
-        </div>
-        <div class="form-group">
-          <label >Tipo de zona</label>
-          <select class="form-control" name="zona">
+        @if($administrativas->municipio != null)
+          <div class="form-group">
+            <label >Ciudad</label>
+            <select class="form-control" name="municipio">
 
-          </select>
-        </div>
+            </select>
+          </div>
+        @else
+          <div class="form-group">
+            <label >Ciudad</label>
+            <select class="form-control" name="municipio">
+
+            </select>
+          </div>
+        @endif
+
+        @if($administrativas->zona != null)
+          <div class="form-group">
+            <label >Tipo de zona</label>
+            <select class="form-control" name="zona">
+
+            </select>
+          </div>
+        @else
+          <div class="form-group">
+            <label >Tipo de zona</label>
+            <select class="form-control" name="zona">
+
+            </select>
+          </div>
+        @endif
       </div>
 
       <div class="col-md-4">
 
-        <div class="form-group">
+        @if($administrativas->valor_contrato_inicial != null)
+          <div class="form-group">
+            {!! Form::label('contrato_inicial', 'Valor contrato inicial:') !!}
+            {!! Form::text('contrato_inicial', $administrativas->valor_contrato_inicial, ['class' => 'form-control' , 'required' => 'required']) !!}
+          </div>
+        @else
+          <div class="form-group">
+            {!! Form::label('contrato_inicial', 'Valor contrato inicial:') !!}
+            {!! Form::text('contrato_inicial',null, ['class' => 'form-control' , 'required' => 'required']) !!}
+          </div>
+        @endif
 
-          {!! Form::label('contrato_inicial', 'Valor contrato inicial:') !!}
-          {!! Form::text('contrato_inicial', $administrativas->valor_contrato_inicial, ['class' => 'form-control' , 'required' => 'required']) !!}
-        </div>
+
         {!! Form::label('otrosi', 'Otro si:') !!}
         <div class="form-group ">
-          <div class="col-md-11">
-            {!! Form::number('otrosi',$administrativas->otrosi->valor, ['class' => 'form-control' ]) !!}
-          </div>
+
+          @if($administrativas->otrosi->valor != null)
+            <div class="col-md-11">
+              {!! Form::number('otrosi',$administrativas->otrosi->valor, ['class' => 'form-control' ]) !!}
+            </div>
+          @else
+            <div class="col-md-11">
+              {!! Form::number('otrosi',null, ['class' => 'form-control' ]) !!}
+            </div>
+          @endif
+
           <div class="col-md-1">
             <a class="btn btn-warning" data-toggle="modal" href="#" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-plus"></i></a>
           </div>
-          <div class="form-group">
-            <br>
-            <br>
-            {!! Form::label('contrato_final', 'Valor contrato final:') !!}
-            {!! Form::number('contrato_final', $administrativas->valor_contrato_final, ['class' => 'form-control' , 'required' => 'required']) !!}
-          </div>
-          <div class="form-group">
-            {!! Form::label('plan_pago', 'Plan de pagos:') !!}
-            {!! Form::text('plan_pago',$administrativas->plan_pago, ['class' => 'form-control' , 'required' => 'required']) !!}
-          </div>
+
+          @if($administrativas->valor_contrato_final)
+            <div class="form-group">
+              <br>
+              <br>
+              {!! Form::label('contrato_final', 'Valor contrato final:') !!}
+              {!! Form::number('contrato_final', $administrativas->valor_contrato_final, ['class' => 'form-control' , 'required' => 'required']) !!}
+            </div>
+          @else
+            <div class="form-group">
+              <br>
+              <br>
+              {!! Form::label('contrato_final', 'Valor contrato final:') !!}
+              {!! Form::number('contrato_final',null, ['class' => 'form-control' , 'required' => 'required']) !!}
+            </div>
+          @endif
+
+          @if($administrativas->plan_pago != null)
+            <div class="form-group">
+              {!! Form::label('plan_pago', 'Plan de pagos:') !!}
+              {!! Form::text('plan_pago',$administrativas->plan_pago, ['class' => 'form-control' , 'required' => 'required']) !!}
+            </div>
+          @else
+            <div class="form-group">
+              {!! Form::label('plan_pago', 'Plan de pagos:') !!}
+              {!! Form::text('plan_pago',null, ['class' => 'form-control' , 'required' => 'required']) !!}
+            </div>
+          @endif
+
         </div>
       </div>
       <hr>
@@ -157,10 +265,19 @@
       </div>
 
       <div class="col-md-1">
-        <div class="form-group">
-          <center><label >{!! Form::label('cantidad', 'Cantidad') !!}</label></center>
-          {!! Form::number('cantidad', $administrativas->transformacion->cantidad, ['class' => 'form-control' ]) !!}
-        </div>
+
+        @if($administrativas->transformacion->cantidad)
+          <div class="form-group">
+            <center><label >{!! Form::label('cantidad', 'Cantidad') !!}</label></center>
+            {!! Form::number('cantidad', $administrativas->transformacion->cantidad, ['class' => 'form-control' ]) !!}
+          </div>
+        @else
+          <div class="form-group">
+            <center><label >{!! Form::label('cantidad', 'Cantidad') !!}</label></center>
+            {!! Form::number('cantidad',null, ['class' => 'form-control' ]) !!}
+          </div>
+        @endif
+
       </div>
 
       <div class="col-md-1">
@@ -206,16 +323,22 @@
           <center>{!! Form::label('plan_pago', 'Unidad') !!}</center>
           <center>
             <input type="text" class="form-control" value="km"  readonly=”readonly” name="unidad_distribucion">
-
           </center>
         </div>
       </div>
 
       <div class="col-md-1">
-        <div class="form-group">
-          <center>{!! Form::label('cantidad_dis', 'Cantidad') !!}</center>
-          {!! Form::text('cantidad_dis',  $administrativas->distribucion->cantidad, ['class' => 'form-control' ]) !!}
-        </div>
+        @if($administrativas->distribucion->cantidad)
+          <div class="form-group">
+            <center>{!! Form::label('cantidad_dis', 'Cantidad') !!}</center>
+            {!! Form::text('cantidad_dis',  $administrativas->distribucion->cantidad, ['class' => 'form-control' ]) !!}
+          </div>
+        @else
+          <div class="form-group">
+            <center>{!! Form::label('cantidad_dis', 'Cantidad') !!}</center>
+            {!! Form::text('cantidad_dis',null, ['class' => 'form-control' ]) !!}
+          </div>
+        @endif
       </div>
 
       <div class="col-md-1">
@@ -234,10 +357,8 @@
         </div>
         <div class="form-group">
           <select class="form-control"name="descripcion_pu">
-
             <option value="Inspeccion retie proceso uso final residencial">Inspeccion retie proceso uso final residencial</option>
             <option value="Inspeccion retie proceso uso final comercial">Inspeccion retie proceso uso final comercial</option>
-
           </select>
         </div>
       </div>
@@ -246,13 +367,11 @@
         <div class="form-group">
           <center><label >Tipo</label></center>
           <select class="form-control" name="tipo_pu">
-
             <option value="Casa">Casa</option>
             <option value="Apartamentos">Apartamentos</option>
             <option value="Zona comun">Zona comun</option>
             <option value="Local comercial">Local comercial</option>
             <option value="Punto fijo">Punto fijo</option>
-
           </select>
         </div>
       </div>
@@ -268,10 +387,17 @@
       </div>
 
       <div class="col-md-1">
-        <div class="form-group">
-          <center>{!! Form::label('cantidad_pu', 'Cantidad') !!}</center>
-          {!! Form::text('cantidad_pu', $administrativas->pu_final->cantidad, ['class' => 'form-control' ]) !!}
-        </div>
+        @if($administrativas->pu_final->cantidad)
+          <div class="form-group">
+            <center>{!! Form::label('cantidad_pu', 'Cantidad') !!}</center>
+            {!! Form::text('cantidad_pu', $administrativas->pu_final->cantidad, ['class' => 'form-control' ]) !!}
+          </div>
+        @else
+          <div class="form-group">
+            <center>{!! Form::label('cantidad_pu', 'Cantidad') !!}</center>
+            {!! Form::text('cantidad_pu', $administrativas->pu_final->cantidad, ['class' => 'form-control' ]) !!}
+          </div>
+        @endif
       </div>
 
       <div class="col-md-1">
@@ -295,6 +421,4 @@
     {!! Form::close() !!}
   </div>
 </div>
-
-
 @endsection

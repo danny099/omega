@@ -45,7 +45,7 @@
         </div>
         <div class="form-group">
           <label >Ciudad</label>
-          <input type="text" class="form-control" readonly="readonly" placeholder="" name="departamento" value="{{ $administrativa->departamento->municipio->nombre }}">
+          <input type="text" class="form-control" readonly="readonly" placeholder="" name="departamento" value="">
         </div>
         <div class="form-group">
           <label >Tipo de zona</label>
