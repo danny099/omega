@@ -18,7 +18,7 @@
         <div class="col-md-12 well">
           <div class="box-body">
 
-            <a href="{{ url('clientes/create') }}" class="btn btn-primary" data-toggle="modal" ><i class="fa fa-user-plus"></i> Crear Cliente</a>
+            <a href="#modal" class="btn btn-primary" data-toggle="modal" ><i class="fa fa-user-plus"></i> Crear Cliente</a>
             <br>
             <br>
             <table id="example1" class="table table-bordered table-striped">
@@ -61,7 +61,62 @@
 
               </tfoot>
             </table>
+            <!-- modal 1 -->
+              <div class="modal fade" id="modal" role="dialog">
+                <div class="modal-dialog">
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <h4 class="modal-title">Clientes</h4>
+                    </div>
+                    <div class="modal-body">
+                      <center><h4> ¿Desea crear un cliente? </h4></center>
+                      <br>
+                      <center>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal2" name="button">Persona natural</button>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal3" name="button">Persona juridica</button>
+                      </center>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- fin modal -->
           </div>
+
+          <!-- modal 2 -->
+            <div class="modal fade" id="modal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+
+                  <div class="modal-body">
+                    @include('clientes.create')
+                  </div>
+                  <div class="modal-footer">
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- fin modal2 -->
+            <!-- modal 3 -->
+              <div class="modal fade" id="modal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+
+                    <div class="modal-body">
+                      @include('juridica.create')
+                    </div>
+                    <div class="modal-footer">
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- fin modal3 -->
         </div>
         </div>
 
@@ -70,6 +125,7 @@
 @endsection
 
 @section('scripts')
+
 <!-- jQuery 2.2.3 -->
 <script src="../../plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
