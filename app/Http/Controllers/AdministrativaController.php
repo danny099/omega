@@ -106,52 +106,60 @@ class AdministrativaController extends Controller
         }
 
 
-        for ($i=0; $i<count($input['transformacion']['descripcion']); $i++){
+        for ($a=0; $a<count($input['transformacion']['descripcion']); $a++){
 
-            for ($j=0; $j<count($input['transformacion']['descripcion']); $j++) {
-              if (!empty($input['transformacion']['descripcion'][$j]) && !empty($input['transformacion']['tipo'][$j]) &&
-                  !empty($input['transformacion']['capacidad'][$j]) && !empty($input['transformacion']['unidad_transformacion'][$j]) &&
-                  !empty($input['transformacion']['cantidad'][$j])) {
+              if (!empty($input['transformacion']['descripcion'][$a]) &&
+                  !empty($input['transformacion']['tipo'][$a]) &&
+                  !empty($input['transformacion']['capacidad'][$a]) &&
+                  !empty($input['transformacion']['unidad_transformacion'][$a]) &&
+                  !empty($input['transformacion']['cantidad'][$a])) {
 
-                    $datos1['descripcion'] = $input['transformacion']['descripcion'][$j];
-                    $datos1['tipo'] = $input['transformacion']['tipo'][$j];
-                    $datos1['capacidad'] = $input['transformacion']['capacidad'][$j];
-                    $datos1['unidad_transformacion'] = $input['transformacion']['unidad_transformacion'][$j];
-                    $datos1['cantidad'] = $input['transformacion']['cantidad'][$j];
+                    $datos1['descripcion'] = $input['transformacion']['descripcion'][$a];
+                    $datos1['tipo'] = $input['transformacion']['tipo'][$a];
+                    $datos1['capacidad'] = $input['transformacion']['capacidad'][$a];
+                    $datos1['unidad'] = $input['transformacion']['unidad_transformacion'][$a];
+                    $datos1['cantidad'] = $input['transformacion']['cantidad'][$a];
                     $datos1['administrativa_id'] = $lastId_admin;
 
                     Transformacion::create($datos1);
               }
-            }
         }
 
-        for ($i=0; $i<count($input['distribucion']['descripcion_dis']); $i++) {
-          $datos2['descripcion_dis'] = $input['distribucion']['descripcion_dis'][$i];
-          $datos2['tipo_dis'] = $input['distribucion']['tipo_dis'][$i];
-          $datos2['unidad_distribucion'] = $input['distribucion']['unidad_distribucion'][$i];
-          $datos2['cantidad_dis'] = $input['distribucion']['cantidad_dis'][$i];
-          $datos2['administrativa_id'] = $lastId_admin;
+        for ($x=0; $x<count($input['distribucion']['descripcion_dis']); $x++) {
 
-          // Transformacion::create('descripcion'=>$datos['descripcion'],'tipo'=>$datos['tipo'],'capacidad'=>$datos['capacidad'],'unidad_transformacion'=>$datos['unidad'],'cantidad'=>$datos['cantidad'],'administrativa_id'=>$datos['administrativa_id']);
-          Distribucion::create($datos2);
+            if (!empty($input['distribucion']['descripcion_dis'][$x]) &&
+                !empty($input['distribucion']['tipo_dis'][$x]) &&
+                !empty($input['distribucion']['unidad_distribucion'][$x]) &&
+                !empty($input['distribucion']['cantidad_dis'][$x])){
+
+              $datos2['descripcion'] = $input['distribucion']['descripcion_dis'][$x];
+              $datos2['tipo'] = $input['distribucion']['tipo_dis'][$x];
+              $datos2['unidad'] = $input['distribucion']['unidad_distribucion'][$x];
+              $datos2['cantidad'] = $input['distribucion']['cantidad_dis'][$x];
+              $datos2['administrativa_id'] = $lastId_admin;
+
+              Distribucion::create($datos2);
+            }
 
         }
 
         for ($i=0; $i<count($input['pu_final']['descripcion_pu']); $i++) {
-         //  echo $input['transformacion']['descripcion'][$i].' '.$input['transformacion']['tipo'][$i].' '.$input['transformacion']['capacidad'][$i].' '.$input['transformacion']['cantidad'][$i].'<br>';
-          $datos3['descripcion_pu'] = $input['pu_final']['descripcion_pu'][$i];
-          $datos3['tipo_pu'] = $input['pu_final']['tipo_pu'][$i];
-          $datos3['unidad_pu_final'] = $input['pu_final']['unidad_pu_final'][$i];
-          $datos3['cantidad_pu'] = $input['pu_final']['cantidad_pu'][$i];
-          $datos3['administrativa_id'] = $lastId_admin;
+            if (!empty($input['pu_final']['descripcion_pu'][$i]) &&
+                !empty($input['pu_final']['tipo_pu'][$i]) &&
+                !empty($input['pu_final']['unidad_pu_final'][$i]) &&
+                !empty($input['pu_final']['cantidad_pu'][$i])) {
 
-          // Transformacion::create('descripcion'=>$datos['descripcion'],'tipo'=>$datos['tipo'],'capacidad'=>$datos['capacidad'],'unidad_transformacion'=>$datos['unidad'],'cantidad'=>$datos['cantidad'],'administrativa_id'=>$datos['administrativa_id']);
-          Pu_final::create($datos3);
+                  $datos3['descripcion'] = $input['pu_final']['descripcion_pu'][$i];
+                  $datos3['tipo'] = $input['pu_final']['tipo_pu'][$i];
+                  $datos3['unidad'] = $input['pu_final']['unidad_pu_final'][$i];
+                  $datos3['cantidad'] = $input['pu_final']['cantidad_pu'][$i];
+                  $datos3['administrativa_id'] = $lastId_admin;
+
+                  Pu_final::create($datos3);
+            }
         }
 
-
-
-
+        return redirect()->route('administrativas.index');
 
    }
 
@@ -250,16 +258,6 @@ class AdministrativaController extends Controller
    {
        //  funcion que permite encontrar o identificar un registro y almacenarlas en una variable
        $administrativas = Administrativa::findOrFail($id);
-
-       //  funcion que permite eliminar un registro que se encontro y se almaceno en esa variable
-       $administrativas->delete();
-
-       //  redireccionamiento a una vista
-       Session::flash('message', 'Proyecto eliminado eliminado');
-       Session::flash('class', 'danger');
-       return redirect('administrativas');
-
-       //  funciones que hacen lo mismo que la anterior pero se colocan para borrar en cascada los registros relacionados
        $otrosis = Otrosi::findOrFail($id);
        $otrosis->delete();
 
@@ -271,6 +269,16 @@ class AdministrativaController extends Controller
 
        $pu_final = Pu_final::findOrFail($id);
        $pu_final->delete();
+       //  funcion que permite eliminar un registro que se encontro y se almaceno en esa variable
+       $administrativas->delete();
+
+       //  redireccionamiento a una vista
+       Session::flash('message', 'Proyecto eliminado eliminado');
+       Session::flash('class', 'danger');
+       return redirect('administrativas');
+
+       //  funciones que hacen lo mismo que la anterior pero se colocan para borrar en cascada los registros relacionados
+
    }
 
 }
