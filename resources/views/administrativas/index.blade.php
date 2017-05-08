@@ -37,13 +37,13 @@
                         <a href="{{ route('administrativas.show', $administrativa->id) }}" data-toggle="model" data-target="show-{{ $key }}"><i class="glyphicon glyphicon-eye-open"></i></a>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <!-- <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Open Modal</button> -->
-                        <a href="#myModal" data-toggle="modal" data-target=""><i class="fa fa-money"></i></a>
+                        <a href="#myModal-{{ $key }}" data-toggle="modal" data-target=""><i class="fa fa-money"></i></a>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <a href="{{ url('deleteadminstrativa') }}/{{ $administrativa->id }}" onClick="javascript: return confirm('Esta seguro de eliminar registro?');"><i class="glyphicon glyphicon-minus-sign"></i></a>
                     </td>
                   </tr>
                   <!-- inicio modal 1 -->
-                    <div class="modal fade" id="myModal" role="dialog">
+                    <div class="modal fade" id="myModal-{{ $key }}" role="dialog">
                       <div class="modal-dialog">
                         <!-- Modal content-->
                         <div class="modal-content">
@@ -55,9 +55,9 @@
                             <center><h4> ¿Desea anexar un pago? </h4></center>
                             <br>
                             <center>
-                              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal2" name="button">Consignacion</button>
-                              <button type="button" class="btn btn-primary" name="button">Cuenta de Cobro</button>
-                              <button type="button" class="btn btn-primary" name="button">Factura</button>
+                              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal2-{{ $key }}" name="button">Consignacion</button>
+                              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal3-{{ $key }}" name="button">Cuenta de Cobro</button>
+                              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal4-{{ $key }}" name="button">Factura</button>
                             </center>
                           </div>
                           <div class="modal-footer">
@@ -70,7 +70,7 @@
                 </div>
 
                 <!-- inicio modal 2 -->
-                  <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                  <div class="modal fade" id="myModal2-{{ $key }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                     <div class="modal-dialog" role="document">
                       <div class="modal-content">
 
@@ -86,8 +86,36 @@
                   <!-- fin modal -->
 
                   <!-- inicio modal 2 -->
+                    <div class="modal fade" id="myModal3-{{ $key }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
 
-                  <!-- fin modal -->
+                          <div class="modal-body">
+                            @include('cuenta_cobros.create')
+                          </div>
+                          <div class="modal-footer">
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                    <!-- fin modal -->
+
+                    <!-- inicio modal 2 -->
+                      <div class="modal fade" id="myModal4-{{ $key }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+
+                            <div class="modal-body">
+                              @include('facturas.create')
+                            </div>
+                            <div class="modal-footer">
+                            </div>
+
+                          </div>
+                        </div>
+                      </div>
+                      <!-- fin modal -->
               </div>
 
               <!-- /.modal-dialog -->
