@@ -47,7 +47,6 @@ class ClienteController extends Controller
         $input['nit'] =Request::input('nit');
         $input['cedula'] =Request::input('cedula');
         $input['nombre'] =Request::input('nombre');
-        $input['contacto'] =Request::input('contacto');
         $input['telefono'] =Request::input('telefono');
         $input['direccion'] = Request::input('direccion');
         $input['email'] = Request::input('email');
@@ -122,7 +121,7 @@ class ClienteController extends Controller
         Session::flash('message', 'Cliente  editado!');
         Session::flash('class', 'success');
         return redirect()->route('clientes.index');
-      
+
 
 
 
