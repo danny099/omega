@@ -20,7 +20,7 @@
             </div>
 
             <div class="form-group">
-              {!! Form::label('fecha_factura', 'Fecha de pago') !!}
+              {!! Form::label('fecha_factura', 'Fecha de la factura') !!}
               {!! Form::date('fecha_factura', null, ['class' => 'form-control' , 'required' => 'required']) !!}
             </div>
 

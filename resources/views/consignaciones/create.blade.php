@@ -18,7 +18,7 @@
 
             <div class="form-group">
               {!! Form::label('valor', 'Valor') !!}
-              {!! Form::number('valor', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+              {!! Form::text('valor', null, ['class' => 'form-control' , 'required' => 'required']) !!}
             </div>
 
             <div class="form-group">
@@ -27,7 +27,7 @@
             </div>
 
             <input type="hidden" name="administrativa_id" value="{{ $administrativa->id}}">
-            
+
             <div class="box-footer">
               <button type="submit" class="btn btn-primary pull-right">Enviar</button>
               <button type="submit" data-dismiss="modal" class="btn btn-primary pull-left">Cancelar</button>
@@ -38,3 +38,16 @@
       {!! Form::close() !!}
     </div>
   </div>
+
+
+  @section('scripts')
+  <script src="../../plugins/jQuery/jquery-2.2.3.min.js"></script>
+  <script src="../../plugins/input-mask/jquery.inputmask.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function($){
+      $('#valor').inputmask('999.999.999.999.999');
+});
+
+</script>
+  @endsection

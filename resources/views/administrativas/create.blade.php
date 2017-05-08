@@ -651,6 +651,16 @@
 
     </script>
 
+    <script src="../../plugins/jQuery/jquery-2.2.3.min.js"></script>
+    <script src="../../plugins/input-mask/jquery.inputmask.js"></script>
+
+  <script type="text/javascript">
+  $(document).ready(function($){
+        $('#codigo').inputmask('CPS-9999-999');
+  });
+
+  </script>
+
     <!-- jQuery 2.2.3 -->
     <script src="../../plugins/jQuery/jquery-2.2.3.min.js"></script>
     <!-- Bootstrap 3.3.6 -->
