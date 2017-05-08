@@ -108,7 +108,7 @@
                   <div class="modal-content">
 
                     <div class="modal-body">
-                      @include('juridica.create')
+                      
                     </div>
                     <div class="modal-footer">
 

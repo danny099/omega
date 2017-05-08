@@ -27,6 +27,10 @@
         <div class="box-body col-md-6">
           <br>
 
+          <div class="form-group">
+            {!! Form::label('nombre', 'Nombre') !!}
+            {!! Form::text('nombre', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+          </div>
 
           <div class="form-group">
             {!! Form::label('nit', 'Nit') !!}
@@ -38,15 +42,7 @@
             {!! Form::number('cedula', null, ['class' => 'form-control' , 'required' => 'required']) !!}
           </div>
 
-          <div class="form-group">
-            {!! Form::label('nombre', 'Nombre') !!}
-            {!! Form::text('nombre', null, ['class' => 'form-control' , 'required' => 'required']) !!}
-          </div>
 
-          <div class="form-group">
-            {!! Form::label('contacto', 'Contacto') !!}
-            {!! Form::text('contacto', null, ['class' => 'form-control' , 'required' => 'required']) !!}
-          </div>
 
 
         </div>
