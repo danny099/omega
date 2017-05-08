@@ -159,6 +159,7 @@
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
 <!-- page script -->
+  <link rel="stylesheet" href=" {{ url('dist/css/AdminLTE.min.css')}}">
 <script>
   $(function () {
     $("#example1").DataTable();

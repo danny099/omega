@@ -9,7 +9,7 @@
 </ol>
 <div class="box box-primary">
   <div class="box-header with-border">
-   <h3 class="box-title">Datos del Contrato</h3>
+   <center><h3 class="box-title">Datos del Proyecto</h3></center>
   </div>
   <!-- /.box-header -->
   <!-- form start -->
