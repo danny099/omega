@@ -1,5 +1,11 @@
 @extends('index')
 
+@section('css')
+
+
+
+@endsection
+
 @section('contenido')
 
 <ol class="breadcrumb">
@@ -39,7 +45,7 @@
         </div>
         <div class="form-group">
           <label >Fecha del contrato:</label>
-          <input type="date" class="form-control" name="fecha">
+          <input type="text" class="form-control pull-right" name="fecha" id="datepicker">
         </div>
         <div class="form-group" >
           <label >Tipo cliente</label>
@@ -51,7 +57,7 @@
         </div>
         <div class="form-group" style="Display:none" id="natural">
           <label >Persona natural</label>
-          <select class="form-control" name="cliente_id" >
+          <select class="form-control select2" name="cliente_id" style="width: 100%" id="select-natural">
             @foreach($clientes as $cliente)
             <option value="{{ $cliente->id }}">{{$cliente->nombre}}</option>
             @endforeach
@@ -320,7 +326,7 @@
       </div>
 
       <div class="col-md-12">
-        <textarea  rows="4" cols="250" name="resumen"></textarea>
+        <textarea  rows="4" cols="196" name="resumen"></textarea>
       </div>
     </div>
       <div class="box-footer">
@@ -631,6 +637,14 @@
                $('#juridica').css('display','block');
                 $('#natural').css('display','none');
              }
+        });
+
+        $(document).ready(function(){
+          $(".select2").select2();
+        });
+
+        $('#datepicker').datepicker({
+          autoclose: true
         });
 
     </script>

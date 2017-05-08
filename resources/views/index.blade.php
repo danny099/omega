@@ -32,6 +32,7 @@
   <link rel="stylesheet" href=" {{ url('https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css')}}">
   <!-- Theme style -->
   <link rel="stylesheet" href=" {{ url('dist/css/AdminLTE.min.css')}}">
+  <link rel="stylesheet" href="{{ url('plugins/select2/select2.min.css') }}">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href=" {{ url('dist/css/skins/_all-skins.min.css')}}">
@@ -47,14 +48,13 @@
   <link rel="stylesheet" href=" {{ url('plugins/daterangepicker/daterangepicker.css')}}">
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href=" {{ url('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css')}}">
-
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
-
+  @yield('css')
 </head>
 <body class="hold-transition skin-blue sidebar-mini" style="padding: 0px !important;">
 <div class="wrapper">
@@ -653,6 +653,7 @@
 <script src="{{url('dist/js/app.min.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{url('dist/js/demo.js')}}"></script>
+<script src="{{url('js/plugins/select2/select2.full.js')}}"></script>
 <!-- page script -->
 
 
