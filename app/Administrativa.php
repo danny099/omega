@@ -16,6 +16,10 @@ class Administrativa extends Model
     return $this->belongsTo('App\cliente');
   }
 
+  public function juridica(){
+    return $this->belongsTo('App\cliente');
+  }
+
   public function otrosi(){
     return $this->belongsTo('App\Otrosi');
   }
