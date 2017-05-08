@@ -85,6 +85,7 @@ class AdministrativaController extends Controller
        $administrativa['nombre_proyecto'] = $request->nombre;
        $administrativa['fecha_contrato'] = $request->fecha;
        $administrativa['cliente_id'] = $request->cliente_id;
+       $administrativa['juridica_id'] = $request->juridica_id;
        $administrativa['departamento_id'] = $request->departamento;
        $administrativa['municipio'] = $request->municipio;
        $administrativa['tipo_zona'] = $request->zona;

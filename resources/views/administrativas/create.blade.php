@@ -41,12 +41,25 @@
           <label >Fecha del contrato:</label>
           <input type="date" class="form-control" name="fecha">
         </div>
-        <div class="form-group">
-          <label >Cliente</label>
-          <select class="form-control" name="cliente_id">
+        <div class="form-group" >
+          <label >Tipo cliente</label>
+          <select class="form-control" name="cliente_id" id="cliente" required="">
+            <option value="">Seleccione</option>
+            <option value="1">Persona narural</option>
+            <option value="2">Persona juridica</option>
+          </select>
+        </div>
+        <div class="form-group" style="Display:none" id="natural">
+          <label >Persona natural</label>
+          <select class="form-control" name="cliente_id" >
             @foreach($clientes as $cliente)
             <option value="{{ $cliente->id }}">{{$cliente->nombre}}</option>
             @endforeach
+          </select>
+        </div>
+        <div class="form-group" style="Display:none" id="juridica">
+          <label >Persona juridica</label>
+          <select class="form-control" name="juridica_id" >
             @foreach($juridicas as $juridica)
             <option value="{{ $juridica->id }}">{{$juridica->razon_social}}</option>
             @endforeach
@@ -607,7 +620,18 @@
         });
 
 
-
+        $('#cliente').change(function(){
+            var valorCambiado =$(this).val();
+            if((valorCambiado == "1")){
+              $('#natural').css('display','block');
+               $('#juridica').css('display','none');
+             }
+             else if(valorCambiado == "2")
+             {
+               $('#juridica').css('display','block');
+                $('#natural').css('display','none');
+             }
+        });
 
     </script>
 

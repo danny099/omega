@@ -1,4 +1,3 @@
-
 <div class="container">
   <div class="">
     <div class="">
@@ -6,13 +5,13 @@
     </div>
       <!-- /.box-header -->
       <!-- form start -->
-        {!! Form::open(['url' => 'juridica']) !!}
+        {!! Form::open(['url' => 'clientes']) !!}
         {{ csrf_field() }}
         <div class="box-body col-md-6">
 
           <div class="form-group">
-            {!! Form::label('razon_social', 'Razon social') !!}
-            {!! Form::text('razon_social', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+            {!! Form::label('razon', 'Razon social') !!}
+            {!! Form::text('razon', null, ['class' => 'form-control' , 'required' => 'required']) !!}
           </div>
 
           <div class="form-group">
@@ -21,8 +20,8 @@
           </div>
 
           <div class="form-group">
-            {!! Form::label('nombre_representante', 'Nombre representante') !!}
-            {!! Form::text('nombre_representante', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+            {!! Form::label('nombre', 'Nombre representante legal') !!}
+            {!! Form::text('nombre', null, ['class' => 'form-control' , 'required' => 'required']) !!}
           </div>
 
           <div class="form-group">
