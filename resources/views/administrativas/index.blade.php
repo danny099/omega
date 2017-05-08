@@ -7,7 +7,7 @@
         <li><a href="{{ url('index') }}">Inicio</a></li>
         <li class="active">Administrativa</li>
       </ol>
-      <div class="container">
+      <div class="">
         <div class="col-md-11 well">
           <a class="btn btn-primary" data-toggle="modal" href="{{ url('administrativas/create') }}"><i class="fa fa-user-plus"></i> Crear Contrato</a>
           <div class="box-body">

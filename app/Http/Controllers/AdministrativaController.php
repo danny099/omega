@@ -246,6 +246,13 @@ class AdministrativaController extends Controller
       $cuenta_cobros = Cuenta_cobro::where('cuenta_cobro.administrativa_id', '=', $id)->get();
       $facturas = Factura::where('factura.administrativa_id', '=', $id)->get();
 
+      // if (count($adicionales) == 0) {
+      //   echo "hola";
+      //   die();
+      // }
+
+
+
       //  funcion que retorna una vista con todos los datos del registro ya buscado
        return view('administrativas.edit',compact('administrativas','clientes','juridicas','otrosis','distribuciones','transformaciones','pu_finales','departamentos','municipio','adicionales'));
    }

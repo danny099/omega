@@ -106,30 +106,55 @@
         </div>
 
         <div class="form-group ">
-          @foreach($adicionales as $adicional)
+          @if(count($adicionales) == 0)
             <div class="col-md-11" >
               <label >Valor adicional</label>
-              <input type="number" class="form-control" id="adicional" placeholder= "Ingrese valor" name="adicional[]"  onkeyup="sumar()" value="{{ $adicional->valor}}">
+              <input type="number" class="form-control" id="adicional" placeholder= "Ingrese valor" name="adicional[]"  onkeyup="sumar()" value="">
               <label >detalle valor adicional</label>
-              <input type="text" class="form-control" id="detalle" placeholder= "Ingrese detalle" name="detalle[]" value="{{ $adicional->detalle}}">
+              <input type="text" class="form-control" id="detalle" placeholder= "Ingrese detalle" name="detalle[]" value="">
             </div>
 
             <div class="col-md-1" id="tblprod5">
               <a class="btn btn-warning" id="btnadd5" data-toggle="modal" href="#" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-plus"></i></a>
             </div>
-          @endforeach
+          @else
+            @foreach($adicionales as $adicional)
+              <div class="col-md-11" >
+                <label >Valor adicional</label>
+                <input type="number" class="form-control" id="adicional" placeholder= "Ingrese valor" name="adicional[]"  onkeyup="sumar()" value="{{ $adicional->valor}}">
+                <label >detalle valor adicional</label>
+                <input type="text" class="form-control" id="detalle" placeholder= "Ingrese detalle" name="detalle[]" value="{{ $adicional->detalle}}">
+              </div>
+
+              <div class="col-md-1" id="tblprod5">
+                <a class="btn btn-warning" id="btnadd5" data-toggle="modal" href="#" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-plus"></i></a>
+              </div>
+            @endforeach
+          @endif
 
         <div class="form-group ">
-          @foreach($otrosis as $otro)
+
+          @if(count($otrosis) == 0)
             <div class="col-md-11" >
               <label >Otro si</label>
-              <input type="number" class="form-control" id="otrosi[]" placeholder= "Ingrese valor" name="otrosi[]"  onkeyup="sumar()" value="{{ $otro->valor}}">
+              <input type="number" class="form-control" id="otrosi[]" placeholder= "Ingrese valor" name="otrosi[]"  onkeyup="sumar()" value="">
             </div>
 
             <div class="col-md-1" id="tblprod">
               <a class="btn btn-warning" id="btnadd" data-toggle="modal" href="#" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-plus"></i></a>
             </div>
-          @endforeach
+          @else
+            @foreach($otrosis as $otro)
+              <div class="col-md-11" >
+                <label >Otro si</label>
+                <input type="number" class="form-control" id="otrosi[]" placeholder= "Ingrese valor" name="otrosi[]"  onkeyup="sumar()" value="{{ $otro->valor}}">
+              </div>
+
+              <div class="col-md-1" id="tblprod">
+                <a class="btn btn-warning" id="btnadd" data-toggle="modal" href="#" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-plus"></i></a>
+              </div>
+            @endforeach
+          @endif
 
           <div class="form-group">
             <br>
@@ -143,7 +168,6 @@
             <input type="text" class="form-control" placeholder= "Ingrese valor" name="plan_pago" value="{{ $administrativas->plan_pago}}">
           </div>
         </div>
-
       </div>
 
 
@@ -159,7 +183,62 @@
     </div>
 
     <div class="box-body">
-        @if(!empty($transformaciones))
+        @if(count($transformaciones) == 0)
+          <div class="col-md-12">
+            <div class="col-md-3">
+              <div class="form-group">
+                <center><label >Descripcion</label></center>
+                <input type="text" class="form-control" value="Inspecion RETIE proceso de transformacion"  readonly=”readonly” name="transformacion[descripcion][]">
+              </div>
+            </div>
+
+            <div class="col-md-3">
+              <div class="form-group">
+                <center><label >Tipo</label></center>
+                <select class="form-control" name="transformacion[tipo][]">
+                  <option value="tipo_poste">tipo poste</option>
+                  <option value="tipo_interior">tipo interior</option>
+                  <option value="tipo_exterior">tipo exterior</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-md-3">
+              <div class="form-group">
+                <center><label >Capacidad</label></center>
+                <select class="form-control" name="transformacion[capacidad][]">
+                  <option value="5KVA">5KVA</option>
+                  <option value="10KVA">10KVA</option>
+                  <option value="15KVA">15KVA</option>
+                  <option value="150KVA">150KVA</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-md-1">
+              <div class="form-group">
+                <center><label>Unidad</label></center>
+                <center>
+                  <input style="text-align:center;" type="text" class="form-control" value=""  readonly=”readonly” name="transformacion[unidad_transformacion][]">
+                </center>
+              </div>
+            </div>
+
+            <div class="col-md-1">
+              <div class="form-group">
+                <center><label >Cantidad</label></center>
+                <input type="text" class="form-control" placeholder= "Cantidad" name="transformacion[cantidad][]" value="">
+              </div>
+            </div>
+
+            <div class="col-md-1" id="tblprod2">
+              <div class="form-group">
+                <br>
+                <a class="btn btn-primary" data-toggle="modal" href="#" id="btnadd2" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-plus"></i></a>
+              </div>
+            </div>
+          </div>
+        @else
           @foreach($transformaciones as $transfor)
             <div class="col-md-12">
               <div class="col-md-3">
@@ -173,7 +252,7 @@
                 <div class="form-group">
                   <center><label >Tipo</label></center>
                   <select class="form-control" name="transformacion[tipo][]">
-                    <option value="">{{ $transfor->tipo }}</option>
+                    <option value="{{ $transfor->tipo }}">{{ $transfor->tipo }}</option>
                     <option value="tipo_poste">tipo poste</option>
                     <option value="tipo_interior">tipo interior</option>
                     <option value="tipo_exterior">tipo exterior</option>
@@ -185,7 +264,7 @@
                 <div class="form-group">
                   <center><label >Capacidad</label></center>
                   <select class="form-control" name="transformacion[capacidad][]">
-                    <option value="">{{ $transfor->capacidad }}</option>
+                    <option value="{{ $transfor->capacidad }}">{{ $transfor->capacidad }}</option>
                     <option value="5KVA">5KVA</option>
                     <option value="10KVA">10KVA</option>
                     <option value="15KVA">15KVA</option>
@@ -218,67 +297,10 @@
               </div>
             </div>
           @endforeach
-        @else
-            <div class="col-md-12">
-              <div class="col-md-3">
-                <div class="form-group">
-                  <center><label >Descripcion</label></center>
-                  <input type="text" class="form-control" value="Inspecion RETIE proceso de transformacion"  readonly=”readonly” name="transformacion[descripcion][]">
-                </div>
-              </div>
-
-              <div class="col-md-3">
-                <div class="form-group">
-                  <center><label >Tipo</label></center>
-                  <select class="form-control" name="transformacion[tipo][]">
-                    <option value="tipo_poste">tipo poste</option>
-                    <option value="tipo_interior">tipo interior</option>
-                    <option value="tipo_exterior">tipo exterior</option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="col-md-3">
-                <div class="form-group">
-                  <center><label >Capacidad</label></center>
-                  <select class="form-control" name="transformacion[capacidad][]">
-                    <option value="5KVA">5KVA</option>
-                    <option value="10KVA">10KVA</option>
-                    <option value="15KVA">15KVA</option>
-                    <option value="150KVA">150KVA</option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="col-md-1">
-                <div class="form-group">
-                  <center><label>Unidad</label></center>
-                  <center>
-                    <input style="text-align:center;" type="text" class="form-control" value="Und"  readonly=”readonly” name="transformacion[unidad_transformacion][]">
-                  </center>
-                </div>
-              </div>
-
-              <div class="col-md-1">
-                <div class="form-group">
-                  <center><label >Cantidad</label></center>
-                  <input type="text" class="form-control" placeholder= "Cantidad" name="transformacion[cantidad][]" value="">
-                </div>
-              </div>
-
-              <div class="col-md-1" id="tblprod2">
-                <div class="form-group">
-                  <br>
-                  <a class="btn btn-primary" data-toggle="modal" href="#" id="btnadd2" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-plus"></i></a>
-                </div>
-              </div>
-            </div>
         @endif
 
 
-
-
-        @foreach($distribuciones as $distribucion)
+        @if(count($distribuciones) == 0)
           <div class="col-md-12">
             <center> <h4 class="box-title">Alcance: proceso de distribucion</h4> </center>
           </div>
@@ -287,7 +309,6 @@
             <div class="form-group">
               <center><label >Descripcion</label></center>
               <select class="form-control" name="distribucion[descripcion_dis][]">
-                <option value="">{{ $distribucion->descripcion }}</option>
                 <option value="Inspeccion retie proceso de distribucion en MT">Inspeccion retie proceso de distribucion en MT</option>
                 <option value="Inspeccion retie proceso de distribucion en BT">Inspeccion retie proceso de distribucion en BT</option>
               </select>
@@ -298,7 +319,6 @@
             <div class="form-group">
               <center><label >Tipo</label></center>
               <select class="form-control" name="distribucion[tipo_dis][]">
-                <option value="">{{ $distribucion->descripcion }}</option>
                 <option value="aerea">tipo Aerea</option>
                 <option value="subterranea">tipo subterranea</option>
               </select>
@@ -317,7 +337,7 @@
           <div class="col-md-2">
             <div class="form-group">
               <center><label >Cantidad</label></center>
-              <input type="text" class="form-control" placeholder= "Cantidad" name="distribucion[cantidad_dis][]" value="{{ $distribucion->cantidad }}">
+              <input type="text" class="form-control" placeholder= "Cantidad" name="distribucion[cantidad_dis][]" value="">
             </div>
           </div>
 
@@ -327,10 +347,62 @@
               <a class="btn btn-primary" data-toggle="modal" id="btnadd3" href="#" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-plus"></i></a>
             </div>
           </div>
-        @endforeach
+        @else
+          @foreach($distribuciones as $distribucion)
+            <div class="col-md-12">
+              <center> <h4 class="box-title">Alcance: proceso de distribucion</h4> </center>
+            </div>
+
+            <div class="col-md-3">
+              <div class="form-group">
+                <center><label >Descripcion</label></center>
+                <select class="form-control" name="distribucion[descripcion_dis][]">
+                  <option value="{{ $distribucion->descripcion }}">{{ $distribucion->descripcion }}</option>
+                  <option value="Inspeccion retie proceso de distribucion en MT">Inspeccion retie proceso de distribucion en MT</option>
+                  <option value="Inspeccion retie proceso de distribucion en BT">Inspeccion retie proceso de distribucion en BT</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-md-3">
+              <div class="form-group">
+                <center><label >Tipo</label></center>
+                <select class="form-control" name="distribucion[tipo_dis][]">
+                  <option value="{{ $distribucion->descripcion }}">{{ $distribucion->descripcion }}</option>
+                  <option value="aerea">tipo Aerea</option>
+                  <option value="subterranea">tipo subterranea</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-md-2">
+              <div class="form-group">
+                <center><label >Unidad</label></center>
+                <center>
+                  <input type="text" class="form-control" value="km"  readonly=”readonly” name="distribucion[unidad_distribucion][]"style="text-align:center">
+                </center>
+              </div>
+            </div>
+
+            <div class="col-md-2">
+              <div class="form-group">
+                <center><label >Cantidad</label></center>
+                <input type="text" class="form-control" placeholder= "Cantidad" name="distribucion[cantidad_dis][]" value="{{ $distribucion->cantidad }}">
+              </div>
+            </div>
+
+            <div class="col-md-1" id="tblprod3">
+              <div class="form-group">
+                <br>
+                <a class="btn btn-primary" data-toggle="modal" id="btnadd3" href="#" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-plus"></i></a>
+              </div>
+            </div>
+          @endforeach
+        @endif
 
 
-        @foreach($pu_finales as $pu)
+
+        @if(count($pu_finales) == 0)
           <div class="col-md-12">
             <center> <h4 class="box-title">Alcance: proceso de uso final</h4> </center>
           </div>
@@ -338,7 +410,6 @@
             <div class="form-group">
               <center><label >Descripcion</label></center>
               <select class="form-control"name="pu_final[descripcion_pu][]">
-                <option value="">{{ $pu->descripcion }}</option>
                 <option value="Inspeccion retie proceso uso final residencial">Inspeccion retie proceso uso final residencial</option>
                 <option value="Inspeccion retie proceso uso final comercial">Inspeccion retie proceso uso final comercial</option>
               </select>
@@ -349,7 +420,6 @@
             <div class="form-group">
               <center><label >Tipo</label></center>
               <select class="form-control" name="pu_final[tipo_pu][]">
-                <option value="">{{ $pu->tipo }}</option>
                 <option value="Casa">Casa</option>
                 <option value="Apartamentos">Apartamentos</option>
                 <option value="Zona comun">Zona comun</option>
@@ -371,7 +441,7 @@
           <div class="col-md-2">
             <div class="form-group">
               <center><label >Cantidad</label></center>
-              <input type="text" class="form-control" placeholder= "Cantidad" name="pu_final[cantidad_pu][]" value="{{ $pu->cantidad }}">
+              <input type="text" class="form-control" placeholder= "Cantidad" name="pu_final[cantidad_pu][]" value="">
             </div>
           </div>
 
@@ -381,7 +451,62 @@
               <a class="btn btn-primary" data-toggle="modal" href="#" id="btnadd4" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-plus"></i></a>
             </div>
           </div>
-        @endforeach
+        @else
+          @foreach($pu_finales as $pu)
+            <div class="col-md-12">
+              <center> <h4 class="box-title">Alcance: proceso de uso final</h4> </center>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <center><label >Descripcion</label></center>
+                <select class="form-control"name="pu_final[descripcion_pu][]">
+                  <option value="{{ $pu->descripcion }}">{{ $pu->descripcion }}</option>
+                  <option value="Inspeccion retie proceso uso final residencial">Inspeccion retie proceso uso final residencial</option>
+                  <option value="Inspeccion retie proceso uso final comercial">Inspeccion retie proceso uso final comercial</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-md-3">
+              <div class="form-group">
+                <center><label >Tipo</label></center>
+                <select class="form-control" name="pu_final[tipo_pu][]">
+                  <option value="{{ $pu->tipo }}">{{ $pu->tipo }}</option>
+                  <option value="Casa">Casa</option>
+                  <option value="Apartamentos">Apartamentos</option>
+                  <option value="Zona comun">Zona comun</option>
+                  <option value="Local comercial">Local comercial</option>
+                  <option value="Punto fijo">Punto fijo</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-md-2">
+              <div class="form-group">
+                <center><label >Unidad</label></center>
+                <center>
+                  <input style="text-align:center;" type="text" class="form-control" value="Und"  readonly=”readonly” name="pu_final[unidad_pu_final][]">
+                </center>
+              </div>
+            </div>
+
+            <div class="col-md-2">
+              <div class="form-group">
+                <center><label >Cantidad</label></center>
+                <input type="text" class="form-control" placeholder= "Cantidad" name="pu_final[cantidad_pu][]" value="{{ $pu->cantidad }}">
+              </div>
+            </div>
+
+            <div class="col-md-1" id="tblprod4">
+              <div class="form-group">
+                <br>
+                <a class="btn btn-primary" data-toggle="modal" href="#" id="btnadd4" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-plus"></i></a>
+              </div>
+            </div>
+          @endforeach
+        @endif
+
+
 
       <div class="col-md-12">
         <center> <h4 class="box-title">Observaciones de estado administrativo del proyecto</h4> </center>
