@@ -45,6 +45,8 @@
         </div>
         <div class="form-group">
           <label >Fecha del contrato:</label>
+          <input type="date" class="form-control pull-right" name="fecha" id="datepicker">
+          <input type="text" class="form-control pull-right" name="fecha" id="datepicker">
           <input type="date" class="form-control" name="fecha" >
         </div>
         <div class="form-group" >
@@ -646,6 +648,7 @@
         $(document).ready(function(){
           $(".select2").select2();
         });
+
 
 
     </script>
