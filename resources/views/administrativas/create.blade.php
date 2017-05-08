@@ -95,7 +95,7 @@
 
         <div class="form-group">
           <label >Valor antes del iva</label>
-          <input type="number" id="ini" class="form-control" placeholder= "Ingrese valor" name="contrato_inicial" onkeyup="sumar()" >
+          <input type="number" id="ini" class="form-control" placeholder= "Ingrese valor" name="contrato_inicial" onkeyup="sumar()" required="ingrese asi sea un cero">
         </div>
 
       </div>
