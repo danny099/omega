@@ -4,12 +4,12 @@
   <ol class="breadcrumb">
     <li><a href="{{ url('index') }}">Inicio</a></li>
     <li><a href="{{ url('clientes') }}">Cliente</a></li>
-    <li class="active">Editar Clientes</li>
+    <li class="active">Editar persona juridcia</li>
   </ol>
   <div class="container">
     <div class="box box-primary">
       <div class="box-header with-border">
-        <h3 class="box-title">Editar clientes</h3>
+        <h3 class="box-title">Editar persona juridica</h3>
       </div>
       @if(Session::has('message'))
         <div id="alert">
@@ -22,19 +22,24 @@
       @endif
       <!-- /.box-header -->
       <!-- form start -->
-        {!! Form::model($clientes, ['method' => 'PATCH', 'action' => ['ClienteController@update',$clientes->id]]) !!}
+        {!! Form::model($juridica, ['method' => 'PATCH', 'action' => ['JuridicaController@update',$juridica->id]]) !!}
         {{ csrf_field() }}
         <div class="box-body col-md-6">
           <br>
 
           <div class="form-group">
-            {!! Form::label('nombre', 'Nombre') !!}
-            {!! Form::text('nombre', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+            {!! Form::label('razon_social', 'Razon social') !!}
+            {!! Form::text('razon_social', null, ['class' => 'form-control' , 'required' => 'required']) !!}
           </div>
 
           <div class="form-group">
             {!! Form::label('nit', 'Nit') !!}
             {!! Form::number('nit', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+          </div>
+
+          <div class="form-group">
+            {!! Form::label('nombre_representante', 'Nombre representante') !!}
+            {!! Form::text('nombre_representante', null, ['class' => 'form-control' , 'required' => 'required']) !!}
           </div>
 
           <div class="form-group">
@@ -49,21 +54,21 @@
         <div class="box-body col-md-6">
           <br>
 
-          <div class="form-group">
-            {!! Form::label('telefono', 'Telefono') !!}
-            {!! Form::number('telefono', null, ['class' => 'form-control' , 'required' => 'required']) !!}
-          </div>
 
-          <div class="form-group">
-            {!! Form::label('direccion', 'Direccion') !!}
-            {!! Form::text('direccion', null, ['class' => 'form-control' , 'required' => 'required']) !!}
-          </div>
+            <div class="form-group">
+              {!! Form::label('direccion', 'Direccion') !!}
+              {!! Form::text('direccion', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+            </div>
 
-          <div class="form-group">
-            {!! Form::label('email', 'Email') !!}
-            {!! Form::email('email', null, ['class' => 'form-control' , 'required' => 'required']) !!}
-          </div>
+            <div class="form-group">
+              {!! Form::label('telefono', 'Telefono') !!}
+              {!! Form::number('telefono', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+            </div>
 
+            <div class="form-group">
+              {!! Form::label('email', 'Email') !!}
+              {!! Form::email('email', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+            </div>
 
         </div>
         <!-- /.box-body -->

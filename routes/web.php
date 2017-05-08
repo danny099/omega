@@ -62,9 +62,14 @@ Route::group(['middleware' => 'auth'],function(){
 
   /**************************************************************/
   /**************************************************************/
+	Route::resource('juridica','JuridicaController');
+	Route::get('deletejuridica/{id}','juridicaController@destroy');
+
+
+	/**************************************************************/
   Route::resource('administrativas','AdministrativaController');
   Route::get('deleteadminstrativa/{id}','AdministrativaController@destroy');
-	
+
 	Route::get('selectmuni','AdministrativaController@getMuni');
   /**************************************************************/
   /**************************************************************/

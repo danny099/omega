@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Cliente;
+use App\Juridica;
 use Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
@@ -17,8 +18,8 @@ class ClienteController extends Controller
     public function index()
     {
       $clientes=Cliente::all();
-
-      return view('clientes.index',compact('clientes'));
+      $juridicas=Juridica::all();
+      return view('clientes.index',compact('clientes','juridicas'));
     }
 
     /**

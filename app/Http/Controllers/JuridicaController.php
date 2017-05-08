@@ -1,13 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Juridica;
 use App\Cliente;
 use Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
 use Session;
 
-class ClienteController extends Controller
+class JuridicaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +17,10 @@ class ClienteController extends Controller
      */
     public function index()
     {
+      $juridicas=Juridica::all();
       $clientes=Cliente::all();
 
-      return view('clientes.index',compact('clientes'));
+      return view('clientes.index',compact('juridicas','clientes'));
     }
 
     /**
@@ -28,9 +30,9 @@ class ClienteController extends Controller
      */
     public function create()
     {
-      $clientes=Cliente::all();
+      $juridicas=Juridica::all();
 
-      return view('clientes.create',compact('clientes'));
+      return view('juridica.create',compact('juridicas'));
     }
 
     /**
@@ -43,38 +45,38 @@ class ClienteController extends Controller
     {
 
         $input = Request::all();
-
+        $input['razon_social'] =Request::input('razon_social');
         $input['nit'] =Request::input('nit');
+        $input['nombre_representante'] =Request::input('nombre_representante');
         $input['cedula'] =Request::input('cedula');
-        $input['nombre'] =Request::input('nombre');
-        $input['telefono'] =Request::input('telefono');
         $input['direccion'] = Request::input('direccion');
+        $input['telefono'] =Request::input('telefono');
         $input['email'] = Request::input('email');
 
 
-        $cedularepe = Cliente::where('cedula',Request::input('cedula'))->get();
-        $nitrepe = Cliente::where('nit',Request::input('nit'))->get();
-        $emailrepe = Cliente::where('email',Request::input('email'))->get();
+        $cedularepe = Juridica::where('cedula',Request::input('cedula'))->get();
+        $nitrepe = Juridica::where('nit',Request::input('nit'))->get();
+        $emailrepe = Juridica::where('email',Request::input('email'))->get();
     		if ($cedularepe->count() == 1) {
     			Session::flash('message', 'la cedula ya esta registrada!');
           Session::flash('class', 'danger');
-          return redirect()->route('clientes.create');
+          return redirect()->route('juridica.create');
     		}
         else if ($nitrepe->count() == 1) {
     			Session::flash('message', 'el nit ya esta registrado!');
           Session::flash('class', 'danger');
-          return redirect()->route('clientes.create');
+          return redirect()->route('juridica.create');
     		}
         else if ($emailrepe->count() == 1) {
           Session::flash('message', 'el email ya esta registrado!');
           Session::flash('class', 'danger');
-          return redirect()->route('clientes.create');
+          return redirect()->route('juridica.create');
         }
         else {
-          Cliente::create($input);
-          Session::flash('message', 'Cliente creado correctamente!');
+          Juridica::create($input);
+          Session::flash('message', 'Persona juridica creada correctamente!');
           Session::flash('class', 'success');
-          return redirect()->route('clientes.index');
+          return redirect()->route('juridica.index');
         }
 
 
@@ -99,9 +101,9 @@ class ClienteController extends Controller
      */
     public function edit($id)
     {
-      $clientes = Cliente::findOrFail($id);
+      $juridica = Juridica::findOrFail($id);
 
-      return view('clientes.edit',compact('clientes','roles'));
+      return view('juridica.edit',compact('juridica','roles'));
     }
 
     /**
@@ -113,12 +115,12 @@ class ClienteController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $cliente = Cliente::findOrFail($id);
+      $juridica = Juridica::findOrFail($id);
       $input = Request::all();
 
 
-        $cliente->update($input);
-        Session::flash('message', 'Cliente  editado!');
+        $juridica->update($input);
+        Session::flash('message', 'Persona juridica  editada!');
         Session::flash('class', 'success');
         return redirect()->route('clientes.index');
 
@@ -135,10 +137,10 @@ class ClienteController extends Controller
      */
     public function destroy($id)
     {
-      $cliente = Cliente::findOrFail($id);
-      Session::flash('message', 'Cliente eliminado');
+      $juridica = Juridica::findOrFail($id);
+      Session::flash('message', 'Persona juridica eliminada');
       Session::flash('class', 'danger');
-      $cliente->delete();
+      $juridica->delete();
       return redirect('clientes');
 
     }

@@ -61,6 +61,47 @@
 
               </tfoot>
             </table>
+
+            <table id="example2" class="table table-bordered table-striped">
+              <thead>
+              <tr>
+                <th>Razon social</th>
+                <th>Nit</th>
+                <th>Nombre representante</th>
+                <th>Cedula</th>
+                <th>Direccion</th>
+                <th>Telefono</th>
+                <th>Email</th>
+                <th>Aciones</th>
+              </tr>
+              </thead>
+
+                <tbody>
+                  @foreach($juridicas as $juridica)
+                <tr>
+                  <td>{{ $juridica->razon_social }}</td>
+                  <td>{{ $juridica->nit }}</td>
+                  <td>{{ $juridica->nombre_representante }}</td>
+                  <td>{{ $juridica->cedula }}</td>
+                  <td>{{ $juridica->direccion }}</td>
+                  <td>{{ $juridica->telefono }}</td>
+                  <td>{{ $juridica->email }}</td>
+                  <td>
+                    <a href="{{ route('juridica.edit', $juridica->id) }}"><i class="glyphicon glyphicon-pencil"></i></a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="{{ url('deletejuridica') }}/{{ $juridica->id }}" onClick="javascript: return confirm('Esta seguro de eliminar registro?');"><i class="glyphicon glyphicon-minus-sign"></i></a>
+                  </td>
+
+
+                </tr>
+
+                  @endforeach
+                </tbody>
+
+              <tfoot>
+
+              </tfoot>
+            </table>
             <!-- modal 1 -->
               <div class="modal fade" id="modal" role="dialog">
                 <div class="modal-dialog">
@@ -108,7 +149,7 @@
                   <div class="modal-content">
 
                     <div class="modal-body">
-                      
+                      @include('juridica.create')
                     </div>
                     <div class="modal-footer">
 
@@ -148,4 +189,9 @@
   });
 </script>
 
+<script>
+  $(function () {
+    $("#example2").DataTable();
+  });
+</script>
 @endsection

@@ -2,22 +2,27 @@
 <div class="container">
   <div class="">
     <div class="">
-      <h3 class="box-title">Crear persona natural</h3>
+      <h3 class="box-title">Crear persona juridica</h3>
     </div>
       <!-- /.box-header -->
       <!-- form start -->
-        {!! Form::open(['url' => 'clientes']) !!}
+        {!! Form::open(['url' => 'juridica']) !!}
         {{ csrf_field() }}
         <div class="box-body col-md-6">
 
           <div class="form-group">
-            {!! Form::label('nombre', 'Nombre') !!}
-            {!! Form::text('nombre', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+            {!! Form::label('razon_social', 'Razon social') !!}
+            {!! Form::text('razon_social', null, ['class' => 'form-control' , 'required' => 'required']) !!}
           </div>
 
           <div class="form-group">
             {!! Form::label('nit', 'Nit') !!}
             {!! Form::number('nit', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+          </div>
+
+          <div class="form-group">
+            {!! Form::label('nombre_representante', 'Nombre representante') !!}
+            {!! Form::text('nombre_representante', null, ['class' => 'form-control' , 'required' => 'required']) !!}
           </div>
 
           <div class="form-group">
