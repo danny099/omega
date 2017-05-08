@@ -13,6 +13,7 @@ use App\Pu_final;
 use App\Consignacion;
 use App\Cuenta_cobro;
 use App\Factura;
+use App\Valor_adicional;
 use Illuminate\Http\Request;
 use Session;
 use Illuminate\Support\Facades\Validator;
@@ -31,7 +32,6 @@ class AdministrativaController extends Controller
     {
       $administrativas = Administrativa::all();
       $clientes = Cliente::all();
-
       $otrosis = Otrosi::all();
       $distribuciones = Distribucion::all();
       $transformaciones = Transformacion::all();
@@ -91,7 +91,6 @@ class AdministrativaController extends Controller
        $administrativa['tipo_zona'] = $request->zona;
        $administrativa['valor_contrato_inicial'] = $request->contrato_inicial;
        $administrativa['valor_iva'] = $request->iva;
-       $administrativa['valor_adicional'] = $request->adicional;
        $administrativa['valor_contrato_final'] = $request->contrato_final;
        $administrativa['plan_pago'] = $request->plan_pago;
        $administrativa['resumen'] = $request->resumen;
@@ -107,10 +106,26 @@ class AdministrativaController extends Controller
        $lastId_admin = $admin->last()->id;
 
       //  codigo para insertar los otrosi que vienen desde un arreglo y recorrerlo para hacer el create
+
        foreach ($request->otrosi as $otro)
         {
           Otrosi::create(['valor'=>$otro,'administrativa_id'=>$lastId_admin]);
         }
+
+        for ($f=0; $f<$input['adicional']['detalle'][$f]; $f++) {
+
+            if (!empty($input['adicional']['valor'][$f]) && !empty($input['adicional']['detalle'][$f])){
+
+                $datos4['valor'] = $input['adicional']['valor'][$f];
+                $datos4['detalle'] = $input['adicional']['detalle'][$f];
+                $datos4['administrativa_id'] = $lastId_admin;
+                
+                Valor_adicional::create($datos4);
+
+            }
+
+        }
+
 
 
         for ($a=0; $a<count($input['transformacion']['descripcion']); $a++){
@@ -166,6 +181,9 @@ class AdministrativaController extends Controller
             }
         }
 
+
+        // dd($datos4);
+
         return redirect()->route('administrativas.index');
 
    }
@@ -211,17 +229,26 @@ class AdministrativaController extends Controller
    public function edit($id)
    {
       //  funcion que con el codigo capturado busca en la base de datos el registro a editar
-       $administrativas = Administrativa::findOrFail($id);
+      $administrativas = Administrativa::find($id);
+      // dd($administrativas);
+      // die();
+      $departamentos = Departamento::all();
+      $clientes =Cliente::all();
+      $juridicas = Juridica::all();
+      $muni_Id = Municipio::select('id')->where('id',$administrativas->municipio)->get();
+      $municipio = Municipio::find($muni_Id);
 
-      //  conjunto de funciones que cargan la informacion anexada y relacionada de otras tablas en la base de datos con el registro correspondiente
-       $clientes=Cliente::all();
-       $otrosis=Otrosi::all();
-       $distribuciones=Distribucion::all();
-       $transformaciones=Transformacion::all();
-       $pu_finales=Pu_final::all();
+      $otrosis = Otrosi::where('otrosi.administrativa_id', '=', $id)->get();
+
+      $transformaciones = Transformacion::where('transformacion.administrativa_id', '=', $id)->get();
+      $distribuciones = Distribucion::where('distribucion.administrativa_id', '=', $id)->get();
+      $pu_finales = Pu_final::where('pu_final.administrativa_id', '=', $id)->get();
+      $consignaciones = Consignacion::where('consignacion.administrativa_id', '=', $id)->get();
+      $cuenta_cobros = Cuenta_cobro::where('cuenta_cobro.administrativa_id', '=', $id)->get();
+      $facturas = Factura::where('factura.administrativa_id', '=', $id)->get();
 
       //  funcion que retorna una vista con todos los datos del registro ya buscado
-       return view('administrativas.edit',compact('administrativas','clientes','otrosis','distribuciones','transformaciones','pu_finales'));
+       return view('administrativas.edit',compact('administrativas','clientes','juridicas','otrosis','distribuciones','transformaciones','pu_finales','departamentos','municipio'));
    }
 
    /**
