@@ -15,12 +15,17 @@
             </div>
           </div>
         @endif
+
         <div class="col-md-12 well">
           <div class="box-body">
 
             <a href="#modal" class="btn btn-primary" data-toggle="modal" ><i class="fa fa-user-plus"></i> Crear Cliente</a>
             <br>
             <br>
+            <div class="box box-primary">
+              <div class="box-header with-border">
+                <center> <h3 class="box-title">Personas naturales</h3> </center>
+              </div>
             <table id="example1" class="table table-bordered table-striped">
               <thead>
               <tr>
@@ -61,7 +66,11 @@
 
               </tfoot>
             </table>
-
+          </div>
+            <div class="box box-primary">
+              <div class="box-header with-border">
+                <center> <h3 class="box-title">Personas juridicas</h3> </center>
+              </div>
             <table id="example2" class="table table-bordered table-striped">
               <thead>
               <tr>
@@ -102,6 +111,7 @@
 
               </tfoot>
             </table>
+          </div>
             <!-- modal 1 -->
               <div class="modal fade" id="modal" role="dialog">
                 <div class="modal-dialog">

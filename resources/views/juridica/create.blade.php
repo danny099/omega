@@ -5,7 +5,7 @@
     </div>
       <!-- /.box-header -->
       <!-- form start -->
-        {!! Form::open(['url' => 'clientes']) !!}
+        {!! Form::open(['url' => 'juridica']) !!}
         {{ csrf_field() }}
         <div class="box-body col-md-6">
 
@@ -27,6 +27,21 @@
           <div class="form-group">
             {!! Form::label('cedula', 'Cedula') !!}
             {!! Form::number('cedula', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+          </div>
+
+          <div class="form-group">
+            <label >Departamento</label>
+              <select class="form-control" name="departamento" id="departamento">
+                @foreach($departamentos as $departamento)
+                <option value="{{ $departamento->id }}">{{$departamento->nombre}}</option>
+                @endforeach
+              </select>
+          </div>
+          <div class="form-group">
+            <label >Municipios</label>
+              <select class="form-control" name="municipio" id="municipio">
+                <option value=""></option>
+              </select>
           </div>
 
           <div class="form-group">
@@ -56,3 +71,36 @@
       {!! Form::close() !!}
     </div>
   </div>
+
+  @section('scripts')
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $(document).on('change','#departamento',function(){
+
+          var dep_id = $(this).val();
+          var div = $(this).parents();
+          var op=" ";
+          $.ajax({
+            type:'get',
+            url:'{{ url('selectmuni')}}',
+            data:{'id':dep_id},
+            success:function(data){
+              console.log(data);
+              op+='<option value="0" selected disabled>Seleccione</option>';
+
+              for (var i = 0; i < data.length; i++) {
+                op+='<option value="' +data[i].id+ '">' +data[i].nombre+ '</option>'
+              }
+
+              div.find('#municipio').html(" ");
+              div.find('#municipio').append(op);
+
+            },
+            error:function(){
+
+            }
+          });
+        });
+      });
+    </script>
+  @endsection

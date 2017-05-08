@@ -8,7 +8,7 @@ class Juridica extends Model
 {
   protected $table = 'juridica';
 
-  protected $fillable = ['id','razon_social','nit','nombre_representante','cedula','direccion','telefono','email'];
+  protected $fillable = ['id','razon_social','nit','nombre_representante','cedula','direccion','telefono','email','departamento_id','municipio'];
 
   public $timestamps = false;
 

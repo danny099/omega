@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 use App\Juridica;
 use App\Cliente;
-use Request;
+use App\Departamento;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Http\Request;
 use Session;
 
 class JuridicaController extends Controller
@@ -31,8 +32,8 @@ class JuridicaController extends Controller
     public function create()
     {
       $juridicas=Juridica::all();
-
-      return view('juridica.create',compact('juridicas'));
+      $departamentos = Departamento::all();
+      return view('juridica.create',compact('juridicas','departamentos'));
     }
 
     /**
@@ -44,39 +45,41 @@ class JuridicaController extends Controller
     public function store(Request $request)
     {
 
-        $input = Request::all();
-        $input['razon_social'] =Request::input('razon_social');
-        $input['nit'] =Request::input('nit');
-        $input['nombre_representante'] =Request::input('nombre_representante');
-        $input['cedula'] =Request::input('cedula');
-        $input['direccion'] = Request::input('direccion');
-        $input['telefono'] =Request::input('telefono');
-        $input['email'] = Request::input('email');
 
+        $cliente = $request->all();
+        $cliente['razon_social'] =$request->razon;
+        $cliente['nit'] =$request->nit;
+        $cliente['nombre_representante'] =$request->nombre;
+        $cliente['cedula'] =$request->cedula;
+        $cliente['direccion'] = $request->direccion;
+        $cliente['telefono'] =$request->telefono;
+        $cliente['email'] = $request->email;
+        $cliente['departamento_id'] = $request->departamento;
+        $cliente['municipio'] = $request->municipio;
 
-        $cedularepe = Juridica::where('cedula',Request::input('cedula'))->get();
-        $nitrepe = Juridica::where('nit',Request::input('nit'))->get();
-        $emailrepe = Juridica::where('email',Request::input('email'))->get();
+        $cedularepe = Cliente::where('cedula',$request->cedula)->get();
+        $nitrepe = Cliente::where('nit',$request->nit)->get();
+        $emailrepe = Cliente::where('email',$request->email)->get();
     		if ($cedularepe->count() == 1) {
     			Session::flash('message', 'la cedula ya esta registrada!');
           Session::flash('class', 'danger');
-          return redirect()->route('juridica.create');
+          return redirect()->route('clientes.index');
     		}
         else if ($nitrepe->count() == 1) {
     			Session::flash('message', 'el nit ya esta registrado!');
           Session::flash('class', 'danger');
-          return redirect()->route('juridica.create');
+          return redirect()->route('clientes.index');
     		}
         else if ($emailrepe->count() == 1) {
           Session::flash('message', 'el email ya esta registrado!');
           Session::flash('class', 'danger');
-          return redirect()->route('juridica.create');
+          return redirect()->route('clientes.index');
         }
         else {
-          Juridica::create($input);
+          Juridica::create($cliente);
           Session::flash('message', 'Persona juridica creada correctamente!');
           Session::flash('class', 'success');
-          return redirect()->route('juridica.index');
+          return redirect()->route('clientes.index');
         }
 
 

@@ -42,8 +42,7 @@
             {!! Form::number('cedula', null, ['class' => 'form-control' , 'required' => 'required']) !!}
           </div>
 
-
-
+    
 
         </div>
         <div class="box-body col-md-6">
