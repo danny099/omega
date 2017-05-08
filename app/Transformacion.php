@@ -13,7 +13,7 @@ class Transformacion extends Model
   public $timestamps = false;
 
     public function administrativa(){
-      return $this->hasMany('App\Transformacion');
+      return $this->hasMany('App\Administrativa');
     }
 
 }

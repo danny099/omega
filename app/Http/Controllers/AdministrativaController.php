@@ -10,6 +10,9 @@ use App\Departamento;
 use App\Municipio;
 use App\Transformacion;
 use App\Pu_final;
+use App\Consignacion;
+use App\Cuenta_cobro;
+use App\Factura;
 use Illuminate\Http\Request;
 use Session;
 use Illuminate\Support\Facades\Validator;
@@ -177,10 +180,23 @@ class AdministrativaController extends Controller
    {
       //  funcion que permite acceder al modelo y este a su ves ir a la base de datos y encontrar un registro
        $administrativa = Administrativa::find($id);
-      //  dd($administrativa);
+
+       $muni_Id = Municipio::select('id')->where('id',$administrativa->municipio)->get();
+       $municipio = Municipio::find($muni_Id);
+
+       $otrosis = Otrosi::where('otrosi.administrativa_id', '=', $id)->get();
+
+       $transformaciones = Transformacion::where('transformacion.administrativa_id', '=', $id)->get();
+       $distribuciones = Distribucion::where('distribucion.administrativa_id', '=', $id)->get();
+       $pu_finales = Pu_final::where('pu_final.administrativa_id', '=', $id)->get();
+       $consignaciones = Consignacion::where('consignacion.administrativa_id', '=', $id)->get();
+       $cuenta_cobros = Cuenta_cobro::where('cuenta_cobro.administrativa_id', '=', $id)->get();
+       $facturas = Factura::where('factura.administrativa_id', '=', $id)->get();
+
+      //  dd($transformaciones);
       //  die();
       //  funcion que permite retornar una vista con los datos ya buscados
-       return view('administrativas.show',compact('administrativa','data'));
+       return view('administrativas.show',compact('administrativa','municipio','otrosis','transformaciones','distribuciones','pu_finales','consignaciones','cuenta_cobros','facturas'));
    }
 
    /**
@@ -261,16 +277,21 @@ class AdministrativaController extends Controller
    {
        //  funcion que permite encontrar o identificar un registro y almacenarlas en una variable
        $administrativas = Administrativa::findOrFail($id);
-       $otrosis = Otrosi::findOrFail($id);
+
+       $otrosi_id = Otrosi::select('id')->where('otrosi.administrativa_id',$administrativas->id)->get();
+       $otrosis = Otrosi::findOrFail($otrosi_id);
        $otrosis->delete();
 
-       $transformacion = Transformacion::findOrFail($id);
+       $transfor_id = Transformacion::select('id')->where('transformacion.administrativa_id',$administrativas->id)->get();
+       $transformacion = Transformacion::findOrFail($transfor_id);
        $transformacion->delete();
 
-       $distribucion = Distribucion::findOrFail($id);
+       $distri_id = Distribucion::select('id')->where('distribucion.administrativa_id',$administrativas->id)->get();
+       $distribucion = Distribucion::findOrFail($distri_id);
        $distribucion->delete();
 
-       $pu_final = Pu_final::findOrFail($id);
+       $puf_id = Pu_final::select('id')->where('pu_final.administrativa_id',$administrativas->id)->get();
+       $pu_final = Pu_final::findOrFail($puf_id);
        $pu_final->delete();
        //  funcion que permite eliminar un registro que se encontro y se almaceno en esa variable
        $administrativas->delete();

@@ -41,15 +41,15 @@ class Administrativa extends Model
   }
 
   public function factura(){
-    return $this->hasMany('App\Factura');
+    return $this->belongsTo('App\Factura');
   }
 
   public function cuenta_cobro(){
-    return $this->hasMany('App\Cuenta_cobro');
+    return $this->belongsTo('App\Cuenta_cobro');
   }
 
   public function consignacion(){
-    return $this->hasMany('App\Consignacion');
+    return $this->belongsTo('App\Consignacion');
   }
 
   /**

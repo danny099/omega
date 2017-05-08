@@ -13,6 +13,6 @@ class Distribucion extends Model
   public $timestamps = false;
 
     public function administrativa(){
-      return $this->hasMany('App\Distribucion');
+      return $this->hasMany('App\Administrativa');
     }
 }
