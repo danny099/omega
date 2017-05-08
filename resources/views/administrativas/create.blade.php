@@ -47,6 +47,9 @@
             @foreach($clientes as $cliente)
             <option value="{{ $cliente->id }}">{{$cliente->nombre}}</option>
             @endforeach
+            @foreach($juridicas as $juridica)
+            <option value="{{ $juridica->id }}">{{$juridica->razon_social}}</option>
+            @endforeach
           </select>
         </div>
 

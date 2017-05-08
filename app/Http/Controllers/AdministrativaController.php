@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Administrativa;
 use App\Cliente;
+use App\Juridica;
 use App\Otrosi;
 use App\Distribucion;
 use App\Departamento;
@@ -27,6 +28,7 @@ class AdministrativaController extends Controller
     {
       $administrativas = Administrativa::all();
       $clientes = Cliente::all();
+
       $otrosis = Otrosi::all();
       $distribuciones = Distribucion::all();
       $transformaciones = Transformacion::all();
@@ -46,12 +48,13 @@ class AdministrativaController extends Controller
      public function create()
      {
        $clientes=Cliente::all();
+       $juridicas = Juridica::all();
        $otrosis=Otrosi::all();
        $distribuciones=Distribucion::all();
        $transformaciones=Transformacion::all();
        $pu_finales=Pu_final::all();
        $departamentos = Departamento::all();
-       return view('administrativas.create',compact('clientes','otrosis','distribuciones','transformaciones','pu_finales','departamentos'));
+       return view('administrativas.create',compact('clientes','otrosis','distribuciones','transformaciones','pu_finales','departamentos','juridicas'));
      }
 
     //  metodo que permite capturar el Request mediante una ruta ajax para llenar un select dinamico dependiente
