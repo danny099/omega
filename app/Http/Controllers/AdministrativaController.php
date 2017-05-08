@@ -112,18 +112,16 @@ class AdministrativaController extends Controller
           Otrosi::create(['valor'=>$otro,'administrativa_id'=>$lastId_admin]);
         }
 
-        for ($f=0; $f<$input['adicional']['detalle'][$f]; $f++) {
+        for ($f=0; $f<count($input['adicional']['detalle']); $f++) {
 
             if (!empty($input['adicional']['valor'][$f]) && !empty($input['adicional']['detalle'][$f])){
 
-                $datos4['valor'] = $input['adicional']['valor'][$f];
-                $datos4['detalle'] = $input['adicional']['detalle'][$f];
-                $datos4['administrativa_id'] = $lastId_admin;
-                
-                Valor_adicional::create($datos4);
+                  $datos4['valor'] = $input['adicional']['valor'][$f];
+                  $datos4['detalle'] = $input['adicional']['detalle'][$f];
+                  $datos4['administrativa_id'] = $lastId_admin;
 
+                  Valor_adicional::create($datos4);
             }
-
         }
 
 
@@ -154,13 +152,13 @@ class AdministrativaController extends Controller
                 !empty($input['distribucion']['unidad_distribucion'][$x]) &&
                 !empty($input['distribucion']['cantidad_dis'][$x])){
 
-              $datos2['descripcion'] = $input['distribucion']['descripcion_dis'][$x];
-              $datos2['tipo'] = $input['distribucion']['tipo_dis'][$x];
-              $datos2['unidad'] = $input['distribucion']['unidad_distribucion'][$x];
-              $datos2['cantidad'] = $input['distribucion']['cantidad_dis'][$x];
-              $datos2['administrativa_id'] = $lastId_admin;
+                  $datos2['descripcion'] = $input['distribucion']['descripcion_dis'][$x];
+                  $datos2['tipo'] = $input['distribucion']['tipo_dis'][$x];
+                  $datos2['unidad'] = $input['distribucion']['unidad_distribucion'][$x];
+                  $datos2['cantidad'] = $input['distribucion']['cantidad_dis'][$x];
+                  $datos2['administrativa_id'] = $lastId_admin;
 
-              Distribucion::create($datos2);
+                  Distribucion::create($datos2);
             }
 
         }
@@ -235,11 +233,12 @@ class AdministrativaController extends Controller
       $departamentos = Departamento::all();
       $clientes =Cliente::all();
       $juridicas = Juridica::all();
+
       $muni_Id = Municipio::select('id')->where('id',$administrativas->municipio)->get();
       $municipio = Municipio::find($muni_Id);
 
+      $adicionales = Valor_adicional::where('valor_adicional.administrativa_id', '=', $id)->get();
       $otrosis = Otrosi::where('otrosi.administrativa_id', '=', $id)->get();
-
       $transformaciones = Transformacion::where('transformacion.administrativa_id', '=', $id)->get();
       $distribuciones = Distribucion::where('distribucion.administrativa_id', '=', $id)->get();
       $pu_finales = Pu_final::where('pu_final.administrativa_id', '=', $id)->get();
@@ -248,7 +247,7 @@ class AdministrativaController extends Controller
       $facturas = Factura::where('factura.administrativa_id', '=', $id)->get();
 
       //  funcion que retorna una vista con todos los datos del registro ya buscado
-       return view('administrativas.edit',compact('administrativas','clientes','juridicas','otrosis','distribuciones','transformaciones','pu_finales','departamentos','municipio'));
+       return view('administrativas.edit',compact('administrativas','clientes','juridicas','otrosis','distribuciones','transformaciones','pu_finales','departamentos','municipio','adicionales'));
    }
 
    /**

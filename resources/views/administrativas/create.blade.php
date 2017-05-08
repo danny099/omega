@@ -334,29 +334,6 @@
       <div class="box-footer">
         <button type="submit" data-target="" data-toggle="  " class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;">Agregar</button>
       </div>
-
-
-      <div class="modal fade" id="pagos" tabindex="-1" role="dialog">
-          <div class="modal-dialog" role="document">
-          <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span></button>
-              </div>
-              <div class="modal-body">
-
-                <h1>¿Desea hacer un pago?</h1>
-
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-primary pull-right" onclick="pregunta()" data-dismiss="modal">Cerrar</button>
-              </div>
-            </div>
-
-          </div>
-          <!-- /.modal-content -->
-
-        </div>
     </form>
   </div>
 </div>
@@ -435,7 +412,7 @@
         var count = 1;
        $(document).on("click","#btnadd5",function( event ) {
         count++;
-        $('#tblprod5').after('<div class="col-md-11" id="quitar15"> <label>Valor adicional</label> <input type="number" class="form-control" id="adicional[valor][]" placeholder= "Ingrese valor" name="adicional[valor][]"  onkeyup="sumar()" > <label >detalle valor adicional</label><input type="text" class="form-control" id="adicional[detalle][]" placeholder= "Ingrese detalle" name="adicional[detalle][]" ></div><div class="col-md-1" id="quitar16"><a class="btn btn-warning delete5" id="btnadd[]" data-toggle="modal" href="#" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-minus"></i></a></div>');
+        $('#tblprod5').after('<div class="col-md-11" id="quitar15"> <label>Valor adicional</label> <input type="number" class="form-control" id="adicional[valor][]" placeholder= "Ingrese valor" name="adicional[valor][]"  onkeyup="sumar()" > <label >detalle valor adicional</label><input type="text" class="form-control" id="adicional[detalle][]" placeholder= "Ingrese detalle" name="adicional[detalle][]"></div><div class="col-md-1" id="quitar16"><a class="btn btn-warning delete5" id="btnadd[]" data-toggle="modal" href="#" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-minus"></i></a></div>');
           event.preventDefault();
        });
        $(document).on("click",".delete5",function( event ) {
