@@ -94,6 +94,7 @@ class AdministrativaController extends Controller
        $administrativa['valor_contrato_final'] = $request->contrato_final;
        $administrativa['plan_pago'] = $request->plan_pago;
        $administrativa['resumen'] = $request->resumen;
+       $administrativa['saldo'] =  $administrativa['valor_contrato_final'];
 
       //  funcion para crear el registro en la base datos con los campos traidos del formulario para el area de administrativa
        Administrativa::create($administrativa);

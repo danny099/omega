@@ -36,10 +36,23 @@ class FacturaController extends Controller
      */
     public function store(Request $request)
     {
-      $input = $request->all();
-      // dd($input);
-      // die();
-      Factura::create($input);
+      $input = $request->all(); //funcion para sacar todos los valores almacenados en los input
+
+      Factura::create($input); //funcion para crear el registro
+
+      $facturas = Factura::all();//funcion para recuperar todos los registros en la base de datos
+
+      $lastId_factura = $facturas->last()->id;//funcion que consigue capturar el ultimo registro y sacar el id de este mismo
+
+      $factura = Factura::find($lastId_cobro);//funcion que permite encontrar un registro mediante un id
+
+      $administrativa = Administrativa::find($factura->administrativa_id);//funcion que hace una consulta a una tabla relacionada en la base de datos y saca un registro mediante un id
+
+      $nuevo_saldo = $administrativa->saldo - $factura->valor;//linea donde se restan los valores almacenados en variables
+
+      $administrativa->saldo = $nuevo_saldo;//asignacion de una variable a actualizar
+      $administrativa->save();
+
       return redirect()->route('administrativas.index');
     }
 
