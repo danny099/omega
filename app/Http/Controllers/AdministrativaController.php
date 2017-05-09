@@ -211,11 +211,12 @@ class AdministrativaController extends Controller
        $consignaciones = Consignacion::where('consignacion.administrativa_id', '=', $id)->get();
        $cuenta_cobros = Cuenta_cobro::where('cuenta_cobro.administrativa_id', '=', $id)->get();
        $facturas = Factura::where('factura.administrativa_id', '=', $id)->get();
+       $juridicas = Juridica::select('razon_social')->where('id',$administrativa->juridica_id)->get();
 
       //  dd($transformaciones);
       //  die();
       //  funcion que permite retornar una vista con los datos ya buscados
-       return view('administrativas.show',compact('administrativa','municipio','otrosis','transformaciones','distribuciones','pu_finales','consignaciones','cuenta_cobros','facturas','adicionales'));
+       return view('administrativas.show',compact('administrativa','municipio','otrosis','transformaciones','distribuciones','pu_finales','consignaciones','cuenta_cobros','facturas','adicionales','juridicas'));
    }
 
    /**
@@ -276,7 +277,7 @@ class AdministrativaController extends Controller
        //  funcion que permite capturar todos los datos en una variable tipo array
        $input = $request->all();
 
-       
+
 
 
        //  condicional que permite saber si el codigo de proyecto que se envio es igual a uno ya exitente cumpla con la condicion de no permitir actualizar el codigo por uno ya existent

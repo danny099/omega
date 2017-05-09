@@ -102,8 +102,10 @@
 
     <div class="col-md-3">
       <div class="form-group">
-        @if(count($administrativa->cliente->nombre) == 0)
-          <span>{{ $administrativa->juridica->razon_social }}</span>
+        @if(empty($administrativa->cliente_id))
+        @foreach($juridicas as $juridica)
+          <span>{{ $juridica->razon_social }}</span>
+        @endforeach
         @else
         <span>{{ $administrativa->cliente->nombre }}</span>
         @endif
