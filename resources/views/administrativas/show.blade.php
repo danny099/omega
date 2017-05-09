@@ -102,7 +102,11 @@
 
     <div class="col-md-3">
       <div class="form-group">
+        @if(count($administrativa->cliente->nombre) == 0)
+          <span>{{ $administrativa->juridica->razon_social }}</span>
+        @else
         <span>{{ $administrativa->cliente->nombre }}</span>
+        @endif
       </div>
     </div>
 
@@ -221,6 +225,32 @@
   <div class="col-md-3">
     <div class="form-group">
       <span>{{ $administrativa->valor_contrato_final }}</span>
+    </div>
+  </div>
+  </div>
+
+  <div class="col-md-12">
+    <div class="col-md-3">
+      <div class="form-group">
+
+      </div>
+    </div>
+
+  <div class="col-md-3">
+    <div class="form-group">
+
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="form-group">
+      <label >Saldo</label>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="form-group">
+      <span>{{ $administrativa->saldo }}</span>
     </div>
   </div>
   </div>

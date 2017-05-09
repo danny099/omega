@@ -29,7 +29,6 @@
                     <td>{{$administrativa->codigo_proyecto}}</td>
                     <td>{{$administrativa->nombre_proyecto}}</td>
                     <td>{{$administrativa->fecha_contrato}}</td>
-
                     <td>{{$administrativa->valor_contrato_final}}</td>
                     <td>
                         <a href="{{ route('administrativas.edit', $administrativa->id) }}"><i class="glyphicon glyphicon-pencil"></i></a>
