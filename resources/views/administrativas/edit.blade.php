@@ -45,7 +45,7 @@
           <label >Tipo cliente</label>
           <select class="form-control" name="cliente_id" id="cliente" required="">
             <option value="">Seleccione</option>
-            <option value="1">Persona narural</option>
+            <option value="1">Persona natural</option>
             <option value="2">Persona juridica</option>
           </select>
         </div>
@@ -53,6 +53,7 @@
         <div class="form-group" style="Display:none" id="natural">
           <label >Persona natural</label>
           <select class="form-control select2" name="cliente_id" style="width: 100%" id="select-natural">
+            <option value="">Seleccione</option>
             @foreach($clientes as $cliente)
             <option value="{{ $cliente->id }}">{{$cliente->nombre}}</option>
             @endforeach
@@ -61,6 +62,7 @@
         <div class="form-group" style="Display:none" id="juridica">
           <label >Persona juridica</label>
           <select class="form-control" name="juridica_id" >
+            <option value="">Seleccione</option>
             @foreach($juridicas as $juridica)
             <option value="{{ $juridica->id }}">{{$juridica->razon_social}}</option>
             @endforeach
@@ -92,7 +94,8 @@
           <label >Tipo de zona</label>
           <select class="form-control" name="zona">
             <option value="{{ $administrativas->tipo_zona }}">{{ $administrativas->tipo_zona }}</option>
-            <option value=""></option>
+            <option value="Urbana">Urbana</option>
+            <option value="Rural">Rural</option>
           </select>
         </div>
         <div class="form-group">
