@@ -14,92 +14,242 @@
   <!-- /.box-header -->
   <!-- form start -->
     <div class="box-body">
-      <div class="col-md-4">
-        <div class="form-group">
-          <label >Codigo del proyecto:</label>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <span>{{ $administrativa->codigo_proyecto }}</span>
+      <div class="col-md-12">
+        <div class="col-md-3">
+          <div class="form-group">
+            <label >Codigo del proyecto:</label>
+          </div>
         </div>
+
+        <div class="col-md-3">
+          <div class="form-group">
+            <span>{{ $administrativa->codigo_proyecto }}</span>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="form-group">
+            <label >Municipio:</label>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="form-group">
+            <span>{{ $municipio->nombre }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <div class="col-md-3">
+          <div class="form-group">
+            <label >nombre del proyecto</label>
+          </div>
+        </div>
+
+      <div class="col-md-3">
         <div class="form-group">
-          <label >nombre del proyecto</label>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <span>{{ $administrativa->nombre_proyecto}}</span>
         </div>
-        <div class="form-group">
-          <label >Fecha del contrato:</label>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <span>{{ $administrativa->fecha_contrato }}</span>
-        </div>
-        <div class="form-group">
-          <label >Cliente:</label>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <span>{{ $administrativa->cliente->nombre }}</span>
-        </div>
-
       </div>
 
-      <div class="col-md-4">
-
+      <div class="col-md-3">
         <div class="form-group">
           <label >Departamento:</label>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="form-group">
           <span>{{ $administrativa->departamento->nombre }}</span>
         </div>
-        <div class="form-group">
-          <label >Municipios:</label>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <span>{{ $municipio->nombre }}</span>
-        </div>
-        <div class="form-group">
-          <label >Tipo de zona:</label>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <span>{{ $administrativa->tipo_zona }}</span>
-        </div>
-        <div class="form-group">
-          <label >Valor antes del iva</label>
-        </div>
+      </div>
+    </div>
 
+    <div class="col-md-12">
+      <div class="col-md-3">
+        <div class="form-group">
+          <label >Fecha del contrato:</label>
+        </div>
       </div>
 
-      <div class="col-md-4">
-
-        <div class="form-group">
-          <label >Valor iva</label>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <span>{{ $administrativa->valor_iva }}</span>
-        </div>
-
-        <div class="form-group ">
-          <div class="col-md-11" >
-            <label >Valor adicional</label>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <span>{{ $administrativa->valor_iva }}</span>
-          </div>
-        <label >Otro si</label>
-        <div class="form-group ">
-          <div class="col-md-11" >
-          </div>
-          @foreach($otrosis as $otrosi)
-          <span> {{ $otrosi->valor }}</span><br>
-          @endforeach
-          <div class="form-group">
-            <br>
-            <br>
-            <label >Valor contrato final</label>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <span>{{ $administrativa->valor_contrato_final }}</span>
-          </div>
-
-          <div class="form-group">
-            <label >Plan de pago</label>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <span>{{ $administrativa->plan_pago }}</span>
-          </div>
-        </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <span>{{ $administrativa->fecha_contrato }}</span>
       </div>
-      <hr>
+    </div>
 
+    <div class="col-md-3">
+      <div class="form-group">
+        <label >Tipo de zona:</label>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="form-group">
+        <span>{{ $administrativa->tipo_zona }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-12">
+    <div class="col-md-3">
+      <div class="form-group">
+        <label >Cliente:</label>
+      </div>
+    </div>
+
+  <div class="col-md-3">
+    <div class="form-group">
+      <span>{{ $administrativa->cliente->nombre }}</span>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="form-group">
+      <label >Valor antes del iva</label>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="form-group">
+      <span>{{ $administrativa->valor_contrato_inicial }}</span>
+    </div>
+  </div>
 </div>
+
+<div class="col-md-12">
+  <div class="col-md-3">
+    <div class="form-group">
+
+    </div>
+  </div>
+
+<div class="col-md-3">
+  <div class="form-group">
+
+  </div>
+</div>
+
+<div class="col-md-3">
+  <div class="form-group">
+      <label >Valor iva</label>
+  </div>
+</div>
+
+<div class="col-md-3">
+  <div class="form-group">
+    <span>{{ $administrativa->valor_iva }}</span>
+</div>
+</div>
+
+<div class="col-md-12">
+  <div class="col-md-3">
+    <div class="form-group">
+
+    </div>
+  </div>
+
+<div class="col-md-3">
+  <div class="form-group">
+
+  </div>
+</div>
+
+<div class="col-md-3">
+  <div class="form-group">
+    <label >Valor adicional</label>
+  </div>
+</div>
+  <span>{{ $administrativa->valor_iva }}</span>
+<div class="col-md-3">
+  <div class="form-group">
+
+
+  </div>
+</div>
+</div>
+
+<div class="col-md-12">
+  <div class="col-md-3">
+    <div class="form-group">
+
+    </div>
+  </div>
+
+<div class="col-md-3">
+  <div class="form-group">
+
+  </div>
+</div>
+
+<div class="col-md-3">
+  <div class="form-group">
+    <label >Otro si</label>
+  </div>
+</div>
+
+<div class="col-md-3">
+  <div class="form-group">
+    @foreach($otrosis as $otrosi)
+    <span> {{ $otrosi->valor }}</span><br>
+    @endforeach
+  </div>
+</div>
+</div>
+
+<div class="col-md-12">
+  <div class="col-md-3">
+    <div class="form-group">
+
+    </div>
+  </div>
+
+<div class="col-md-3">
+  <div class="form-group">
+
+  </div>
+</div>
+
+<div class="col-md-3">
+  <div class="form-group">
+    <label >Valor contrato final</label>
+  </div>
+</div>
+
+<div class="col-md-3">
+  <div class="form-group">
+    <span>{{ $administrativa->valor_contrato_final }}</span>
+  </div>
+</div>
+</div>
+
+<div class="col-md-12">
+  <div class="col-md-3">
+    <div class="form-group">
+
+    </div>
+  </div>
+
+<div class="col-md-3">
+  <div class="form-group">
+
+  </div>
+</div>
+
+<div class="col-md-3">
+  <div class="form-group">
+    <label >Plan de pago</label>
+  </div>
+</div>
+
+<div class="col-md-3">
+  <div class="form-group">
+    <span>{{ $administrativa->plan_pago }}</span>
+  </div>
+</div>
+</div>
+
 </div>
 
 
@@ -109,138 +259,160 @@
   </div>
     <div class="box-body">
         <div class="col-md-12">
-          @foreach($transformaciones as $transformacion)
-          <div class="col-md-3">
+
+
+        <div class="col-md-12">
+          <div class="col-md-8">
             <div class="form-group">
-            <label >Descripcion</label>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <span>{{ $transformacion->descripcion }}</span>
+            <center><label >Descripcion</label></center>
             </div>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-2">
             <div class="form-group">
-            <label >Tipo</label>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <span>{{ $transformacion->tipo }}</span>
+              <label>Unidad</label>
             </div>
           </div>
 
-          <div class="col-md-3">
+          <div class="col-md-2">
             <div class="form-group">
-            <label >Capacidad</label>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <span>{{ $transformacion->capacidad }}</span>
+              <label >Cantidad</label>
             </div>
           </div>
-          <div class="col-md-1">
+        </div>
+          @foreach($transformaciones as $transformacion)
+        <div class="col-md-12">
+          <div class="col-md-8">
+            <center><div class="form-group">
+              <span>{{ $transformacion->descripcion }}</span>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <span>{{ $transformacion->tipo }}</span>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <span>{{ $transformacion->capacidad }}</span>
+            </div>
+          </div></center>
+
+          <div class="col-md-2">
             <div class="form-group">
-            <label>Unidad</label>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <span>{{ $transformacion->unidad }}</span>
+              <span>{{ $transformacion->unidad }}</span>
             </div>
           </div>
-          <div class="col-md-1">
+
+          <div class="col-md-2">
             <div class="form-group">
-            <label >Cantidad</label>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <span>{{ $transformacion->cantidad }}</span>
+              <span>{{ $transformacion->cantidad }}</span>
             </div>
           </div>
+        </div>
           @endforeach
         </div>
-<br>
-<br>
-<br>
-<br>
-      <div class="">
+
+        <div class="">
+          <div class="col-md-12">
+            <center><h4 class="box-title">Alcance: proceso de distribucion</h4></center>
+          </div>
         <div class="col-md-12">
-          <center><h4 class="box-title">Alcance: proceso de distribucion</h4></center>
+
+        <div class="col-md-12">
+          <div class="col-md-8">
+            <div class="form-group">
+            <center><label >Descripcion</label></center>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="form-group">
+              <label>Unidad</label>
+            </div>
+          </div>
+
+          <div class="col-md-2">
+            <div class="form-group">
+              <label >Cantidad</label>
+            </div>
+          </div>
         </div>
         @foreach($distribuciones as $distribucion)
-        <div class="col-md-3">
-          <div class="form-group">
-          <label >Descripcion</label>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <span>{{ $distribucion->descripcion }}</span>
+        <div class="col-md-12">
+          <div class="col-md-8">
+            <center><div class="form-group">
+              <span>{{ $distribucion->descripcion }}</span>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <span>{{ $distribucion->tipo }}</span>
+
+            </div>
+          </div></center>
+
+          <div class="col-md-2">
+            <div class="form-group">
+              <span>{{ $distribucion->unidad }}</span>
+            </div>
+          </div>
+
+          <div class="col-md-2">
+            <div class="form-group">
+              <span>{{ $distribucion->cantidad }}</span>
+            </div>
           </div>
         </div>
 
-        <div class="col-md-3">
-          <div class="form-group">
-          <label >Tipo</label>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <span>{{ $distribucion->tipo }}</span>
-          </div>
-        </div>
-
-        <div class="col-md-2">
-          <div class="form-group">
-          <label >Unidad</label>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <span>{{ $distribucion->unidad }}</span>
-          </div>
-        </div>
-
-        <div class="col-md-2">
-          <div class="form-group">
-          <label >Cantidad</label>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <span>{{ $distribucion->cantidad }}</span>
-          </div>
-        </div>
         @endforeach
       </div>
-      <br>
-      <br>
-      <br>
-      <br>
+
       <div class="">
         <div class="col-md-12">
           <center><h4 class="box-title">Alcance: proceso de uso final</h4></center>
         </div>
-        @foreach($pu_finales as $pu_final)
-        <div class="col-md-3">
+      <div class="col-md-12">
+        <div class="col-md-8">
           <div class="form-group">
-          <label >Descripcion</label>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <span>{{ $pu_final->descripcion }}</span>
+          <center><label >Descripcion</label></center>
           </div>
         </div>
-
-        <div class="col-md-3">
+        <div class="col-md-2">
           <div class="form-group">
-          <label >Tipo</label>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <span>{{ $pu_final->tipo }}</span>
+            <label>Unidad</label>
           </div>
         </div>
 
         <div class="col-md-2">
           <div class="form-group">
-          <label >Unidad</label>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <span>{{ $pu_final->unidad }}</span>
+            <label >Cantidad</label>
+          </div>
+        </div>
+      </div>
+      @foreach($pu_finales as $pu_final)
+      <div class="col-md-12">
+        <div class="col-md-8">
+          <center><div class="form-group">
+            <span>{{ $pu_final->descripcion }}</span>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <span>{{ $pu_final->tipo }}</span>
+
+          </div>
+        </div></center>
+
+        <div class="col-md-2">
+          <div class="form-group">
+            <span>{{ $pu_final->unidad }}</span>
           </div>
         </div>
 
         <div class="col-md-2">
           <div class="form-group">
-          <label >Cantidad</label>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <span>{{ $pu_final->cantidad }}</span>
+            <span>{{ $pu_final->cantidad }}</span>
           </div>
         </div>
-        @endforeach
       </div>
 
+      @endforeach
+    </div>
 
-      <div class="col-md-12">
+      <center><div class="col-md-12">
        <h4 class="box-title">Observaciones de estado administrativo del proyecto:</h4>
       </div>
 
       <div class="col-md-12">
         <span>{{ $administrativa->resumen }}</span>
-      </div>
+      </div></center>
     </div>
       <div class="box-footer">
       </div>
