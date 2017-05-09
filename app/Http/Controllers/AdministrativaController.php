@@ -349,9 +349,6 @@ class AdministrativaController extends Controller
       $administrativa->delete();
       // dd($id);
       // die();
-
-
-
        //  redireccionamiento a una vista
        Session::flash('message', 'Proyecto eliminado eliminado');
        Session::flash('class', 'danger');
