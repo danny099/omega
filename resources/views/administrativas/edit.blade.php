@@ -91,7 +91,8 @@
         <div class="form-group">
           <label >Tipo de zona</label>
           <select class="form-control" name="zona">
-            <option value="">{{ $administrativas->tipo_zona }}</option>
+            <option value="{{ $administrativas->tipo_zona }}">{{ $administrativas->tipo_zona }}</option>
+            <option value=""></option>
           </select>
         </div>
         <div class="form-group">

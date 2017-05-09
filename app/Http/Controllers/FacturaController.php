@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Factura;
+use App\Administrativa;
 use Illuminate\Http\Request;
 
 class FacturaController extends Controller
@@ -44,11 +45,11 @@ class FacturaController extends Controller
 
       $lastId_factura = $facturas->last()->id;//funcion que consigue capturar el ultimo registro y sacar el id de este mismo
 
-      $factura = Factura::find($lastId_cobro);//funcion que permite encontrar un registro mediante un id
+      $factura = Factura::find($lastId_factura);//funcion que permite encontrar un registro mediante un id
 
       $administrativa = Administrativa::find($factura->administrativa_id);//funcion que hace una consulta a una tabla relacionada en la base de datos y saca un registro mediante un id
 
-      $nuevo_saldo = $administrativa->saldo - $factura->valor;//linea donde se restan los valores almacenados en variables
+      $nuevo_saldo = $administrativa->saldo - $factura->valor_factura;//linea donde se restan los valores almacenados en variables
 
       $administrativa->saldo = $nuevo_saldo;//asignacion de una variable a actualizar
       $administrativa->save();
