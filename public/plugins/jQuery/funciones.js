@@ -10,13 +10,24 @@
 
   function sumar(){
     var valor = parseInt(document.getElementById('ini').value);
-
+    var valor2 = parseInt(document.getElementById('otrosi[]').value);
     var resultado = valor*1.19;
+
     var iva = valor*0.19;
+
     document.getElementById('iva').value = iva ;
     document.getElementById('fin').value = resultado ;
       }
 
+      function sumar2(){
+        var valor = parseInt(document.getElementById('ini').value);
+        var valor2 = parseInt(document.getElementById('otrosi[]').value);
+
+        var iva = valor*0.19;
+        var resultado = valor+valor2+iva;
+
+        document.getElementById('fin').value = resultado ;
+          }
 
 
 
@@ -25,7 +36,7 @@
         var count = 1;
        $(document).on("click","#btnadd",function( event ) {
         count++;
-        $('#tblprod').after('<div class="col-md-11" id="quitar17"><input type="number" class="form-control" id="otrosi[]" placeholder= "Ingrese valor" name="otrosi[]"  onkeyup="sumar()" > </div>   <div class="col-md-1" id="quitar18"><a class="btn btn-warning delete" id="btnadd[]" data-toggle="modal" href="#" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-minus"></i></a></div>');
+        $('#tblprod').after('<div class="col-md-11" id="quitar17"><input type="number" class="form-control" id="otrosi[]" placeholder= "Ingrese valor" name="otrosi[]"  onkeyup="sumar2()" > </div>   <div class="col-md-1" id="quitar18"><a class="btn btn-warning delete" id="btnadd[]" data-toggle="modal" href="#" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-minus"></i></a></div>');
           event.preventDefault();
        });
        $(document).on("click",".delete",function( event ) {

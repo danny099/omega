@@ -107,8 +107,8 @@
 
         <div class="form-group ">
           @if(count($adicionales) == 0)
+        <label >Valor adicional</label>
             <div class="col-md-11" >
-              <label >Valor adicional</label>
               <input type="number" class="form-control" id="adicional" placeholder= "Ingrese valor" name="adicional[]"  onkeyup="sumar()" value="">
               <label >detalle valor adicional</label>
               <input type="text" class="form-control" id="detalle" placeholder= "Ingrese detalle" name="detalle[]" value="">
@@ -118,9 +118,10 @@
               <a class="btn btn-warning" id="btnadd5" data-toggle="modal" href="#" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-plus"></i></a>
             </div>
           @else
+          <label >Valor adicional</label>
             @foreach($adicionales as $adicional)
               <div class="col-md-11" >
-                <label >Valor adicional</label>
+
                 <input type="number" class="form-control" id="adicional" placeholder= "Ingrese valor" name="adicional[]"  onkeyup="sumar()" value="{{ $adicional->valor}}">
                 <label >detalle valor adicional</label>
                 <input type="text" class="form-control" id="detalle" placeholder= "Ingrese detalle" name="detalle[]" value="{{ $adicional->detalle}}">
@@ -135,8 +136,9 @@
         <div class="form-group ">
 
           @if(count($otrosis) == 0)
+        <label >Otro si</label>
             <div class="col-md-11" >
-              <label >Otro si</label>
+
               <input type="number" class="form-control" id="otrosi[]" placeholder= "Ingrese valor" name="otrosi[]"  onkeyup="sumar()" value="">
             </div>
 
@@ -144,9 +146,9 @@
               <a class="btn btn-warning" id="btnadd" data-toggle="modal" href="#" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-plus"></i></a>
             </div>
           @else
+            <label >Otro si</label>
             @foreach($otrosis as $otro)
               <div class="col-md-11" >
-                <label >Otro si</label>
                 <input type="number" class="form-control" id="otrosi[]" placeholder= "Ingrese valor" name="otrosi[]"  onkeyup="sumar()" value="{{ $otro->valor}}">
               </div>
 
@@ -516,4 +518,40 @@
         <button type="submit" data-target="" data-toggle="" class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;">Agregar</button>
       </div>
 
+@endsection
+
+@section('scripts')
+<script src="../../plugins/jQuery/funciones.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+  $(document).on('change','#departamento',function(){
+
+    var dep_id = $(this).val();
+    var div = $(this).parents();
+    var op=" ";
+    $.ajax({
+      type:'get',
+      url:'{{ url('selectmuni')}}',
+      data:{'id':dep_id},
+      success:function(data){
+        console.log(data);
+        op+='<option value="0" selected disabled>Seleccione</option>';
+
+        for (var i = 0; i < data.length; i++) {
+          op+='<option value="' +data[i].id+ '">' +data[i].nombre+ '</option>'
+        }
+
+        div.find('#municipio').html(" ");
+        div.find('#municipio').append(op);
+
+      },
+      error:function(){
+
+      }
+    });
+  });
+});
+
+</script>
 @endsection

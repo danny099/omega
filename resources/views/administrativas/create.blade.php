@@ -128,7 +128,7 @@
         <label >Otro si</label>
         <div class="form-group ">
           <div class="col-md-11" >
-            <input type="number" class="form-control" id="otrosi[]" placeholder= "Ingrese valor" name="otrosi[]"  onkeyup="sumar()" >
+            <input type="number" class="form-control" id="otrosi[]" placeholder= "Ingrese valor" name="otrosi[]"  onkeyup="sumar2()" >
           </div>
 
           <div class="col-md-1" id="tblprod">

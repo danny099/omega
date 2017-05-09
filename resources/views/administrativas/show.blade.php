@@ -10,7 +10,7 @@
 <div class="container">
   <div class="box box-primary">
     <div class="box-header with-border">
-     <center><h3 class="box-title">Datos del Proyecto</h3></center>
+     <center><label>Datos del Proyecto</h3></label>
     </div>
     <!-- /.box-header -->
     <!-- form start -->
@@ -256,7 +256,7 @@
 
   <div class="">
     <div class="box-header with-border">
-     <center><h3 class="box-title">Alcance: proceso de transformacion</h3></center>
+     <center><label>Alcance: proceso de transformacion</h3></label>
     </div>
       <div class="box-body">
           <div class="col-md-12">
@@ -309,7 +309,7 @@
 
           <div class="">
             <div class="col-md-12">
-              <center><h4 class="box-title">Alcance: proceso de distribucion</h4></center>
+              <center><label>Alcance: proceso de distribucion</h4></label>
             </div>
           <div class="col-md-12">
 
@@ -360,7 +360,7 @@
 
         <div class="">
           <div class="col-md-12">
-            <center><h4 class="box-title">Alcance: proceso de uso final</h4></center>
+            <center><label>Alcance: proceso de uso final</h4></label>
           </div>
         <div class="col-md-12">
           <div class="col-md-8">
@@ -408,7 +408,7 @@
       </div>
 
         <center><div class="col-md-12">
-         <h4 class="box-title">Observaciones de estado administrativo del proyecto:</h4>
+         <label>Observaciones de estado administrativo del proyecto:</label>
         </div>
 
         <div class="col-md-12">

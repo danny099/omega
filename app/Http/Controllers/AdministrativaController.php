@@ -203,6 +203,7 @@ class AdministrativaController extends Controller
        $municipio = Municipio::find($muni_Id);
 
        $otrosis = Otrosi::where('otrosi.administrativa_id', '=', $id)->get();
+       $adicionales = Valor_adicional::where('valor_adicional.administrativa_id', '=', $id)->get();
 
        $transformaciones = Transformacion::where('transformacion.administrativa_id', '=', $id)->get();
        $distribuciones = Distribucion::where('distribucion.administrativa_id', '=', $id)->get();
@@ -214,7 +215,7 @@ class AdministrativaController extends Controller
       //  dd($transformaciones);
       //  die();
       //  funcion que permite retornar una vista con los datos ya buscados
-       return view('administrativas.show',compact('administrativa','municipio','otrosis','transformaciones','distribuciones','pu_finales','consignaciones','cuenta_cobros','facturas'));
+       return view('administrativas.show',compact('administrativa','municipio','otrosis','transformaciones','distribuciones','pu_finales','consignaciones','cuenta_cobros','facturas','adicionales'));
    }
 
    /**
