@@ -496,7 +496,6 @@
                 <input type="text" class="form-control" placeholder= "Cantidad" name="pu_final[cantidad_pu][]" value="{{ $pu->cantidad }}">
               </div>
             </div>
-
             <div class="col-md-1" id="tblprod4">
               <div class="form-group">
                 <br>
@@ -505,9 +504,6 @@
             </div>
           @endforeach
         @endif
-
-
-
       <div class="col-md-12">
         <center> <h4 class="box-title">Observaciones de estado administrativo del proyecto</h4> </center>
       </div>
@@ -519,8 +515,5 @@
       <div class="box-footer">
         <button type="submit" data-target="" data-toggle="" class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;">Agregar</button>
       </div>
-
-
-
 
 @endsection

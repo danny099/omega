@@ -272,10 +272,10 @@ class AdministrativaController extends Controller
        $administrativas = Administrativa::findOrFail($id);
 
        //  funcion que permite capturar todos los datos en una variable tipo array
-       $input = Request::all();
+       $input = $request->all();
 
        //  condicional que permite saber si el codigo de proyecto que se envio es igual a uno ya exitente cumpla con la condicion de no permitir actualizar el codigo por uno ya existent
-       $codigorepe = Administrativa::where('codigo_proyecto',Request::input('codigo'))->get();
+       $codigorepe = Administrativa::where('codigo_proyecto',$request->codigo)->get();
        //  condicional
        if ($codigorepe->count() == 1) {
          //  mensajes de confirmacion enviados a la vista
@@ -309,33 +309,54 @@ class AdministrativaController extends Controller
     // metodo que permite eliminar un registro de acuerdo a su id
    public function destroy($id)
    {
-       //  funcion que permite encontrar o identificar un registro y almacenarlas en una variable
-       $administrativas = Administrativa::findOrFail($id);
 
-       $otrosi_id = Otrosi::select('id')->where('otrosi.administrativa_id',$administrativas->id)->get();
-       $otrosis = Otrosi::findOrFail($otrosi_id);
-       $otrosis->delete();
+     $otrosis = Otrosi::where('otrosi.administrativa_id', '=', $id)->get();
+     foreach ($otrosis as $key => $otro) {
 
-       $transfor_id = Transformacion::select('id')->where('transformacion.administrativa_id',$administrativas->id)->get();
-       $transformacion = Transformacion::findOrFail($transfor_id);
-       $transformacion->delete();
+      $otro->delete();
 
-       $distri_id = Distribucion::select('id')->where('distribucion.administrativa_id',$administrativas->id)->get();
-       $distribucion = Distribucion::findOrFail($distri_id);
-       $distribucion->delete();
+     }
 
-       $puf_id = Pu_final::select('id')->where('pu_final.administrativa_id',$administrativas->id)->get();
-       $pu_final = Pu_final::findOrFail($puf_id);
+     $transformacion = Transformacion::where('transformacion.administrativa_id', '=', $id)->get();
+     foreach ($transformacion as $key => $transfo) {
+
+       $transfo->delete();
+
+     }
+
+     $distribucion = Distribucion::where('distribucion.administrativa_id', '=', $id)->get();
+     foreach ($distribucion as $key => $distri) {
+
+       $distri->delete();
+     }
+
+     $pu_final = Pu_final::where('pu_final.administrativa_id', '=', $id)->get();
+     foreach ($pu_final as $key => $pu) {
+
        $pu_final->delete();
-       //  funcion que permite eliminar un registro que se encontro y se almaceno en esa variable
-       $administrativas->delete();
+
+     }
+
+     $adicional = Valor_adicional::where('valor_adicional.administrativa_id', '=', $id)->get();
+     foreach ($adicional as $key => $adic) {
+
+       $adic->delete();
+
+     }
+      //  //  funcion que permite encontrar o identificar un registro y almacenarlas en una variable
+      $administrativa = Administrativa::findOrFail($id);
+      // $administrativas = Administrativa::select('id')->where('administrativa.id',$id)->get();
+      $administrativa->delete();
+      // dd($id);
+      // die();
+
+
 
        //  redireccionamiento a una vista
        Session::flash('message', 'Proyecto eliminado eliminado');
        Session::flash('class', 'danger');
        return redirect('administrativas');
 
-       //  funciones que hacen lo mismo que la anterior pero se colocan para borrar en cascada los registros relacionados
 
    }
 
