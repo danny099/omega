@@ -31,7 +31,7 @@
 
           <div class="form-group">
             <label >Departamento</label>
-              <select class="form-control" name="departamento" id="departamento">
+              <select class="form-control" name="departamento" id="departamento" required="">
                 @foreach($departamentos as $departamento)
                 <option value="{{ $departamento->id }}">{{$departamento->nombre}}</option>
                 @endforeach
@@ -39,7 +39,7 @@
           </div>
           <div class="form-group">
             <label >Municipios</label>
-              <select class="form-control" name="municipio" id="municipio">
+              <select class="form-control" name="municipio" id="municipio" required="">
                 <option value=""></option>
               </select>
           </div>

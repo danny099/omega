@@ -17,17 +17,17 @@
 
           <div class="form-group">
             {!! Form::label('nit', 'Nit') !!}
-            {!! Form::number('nit', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+            {!! Form::number('nit', null, ['class' => 'form-control' ]) !!}
           </div>
 
           <div class="form-group">
             {!! Form::label('cedula', 'Cedula') !!}
-            {!! Form::number('cedula', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+            {!! Form::number('cedula', null, ['class' => 'form-control']) !!}
           </div>
 
           <div class="form-group">
             <label >Departamento</label>
-              <select class="form-control" name="departamento" id="departamento">
+              <select class="form-control" name="departamento" id="departamento"required="">
                 @foreach($departamentos as $departamento)
                 <option value="{{ $departamento->id }}">{{$departamento->nombre}}</option>
                 @endforeach
@@ -35,7 +35,7 @@
           </div>
           <div class="form-group">
             <label >Municipios</label>
-              <select class="form-control" name="municipio" id="municipio">
+              <select class="form-control" name="municipio" id="municipio"required="">
                 <option value=""></option>
               </select>
           </div>
