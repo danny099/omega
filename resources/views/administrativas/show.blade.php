@@ -10,7 +10,7 @@
 <div class="container">
   <div class="box box-primary">
     <div class="box-header with-border">
-     <center><label>Datos del Proyecto</h3></label>
+     <center><h3 class="box-title">Datos del Proyecto</h3></center>
     </div>
     <!-- /.box-header -->
     <!-- form start -->
@@ -102,7 +102,7 @@
 
     <div class="col-md-3">
       <div class="form-group">
-
+        <span>{{ $administrativa->cliente->nombre }}</span>
       </div>
     </div>
 
@@ -240,32 +240,6 @@
 
   <div class="col-md-3">
     <div class="form-group">
-      <label >Saldo</label>
-    </div>
-  </div>
-
-  <div class="col-md-3">
-    <div class="form-group">
-      <span>{{ $administrativa->saldo }}</span>
-    </div>
-  </div>
-  </div>
-
-  <div class="col-md-12">
-    <div class="col-md-3">
-      <div class="form-group">
-
-      </div>
-    </div>
-
-  <div class="col-md-3">
-    <div class="form-group">
-
-    </div>
-  </div>
-
-  <div class="col-md-3">
-    <div class="form-group">
       <label >Plan de pago</label>
     </div>
   </div>
@@ -282,7 +256,7 @@
 
   <div class="">
     <div class="box-header with-border">
-     <center><label>Alcance: proceso de transformacion</h3></label>
+     <center><h3 class="box-title">Alcance: proceso de transformacion</h3></center>
     </div>
       <div class="box-body">
           <div class="col-md-12">
@@ -335,7 +309,7 @@
 
           <div class="">
             <div class="col-md-12">
-              <center><label>Alcance: proceso de distribucion</h4></label>
+              <center><h4 class="box-title">Alcance: proceso de distribucion</h4></center>
             </div>
           <div class="col-md-12">
 
@@ -386,7 +360,7 @@
 
         <div class="">
           <div class="col-md-12">
-            <center><label>Alcance: proceso de uso final</h4></label>
+            <center><h4 class="box-title">Alcance: proceso de uso final</h4></center>
           </div>
         <div class="col-md-12">
           <div class="col-md-8">
@@ -434,7 +408,7 @@
       </div>
 
         <center><div class="col-md-12">
-         <label>Observaciones de estado administrativo del proyecto:</label>
+         <h4 class="box-title">Observaciones de estado administrativo del proyecto:</h4>
         </div>
 
         <div class="col-md-12">
