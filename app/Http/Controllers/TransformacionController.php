@@ -11,17 +11,8 @@ class TransformacionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    var $descripcion;
-    var $tipo;
-    var $capacidad;
-    var $cantidad;
 
-    public function __contruct($descripcion,$tipo,$capacidad,$cantidad){
-
-      $this->descripcion = $descripcion;
-      $this->tipo = $tipo;
-      $this->capacidad = $capacidad;
-      $this->cantidad = $cantidad;
+    public function __contruct(){
 
     }
     public function index()
@@ -99,6 +90,6 @@ class TransformacionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
     }
 }
