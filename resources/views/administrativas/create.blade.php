@@ -41,11 +41,11 @@
         </div>
         <div class="form-group">
           <label >nombre del proyecto</label>
-          <input type="text" class="form-control" placeholder="Ingrese nombre" name="nombre">
+          <input type="text" class="form-control" placeholder="Ingrese nombre" name="nombre" required="Ingrese un pryexto">
         </div>
         <div class="form-group">
           <label >Fecha del contrato:</label>
-          <input type="date" class="form-control pull-right" name="fecha" id="datepicker">
+          <input type="date" class="form-control pull-right" name="fecha" id="datepicker" required="Ingrese una fecha">
         </div>
         <div class="form-group" >
           <label >Tipo cliente</label>
@@ -78,7 +78,7 @@
 
         <div class="form-group">
           <label >Departamento</label>
-            <select class="form-control" name="departamento" id="departamento">
+            <select class="form-control" name="departamento" id="departamento" required="">
               @foreach($departamentos as $departamento)
               <option value="{{ $departamento->id }}">{{$departamento->nombre}}</option>
               @endforeach
@@ -86,7 +86,7 @@
         </div>
         <div class="form-group">
           <label >Municipios</label>
-            <select class="form-control" name="municipio" id="municipio">
+            <select class="form-control" name="municipio" id="municipio" required="">
               <option value=""></option>
             </select>
         </div>
@@ -145,7 +145,7 @@
 
           <div class="form-group">
             <label >Plan de pago</label>
-            <input type="text" class="form-control" placeholder= "Ingrese valor" name="plan_pago">
+            <input type="text" class="form-control" placeholder= "Ingrese valor" name="plan_pago" required="">
           </div>
         </div>
       </div>
@@ -186,7 +186,7 @@
         <div class="form-group">
           <center><label >Capacidad</label></center>
           <select class="form-control" name="transformacion[capacidad][]">
-
+            <option value="">Seleccione..</option>
             <option value="5KVA">5KVA</option>
             <option value="10KVA">10KVA</option>
             <option value="15KVA">15KVA</option>
@@ -227,6 +227,7 @@
         <div class="form-group">
           <center><label >Descripcion</label></center>
           <select class="form-control" name="distribucion[descripcion_dis][]">
+            <option value="">Seleccione..</option>
             <option value="Inspeccion retie proceso de distribucion en MT">Inspeccion retie proceso de distribucion en MT</option>
             <option value="Inspeccion retie proceso de distribucion en BT">Inspeccion retie proceso de distribucion en BT</option>
           </select>
@@ -237,7 +238,7 @@
         <div class="form-group">
           <center><label >Tipo</label></center>
           <select class="form-control" name="distribucion[tipo_dis][]">
-
+            <option value="">Seleccione..</option>
             <option value="aerea">tipo Aerea</option>
             <option value="subterranea">tipo subterranea</option>
 
@@ -277,7 +278,7 @@
         <div class="form-group">
           <center><label >Descripcion</label></center>
           <select class="form-control"name="pu_final[descripcion_pu][]">
-
+            <option value="">Seleccione..</option>
             <option value="Inspeccion retie proceso uso final residencial">Inspeccion retie proceso uso final residencial</option>
             <option value="Inspeccion retie proceso uso final comercial">Inspeccion retie proceso uso final comercial</option>
 
@@ -289,7 +290,7 @@
         <div class="form-group">
           <center><label >Tipo</label></center>
           <select class="form-control" name="pu_final[tipo_pu][]">
-
+            <option value="">Seleccione..</option>
             <option value="Casa">Casa</option>
             <option value="Apartamentos">Apartamentos</option>
             <option value="Zona comun">Zona comun</option>
