@@ -276,6 +276,9 @@ class AdministrativaController extends Controller
        //  funcion que permite capturar todos los datos en una variable tipo array
        $input = $request->all();
 
+       
+
+
        //  condicional que permite saber si el codigo de proyecto que se envio es igual a uno ya exitente cumpla con la condicion de no permitir actualizar el codigo por uno ya existent
        $codigorepe = Administrativa::where('codigo_proyecto',$request->codigo)->get();
        //  condicional

@@ -84,7 +84,7 @@
         <div class="form-group">
           <label >Municipios</label>
             <select class="form-control" name="municipio" id="municipio">
-              <option value="">{{ $municipio->nombre }}</option>
+              <option value="{{ $municipio->nombre }}">{{ $municipio->nombre }}</option>
               <option value=""></option>
             </select>
         </div>
