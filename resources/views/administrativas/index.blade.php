@@ -17,7 +17,7 @@
                   <th>Codigo del proyecto</th>
                   <th>Nombre del proyecto</th>
                   <th>Fecha del contrato</th>
-                  <th>Cliente</th>
+
                   <th>Valor final del contrato</th>
                   <th>Acciones</th>
                 </tr>
@@ -29,7 +29,7 @@
                     <td>{{$administrativa->codigo_proyecto}}</td>
                     <td>{{$administrativa->nombre_proyecto}}</td>
                     <td>{{$administrativa->fecha_contrato}}</td>
-                    <td> {{$administrativa->cliente->nombre}}</td>
+
                     <td>{{$administrativa->valor_contrato_final}}</td>
                     <td>
                         <a href="{{ route('administrativas.edit', $administrativa->id) }}"><i class="glyphicon glyphicon-pencil"></i></a>

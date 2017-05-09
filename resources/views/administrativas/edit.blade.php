@@ -33,7 +33,7 @@
           </div>
           <div class="form-group">
             {!! Form::label('nombre', 'Nombre del proyecto') !!}
-            {!! Form::text('nombre_proyeto', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+            {!! Form::text('nombre_proyecto', null, ['class' => 'form-control' , 'required' => 'required']) !!}
           </div>
 
         <div class="form-group">

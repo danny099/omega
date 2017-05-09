@@ -59,6 +59,7 @@
           <label >Persona natural</label>
           <select class="form-control select2" name="cliente_id" style="width: 100%" id="select-natural">
             @foreach($clientes as $cliente)
+            <option value="">Seleccione..</option>
             <option value="{{ $cliente->id }}">{{$cliente->nombre}}</option>
             @endforeach
           </select>
@@ -67,6 +68,7 @@
           <label >Persona juridica</label>
           <select class="form-control" name="juridica_id" >
             @foreach($juridicas as $juridica)
+            <option value="">Seleccione..</option>
             <option value="{{ $juridica->id }}">{{$juridica->razon_social}}</option>
             @endforeach
           </select>
