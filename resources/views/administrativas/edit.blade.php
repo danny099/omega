@@ -28,17 +28,39 @@
       <div class="col-md-4">
 
           <div class="form-group">
+<<<<<<< .mine
+            {!! Form::label('codigo', 'Codigo del proyecto:') !!}
+            {!! Form::text('codigo_proyecto', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+||||||| .r133
+            {!! Form::label('codigo', 'Codigo del proyecto:') !!}
+            {!! Form::text('codigo', $administrativas->codigo_proyecto, ['class' => 'form-control' , 'required' => 'required']) !!}
+=======
             {!! Form::label('codigo_proyecto', 'Codigo del proyecto:') !!}
             {!! Form::text('codigo_proyecto', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+>>>>>>> .r135
           </div>
           <div class="form-group">
             {!! Form::label('nombre', 'Nombre del proyecto') !!}
+<<<<<<< .mine
+            {!! Form::text('nombre_proyecto', $administrativas->nombre_proyecto, ['class' => 'form-control' , 'required' => 'required']) !!}
+||||||| .r133
+            {!! Form::text('nombre', $administrativas->nombre_proyecto, ['class' => 'form-control' , 'required' => 'required']) !!}
+=======
             {!! Form::text('nombre_proyeto', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+>>>>>>> .r135
           </div>
 
         <div class="form-group">
+<<<<<<< .mine
+          {!! Form::label('fecha', 'Fecha del contrato:') !!}
+          {!! Form::date('fecha_contrato', $administrativas->fecha_contrato, ['class' => 'form-control' , 'required' => 'required']) !!}
+||||||| .r133
+          {!! Form::label('fecha', 'Fecha del contrato:') !!}
+          {!! Form::date('fecha', $administrativas->fecha_contrato, ['class' => 'form-control' , 'required' => 'required']) !!}
+=======
           {!! Form::label('fecha_contrato', 'Fecha del contrato:') !!}
           {!! Form::date('fecha_contrato', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+>>>>>>> .r135
         </div>
 
         <div class="form-group" >
