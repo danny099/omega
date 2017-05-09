@@ -7,31 +7,6 @@
   <li><a href="{{ url('administrativas') }}">Administrativa</a></li>
   <li class="active">Datos del Contrato</li>
 </ol>
-
-<div class="box box-primary">
-  <div class="box-header with-border">
-   <center><label>Datos del Proyecto</label></center>
-  </div>
-  <!-- /.box-header -->
-  <!-- form start -->
-    <div class="box-body">
-      <div class="col-md-12">
-        <div class="col-md-3">
-          <div class="form-group">
-            <label >Codigo del proyecto:</label>
-
-<div class="box box-primary">
-  <div class="box-header with-border">
-   <center><h3 class="box-title">Datos del Proyecto</h3></center>
-  </div>
-  <!-- /.box-header -->
-  <!-- form start -->
-    <div class="box-body">
-      <div class="col-md-12">
-        <div class="col-md-3">
-          <div class="form-group">
-            <label >Codigo del proyecto:</label>
-
 <div class="container">
   <div class="box box-primary">
     <div class="box-header with-border">
@@ -45,7 +20,6 @@
             <div class="form-group">
               <label >Codigo del proyecto:</label>
             </div>
-
           </div>
 
           <div class="col-md-3">
@@ -189,18 +163,6 @@
     </div>
   </div>
     <span>{{ $administrativa->valor_iva }}</span>
-
-</div>
-</div>
-</div>
-
-<div class="col-md-12">
-
-</div>
-</div>
-
-<div class="col-md-12">
-
   <div class="col-md-3">
     <div class="form-group">
 
@@ -209,32 +171,9 @@
   </div>
   </div>
 
-
-<div class="col-md-3">
-  <div class="form-group">
-    <label >Valor adicional</label>
-  </div>
-</div>
-@foreach($adicionales as $adicional)
-<span> {{ $adicional->valor }}</span>
-<span> {{ $adicional->detalle }}</span>
-@endforeach
-<div class="col-md-3">
-  <div class="form-group">
-
-<div class="col-md-3">
-  <div class="form-group">
-    <label >Valor adicional</label>
-  </div>
-</div>
-  <span>{{ $administrativa->valor_iva }}</span>
-<div class="col-md-3">
-  <div class="form-group">
-
   <div class="col-md-12">
     <div class="col-md-3">
       <div class="form-group">
-
 
       </div>
     </div>
@@ -315,30 +254,12 @@
   </div>
 
 
-@if(count($transformaciones) == 0)
-
   <div class="">
     <div class="box-header with-border">
      <center><h3 class="box-title">Alcance: proceso de transformacion</h3></center>
     </div>
       <div class="box-body">
           <div class="col-md-12">
-
-@else
-
-<div class="">
-  <div class="box-header with-border">
-   <center><label>Alcance: proceso de transformacion</label></center>
-  </div>
-    <div class="box-body">
-        <div class="col-md-12">
-
-<div class="">
-  <div class="box-header with-border">
-   <center><h3 class="box-title">Alcance: proceso de transformacion</h3></center>
-  </div>
-    <div class="box-body">
-        <div class="col-md-12">
 
 
           <div class="col-md-12">
@@ -436,20 +357,10 @@
 
           @endforeach
         </div>
-@endif
 
-@if(count($distribuciones) == 0)
-
-@else
         <div class="">
           <div class="col-md-12">
-
-            <center><label>Alcance: proceso de distribucion</label></center>
-
-            <center><h4 class="box-title">Alcance: proceso de distribucion</h4></center>
-
             <center><h4 class="box-title">Alcance: proceso de uso final</h4></center>
-
           </div>
         <div class="col-md-12">
           <div class="col-md-8">
@@ -495,31 +406,16 @@
 
         @endforeach
       </div>
-@endif
-
-<<<<<<< .mine
-@if(count($pu_finales) == 0)
-
-@else
-      <div class="">
-
-      <div class="">
 
         <center><div class="col-md-12">
          <h4 class="box-title">Observaciones de estado administrativo del proyecto:</h4>
         </div>
 
         <div class="col-md-12">
-
-          <center><label>Alcance: proceso de uso final</label></center>
-
-          <center><h4 class="box-title">Alcance: proceso de uso final</h4></center>
-
           <span>{{ $administrativa->resumen }}</span>
         </div></center>
       </div>
         <div class="box-footer">
-
         </div>
     </div>
     <br>
@@ -591,19 +487,6 @@
     <div class="">
       <h3>Facturas</h3>
     </div>
-
-@endif
-
-@if(count($administrativa->resumen) == 0)
-
-@else
-      <center><div class="col-md-12">
-       <label>Observaciones de estado administrativo del proyecto:</label>
-
-
-      <center><div class="col-md-12">
-       <h4 class="box-title">Observaciones de estado administrativo del proyecto:</h4>
-
     @foreach($facturas as $factura)
       <div class="box box-primary">
         <div class="form-group">
@@ -646,261 +529,10 @@
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <span>{{ $factura->observaciones }}</span>
         </div>
-
       </div>
-
-
-      <div class="col-md-12">
-        <span>{{ $administrativa->resumen }}</span>
-      </div></center>
-@endif
-    </div>
-      <div class="box-footer">
-      </div>
-
-
-      <div class="col-md-12">
-        <span>{{ $administrativa->resumen }}</span>
-      </div></center>
-    </div>
-      <div class="box-footer">
-      </div>
-
     @endforeach
-
   </div>
 
-
-@if(count($consignaciones) == 0)
-
-@else
-  <div class="">
-    <h3>Consiganaciones</h3>
-  </div>
-  @foreach($consignaciones as $consignacion)
-    <div class="box box-primary">
-      <div class="form-group">
-        <label>Fecha de pago:</label>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <span>{{ $consignacion->fecha_pago }}</span>
-      </div>
-      <div class="form-group">
-        <label>Valor:</label>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <span>{{ $consignacion->valor }}</span>
-      </div>
-      <div class="form-group">
-        <label>Observaciones:</label>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <span>{{ $consignacion->observaciones }}</span>
-      </div>
-    </div>
-  @endforeach
-@endif
-
-@if(count($cuenta_cobros) == 0)
-
-@else
-  <div class="">
-    <h3>Cuanta de Cobro</h3>
-  </div>
-  @foreach($cuenta_cobros as $cuenta_cobro)
-    <div class="box box-primary">
-      <div class="form-group">
-        <label>Porcentaje:</label>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <span>{{ $cuenta_cobro->porcentaje }}</span>
-      </div>
-      <div class="form-group">
-        <label>Valor:</label>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <span>{{ $cuenta_cobro->valor }}</span>
-      </div>
-      <div class="form-group">
-        <label>Fecha cuenta de cobro:</label>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <span>{{ $cuenta_cobro->fecha_cuenta_cobro }}</span>
-      </div>
-      <div class="form-group">
-        <label>Fecha de pago:</label>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <span>{{ $cuenta_cobro->fecha_pago }}</span>
-      </div>
-      <div class="form-group">
-        <label>Numero cuenta de cobro:</label>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <span>{{ $cuenta_cobro->numero_cuenta_cobro }}</span>
-      </div>
-      <div class="form-group">
-        <label>Observaciones:</label>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <span>{{ $cuenta_cobro->observaciones }}</span>
-      </div>
-    </div>
-  @endforeach
-@endif
-
-@if(count($facturas) == 0)
-
-@else
-  <div class="">
-    <h3>Facturas</h3>
-  </div>
-  @foreach($facturas as $factura)
-    <div class="box box-primary">
-      <div class="form-group">
-        <label>Numero Factura:</label>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <span>{{ $factura->num_factura }}</span>
-      </div>
-      <div class="form-group">
-        <label>Fecha de factura:</label>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <span>{{ $factura->fecha_factura }}</span>
-      </div>
-      <div class="form-group">
-        <label>Valor Factura:</label>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <span>{{ $factura->valor_factura }}</span>
-      </div>
-      <div class="form-group">
-        <label>IVA:</label>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <span>{{ $factura->iva }}</span>
-      </div>
-      <div class="form-group">
-        <label>Retenciones:</label>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <span>{{ $factura->retenciones }}</span>
-      </div>
-      <div class="form-group">
-        <label>Amortizacion:</label>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <span>{{ $factura->amortizacion }}</span>
-      </div>
-      <div class="form-group">
-        <label>Fecha de pago:</label>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <span>{{ $factura->fecha_pago }}</span>
-      </div>
-      <div class="form-group">
-        <label>Observaciones:</label>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <span>{{ $factura->observaciones }}</span>
-      </div>
-    </div>
-  @endforeach
-
-  <div class="">
-    <h3>Consiganaciones</h3>
-  </div>
-  @foreach($consignaciones as $consignacion)
-    <div class="box box-primary">
-      <div class="form-group">
-        <label>Fecha de pago:</label>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <span>{{ $consignacion->fecha_pago }}</span>
-      </div>
-      <div class="form-group">
-        <label>Valor:</label>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <span>{{ $consignacion->valor }}</span>
-      </div>
-      <div class="form-group">
-        <label>Observaciones:</label>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <span>{{ $consignacion->observaciones }}</span>
-      </div>
-    </div>
-  @endforeach
-
-  <div class="">
-    <h3>Cuanta de Cobro</h3>
-  </div>
-  @foreach($cuenta_cobros as $cuenta_cobro)
-    <div class="box box-primary">
-      <div class="form-group">
-        <label>Porcentaje:</label>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <span>{{ $cuenta_cobro->porcentaje }}</span>
-      </div>
-      <div class="form-group">
-        <label>Valor:</label>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <span>{{ $cuenta_cobro->valor }}</span>
-      </div>
-      <div class="form-group">
-        <label>Fecha cuenta de cobro:</label>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <span>{{ $cuenta_cobro->fecha_cuenta_cobro }}</span>
-      </div>
-      <div class="form-group">
-        <label>Fecha de pago:</label>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <span>{{ $cuenta_cobro->fecha_pago }}</span>
-      </div>
-      <div class="form-group">
-        <label>Numero cuenta de cobro:</label>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <span>{{ $cuenta_cobro->numero_cuenta_cobro }}</span>
-      </div>
-      <div class="form-group">
-        <label>Observaciones:</label>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <span>{{ $cuenta_cobro->observaciones }}</span>
-      </div>
-    </div>
-  @endforeach
-
-  <div class="">
-    <h3>Facturas</h3>
-  </div>
-  @foreach($facturas as $factura)
-    <div class="box box-primary">
-      <div class="form-group">
-        <label>Numero Factura:</label>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <span>{{ $factura->num_factura }}</span>
-      </div>
-      <div class="form-group">
-        <label>Fecha de factura:</label>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <span>{{ $factura->fecha_factura }}</span>
-      </div>
-      <div class="form-group">
-        <label>Valor Factura:</label>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <span>{{ $factura->valor_factura }}</span>
-      </div>
-      <div class="form-group">
-        <label>IVA:</label>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <span>{{ $factura->iva }}</span>
-      </div>
-      <div class="form-group">
-        <label>Retenciones:</label>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <span>{{ $factura->retenciones }}</span>
-      </div>
-      <div class="form-group">
-        <label>Amortizacion:</label>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <span>{{ $factura->amortizacion }}</span>
-      </div>
-      <div class="form-group">
-        <label>Fecha de pago:</label>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <span>{{ $factura->fecha_pago }}</span>
-      </div>
-      <div class="form-group">
-        <label>Observaciones:</label>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <span>{{ $factura->observaciones }}</span>
-      </div>
-    </div>
-  @endforeach
-
-@endif
 </div>
 
 @endsection
