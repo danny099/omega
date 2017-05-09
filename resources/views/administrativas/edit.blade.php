@@ -28,17 +28,17 @@
       <div class="col-md-4">
 
           <div class="form-group">
-            {!! Form::label('codigo', 'Codigo del proyecto:') !!}
-            {!! Form::text('codigo', $administrativas->codigo_proyecto, ['class' => 'form-control' , 'required' => 'required']) !!}
+            {!! Form::label('codigo_proyecto', 'Codigo del proyecto:') !!}
+            {!! Form::text('codigo_proyecto', null, ['class' => 'form-control' , 'required' => 'required']) !!}
           </div>
           <div class="form-group">
             {!! Form::label('nombre', 'Nombre del proyecto') !!}
-            {!! Form::text('nombre', $administrativas->nombre_proyecto, ['class' => 'form-control' , 'required' => 'required']) !!}
+            {!! Form::text('nombre_proyeto', null, ['class' => 'form-control' , 'required' => 'required']) !!}
           </div>
 
         <div class="form-group">
-          {!! Form::label('fecha', 'Fecha del contrato:') !!}
-          {!! Form::date('fecha', $administrativas->fecha_contrato, ['class' => 'form-control' , 'required' => 'required']) !!}
+          {!! Form::label('fecha_contrato', 'Fecha del contrato:') !!}
+          {!! Form::date('fecha_contrato', null, ['class' => 'form-control' , 'required' => 'required']) !!}
         </div>
 
         <div class="form-group" >
