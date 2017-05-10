@@ -271,13 +271,29 @@ class AdministrativaController extends Controller
     // metodo que permite capturar los datos editados en la vista edit mandando un id que permita sabar a la base de datos cual registro editar
    public function update(Request $request, $id)
    {
+<<<<<<< .mine
+       $input = $request->all();
+||||||| .r142
+        //  funcion que con el codigo capturado busca en la base de datos el registro a editar
+       $administrativas = Administrativa::findOrFail($id);
+
+       //  funcion que permite capturar todos los datos en una variable tipo array
+       $input = $request->all();
+=======
        $input = $request->all();
 
        $administrativas = Administrativa::findOrFail($id);
 
        $admin = Administrativa::all();
+>>>>>>> .r147
+
+       $administrativas = Administrativa::findOrFail($id);
+
+<<<<<<< .mine
+||||||| .r142
 
 
+=======
        foreach ($request->otrosi as $otro)
         {
           $otrosi_id = Otrosi::select('id')->where('administrativa_id',$administrativas->id)->get();
@@ -286,6 +302,7 @@ class AdministrativaController extends Controller
 
         }
 
+>>>>>>> .r147
 
 
        //  condicional que permite saber si el codigo de proyecto que se envio es igual a uno ya exitente cumpla con la condicion de no permitir actualizar el codigo por uno ya existent
