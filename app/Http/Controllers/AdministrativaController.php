@@ -271,12 +271,23 @@ class AdministrativaController extends Controller
     // metodo que permite capturar los datos editados en la vista edit mandando un id que permita sabar a la base de datos cual registro editar
    public function update(Request $request, $id)
    {
-        //  funcion que con el codigo capturado busca en la base de datos el registro a editar
-       $administrativas = Administrativa::findOrFail($id);
-
-       //  funcion que permite capturar todos los datos en una variable tipo array
        $input = $request->all();
 
+       $administrativas = Administrativa::findOrFail($id);
+
+       $admin = Administrativa::all();
+
+       for ($i=0; $i<count($input['otrosi']); $i++) {
+
+           if (!empty($input['otrosi'][$i])){
+
+                 $otrosi_id = Otrosi::select('id')->where('administrativa_id',$administrativas->id)->get();
+                 $otrosi = Otrosi::findOrFail($otrosi_id);
+
+                 $otrosi->update();
+
+           }
+       }
 
 
 
