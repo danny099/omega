@@ -631,8 +631,9 @@
 <!-- <script src="{{url('dist/js/pages/dashboard.js')}}"></script> -->
 <!-- AdminLTE for demo purposes -->
 <script src="{{url('dist/js/demo.js')}}"></script>
-
+<script src="../../plugins/jQuery/funciones.js"></script>
 @yield('scripts')
+
 <!-- jQuery 2.2.3 -->
 <script src="{{url('plugins/jQuery/jquery-2.2.3.min.js')}}"></script>
 <!-- Bootstrap 3.3.6 -->

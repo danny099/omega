@@ -240,7 +240,7 @@
 
   <div class="col-md-3">
     <div class="form-group">
-      
+
     </div>
   </div>
 
@@ -532,7 +532,7 @@
           <span>{{ $factura->fecha_factura }}</span>
         </div>
         <div class="form-group">
-          <label>Valor Factura:</label>
+          <label>Valor factura antes de iva:</label>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <span>{{ $factura->valor_factura }}</span>
         </div>
@@ -540,6 +540,11 @@
           <label>IVA:</label>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <span>{{ $factura->iva }}</span>
+        </div>
+        <div class="form-group">
+          <label>Valor total de la factura:</label>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <span>{{ $factura->valor_total }}</span>
         </div>
         <div class="form-group">
           <label>Retenciones:</label>
@@ -550,6 +555,21 @@
           <label>Amortizacion:</label>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <span>{{ $factura->amortizacion }}</span>
+        </div>
+        <div class="form-group">
+          <label>Polizas:</label>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <span>{{ $factura->polizas }}</span>
+        </div>
+        <div class="form-group">
+          <label>Retegarantia:</label>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <span>{{ $factura->retegarantia }}</span>
+        </div>
+        <div class="form-group">
+          <label>Valor pagado:</label>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <span>{{ $factura->valor_pagado }}</span>
         </div>
         <div class="form-group">
           <label>Fecha de pago:</label>

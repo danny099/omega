@@ -49,7 +49,7 @@ class FacturaController extends Controller
 
       $administrativa = Administrativa::find($factura->administrativa_id);//funcion que hace una consulta a una tabla relacionada en la base de datos y saca un registro mediante un id
 
-      $nuevo_saldo = $administrativa->saldo - $factura->valor_factura;//linea donde se restan los valores almacenados en variables
+      $nuevo_saldo = ($administrativa->saldo - $factura->valor_total) + $factura->amortizacion ;//linea donde se restan los valores almacenados en variables
 
       $administrativa->saldo = $nuevo_saldo;//asignacion de una variable a actualizar
       $administrativa->save();

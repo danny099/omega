@@ -7,6 +7,15 @@
        document.form.submit()
     }
   }
+  function sumariva(){
+    var valor = parseInt(document.getElementById('valor_factura').value);
+    var resultado = valor*1.19;
+
+    var iva = valor*0.19;
+
+    document.getElementById('iva').value = iva ;
+    document.getElementById('valor_total').value = resultado ;
+      }
 
   function sumar(){
     var valor = parseInt(document.getElementById('ini').value);

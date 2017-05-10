@@ -4,7 +4,7 @@
   <div class="container">
     <div class="">
       <div class="">
-        <h3 class="box-title">Crear Clientes</h3>
+        <h3 class="box-title">Crear Facturas</h3>
       </div>
 
 
@@ -25,23 +25,43 @@
             </div>
 
             <div class="form-group">
-              {!! Form::label('valor_factura', 'Valor Factura') !!}
-              {!! Form::number('valor_factura', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+              {!! Form::label('valor_factura', 'Valor factura antes de iva') !!}
+              {!! Form::number('valor_factura', null, ['class' => 'form-control' , 'required' => 'required','onkeyup'=>'sumariva()']) !!}
             </div>
 
             <div class="form-group">
               {!! Form::label('iva', 'IVA') !!}
-              {!! Form::number('iva', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+              {!! Form::number('iva', null, ['class' => 'form-control' ,'readonly', 'required' => 'required']) !!}
+            </div>
+
+            <div class="form-group">
+              {!! Form::label('valor_total', 'Valor total de la factura') !!}
+              {!! Form::number('valor_total', null, ['class' => 'form-control' ,'readonly', 'required' => 'required']) !!}
             </div>
 
             <div class="form-group">
               {!! Form::label('retenciones', 'Retenciones') !!}
-              {!! Form::number('retenciones', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+              {!! Form::number('retenciones', 0, ['class' => 'form-control']) !!}
             </div>
 
             <div class="form-group">
               {!! Form::label('amortizacion', 'Amortizacion:') !!}
-              {!! Form::number('amortizacion', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+              {!! Form::number('amortizacion', 0, ['class' => 'form-control' ]) !!}
+            </div>
+
+            <div class="form-group">
+              {!! Form::label('polizas', 'Polizas:') !!}
+              {!! Form::number('polizas', 0, ['class' => 'form-control' ]) !!}
+            </div>
+
+            <div class="form-group">
+              {!! Form::label('retegarantia', 'Retegarantia:') !!}
+              {!! Form::number('retegarantia', 0, ['class' => 'form-control' ]) !!}
+            </div>
+
+            <div class="form-group">
+              {!! Form::label('valor_pagado', 'Valor pagado:') !!}
+              {!! Form::number('valor_pagado', 0, ['class' => 'form-control' ]) !!}
             </div>
 
             <div class="form-group">
@@ -50,7 +70,7 @@
             </div>
             <div class="form-group">
               {!! Form::label('observaciones', 'Observaciones:') !!}
-              {!! Form::text('observaciones', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+              {!! Form::text('observaciones', null, ['class' => 'form-control' ]) !!}
             </div>
 
             <input type="hidden" name="administrativa_id" value="{{ $administrativa->id }}">
@@ -64,3 +84,9 @@
       {!! Form::close() !!}
     </div>
   </div>
+  @section('scripts')
+<script src="../../plugins/jQuery/funciones.js"></script>
+<script type="text/javascript">
+
+</script>
+  @endsection

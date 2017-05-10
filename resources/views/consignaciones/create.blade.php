@@ -44,10 +44,5 @@
   <script src="../../plugins/jQuery/jquery-2.2.3.min.js"></script>
   <script src="../../plugins/input-mask/jquery.inputmask.js"></script>
 
-<script type="text/javascript">
-$(document).ready(function($){
-      $('#valor').inputmask('999.999.999.999.999');
-});
 
-</script>
   @endsection

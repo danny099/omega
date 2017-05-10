@@ -142,6 +142,7 @@
 
 
 @section('scripts')
+<script src="../../plugins/jQuery/funciones.js"></script>
 <!-- jQuery 2.2.3 -->
 <script src="../../plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
@@ -163,6 +164,9 @@
   $(function () {
     $("#example1").DataTable();
   });
+
+
 </script>
+
 
 @endsection

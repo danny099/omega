@@ -58,8 +58,8 @@
         <div class="form-group" style="Display:none" id="natural">
           <label >Persona natural</label>
           <select class="form-control select2" name="cliente_id" style="width: 100%" id="select-natural">
-            @foreach($clientes as $cliente)
             <option value="">Seleccione..</option>
+            @foreach($clientes as $cliente)
             <option value="{{ $cliente->id }}">{{$cliente->nombre}}</option>
             @endforeach
           </select>
@@ -67,8 +67,8 @@
         <div class="form-group" style="Display:none" id="juridica">
           <label >Persona juridica</label>
           <select class="form-control" name="juridica_id" >
-            @foreach($juridicas as $juridica)
             <option value="">Seleccione..</option>
+            @foreach($juridicas as $juridica)
             <option value="{{ $juridica->id }}">{{$juridica->razon_social}}</option>
             @endforeach
           </select>
@@ -404,10 +404,22 @@
 
   $(document).ready(function($){
         $('#codigo').inputmask('CPS-9999-999');
+
+
+
   });
+  function sumariva(){
+    var valor = parseInt(document.getElementById('valor_factura').value);
+    var resultado = valor*1.19;
+
+    var iva = valor*0.19;
+
+    document.getElementById('iva').value = iva ;
+    document.getElementById('valor_total').value = resultado ;
+      }
 
   </script>
-    <script src="../../plugins/jQuery/funciones.js"></script>
+
     <!-- jQuery 2.2.3 -->
     <script src="../../plugins/jQuery/jquery-2.2.3.min.js"></script>
     <!-- Bootstrap 3.3.6 -->

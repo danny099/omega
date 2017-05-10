@@ -13,11 +13,11 @@ class Administrativa extends Model
   public $timestamps = false;
 
   public function cliente(){
-    return $this->belongsTo('App\cliente');
+    return $this->belongsTo('App\Cliente');
   }
 
   public function juridica(){
-    return $this->belongsTo('App\cliente');
+    return $this->belongsTo('App\Juridica');
   }
 
   public function otrosi(){
