@@ -277,17 +277,14 @@ class AdministrativaController extends Controller
 
        $admin = Administrativa::all();
 
-       for ($i=0; $i<count($input['otrosi']); $i++) {
 
-           if (!empty($input['otrosi'][$i])){
+       foreach ($request->otrosi as $otro)
+        {
+          $otrosi_id = Otrosi::select('id')->where('administrativa_id',$administrativas->id)->get();
+          $otrosi = Otrosi::findOrFail($otrosi_id);
+          $otrosi->update(['valor'=>$otro]);
 
-                 $otrosi_id = Otrosi::select('id')->where('administrativa_id',$administrativas->id)->get();
-                 $otrosi = Otrosi::findOrFail($otrosi_id);
-
-                 $otrosi->update();
-
-           }
-       }
+        }
 
 
 
