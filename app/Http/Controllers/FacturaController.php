@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Session;
 use App\Factura;
 use App\Administrativa;
 use Illuminate\Http\Request;
@@ -76,7 +76,12 @@ class FacturaController extends Controller
      */
     public function edit($id)
     {
-        //
+      $ide = Administrativa::find($id);
+      $facturas = Factura::where('factura.administrativa_id', '=', $id)->get();
+
+      // dd($transformaciones);
+      // die();
+      return view('facturas.edit',compact('facturas','id','ide'));
     }
 
     /**
@@ -88,7 +93,14 @@ class FacturaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $input = $request->all();
+
+      $fact = Factura::findOrFail($id);
+      $fact->update($input);
+
+      Session::flash('message', 'registro editado editado!');
+      Session::flash('class', 'success');
+      return redirect()->route('administrativas.index');
     }
 
     /**
@@ -99,6 +111,14 @@ class FacturaController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $factu = Factura::findOrFail($id);
+
+
+      $factu->delete();
+
+      Session::flash('message', 'Factura  eliminada');
+      Session::flash('class', 'danger');
+      return redirect();
+
     }
 }
