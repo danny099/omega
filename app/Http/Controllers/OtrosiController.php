@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Otrosi;
+use Session;
 use App\Administrativa;
 use Illuminate\Http\Request;
 
@@ -41,14 +42,16 @@ class OtrosiController extends Controller
     public function store(Request $request)
     {
 
-      $input = $reques->all();
-      dd($input);
-      die();
+      $input = $request->all();
+      $id = $request->codigo_proyecto;
 
       foreach ($request->otrosi as $otro)
        {
-         Otrosi::create(['valor'=>$otro]);
+         Otrosi::create(['valor'=>$otro,'administrativa_id'=>$id]);
        }
+
+       return redirect()->route('administrativas.index');
+
     }
 
     /**
@@ -59,7 +62,7 @@ class OtrosiController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -70,7 +73,9 @@ class OtrosiController extends Controller
      */
     public function edit($id)
     {
-        //
+      $ide = Administrativa::find($id);
+      $otrosi = Otrosi::where('otrosi.administrativa_id', '=', $id)->get();
+      return view('otrosi.edit',compact('otrosi','id','ide'));
     }
 
     /**
@@ -82,7 +87,15 @@ class OtrosiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $input = $request->all();
+
+      $otrosi = Otrosi::findOrFail($id);
+    
+      $otrosi->update($input);
+
+      Session::flash('message', 'registro editado editado!');
+      Session::flash('class', 'success');
+      return redirect()->route('administrativas.index');
     }
 
     /**

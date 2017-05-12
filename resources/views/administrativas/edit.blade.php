@@ -10,6 +10,7 @@
     <div class="box-header with-border">
       <center> <h3 class="box-title">Datos del proyecto</h3></center>
       <div class="">
+        <a href="{{ route('otrosi.edit', $administrativas->id) }}" class="btn btn-primary  pull-right">O</a>
         <a href="{{ route('pu_final.edit', $administrativas->id) }}" class="btn btn-primary  pull-right">P</a>
         <a href="{{ route('facturas.edit', $administrativas->id) }}" class="btn btn-primary  pull-right">Facturas</a>
         <a href="{{ route('distribuciones.edit', $administrativas->id) }}" class="btn btn-primary  pull-right">D</a>
