@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Consignacion;
 use App\Administrativa;
+use Session;
 use Illuminate\Http\Request;
 
 class ConsignacionController extends Controller
@@ -73,31 +74,59 @@ class ConsignacionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
-    }
+     public function edit($id)
+     {
+       $ide = Administrativa::find($id);
+       $consignaciones = Consignacion::where('Consignacion.administrativa_id', '=', $id)->get();
+       return view('consignaciones.edit',compact('consignaciones','id','ide'));
+     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+     /**
+      * Update the specified resource in storage.
+      *
+      * @param  \Illuminate\Http\Request  $request
+      * @param  int  $id
+      * @return \Illuminate\Http\Response
+      */
+     public function update(Request $request, $id)
+     {
+       $input = $request->all();
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
-}
+       $consignaciones = Consignacion::findOrFail($id);
+       $administrativa = Administrativa::findOrFail($consignaciones->administrativa_id);
+
+       if ( $administrativa->saldo > 0) {
+         $resta = $administrativa->saldo - $consignaciones->valor;
+         $nuevo_saldo = $resta + $request->valor;
+         $administrativa->saldo = $nuevo_saldo;
+         $administrativa->save();
+       }
+
+       $consignaciones->update($input);
+
+       Session::flash('message', 'registro editado editado!');
+       Session::flash('class', 'success');
+       return redirect()->route('administrativas.index');
+     }
+
+     /**
+      * Remove the specified resource from storage.
+      *
+      * @param  int  $id
+      * @return \Illuminate\Http\Response
+      */
+     public function destroy($id)
+     {
+       $consignaciones = Consignacion::findOrFail($id);
+       $administrativas = Administrativa::findOrFail($consignaciones->administrativa_id);
+       $nuevo_saldo = $administrativas->saldo - $consignaciones->valor;
+       $administrativas->saldo = $nuevo_saldo;
+       $administrativas->save();
+       $consignaciones->delete();
+
+       Session::flash('message', 'Consignacion  eliminada');
+       Session::flash('class', 'danger');
+       return redirect('administrativas');
+     ;
+     }
+     }

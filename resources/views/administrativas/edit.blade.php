@@ -14,6 +14,8 @@
         <a href="{{ route('otrosi.edit', $administrativas->id) }}" class="btn btn-primary  pull-right">O</a>
         <a href="{{ route('pu_final.edit', $administrativas->id) }}" class="btn btn-primary  pull-right">P</a>
         <a href="{{ route('facturas.edit', $administrativas->id) }}" class="btn btn-primary  pull-right">Facturas</a>
+        <a href="{{ route('cuenta_cobros.edit', $administrativas->id) }}" class="btn btn-primary  pull-right">Cuentas de cobro</a>
+        <a href="{{ route('consignaciones.edit', $administrativas->id) }}" class="btn btn-primary  pull-right">Consignaciones</a>
         <a href="{{ route('distribuciones.edit', $administrativas->id) }}" class="btn btn-primary  pull-right">D</a>
         <a href="{{ route('transformaciones.edit', $administrativas->id) }}" class="btn btn-primary  pull-right">T</a>
       </div>

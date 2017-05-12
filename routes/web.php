@@ -81,9 +81,11 @@ Route::group(['middleware' => 'auth'],function(){
   /**************************************************************/
   /**************************************************************/
 	Route::resource('consignaciones','ConsignacionController');
+		Route::get('deleteconsignacion/{id}','ConsignacionController@destroy');
 	/**************************************************************/
 	/**************************************************************/
 	Route::resource('cuenta_cobros','Cuenta_cobroController');
+			Route::get('deletecuenta/{id}','Cuenta_cobroController@destroy');
 	/**************************************************************/
 	/**************************************************************/
 	Route::resource('facturas','FacturaController');
