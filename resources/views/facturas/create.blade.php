@@ -1,13 +1,11 @@
 
-
+<link rel="stylesheet" href="{{ url('css/estilos.css') }}">
 
   <div class="container">
-    <div class="">
+    <div class="row">
       <div class="">
         <h3 class="box-title">Crear Facturas</h3>
       </div>
-
-
       <!-- /.box-header -->
       <!-- form start -->
         {!! Form::open(['url' => 'facturas']) !!}

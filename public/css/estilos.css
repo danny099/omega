@@ -1,1 +1,4 @@
-.skin-blue sidebar-mini modal-open
+.modal label input{
+  font-size: 18px;
+  display: inline-block;
+}
