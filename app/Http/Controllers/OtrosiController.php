@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Otrosi;
+use App\Administrativa;
 use Illuminate\Http\Request;
 
 class OtrosiController extends Controller
@@ -25,7 +26,10 @@ class OtrosiController extends Controller
      */
     public function create()
     {
-        //
+      $otrosi = Otrosi::all();
+      $codigos = Administrativa::all();
+
+      return view('otrosi.create',compact('codigos'));
     }
 
     /**
@@ -36,7 +40,15 @@ class OtrosiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+      $input = $reques->all();
+      dd($input);
+      die();
+
+      foreach ($request->otrosi as $otro)
+       {
+         Otrosi::create(['valor'=>$otro]);
+       }
     }
 
     /**
