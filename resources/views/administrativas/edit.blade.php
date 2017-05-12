@@ -1,5 +1,12 @@
 @extends('index')
-
+<style media="screen">
+  .botoncito{
+    width: 200px;
+  }
+  .div2{
+    padding: 5px;
+  }
+</style>
 @section('contenido')
   <ol class="breadcrumb">
     <li><a href="{{ url('index') }}">Inicio</a></li>
@@ -9,16 +16,7 @@
   <div class="box box-primary">
     <div class="box-header with-border">
       <center> <h3 class="box-title">Datos del proyecto</h3></center>
-      <div class="">
-        <a href="{{ route('adicionales.edit', $administrativas->id) }}" class="btn btn-primary  pull-right">A</a>
-        <a href="{{ route('otrosi.edit', $administrativas->id) }}" class="btn btn-primary  pull-right">O</a>
-        <a href="{{ route('pu_final.edit', $administrativas->id) }}" class="btn btn-primary  pull-right">P</a>
-        <a href="{{ route('facturas.edit', $administrativas->id) }}" class="btn btn-primary  pull-right">Facturas</a>
-        <a href="{{ route('cuenta_cobros.edit', $administrativas->id) }}" class="btn btn-primary  pull-right">Cuentas de cobro</a>
-        <a href="{{ route('consignaciones.edit', $administrativas->id) }}" class="btn btn-primary  pull-right">Consignaciones</a>
-        <a href="{{ route('distribuciones.edit', $administrativas->id) }}" class="btn btn-primary  pull-right">D</a>
-        <a href="{{ route('transformaciones.edit', $administrativas->id) }}" class="btn btn-primary  pull-right">T</a>
-      </div>
+
     </div>
     @if(Session::has('message'))
     <div id="alert">
@@ -102,9 +100,6 @@
           </select>
         </div>
         @endif
-      </div>
-
-      <div class="col-md-4">
         <div class="form-group">
           <label >Departamento</label>
           <select class="form-control" name="departamento" id="departamento">
@@ -121,6 +116,10 @@
             <option value=""></option>
           </select>
         </div>
+      </div>
+
+      <div class="col-md-4">
+
         <div class="form-group">
           <label >Tipo de zona</label>
           <select class="form-control" name="zona">
@@ -131,11 +130,8 @@
         </div>
         <div class="form-group">
           {!! Form::label('valor_contrato_inicial', 'Valor antes del iva') !!}
-          {!! Form::number('valor_contrato_inicial', $administrativas->valor_contrato_inicial, ['class' => 'form-control' , 'required' => 'required']) !!}
+          {!! Form::number('valor_contrato_inicial', $administrativas->valor_contrato_inicial, ['class' => 'form-control' , 'required' => 'required', 'onkeyup'=>'sumar3()']) !!}
         </div>
-      </div>
-
-      <div class="col-md-4">
         <div class="form-group">
           <label >Valor iva</label>
           <input type="number" class="form-control" id="iva" readonly="readonly" placeholder= "valor iva" name="iva" value="">
@@ -152,21 +148,54 @@
           </div>
         </div>
       </div>
+
+      <div class="col-md-4">
+        <div class="col-md-12">
+          <center><label >Editar/eliminar</label></center>
+        </div>
+        <div class="col-md-12 div2">
+            <center><a href="{{ route('adicionales.edit', $administrativas->id) }}" class="btn btn-primary botoncito">Valor adicional</a></center>
+        </div>
+        <div class="col-md-12 div2">
+            <center><a href="{{ route('otrosi.edit', $administrativas->id) }}" class="btn btn-primary botoncito">Otro si</a></center>
+        </div>
+        <div class="col-md-12 div2">
+            <center><a href="{{ route('pu_final.edit', $administrativas->id) }}" class="btn btn-primary botoncito">Proceso uso final</a></center>
+        </div>
+        <div class="col-md-12 div2">
+            <center><a href="{{ route('distribuciones.edit', $administrativas->id) }}" class="btn btn-primary botoncito">Alcance distribucion</a></center>
+        </div>
+        <div class="col-md-12 div2">
+            <center><a href="{{ route('transformaciones.edit', $administrativas->id) }}" class="btn btn-primary botoncito" >Alcance transformacion</a></center>
+        </div>
+        <div class="col-md-12 div2">
+            <center><a href="{{ route('facturas.edit', $administrativas->id) }}" class="btn btn-primary botoncito">Facturas</a></center>
+        </div>
+        <div class="col-md-12 div2">
+          <center><a href="{{ route('cuenta_cobros.edit', $administrativas->id) }}" class="btn btn-primary botoncito">Cuentas de cobro</a></center>
+        </div>
+        <div class="col-md-12 div2">
+            <center><a href="{{ route('consignaciones.edit', $administrativas->id) }}" class="btn btn-primary botoncito">Consignaciones</a></center>
+        </div>
+
+        </div>
+        <div class="col-md-12">
+          <center> <h4 class="box-title">Observaciones de estado administrativo del proyecto</h4> </center>
+        </div>
+        <div class="col-md-12">
+          <textarea  rows="4" cols="196" name="resumen"></textarea>
+        </div>
+      </div>
+        <div class="box-footer">
+          <button type="submit" data-target="" data-toggle="" class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;">Agregar</button>
+        </div>
+      </div>
+
       <hr>
     </div>
   </div>
 
-  <div class="col-md-12">
-    <center> <h4 class="box-title">Observaciones de estado administrativo del proyecto</h4> </center>
-  </div>
 
-  <div class="col-md-12">
-    <textarea  rows="4" cols="196" name="resumen"></textarea>
-  </div>
-  </div>
-  <div class="box-footer">
-    <button type="submit" data-target="" data-toggle="" class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;">Agregar</button>
-  </div>
 @endsection
 @section('scripts')
 

@@ -21,7 +21,7 @@
             <div class="box-body">
 
               <div class="col-md-12">
-                <center><img src="{{url('Certicol2.png')}}" ></center>
+                <center><img src="{{url('Certicol2.png')}}" ></center><br><br><br>
               </div>
               <div class="col-md-12">
                 <div class="col-md-3">
@@ -91,6 +91,7 @@
               </div>
             </div>
 
+            @if(count($adicionales) == 0)
             <div class="col-md-3">
               <div class="form-group">
                 <label >Valor adicional</label>
@@ -99,10 +100,28 @@
 
             <div class="col-md-3">
               <div class="form-group">
-                <span>{{ $administrativa->valor_iva }}</span>
+
+                  <span>0</span>
+
               </div>
             </div>
 
+            @else
+            <div class="col-md-3">
+              <div class="form-group">
+                <label >Valor adicional</label>
+              </div>
+            </div>
+
+            <div class="col-md-3">
+              <div class="form-group">
+                @foreach($adicionales as $adicional)
+                  <span>{{ $adicional->valor }}</span>
+                  <br>
+                @endforeach
+              </div>
+            </div>
+            @endif
 
           </div>
 
@@ -125,6 +144,22 @@
             </div>
           </div>
 
+          @if(count($otrosis) == 0)
+          <div class="col-md-3">
+            <div class="form-group">
+              <label >Otro si</label>
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <div class="form-group">
+
+              <span> 0</span>
+
+            </div>
+          </div>
+
+          @else
           <div class="col-md-3">
             <div class="form-group">
               <label >Otro si</label>
@@ -138,7 +173,7 @@
               @endforeach
             </div>
           </div>
-
+          @endif
         </div>
 
         <div class="col-md-12">
