@@ -45,7 +45,8 @@ class TransformacionController extends Controller
     public function store(Request $request)
     {
       $input = $request->all();
-
+      // dd();
+      // die();
       for ($a=0; $a<count($input['transformacion']['descripcion']); $a++){
 
             if (!empty($input['transformacion']['descripcion'][$a]) &&
@@ -124,8 +125,6 @@ class TransformacionController extends Controller
     public function destroy($id)
     {
        $transfor = Transformacion::findOrFail($id);
-
-
        $transfor->delete();
 
        Session::flash('message', 'Alcance Transformacion eliminado');

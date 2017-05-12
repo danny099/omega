@@ -44,10 +44,18 @@ class OtrosiController extends Controller
 
       $input = $request->all();
       $id = $request->codigo_proyecto;
+      $administrativa = Administrativa::find($id);
 
       foreach ($request->otrosi as $otro)
        {
          Otrosi::create(['valor'=>$otro,'administrativa_id'=>$id]);
+         $other = Otrosi::all();
+         $last_id = $other->last()->id;
+         $reg_otro = Otrosi::find($last_id);
+
+         $nuevo_saldo = $administrativa->saldo + $reg_otro->valor;
+         $administrativa->saldo = $nuevo_saldo;
+         $administrativa->save();
        }
 
        return redirect()->route('administrativas.index');
@@ -90,7 +98,7 @@ class OtrosiController extends Controller
       $input = $request->all();
 
       $otrosi = Otrosi::findOrFail($id);
-    
+
       $otrosi->update($input);
 
       Session::flash('message', 'registro editado editado!');
@@ -106,6 +114,11 @@ class OtrosiController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $otrosi = Otrosi::findOrFail($id);
+      $otrosi->delete();
+
+      Session::flash('message', 'Otro si eliminado');
+      Session::flash('class', 'danger');
+      return redirect();
     }
 }

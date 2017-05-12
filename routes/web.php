@@ -87,7 +87,12 @@ Route::group(['middleware' => 'auth'],function(){
 	/**************************************************************/
 	/**************************************************************/
 	Route::resource('facturas','FacturaController');
-	  Route::get('deletefactura/{id}','FacturaController@destroy');
+	Route::get('deletefactura/{id}','FacturaController@destroy');
+	/**************************************************************/
+	/**************************************************************/
+	Route::resource('adicionales','ValorAdicionalController');
+	Route::get('deleteadicional/{id}','ValorAdicionalController@destroy');
+
 	/**************************************************************/
 	/**************************************************************/
 
