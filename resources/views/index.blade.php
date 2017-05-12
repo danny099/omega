@@ -336,7 +336,7 @@
           </a>
           <ul class="treeview-menu">
             <li class="active"><a href="{{ url('administrativas') }}"><i class="fa fa-circle-o"></i>Administrativa</a></li>
-
+            <li class="active"><a href="{{ url('otrosi/create') }}"><i class="fa fa-circle-o"></i>Otro Si</a></li>
           </ul>
         </li>
       </ul>
