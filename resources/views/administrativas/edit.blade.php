@@ -3,12 +3,19 @@
 @section('contenido')
 <ol class="breadcrumb">
   <li><a href="{{ url('index') }}">Inicio</a></li>
-  <li><a href="{{ url('administrativas') }}">Administrativa</a></li>
+  <li><a href="{{ url('administrativas')}}">Administrativa</a></li>
   <li class="active">Editar Proyecto</li>
 </ol>
 <div class="box box-primary">
   <div class="box-header with-border">
-    <center> <h3 class="box-title">Datos del proyecto</h3> </center>
+    <center> <h3 class="box-title">Datos del proyecto</h3></center>
+    <div class="">
+      <a href="{{ route('transformaciones.edit', $administrativas->id) }}" class="btn btn-primary  pull-right">P</a>
+      <a href="{{ route('transformaciones.edit', $administrativas->id) }}" class="btn btn-primary  pull-right">D</a>
+      <a href="{{ route('transformaciones.edit', $administrativas->id) }}" class="btn btn-primary  pull-right">T</a>
+
+
+    </div>
   </div>
   @if(Session::has('message'))
     <div id="alert">
@@ -142,7 +149,7 @@
         </div>
 
         <div class="form-group ">
-          @if(count($adicionales) == 0)
+          <!-- @if(count($adicionales) == 0)
         <label >Valor adicional</label>
             <div class="col-md-11" >
               <input type="number" class="form-control" id="adicional" placeholder= "Ingrese valor" name="adicional[]"  onkeyup="sumar()" value="">
@@ -167,9 +174,9 @@
                 <a class="btn btn-warning" id="btnadd5" data-toggle="modal" href="#" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-plus"></i></a>
               </div>
             @endforeach
-          @endif
+          @endif -->
 
-        <div class="form-group ">
+        <!-- <div class="form-group ">
 
           @if(count($otrosis) == 0)
         <label >Otro si</label>
@@ -192,7 +199,7 @@
                 <a class="btn btn-warning" id="btnadd" data-toggle="modal" href="#" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-plus"></i></a>
               </div>
             @endforeach
-          @endif
+          @endif -->
 
           <div class="form-group">
             <br>
@@ -215,7 +222,7 @@
 </div>
 <!-- ************************************************************************************************************* -->
 
-<div class="box box-primary">
+<!-- <div class="box box-primary">
     <div class="box-header with-border">
       <center> <h3 class="box-title">Alcance: proceso de transformacion</h3> </center>
     </div>
@@ -541,7 +548,7 @@
               </div>
             </div>
           @endforeach
-        @endif
+        @endif -->
       <div class="col-md-12">
         <center> <h4 class="box-title">Observaciones de estado administrativo del proyecto</h4> </center>
       </div>

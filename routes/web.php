@@ -45,8 +45,9 @@ Route::group(['middleware' => 'auth'],function(){
 
   /**************************************************************/
   /**************************************************************/
-  Route::resource('transformacion','TransformacionController');
-
+  Route::resource('transformaciones','TransformacionController');
+	Route::get('transformaciones/{id}/crear','TransformacionController@create');
+	Route::get('deletetransfor/{id}','TransformacionController@destroy');
   /**************************************************************/
   /**************************************************************/
   Route::resource('distribucion','DistribucionController');

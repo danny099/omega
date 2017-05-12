@@ -231,8 +231,8 @@ class AdministrativaController extends Controller
    {
       //  funcion que con el codigo capturado busca en la base de datos el registro a editar
       $administrativas = Administrativa::find($id);
-      // dd($administrativas);
-      // die();
+
+      // $admin  = $administrativas->id;
       $departamentos = Departamento::all();
       $clientes =Cliente::all();
       $juridicas = Juridica::all();
@@ -248,12 +248,6 @@ class AdministrativaController extends Controller
       $consignaciones = Consignacion::where('consignacion.administrativa_id', '=', $id)->get();
       $cuenta_cobros = Cuenta_cobro::where('cuenta_cobro.administrativa_id', '=', $id)->get();
       $facturas = Factura::where('factura.administrativa_id', '=', $id)->get();
-
-      // if (count($adicionales) == 0) {
-      //   echo "hola";
-      //   die();
-      // }
-
 
 
       //  funcion que retorna una vista con todos los datos del registro ya buscado

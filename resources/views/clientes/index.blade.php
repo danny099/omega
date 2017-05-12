@@ -32,6 +32,7 @@
                 <th>Nit</th>
                 <th>Cedula</th>
                 <th>Nombre</th>
+                <th>Contacto</th>
                 <th>Telefono</th>
                 <th>Direccion</th>
                 <th>Email</th>
@@ -45,6 +46,7 @@
                   <td>{{ $cliente->nit }}</td>
                   <td>{{ $cliente->cedula }}</td>
                   <td>{{ $cliente->nombre }}</td>
+                  <td>{{ $cliente->contacto }}</td>
                   <td>{{ $cliente->telefono }}</td>
                   <td>{{ $cliente->direccion }}</td>
                   <td>{{ $cliente->email }}</td>

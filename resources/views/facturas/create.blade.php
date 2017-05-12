@@ -26,17 +26,17 @@
 
             <div class="form-group">
               {!! Form::label('valor_factura', 'Valor factura antes de iva') !!}
-              {!! Form::number('valor_factura', null, ['class' => 'form-control' , 'required' => 'required','onkeyup'=>'sumariva()']) !!}
+              {!! Form::number('valor_factura', null, ['class' => 'form-control valor_factura' , 'required' => 'required']) !!}
             </div>
 
             <div class="form-group">
               {!! Form::label('iva', 'IVA') !!}
-              {!! Form::number('iva', null, ['class' => 'form-control' ,'readonly', 'required' => 'required']) !!}
+              {!! Form::number('iva', null, ['class' => 'form-control iva' ,'readonly', 'required' => 'required']) !!}
             </div>
 
             <div class="form-group">
               {!! Form::label('valor_total', 'Valor total de la factura') !!}
-              {!! Form::number('valor_total', null, ['class' => 'form-control' ,'readonly', 'required' => 'required']) !!}
+              {!! Form::number('valor_total', null, ['class' => 'form-control valor_total' ,'readonly', 'required' => 'required']) !!}
             </div>
 
             <div class="form-group">
@@ -84,9 +84,3 @@
       {!! Form::close() !!}
     </div>
   </div>
-  @section('scripts')
-<script src="../../plugins/jQuery/funciones.js"></script>
-<script type="text/javascript">
-
-</script>
-  @endsection

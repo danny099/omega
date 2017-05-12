@@ -38,22 +38,14 @@
   <link rel="stylesheet" href=" {{ url('dist/css/skins/_all-skins.min.css')}}">
   <!-- iCheck -->
   <link rel="stylesheet" href=" {{ url('plugins/iCheck/flat/blue.css')}}">
-  <!-- Morris chart -->
-  <link rel="stylesheet" href=" {{ url('plugins/morris/morris.css')}}">
-  <!-- jvectormap -->
-  <link rel="stylesheet" href=" {{ url('plugins/jvectormap/jquery-jvectormap-1.2.2.css')}}">
-  <!-- Date Picker -->
-  <link rel="stylesheet" href=" {{ url('plugins/datepicker/datepicker3.css')}}">
-  <!-- Daterange picker -->
-  <link rel="stylesheet" href=" {{ url('plugins/daterangepicker/daterangepicker.css')}}">
-  <!-- bootstrap wysihtml5 - text editor -->
-  <link rel="stylesheet" href=" {{ url('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css')}}">
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
+  <!-- <link rel="stylesheet" type="text/css" href="{{url('plugins/datatables/jquery.dataTables.css')}}"> -->
+  <link rel="stylesheet" type="text/css" href="{{url('plugins/datatables/dataTables.bootstrap.css')}}">
   @yield('css')
 </head>
 <body class="hold-transition skin-blue sidebar-mini" style="padding: 0px !important;">
@@ -354,7 +346,7 @@
           <a href="#">
             <i class="fa fa-dashboard"></i> <span>Modulo1</span>
             <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
+                <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
@@ -592,6 +584,7 @@
 </div>
 <!-- ./wrapper -->
 
+
 <!-- jQuery 2.2.3 -->
 <script src= "{{url('plugins/jQuery/jquery-2.2.3.min.js')}}"></script>
 <!-- jQuery UI 1.11.4 -->
@@ -601,30 +594,18 @@
   $.widget.bridge('uibutton', $.ui.button);
 </script>
 
-{{url('')}}
 <!-- Bootstrap 3.3.6 -->
 <script src="{{url('bootstrap/js/bootstrap.min.js')}}"></script>
-<!-- Morris.js charts -->
-<script src="{{url('https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js')}}"></script>
-<script src="{{url('plugins/morris/morris.min.js')}}"></script>
-<!-- Sparkline -->
-<script src="{{url('plugins/sparkline/jquery.sparkline.min.js')}}"></script>
-<!-- jvectormap -->
-<script src="{{url('plugins/jvectormap/jquery-jvectormap-1.2.2.min.js')}}"></script>
-<script src="{{url('plugins/jvectormap/jquery-jvectormap-world-mill-en.js')}}"></script>
-<!-- jQuery Knob Chart -->
-<script src="{{url('plugins/knob/jquery.knob.js')}}"></script>
-<!-- daterangepicker -->
-<script src="{{url('https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js')}}"></script>
-<script src="{{url('plugins/daterangepicker/daterangepicker.js')}}"></script>
-<!-- datepicker -->
-<script src="{{url('plugins/datepicker/bootstrap-datepicker.js')}}"></script>
-<!-- Bootstrap WYSIHTML5 -->
-<script src="{{url('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js')}}"></script>
 <!-- Slimscroll -->
 <script src="{{url('plugins/slimScroll/jquery.slimscroll.min.js')}}"></script>
 <!-- FastClick -->
 <script src="{{url('plugins/fastclick/fastclick.js')}}"></script>
+<!-- Select2 -->
+<script src="{{url('js/plugins/select2/select2.full.js')}}"></script>
+<!-- DataTables -->
+<script src="{{url('plugins/datatables/jquery.dataTables.min.js')}}"></script>
+<script src="{{url('plugins/datatables/dataTables.bootstrap.min.js')}}"></script>
+
 <!-- AdminLTE App -->
 <script src="{{url('dist/js/app.min.js')}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
@@ -632,37 +613,8 @@
 <!-- AdminLTE for demo purposes -->
 <script src="{{url('dist/js/demo.js')}}"></script>
 <script src="../../plugins/jQuery/funciones.js"></script>
+
 @yield('scripts')
-
-<!-- jQuery 2.2.3 -->
-<script src="{{url('plugins/jQuery/jquery-2.2.3.min.js')}}"></script>
-<!-- Bootstrap 3.3.6 -->
-<script src="{{url('bootstrap/js/bootstrap.min.js')}}"></script>
-<!-- DataTables -->
-<script src="{{url('plugins/datatables/jquery.dataTables.min.js')}}"></script>
-<script src=""></script>
-<script src="{{url('plugins/datatables/dataTables.bootstrap.min.js')}}"></script>
-<script src=""></script>
-
-<link rel="stylesheet" type="text/css" href="{{url('plugins/datatables/dataTables.bootstrap.css')}}">
-<link rel="stylesheet" type="text/css" href="{{url('plugins/datatables/jquery.dataTables.css')}}">
-<!-- SlimScroll -->
-<script src="{{url('plugins/slimScroll/jquery.slimscroll.min.js')}}"></script>
-<!-- FastClick -->
-<script src="{{url('plugins/fastclick/fastclick.js')}}"></script>
-<!-- AdminLTE App -->
-<script src="{{url('dist/js/app.min.js')}}"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="{{url('dist/js/demo.js')}}"></script>
-<script src="{{url('js/plugins/select2/select2.full.js')}}"></script>
-<!-- page script -->
-
-
-<script>
-  $(function () {
-    $("#example1").DataTable();
-  });
-</script>
 
 </body>
 </html>
