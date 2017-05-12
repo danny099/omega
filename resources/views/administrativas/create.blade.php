@@ -55,9 +55,9 @@
               @endforeach
             </select>
           </div>
-          <div class="form-group" style="Display:none" id="juridica">
+          <div class="form-group " style="Display:none" style="width: 100%" id="juridica">
             <label >Persona juridica</label>
-            <select class="form-control" name="juridica_id" >
+            <select class="form-control" name="juridica_id" style="width: 100%">
               <option value="">Seleccione..</option>
               @foreach($juridicas as $juridica)
               <option value="{{ $juridica->id }}">{{$juridica->razon_social}}</option>
@@ -99,28 +99,9 @@
             <label >Valor iva</label>
             <input type="number" class="form-control" id="iva" readonly="readonly" placeholder= "valor iva" name="iva"   >
           </div>
-          <label >Valor adicional</label>
-          <div class="form-group ">
-            <div class="col-md-11" >
-              <input type="number" class="form-control" id="adicional" placeholder= "Ingrese valor" name="adicional[valor][]"  onkeyup="sumar()" >
-              <label >detalle valor adicional</label>
-              <input type="text" class="form-control" id="detalle" placeholder= "Ingrese detalle" name="adicional[detalle][]">
-            </div>
-            <div class="col-md-1" id="tblprod5">
-              <a class="btn btn-warning" id="btnadd5" data-toggle="modal" href="#" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-plus"></i></a>
-            </div>
-            <label >Otro si</label>
-            <div class="form-group ">
-              <div class="col-md-11" >
-                <input type="number" class="form-control" id="otrosi[]" placeholder= "Ingrese valor" name="otrosi[]"  onkeyup="sumar2()" >
-              </div>
-              <div class="col-md-1" id="tblprod">
-                <a class="btn btn-warning" id="btnadd" data-toggle="modal" href="#" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-plus"></i></a>
-              </div>
-            </div>
+
             <div class ="form-group">
-              <br>
-              <br>
+
               <label >Valor contrato final</label>
               <input type="number" class="form-control" id="fin" readonly="readonly" placeholder= "Valor final" name="contrato_final"   >
             </div>
@@ -300,8 +281,6 @@
 
 @section('scripts')
 
-<script src="../../plugins/jQuery/jquery-2.2.3.min.js"></script>
-<script src="../../plugins/input-mask/jquery.inputmask.js"></script>
 
 <script type="text/javascript">
 $(document).ready(function(){
@@ -352,11 +331,6 @@ document.getElementById('valor_total').value = resultado ;
 </script>
 
 
-<script src="../../bootstrap/js/bootstrap.min.js"></script>
 
-<!-- AdminLTE App -->
-<script src="../../dist/js/app.min.js"></script>
-
-<!-- page script -->
 
 @endsection

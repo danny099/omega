@@ -19,7 +19,6 @@
 
   function sumar(){
     var valor = parseInt(document.getElementById('ini').value);
-    var valor2 = parseInt(document.getElementById('otrosi[]').value);
     var resultado = valor*1.19;
 
     var iva = valor*0.19;
@@ -28,15 +27,7 @@
     document.getElementById('fin').value = resultado ;
       }
 
-      function sumar2(){
-        var valor = parseInt(document.getElementById('ini').value);
-        var valor2 = parseInt(document.getElementById('otrosi[]').value);
 
-        var iva = valor*0.19;
-        var resultado = valor+valor2+iva;
-
-        document.getElementById('fin').value = resultado ;
-          }
 
 
 
@@ -268,5 +259,5 @@
         });
 
         $(document).ready(function(){
-          $(".select2").select2();
+          $("select").select2();
         });

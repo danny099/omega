@@ -90,7 +90,7 @@
         </div>
         <div class="form-group"  id="juridica">
           <label >Persona juridica</label>
-          <select class="form-control" name="juridica_id" >
+          <select class="form-control" name="juridica_id" style="width: 100%" >
             <option value="{{ $administrativas->juridica->id }}">{{ $administrativas->juridica->razon_social }}</option>
             @foreach($juridicas as $juridica)
             <option value="{{ $juridica->id }}">{{$juridica->razon_social}}</option>
@@ -138,8 +138,7 @@
         </div>
         <div class="form-group ">
           <div class="form-group">
-            <br>
-            <br>
+
             <label >Valor contrato final</label>
             <input type="number" class="form-control" id="fin" readonly="readonly" placeholder= "Valor final" name="contrato_final" value="{{ $administrativas->valor_contrato_final}}">
           </div>
