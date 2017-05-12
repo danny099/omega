@@ -118,7 +118,7 @@ class FacturaController extends Controller
 
       Session::flash('message', 'Factura  eliminada');
       Session::flash('class', 'danger');
-      return redirect();
+      return redirect('administrativas');
 
     }
 }

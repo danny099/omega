@@ -115,10 +115,15 @@ class OtrosiController extends Controller
     public function destroy($id)
     {
       $otrosi = Otrosi::findOrFail($id);
+      $administrativas = Administrativa::findOrFail($otrosi->administrativa_id);
+      $nuevo_saldo = $administrativas->saldo - $otrosi->valor;
+      $administrativas->saldo = $nuevo_saldo;
+      $administrativas->save();
       $otrosi->delete();
 
       Session::flash('message', 'Otro si eliminado');
       Session::flash('class', 'danger');
-      return redirect();
+      return redirect('administrativas');
+;
     }
 }

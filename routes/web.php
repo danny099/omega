@@ -42,7 +42,7 @@ Route::group(['middleware' => 'auth'],function(){
   /**************************************************************/
   /**************************************************************/
   Route::resource('otrosi','OtrosiController');
-	Route::get('deleteotrosi','OtrosiController@destroy');
+	Route::get('deleteotrosi/{id}','OtrosiController@destroy');
   /**************************************************************/
   /**************************************************************/
   Route::resource('transformaciones','TransformacionController');
