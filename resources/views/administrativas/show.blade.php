@@ -14,7 +14,7 @@
       <div class="container">
         <div class="box box-primary">
           <div class="box-header with-border">
-           <center><h3 class="box-title">Datos del Proyecto</h3></center>
+           <center><h2>Datos del Proyecto</h2></center>
           </div>
           <!-- /.box-header -->
           <!-- form start -->
@@ -38,15 +38,16 @@
 
                 <div class="col-md-3">
                   <div class="form-group">
-                    <label >Municipio:</label>
+                    <label >Valor antes del iva</label>
                   </div>
                 </div>
 
                 <div class="col-md-3">
                   <div class="form-group">
-                    <span>{{ $municipio->nombre }}</span>
+                    <span>{{ $administrativa->valor_contrato_inicial }}</span>
                   </div>
                 </div>
+
               </div>
 
               <div class="col-md-12">
@@ -64,15 +65,17 @@
 
               <div class="col-md-3">
                 <div class="form-group">
-                  <label >Departamento:</label>
+                    <label >Valor iva</label>
                 </div>
               </div>
 
               <div class="col-md-3">
                 <div class="form-group">
-                  <span>{{ $administrativa->departamento->nombre }}</span>
-                </div>
+                  <span>{{ $administrativa->valor_iva }}</span>
               </div>
+              </div>
+
+
             </div>
 
             <div class="col-md-12">
@@ -90,15 +93,17 @@
 
             <div class="col-md-3">
               <div class="form-group">
-                <label >Tipo de zona:</label>
+                <label >Valor adicional</label>
               </div>
             </div>
 
             <div class="col-md-3">
               <div class="form-group">
-                <span>{{ $administrativa->tipo_zona }}</span>
+                <span>{{ $administrativa->valor_iva }}</span>
               </div>
             </div>
+
+
           </div>
 
           <div class="col-md-12">
@@ -122,177 +127,106 @@
 
           <div class="col-md-3">
             <div class="form-group">
-              <label >Valor antes del iva</label>
+              <label >Otro si</label>
             </div>
           </div>
 
           <div class="col-md-3">
             <div class="form-group">
-              <span>{{ $administrativa->valor_contrato_inicial }}</span>
+              @foreach($otrosis as $otrosi)
+              <span> {{ $otrosi->valor }}</span><br>
+              @endforeach
             </div>
           </div>
+
         </div>
 
         <div class="col-md-12">
           <div class="col-md-3">
             <div class="form-group">
-
+              <label >Municipio:</label>
             </div>
           </div>
 
-        <div class="col-md-3">
-          <div class="form-group">
-
+          <div class="col-md-3">
+            <div class="form-group">
+              <span>{{ $municipio->nombre }}</span>
+            </div>
           </div>
-        </div>
 
-        <div class="col-md-3">
-          <div class="form-group">
-              <label >Valor iva</label>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label >Valor contrato final</label>
+            </div>
           </div>
-        </div>
 
-        <div class="col-md-3">
-          <div class="form-group">
-            <span>{{ $administrativa->valor_iva }}</span>
-        </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <span>{{ $administrativa->valor_contrato_final }}</span>
+            </div>
+          </div>
+
+
+      </div>
+        <div class="col-md-12">
+          <div class="col-md-3">
+            <div class="form-group">
+              <label >Departamento:</label>
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <div class="form-group">
+              <span>{{ $administrativa->departamento->nombre }}</span>
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <div class="form-group">
+              <label >Plan de pago</label>
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <div class="form-group">
+              <span>{{ $administrativa->plan_pago }}</span>
+            </div>
+          </div>
+
+
         </div>
 
         <div class="col-md-12">
           <div class="col-md-3">
             <div class="form-group">
-
+              <label >Tipo de zona:</label>
             </div>
           </div>
 
-        <div class="col-md-3">
-          <div class="form-group">
-
-          </div>
-        </div>
-
-        <div class="col-md-3">
-          <div class="form-group">
-            <label >Valor adicional</label>
-          </div>
-        </div>
-          <span>{{ $administrativa->valor_iva }}</span>
-        <div class="col-md-3">
-          <div class="form-group">
-
-
-          </div>
-        </div>
-        </div>
-
-        <div class="col-md-12">
           <div class="col-md-3">
             <div class="form-group">
-
+              <span>{{ $administrativa->tipo_zona }}</span>
             </div>
           </div>
 
-        <div class="col-md-3">
-          <div class="form-group">
-
-          </div>
-        </div>
-
-        <div class="col-md-3">
-          <div class="form-group">
-            <label >Otro si</label>
-          </div>
-        </div>
-
-        <div class="col-md-3">
-          <div class="form-group">
-            @foreach($otrosis as $otrosi)
-            <span> {{ $otrosi->valor }}</span><br>
-            @endforeach
-          </div>
-        </div>
-        </div>
-
-        <div class="col-md-12">
           <div class="col-md-3">
             <div class="form-group">
-
+              <label >Saldo</label>
             </div>
           </div>
 
-        <div class="col-md-3">
-          <div class="form-group">
-
-          </div>
-        </div>
-
-        <div class="col-md-3">
-          <div class="form-group">
-            <label >Valor contrato final</label>
-          </div>
-        </div>
-
-        <div class="col-md-3">
-          <div class="form-group">
-            <span>{{ $administrativa->valor_contrato_final }}</span>
-          </div>
-        </div>
-        </div>
-
-        <div class="col-md-12">
           <div class="col-md-3">
             <div class="form-group">
-
+              <span>{{ $administrativa->saldo }}</span>
             </div>
           </div>
 
-        <div class="col-md-3">
-          <div class="form-group">
-
-          </div>
         </div>
 
-        <div class="col-md-3">
-          <div class="form-group">
-            <label >Saldo</label>
-          </div>
-        </div>
 
-        <div class="col-md-3">
-          <div class="form-group">
-            <span>{{ $administrativa->saldo }}</span>
-          </div>
-        </div>
-        </div>
-
-        <div class="col-md-12">
-          <div class="col-md-3">
-            <div class="form-group">
-
-            </div>
-          </div>
-
-        <div class="col-md-3">
-          <div class="form-group">
-
-          </div>
-        </div>
-
-        <div class="col-md-3">
-          <div class="form-group">
-            <label >Plan de pago</label>
-          </div>
-        </div>
-
-        <div class="col-md-3">
-          <div class="form-group">
-            <span>{{ $administrativa->plan_pago }}</span>
-          </div>
-        </div>
-        </div>
 
         </div>
-      
+
 
         @if(count($transformaciones) == 0)
 
@@ -479,7 +413,7 @@
 
         @else
           <div class="">
-            <h3>Consiganaciones</h3>
+            <h3>Consignaciones</h3>
           </div>
           @foreach($consignaciones as $consignacion)
             <div class="box box-primary">
