@@ -108,22 +108,22 @@ class AdministrativaController extends Controller
 
       //  codigo para insertar los otrosi que vienen desde un arreglo y recorrerlo para hacer el create
 
-       foreach ($request->otrosi as $otro)
-        {
-          Otrosi::create(['valor'=>$otro,'administrativa_id'=>$lastId_admin]);
-        }
+      //  foreach ($request->otrosi as $otro)
+      //   {
+      //     Otrosi::create(['valor'=>$otro,'administrativa_id'=>$lastId_admin]);
+      //   }
 
-        for ($f=0; $f<count($input['adicional']['detalle']); $f++) {
-
-            if (!empty($input['adicional']['valor'][$f]) && !empty($input['adicional']['detalle'][$f])){
-
-                  $datos4['valor'] = $input['adicional']['valor'][$f];
-                  $datos4['detalle'] = $input['adicional']['detalle'][$f];
-                  $datos4['administrativa_id'] = $lastId_admin;
-
-                  Valor_adicional::create($datos4);
-            }
-        }
+        // for ($f=0; $f<count($input['adicional']['detalle']); $f++) {
+        //
+        //     if (!empty($input['adicional']['valor'][$f]) && !empty($input['adicional']['detalle'][$f])){
+        //
+        //           $datos4['valor'] = $input['adicional']['valor'][$f];
+        //           $datos4['detalle'] = $input['adicional']['detalle'][$f];
+        //           $datos4['administrativa_id'] = $lastId_admin;
+        //
+        //           Valor_adicional::create($datos4);
+        //     }
+        // }
 
 
 
