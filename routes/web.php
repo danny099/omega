@@ -50,11 +50,13 @@ Route::group(['middleware' => 'auth'],function(){
 	Route::get('deletetransfor/{id}','TransformacionController@destroy');
   /**************************************************************/
   /**************************************************************/
-  Route::resource('distribucion','DistribucionController');
+  Route::resource('distribuciones','DistribucionController');
+	Route::get('deletedistri/{id}','DistribucionController@destroy');
 
   /**************************************************************/
   /**************************************************************/
   Route::resource('pu_final','Pu_finalController');
+	Route::get('deletepu/{id}','Pu_finalController@destroy');
 
   /**************************************************************/
   /**************************************************************/

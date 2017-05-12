@@ -147,7 +147,6 @@ class AdministrativaController extends Controller
         }
 
         for ($x=0; $x<count($input['distribucion']['descripcion_dis']); $x++) {
-
             if (!empty($input['distribucion']['descripcion_dis'][$x]) &&
                 !empty($input['distribucion']['tipo_dis'][$x]) &&
                 !empty($input['distribucion']['unidad_distribucion'][$x]) &&
@@ -161,7 +160,6 @@ class AdministrativaController extends Controller
 
                   Distribucion::create($datos2);
             }
-
         }
 
         for ($i=0; $i<count($input['pu_final']['descripcion_pu']); $i++) {

@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Transformacion;
 use Session;
+use App\Transformacion;
+use App\Administrativa;
 use Illuminate\Http\Request;
 
 class TransformacionController extends Controller
@@ -28,7 +29,11 @@ class TransformacionController extends Controller
     public function create()
     {
       $transformaciones = Transformacion::all();
-      return view('transformaciones.create');
+      $codigos = Administrativa::all();
+
+      // dd($codigos);
+      // die();
+      return view('transformaciones.create',compact('codigos'));
     }
 
     /**
@@ -40,6 +45,7 @@ class TransformacionController extends Controller
     public function store(Request $request)
     {
       $input = $request->all();
+
       for ($a=0; $a<count($input['transformacion']['descripcion']); $a++){
 
             if (!empty($input['transformacion']['descripcion'][$a]) &&
@@ -53,7 +59,7 @@ class TransformacionController extends Controller
                   $datos1['capacidad'] = $input['transformacion']['capacidad'][$a];
                   $datos1['unidad'] = $input['transformacion']['unidad_transformacion'][$a];
                   $datos1['cantidad'] = $input['transformacion']['cantidad'][$a];
-                  $datos1['administrativa_id'] = $input['id_admin'];
+                  $datos1['administrativa_id'] = $input['codigo_proyecto'];
 
                   Transformacion::create($datos1);
             }
@@ -81,9 +87,12 @@ class TransformacionController extends Controller
      */
     public function edit($id)
     {
-      // $transformaciones = Transformacion::find($id);
+      $ide = Administrativa::find($id);
       $transformaciones = Transformacion::where('transformacion.administrativa_id', '=', $id)->get();
-      return view('transformaciones.edit',compact('transformaciones','id'));
+
+      // dd($transformaciones);
+      // die();
+      return view('transformaciones.edit',compact('transformaciones','id','ide'));
 
     }
 
@@ -99,17 +108,6 @@ class TransformacionController extends Controller
       $input = $request->all();
 
       $trans = Transformacion::findOrFail($id);
-
-      // for ($i=0; $i<count($input['descripcion']) ; $i++) {
-      //
-      //   $datos['descripcion'] = $input['descripcion'][$i];
-      //   $datos['tipo'] = $input['tipo'][$i];
-      //   $datos['capacidad'] = $input['capacidad'][$i];
-      //   $datos['unidad_transformacion'] = $input['unidad_transformacion'][$i];
-      //   $datos['cantidad'] = $input['cantidada'][$i];
-      //
-      //
-      // }
       $trans->update($input);
 
       Session::flash('message', 'registro editado editado!');

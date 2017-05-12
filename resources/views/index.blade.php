@@ -344,6 +344,23 @@
       <ul class="sidebar-menu">
         <li class="treeview">
           <a href="#">
+            <i class="fa fa-dashboard"></i> <span>Alcance</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{ url('transformaciones/create') }}"><i class="fa fa-circle-o"></i>Transformacion</a></li>
+            <li><a href="{{ url('distribuciones/create') }}"><i class="fa fa-circle-o"></i>Distribuciones</a></li>
+            <li><a href="{{ url('pu_final/create') }}"><i class="fa fa-circle-o"></i>Uso final</a></li>
+          </ul>
+        </li>
+      </ul>
+      @endif
+      @if ( Auth::user()->rol_id == 1)
+      <ul class="sidebar-menu">
+        <li class="treeview">
+          <a href="#">
             <i class="fa fa-dashboard"></i> <span>Modulo1</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
@@ -357,6 +374,7 @@
         </li>
       </ul>
       @endif
+
 
     </section>
     <!-- /.sidebar -->
