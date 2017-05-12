@@ -98,6 +98,14 @@ class OtrosiController extends Controller
       $input = $request->all();
 
       $otrosi = Otrosi::findOrFail($id);
+      $administrativa = Administrativa::findOrFail($otrosi->administrativa_id);
+
+      if ( $administrativa->saldo > 0) {
+        $resta = $administrativa->saldo - $otrosi->valor;
+        $nuevo_saldo = $resta + $request->valor;
+        $administrativa->saldo = $nuevo_saldo;
+        $administrativa->save();
+      }
 
       $otrosi->update($input);
 

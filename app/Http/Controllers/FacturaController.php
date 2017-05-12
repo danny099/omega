@@ -93,8 +93,16 @@ class FacturaController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $input = $request->all();
+      $input = $request->Factura();
+      $factura = Factura::findOrFail($id);
+      $administrativa = Administrativa::findOrFail($factura->administrativa_id);
 
+      if ( $administrativa->saldo > 0) {
+        $resta = $administrativa->saldo - $factura->valor_factura;
+        $nuevo_saldo = $resta + $request->valor;
+        $administrativa->saldo = $nuevo_saldo;
+        $administrativa->save();
+      }
       $fact = Factura::findOrFail($id);
       $fact->update($input);
 
@@ -112,8 +120,10 @@ class FacturaController extends Controller
     public function destroy($id)
     {
       $factu = Factura::findOrFail($id);
-
-
+      $administrativas = Administrativa::findOrFail($factu->administrativa_id);
+      $nuevo_saldo = $administrativas->saldo - $factu->valor;
+      $administrativas->saldo = $nuevo_saldo;
+      $administrativas->save();
       $factu->delete();
 
       Session::flash('message', 'Factura  eliminada');

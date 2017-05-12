@@ -106,8 +106,15 @@ class ValorAdicionalController extends Controller
     public function update(Request $request, $id)
     {
       $input = $request->all();
-
       $adicional = Valor_adicional::findOrFail($id);
+      $administrativa = Administrativa::findOrFail($adicional->administrativa_id);
+
+      if ( $administrativa->saldo > 0) {
+        $resta = $administrativa->saldo - $adicional->valor;
+        $nuevo_saldo = $resta + $request->valor;
+        $administrativa->saldo = $nuevo_saldo;
+        $administrativa->save();
+      }
       $adicional->update($input);
 
       Session::flash('message', 'registro editado editado!');
@@ -124,6 +131,10 @@ class ValorAdicionalController extends Controller
     public function destroy($id)
     {
       $adicional = Valor_adicional::findOrFail($id);
+      $administrativas = Administrativa::findOrFail($adicional->administrativa_id);
+      $nuevo_saldo = $administrativas->saldo - $adicional->valor;
+      $administrativas->saldo = $nuevo_saldo;
+      $administrativas->save();
       $adicional->delete();
 
       Session::flash('message', 'Valor adicional eliminado');
