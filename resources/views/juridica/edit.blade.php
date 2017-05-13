@@ -34,7 +34,7 @@
 
           <div class="form-group">
             {!! Form::label('nit', 'Nit') !!}
-            {!! Form::number('nit', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+            {!! Form::text('nit', null, ['class' => 'form-control' , 'required' => 'required']) !!}
           </div>
 
           <div class="form-group">
@@ -44,7 +44,7 @@
 
           <div class="form-group">
             {!! Form::label('cedula', 'Cedula') !!}
-            {!! Form::number('cedula', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+            {!! Form::text('cedula', null, ['class' => 'form-control' , 'required' => 'required']) !!}
           </div>
 
 

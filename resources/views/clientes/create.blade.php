@@ -17,12 +17,12 @@
 
           <div class="form-group">
             {!! Form::label('nit', 'Nit') !!}
-            {!! Form::number('nit', null, ['class' => 'form-control' ]) !!}
+            {!! Form::text('nit', null, ['class' => 'form-control' ]) !!}
           </div>
 
           <div class="form-group">
             {!! Form::label('cedula', 'Cedula') !!}
-            {!! Form::number('cedula', null, ['class' => 'form-control']) !!}
+            {!! Form::text('cedula', null, ['class' => 'form-control']) !!}
           </div>
 
           <div class="form-group">
