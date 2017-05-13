@@ -10,7 +10,7 @@
 
       <!-- /.box-header -->
       <!-- form start -->
-        {!! Form::open(['url' => 'facturas']) !!}
+        {!! Form::open(['class'=>'form1','url' => 'facturas']) !!}
         {{ csrf_field() }}
         <div class="box-body col-md-6">
           <br>
@@ -26,7 +26,7 @@
 
             <div class="form-group">
               {!! Form::label('valor_factura', 'Valor factura antes de iva') !!}
-              {!! Form::number('valor_factura', null, ['class' => 'form-control valor_factura' , 'required' => 'required', 'min'=>'0']) !!}
+              {!! Form::number('valor_factura', null, ['class' => 'form-control valor_factura' , 'onKeyUp' => 'Suma()','required' => 'required', 'min'=>'0']) !!}
             </div>
 
             <div class="form-group">
@@ -84,3 +84,18 @@
       {!! Form::close() !!}
     </div>
   </div>
+
+  <script type="text/javascript">
+      function Suma() {
+        var ingreso1 = $('.valor_factura').val();
+        var resultado = ingreso1 * 1.19;
+        var iva = ingreso1 * 0.19;
+
+        try{
+          $('.iva').val(iva);
+          $('.valor_total').val(resultado);
+        }
+      //Si se produce un error no hacemos nada
+        catch(e) {}
+      }
+  </script>
