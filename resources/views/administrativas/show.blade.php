@@ -116,7 +116,8 @@
             <div class="col-md-3">
               <div class="form-group">
                 @foreach($adicionales as $adicional)
-                  <span>{{ $adicional->valor }}</span>
+                  <span>{{ $adicional->detalle }}</span>
+                  <span>${{ $adicional->valor }}</span>
                   <br>
                 @endforeach
               </div>
@@ -448,25 +449,35 @@
 
         @else
           <div class="">
-            <h3>Consignaciones</h3>
+            <center><h3>Consignaciones</h3></center>
           </div>
           @foreach($consignaciones as $consignacion)
             <div class="box box-primary">
-              <div class="form-group">
-                <label>Fecha de pago:</label>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <span>{{ $consignacion->fecha_pago }}</span>
+              <div class="box-body">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label>Fecha de pago:</label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span>{{ $consignacion->fecha_pago }}</span>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label>Valor:</label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span>{{ $consignacion->valor }}</span>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label>Observaciones:</label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span>{{ $consignacion->observaciones }}</span>
+                  </div>
+                </div>
               </div>
-              <div class="form-group">
-                <label>Valor:</label>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <span>{{ $consignacion->valor }}</span>
-              </div>
-              <div class="form-group">
-                <label>Observaciones:</label>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <span>{{ $consignacion->observaciones }}</span>
-              </div>
+
+
             </div>
           @endforeach
 
@@ -475,40 +486,48 @@
 
           @else
           <div class="">
-            <h3>Cuanta de Cobro</h3>
+            <center><h3>Cuanta de Cobro</h3></center>
           </div>
           @foreach($cuenta_cobros as $cuenta_cobro)
             <div class="box box-primary">
-              <div class="form-group">
-                <label>Porcentaje:</label>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <span>{{ $cuenta_cobro->porcentaje }}</span>
+              <div class="box-body">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label>Porcentaje:</label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span>{{ $cuenta_cobro->porcentaje }}%</span>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label>Valor:</label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span>{{ $cuenta_cobro->valor }}</span>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label>Fecha cuenta de cobro:</label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span>{{ $cuenta_cobro->fecha_cuenta_cobro }}</span>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label>Numero cuenta de cobro:</label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span>{{ $cuenta_cobro->numero_cuenta_cobro }}</span>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label>Observaciones:</label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span>{{ $cuenta_cobro->observaciones }}</span>
+                  </div>
+                </div>
               </div>
-              <div class="form-group">
-                <label>Valor:</label>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <span>{{ $cuenta_cobro->valor }}</span>
-              </div>
-              <div class="form-group">
-                <label>Fecha cuenta de cobro:</label>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <span>{{ $cuenta_cobro->fecha_cuenta_cobro }}</span>
-              </div>
-              <div class="form-group">
-                <label>Fecha de pago:</label>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <span>{{ $cuenta_cobro->fecha_pago }}</span>
-              </div>
-              <div class="form-group">
-                <label>Numero cuenta de cobro:</label>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <span>{{ $cuenta_cobro->numero_cuenta_cobro }}</span>
-              </div>
-              <div class="form-group">
-                <label>Observaciones:</label>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <span>{{ $cuenta_cobro->observaciones }}</span>
-              </div>
+
             </div>
           @endforeach
 
@@ -517,70 +536,103 @@
 
       @else
           <div class="">
-            <h3>Facturas</h3>
+            <center><h3>Facturas</h3></center>
           </div>
           @foreach($facturas as $factura)
             <div class="box box-primary">
-              <div class="form-group">
-                <label>Numero Factura:</label>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <span>{{ $factura->num_factura }}</span>
+              <div class="box-body">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label>Numero Factura:</label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span>{{ $factura->num_factura }}</span>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label>Fecha de factura:</label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span>{{ $factura->fecha_factura }}</span>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label>Valor factura antes de iva:</label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span>{{ $factura->valor_factura }}</span>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label>IVA:</label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span>{{ $factura->iva }}</span>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label>Valor total de la factura:</label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span>{{ $factura->valor_total }}</span>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label>Retenciones:</label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span>{{ $factura->retenciones }}</span>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label>Amortizacion:</label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span>{{ $factura->amortizacion }}</span>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label>Polizas:</label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span>{{ $factura->polizas }}</span>
+                  </div>
+                </div>
+                <div class="col-md-12">
+
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label>Retegarantia:</label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span>{{ $factura->retegarantia }}</span>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label>Valor pagado:</label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span>{{ $factura->valor_pagado }}</span>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label>Fecha de pago:</label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span>{{ $factura->fecha_pago }}</span>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label>Observaciones:</label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span>{{ $factura->observaciones }}</span>
+                  </div>
+                </div>
+
               </div>
-              <div class="form-group">
-                <label>Fecha de factura:</label>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <span>{{ $factura->fecha_factura }}</span>
-              </div>
-              <div class="form-group">
-                <label>Valor factura antes de iva:</label>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <span>{{ $factura->valor_factura }}</span>
-              </div>
-              <div class="form-group">
-                <label>IVA:</label>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <span>{{ $factura->iva }}</span>
-              </div>
-              <div class="form-group">
-                <label>Valor total de la factura:</label>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <span>{{ $factura->valor_total }}</span>
-              </div>
-              <div class="form-group">
-                <label>Retenciones:</label>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <span>{{ $factura->retenciones }}</span>
-              </div>
-              <div class="form-group">
-                <label>Amortizacion:</label>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <span>{{ $factura->amortizacion }}</span>
-              </div>
-              <div class="form-group">
-                <label>Polizas:</label>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <span>{{ $factura->polizas }}</span>
-              </div>
-              <div class="form-group">
-                <label>Retegarantia:</label>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <span>{{ $factura->retegarantia }}</span>
-              </div>
-              <div class="form-group">
-                <label>Valor pagado:</label>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <span>{{ $factura->valor_pagado }}</span>
-              </div>
-              <div class="form-group">
-                <label>Fecha de pago:</label>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <span>{{ $factura->fecha_pago }}</span>
-              </div>
-              <div class="form-group">
-                <label>Observaciones:</label>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <span>{{ $factura->observaciones }}</span>
-              </div>
+
+
+
             </div>
           @endforeach
         </div>

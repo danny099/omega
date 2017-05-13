@@ -18,7 +18,7 @@
 
             <div class="form-group">
               {!! Form::label('porcentaje', 'Porcentaje:') !!}
-              {!! Form::number('porcentaje', null, ['class' => 'form-control' , 'required' => 'required','min'=>'0']) !!}
+              {!! Form::number('porcentaje', null, ['class' => 'form-control' , 'required' => 'required','min'=>'0','placeholder'=>'%']) !!}
             </div>
 
             <div class="form-group">
