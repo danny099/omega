@@ -25,7 +25,7 @@ class FacturaController extends Controller
      */
     public function create()
     {
-      
+
       return view('facturas.create');
 
     }
@@ -94,7 +94,7 @@ class FacturaController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $input = $request->Factura();
+      $input = $request->all();
       $factura = Factura::findOrFail($id);
       $administrativa = Administrativa::findOrFail($factura->administrativa_id);
 

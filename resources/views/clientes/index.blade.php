@@ -1,5 +1,11 @@
 @extends('index')
-
+@section('scripts')
+  <script>
+    $(function () {
+      $("table").DataTable();
+    });
+  </script>
+@endsection
 @section('contenido')
   <ol class="breadcrumb">
     <li><a href="{{ url('index') }}">Inicio</a></li>

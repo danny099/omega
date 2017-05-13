@@ -247,6 +247,29 @@
 
           <div class="col-md-3">
             <div class="form-group">
+              <label >Valor Total</label>
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <div class="form-group">
+              <span>{{ $administrativa->valor_total_contrato }}</span>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="col-md-12">
+          <div class="col-md-3">
+
+          </div>
+
+          <div class="col-md-3">
+
+          </div>
+
+          <div class="col-md-3">
+            <div class="form-group">
               <label >Saldo</label>
             </div>
           </div>
@@ -258,7 +281,6 @@
           </div>
 
         </div>
-
 
 
         </div>

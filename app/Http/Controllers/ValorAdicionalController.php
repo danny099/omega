@@ -62,6 +62,8 @@ class ValorAdicionalController extends Controller
 
                   $nuevo_saldo = $administrativa->saldo + $reg_adicional->valor;
                   $administrativa->saldo = $nuevo_saldo;
+                  $nuevo_total = $administrativa->valor_total_contrato + $reg_adicional->valor;
+                  $administrativa->valor_total_contrato = $nuevo_total;
                   $administrativa->save();
             }
       }
@@ -134,6 +136,8 @@ class ValorAdicionalController extends Controller
       $administrativas = Administrativa::findOrFail($adicional->administrativa_id);
       $nuevo_saldo = $administrativas->saldo - $adicional->valor;
       $administrativas->saldo = $nuevo_saldo;
+      $nuevo_total = $administrativas->valor_total_contrato - $adicional->valor;
+      $administrativas->valor_total_contrato = $nuevo_total;
       $administrativas->save();
       $adicional->delete();
 

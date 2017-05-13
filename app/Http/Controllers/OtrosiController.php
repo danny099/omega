@@ -55,6 +55,8 @@ class OtrosiController extends Controller
 
          $nuevo_saldo = $administrativa->saldo + $reg_otro->valor;
          $administrativa->saldo = $nuevo_saldo;
+         $nuevo_total = $administrativa->valor_total_contrato + $reg_otro->valor;
+         $administrativa->valor_total_contrato = $nuevo_total;
          $administrativa->save();
        }
 
@@ -101,10 +103,19 @@ class OtrosiController extends Controller
       $administrativa = Administrativa::findOrFail($otrosi->administrativa_id);
 
       if ( $administrativa->saldo > 0) {
-        $resta = $administrativa->saldo - $otrosi->valor;
-        $nuevo_saldo = $resta + $request->valor;
-        $administrativa->saldo = $nuevo_saldo;
-        $administrativa->save();
+        if ($administrativa->saldo > $otrosi->valor) {
+          $resta = $administrativa->saldo - $otrosi->valor;
+          $nuevo_saldo = $resta + $request->valor;
+          $administrativa->saldo = $nuevo_saldo;
+          $administrativa->save();
+        }
+        else {
+          $resta = $otrosi->valor - $administrativa->saldo ;
+          $nuevo_saldo = $resta + $request->valor;
+          $administrativa->saldo = $nuevo_saldo;
+          $administrativa->save();
+        }
+
       }
 
       $otrosi->update($input);
@@ -126,6 +137,8 @@ class OtrosiController extends Controller
       $administrativas = Administrativa::findOrFail($otrosi->administrativa_id);
       $nuevo_saldo = $administrativas->saldo - $otrosi->valor;
       $administrativas->saldo = $nuevo_saldo;
+      $nuevo_total = $administrativas->valor_total_contrato - $otrosi->valor;
+      $administrativas->valor_total_contrato = $nuevo_total;
       $administrativas->save();
       $otrosi->delete();
 

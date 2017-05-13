@@ -92,8 +92,7 @@
             <label >Valor antes del iva</label>
 
             <input type="number" min="0" id="ini" class="form-control" placeholder= "Ingrese valor" name="contrato_inicial" onkeyup="sumar()" required="ingrese asi sea un cero">
-            <input type="number" id="ini" class="form-control" placeholder= "Ingrese valor" name="contrato_inicial" onkeyup="sumar()" required="ingrese asi sea un cero">
-            <input type="number" id="ini" class="form-control" min="0" placeholder= "Ingrese valor" name="contrato_inicial" onkeyup="sumar()" required="ingrese asi sea un cero">
+  
           </div>
         </div>
 
@@ -101,15 +100,13 @@
             <div class="form-group">
               <label >Valor iva</label>
               <input type="number" min="0" class="form-control" id="iva" readonly="readonly" placeholder= "valor iva" name="iva"   >
-              <input type="number" class="form-control" id="iva" readonly="readonly" placeholder= "valor iva" name="iva"   >
-              <input type="number" class="form-control" id="iva" min="0" readonly="readonly" placeholder= "valor iva" name="iva"   >
+
             </div>
 
             <div class ="form-group">
               <label >Valor contrato final</label>
               <input type="number" min="0" class="form-control" id="fin" readonly="readonly" placeholder= "Valor final" name="contrato_final"   >
-              <input type="number" class="form-control" id="fin" readonly="readonly" placeholder= "Valor final" name="contrato_final"   >
-              <input type="number" class="form-control" id="fin" min="0" readonly="readonly" placeholder= "Valor final" name="contrato_final"   >
+
             </div>
             <div class="form-group">
               <label >Plan de pago</label>
