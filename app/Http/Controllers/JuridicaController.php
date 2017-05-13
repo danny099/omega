@@ -119,7 +119,7 @@ class JuridicaController extends Controller
     public function update(Request $request, $id)
     {
       $juridica = Juridica::findOrFail($id);
-      $input = Request::all();
+      $input = $request->all();
 
 
         $juridica->update($input);
