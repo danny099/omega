@@ -8,7 +8,7 @@
     }
   }
   function sumariva(){
-    var valor = parseInt(document.getElementById('valor_factura').value);
+    var valor = document.getElementById('valor_factura').value;
     var resultado = valor*1.19;
 
     var iva = valor*0.19;
@@ -22,7 +22,7 @@
     var resultado = valor*1.19;
 
     var iva = valor*0.19;
-
+    
     document.getElementById('iva').value = iva ;
     document.getElementById('fin').value = resultado ;
       }

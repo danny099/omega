@@ -18,12 +18,12 @@
 
             <div class="form-group">
               {!! Form::label('porcentaje', 'Porcentaje:') !!}
-              {!! Form::number('porcentaje', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+              {!! Form::number('porcentaje', null, ['class' => 'form-control' , 'required' => 'required','min'=>'0']) !!}
             </div>
 
             <div class="form-group">
               {!! Form::label('valor', 'Valor:') !!}
-              {!! Form::number('valor', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+              {!! Form::number('valor', null, ['class' => 'form-control' , 'required' => 'required','min'=>'0']) !!}
             </div>
 
             <div class="form-group">
@@ -38,7 +38,7 @@
 
             <div class="form-group">
               {!! Form::label('numero_cuenta_cobro', 'Numero cuenta de cobro:') !!}
-              {!! Form::number('numero_cuenta_cobro', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+              {!! Form::number('numero_cuenta_cobro', null, ['class' => 'form-control' , 'required' => 'required','min'=>'0']) !!}
             </div>
 
             <div class="form-group">

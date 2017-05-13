@@ -130,17 +130,17 @@
         </div>
         <div class="form-group">
           {!! Form::label('valor_contrato_inicial', 'Valor antes del iva') !!}
-          {!! Form::number('valor_contrato_inicial', $administrativas->valor_contrato_inicial, ['class' => 'form-control' , 'required' => 'required', 'onkeyup'=>'sumar3()']) !!}
+          {!! Form::number('valor_contrato_inicial', $administrativas->valor_contrato_inicial, ['class' => 'form-control' , 'required' => 'required', 'onkeyup'=>'sumar3()', 'min'=>'0']) !!}
         </div>
         <div class="form-group">
           <label >Valor iva</label>
-          <input type="number" class="form-control" id="iva" readonly="readonly" placeholder= "valor iva" name="iva" value="">
+          <input type="number" min="0" class="form-control" id="iva" readonly="readonly" placeholder= "valor iva" name="iva" value="">
         </div>
         <div class="form-group ">
           <div class="form-group">
 
             <label >Valor contrato final</label>
-            <input type="number" class="form-control" id="fin" readonly="readonly" placeholder= "Valor final" name="contrato_final" value="{{ $administrativas->valor_contrato_final}}">
+            <input type="number" class="form-control" min="0" id="fin" readonly="readonly" placeholder= "Valor final" name="contrato_final" value="{{ $administrativas->valor_contrato_final}}">
           </div>
           <div class="form-group">
             <label >Plan de pago</label>

@@ -18,7 +18,7 @@
 
             <div class="form-group">
               {!! Form::label('valor', 'Valor') !!}
-              {!! Form::text('valor', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+              {!! Form::number('valor', null, ['class' => 'form-control' , 'required' => 'required', 'min'=>'0']) !!}
             </div>
 
             <div class="form-group">
