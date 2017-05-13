@@ -1,24 +1,6 @@
 @extends('index')
 
-@section('scripts')
-  <script type="text/javascript">
 
-    $(function() {
-      $('table').DataTable();
-
-      $('.valor_factura').keyup(function(){
-          var valor = parseInt($(this).val());
-          var resultado = valor * 1.19;
-          var iva = valor*0.19;
-
-          $(this).parent().parent().find('.iva').val(iva);
-          $(this).parent().parent().find('.valor_total').val(resultado);
-      });
-
-    });
-
-  </script>
-@endsection
 
 @section('contenido')
     <ol class="breadcrumb">
@@ -77,7 +59,7 @@
                 <!-- fin modal -->
 
                 <!-- inicio modal 2 -->
-                <div class="modal fade" id="myModal2-{{ $key }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal fade" id="myModal2-{{ $key }}" role="dialog" aria-labelledby="myModalLabel">
                   <div class="modal-dialog" role="document">
                     <div class="modal-content">
                       <div class="modal-header">
@@ -136,4 +118,23 @@
         </table>
       </div>
     </div>
+@endsection
+@section('scripts')
+  <script type="text/javascript">
+
+    $(function() {
+      $('table').DataTable();
+
+      $('.valor_factura').keyup(function(){
+          var valor = parseInt($(this).val());
+          var resultado = valor * 1.19;
+          var iva = valor*0.19;
+          alert('holaa');
+          $(this).parent().parent().parent().find('.iva').val(iva);
+          $(this).parent().parent().find('.valor_total').val(resultado);
+      });
+
+    });
+
+  </script>
 @endsection
