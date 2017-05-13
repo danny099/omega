@@ -1,6 +1,24 @@
 @extends('index')
 
+@section('scripts')
+  <script type="text/javascript">
 
+    $(function() {
+      $('table').DataTable();
+
+      $('.valor_factura').keyup(function(){
+          var valor = parseInt($(this).val());
+          var resultado = valor * 1.19;
+          var iva = valor*0.19;
+
+          $(this).parent().parent().find('.iva').val(iva);
+          $(this).parent().parent().find('.valor_total').val(resultado);
+      });
+
+    });
+
+  </script>
+@endsection
 
 @section('contenido')
     <ol class="breadcrumb">
@@ -118,23 +136,4 @@
         </table>
       </div>
     </div>
-@endsection
-@section('scripts')
-  <script type="text/javascript">
-
-    $(function() {
-      $('table').DataTable();
-
-      $('.valor_factura').keyup(function(){
-          var valor = parseInt($(this).val());
-          var resultado = valor * 1.19;
-          var iva = valor*0.19;
-          alert('holaa');
-          $(this).parent().parent().parent().find('.iva').val(iva);
-          $(this).parent().parent().find('.valor_total').val(resultado);
-      });
-
-    });
-
-  </script>
 @endsection

@@ -130,17 +130,35 @@
         </div>
         <div class="form-group">
           {!! Form::label('valor_contrato_inicial', 'Valor antes del iva') !!}
+<<<<<<< .mine
+          {!! Form::number('valor_contrato_inicial', $administrativas->valor_contrato_inicial, ['class' => 'form-control' , 'min' => '0', 'required' => 'required', 'onkeyup'=>'sumar3()']) !!}
+||||||| .r172
+          {!! Form::number('valor_contrato_inicial', $administrativas->valor_contrato_inicial, ['class' => 'form-control' , 'required' => 'required', 'onkeyup'=>'sumar3()']) !!}
+=======
           {!! Form::number('valor_contrato_inicial', $administrativas->valor_contrato_inicial, ['class' => 'form-control' , 'required' => 'required', 'onkeyup'=>'sumar3()', 'min'=>'0']) !!}
+>>>>>>> .r177
         </div>
         <div class="form-group">
           <label >Valor iva</label>
+<<<<<<< .mine
+          <input type="number" class="form-control" min="0" id="iva" readonly="readonly" placeholder= "valor iva" name="iva" value="">
+||||||| .r172
+          <input type="number" class="form-control" id="iva" readonly="readonly" placeholder= "valor iva" name="iva" value="">
+=======
           <input type="number" min="0" class="form-control" id="iva" readonly="readonly" placeholder= "valor iva" name="iva" value="">
+>>>>>>> .r177
         </div>
         <div class="form-group ">
           <div class="form-group">
 
             <label >Valor contrato final</label>
+<<<<<<< .mine
+            <input type="number" min="0" class="form-control" id="fin" readonly="readonly" placeholder= "Valor final" name="contrato_final" value="{{ $administrativas->valor_contrato_final}}">
+||||||| .r172
+            <input type="number" class="form-control" id="fin" readonly="readonly" placeholder= "Valor final" name="contrato_final" value="{{ $administrativas->valor_contrato_final}}">
+=======
             <input type="number" class="form-control" min="0" id="fin" readonly="readonly" placeholder= "Valor final" name="contrato_final" value="{{ $administrativas->valor_contrato_final}}">
+>>>>>>> .r177
           </div>
           <div class="form-group">
             <label >Plan de pago</label>
