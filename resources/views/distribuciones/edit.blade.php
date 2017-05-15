@@ -19,7 +19,7 @@
           <div class="col-md-3">
             <div class="form-group">
               <center><label >Descripcion</label></center>
-              <select class="form-control" name="descripcion_dis">
+              <select class="form-control" name="descripcion">
                 <option value="{{ $distribucion->descripcion }}">{{ $distribucion->descripcion }}</option>
                 <option value="Inspeccion retie proceso de distribucion en MT">Inspeccion retie proceso de distribucion en MT</option>
                 <option value="Inspeccion retie proceso de distribucion en BT">Inspeccion retie proceso de distribucion en BT</option>
@@ -30,8 +30,8 @@
           <div class="col-md-3">
             <div class="form-group">
               <center><label >Tipo</label></center>
-              <select class="form-control" name="tipo_dis">
-                <option value="{{ $distribucion->descripcion }}">{{ $distribucion->descripcion }}</option>
+              <select class="form-control" name="tipo">
+                <option value="{{ $distribucion->tipo }}">{{ $distribucion->tipo }}</option>
                 <option value="aerea">tipo Aerea</option>
                 <option value="subterranea">tipo subterranea</option>
               </select>
@@ -42,15 +42,17 @@
             <div class="form-group">
               <center><label >Unidad</label></center>
               <center>
-                <input type="text" class="form-control" value="km"  readonly=”readonly” name="unidad_distribucion"style="text-align:center">
+                <input type="text" class="form-control" value="km"  readonly=”readonly” name="unidad"style="text-align:center">
               </center>
             </div>
           </div>
 
           <div class="col-md-2">
             <div class="form-group">
-              <center><label >Cantidad</label></center>
-              <input type="text" class="form-control" placeholder= "Cantidad" name="cantidad_dis" value="{{ $distribucion->cantidad }}">
+              {!! Form::label('cantidad_dis', 'Cantidad') !!}
+              {!! Form::text('cantidad', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+              <!-- <center><label >Cantidad</label></center>
+              <input type="text" class="form-control" placeholder= "Cantidad" name="cantidad_dis" value="{{ $distribucion->cantidad }}"> -->
             </div>
           </div>
 

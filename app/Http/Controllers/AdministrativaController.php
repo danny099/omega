@@ -97,8 +97,29 @@ class AdministrativaController extends Controller
        $administrativa['saldo'] =  $administrativa['valor_contrato_final'];
        $administrativa['valor_total_contrato'] =  $administrativa['valor_contrato_final'];
 
+       $codigorepe = Administrativa::where('codigo_proyecto',$request->codigo)->get();
+       //  condicional
+       if ($codigorepe->count() == 1) {
+         //  mensajes de confirmacion enviados a la vista
+         Session::flash('message', 'el codigo ya esta registrado no se puede crear!');
+         Session::flash('class', 'danger');
+
+        //  redireccionamiento a una vista
+         return redirect()->route('administrativas.index');
+       }
+       else {
+         //  funsion que permite actualizar los datos de un registro almacenado en la variable $input
+        Administrativa::create($administrativa);
+
+         //  mensajes de confirmacion enviados a la vista
+         Session::flash('message', 'Contrato creado!');
+         Session::flash('class', 'success');
+
+         //  redireccionamiento a una vista
+         return redirect()->route('administrativas.index');
+       }
       //  funcion para crear el registro en la base datos con los campos traidos del formulario para el area de administrativa
-       Administrativa::create($administrativa);
+
       //  return redirect()->route('administrativas.index');
 
       //  funcion para traer todos los registros de administrativa

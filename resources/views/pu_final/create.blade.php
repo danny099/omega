@@ -13,7 +13,7 @@
           <div class="col-md-12">
               <div class="form-group">
                 <center><label >Codigo Proyecto</label></center>
-                <select class="form-control select2" name="codigo_proyecto" style="width: 100%" id="select">
+                <select class="form-control select2" name="codigo_proyecto" style="width: 100%" id="select" required="">
                   <option value="">Seleccione..</option>
                   @foreach($codigos as $codigo)
                   <option value="{{ $codigo->id }}">{{$codigo->codigo_proyecto}}</option>

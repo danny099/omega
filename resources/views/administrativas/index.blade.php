@@ -1,12 +1,39 @@
 @extends('index')
 
+@section('scripts')
+  <script type="text/javascript">
+
+    $(function() {
+      $('table').DataTable();
+
+      $('.valor_factura').keyup(function(){
+          var valor = parseInt($(this).val());
+          var resultado = valor * 1.19;
+          var iva = valor*0.19;
+
+          $(this).parent().parent().find('.iva').val(iva);
+          $(this).parent().parent().find('.valor_total').val(resultado);
+      });
+
+    });
+
+  </script>
+@endsection
 
 @section('contenido')
     <ol class="breadcrumb">
       <li><a href="{{ url('index') }}">Inicio</a></li>
       <li class="active">Administrativa</li>
     </ol>
-
+    @if(Session::has('message'))
+    <div id="alert">
+      <div class="col-sm-12 hr hr-18 hr-double dotted"></div>
+      <div class="col-sm-4 col-xs-12 col-sm-offset-4 alert alert-{{Session::get('class')}}">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        {{Session::get('message')}}
+      </div>
+    </div>
+    @endif
     <div class="col-md-12 well">
       <a class="btn btn-primary" data-toggle="modal" href="{{ url('administrativas/create') }}"><i class="fa fa-user-plus"></i> Crear Contrato</a>
       <div class="box-body">

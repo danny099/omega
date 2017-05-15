@@ -51,7 +51,7 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="index2.html" class="logo">
+    <a href="#" class="logo">
 
     </a>
     <!-- Header Navbar: style can be found in header.less -->
@@ -327,7 +327,7 @@
         <li class="header">Modulos</li>
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-dashboard"></i> <span>Administrativa</span>
+            <i class="fa fa-dashboard"></i> <span>Contratos</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -360,7 +360,7 @@
       <ul class="sidebar-menu">
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-dashboard"></i> <span>Modulo1</span>
+            <i class="fa fa-dashboard"></i> <span>Usuarios/Clientes</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
             </span>

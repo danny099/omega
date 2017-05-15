@@ -118,7 +118,7 @@ class ClienteController extends Controller
     public function update(Request $request, $id)
     {
       $cliente = Cliente::findOrFail($id);
-      $input = Request::all();
+      $input = $request->all();
 
 
         $cliente->update($input);

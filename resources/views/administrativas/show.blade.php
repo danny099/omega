@@ -286,13 +286,12 @@
         </div>
 
 
-        @if(count($transformaciones) == 0)
 
-        @else
         <div class="">
           <div class="box-header with-border">
-           <center><h3 class="box-title">Alcance: proceso de transformacion</h3></center>
+           <center><h3 class="box-title">Alcance del proceso</h3></center>
           </div>
+
             <div class="box-body">
                 <div class="col-md-12">
 
@@ -315,17 +314,20 @@
                     </div>
                   </div>
                 </div>
+                @if(count($transformaciones) == 0)
+
+                @else
                   @foreach($transformaciones as $transformacion)
                 <div class="col-md-12">
                   <div class="col-md-8">
-                    <center><div class="form-group">
+                    <div class="form-group">
                       <span>{{ $transformacion->descripcion }}</span>
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                       <span>{{ $transformacion->tipo }}</span>
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                       <span>{{ $transformacion->capacidad }}</span>
                     </div>
-                  </div></center>
+                  </div>
 
                   <div class="col-md-2">
                     <div class="form-group">
@@ -347,39 +349,19 @@
 
                 @else
                 <div class="">
-                  <div class="col-md-12">
-                    <center><h4 class="box-title">Alcance: proceso de distribucion</h4></center>
-                  </div>
-                <div class="col-md-12">
 
                 <div class="col-md-12">
-                  <div class="col-md-8">
-                    <div class="form-group">
-                    <center><label >Descripcion</label></center>
-                    </div>
-                  </div>
-                  <div class="col-md-2">
-                    <div class="form-group">
-                      <label>Unidad</label>
-                    </div>
-                  </div>
 
-                  <div class="col-md-2">
-                    <div class="form-group">
-                      <label >Cantidad</label>
-                    </div>
-                  </div>
-                </div>
                 @foreach($distribuciones as $distribucion)
                 <div class="col-md-12">
                   <div class="col-md-8">
-                    <center><div class="form-group">
+                    <div class="form-group">
                       <span>{{ $distribucion->descripcion }}</span>
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                       <span>{{ $distribucion->tipo }}</span>
 
                     </div>
-                  </div></center>
+                  </div>
 
                   <div class="col-md-2">
                     <div class="form-group">
@@ -402,37 +384,18 @@
 
               @else
               <div class="">
-                <div class="col-md-12">
-                  <center><h4 class="box-title">Alcance: proceso de uso final</h4></center>
-                </div>
-              <div class="col-md-12">
-                <div class="col-md-8">
-                  <div class="form-group">
-                  <center><label >Descripcion</label></center>
-                  </div>
-                </div>
-                <div class="col-md-2">
-                  <div class="form-group">
-                    <label>Unidad</label>
-                  </div>
-                </div>
 
-                <div class="col-md-2">
-                  <div class="form-group">
-                    <label >Cantidad</label>
-                  </div>
-                </div>
-              </div>
+
               @foreach($pu_finales as $pu_final)
               <div class="col-md-12">
                 <div class="col-md-8">
-                  <center><div class="form-group">
+                  <div class="form-group">
                     <span>{{ $pu_final->descripcion }}</span>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <span>{{ $pu_final->tipo }}</span>
 
                   </div>
-                </div></center>
+                </div>
 
                 <div class="col-md-2">
                   <div class="form-group">

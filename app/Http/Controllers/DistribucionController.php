@@ -98,8 +98,9 @@ class DistribucionController extends Controller
       $input = $request->all();
 
       $distri = Distribucion::findOrFail($id);
-      $distri->update($input);
 
+      $distri->update($input);
+    
       Session::flash('message', 'registro editado editado!');
       Session::flash('class', 'success');
       return redirect()->route('administrativas.index');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Pu_final;
+use Session;
 use App\Administrativa;
 use Illuminate\Http\Request;
 
