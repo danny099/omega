@@ -41,23 +41,26 @@
 
             <div class="form-group">
               {!! Form::label('retenciones', 'Retenciones') !!}
-              {!! Form::number('retencionesporcen', 0, ['class' => 'form-control retencionesporcen', 'min'=>'0']) !!}
-              {!! Form::number('retenciones', 0, ['class' => 'form-control retenciones', 'min'=>'0']) !!}
+              {!! Form::number('retencionesporcen', 0, ['class' => 'form-control retencionesporcen', 'min'=>'0', 'max'=>'100']) !!}
+              {!! Form::number('retenciones', 0, ['class' => 'form-control retenciones', 'min'=>'0','readonly']) !!}
             </div>
 
             <div class="form-group">
               {!! Form::label('amortizacion', 'Amortizacion:') !!}
-              {!! Form::number('amortizacion', 0, ['class' => 'form-control amortizacion', 'min'=>'0']) !!}
+              {!! Form::number('amortizacionporcen', 0, ['class' => 'form-control amortizacionporcen', 'min'=>'0']) !!}
+              {!! Form::number('amortizacion', 0, ['class' => 'form-control amortizacion', 'min'=>'0','readonly']) !!}
             </div>
 
             <div class="form-group">
               {!! Form::label('polizas', 'Polizas:') !!}
-              {!! Form::number('polizas', 0, ['class' => 'form-control polizas','min'=>'0' ]) !!}
+              {!! Form::number('polizasporcen', 0, ['class' => 'form-control polizasporcen','min'=>'0' ]) !!}
+              {!! Form::number('polizas', 0, ['class' => 'form-control polizas','min'=>'0','readonly' ]) !!}
             </div>
 
             <div class="form-group">
               {!! Form::label('retegarantia', 'Retegarantia:') !!}
-              {!! Form::number('retegarantia', 0, ['class' => 'form-control retegarantia', 'min'=>'0' ]) !!}
+              {!! Form::number('retegarantiaporcen', 0, ['class' => 'form-control retegarantiaporcen', 'min'=>'0' ]) !!}
+              {!! Form::number('retegarantia', 0, ['class' => 'form-control retegarantia', 'min'=>'0','readonly' ]) !!}
             </div>
 
             <div class="form-group">
