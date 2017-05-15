@@ -115,8 +115,7 @@ class AdministrativaController extends Controller
          Session::flash('message', 'Contrato creado!');
          Session::flash('class', 'success');
 
-         //  redireccionamiento a una vista
-         return redirect()->route('administrativas.index');
+
        }
       //  funcion para crear el registro en la base datos con los campos traidos del formulario para el area de administrativa
 
@@ -289,21 +288,6 @@ class AdministrativaController extends Controller
 
        $administrativas = Administrativa::findOrFail($id);
 
-       $admin = Administrativa::all();
-       $otrosis = Otrosi::where('otrosi.administrativa_id', '=', $id)->get();
-       foreach ($otrosis as $key => $otrosi) {
-
-         $id = $otrosi->id;
-
-
-         foreach ($request->otrosi as $otro)
-          {
-            $otrosi = Otrosi::findOrFail($id);
-            $otrosi->valor = $otro;
-            $otrosi->update();
-
-          }
-       }
 
 
 
