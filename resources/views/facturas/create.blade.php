@@ -41,27 +41,28 @@
 
             <div class="form-group">
               {!! Form::label('retenciones', 'Retenciones') !!}
-              {!! Form::number('retenciones', 0, ['class' => 'form-control', 'min'=>'0']) !!}
+              {!! Form::number('retencionesporcen', 0, ['class' => 'form-control retencionesporcen', 'min'=>'0']) !!}
+              {!! Form::number('retenciones', 0, ['class' => 'form-control retenciones', 'min'=>'0']) !!}
             </div>
 
             <div class="form-group">
               {!! Form::label('amortizacion', 'Amortizacion:') !!}
-              {!! Form::number('amortizacion', 0, ['class' => 'form-control', 'min'=>'0']) !!}
+              {!! Form::number('amortizacion', 0, ['class' => 'form-control amortizacion', 'min'=>'0']) !!}
             </div>
 
             <div class="form-group">
               {!! Form::label('polizas', 'Polizas:') !!}
-              {!! Form::number('polizas', 0, ['class' => 'form-control','min'=>'0' ]) !!}
+              {!! Form::number('polizas', 0, ['class' => 'form-control polizas','min'=>'0' ]) !!}
             </div>
 
             <div class="form-group">
               {!! Form::label('retegarantia', 'Retegarantia:') !!}
-              {!! Form::number('retegarantia', 0, ['class' => 'form-control', 'min'=>'0' ]) !!}
+              {!! Form::number('retegarantia', 0, ['class' => 'form-control retegarantia', 'min'=>'0' ]) !!}
             </div>
 
             <div class="form-group">
               {!! Form::label('valor_pagado', 'Valor pagado:') !!}
-              {!! Form::number('valor_pagado', 0, ['class' => 'form-control', 'min'=>'0' ]) !!}
+              {!! Form::number('valor_pagado', 0, ['class' => 'form-control valor_pagado', 'min'=>'0','readonly' ]) !!}
             </div>
 
             <div class="form-group">
@@ -79,7 +80,6 @@
               <button type="submit" data-dismiss="modal" class="btn btn-primary pull-left">Cancelar</button>
             </div>
         </div>
-
         <!-- /.box-body -->
       {!! Form::close() !!}
     </div>

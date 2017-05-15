@@ -102,8 +102,8 @@
         @endif
         <div class="form-group">
           <label >Departamento</label>
-          <select class="form-control" name="departamento" id="departamento">
-            <option value="{{ $administrativas->departamento->nombre }}">{{ $administrativas->departamento->nombre }}</option>
+          <select class="form-control" name="departamento_id" id="departamento">
+            <option value="{{ $administrativas->departamento->id }}">{{ $administrativas->departamento->nombre }}</option>
             @foreach($departamentos as $departamento)
             <option value="{{ $departamento->id }}">{{$departamento->nombre}}</option>
             @endforeach
@@ -183,7 +183,7 @@
           <center> <h4 class="box-title">Observaciones de estado administrativo del proyecto</h4> </center>
         </div>
         <div class="col-md-12">
-          <textarea  rows="4" cols="196" name="resumen"></textarea>
+          <textarea  rows="4" cols="196" name="resumen"  value="{{ $administrativas->resumen }} "></textarea>
         </div>
       </div>
         <div class="box-footer">

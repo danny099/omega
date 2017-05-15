@@ -305,7 +305,8 @@ class AdministrativaController extends Controller
        else {
          //  funsion que permite actualizar los datos de un registro almacenado en la variable $input
          $administrativas->update($input);
-
+         dd($input);
+         die;
          //  mensajes de confirmacion enviados a la vista
          Session::flash('message', 'Contrato editado!');
          Session::flash('class', 'success');
