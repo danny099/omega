@@ -77,7 +77,6 @@ class AdministrativaController extends Controller
     public function store(Request $request)
     {
        $input = $request->all();
-
        //  ********************************************************************************
        //  ********************************************************************************
       //  almacenar en un arreglo $administrativa los datos provenientes desde el formulario de datos basicos
@@ -107,19 +106,19 @@ class AdministrativaController extends Controller
         //  redireccionamiento a una vista
          return redirect()->route('administrativas.index');
        }
-       else {
+       else{
          //  funsion que permite actualizar los datos de un registro almacenado en la variable $input
-        Administrativa::create($administrativa);
+         Administrativa::create($administrativa);
+         $admins = Administrativa::all();
+         $lastId_admin = $admins->last()->id;//funcion que consigue capturar el ultimo registro y sacar el id de este mismo
+
+         $registro = Administrativa::findOrFail($lastId_admin);
+         $registro->saldo = $registro->valor_contrato_final - $registro->pagado;
 
          //  mensajes de confirmacion enviados a la vista
          Session::flash('message', 'Contrato creado!');
          Session::flash('class', 'success');
-
-
        }
-      //  funcion para crear el registro en la base datos con los campos traidos del formulario para el area de administrativa
-
-      //  return redirect()->route('administrativas.index');
 
       //  funcion para traer todos los registros de administrativa
        $admin = Administrativa::all();
@@ -145,9 +144,6 @@ class AdministrativaController extends Controller
         //           Valor_adicional::create($datos4);
         //     }
         // }
-
-
-
         for ($a=0; $a<count($input['transformacion']['descripcion']); $a++){
 
               if (!empty($input['transformacion']['descripcion'][$a]) &&
@@ -198,10 +194,7 @@ class AdministrativaController extends Controller
                   Pu_final::create($datos3);
             }
         }
-
-
         // dd($datos4);
-
         return redirect()->route('administrativas.index');
 
    }
@@ -285,7 +278,9 @@ class AdministrativaController extends Controller
    public function update(Request $request, $id)
    {
        $input = $request->all();
-
+       $depart = $request->departamento;
+       dd($depart);
+       die();
        $administrativas = Administrativa::findOrFail($id);
 
 
@@ -304,6 +299,7 @@ class AdministrativaController extends Controller
        }
        else {
          //  funsion que permite actualizar los datos de un registro almacenado en la variable $input
+
          $administrativas->update($input);
          dd($input);
          die;

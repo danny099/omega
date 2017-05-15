@@ -43,7 +43,7 @@ class ValorAdicionalController extends Controller
     {
       $input = $request->all();
       $id = $request->codigo_proyecto;
-      $administrativa = Administrativa::find($id);
+
 
       for ($a=0; $a<count($input['adicional']['valor']); $a++){
 
@@ -58,10 +58,13 @@ class ValorAdicionalController extends Controller
 
                   $adicionales = Valor_adicional::all();
                   $last_id = $adicionales->last()->id;
+                  $administrativa = Administrativa::find($id);
                   $reg_adicional = Valor_adicional::find($last_id);
 
-                  $nuevo_saldo = $administrativa->saldo + $reg_adicional->valor;
-                  $administrativa->saldo = $nuevo_saldo;
+                  $total = $administrativa->saldo + $reg_adicional->valor;
+                  $administrativa->saldo = $total;
+                  $administrativa->save();
+
                   $nuevo_total = $administrativa->valor_total_contrato + $reg_adicional->valor;
                   $administrativa->valor_total_contrato = $nuevo_total;
                   $administrativa->save();

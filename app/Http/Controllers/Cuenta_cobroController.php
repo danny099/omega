@@ -49,9 +49,13 @@ class Cuenta_cobroController extends Controller
 
       $administrativa = Administrativa::find($cobro->administrativa_id);//funcion que hace una consulta a una tabla relacionada en la base de datos y saca un registro mediante un id
 
-      $nuevo_saldo = $administrativa->saldo - $cobro->valor;//linea donde se restan los valores almacenados en variables
+      $nuevo = $administrativa->pagado + $cobro->valor;//linea donde se restan los valores almacenados en variables
 
-      $administrativa->saldo = $nuevo_saldo;//asignacion de una variable a actualizar
+      $administrativa->pagado = $nuevo;//asignacion de una variable a actualizar
+      $administrativa->save();
+
+      $saldo = $administrativa->saldo - $administrativa->pagado;
+      $administrativa->saldo = $saldo;
       $administrativa->save();
 
       return redirect()->route('administrativas.index');
@@ -120,9 +124,15 @@ class Cuenta_cobroController extends Controller
      {
        $cuentas = Cuenta_cobro::findOrFail($id);
        $administrativas = Administrativa::findOrFail($cuentas->administrativa_id);
-       $nuevo_saldo = $administrativas->saldo - $cuentas->valor;
+
+       $nuevo_saldo = $administrativas->saldo + $cuentas->valor;
        $administrativas->saldo = $nuevo_saldo;
        $administrativas->save();
+
+       $pagado = $administrativas->pagado - $cuentas->valor;
+       $administrativas->pagado = $pagado;
+       $administrativas->save();
+
        $cuentas->delete();
 
        Session::flash('message', 'Cuenta cobro  eliminada');

@@ -48,9 +48,14 @@ class ConsignacionController extends Controller
 
         $administrativa = Administrativa::find($consignacion->administrativa_id);//funcion que hace una consulta a una tabla relacionada en la base de datos y saca un registro mediante un id
 
-        $nuevo_saldo = $administrativa->saldo - $consignacion->valor;
+        $nuevo = $administrativa->pagado + $consignacion->valor;//operacion para almacenar un valor en una varible.
 
-        $administrativa->saldo = $nuevo_saldo;
+        $administrativa->pagado = $nuevo;//asigancion del nuevo valor para actualizar en la base de datos relacionada.
+        $administrativa->save();
+
+        $saldo = $administrativa->saldo - $administrativa->pagado;
+
+        $administrativa->saldo = $saldo;
         $administrativa->save();
 
         return redirect()->route('administrativas.index');
@@ -119,9 +124,15 @@ class ConsignacionController extends Controller
      {
        $consignaciones = Consignacion::findOrFail($id);
        $administrativas = Administrativa::findOrFail($consignaciones->administrativa_id);
-       $nuevo_saldo = $administrativas->saldo - $consignaciones->valor;
+
+       $nuevo_saldo = $administrativas->saldo + $consignaciones->valor;
        $administrativas->saldo = $nuevo_saldo;
        $administrativas->save();
+
+       $pagado = $administrativas->pagado - $consignaciones->valor;
+       $administrativas->pagado = $pagado;
+       $administrativas->save();
+
        $consignaciones->delete();
 
        Session::flash('message', 'Consignacion  eliminada');

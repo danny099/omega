@@ -50,9 +50,13 @@ class FacturaController extends Controller
 
       $administrativa = Administrativa::find($factura->administrativa_id);//funcion que hace una consulta a una tabla relacionada en la base de datos y saca un registro mediante un id
 
-      $nuevo_saldo = ($administrativa->saldo - $factura->valor_total) + $factura->amortizacion ;//linea donde se restan los valores almacenados en variables
+      $nuevo = $administrativa->pagado + $factura->valor_total;  //
+      
+      $administrativa->pagado = $nuevo;//asignacion de una variable a actualizar
+      $administrativa->save();
 
-      $administrativa->saldo = $nuevo_saldo;//asignacion de una variable a actualizar
+      $saldo = $administrativa->saldo - $administrativa->pagado;
+      $administrativa->saldo;
       $administrativa->save();
 
       return redirect()->route('administrativas.index');
@@ -122,9 +126,15 @@ class FacturaController extends Controller
     {
       $factu = Factura::findOrFail($id);
       $administrativas = Administrativa::findOrFail($factu->administrativa_id);
-      $nuevo_saldo = $administrativas->saldo - $factu->valor;
+
+      $nuevo_saldo = $administrativas->saldo + $factu->valor;
       $administrativas->saldo = $nuevo_saldo;
       $administrativas->save();
+
+      $pagado = $administrativas->pagado - $factu->valor;
+      $administrativas->pagado = $pagado;
+      $administrativas->save();
+
       $factu->delete();
 
       Session::flash('message', 'Factura  eliminada');

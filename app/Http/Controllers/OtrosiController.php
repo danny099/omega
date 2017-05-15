@@ -44,17 +44,21 @@ class OtrosiController extends Controller
 
       $input = $request->all();
       $id = $request->codigo_proyecto;
-      $administrativa = Administrativa::find($id);
+
 
       foreach ($request->otrosi as $otro)
        {
          Otrosi::create(['valor'=>$otro,'administrativa_id'=>$id]);
+
          $other = Otrosi::all();
          $last_id = $other->last()->id;
+         $administrativa = Administrativa::find($id);
          $reg_otro = Otrosi::find($last_id);
 
-         $nuevo_saldo = $administrativa->saldo + $reg_otro->valor;
-         $administrativa->saldo = $nuevo_saldo;
+         $total = $administrativa->saldo + $reg_otro->valor;
+         $administrativa->saldo = $total;
+         $administrativa->save();
+
          $nuevo_total = $administrativa->valor_total_contrato + $reg_otro->valor;
          $administrativa->valor_total_contrato = $nuevo_total;
          $administrativa->save();
