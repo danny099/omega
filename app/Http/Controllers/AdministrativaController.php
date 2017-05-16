@@ -279,8 +279,7 @@ class AdministrativaController extends Controller
    {
        $input = $request->all();
        $depart = $request->departamento;
-       dd($depart);
-       die();
+    
        $administrativas = Administrativa::findOrFail($id);
 
 

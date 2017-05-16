@@ -38,27 +38,39 @@ class Cuenta_cobroController extends Controller
     public function store(Request $request)
     {
       $input = $request->all(); //funcion para sacar todos los valores almacenados en los input
+      $administrativa = Administrativa::find($request->administrativa_id);
 
-      Cuenta_cobro::create($input); //funcion para crear el registro
+      // if ($request->valor <= $administrativa->saldo){
 
-      $cobros = Cuenta_cobro::all();//funcion para recuperar todos los registros en la base de datos
+        Cuenta_cobro::create($input); //funcion para crear el registro
 
-      $lastId_cobro = $cobros->last()->id;//funcion que consigue capturar el ultimo registro y sacar el id de este mismo
+        // $cobros = Cuenta_cobro::all();//funcion para recuperar todos los registros en la base de datos
+        //
+        // $lastId_cobro = $cobros->last()->id;//funcion que consigue capturar el ultimo registro y sacar el id de este mismo
+        //
+        // $cobro = Cuenta_cobro::find($lastId_cobro);//funcion que permite encontrar un registro mediante un id
+        //
+        // $administra = Administrativa::find($cobro->administrativa_id);//funcion que hace una consulta a una tabla relacionada en la base de datos y saca un registro mediante un id
+        //
+        // $nuevo = $administra->pagado + $cobro->valor;//linea donde se restan los valores almacenados en variables
+        //
+        // $administra->pagado = $nuevo;//asignacion de una variable a actualizar
+        // $administra->save();
+        //
+        // $saldo = $administra->saldo - $cobro->valor;
+        // $administra->saldo = $saldo;
+        // $administra->save();
 
-      $cobro = Cuenta_cobro::find($lastId_cobro);//funcion que permite encontrar un registro mediante un id
+        return redirect()->route('administrativas.index');
 
-      $administrativa = Administrativa::find($cobro->administrativa_id);//funcion que hace una consulta a una tabla relacionada en la base de datos y saca un registro mediante un id
+      // }else {
 
-      $nuevo = $administrativa->pagado + $cobro->valor;//linea donde se restan los valores almacenados en variables
+        Session::flash('message', 'El valor de la cuenta de cobro es mayor al saldo!');
+        Session::flash('class', 'danger');
+        return redirect()->route('administrativas.index');
 
-      $administrativa->pagado = $nuevo;//asignacion de una variable a actualizar
-      $administrativa->save();
 
-      $saldo = $administrativa->saldo - $administrativa->pagado;
-      $administrativa->saldo = $saldo;
-      $administrativa->save();
-
-      return redirect()->route('administrativas.index');
+      // }
 
     }
 
@@ -100,18 +112,26 @@ class Cuenta_cobroController extends Controller
        $cuentas = Cuenta_cobro::findOrFail($id);
        $administrativa = Administrativa::findOrFail($cuentas->administrativa_id);
 
-       if ( $administrativa->saldo > 0) {
+       if ($request->valor <= $administrativa->saldo) {
          $resta = $administrativa->saldo - $cuentas->valor;
-         $nuevo_saldo = $resta + $request->valor;
-         $administrativa->saldo = $nuevo_saldo;
+         $administrativa->saldo = $resta;
          $administrativa->save();
+
+         $suma = $administrativa->saldo + $request->valor_total;
+         $administrativa->saldo = $suma;
+         $administrativa->save();
+
+         $consignaciones->update($input);
+
+         Session::flash('message', 'registro editado!');
+         Session::flash('class', 'success');
+         return redirect()->route('administrativas.index');
+
+       }else {
+
+         Session::flash('message', 'El valor de la consignacion es mayor al saldo!');
+         Session::flash('class', 'danger');
        }
-
-       $cuentas->update($input);
-
-       Session::flash('message', 'registro editado editado!');
-       Session::flash('class', 'success');
-       return redirect()->route('administrativas.index');
      }
 
      /**
@@ -138,6 +158,6 @@ class Cuenta_cobroController extends Controller
        Session::flash('message', 'Cuenta cobro  eliminada');
        Session::flash('class', 'danger');
        return redirect('administrativas');
-     ;
+
      }
-     }
+ }

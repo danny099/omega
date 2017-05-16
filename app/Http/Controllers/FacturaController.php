@@ -39,27 +39,42 @@ class FacturaController extends Controller
     public function store(Request $request)
     {
       $input = $request->all(); //funcion para sacar todos los valores almacenados en los input
+      $administrativa = Administrativa::find($request->administrativa_id);
 
-      Factura::create($input); //funcion para crear el registro
+      if ($request->valor_total <= $administrativa->saldo) {
 
-      $facturas = Factura::all();//funcion para recuperar todos los registros en la base de datos
+        Factura::create($input); //funcion para crear el registro
 
-      $lastId_factura = $facturas->last()->id;//funcion que consigue capturar el ultimo registro y sacar el id de este mismo
+        $facturas = Factura::all();//funcion para recuperar todos los registros en la base de datos
 
-      $factura = Factura::find($lastId_factura);//funcion que permite encontrar un registro mediante un id
+        $lastId_factura = $facturas->last()->id;//funcion que consigue capturar el ultimo registro y sacar el id de este mismo
 
-      $administrativa = Administrativa::find($factura->administrativa_id);//funcion que hace una consulta a una tabla relacionada en la base de datos y saca un registro mediante un id
+        $factura = Factura::find($lastId_factura);//funcion que permite encontrar un registro mediante un id
 
-      $nuevo = $administrativa->pagado + $factura->valor_total;  //
-      
-      $administrativa->pagado = $nuevo;//asignacion de una variable a actualizar
-      $administrativa->save();
+        $administrativa = Administrativa::find($factura->administrativa_id);//funcion que hace una consulta a una tabla relacionada en la base de datos y saca un registro mediante un id
 
-      $saldo = $administrativa->saldo - $administrativa->pagado;
-      $administrativa->saldo;
-      $administrativa->save();
+        $saldo = $administrativa->saldo - $factura->valor_total;
 
-      return redirect()->route('administrativas.index');
+        $administrativa->saldo =$saldo;
+
+        $administrativa->save();
+
+        $nuevo = $administrativa->pagado + $factura->valor_total;  //
+
+        $administrativa->pagado = $nuevo;//asignacion de una variable a actualizar
+        $administrativa->save();
+
+
+
+        return redirect()->route('administrativas.index');
+
+      }else {
+        Session::flash('message', 'El valor de la Factura es mayor al saldo!');
+        Session::flash('class', 'danger');
+        return redirect()->route('administrativas.index');
+
+      }
+
     }
 
     /**
@@ -98,22 +113,43 @@ class FacturaController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $input = $request->all();
-      $factura = Factura::findOrFail($id);
-      $administrativa = Administrativa::findOrFail($factura->administrativa_id);
+        $input = $request->all();
+        $factura = Factura::findOrFail($id);
+        $administrativa = Administrativa::findOrFail($factura->administrativa_id);
 
-      if ( $administrativa->saldo > 0) {
-        $resta = $administrativa->saldo - $factura->valor_factura;
-        $nuevo_saldo = $resta + $request->valor;
-        $administrativa->saldo = $nuevo_saldo;
-        $administrativa->save();
-      }
-      $fact = Factura::findOrFail($id);
-      $fact->update($input);
+        if ($administrativa->saldo = 0){
 
-      Session::flash('message', 'registro editado editado!');
-      Session::flash('class', 'success');
-      return redirect()->route('administrativas.index');
+          $nuevo_s = $administrativa->saldo + $request->valor_total;
+          $administrativa->saldo = $nuevo_s;
+          $administrativa->save();
+
+        }elseif ($administrativa->saldo < $request->valor_total){
+
+          $nuevo_s = $request->valor_total - $administrativa->saldo;
+          $administrativa->saldo = $nuevo_s;
+          $administrativa->save();
+
+        }elseif ($administrativa->saldo > $request->valor_total){
+
+          $nuevo_s = $administrativa->saldo - $factura->valor_total;
+          $nuevo = $nuevo_s + $administrativa->saldo;
+          $administrativa->saldo = $nuevo;
+          $administrativa->save();
+
+        }
+
+        $factura->update($input);
+
+        Session::flash('message', 'registro editado editado!');
+        Session::flash('class', 'success');
+        return redirect()->route('administrativas.index');
+
+      // }else {
+      //
+      //   Session::flash('message', 'El valor de la factura es mayo al saldo!');
+      //   Session::flash('class', 'danger');
+      // }
+
     }
 
     /**
@@ -127,11 +163,11 @@ class FacturaController extends Controller
       $factu = Factura::findOrFail($id);
       $administrativas = Administrativa::findOrFail($factu->administrativa_id);
 
-      $nuevo_saldo = $administrativas->saldo + $factu->valor;
+      $nuevo_saldo = $administrativas->saldo + $factu->valor_total;
       $administrativas->saldo = $nuevo_saldo;
       $administrativas->save();
 
-      $pagado = $administrativas->pagado - $factu->valor;
+      $pagado = $administrativas->pagado - $factu->valor_total;
       $administrativas->pagado = $pagado;
       $administrativas->save();
 

@@ -36,29 +36,48 @@ class ConsignacionController extends Controller
      */
     public function store(Request $request)
     {
+
         $input = $request->all(); //funcion para sacar todos los valores almacenados en los input
-
-        Consignacion::create($input); //funcion para crear el registro
-
-        $consignaciones = Consignacion::all();//funcion para recuperar todos los registros en la base de datos
-
-        $lastId_consig = $consignaciones->last()->id;//funcion que consigue capturar el ultimo registro y sacar el id de este mismo
-
-        $consignacion = Consignacion::find($lastId_consig);//funcion que permite encontrar un registro mediante un id
-
-        $administrativa = Administrativa::find($consignacion->administrativa_id);//funcion que hace una consulta a una tabla relacionada en la base de datos y saca un registro mediante un id
-
-        $nuevo = $administrativa->pagado + $consignacion->valor;//operacion para almacenar un valor en una varible.
-
-        $administrativa->pagado = $nuevo;//asigancion del nuevo valor para actualizar en la base de datos relacionada.
-        $administrativa->save();
-
-        $saldo = $administrativa->saldo - $administrativa->pagado;
-
-        $administrativa->saldo = $saldo;
-        $administrativa->save();
-
+        $administrativa = Administrativa::find($request->administrativa_id);
+        Consignacion::create($input);
+        Session::flash('message', 'El valor de la consignacion creada!');
+        Session::flash('class', 'success');
         return redirect()->route('administrativas.index');
+
+        // if ($request->valor <= $administrativa->saldo ) {
+        //
+        //    //funcion para crear el registro
+        //
+        //   $consignaciones = Consignacion::all();//funcion para recuperar todos los registros en la base de datos
+        //
+        //   $lastId_consig = $consignaciones->last()->id;//funcion que consigue capturar el ultimo registro y sacar el id de este mismo
+        //
+        //   $consignacion = Consignacion::find($lastId_consig);//funcion que permite encontrar un registro mediante un id
+        //
+        //   $administrativa = Administrativa::find($consignacion->administrativa_id);//funcion que hace una consulta a una tabla relacionada en la base de datos y saca un registro mediante un id
+        //
+        //   $nuevo = $administrativa->pagado + $consignacion->valor;//operacion para almacenar un valor en una varible.
+        //
+        //   $administrativa->pagado = $nuevo;//asigancion del nuevo valor para actualizar en la base de datos relacionada.
+        //   $administrativa->save();
+        //
+        //   $saldo = $administrativa->saldo - $consignacion->valor;
+        //
+        //   $administrativa->saldo = $saldo;
+        //   $administrativa->save();
+        //
+        //   return redirect()->route('administrativas.index');
+        //
+        // }else {
+        //
+        //   Session::flash('message', 'El valor de la consignacion es mayor al saldo!');
+        //   Session::flash('class', 'danger');
+        //   return redirect()->route('administrativas.index');
+        //
+        //
+        // }
+
+
 
     }
 
@@ -99,19 +118,30 @@ class ConsignacionController extends Controller
 
        $consignaciones = Consignacion::findOrFail($id);
        $administrativa = Administrativa::findOrFail($consignaciones->administrativa_id);
-
-       if ( $administrativa->saldo > 0) {
-         $resta = $administrativa->saldo - $consignaciones->valor;
-         $nuevo_saldo = $resta + $request->valor;
-         $administrativa->saldo = $nuevo_saldo;
-         $administrativa->save();
-       }
-
        $consignaciones->update($input);
 
-       Session::flash('message', 'registro editado editado!');
-       Session::flash('class', 'success');
-       return redirect()->route('administrativas.index');
+      //  if ($request->valor <= $administrativa->saldo) {
+      //    $resta = $administrativa->saldo - $consignaciones->valor;
+      //    $administrativa->saldo = $resta;
+      //    $administrativa->save();
+       //
+      //    $suma = $administrativa->saldo + $request->valor_total;
+      //    $administrativa->saldo = $suma;
+      //    $administrativa->save();
+       //
+      //    $consignaciones->update($input);
+       //
+      //    Session::flash('message', 'registro editado!');
+      //    Session::flash('class', 'success');
+      //    return redirect()->route('administrativas.index');
+       //
+      //  }else {
+       //
+      //    Session::flash('message', 'El valor de la consignacion es mayor al saldo!');
+      //    Session::flash('class', 'danger');
+      //  }
+
+
      }
 
      /**
@@ -138,6 +168,6 @@ class ConsignacionController extends Controller
        Session::flash('message', 'Consignacion  eliminada');
        Session::flash('class', 'danger');
        return redirect('administrativas');
-     ;
+
      }
-     }
+}
