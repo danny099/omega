@@ -26,7 +26,12 @@ class AdministrativaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function viewpdf()
+    {
+      $pdf = PDF::loadView('administrativas.show');
+      return $pdf->download('archivo.pdf');
 
+    }
     //  metodo que permite retornar una vista con todos los datos de los registros
     public function index()
     {
@@ -279,7 +284,7 @@ class AdministrativaController extends Controller
    {
        $input = $request->all();
        $depart = $request->departamento;
-    
+
        $administrativas = Administrativa::findOrFail($id);
 
 

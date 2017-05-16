@@ -71,6 +71,7 @@ Route::group(['middleware' => 'auth'],function(){
 
 	/**************************************************************/
   Route::resource('administrativas','AdministrativaController');
+	Route::get('pdf','AdministrativaController@viewpdf');
   Route::get('deleteadminstrativa/{id}','AdministrativaController@destroy');
 
 	Route::get('selectmuni','AdministrativaController@getMuni');
@@ -97,5 +98,9 @@ Route::group(['middleware' => 'auth'],function(){
 
 	/**************************************************************/
 	/**************************************************************/
+	Route::get('pdf/{id}','PdfController@viewPdf');
 
-});
+	/**************************************************************/
+	// /**
+
+	});

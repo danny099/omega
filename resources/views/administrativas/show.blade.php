@@ -8,7 +8,7 @@
   <li><a href="{{ url('administrativas') }}">Administrativa</a></li>
   <li class="active">Datos del Contrato</li>
 </ol>
-
+  <a href="{{ url('pdf') }}/{{ $administrativa->id }}">Pdf</a>
   <div class="row">
     <div class="col-md-12">
       <div class="container">
