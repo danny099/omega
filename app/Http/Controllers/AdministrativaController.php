@@ -36,7 +36,7 @@ class AdministrativaController extends Controller
       $distribuciones = Distribucion::all();
       $transformaciones = Transformacion::all();
       $pu_finales = Pu_final::all();
-      return view('administrativas.index',compact('administrativas'));        //
+      return view('administrativas.index',compact('administrativas','otrosis'));        //
     }
 
 

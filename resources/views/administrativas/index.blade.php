@@ -130,6 +130,7 @@
               <th>Fecha del contrato</th>
               <th>Valor final del contrato</th>
               <th>Acciones</th>
+              <th>Recordatorios</th>
             </tr>
           </thead>
           <tbody>
@@ -223,6 +224,13 @@
                 </div>
                 <!-- fin modal -->
               </td>
+
+              @if($administrativa->recordar == 0)
+              <td><a><i class="glyphicon glyphicon-alert" style="color:#ff9b00"></i></a></td>
+              @else
+              <td></td>
+              @endif
+
             </tr>
             @endforeach
           </tbody>
