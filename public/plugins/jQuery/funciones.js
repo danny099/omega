@@ -22,7 +22,7 @@
     var resultado = valor*1.19;
 
     var iva = valor*0.19;
-    
+
     document.getElementById('iva').value = iva ;
     document.getElementById('fin').value = resultado ;
       }
