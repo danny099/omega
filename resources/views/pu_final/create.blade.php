@@ -1,6 +1,10 @@
 @extends('index')
 
 @section('contenido')
+<ol class="breadcrumb">
+  <li><a href="{{ url('index') }}">Inicio</a></li>
+  <li class="active">Crear uso final</li>
+</ol>
   <form class="" action="{{ url('pu_final') }}" method="post">
     {{ csrf_field() }}
     <div class="box box-primary">

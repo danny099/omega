@@ -43,7 +43,7 @@ class OtrosiController extends Controller
     {
 
       $input = $request->all();
-      
+
       $id = $request->administrativa_id;
 
 
@@ -66,7 +66,7 @@ class OtrosiController extends Controller
       $administrativa->save();
 
       Session::flash('message', 'Otro si creado!!');
-      Session::flash('class', 'danger');
+      Session::flash('class', 'success');
       return redirect()->route('otrosi.create');
 
     }

@@ -21,6 +21,11 @@
 
 @section('contenido')
 
+<ol class="breadcrumb">
+  <li><a href="{{ url('index') }}">Inicio</a></li>
+  <li class="active">Crear otrosi</li>
+</ol>
+
   <form class="" action="{{ url('otrosi') }}" method="post">
     {{ csrf_field() }}
     <div class="container">
@@ -28,6 +33,15 @@
         <div class="box-header with-borde">
           <center> <h2 class="box-title">Agregar Otro si</h2> </center>
         </div>
+        @if(Session::has('message'))
+        <div id="alert">
+          <div class="col-sm-12 hr hr-18 hr-double dotted"></div>
+          <div class="col-sm-4 col-xs-12 col-sm-offset-4 alert alert-{{Session::get('class')}}">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            {{Session::get('message')}}
+          </div>
+        </div>
+        @endif
         <div class="">
           <div class="box-body">
 

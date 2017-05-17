@@ -152,10 +152,15 @@
 
         <div class="box-footer">
           <a href="{{ url('deletefactura') }}/{{ $factura->id }}" onClick="javascript: return confirm('Esta seguro de eliminar registro?');"><i class="glyphicon glyphicon-minus-sign"></i></a>
-          <button type="submit" data-target="" data-toggle="" class="glyphicon glyphicon-ok"></button>
+
         </div>
       </div>
       {!! Form::close() !!}
     </div>
     </div>
       @endforeach
+      <div class="box-footer">
+        <button type="submit" data-target="" data-toggle="" class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;">Editar</button>
+      </div>
+    </div>
+  </div>

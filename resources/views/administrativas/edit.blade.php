@@ -274,7 +274,7 @@
         </div>
         @else
         <div class="col-md-12 div2">
-            <center><a href="{{ route('otrosi.edit', $administrativas->id) }}" class="btn btn-primary botoncito">Otro si</a></center>
+            <center><a href="{{ route('otrosi.edit', $administrativas->id) }}" class="btn btn-primary botoncito" data-toggle="modal" data-target="#myModal8">Otro si</a></center>
         </div>
         @endif
         @if(count($pu_finales) == 0)
@@ -283,7 +283,7 @@
         </div>
         @else
         <div class="col-md-12 div2">
-            <center><a href="{{ route('pu_final.edit', $administrativas->id) }}" class="btn btn-primary botoncito">Proceso uso final</a></center>
+            <center><a href="{{ route('pu_final.edit', $administrativas->id) }}" class="btn btn-primary botoncito" data-toggle="modal" data-target="#myModal5">Proceso uso final</a></center>
         </div>
         @endif
         @if(count($distribuciones) == 0)
@@ -292,7 +292,7 @@
         </div>
         @else
         <div class="col-md-12 div2">
-            <center><a href="{{ route('distribuciones.edit', $administrativas->id) }}" class="btn btn-primary botoncito">Alcance distribucion</a></center>
+            <center><a href="{{ route('distribuciones.edit', $administrativas->id) }}" class="btn btn-primary botoncito"data-toggle="modal" data-target="#myModal4">Alcance distribucion</a></center>
         </div>
         @endif
         @if(count($transformaciones) == 0)
@@ -319,7 +319,7 @@
         </div>
         @else
         <div class="col-md-12 div2">
-          <center><a href="{{ route('cuenta_cobros.edit', $administrativas->id) }}" class="btn btn-primary botoncito">Cuentas de cobro</a></center>
+          <center><a href="{{ route('cuenta_cobros.edit', $administrativas->id) }}" class="btn btn-primary botoncito" data-toggle="modal" data-target="#myModal6">Cuentas de cobro</a></center>
         </div>
         @endif
         @if(count($consignaciones) == 0)
@@ -328,7 +328,7 @@
         </div>
         @else
         <div class="col-md-12 div2">
-            <center><a href="{{ route('consignaciones.edit', $administrativas->id) }}" class="btn btn-primary botoncito">Consignaciones</a></center>
+            <center><a href="{{ route('consignaciones.edit', $administrativas->id) }}" class="btn btn-primary botoncito" data-toggle="modal" data-target="#myModal7">Consignaciones</a></center>
         </div>
         @endif
 
@@ -394,6 +394,96 @@
         </div>
         <div class="modal-body">
           @include('transformaciones.edit')
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- fin modal -->
+
+  <!-- inicio modal4  -->
+  <div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg2" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"></h4>
+        </div>
+        <div class="modal-body">
+          @include('distribuciones.edit')
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- fin modal -->
+
+  <!-- inicio modal5  -->
+  <div class="modal fade" id="myModal5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg2" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"></h4>
+        </div>
+        <div class="modal-body">
+          @include('pu_final.edit')
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- fin modal -->
+
+  <!-- inicio modal6  -->
+  <div class="modal fade" id="myModal6" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog " role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"></h4>
+        </div>
+        <div class="modal-body">
+          @include('cuenta_cobros.edit')
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- fin modal -->
+
+  <!-- inicio modal7  -->
+  <div class="modal fade" id="myModal7" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog " role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"></h4>
+        </div>
+        <div class="modal-body">
+          @include('consignaciones.edit')
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- fin modal -->
+
+  <!-- inicio modal8  -->
+  <div class="modal fade" id="myModal8" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog " role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"></h4>
+        </div>
+        <div class="modal-body">
+          @include('otrosi.edit')
         </div>
         <div class="modal-footer">
         </div>

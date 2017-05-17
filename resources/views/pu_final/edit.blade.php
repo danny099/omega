@@ -1,12 +1,3 @@
-@extends('index')
-
-@section('contenido')
-<ol class="breadcrumb">
-  <li><a href="{{ url('index') }}">Inicio</a></li>
-  <li><a href="{{ url('administrativas')}}">Administrativa</a></li>
-  <li><a href="javascript:history.back()">{{ $ide->nombre_proyecto }}</a></li>
-  <li class="active">Editar Proceso uso final</li>
-</ol>
 <div class="box box-primary">
   <div class="box-header with-border">
     <center> <h4 class="box-title">Alcance: proceso de uso final</h4> </center>
@@ -59,10 +50,12 @@
         </div>
         <div class="box-footer">
           <a href="{{ url('deletepu') }}/{{ $pu->id }}" onClick="javascript: return confirm('Esta seguro de eliminar registro?');"><i class="glyphicon glyphicon-minus-sign"></i></a>
-          <button type="submit" data-target="" data-toggle="" class="glyphicon glyphicon-ok"></button>
+
         </div>
       </div>
     @endforeach
+    <div class="box-footer">
+      <button type="submit" data-target="" data-toggle="" class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;">Editar</button>
+    </div>
   </div>
 </div>
-@endsection

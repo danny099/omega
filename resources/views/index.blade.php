@@ -51,8 +51,8 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="#" class="logo">
-
+    <a href="{{ url('index') }}" class="logo">
+      <span class="glyphicon glyphicon-home"></span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">

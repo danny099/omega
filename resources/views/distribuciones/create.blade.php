@@ -1,6 +1,9 @@
 @extends('index')
 @section('contenido')
-
+<ol class="breadcrumb">
+  <li><a href="{{ url('index') }}">Inicio</a></li>
+  <li class="active">Crear distribuciones</li>
+</ol>
   <form class="" action="{{ url('distribuciones') }}" method="post">
     {{ csrf_field() }}
     <div class="box box-primary">
