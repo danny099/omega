@@ -55,7 +55,9 @@
 
           <div class="form-group">
             {!! Form::label('password', 'Contraseña') !!}
-            {!! Form::text('password', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+            {!! Form::password('password', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+            <span id="show-pass" class="glyphicon glyphicon-eye-open"></span>
+
           </div>
 
           <br>
@@ -76,5 +78,21 @@
       {!! Form::close() !!}
     </div>
   </div>
+
+@endsection
+
+@section('scripts')
+
+  <script type="text/javascript">
+  $(document).ready(function () {
+     $('#show-pass').click(function () {
+      if ($('#password').attr('type') === 'text') {
+       $('#password').attr('type', 'password');
+      } else {
+       $('#password').attr('type', 'text');
+      }
+     });
+    });
+  </script>
 
 @endsection
