@@ -6,6 +6,7 @@
   .div2{
     padding: 5px;
   }
+
 </style>
 @section('scripts')
   <script type="text/javascript">
@@ -299,7 +300,7 @@
         </div>
         @else
         <div class="col-md-12 div2">
-            <center><a href="{{ route('transformaciones.edit', $administrativas->id) }}" class="btn btn-primary botoncito" >Alcance transformacion</a></center>
+            <center><a href="{{ route('transformaciones.edit', $administrativas->id) }}" class="btn btn-primary botoncito"data-toggle="modal" data-target="#myModal3" >Alcance transformacion</a></center>
         </div>
         @endif
         @if(count($facturas) == 0)
@@ -374,6 +375,24 @@
         </div>
         <div class="modal-body">
           @include('adicionales.edit')
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- fin modal -->
+
+  <!-- inicio modal3  -->
+  <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg2" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">ssssss</h4>
+        </div>
+        <div class="modal-body">
+          @include('transformaciones.edit')
         </div>
         <div class="modal-footer">
         </div>
