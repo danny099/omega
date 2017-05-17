@@ -118,12 +118,12 @@
                   <div class="row">
                     <div class="col-md-12">
                       <div class="col-md-4">
-                        <center><label >Recordarme</label></center>
+                        <center><label>Recordarme</label></center>
                       </div>
                       <div class="form-group ">
                         <div class="col-md-4">
-                          <input type="radio" name="recordarme1" value="0" checked> Si<br>
-                          <input type="radio" name="recordarme2" value="1"> No<br>
+                          <input type="radio" name="recordarme" value="0" checked> Si<br>
+                          <input type="radio" name="recordarme" value="1"> No<br>
                         </div>
                         <div class="col-md-4" id="tblprod7">
                         </div>
