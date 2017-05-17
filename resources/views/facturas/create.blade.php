@@ -13,6 +13,16 @@
          <br>
          <div class="col-md-6">
            <div class="form-group">
+             {!! Form::label('codigo_factura', 'Codigo de la factura') !!}
+           </div>
+         </div>
+         <div class="col-md-6">
+           <div class="form-group">
+             {!! Form::number('num_factura', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+           </div>
+         </div>
+         <div class="col-md-6">
+           <div class="form-group">
              {!! Form::label('fecha_factura', 'Fecha de la factura') !!}
            </div>
          </div>
