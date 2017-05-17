@@ -86,6 +86,7 @@
             <select class="form-control" name="zona">
               <option value="Urbana">Urbana</option>
               <option value="Rural">Rural</option>
+              <option value="Urbana/Rural">Urbana/Rural</option>
             </select>
           </div>
           <div class="form-group">
