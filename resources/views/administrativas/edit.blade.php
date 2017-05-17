@@ -7,6 +7,110 @@
     padding: 5px;
   }
 </style>
+@section('scripts')
+  <script type="text/javascript">
+
+    $(function() {
+      $('table').DataTable();
+
+      $('.valor_factura').keyup(function(){
+          var valor = parseInt($(this).val());
+          var resultado = valor * 1.19;
+          var iva = valor*0.19;
+
+          $(this).parent().parent().parent().find('.iva').val(iva);
+          $(this).parent().parent().parent().find('.valor_total').val(resultado);
+      });
+
+      $('.retencionesporcen').keyup(function(){
+        var retencionesporcen = parseInt($(this).val());
+        var valor = parseInt($(this).parent().parent().parent().find('.valor_factura').val());
+        var resultado = valor*retencionesporcen/100;
+        $(this).parent().parent().find('.retenciones').val(resultado);
+      });
+
+      $('.retencionesporcen').change(function(){
+        var retenciones = parseInt($(this).parent().parent().parent().find('.retenciones').val());
+        var amortizacion = parseInt($(this).parent().parent().parent().find('.amortizacion').val());
+        var polizas = parseInt($(this).parent().parent().parent().find('.polizas').val());
+        var retegarantia = parseInt($(this).parent().parent().parent().find('.retegarantia').val());
+        var valor_total = parseInt($(this).parent().parent().parent().find('.valor_total').val());
+        var resultado =valor_total-(retenciones+amortizacion+polizas+retegarantia);
+        $(this).parent().parent().parent().find('.valor_pagado').val(resultado);
+      });
+
+      $('.amortizacionporcen').keyup(function(){
+        var amortizacionporcen = parseInt($(this).val());
+        var valor = parseInt($(this).parent().parent().parent().find('.valor_total').val());
+        var resultado = valor*amortizacionporcen/100;
+        $(this).parent().parent().parent().find('.amortizacion').val(resultado);
+      });
+
+      $('.amortizacionporcen').change(function(){
+        var retenciones = parseInt($(this).parent().parent().parent().find('.retenciones').val());
+        var amortizacion = parseInt($(this).parent().parent().parent().find('.amortizacion').val());
+        var polizas = parseInt($(this).parent().parent().parent().find('.polizas').val());
+        var retegarantia = parseInt($(this).parent().parent().parent().find('.retegarantia').val());
+        var valor_total = parseInt($(this).parent().parent().parent().find('.valor_total').val());
+        var resultado =valor_total-(retenciones+amortizacion+polizas+retegarantia);
+        $(this).parent().parent().parent().find('.valor_pagado').val(resultado);
+      });
+
+      $('.polizasporcen').keyup(function(){
+        var polizasporcen = parseInt($(this).val());
+        var valor = parseInt($(this).parent().parent().parent().find('.valor_total').val());
+        var resultado = valor*polizasporcen/100;
+        $(this).parent().parent().parent().find('.polizas').val(resultado);
+      });
+
+      $('.polizasporcen').change(function(){
+        var retenciones = parseInt($(this).parent().parent().parent().find('.retenciones').val());
+        var amortizacion = parseInt($(this).parent().parent().parent().find('.amortizacion').val());
+        var polizas = parseInt($(this).parent().parent().parent().find('.polizas').val());
+        var retegarantia = parseInt($(this).parent().parent().parent().find('.retegarantia').val());
+        var valor_total = parseInt($(this).parent().parent().parent().find('.valor_total').val());
+        var resultado =valor_total-(retenciones+amortizacion+polizas+retegarantia);
+        $(this).parent().parent().parent().find('.valor_pagado').val(resultado);
+      });
+
+      $('.retegarantiaporcen').keyup(function(){
+        var retegarantiaporcen = parseInt($(this).val());
+        var valor = parseInt($(this).parent().parent().parent().find('.valor_total').val());
+        var resultado = valor*retegarantiaporcen/100;
+        $(this).parent().parent().parent().find('.retegarantia').val(resultado);
+      });
+
+      $('.retegarantiaporcen').change(function(){
+        var retenciones = parseInt($(this).parent().parent().parent().find('.retenciones').val());
+        var amortizacion = parseInt($(this).parent().parent().parent().find('.amortizacion').val());
+        var polizas = parseInt($(this).parent().parent().parent().find('.polizas').val());
+        var retegarantia = parseInt($(this).parent().parent().parent().find('.retegarantia').val());
+        var valor_total = parseInt($(this).parent().parent().parent().find('.valor_total').val());
+        var resultado =valor_total-(retenciones+amortizacion+polizas+retegarantia);
+        $(this).parent().parent().parent().find('.valor_pagado').val(resultado);
+      });
+
+      $('.retencionesporcen').focus(function(){
+        var retenciones = parseInt($(this).val(""));
+
+      });
+
+      $('.amortizacionporcen').focus(function(){
+        var amortizacion = parseInt($(this).val(""));
+      });
+
+      $('.polizasporcen').focus(function(){
+        var polizas = parseInt($(this).val(""));
+      });
+
+      $('.retegarantiaporcen').focus(function(){
+        var retegarantia = parseInt($(this).val(""));
+      });
+
+    });
+
+  </script>
+@endsection
 @section('contenido')
   <ol class="breadcrumb">
     <li><a href="{{ url('index') }}">Inicio</a></li>
@@ -204,7 +308,7 @@
         </div>
         @else
         <div class="col-md-12 div2">
-            <center><a href="{{ route('facturas.edit', $administrativas->id) }}" class="btn btn-primary botoncito">Facturas</a></center>
+            <center><a href="{{ route('facturas.edit', $administrativas->id) }}" class="btn btn-primary botoncito" data-toggle="modal" data-target="#myModal" botoncito>Facturas</a></center>
         </div>
         @endif
         @if(count($cuenta_cobros) == 0)
@@ -242,7 +346,23 @@
       <hr>
     </div>
   </div>
-
+  <!-- inicio modal  -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"></h4>
+        </div>
+        <div class="modal-body">
+          @include('facturas.edit')
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- fin modal -->
 
 @endsection
 @section('scripts')

@@ -1,98 +1,151 @@
-@extends('index')
-@section('scripts')
-  <script type="text/javascript">
+  @foreach($facturas as $factura)
+  <div class="container">
+    <div class="">
+      <div class="">
+        <h3 class="box-title">Editar facturas</h3>
+      </div>
 
-    $(function() {
-      $('table').DataTable();
 
-      $('.valor_factura').keyup(function(){
-          var valor = parseInt($(this).val());
-          var resultado = valor * 1.19;
-          var iva = valor*0.19;
-
-          $(this).parent().parent().find('.iva').val(iva);
-          $(this).parent().parent().find('.valor_total').val(resultado);
-      });
-
-    });
-
-  </script>
-@endsection
-@section('contenido')
-  <ol class="breadcrumb">
-    <li><a href="{{ url('index') }}">Inicio</a></li>
-    <li><a href="{{ url('administrativas')}}">Administrativa</a></li>
-    <li><a href="javascript:history.back()">{{ $ide->nombre_proyecto }}</a></li>
-    <li class="active">Editar Facturas</li>
-  </ol>
-  <div class="box box-primary">
-    <div class="box-header with-border">
-      <center> <h3 class="box-title">Facturas</h3> </center>
-    </div>
-    <div class="box-body">
-
-      @foreach($facturas as $factura)
       {!! Form::model($factura, ['method' => 'PATCH', 'action' => ['FacturaController@update',$factura->id]]) !!}
       {{ csrf_field() }}
-<input type="hidden" name="id" value="{{$factura->id}}">
-        <div class="box-body col-md-6">
-          <br>
+      <input type="hidden" name="id" value="{{$factura->id}}">
+      <div class="box-body col-md-6">
+        <br>
+        <div class="col-md-6">
           <div class="form-group">
-            {!! Form::label('num_factura', 'Numero Factura') !!}
-            {!! Form::number('num_factura', null, ['class' => 'form-control' , 'required' => 'required', 'min'=>'0']) !!}
+            {!! Form::label('codigo_factura', 'Codigo de la factura') !!}
           </div>
-
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            {!! Form::number('num_factura', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+          </div>
+        </div>
+        <div class="col-md-6">
           <div class="form-group">
             {!! Form::label('fecha_factura', 'Fecha de la factura') !!}
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
             {!! Form::date('fecha_factura', null, ['class' => 'form-control' , 'required' => 'required']) !!}
           </div>
+        </div>
 
+        <div class="col-md-6">
           <div class="form-group">
             {!! Form::label('valor_factura', 'Valor factura antes de iva') !!}
-            {!! Form::number('valor_factura', null, ['class' => 'form-control valor_factura' , 'required' => 'required', 'min'=>'0']) !!}
           </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            {!! Form::number('valor_factura', null, ['class' => 'form-control valor_factura' ,'required' => 'required', 'min'=>'0']) !!}
+          </div>
+        </div>
 
+        <div class="col-md-6">
           <div class="form-group">
             {!! Form::label('iva', 'IVA') !!}
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
             {!! Form::number('iva', null, ['class' => 'form-control iva' ,'readonly', 'required' => 'required', 'min'=>'0']) !!}
           </div>
+        </div>
 
+        <div class="col-md-6">
           <div class="form-group">
             {!! Form::label('valor_total', 'Valor total de la factura') !!}
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
             {!! Form::number('valor_total', null, ['class' => 'form-control valor_total' ,'readonly', 'required' => 'required', 'min'=>'0']) !!}
           </div>
+        </div>
 
+        <div class="col-md-6">
           <div class="form-group">
-            {!! Form::label('retenciones', 'Retenciones') !!}
-            {!! Form::number('retenciones', 0, ['class' => 'form-control', 'min'=>'0']) !!}
+            {!! Form::label('retenciones', 'Retenciones %') !!}
+            {!! Form::label('retenciones2', 'Retenciones valor') !!}
           </div>
-
+        </div>
+        <div class="col-md-6">
           <div class="form-group">
-            {!! Form::label('amortizacion', 'Amortizacion:') !!}
-            {!! Form::number('amortizacion', 0, ['class' => 'form-control', 'min'=>'0']) !!}
+            {!! Form::number('retencionesporcen', null, ['class' => 'form-control retencionesporcen', 'min'=>'0']) !!}
+            {!! Form::number('retenciones', null, ['class' => 'form-control retenciones', 'min'=>'0','readonly']) !!}
           </div>
+        </div>
 
+        <div class="col-md-6">
           <div class="form-group">
-            {!! Form::label('polizas', 'Polizas:') !!}
-            {!! Form::number('polizas', 0, ['class' => 'form-control','min'=>'0' ]) !!}
+            {!! Form::label('amortizacion', 'Amortizacion%:') !!}
+            {!! Form::label('amortizacion2', 'Amortizacion valor:') !!}
           </div>
-
+        </div>
+        <div class="col-md-6">
           <div class="form-group">
-            {!! Form::label('retegarantia', 'Retegarantia:') !!}
-            {!! Form::number('retegarantia', 0, ['class' => 'form-control', 'min'=>'0' ]) !!}
+            {!! Form::number('amortizacionporcen', null, ['class' => 'form-control amortizacionporcen', 'min'=>'0']) !!}
+            {!! Form::number('amortizacion', null, ['class' => 'form-control amortizacion', 'min'=>'0','readonly']) !!}
           </div>
+        </div>
 
+        <div class="col-md-6">
+          <div class="form-group">
+            {!! Form::label('polizas', 'Polizas%:') !!}<br>
+            {!! Form::label('polizas2', 'Polizas valor:') !!}
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            {!! Form::number('polizasporcen', null, ['class' => 'form-control polizasporcen','min'=>'0' ]) !!}
+            {!! Form::number('polizas', null, ['class' => 'form-control polizas','min'=>'0','readonly' ]) !!}
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            {!! Form::label('retegarantia', 'Retegarantia%:') !!}
+            {!! Form::label('retegarantia2', 'Retegarantia valor:') !!}
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            {!! Form::number('retegarantiaporcen', null, ['class' => 'form-control retegarantiaporcen', 'min'=>'0' ]) !!}
+            {!! Form::number('retegarantia', null, ['class' => 'form-control retegarantia', 'min'=>'0','readonly' ]) !!}
+          </div>
+        </div>
+
+        <div class="col-md-6">
           <div class="form-group">
             {!! Form::label('valor_pagado', 'Valor pagado:') !!}
-            {!! Form::number('valor_pagado', 0, ['class' => 'form-control', 'min'=>'0' ]) !!}
           </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            {!! Form::number('valor_pagado', null, ['class' => 'form-control valor_pagado', 'min'=>'0','readonly' ]) !!}
+          </div>
+        </div>
 
+        <div class="col-md-6">
           <div class="form-group">
             {!! Form::label('fecha_pago', 'Fecha Pago:') !!}
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
             {!! Form::date('fecha_pago', null, ['class' => 'form-control' , 'required' => 'required']) !!}
           </div>
+        </div>
+
+        <div class="col-md-6">
           <div class="form-group">
-            {!! Form::label('observaciones', 'Observaciones:') !!}
+              {!! Form::label('observaciones', 'Observaciones:') !!}
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
             {!! Form::text('observaciones', null, ['class' => 'form-control' ]) !!}
           </div>
         </div>
@@ -104,5 +157,5 @@
       </div>
       {!! Form::close() !!}
     </div>
+    </div>
       @endforeach
-@endsection
