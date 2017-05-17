@@ -43,28 +43,31 @@ class OtrosiController extends Controller
     {
 
       $input = $request->all();
-      $id = $request->codigo_proyecto;
+      
+      $id = $request->administrativa_id;
 
 
-      foreach ($request->otrosi as $otro)
-       {
-         Otrosi::create(['valor'=>$otro,'administrativa_id'=>$id]);
+      Otrosi::create($input);
 
-         $other = Otrosi::all();
-         $last_id = $other->last()->id;
-         $administrativa = Administrativa::find($id);
-         $reg_otro = Otrosi::find($last_id);
+      $other = Otrosi::all();
+      $last_id = $other->last()->id;
+      $reg_otro = Otrosi::find($last_id);
+      $administrativa = Administrativa::find($id);
 
-         $total = $administrativa->saldo + $reg_otro->valor;
-         $administrativa->saldo = $total;
-         $administrativa->save();
+      $administrativa->recordar = $request->recordarme;
+      $administrativa->save();
 
-         $nuevo_total = $administrativa->valor_total_contrato + $reg_otro->valor;
-         $administrativa->valor_total_contrato = $nuevo_total;
-         $administrativa->save();
-       }
+      $total = $administrativa->saldo + $reg_otro->valor_tot;
+      $administrativa->saldo = $total;
+      $administrativa->save();
 
-       return redirect()->route('administrativas.index');
+      $nuevo_total = $administrativa->valor_total_contrato + $reg_otro->valor_tot;
+      $administrativa->valor_total_contrato = $nuevo_total;
+      $administrativa->save();
+
+      Session::flash('message', 'Otro si creado!!');
+      Session::flash('class', 'danger');
+      return redirect()->route('otrosi.create');
 
     }
 
