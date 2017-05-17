@@ -51,8 +51,8 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="{{ url('index') }}" class="logo">
-      <span class="glyphicon glyphicon-home"></span>
+    <a href="#" class="logo">
+
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -325,6 +325,11 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
         <li class="header">Modulos</li>
+        <li>
+          <a href="{{ url('index') }}">
+            <i class="glyphicon glyphicon-home"></i> <span>Inicio</span>
+          </a>
+        </li>
         <li class="treeview">
           <a href="#">
             <i class="fa fa-dashboard"></i> <span>Contratos</span>
