@@ -20,6 +20,7 @@
 
 
 @section('contenido')
+
   <form class="" action="{{ url('otrosi') }}" method="post">
     {{ csrf_field() }}
     <div class="container">
@@ -39,7 +40,7 @@
                   </div>
                   <div class="form-group ">
                     <div class="col-md-4">
-                      <select class="form-control select2" name="codigo_proyecto" style="width: 100%" id="select" required="">
+                      <select class="form-control select2" name="administrativa_id" style="width: 100%" id="select" required="">
                         <option value="">Seleccione..</option>
                         @foreach($codigos as $codigo)
                         <option value="{{ $codigo->id }}">{{$codigo->codigo_proyecto}}</option>
@@ -59,7 +60,7 @@
                   </div>
                   <div class="form-group ">
                     <div class="col-md-4">
-                      <input type="number" class="form-control antesiva" id="antesiva" placeholder= "Ingrese valor" name="antesiva[]"   >
+                      <input type="number" class="form-control antesiva" id="antesiva" placeholder= "Ingrese valor" name="valor"   >
                     </div>
                     <div class="col-md-4" >
 
@@ -75,7 +76,7 @@
                     </div>
                     <div class="form-group ">
                       <div class="col-md-4">
-                        <input type="number" class="form-control iva" id="iva" readonly placeholder= "valor" name="iva[]"  >
+                        <input type="number" class="form-control iva" id="iva" readonly placeholder= "valor" name="iva"  >
                       </div>
                       <div class="col-md-4" >
 
@@ -91,7 +92,7 @@
                       </div>
                       <div class="form-group ">
                         <div class="col-md-4">
-                          <input type="number" class="form-control otrosi" id="otrosi" readonly  placeholder= "valor" name="otrosi[]"  >
+                          <input type="number" class="form-control otrosi" id="otrosi" readonly  placeholder= "valor" name="valor_tot">
                         </div>
                         <div class="col-md-4" >
                         </div>
@@ -106,7 +107,7 @@
                       </div>
                       <div class="form-group ">
                         <div class="col-md-4">
-                          <input type="text" class="form-control" id="detalles[]"   placeholder= "Ingrese detalle" name="detalles[]" >
+                          <input type="text" class="form-control" id="detalles"   placeholder= "Ingrese detalle" name="detalles" >
                         </div>
                         <div class="col-md-4" >
                         </div>
@@ -121,8 +122,8 @@
                       </div>
                       <div class="form-group ">
                         <div class="col-md-4">
-                          <input type="radio" name="recordarme[]" value="0" checked> Si<br>
-                          <input type="radio" name="recordarme[]" value="1" > No<br>
+                          <input type="radio" name="recordarme1" value="0" checked> Si<br>
+                          <input type="radio" name="recordarme2" value="1"> No<br>
                         </div>
                         <div class="col-md-4" id="tblprod7">
                         </div>
