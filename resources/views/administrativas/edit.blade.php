@@ -231,6 +231,7 @@
             <option value="{{ $administrativas->tipo_zona }}">{{ $administrativas->tipo_zona }}</option>
             <option value="Urbana">Urbana</option>
             <option value="Rural">Rural</option>
+            <option value="Urbana/Rural">Urbana/Rural</option>
           </select>
         </div>
         <div class="form-group">
