@@ -38,7 +38,8 @@ class FacturaController extends Controller
      */
     public function store(Request $request)
     {
-      $input = $request->all(); //funcion para sacar todos los valores almacenados en los input
+      $input = $request->all();
+       //funcion para sacar todos los valores almacenados en los input
       $administrativa = Administrativa::find($request->administrativa_id);
 
       if ($request->valor_total <= $administrativa->saldo) {
