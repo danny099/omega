@@ -91,17 +91,23 @@ class Pu_finalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-      $input = $request->all();
+     public function editar(Request $request)
+     {
+       $input = $request->all();
 
-      $pu = Pu_final::findOrFail($id);
-      $pu->update($input);
+       for ($i=0; $i<count($input['pu_final']['descripcion_pu']); $i++) {
 
-      Session::flash('message', 'registro editado editado!');
-      Session::flash('class', 'success');
-      return redirect()->route('administrativas.index');
-    }
+          $pu = Pu_final::findOrFail($request->pu_final['id'][$a]);
+
+          $datos['descripcion'] = $input['pu_final']['descripcion_pu'][$i];
+          $datos['tipo'] = $input['pu_final']['tipo_pu'][$i];
+          $datos['unidad'] = $input['pu_final']['unidad_pu_final'][$i];
+          $datos['cantidad'] = $input['pu_final']['cantidad_pu'][$i];
+
+          $pu->update($datos);
+
+       }
+
 
     /**
      * Remove the specified resource from storage.

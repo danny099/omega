@@ -5,9 +5,10 @@
     </div>
     <div class="box-body">
 
-      @foreach($transformaciones as $transfor)
-      {!! Form::model($transfor, ['method' => 'PATCH', 'action' => ['TransformacionController@update',$transfor->id]]) !!}
+      <form class="" action="{{ url('editart') }}" method="post">
       {{ csrf_field() }}
+
+      @foreach($transformaciones as $transfor)
       <input type="hidden" name="transformacion[id][]" value="{{ $transfor->id}}">
       <div class="col-md-12">
         <div class="col-md-3">
@@ -63,10 +64,11 @@
 
         </div>
       </div>
-      {!! Form::close() !!}
+
       @endforeach
       <div class="box-footer">
         <button type="submit" data-target="" data-toggle="" class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;">Editar</button>
       </div>
+      </form>
     </div>
   </div>

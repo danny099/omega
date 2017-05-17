@@ -47,11 +47,12 @@ Route::group(['middleware' => 'auth'],function(){
   /**************************************************************/
   Route::resource('transformaciones','TransformacionController');
 	// Route::get('transformaciones/{id}/crear','TransformacionController@create');
-	Route::post('editar','TransformacionController@editar');
+	Route::post('editart','TransformacionController@editar');
 	Route::get('deletetransfor/{id}','TransformacionController@destroy');
   /**************************************************************/
   /**************************************************************/
   Route::resource('distribuciones','DistribucionController');
+	Route::post('editard','DistribucionController@editar');
 	Route::get('deletedistri/{id}','DistribucionController@destroy');
 
   /**************************************************************/

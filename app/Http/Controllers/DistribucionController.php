@@ -93,18 +93,29 @@ class DistribucionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-      $input = $request->all();
+     public function editar(Request $request)
+     {
 
-      $distri = Distribucion::findOrFail($id);
+       $input = $request->all();
 
-      $distri->update($input);
-    
-      Session::flash('message', 'registro editado editado!');
-      Session::flash('class', 'success');
-      return redirect()->route('administrativas.index');
-    }
+       for ($x=0; $x<count($input['distribucion']['descripcion_dis']); $x++) {
+
+         $distri = Distribucion::findOrFail($request->distribucion['id'][$a]);
+
+         $datos['descripcion'] = $input['distribucion']['descripcion_dis'][$x];
+         $datos['tipo'] = $input['distribucion']['tipo_dis'][$x];
+         $datos['unidad'] = $input['distribucion']['unidad_distribucion'][$x];
+         $datos['cantidad'] = $input['distribucion']['cantidad_dis'][$x];
+
+         $distri->update($datos);
+
+       }
+
+
+       Session::flash('message', 'registro editado editado!');
+       Session::flash('class', 'success');
+       return redirect()->route('administrativas.index');
+     }
 
     /**
      * Remove the specified resource from storage.

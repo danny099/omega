@@ -6,10 +6,11 @@
     <div class="box-body">
 
       <form class="" action="{{ url('editar') }}" method="post">
+      {{ csrf_field() }}
       @foreach($adicionales as $adici)
       <!-- {!! Form::model($adici, ['method' => 'PATCH', 'action' => ['ValorAdicionalController@update',$adici->id]]) !!} -->
 
-      {{ csrf_field() }}
+
       <input type="hidden" name="adicional[id][]" value="{{ $adici->id}}">
       <div class="col-md-12">
 
