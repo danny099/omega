@@ -165,7 +165,8 @@ class ValorAdicionalController extends Controller
 
       Session::flash('message', 'Valor adicional eliminado');
       Session::flash('class', 'danger');
-      return redirect('administrativas');
+      return redirect()->route('administrativas.index');
+
 
     }
 }

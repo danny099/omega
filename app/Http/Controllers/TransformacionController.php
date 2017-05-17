@@ -140,6 +140,7 @@ class TransformacionController extends Controller
 
        Session::flash('message', 'Alcance Transformacion eliminado');
        Session::flash('class', 'danger');
-       return redirect();
+       return redirect()->route('administrativas.index');
+
     }
 }

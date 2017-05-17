@@ -108,7 +108,7 @@ class Pu_finalController extends Controller
 
        }
 
-
+     }
     /**
      * Remove the specified resource from storage.
      *
@@ -121,6 +121,7 @@ class Pu_finalController extends Controller
       $pu->delete();
       Session::flash('message', 'Alcance Transformacion eliminado');
       Session::flash('class', 'danger');
-      return redirect();
+      return redirect()->route('administrativas.index');
+
     }
 }

@@ -51,7 +51,7 @@
           </div>
 
           <div class="box-footer">
-            <a href="{{ url('deletedistri') }}/{{ $distribucion->id }}" onClick="javascript: return confirm('Esta seguro de eliminar registro?');"><i class="glyphicon glyphicon-minus-sign"></i></a>
+            <a href="{{ url('deletedistri') }}/{{ $distribucion->id }}" onClick="eliminar()"><i class="glyphicon glyphicon-minus-sign"></i></a>
 
           </div>
         </div>
@@ -65,15 +65,12 @@
 
   <script>
     $(document).ready(function() {
-   // Esta primera parte crea un loader no es necesaria
-    // $().ajaxStart(function() {
-    //     $('#loading').show();
-    //     $('#result').hide();
-    // }).ajaxStop(function() {
-    //     $('#loading').hide();
-    //     $('#result').fadeIn('slow');
-    // });
-   // Interceptamos el evento submit
+
+    function eliminar(){
+      var agree=confirm("¿Realmente desea eliminarlo? ");
+      $('.modal').modal('hide');
+    }
+    // Interceptamos el evento submit
     $('.form1').on('submit',function() {
   // Enviamos el formulario usando AJAX
           $.ajax({
@@ -89,4 +86,6 @@
           return false;
       });
     });
+
+
   </script>

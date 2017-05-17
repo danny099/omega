@@ -128,12 +128,9 @@ class UsuarioController extends Controller
      */
     public function destroy($id)
     {
-
       $usuario = Usuario::findOrFail($id);
       Session::flash('message', 'Usuario eliminado');
       $usuario->delete();
       return redirect('usuarios');
-
-
     }
 }

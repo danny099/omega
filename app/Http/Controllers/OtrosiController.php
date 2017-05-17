@@ -151,7 +151,7 @@ class OtrosiController extends Controller
 
       Session::flash('message', 'Otro si eliminado');
       Session::flash('class', 'danger');
-      return redirect('administrativas');
-;
+      return redirect()->route('administrativas.index');
+    
     }
 }

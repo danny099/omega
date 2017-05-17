@@ -129,6 +129,7 @@ class DistribucionController extends Controller
       $distri->delete();
       Session::flash('message', 'Alcance Transformacion eliminado');
       Session::flash('class', 'danger');
-      return redirect();
+       return redirect()->route('administrativas.index');
+
     }
 }
