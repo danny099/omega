@@ -1,5 +1,10 @@
 @extends('index')
-
+<style media="screen">
+  .nombre{
+    
+	overflow-wrap: break-word;
+  }
+</style>
 
 @section('contenido')
 
@@ -57,7 +62,7 @@
                   </div>
                 </div>
 
-              <div class="col-md-3">
+              <div class="col-md-3 nombre">
                 <div class="form-group">
                   <span>{{ $administrativa->nombre_proyecto}}</span>
                 </div>
