@@ -263,7 +263,7 @@
         </div>
         @else
         <div class="col-md-12 div2">
-            <center><a href="{{ route('adicionales.edit', $administrativas->id) }}" class="btn btn-primary botoncito" >Valor adicional</a></center>
+            <center><a href="{{ route('adicionales.edit', $administrativas->id) }}" class="btn btn-primary botoncito" data-toggle="modal" data-target="#myModal2" >Valor adicional</a></center>
         </div>
         @endif
         @if(count($otrosis) == 0)
@@ -308,7 +308,7 @@
         </div>
         @else
         <div class="col-md-12 div2">
-            <center><a href="{{ route('facturas.edit', $administrativas->id) }}" class="btn btn-primary botoncito" data-toggle="modal" data-target="#myModal" botoncito>Facturas</a></center>
+            <center><a href="{{ route('facturas.edit', $administrativas->id) }}" class="btn btn-primary botoncito" data-toggle="modal" data-target="#myModal" >Facturas</a></center>
         </div>
         @endif
         @if(count($cuenta_cobros) == 0)
@@ -348,7 +348,7 @@
   </div>
   <!-- inicio modal  -->
   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog " role="document">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -364,6 +364,23 @@
   </div>
   <!-- fin modal -->
 
+  <!-- inicio modal2  -->
+  <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"></h4>
+        </div>
+        <div class="modal-body">
+          @include('adicionales.edit')
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- fin modal -->
 @endsection
 @section('scripts')
 
