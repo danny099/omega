@@ -178,7 +178,7 @@
             var count = 1;
            $(document).on("click","#btnadd3",function( event ) {
             count++;
-            $('#tblprod3').after('<div class="col-md-3 " id="quitar8"><div class="form-group"><center><label >Tipo</label></center><select class="form-control" name="distribucion[tipo_dis][]"><option value="aerea">tipo Aerea</option><option value="subterranea">tipo subterranea</option></select></div></div>');
+            $('#tblprod3').after('<div class="col-md-3 " id="quitar8"><div class="form-group"><center><label >Tipo</label></center><select class="form-control" name="distribucion[tipo_dis][]"><option value="">Seleccione..</option><option value="aerea">tipo Aerea</option><option value="subterranea">tipo subterranea</option><option value="aerea/subterranea">Aerea/Subterranea</option></select></div></div>');
               event.preventDefault();
            });
         });

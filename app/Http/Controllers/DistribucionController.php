@@ -100,7 +100,7 @@ class DistribucionController extends Controller
 
        for ($x=0; $x<count($input['distribucion']['descripcion_dis']); $x++) {
 
-         $distri = Distribucion::findOrFail($request->distribucion['id'][$a]);
+         $distri = Distribucion::findOrFail($request->distribucion['id'][$x]);
 
          $datos['descripcion'] = $input['distribucion']['descripcion_dis'][$x];
          $datos['tipo'] = $input['distribucion']['tipo_dis'][$x];
@@ -114,7 +114,7 @@ class DistribucionController extends Controller
 
        Session::flash('message', 'registro editado editado!');
        Session::flash('class', 'success');
-       return redirect()->route('administrativas.index');
+      //  return redirect()->route('administrativas.index');
      }
 
     /**
