@@ -223,6 +223,8 @@
                   </div>
                 </div>
                 <!-- fin modal -->
+
+                
               </td>
 
               @if($administrativa->recordar == 0)
