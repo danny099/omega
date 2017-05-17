@@ -34,6 +34,7 @@
                 <option value="{{ $distribucion->tipo }}">{{ $distribucion->tipo }}</option>
                 <option value="aerea">tipo Aerea</option>
                 <option value="subterranea">tipo subterranea</option>
+                <option value="aerea/subterranea">Aerea/Subterranea</option>
               </select>
             </div>
           </div>
