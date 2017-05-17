@@ -108,19 +108,39 @@ class ValorAdicionalController extends Controller
      * @param  \App\Valor_adicional  $valor_adicional
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function editar(Request $request)
     {
       $input = $request->all();
-      $adicional = Valor_adicional::findOrFail($id);
-      $administrativa = Administrativa::findOrFail($adicional->administrativa_id);
 
-      if ( $administrativa->saldo > 0) {
-        $resta = $administrativa->saldo - $adicional->valor;
-        $nuevo_saldo = $resta + $request->valor;
-        $administrativa->saldo = $nuevo_saldo;
-        $administrativa->save();
+      // $adicional = Valor_adicional::findOrFail($id);
+      // $administrativa = Administrativa::findOrFail($adicional->administrativa_id);
+
+      for ($a=0; $a<count($input['adicional']['valor']); $a++){
+
+
+        $adicional = Valor_adicional::findOrFail($request->adicional['id'][$a]);
+
+        $administrativa = Administrativa::findOrFail($adicional->administrativa_id);
+        // dd($administrativa);
+        // die();
+
+        if ($administrativa->saldo > 0) {
+
+          $resta = $administrativa->saldo - $adicional->valor;
+          $nuevo_saldo = $resta + $request->adicional['valor'][$a];
+          $administrativa->saldo = $nuevo_saldo;
+          $administrativa->save();
+
+        }
+        $datos1['valor'] = $input['adicional']['valor'][$a];
+        $datos1['detalle'] = $input['adicional']['detalle'][$a];
+
+
+        $adicional->update($datos1);
+
       }
-      $adicional->update($input);
+
+    
 
       Session::flash('message', 'registro editado editado!');
       Session::flash('class', 'success');

@@ -94,6 +94,7 @@ Route::group(['middleware' => 'auth'],function(){
 	/**************************************************************/
 	/**************************************************************/
 	Route::resource('adicionales','ValorAdicionalController');
+	Route::post('editar','ValorAdicionalController@editar');
 	Route::get('deleteadicional/{id}','ValorAdicionalController@destroy');
 
 	/**************************************************************/
