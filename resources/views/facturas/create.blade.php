@@ -67,52 +67,52 @@
 
          <div class="col-md-6">
            <div class="form-group">
-             {!! Form::label('retenciones', 'Retenciones %') !!}
-             {!! Form::label('retenciones2', 'Retenciones valor') !!}
+             {!! Form::label('rete_porcen', 'Retenciones %') !!}
+             {!! Form::label('retenciones', 'Retenciones valor') !!}
            </div>
          </div>
          <div class="col-md-6">
            <div class="form-group">
-             {!! Form::number('retencionesporcen', 0, ['class' => 'form-control retencionesporcen', 'min'=>'0']) !!}
+             {!! Form::number('rete_porcen', 0, ['class' => 'form-control retencionesporcen', 'min'=>'0']) !!}
              {!! Form::number('retenciones', 0, ['class' => 'form-control retenciones', 'min'=>'0','readonly']) !!}
            </div>
          </div>
 
          <div class="col-md-6">
            <div class="form-group">
-             {!! Form::label('amortizacion', 'Amortizacion%:') !!}
+             {!! Form::label('amorti_porcen', 'Amortizacion%:') !!}
              {!! Form::label('amortizacion2', 'Amortizacion valor:') !!}
            </div>
          </div>
          <div class="col-md-6">
            <div class="form-group">
-             {!! Form::number('amortizacionporcen', 0, ['class' => 'form-control amortizacionporcen', 'min'=>'0']) !!}
+             {!! Form::number('amorti_porcen', 0, ['class' => 'form-control amortizacionporcen', 'min'=>'0']) !!}
              {!! Form::number('amortizacion', 0, ['class' => 'form-control amortizacion', 'min'=>'0','readonly']) !!}
            </div>
          </div>
 
          <div class="col-md-6">
            <div class="form-group">
-             {!! Form::label('polizas', 'Polizas%:') !!}<br>
-             {!! Form::label('polizas2', 'Polizas valor:') !!}
+             {!! Form::label('poliza_porcen', 'Polizas%:') !!}<br>
+             {!! Form::label('polizas', 'Polizas valor:') !!}
            </div>
          </div>
          <div class="col-md-6">
            <div class="form-group">
-             {!! Form::number('polizasporcen', 0, ['class' => 'form-control polizasporcen','min'=>'0' ]) !!}
+             {!! Form::number('poliza_porcen', 0, ['class' => 'form-control polizasporcen','min'=>'0' ]) !!}
              {!! Form::number('polizas', 0, ['class' => 'form-control polizas','min'=>'0','readonly' ]) !!}
            </div>
          </div>
 
          <div class="col-md-6">
            <div class="form-group">
-             {!! Form::label('retegarantia', 'Retegarantia%:') !!}
-             {!! Form::label('retegarantia2', 'Retegarantia valor:') !!}
+             {!! Form::label('retegaran_porcen', 'Retegarantia%:') !!}
+             {!! Form::label('retegarantia', 'Retegarantia valor:') !!}
            </div>
          </div>
          <div class="col-md-6">
            <div class="form-group">
-             {!! Form::number('retegarantiaporcen', 0, ['class' => 'form-control retegarantiaporcen', 'min'=>'0' ]) !!}
+             {!! Form::number('retegaran_porcen', 0, ['class' => 'form-control retegarantiaporcen', 'min'=>'0' ]) !!}
              {!! Form::number('retegarantia', 0, ['class' => 'form-control retegarantia', 'min'=>'0','readonly' ]) !!}
            </div>
          </div>
