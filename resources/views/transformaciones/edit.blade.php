@@ -8,19 +8,19 @@
       @foreach($transformaciones as $transfor)
       {!! Form::model($transfor, ['method' => 'PATCH', 'action' => ['TransformacionController@update',$transfor->id]]) !!}
       {{ csrf_field() }}
-      <input type="hidden" name="id" value="{{ $transfor->id}}">
+      <input type="hidden" name="transformacion[id][]" value="{{ $transfor->id}}">
       <div class="col-md-12">
         <div class="col-md-3">
           <div class="form-group">
             <center><label >Descripcion</label></center>
-            <input type="text" class="form-control" value="{{ $transfor->descripcion }}"  readonly=”readonly” name="descripcion">
+            <input type="text" class="form-control" value="{{ $transfor->descripcion }}"  readonly=”readonly” name="transformacion[descripcion][]">
           </div>
         </div>
 
         <div class="col-md-3">
           <div class="form-group">
             <center><label >Tipo</label></center>
-            <select class="form-control" name="tipo">
+            <select class="form-control" name="transformacion[tipo][]">
               <option value="{{ $transfor->tipo }}">{{ $transfor->tipo }}</option>
               <option value="tipo_poste">tipo poste</option>
               <option value="tipo_interior">tipo interior</option>
@@ -32,7 +32,7 @@
         <div class="col-md-3">
           <div class="form-group">
             <center><label >Capacidad</label></center>
-            <select class="form-control" name="capacidad">
+            <select class="form-control" name="transformacion[capacidad][]">
               <option value="{{ $transfor->capacidad }}">{{ $transfor->capacidad }}</option>
               <option value="5KVA">5KVA</option>
               <option value="10KVA">10KVA</option>
@@ -46,7 +46,7 @@
           <div class="form-group">
             <center><label>Unidad</label></center>
             <center>
-              <input style="text-align:center;" type="text" class="form-control" value="{{ $transfor->unidad }}"  readonly=”readonly” name="unidad_transformacion">
+              <input style="text-align:center;" type="text" class="form-control" value="{{ $transfor->unidad }}"  readonly=”readonly” name="transformacion[unidad_transformacion][]">
             </center>
           </div>
         </div>
@@ -54,7 +54,7 @@
         <div class="col-md-1">
           <div class="form-group">
             <center><label >Cantidad</label></center>
-            <input type="text" class="form-control" placeholder= "Cantidad" name="cantidad" value="{{ $transfor->cantidad }}">
+            <input type="text" class="form-control" placeholder= "Cantidad" name="transformacion[cantidad][]" value="{{ $transfor->cantidad }}">
           </div>
         </div>
 

@@ -119,7 +119,6 @@ class ValorAdicionalController extends Controller
 
 
         $adicional = Valor_adicional::findOrFail($request->adicional['id'][$a]);
-
         $administrativa = Administrativa::findOrFail($adicional->administrativa_id);
         // dd($administrativa);
         // die();
@@ -140,7 +139,7 @@ class ValorAdicionalController extends Controller
 
       }
 
-    
+
 
       Session::flash('message', 'registro editado editado!');
       Session::flash('class', 'success');

@@ -108,8 +108,25 @@ class TransformacionController extends Controller
     {
       $input = $request->all();
 
-      $trans = Transformacion::findOrFail($id);
-      $trans->update($input);
+      for ($a=0; $a<count($input['transformacion']['descripcion']); $a++){
+
+        $transfor = Transformacion::findOrFail($request->transformacion['id'][$a]);
+        $administrativa = Administrativa::findOrFail($transfor->administrativa_id);
+
+        $datos1['descripcion'] = $input['transformacion']['descripcion'][$a];
+        $datos1['tipo'] = $input['transformacion']['tipo'][$a];
+        $datos1['capacidad'] = $input['transformacion']['capacidad'][$a];
+        $datos1['unidad'] = $input['transformacion']['unidad_transformacion'][$a];
+        $datos1['cantidad'] = $input['transformacion']['cantidad'][$a];
+        $datos1['administrativa_id'] = $input['codigo_proyecto'];
+
+        $adicional->update($datos1);
+
+      }
+
+
+
+
 
       Session::flash('message', 'registro editado editado!');
       Session::flash('class', 'success');
