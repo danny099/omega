@@ -153,30 +153,78 @@
         <div class="col-md-12">
           <center><label >Editar/eliminar</label></center>
         </div>
+        @if(count($adicionales) == 0)
         <div class="col-md-12 div2">
-            <center><a href="{{ route('adicionales.edit', $administrativas->id) }}" class="btn btn-primary botoncito">Valor adicional</a></center>
+            <center><a  class="btn btn-primary botoncito" disabled>Valor adicional</a></center>
         </div>
+        @else
+        <div class="col-md-12 div2">
+            <center><a href="{{ route('adicionales.edit', $administrativas->id) }}" class="btn btn-primary botoncito" >Valor adicional</a></center>
+        </div>
+        @endif
+        @if(count($otrosis) == 0)
+        <div class="col-md-12 div2">
+            <center><a class="btn btn-primary botoncito" disabled>Otro si</a></center>
+        </div>
+        @else
         <div class="col-md-12 div2">
             <center><a href="{{ route('otrosi.edit', $administrativas->id) }}" class="btn btn-primary botoncito">Otro si</a></center>
         </div>
+        @endif
+        @if(count($pu_finales) == 0)
+        <div class="col-md-12 div2">
+            <center><a  class="btn btn-primary botoncito" disabled>Proceso uso final</a></center>
+        </div>
+        @else
         <div class="col-md-12 div2">
             <center><a href="{{ route('pu_final.edit', $administrativas->id) }}" class="btn btn-primary botoncito">Proceso uso final</a></center>
         </div>
+        @endif
+        @if(count($distribuciones) == 0)
+        <div class="col-md-12 div2">
+            <center><a class="btn btn-primary botoncito" disabled>Alcance distribucion</a></center>
+        </div>
+        @else
         <div class="col-md-12 div2">
             <center><a href="{{ route('distribuciones.edit', $administrativas->id) }}" class="btn btn-primary botoncito">Alcance distribucion</a></center>
         </div>
+        @endif
+        @if(count($transformaciones) == 0)
+        <div class="col-md-12 div2">
+            <center><a  class="btn btn-primary botoncito" disabled >Alcance transformacion</a></center>
+        </div>
+        @else
         <div class="col-md-12 div2">
             <center><a href="{{ route('transformaciones.edit', $administrativas->id) }}" class="btn btn-primary botoncito" >Alcance transformacion</a></center>
         </div>
+        @endif
+        @if(count($facturas) == 0)
+        <div class="col-md-12 div2">
+            <center><a class="btn btn-primary botoncito" disabled>Facturas</a></center>
+        </div>
+        @else
         <div class="col-md-12 div2">
             <center><a href="{{ route('facturas.edit', $administrativas->id) }}" class="btn btn-primary botoncito">Facturas</a></center>
         </div>
+        @endif
+        @if(count($cuenta_cobros) == 0)
+        <div class="col-md-12 div2">
+          <center><a class="btn btn-primary botoncito" disabled>Cuentas de cobro</a></center>
+        </div>
+        @else
         <div class="col-md-12 div2">
           <center><a href="{{ route('cuenta_cobros.edit', $administrativas->id) }}" class="btn btn-primary botoncito">Cuentas de cobro</a></center>
         </div>
+        @endif
+        @if(count($consignaciones) == 0)
+        <div class="col-md-12 div2">
+            <center><a class="btn btn-primary botoncito" disabled>Consignaciones</a></center>
+        </div>
+        @else
         <div class="col-md-12 div2">
             <center><a href="{{ route('consignaciones.edit', $administrativas->id) }}" class="btn btn-primary botoncito">Consignaciones</a></center>
         </div>
+        @endif
 
         </div>
         <div class="col-md-12">

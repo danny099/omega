@@ -15,93 +15,6 @@
           $('.otrosi').val(resultado);
       });
     });
-
-    $(function() {
-        var count = 1;
-       $(document).on("click","#btnadd7",function( event ) {
-        count++;
-        $('#tblprod7').after('<div class="row">'+'
-          <div class="col-md-12">'+'
-            <div class="col-md-4">'+'
-              <center><label >Valor otro si antes de iva</label></center>'+'
-            </div>'+'
-            <div class="form-group ">'+'
-              <div class="col-md-4">'+'
-                <input type="number" class="form-control antesiva" id="antesiva" placeholder= "Ingrese valor" name="antesiva[]"   >'+'
-              </div>'+'
-              <div class="col-md-4" >'+'
-              </div>'+'
-            </div>'+'
-          </div>'+'
-        </div>'+'
-          <div class="row">'+'
-            <div class="col-md-12">'+'
-              <div class="col-md-4">'+'
-                <center><label >Iva</label></center>'+'
-              </div>'+'
-              <div class="form-group ">'+'
-                <div class="col-md-4">'+'
-                  <input type="number" class="form-control iva" id="iva" readonly placeholder= "valor" name="iva[]"  >'+'
-                </div>'+'
-                <div class="col-md-4" >'+'
-                </div>'+'
-              </div>'+'
-            </div>'+'
-          </div>'+'
-            <div class="row">'+'
-              <div class="col-md-12">'+'
-                <div class="col-md-4">'+'
-                  <center><label >Valor total otro si</label></center>'+'
-                </div>'+'
-                <div class="form-group ">'+'
-                  <div class="col-md-4">'+'
-                    <input type="number" class="form-control otrosi" id="otrosi" readonly  placeholder= "valor" name="otrosi[]"  >'+'
-                  </div>'+'
-                  <div class="col-md-4" >'+'
-                  </div>'+'
-                </div>'+'
-              </div>'+'
-            </div>'+'
-            <div class="row">'+'
-              <div class="col-md-12">'+'
-                <div class="col-md-4">'+'
-                  <center><label >detalles</label></center>'+'
-                </div>'+'
-                <div class="form-group ">'+'
-                  <div class="col-md-4">'+'
-                    <input type="text" class="form-control" id="detalles[]"   placeholder= "Ingrese detalle" name="detalles[]" >'+'
-                  </div>'+'
-                  <div class="col-md-4" >'+'
-                  </div>'+'
-                </div>'+'
-              </div>'+'
-            </div>'+'
-            <div class="row">'+'
-              <div class="col-md-12">'+'
-                <div class="col-md-4">'+'
-                  <center><label >Recordarme</label></center>'+'
-                </div>'+'
-                <div class="form-group ">'+'
-                  <div class="col-md-4">'+'
-                    <input type="radio" name="recordarme[]" value="0" checked> Si<br>'+'
-                    <input type="radio" name="recordarme[]" value="1" > No<br>'+'
-                  </div>'+'
-                  <div class="col-md-4" id="tblprod7">'+'
-                    <a class="btn btn-warning" id="btnadd7" data-toggle="modal" href="#" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-plus"></i></a>'+'
-                  </div>'+'
-                </div>'+'
-              </div>'+'
-            </div>'+'
-</div><i class="glyphicon glyphicon-minus"></i></a></div>');
-          event.preventDefault();
-       });
-       $(document).on("click",".delete",function( event ) {
-         $('#quitar17').remove();
-         $('#quitar18').remove();
-          return false;
-       });
-    });
-
   </script>
 @endsection
 
@@ -212,7 +125,6 @@
                           <input type="radio" name="recordarme[]" value="1" > No<br>
                         </div>
                         <div class="col-md-4" id="tblprod7">
-                          <a class="btn btn-warning" id="btnadd7" data-toggle="modal" href="#" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-plus"></i></a>
                         </div>
                       </div>
                     </div>
