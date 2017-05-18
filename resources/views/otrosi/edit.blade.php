@@ -79,7 +79,7 @@
                 </div>
                   <div class="form-group ">
                     <div class="col-md-4">
-                      <input type="radio" name="recordarme" value="0" checked> Si<br>
+                      <input type="radio" name="recordarme" value="0" required > Si<br>
                       <input type="radio" name="recordarme" value="1"> No<br>
                     </div>
                     <div class="col-md-4" id="tblprod7">

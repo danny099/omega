@@ -304,7 +304,7 @@
         </div>
         <div class="form-group">
           <label >Valor iva</label>
-          <input type="number" min="0" class="form-control" id="iva" readonly="readonly" placeholder= "valor iva" name="iva" value="">
+          <input type="number" min="0" class="form-control" id="iva" readonly="readonly" placeholder= "valor iva" name="iva" value="{{ $administrativas->valor_iva }}">
         </div>
         <div class="form-group ">
           <div class="form-group">

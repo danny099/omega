@@ -2,19 +2,51 @@
 
 @section('scripts')
   <script type="text/javascript">
+    function mascara(o,f){
+  		v_obj=o;
+  		v_fun=f;
+  		setTimeout("execmascara()",1);
+  	}
+  	function execmascara(){
+  		v_obj.value=v_fun(v_obj.value);
+  	}
+  	function cpf(v){
+  		v=v.replace(/([^0-9\.]+)/g,'');
+  		v=v.replace(/^[\.]/,'');
+  		v=v.replace(/[\.][\.]/g,'');
+  		v=v.replace(/\.(\d)(\d)(\d)/g,'.$1$2');
+  		v=v.replace(/\.(\d{1,2})\./g,'.$1');
+  		v = v.toString().split('').reverse().join('').replace(/(\d{3})/g,'$1,');
+  		v = v.split('').reverse().join('').replace(/^[\,]/,'');
+  		return v;
+  	}
+  	function calcular(){
+  		var varMonto;
+  		var varIva;
+  		var varSubTotal;
 
-    $(function() {
+  		varMonto = document.getElementById("antesiva").value;
+  		varMonto = varMonto.replace(/[\,]/g,'');
 
+  		varIva = parseFloat(varMonto) * 0.19;
+  		document.getElementById("iva").value = addCommas(parseFloat(varIva)) ;
 
-      $('.antesiva').keyup(function(){
-          var valor = parseInt($(this).val());
-          var resultado = valor * 1.19;
-          var iva = valor*0.19;
+  		varSubTotal = parseFloat(varMonto) + parseFloat(varIva);
+  		document.getElementById("otrosi").value = addCommas(parseFloat(varSubTotal)) ;
 
-          $('.iva').val(iva);
-          $('.otrosi').val(resultado);
-      });
-    });
+  	}
+
+  	function addCommas(nStr){
+  		nStr += '';
+  		x = nStr.split('.');
+  		x1 = x[0];
+  		x2 = x.length > 1 ? '.' + x[1] : '';
+  		var rgx = /(\d+)(\d{3})/;
+  		while (rgx.test(x1)) {
+  			x1 = x1.replace(rgx, '$1' + '.' + '$2');
+  		}
+  		return x1 + x2;
+  	}
   </script>
 @endsection
 
@@ -74,7 +106,7 @@
                   </div>
                   <div class="form-group ">
                     <div class="col-md-4">
-                      <input type="number" class="form-control antesiva" id="antesiva" placeholder= "Ingrese valor" name="valor"   >
+                      <input type="text" class="form-control antesiva" id="antesiva" placeholder= "Ingrese valor" name="valor"   onkeyup="calcular();"  onkeypress="mascara(this,cpf)"  onpaste="return false">
                     </div>
                     <div class="col-md-4" >
 
@@ -90,7 +122,7 @@
                     </div>
                     <div class="form-group ">
                       <div class="col-md-4">
-                        <input type="number" class="form-control iva" id="iva" readonly placeholder= "valor" name="iva"  >
+                        <input type="text" class="form-control iva" id="iva" readonly placeholder= "valor" name="iva"  >
                       </div>
                       <div class="col-md-4" >
 
@@ -106,7 +138,7 @@
                       </div>
                       <div class="form-group ">
                         <div class="col-md-4">
-                          <input type="number" class="form-control otrosi" id="otrosi" readonly  placeholder= "valor" name="valor_tot">
+                          <input type="text" class="form-control otrosi" id="otrosi" readonly  placeholder= "valor" name="valor_tot">
                         </div>
                         <div class="col-md-4" >
                         </div>
