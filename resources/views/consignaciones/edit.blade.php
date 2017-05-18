@@ -19,7 +19,8 @@
           </div>
           <div class="col-md-6">
             <div class="form-group">
-              {!! Form::date('fecha_pago', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+              <input type="date" name="consignacion[fecha_pago][]" class="form-control" required="" value="{{ $consignacion->fecha_pago }}">
+              <!-- {!! Form::date('fecha_pago', null, ['class' => 'form-control' , 'required' => 'required']) !!} -->
             </div>
           </div>
 
@@ -30,7 +31,8 @@
           </div>
           <div class="col-md-6">
             <div class="form-group">
-              {!! Form::number('valor', null, ['class' => 'form-control' , 'required' => 'required', 'min'=>'0']) !!}
+              <input type="number" name="consignacion[valor][]" class="form-control" required="" value="{{ $consignacion->valor }}">
+              <!-- {!! Form::number('valor', null, ['class' => 'form-control' , 'required' => 'required', 'min'=>'0']) !!} -->
             </div>
           </div>
 
@@ -41,7 +43,8 @@
           </div>
           <div class="col-md-6">
             <div class="form-group">
-              {!! Form::text('observaciones', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+              <input type="text" name="consignacion[observaciones][]" class="form-control" required="" value="{{ $consignacion->observacioness}}">
+              <!-- {!! Form::text('observaciones', null, ['class' => 'form-control' , 'required' => 'required']) !!} -->
             </div>
           </div>
 
@@ -57,3 +60,22 @@
       </form>
     </div>
   </div>
+  <script>
+    $(document).ready(function() {
+    // Interceptamos el evento submit
+    $('.form1').on('submit',function() {
+  // Enviamos el formulario usando AJAX
+          $.ajax({
+              type: 'POST',
+              url: $(this).attr('action'),
+              data: $(this).serialize(),
+            // Mostramos un mensaje con la respuesta de PHP
+              success: function() {
+                alert('Valor adicional editado');
+                $('.modal').modal('hide');
+              }
+          })
+          return false;
+      });
+    });
+  </script>

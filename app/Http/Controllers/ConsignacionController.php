@@ -112,6 +112,41 @@ class ConsignacionController extends Controller
       * @param  int  $id
       * @return \Illuminate\Http\Response
       */
+      public function editar(Request $request)
+      {
+        $input = $request->all();
+        // $adicional = Valor_adicional::findOrFail($id);
+        // $administrativa = Administrativa::findOrFail($adicional->administrativa_id);
+
+        for ($a=0; $a<count($input['consignacion']['fecha_pago']); $a++){
+
+
+          $consignacion = Valor_adicional::findOrFail($request->consignacion['id'][$a]);
+          $administrativa = Administrativa::findOrFail($consignacion->administrativa_id);
+
+          if ($administrativa->saldo > 0) {
+
+            $resta = $administrativa->saldo - $consignacion->valor;
+            $nuevo_saldo = $resta + $request->consignacion['valor'][$a];
+            $administrativa->saldo = $nuevo_saldo;
+            $administrativa->save();
+
+          }
+          $datos['fecha_pago'] = $input['adicional']['fecha_pago'][$a];
+          $datos['valor'] = $input['adicional']['valor'][$a];
+          $datos['observaciones'] = $input['adicional']['observaciones'][$a];
+
+
+
+          $adicional->update($datos);
+
+        }
+
+        Session::flash('message', 'registro editado editado!');
+        Session::flash('class', 'success');
+        return redirect()->route('administrativas.index');
+      }
+
      public function update(Request $request, $id)
      {
        $input = $request->all();
