@@ -62,7 +62,7 @@
   </div>
 </div>
 
-<script>
+<!-- <script>
   $(document).ready(function() {
 
   function eliminar(){
@@ -85,6 +85,6 @@
         return false;
     });
   });
+ -->
 
-
-</script>
+<!-- </script> -->

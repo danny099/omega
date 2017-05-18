@@ -215,7 +215,8 @@ class AdministrativaController extends Controller
    {
       //  funcion que permite acceder al modelo y este a su ves ir a la base de datos y encontrar un registro
        $administrativa = Administrativa::find($id);
-
+       dd($administrativa->resumen);
+       die();
        $muni_Id = Municipio::select('id')->where('id',$administrativa->municipio)->get();
        $municipio = Municipio::find($muni_Id);
 
@@ -305,8 +306,7 @@ class AdministrativaController extends Controller
          //  funsion que permite actualizar los datos de un registro almacenado en la variable $input
 
          $administrativas->update($input);
-         dd($input);
-         die;
+
          //  mensajes de confirmacion enviados a la vista
          Session::flash('message', 'Contrato editado!');
          Session::flash('class', 'success');

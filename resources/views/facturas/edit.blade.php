@@ -6,9 +6,9 @@
     </div>
 
 
-    {!! Form::model($factura, ['method' => 'PATCH', 'action' => ['FacturaController@update',$factura->id]]) !!}
+    {!! Form::model($factura, ['class' => 'form1','method' => 'PATCH', 'action' => ['FacturaController@update',$factura->id]]) !!}
     {{ csrf_field() }}
-    <input type="hidden" name="id" value="{{$factura->id}}">
+    <!-- <input type="hidden" name="id" value="{{$factura->id}}"> -->
     <div class="box-body col-md-6">
       <br>
       <div class="col-md-6">
@@ -152,7 +152,7 @@
 
 
           <div class="box-footer">
-            <button type="submit" data-target="" data-toggle="" class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;">Editar</button>
+            <button type="submit"  data-target="" data-toggle="" class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;">Editar</button>
           </div>
     </div>
     {!! Form::close() !!}

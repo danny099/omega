@@ -270,3 +270,18 @@
         $(document).ready(function(){
           $("select").select2();
         });
+        
+        $('.form1').on('submit',function() {
+      // Enviamos el formulario usando AJAX
+              $.ajax({
+                  type: 'POST',
+                  url: $(this).attr('action'),
+                  data: $(this).serialize(),
+                // Mostramos un mensaje con la respuesta de PHP
+                  success: function() {
+                    alert('Valor adicional editado');
+                    $('.modal').modal('hide');
+                  }
+              })
+              return false;
+          });

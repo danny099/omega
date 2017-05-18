@@ -4,7 +4,7 @@
   <li><a href="{{ url('index') }}">Inicio</a></li>
   <li class="active">Crear distribuciones</li>
 </ol>
-  <form class="form1" action="{{ url('distribuciones') }}" method="post">
+  <form class="form" action="{{ url('distribuciones') }}" method="post">
     {{ csrf_field() }}
     <div class="box box-primary">
       <div class="col-md-12">

@@ -1,7 +1,7 @@
 @extends('index')
 <style media="screen">
   .nombre{
-    
+
 	overflow-wrap: break-word;
   }
 </style>

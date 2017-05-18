@@ -97,7 +97,7 @@
     </div>
   </div>
 
-  <script>
+  <!-- <script>
     $(document).ready(function() {
     // Interceptamos el evento submit
     $('.form1').on('submit',function() {
@@ -115,4 +115,4 @@
           return false;
       });
     });
-  </script>
+  </script> -->

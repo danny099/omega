@@ -115,6 +115,7 @@ class FacturaController extends Controller
     public function update(Request $request, $id)
     {
         $input = $request->all();
+      
         $factura = Factura::findOrFail($id);
         $administrativa = Administrativa::findOrFail($factura->administrativa_id);
 
@@ -143,7 +144,7 @@ class FacturaController extends Controller
 
         Session::flash('message', 'registro editado editado!');
         Session::flash('class', 'success');
-        return redirect()->route('administrativas.index');
+        // return redirect()->route('administrativas.index');
 
       // }else {
       //

@@ -95,6 +95,7 @@ Route::group(['middleware' => 'auth'],function(){
 	/**************************************************************/
 	/**************************************************************/
 	Route::resource('facturas','FacturaController');
+	Route::post('editarfacturas','FacturaController@editar');
 	Route::get('deletefactura/{id}','FacturaController@destroy');
 	/**************************************************************/
 	/**************************************************************/
