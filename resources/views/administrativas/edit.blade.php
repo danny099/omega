@@ -12,7 +12,32 @@
   <script type="text/javascript">
 
     $(function() {
-      $('table').DataTable();
+      $('table').DataTable({
+        "language":{
+        "sProcessing":     "Procesando...",
+        "sLengthMenu":     "Mostrar _MENU_ registros",
+        "sZeroRecords":    "No se encontraron resultados",
+        "sEmptyTable":     "Ningún dato disponible en esta tabla",
+        "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+        "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+        "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+        "sInfoPostFix":    "",
+        "sSearch":         "Buscar:",
+        "sUrl":            "",
+        "sInfoThousands":  ",",
+        "sLoadingRecords": "Cargando...",
+        "oPaginate": {
+            "sFirst":    "Primero",
+            "sLast":     "Último",
+            "sNext":     "Siguiente",
+            "sPrevious": "Anterior"
+        },
+        "oAria": {
+            "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+            "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+        }
+    }
+   });
 
       $('.valor_factura').keyup(function(){
           var valor = parseInt($(this).val());
@@ -310,7 +335,7 @@
         </div>
         @else
         <div class="col-md-12 div2">
-            <center><a href="{{ route('facturas.edit', $administrativas->id) }}" class="btn btn-primary botoncito" data-toggle="modal" data-target="#myModal" >Facturas</a></center>
+            <center><a  class="btn btn-primary botoncito" data-toggle="modal" data-target="#myModal" >Facturas</a></center>
         </div>
         @endif
         @if(count($cuenta_cobros) == 0)
@@ -351,13 +376,13 @@
   <!-- inicio modal  -->
   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog " role="document">
-      <div class="modal-content">
+      <div class="modal-content ">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title"></h4>
         </div>
         <div class="modal-body">
-          @include('facturas.edit')
+          @include('facturas.index')
         </div>
         <div class="modal-footer">
         </div>
