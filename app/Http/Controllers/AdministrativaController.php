@@ -14,6 +14,7 @@ use App\Consignacion;
 use App\Cuenta_cobro;
 use App\Factura;
 use App\Valor_adicional;
+use App\Observacion;
 use Illuminate\Http\Request;
 use Session;
 use Illuminate\Support\Facades\Validator;
@@ -97,9 +98,10 @@ class AdministrativaController extends Controller
        $administrativa['valor_iva'] = $request->iva;
        $administrativa['valor_contrato_final'] = $request->contrato_final;
        $administrativa['plan_pago'] = $request->plan_pago;
-       $administrativa['resumen'] = $request->resumen;
        $administrativa['saldo'] =  $administrativa['valor_contrato_final'];
        $administrativa['valor_total_contrato'] =  $administrativa['valor_contrato_final'];
+
+
 
        $codigorepe = Administrativa::where('codigo_proyecto',$request->codigo)->get();
        //  condicional
@@ -131,12 +133,14 @@ class AdministrativaController extends Controller
       //  funcion para traer el ultimo registro de administrativa
        $lastId_admin = $admin->last()->id;
 
+       $obs['observacion'] = $request->observacion;
+       $obs['administrativa_id'] = $lastId_admin;
+
+
+       Observacion::create($obs);
       //  codigo para insertar los otrosi que vienen desde un arreglo y recorrerlo para hacer el create
 
-      //  foreach ($request->otrosi as $otro)
-      //   {
-      //     Otrosi::create(['valor'=>$otro,'administrativa_id'=>$lastId_admin]);
-      //   }
+
 
         // for ($f=0; $f<count($input['adicional']['detalle']); $f++) {
         //
@@ -215,14 +219,15 @@ class AdministrativaController extends Controller
    {
       //  funcion que permite acceder al modelo y este a su ves ir a la base de datos y encontrar un registro
        $administrativa = Administrativa::find($id);
-       dd($administrativa->resumen);
-       die();
+
        $muni_Id = Municipio::select('id')->where('id',$administrativa->municipio)->get();
        $municipio = Municipio::find($muni_Id);
 
        $otrosis = Otrosi::where('otrosi.administrativa_id', '=', $id)->get();
        $adicionales = Valor_adicional::where('valor_adicional.administrativa_id', '=', $id)->get();
-
+       $observaciones = Observacion::where('observacion.administrativa_id', '=', $id)->get();
+      //  dd($observaciones);
+      //  die();
        $transformaciones = Transformacion::where('transformacion.administrativa_id', '=', $id)->get();
        $distribuciones = Distribucion::where('distribucion.administrativa_id', '=', $id)->get();
        $pu_finales = Pu_final::where('pu_final.administrativa_id', '=', $id)->get();
@@ -234,7 +239,7 @@ class AdministrativaController extends Controller
       //  dd($transformaciones);
       //  die();
       //  funcion que permite retornar una vista con los datos ya buscados
-       return view('administrativas.show',compact('administrativa','municipio','otrosis','transformaciones','distribuciones','pu_finales','consignaciones','cuenta_cobros','facturas','adicionales','juridicas'));
+       return view('administrativas.show',compact('administrativa','municipio','otrosis','transformaciones','distribuciones','pu_finales','consignaciones','cuenta_cobros','facturas','adicionales','juridicas','observaciones'));
    }
 
    /**

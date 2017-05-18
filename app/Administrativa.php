@@ -23,6 +23,9 @@ class Administrativa extends Model
   public function otrosi(){
     return $this->belongsTo('App\Otrosi');
   }
+  public function observacion(){
+    return $this->belongsTo('App\Observacion');
+  }
 
   public function transformacion(){
     return $this->belongsTo('App\Transformacion');

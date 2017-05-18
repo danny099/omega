@@ -294,6 +294,34 @@
         </div>
       </div>
 
+        <div class="col-md-12">
+         <h4 class="box-title">Observaciones de estado administrativo del proyecto:</h4>
+        </div>
+
+        <div class="col-md-12">
+          <table class="table-responsive table-condensed" >
+            <thead>
+              <tr>
+                <th>N°</th>
+                <th>Observacion</th>
+              </tr>
+            </thead>
+            <tbody>
+              @foreach($observaciones as $key => $obs)
+                <tr>
+                  <td>{{ $key+1 }}</td>
+                  <td>{{ $obs->observacion }}</td>
+                </tr>
+              @endforeach
+            </tbody>
+          </table>
+
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+
           <div class="">
 
            <center><h3>Alcance del proceso</h3></center>
@@ -421,13 +449,7 @@
               @endforeach
             </div>
 
-              <center><div class="col-md-12">
-               <h4 class="box-title">Observaciones de estado administrativo del proyecto:</h4>
-              </div>
 
-              <div class="col-md-12">
-                <span>{{ $administrativa->resumen }}</span>
-              </div></center>
             </div>
               <div class="box-footer">
               </div>
@@ -784,6 +806,8 @@
 
 @endsection
 
-@section('scripts')
-
-@endsection
+<script type="text/javascript">
+  $(function(){
+    $('table').DataTable();
+  });
+</script>

@@ -269,7 +269,7 @@
         <center> <h4 class="box-title">Observaciones de estado administrativo del proyecto</h4> </center>
       </div>
       <div class="col-md-12">
-        <textarea  rows="4" cols="196" name="resumen"></textarea>
+        <textarea  rows="4" cols="196" name="observacion"></textarea>
       </div>
     </div>
     <div class="box-footer">
