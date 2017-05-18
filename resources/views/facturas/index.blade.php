@@ -29,7 +29,7 @@
                 <!-- inicio modal 1 -->
 
                 <div class="modal fade" id="myModal20-{{ $key }}" role="dialog" aria-labelledby="myModalLabel">
-                  <div class="modal-dialog" role="document">
+                  <div class="modal-dialog  ">
                     <div class="modal-content">
                       <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>

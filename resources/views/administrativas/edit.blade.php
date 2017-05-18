@@ -414,7 +414,7 @@
   </div>
   <!-- inicio modal  -->
   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog " role="document">
+    <div class="modal-dialog modal-lg">
       <div class="modal-content ">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -539,8 +539,9 @@
   <!-- fin modal -->
 
   <!-- inicio modal8  -->
+
   <div class="modal fade" id="myModal8" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog " role="document">
+    <div class="modal-dialog modal-lg">
       <div class="modal-content ">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
