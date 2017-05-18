@@ -39,6 +39,45 @@
     }
    });
 
+   $(function() {
+
+     $(document).ready(function(){
+       $(document).on('change','#departamento',function(){
+         var dep_id = $(this).val();
+         var div = $(this).parents();
+         var op=" ";
+         $.ajax({
+           type:'get',
+           url:'{{ url('selectmuni')}}',
+           data:{'id':dep_id},
+           success:function(data){
+             console.log(data);
+             op+='<option value="0" selected disabled>Seleccione</option>';
+             for (var i = 0; i < data.length; i++) {
+               op+='<option value="' +data[i].id+ '">' +data[i].nombre+ '</option>'
+             }
+             div.find('#municipio').html(" ");
+             div.find('#municipio').append(op);
+           },
+           error:function(){
+           }
+         });
+       });
+
+
+
+     });
+
+     $('.antesiva').keyup(function(){
+         var valor = parseInt($(this).val());
+         var resultado = valor * 1.19;
+         var iva = valor*0.19;
+
+         $('.iva').val(iva);
+         $('.otrosi').val(resultado);
+     });
+   });
+
       $('.valor_factura').keyup(function(){
           var valor = parseInt($(this).val());
           var resultado = valor * 1.19;
@@ -362,7 +401,7 @@
           <center> <h4 class="box-title">Observaciones de estado administrativo del proyecto</h4> </center>
         </div>
         <div class="col-md-12">
-          <textarea  rows="4" cols="196" name="resumen"  value="{{ $administrativas->resumen }} "></textarea>
+          <textarea  rows="4" cols="150" name="resumen"  value="{{ $administrativas->resumen }}" readonly="">{{ $administrativas->resumen }}</textarea>
         </div>
       </div>
         <div class="box-footer">
@@ -520,32 +559,7 @@
 @section('scripts')
 
 <script type="text/javascript">
-$(document).ready(function(){
-  $(document).on('change','#departamento',function(){
-    var dep_id = $(this).val();
-    var div = $(this).parents();
-    var op=" ";
-    $.ajax({
-      type:'get',
-      url:'{{ url('selectmuni')}}',
-      data:{'id':dep_id},
-      success:function(data){
-        console.log(data);
-        op+='<option value="0" selected disabled>Seleccione</option>';
-        for (var i = 0; i < data.length; i++) {
-          op+='<option value="' +data[i].id+ '">' +data[i].nombre+ '</option>'
-        }
-        div.find('#municipio').html(" ");
-        div.find('#municipio').append(op);
-      },
-      error:function(){
-      }
-    });
-  });
 
-
-
-});
 </script>
 
 @endsection

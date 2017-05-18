@@ -18,13 +18,13 @@
     <div class="col-md-12">
       <div class="container">
         <div class="box box-primary">
-          <div class="box-header with-border">
+          <div class="">
            <center><h2>Datos del Proyecto</h2></center>
           </div>
-          <!-- /.box-header -->
-          <!-- form start -->
-            <div class="box-body">
 
+
+          <div class="box box-primary">
+            <div class="box-body">
               <div class="col-md-12">
                 <center><img src="{{url('Certicol2.png')}}" ></center><br><br><br>
               </div>
@@ -49,7 +49,7 @@
 
                 <div class="col-md-3">
                   <div class="form-group">
-                    <span>{{ $administrativa->valor_contrato_inicial }}</span>
+                    {{ number_format($administrativa->valor_contrato_inicial,0,",",".") }}
                   </div>
                 </div>
 
@@ -76,7 +76,7 @@
 
               <div class="col-md-3">
                 <div class="form-group">
-                  <span>{{ $administrativa->valor_iva }}</span>
+                  <span>{{ number_format($administrativa->valor_iva,0,",",".") }}</span>
               </div>
               </div>
 
@@ -175,7 +175,8 @@
           <div class="col-md-3">
             <div class="form-group">
               @foreach($otrosis as $otrosi)
-              <span> {{ $otrosi->valor }}</span><br>
+              <span>{{ $otrosi->detalles }}</span><br>
+              <span>{{ number_format($otrosi->valor,0,",",".") }}</span><br>
               @endforeach
             </div>
           </div>
@@ -203,7 +204,8 @@
 
           <div class="col-md-3">
             <div class="form-group">
-              <span>{{ $administrativa->valor_contrato_final }}</span>
+              {{ number_format($administrativa->valor_contrato_final,0,",",".") }}<br>
+
             </div>
           </div>
 
@@ -258,7 +260,8 @@
 
           <div class="col-md-3">
             <div class="form-group">
-              <span>{{ $administrativa->valor_total_contrato }}</span>
+              {{ number_format($administrativa->valor_total_contrato,0,",",".") }}<br>
+
             </div>
           </div>
 
@@ -281,7 +284,7 @@
 
           <div class="col-md-3">
             <div class="form-group">
-              <span>{{ $administrativa->saldo }}</span>
+              <span>{{ number_format($administrativa->saldo,0,",",".") }}</span>
             </div>
           </div>
 
@@ -289,14 +292,14 @@
 
 
         </div>
+      </div>
 
+          <div class="">
 
-
-        <div class="">
-          <div class="box-header with-border">
-           <center><h3 class="box-title">Alcance del proceso</h3></center>
+           <center><h3>Alcance del proceso</h3></center>
           </div>
 
+          <div class="box box-primary">
             <div class="box-body">
                 <div class="col-md-12">
 
@@ -429,6 +432,7 @@
               <div class="box-footer">
               </div>
           </div>
+        </div>
           <br>
           <br>
           <br>
@@ -445,26 +449,41 @@
             <div class="box box-primary">
               <div class="box-body">
                 <div class="col-md-12">
-                  <div class="form-group">
-                    <label>Fecha de pago:</label>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span>{{ $consignacion->fecha_pago }}</span>
+                  <div class="col-md-2">
+                    <div class="form-group">
+                      <label>Fecha de pago:</label>
+                    </div>
                   </div>
+                  <div class="col-md-10">
+                    <div class="form-group">
+                      <span>{{ $consignacion->fecha_pago }}</span>
+                    </div>
+                  </div>
+                </div>
+                  <div class="col-md-12">
+                    <div class="col-md-2">
+                      <div class="form-group">
+                        <label>Valor:</label>
+                      </div>
+                    </div>
+                    <div class="col-md-10">
+                      <div class="form-group">
+                        <span>{{ number_format($consignacion->valor,0,",",".") }}</span>
+                      </div>
+                    </div>
                 </div>
                 <div class="col-md-12">
-                  <div class="form-group">
-                    <label>Valor:</label>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span>{{ $consignacion->valor }}</span>
+                  <div class="col-md-2">
+                    <div class="form-group">
+                        <label>Observaciones:</label>
+                    </div>
                   </div>
-                </div>
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label>Observaciones:</label>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span>{{ $consignacion->observaciones }}</span>
+                  <div class="col-md-10">
+                    <div class="form-group">
+                      <span>{{ $consignacion->observaciones }}</span>
+                    </div>
                   </div>
-                </div>
+              </div>
               </div>
 
 
@@ -482,43 +501,67 @@
             <div class="box box-primary">
               <div class="box-body">
                 <div class="col-md-12">
-                  <div class="form-group">
-                    <label>Porcentaje:</label>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span>{{ $cuenta_cobro->porcentaje }}%</span>
+                  <div class="col-md-2">
+                    <div class="form-group">
+                      <label>Porcentaje:</label>
+                    </div>
                   </div>
-                </div>
-                <div class="col-md-12">
+                  <div class="col-md-10">
+                    <div class="form-group">
+                      <span>{{ $cuenta_cobro->porcentaje }}%</span>
+                    </div>
+                  </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-2">
                   <div class="form-group">
                     <label>Valor:</label>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span>{{ $cuenta_cobro->valor }}</span>
                   </div>
                 </div>
-                <div class="col-md-12">
+                <div class="col-md-10">
                   <div class="form-group">
-                    <label>Fecha cuenta de cobro:</label>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span>{{ $cuenta_cobro->fecha_cuenta_cobro }}</span>
+                    <span>{{ number_format($cuenta_cobro->valor,0,",",".") }}</span>
                   </div>
                 </div>
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label>Numero cuenta de cobro:</label>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span>{{ $cuenta_cobro->numero_cuenta_cobro }}</span>
-                  </div>
-                </div>
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label>Observaciones:</label>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span>{{ $cuenta_cobro->observaciones }}</span>
-                  </div>
+            </div>
+            <div class="col-md-12">
+              <div class="col-md-2">
+                <div class="form-group">
+                  <label>Fecha cuenta de cobro:</label>
                 </div>
               </div>
-
+              <div class="col-md-10">
+                <div class="form-group">
+                  <span>{{ $cuenta_cobro->fecha_cuenta_cobro }}</span>
+                </div>
+              </div>
             </div>
+            <div class="col-md-12">
+              <div class="col-md-2">
+                <div class="form-group">
+                  <label>Numero cuenta de cobro:</label>
+                </div>
+              </div>
+              <div class="col-md-10">
+                <div class="form-group">
+                  <span>{{ $cuenta_cobro->numero_cuenta_cobro }}</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="col-md-2">
+                <div class="form-group">
+                  <label>Observaciones:</label>
+                </div>
+              </div>
+              <div class="col-md-10">
+                <div class="form-group">
+                  <span>{{ $cuenta_cobro->observaciones }}</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
           @endforeach
 
       @endif
@@ -532,90 +575,195 @@
             <div class="box box-primary">
               <div class="box-body">
                 <div class="col-md-12">
-                  <div class="form-group">
-                    <label>Numero Factura:</label>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span>{{ $factura->num_factura }}</span>
+                  <div class="col-md-2">
+                    <div class="form-group">
+                      <label>Numero Factura:</label>
+                    </div>
+                  </div>
+                  <div class="col-md-10">
+                    <div class="form-group">
+                      <span>{{ $factura->num_factura }}</span>
+                    </div>
                   </div>
                 </div>
                 <div class="col-md-12">
-                  <div class="form-group">
-                    <label>Fecha de factura:</label>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span>{{ $factura->fecha_factura }}</span>
+                  <div class="col-md-2">
+                    <div class="form-group">
+                      <label>Fecha de factura:</label>
+                    </div>
+                  </div>
+                  <div class="col-md-10">
+                    <div class="form-group">
+                      <span>{{ $factura->fecha_factura }}</span>
+                    </div>
                   </div>
                 </div>
                 <div class="col-md-12">
-                  <div class="form-group">
-                    <label>Valor factura antes de iva:</label>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span>{{ $factura->valor_factura }}</span>
+                  <div class="col-md-2">
+                    <div class="form-group">
+                      <label>Valor factura antes de iva:</label>
+                    </div>
+                  </div>
+                  <div class="col-md-10">
+                    <div class="form-group">
+                      <span>{{ number_format($factura->valor_factura,0,",",".") }}</span>
+                    </div>
                   </div>
                 </div>
                 <div class="col-md-12">
-                  <div class="form-group">
-                    <label>IVA:</label>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span>{{ $factura->iva }}</span>
+                  <div class="col-md-2">
+                    <div class="form-group">
+                      <label>IVA:</label>
+                    </div>
+                  </div>
+                  <div class="col-md-10">
+                    <div class="form-group">
+                      <span>{{ number_format($factura->iva,0,",",".") }}</span>
+                    </div>
                   </div>
                 </div>
                 <div class="col-md-12">
-                  <div class="form-group">
-                    <label>Valor total de la factura:</label>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span>{{ $factura->valor_total }}</span>
+                  <div class="col-md-2">
+                    <div class="form-group">
+                      <label>Valor total de la factura:</label>
+                    </div>
+                  </div>
+                  <div class="col-md-10">
+                    <div class="form-group">
+                      <span>{{ number_format($factura->valor_total,0,",",".") }}</span>
+                    </div>
                   </div>
                 </div>
                 <div class="col-md-12">
-                  <div class="form-group">
-                    <label>Retenciones:</label>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span>{{ $factura->retenciones }}</span>
+                  <div class="col-md-2">
+                    <div class="form-group">
+                      <label>Porcentaje retenciones:</label>
+                    </div>
+                  </div>
+                  <div class="col-md-10">
+                    <div class="form-group">
+                      <span>{{ $factura->rete_porcen }}%</span>
+                    </div>
                   </div>
                 </div>
                 <div class="col-md-12">
-                  <div class="form-group">
-                    <label>Amortizacion:</label>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span>{{ $factura->amortizacion }}</span>
+                  <div class="col-md-2">
+                    <div class="form-group">
+                      <label>Retenciones:</label>
+                    </div>
+                  </div>
+                  <div class="col-md-10">
+                    <div class="form-group">
+                      <span>{{ number_format($factura->retenciones,0,",",".") }}</span>
+                    </div>
                   </div>
                 </div>
                 <div class="col-md-12">
-                  <div class="form-group">
-                    <label>Polizas:</label>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span>{{ $factura->polizas }}</span>
+                  <div class="col-md-2">
+                    <div class="form-group">
+                      <label>Porcentaje amortizacion:</label>
+                    </div>
+                  </div>
+                  <div class="col-md-10">
+                    <div class="form-group">
+                      <span>{{ $factura->amorti_porcen }}%</span>
+                    </div>
                   </div>
                 </div>
                 <div class="col-md-12">
-
-                </div>
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label>Retegarantia:</label>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span>{{ $factura->retegarantia }}</span>
+                  <div class="col-md-2">
+                    <div class="form-group">
+                      <label>Amortizacion:</label>
+                    </div>
+                  </div>
+                  <div class="col-md-10">
+                    <div class="form-group">
+                      <span>{{ number_format($factura->amortizacion,0,",",".") }}</span>
+                    </div>
                   </div>
                 </div>
                 <div class="col-md-12">
-                  <div class="form-group">
-                    <label>Valor pagado:</label>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span>{{ $factura->valor_pagado }}</span>
+                  <div class="col-md-2">
+                    <div class="form-group">
+                      <label>Porcentaje polizas:</label>
+                    </div>
+                  </div>
+                  <div class="col-md-10">
+                    <div class="form-group">
+                      <span>{{ $factura->poliza_porcen }}%</span>
+                    </div>
                   </div>
                 </div>
                 <div class="col-md-12">
-                  <div class="form-group">
-                    <label>Fecha de pago:</label>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span>{{ $factura->fecha_pago }}</span>
+                  <div class="col-md-2">
+                    <div class="form-group">
+                      <label>Polizas:</label>
+                    </div>
+                  </div>
+                  <div class="col-md-10">
+                    <div class="form-group">
+                      <span>{{ number_format($factura->polizas,0,",",".") }}</span>
+                    </div>
                   </div>
                 </div>
                 <div class="col-md-12">
-                  <div class="form-group">
-                    <label>Observaciones:</label>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span>{{ $factura->observaciones }}</span>
+                  <div class="col-md-2">
+                    <div class="form-group">
+                      <label>Porcentaje retegarantia:</label>
+                    </div>
+                  </div>
+                  <div class="col-md-10">
+                    <div class="form-group">
+                      <span>{{ $factura->retegaran_porcen }}%</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="col-md-2">
+                    <div class="form-group">
+                      <label>Retegarantia:</label>
+                    </div>
+                  </div>
+                  <div class="col-md-10">
+                    <div class="form-group">
+                      <span>{{ number_format($factura->retegarantia,0,",",".") }}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="col-md-2">
+                    <div class="form-group">
+                      <label>Valor pagado:</label>
+                    </div>
+                  </div>
+                  <div class="col-md-10">
+                    <div class="form-group">
+                      <span>{{ number_format($factura->valor_pagado,0,",",".") }}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="col-md-2">
+                    <div class="form-group">
+                      <label>Fecha de pago:</label>
+                    </div>
+                  </div>
+                  <div class="col-md-10">
+                    <div class="form-group">
+                      <span>{{ $factura->fecha_pago }}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="col-md-2">
+                    <div class="form-group">
+                      <label>Observaciones:</label>
+                    </div>
+                  </div>
+                  <div class="col-md-10">
+                    <div class="form-group">
+                      <span>{{ $factura->observaciones }}</span>
+                    </div>
                   </div>
                 </div>
 

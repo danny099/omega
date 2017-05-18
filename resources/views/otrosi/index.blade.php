@@ -8,7 +8,6 @@
         <table id="example" class="table table-bordered table-striped">
           <thead>
             <tr>
-
               <th>Valor antes de iva</th>
               <th>Iva</th>
               <th>Valor con iva</th>
@@ -23,7 +22,6 @@
               <td>{{$otro->iva}}</td>
               <td>{{$otro->valor_tot}}</td>
               <td>{{$otro->detalles}}</td>
->
               <td>
                 <a href="{{ route('otrosi.edit', $otro->id) }}" data-toggle="modal" data-target="#myModal21-{{ $key }}"><i class="glyphicon glyphicon-pencil"></i></a>
                 <a href="{{ url('deleteotrosi') }}/{{ $otro->id }}" onClick="javascript: return confirm('Esta seguro de eliminar registro?');"><i class="glyphicon glyphicon-minus-sign"></i></a>
