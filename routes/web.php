@@ -43,6 +43,7 @@ Route::group(['middleware' => 'auth'],function(){
   /**************************************************************/
 	Route::resource('observaciones','ObservacionController');
 
+
 	/**************************************************************/
 	/**************************************************************/
   Route::resource('otrosi','OtrosiController');

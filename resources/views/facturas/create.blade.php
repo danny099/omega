@@ -161,17 +161,3 @@
      {!! Form::close() !!}
    </div>
  </div>
-
- <script type="text/javascript">
-     function Suma() {
-       var ingreso1 = $('.valor_factura').val();
-       var resultado = ingreso1 * 1.19;
-       var iva = ingreso1 * 0.19;
-       try{
-         $('.iva').val(iva);
-         $('.valor_total').val(resultado);
-       }
-     //Si se produce un error no hacemos nada
-       catch(e) {}
-     }
- </script>

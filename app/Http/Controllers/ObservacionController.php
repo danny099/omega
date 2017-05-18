@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Observacion;
 
 class ObservacionController extends Controller
 {
@@ -13,7 +14,7 @@ class ObservacionController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
@@ -23,8 +24,9 @@ class ObservacionController extends Controller
      */
     public function create()
     {
-        //
+
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -34,7 +36,13 @@ class ObservacionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+
+        $datos['observaciones'] = $request->observaciones;
+        $datos['administrativa_id'] =$request->administrativa_id;
+        dd($datos);
+        die();
+        Observacion::create($datos);
     }
 
     /**
@@ -56,7 +64,7 @@ class ObservacionController extends Controller
      */
     public function edit($id)
     {
-        //
+
     }
 
     /**

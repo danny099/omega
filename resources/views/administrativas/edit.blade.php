@@ -397,7 +397,7 @@
         @endif
 
         <div class="col-md-12 div2">
-            <center><a  class="btn btn-primary botoncito" data-toggle="modal" data-target="#myModal9">Crear observacion</a></center>
+            <center><a href="" class="btn btn-primary botoncito" data-toggle="modal" data-target="#myModal9">Crear observacion</a></center>
         </div>
 
 
@@ -598,7 +598,27 @@
           <h4 class="modal-title"></h4>
         </div>
         <div class="modal-body">
-          @include('observaciones.create')
+          {!! Form::open(['class'=>'form','url' => 'observaciones']) !!}
+          {{ csrf_field() }}
+            <div class="box-body">
+              <div class="col-md-2">
+                <div class="form-group">
+                  {!! Form::label('observacion', 'Observacion') !!}
+                </div>
+              </div>
+              <div class="col-md-10">
+                <div class="form-group">
+                  <td><textarea  rows="4" cols="60" name="observaciones" ></textarea></td>
+                </div>
+              </div>
+
+              <div class="box-footer">
+                <button type="submit" data-target="" data-toggle="" class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;">Crear</button>
+              </div>
+            </div>
+
+            <input type="hidden" name="" value="{{$administrativas->id}}">
+          {!! Form::close() !!}
         </div>
         <div class="modal-footer">
         </div>
