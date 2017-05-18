@@ -395,13 +395,11 @@
             <center><a href="{{ route('consignaciones.edit', $administrativas->id) }}" class="btn btn-primary botoncito" data-toggle="modal" data-target="#myModal7">Consignaciones</a></center>
         </div>
         @endif
-        @if(count($observaciones) == 0)
 
-        @else
         <div class="col-md-12 div2">
             <center><a  class="btn btn-primary botoncito" data-toggle="modal" data-target="#myModal9">Crear observacion</a></center>
         </div>
-        @endif
+
 
         </div>
         <div class="col-md-12">
