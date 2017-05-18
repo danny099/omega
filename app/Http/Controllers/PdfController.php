@@ -50,8 +50,9 @@ class PdfController extends Controller
   		// $pdf = \PDF::loadView('pdf.show-admin',compact('administrativa','clientes','juridicas','otrosis','distribuciones','transformaciones','pu_finales','departamentos','municipio','adicionales','consignaciones','cuenta_cobros','facturas'));
   		// return $pdf->download('archivo.pdf');
 
-      $pdf = PDF::loadView('administrativas.show',compact('administrativa','clientes','juridicas','otrosis','distribuciones','transformaciones','pu_finales','departamentos','municipio','adicionales','consignaciones','cuenta_cobros','facturas'));
-	    return $pdf->stream('document.pdf');
+      $pdf = App::make('dompdf.wrapper');
+      $pdf->loadView('pdf.show-admin',compact('administrativa','clientes','juridicas','otrosis','distribuciones','transformaciones','pu_finales','departamentos','municipio','adicionales','consignaciones','cuenta_cobros','facturas'));
+      return $pdf->stream();
     }
 
     /**
