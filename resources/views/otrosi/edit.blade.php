@@ -85,12 +85,13 @@
                     <div class="col-md-4" id="tblprod7">
                     </div>
                   </div>
-
+                  <div class="box-footer">
+                    <button type="submit" data-target="" data-toggle="" class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;">Editar</button>
+                  </div>
               </div>
+
             </div>
         {!! Form::close() !!}
-        <div class="box-footer">
-          <button type="submit" data-target="" data-toggle="" class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;">Editar</button>
-        </div>
+
       </div>
     </div>
