@@ -1,10 +1,10 @@
 <div class="box box-primary">
   <div class="box-header with-border">
-    <center> <h3 class="box-title"> Editar valor adicional</h3> </center>
+    <center> <h3 class="box-title"> Editar otrosi</h3> </center>
   </div>
   <div class="box-body">
 
-        @foreach($otrosis as $key => $otro)
+
         {!! Form::model($otro, ['method' => 'PATCH', 'action' => ['OtrosiController@update',$otro->id]]) !!}
         {{ csrf_field() }}
         <input type="hidden" name="id" value="{{ $otro->id}}">
@@ -89,7 +89,7 @@
               </div>
             </div>
         {!! Form::close() !!}
-        @endforeach
+
         <div class="box-footer">
           <button type="submit" data-target="" data-toggle="" class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;">Editar</button>
         </div>

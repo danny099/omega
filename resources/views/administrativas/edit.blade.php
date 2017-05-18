@@ -299,7 +299,7 @@
         </div>
         @else
         <div class="col-md-12 div2">
-            <center><a href="{{ route('otrosi.edit', $administrativas->id) }}" class="btn btn-primary botoncito" data-toggle="modal" data-target="#myModal8">Otro si</a></center>
+            <center><a href="{{ route('otrosi.index', $administrativas->id) }}" class="btn btn-primary botoncito" data-toggle="modal" data-target="#myModal8">Otro si</a></center>
         </div>
         @endif
         @if(count($pu_finales) == 0)
@@ -502,13 +502,13 @@
   <!-- inicio modal8  -->
   <div class="modal fade" id="myModal8" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog " role="document">
-      <div class="modal-content">
+      <div class="modal-content ">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title"></h4>
         </div>
         <div class="modal-body">
-          @include('otrosi.edit')
+          @include('otrosi.index')
         </div>
         <div class="modal-footer">
         </div>
