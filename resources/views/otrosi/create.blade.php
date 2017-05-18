@@ -1,6 +1,7 @@
 @extends('index')
 
 @section('scripts')
+<script src="../../plugins/jQuery/numeral.js"></script>
   <script type="text/javascript">
 
     $(function() {
@@ -10,9 +11,10 @@
           var valor = parseInt($(this).val());
           var resultado = valor * 1.19;
           var iva = valor*0.19;
+          var string = numeral(resultado).format('0,0.00');
 
           $('.iva').val(iva);
-          $('.otrosi').val(resultado);
+          $('.otrosi').val(string);
       });
     });
   </script>
@@ -106,7 +108,7 @@
                       </div>
                       <div class="form-group ">
                         <div class="col-md-4">
-                          <input type="number" class="form-control otrosi" id="otrosi" readonly  placeholder= "valor" name="valor_tot">
+                          <input type="text" class="form-control otrosi" id="otrosi" readonly  placeholder= "valor" name="valor_tot">
                         </div>
                         <div class="col-md-4" >
                         </div>
