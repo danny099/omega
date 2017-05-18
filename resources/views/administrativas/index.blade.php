@@ -149,7 +149,7 @@
               <td>{{$administrativa->codigo_proyecto}}</td>
               <td>{{$administrativa->nombre_proyecto}}</td>
               <td>{{$administrativa->fecha_contrato}}</td>
-              <td>{{$administrativa->valor_contrato_final}}</td>
+              <td>{{number_format($administrativa->valor_contrato_final,0,",",".")}}</td>
               <td>
                 <a href="{{ route('administrativas.edit', $administrativa->id) }}"><i class="glyphicon glyphicon-pencil"></i></a>
                 <a href="{{ route('administrativas.show', $administrativa->id) }}" data-toggle="model" data-target="show-{{ $key }}"><i class="glyphicon glyphicon-eye-open"></i></a>
