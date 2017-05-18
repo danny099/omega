@@ -142,6 +142,10 @@ class OtrosiController extends Controller
     {
       $otrosi = Otrosi::findOrFail($id);
       $administrativas = Administrativa::findOrFail($otrosi->administrativa_id);
+
+      $administrativa->recordar = 1;
+      $administrativa->save();
+
       $nuevo_saldo = $administrativas->saldo - $otrosi->valor;
       $administrativas->saldo = $nuevo_saldo;
       $nuevo_total = $administrativas->valor_total_contrato - $otrosi->valor;
@@ -152,6 +156,6 @@ class OtrosiController extends Controller
       Session::flash('message', 'Otro si eliminado');
       Session::flash('class', 'danger');
       return redirect()->route('administrativas.index');
-    
+
     }
 }

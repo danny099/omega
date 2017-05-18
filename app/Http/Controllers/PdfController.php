@@ -14,7 +14,11 @@ use App\Consignacion;
 use App\Cuenta_cobro;
 use App\Factura;
 use App\Valor_adicional;
+use App\Observacion;
 use Illuminate\Http\Request;
+use Session;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Input;
 use PDF;
 use App;
 
@@ -31,12 +35,20 @@ class PdfController extends Controller
       $administrativa = Administrativa::find($id);
       // $admin  = $administrativas->id;
 
-      $departamentos = Departamento::all();
-      $clientes =Cliente::all();
-      $juridicas = Juridica::all();
 
-      $muni_Id = Municipio::select('id')->where('id',$administrativa->municipio)->get();
-      $municipio = Municipio::find($muni_Id);
+      $departamentos = Departamento::findOrFail($administrativa->departamento_id);
+
+      if (!empty($administrativa->cliente_id)) {
+        $clientes = Cliente::findOrFail($administrativa->cliente_id);
+      }
+
+      if (!empty($administrativa->juridica_id)) {
+        $juridicas = Juridica::findOrFail($administrativa->juridica_id);
+
+      }
+
+      $municipios = Municipio::find($administrativa->municipio);
+
 
       $adicionales = Valor_adicional::where('valor_adicional.administrativa_id', '=', $id)->get();
       $otrosis = Otrosi::where('otrosi.administrativa_id', '=', $id)->get();
@@ -51,7 +63,7 @@ class PdfController extends Controller
   		// return $pdf->download('archivo.pdf');
 
       $pdf = App::make('dompdf.wrapper');
-      $pdf->loadView('pdf.show-admin',compact('administrativa','clientes','juridicas','otrosis','distribuciones','transformaciones','pu_finales','departamentos','municipio','adicionales','consignaciones','cuenta_cobros','facturas'));
+      $pdf->loadView('pdf.show-admin',compact('administrativa','clientes','juridicas','otrosis','distribuciones','transformaciones','pu_finales','departamentos','municipios','adicionales','consignaciones','cuenta_cobros','facturas'));
       return $pdf->stream();
     }
 
