@@ -395,13 +395,48 @@
             <center><a href="{{ route('consignaciones.edit', $administrativas->id) }}" class="btn btn-primary botoncito" data-toggle="modal" data-target="#myModal7">Consignaciones</a></center>
         </div>
         @endif
+        @if(count($observaciones) == 0)
+
+        @else
+        <div class="col-md-12 div2">
+            <center><a  class="btn btn-primary botoncito" data-toggle="modal" data-target="#myModal9">Crear observacion</a></center>
+        </div>
+        @endif
 
         </div>
         <div class="col-md-12">
-          <center> <h4 class="box-title">Observaciones de estado administrativo del proyecto</h4> </center>
+
+          <div class="col-md-12">
+            <div class="col-md-1">
+              <div class="form-group">
+                <label>#</label>
+              </div>
+            </div>
+            <div class="col-md-11">
+              <div class="form-group">
+                <label>Observaciones</label>
+              </div>
+            </div>
+          </div>
+          @foreach($observaciones as $key => $obs)
+            <div class="col-md-12">
+              <div class="col-md-1">
+                <div class="form-group">
+                  <td>{{ $key+1 }}</td>
+                </div>
+              </div>
+              <div class="col-md-11">
+                <div class="form-group">
+                  <td><textarea  rows="4" cols="110" name="resumen"  value="{{ $obs->observacion }}" readonly="">{{ $obs->observacion }}</textarea></td>
+                </div>
+              </div>
+            </div>
+          @endforeach
+
+          </table>
         </div>
+
         <div class="col-md-12">
-          <textarea  rows="4" cols="150" name="resumen"  value="{{ $administrativas->resumen }}" readonly="">{{ $administrativas->resumen }}</textarea>
         </div>
       </div>
         <div class="box-footer">
@@ -549,6 +584,23 @@
         </div>
         <div class="modal-body">
           @include('otrosi.index')
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- fin modal -->
+  <!-- inicio modal9  -->
+  <div class="modal fade" id="myModal9" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content ">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"></h4>
+        </div>
+        <div class="modal-body">
+          @include('observaciones.create')
         </div>
         <div class="modal-footer">
         </div>

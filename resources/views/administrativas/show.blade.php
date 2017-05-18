@@ -315,7 +315,6 @@
               @endforeach
             </tbody>
           </table>
-
         </div>
         <br>
         <br>

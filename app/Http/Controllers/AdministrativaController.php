@@ -271,10 +271,11 @@ class AdministrativaController extends Controller
       $consignaciones = Consignacion::where('consignacion.administrativa_id', '=', $id)->get();
       $cuenta_cobros = Cuenta_cobro::where('cuenta_cobro.administrativa_id', '=', $id)->get();
       $facturas = Factura::where('factura.administrativa_id', '=', $id)->get();
+      $observaciones = Observacion::where('observacion.administrativa_id', '=', $id)->get();
 
 
       //  funcion que retorna una vista con todos los datos del registro ya buscado
-       return view('administrativas.edit',compact('administrativas','clientes','juridicas','otrosis','distribuciones','transformaciones','pu_finales','departamentos','municipio','adicionales','facturas','cuenta_cobros','consignaciones'));
+       return view('administrativas.edit',compact('administrativas','clientes','juridicas','otrosis','distribuciones','transformaciones','pu_finales','departamentos','municipio','adicionales','facturas','cuenta_cobros','consignaciones','observaciones'));
    }
 
    /**
