@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Usuario;
 use App\Rol;
 use Hash;
+use Auth;
 use Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
@@ -18,6 +19,10 @@ class UsuarioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+     public function __construct()
+     {
+         $this->middleware('admin');
+     }
     public function index()
     {
         $usuarios = Usuario::all();

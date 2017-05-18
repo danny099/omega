@@ -109,4 +109,5 @@ Route::group(['middleware' => 'auth'],function(){
 	/**************************************************************/
 	// /**
 
+	Route::get('admin','adminController@index');
 	});
