@@ -5,7 +5,7 @@
     </div>
     <div class="box-body">
 
-      <form class="" action="{{ url('editart') }}" method="post">
+      <form class="form1" action="{{ url('editart') }}" method="post">
       {{ csrf_field() }}
 
       @foreach($transformaciones as $transfor)
@@ -72,3 +72,24 @@
       </form>
     </div>
   </div>
+
+    <script>
+      $(document).ready(function() {
+
+      // Interceptamos el evento submit
+      $('.form1').on('submit',function() {
+    // Enviamos el formulario usando AJAX
+            $.ajax({
+                type: 'POST',
+                url: $(this).attr('action'),
+                data: $(this).serialize(),
+              // Mostramos un mensaje con la respuesta de PHP
+                success: function() {
+                  alert('Alcance de Transformacion editado');
+                  $('.modal').modal('hide');
+                }
+            })
+            return false;
+        });
+      });
+    </script>

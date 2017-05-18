@@ -58,6 +58,7 @@ Route::group(['middleware' => 'auth'],function(){
   /**************************************************************/
   /**************************************************************/
   Route::resource('pu_final','Pu_finalController');
+	Route::post('editarpu','Pu_finalController@editar');
 	Route::get('deletepu/{id}','Pu_finalController@destroy');
 
   /**************************************************************/
@@ -84,11 +85,13 @@ Route::group(['middleware' => 'auth'],function(){
   /**************************************************************/
   /**************************************************************/
 	Route::resource('consignaciones','ConsignacionController');
-		Route::get('deleteconsignacion/{id}','ConsignacionController@destroy');
+	Route::post('editarconsignacion','ConsignacionController@editar');
+	Route::get('deleteconsignacion/{id}','ConsignacionController@destroy');
 	/**************************************************************/
 	/**************************************************************/
 	Route::resource('cuenta_cobros','Cuenta_cobroController');
-			Route::get('deletecuenta/{id}','Cuenta_cobroController@destroy');
+	Route::post('editarcobros','Cuenta_cobroController@editar');
+	Route::get('deletecuenta/{id}','Cuenta_cobroController@destroy');
 	/**************************************************************/
 	/**************************************************************/
 	Route::resource('facturas','FacturaController');
@@ -96,7 +99,7 @@ Route::group(['middleware' => 'auth'],function(){
 	/**************************************************************/
 	/**************************************************************/
 	Route::resource('adicionales','ValorAdicionalController');
-	Route::post('editar','ValorAdicionalController@editar');
+	Route::post('editaradicionales','ValorAdicionalController@editar');
 	Route::get('deleteadicional/{id}','ValorAdicionalController@destroy');
 
 	/**************************************************************/

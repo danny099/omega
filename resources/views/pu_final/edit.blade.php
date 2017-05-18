@@ -3,9 +3,10 @@
     <center> <h4 class="box-title">Alcance: proceso de uso final</h4> </center>
   </div>
   <div class="box-body">
+    <form class="form1" action="{{ url('editarpu') }}" method="post">
+      {{ csrf_field() }}
+
     @foreach($pu_finales as $pu)
-    {!! Form::model($pu, ['method' => 'PATCH', 'action' => ['Pu_finalController@update',$pu->id]]) !!}
-    {{ csrf_field() }}
       <input type="hidden" name="pu_final[id][]" value="{{ $pu->id}}">
       <div class="col-md-12">
         <div class="col-md-3">
@@ -57,5 +58,33 @@
     <div class="box-footer">
       <button type="submit" data-target="" data-toggle="" class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;">Editar</button>
     </div>
+    </form>
   </div>
 </div>
+
+<script>
+  $(document).ready(function() {
+
+  function eliminar(){
+    var agree=confirm("¿Realmente desea eliminarlo? ");
+    $('.modal').modal('hide');
+  }
+  // Interceptamos el evento submit
+  $('.form1').on('submit',function() {
+// Enviamos el formulario usando AJAX
+        $.ajax({
+            type: 'POST',
+            url: $(this).attr('action'),
+            data: $(this).serialize(),
+          // Mostramos un mensaje con la respuesta de PHP
+            success: function() {
+              alert('Alcance de distribucion editado');
+              $('.modal').modal('hide');
+            }
+        })
+        return false;
+    });
+  });
+
+
+</script>

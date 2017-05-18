@@ -3,10 +3,11 @@
     <center> <h3 class="box-title"> Editar cuentas de cobro</h3> </center>
   </div>
   <div class="box-body">
+      <form class="form1" action="{{ url('editarcobros') }}" method="post">
+        {{ csrf_field() }}
+
       @foreach($cuenta_cobros as $cuenta)
-      {!! Form::model($cuenta, ['method' => 'PATCH', 'action' => ['Cuenta_cobroController@update',$cuenta->id]]) !!}
-      {{ csrf_field() }}
-      <input type="hidden" name="id" value="{{$cuenta->id}}">
+      <input type="hidden" name="cuenta[id][]" value="{{ $cuenta->id }}">
         <div class="box-body col-md-12">
 
             <br>
@@ -17,7 +18,8 @@
             </div>
             <div class="col-md-6">
               <div class="form-group">
-                {!! Form::number('porcentaje', null, ['class' => 'form-control' , 'required' => 'required','min'=>'0','placeholder'=>'%']) !!}
+                <input type="numbe" name="cuenta[porcentaje][]" class="form-control" required="" value="{{$cuenta->porcentaje}}">
+                <!-- {!! Form::number('cuenta[porcentaje][]', null, ['class' => 'form-control' , 'required' => 'required','min'=>'0','placeholder'=>'%']) !!} -->
               </div>
             </div>
 
@@ -28,7 +30,8 @@
             </div>
             <div class="col-md-6">
               <div class="form-group">
-                {!! Form::number('valor', null, ['class' => 'form-control' , 'required' => 'required','min'=>'0']) !!}
+                <input type="number" min="0" class="form-control" required="" name="cuenta[valor][]" value="{{ $cuenta->valor }}">
+                <!-- {!! Form::number('cuenta[valor][]', null, ['class' => 'form-control' , 'required' => 'required','min'=>'0']) !!} -->
               </div>
             </div>
 
@@ -39,7 +42,8 @@
             </div>
             <div class="col-md-6">
               <div class="form-group">
-                {!! Form::date('fecha_cuenta_cobro', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+                <input type="date" name="cuenta[fecha_cuenta_cobro][]" required="" class="form-control" value="{{ $cuenta->fecha_cuenta_cobro }}">
+                <!-- {!! Form::date('cuenta[fecha_cuenta_cobro][]', null, ['class' => 'form-control' , 'required' => 'required']) !!} -->
               </div>
             </div>
 
@@ -50,7 +54,8 @@
             </div>
             <div class="col-md-6">
               <div class="form-group">
-                {!! Form::date('fecha_pago', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+                <input type="date" name="cuenta[fecha_pago][]" class="form-control" required=""  value="{{ $cuenta->fecha_pago }}">
+                <!-- {!! Form::date('cuenta[fecha_pago][]', null, ['class' => 'form-control' , 'required' => 'required']) !!} -->
               </div>
             </div>
 
@@ -61,7 +66,8 @@
             </div>
             <div class="col-md-6">
               <div class="form-group">
-                {!! Form::number('numero_cuenta_cobro', null, ['class' => 'form-control' , 'required' => 'required','min'=>'0']) !!}
+                <input type="number" name="cuenta[numero_cuenta_cobro][]" required="" class="form-control" value="{{ $cuenta->numero_cuenta_cobro }}">
+                <!-- {!! Form::number('cuenta[numero_cuenta_cobro][]', null, ['class' => 'form-control' , 'required' => 'required','min'=>'0']) !!} -->
               </div>
             </div>
 
@@ -72,7 +78,8 @@
             </div>
             <div class="col-md-6">
               <div class="form-group">
-                {!! Form::text('observaciones', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+                <input type="text" name="cuenta[observaciones][]" required="" class="form-control" value="{{ $cuenta->observaciones}}">
+                <!-- {!! Form::text('cuenta[observaciones][]', null, ['class' => 'form-control' , 'required' => 'required'] ) !!} -->
               </div>
             </div>
 
@@ -82,10 +89,30 @@
           <a href="{{ url('deletecuenta') }}/{{ $cuenta->id }}" onClick="javascript: return confirm('Esta seguro de eliminar registro?');"><i class="glyphicon glyphicon-minus-sign"></i></a>
         </div>
       </div>
-      {!! Form::close() !!}
       @endforeach
       <div class="box-footer">
         <button type="submit" data-target="" data-toggle="" class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;">Editar</button>
       </div>
+    </form>
     </div>
   </div>
+
+  <script>
+    $(document).ready(function() {
+    // Interceptamos el evento submit
+    $('.form1').on('submit',function() {
+  // Enviamos el formulario usando AJAX
+          $.ajax({
+              type: 'POST',
+              url: $(this).attr('action'),
+              data: $(this).serialize(),
+            // Mostramos un mensaje con la respuesta de PHP
+              success: function() {
+                alert('Valor adicional editado');
+                $('.modal').modal('hide');
+              }
+          })
+          return false;
+      });
+    });
+  </script>

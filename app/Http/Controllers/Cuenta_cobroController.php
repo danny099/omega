@@ -105,6 +105,40 @@ class Cuenta_cobroController extends Controller
       * @param  int  $id
       * @return \Illuminate\Http\Response
       */
+      public function editar(Request $request)
+      {
+        $input = $request->all();
+        // dd($input);
+        // die();
+        // $adicional = Valor_adicional::findOrFail($id);
+        // $administrativa = Administrativa::findOrFail($adicional->administrativa_id);
+
+        for ($a=0; $a<count($input['cuenta']['porcentaje']); $a++){
+
+
+          $cuenta = Cuenta_cobro::findOrFail($request->cuenta['id'][$a]);
+          $administrativa = Administrativa::findOrFail($cuenta->administrativa_id);
+
+          if ($administrativa->saldo > 0) {
+
+            $resta = $administrativa->saldo - $cuenta->valor;
+            $nuevo_saldo = $resta + $request->cuenta['valor'][$a];
+            $administrativa->saldo = $nuevo_saldo;
+            $administrativa->save();
+
+          }
+          $datos['porcentaje'] = $input['cuenta']['porcentaje'][$a];
+          $datos['valor'] = $input['cuenta']['valor'][$a];
+          $datos['fecha_cuenta_cobro'] = $input['cuenta']['fecha_cuenta_cobro'][$a];
+          $datos['fecha_pago'] = $input['cuenta']['fecha_pago'][$a];
+          $datos['numero_cuenta_cobro'] = $input['cuenta']['numero_cuenta_cobro'][$a];
+          $datos['observaciones'] = $input['cuenta']['observaciones'][$a];
+
+          $cuenta->update($datos);
+
+        }
+
+     }
      public function update(Request $request, $id)
      {
        $input = $request->all();

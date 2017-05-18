@@ -93,13 +93,24 @@ class ValorAdicionalController extends Controller
      */
     public function edit($id)
     {
-      $ide = Administrativa::find($id);
-      $adicional = Valor_adicional::where('valor_adicional.administrativa_id', '=', $id)->get();
+      $input = $request->all();
 
-      // dd($transformaciones);
-      // die();
-      return view('adicionales.edit',compact('adicional','id','ide'));
+      for ($a=0; $a<count($input['adicional']['valor']); $a++){
+
+        $adicional = Valor_adicional::findOrFail($request->adicional['id'][$a]);
+
+        $datos['valor'] = $input['adicional']['valor'][$a];
+        $datos['detalle'] = $input['adicional']['detalle'][$a];
+
+        $adicional->update($datos);
+
+      }
+
+      Session::flash('message', 'registro editado editado!');
+      Session::flash('class', 'success');
+      return redirect()->route('administrativas.index');
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -111,7 +122,6 @@ class ValorAdicionalController extends Controller
     public function editar(Request $request)
     {
       $input = $request->all();
-
       // $adicional = Valor_adicional::findOrFail($id);
       // $administrativa = Administrativa::findOrFail($adicional->administrativa_id);
 
@@ -120,8 +130,6 @@ class ValorAdicionalController extends Controller
 
         $adicional = Valor_adicional::findOrFail($request->adicional['id'][$a]);
         $administrativa = Administrativa::findOrFail($adicional->administrativa_id);
-        // dd($administrativa);
-        // die();
 
         if ($administrativa->saldo > 0) {
 
@@ -138,8 +146,6 @@ class ValorAdicionalController extends Controller
         $adicional->update($datos1);
 
       }
-
-
 
       Session::flash('message', 'registro editado editado!');
       Session::flash('class', 'success');

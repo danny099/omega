@@ -5,12 +5,9 @@
     </div>
     <div class="box-body">
 
-      <form class="" action="{{ url('editar') }}" method="post">
+      <form class="form1" action="{{ url('editaradicionales') }}" method="post">
       {{ csrf_field() }}
       @foreach($adicionales as $adici)
-      <!-- {!! Form::model($adici, ['method' => 'PATCH', 'action' => ['ValorAdicionalController@update',$adici->id]]) !!} -->
-
-
       <input type="hidden" name="adicional[id][]" value="{{ $adici->id}}">
       <div class="col-md-12">
 
@@ -43,3 +40,24 @@
       </div> -->
     </div>
   </div>
+@section('scripts')
+<script>
+  $(document).ready(function() {
+  // Interceptamos el evento submit
+  $('.form1').on('submit',function() {
+// Enviamos el formulario usando AJAX
+        $.ajax({
+            type: 'POST',
+            url: $(this).attr('action'),
+            data: $(this).serialize(),
+          // Mostramos un mensaje con la respuesta de PHP
+            success: function() {
+              alert('Valor adicional editado');
+              $('.modal').modal('hide');
+            }
+        })
+        return false;
+    });
+  });
+</script>
+@endsection

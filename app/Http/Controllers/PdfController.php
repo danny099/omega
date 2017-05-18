@@ -15,6 +15,7 @@ use App\Cuenta_cobro;
 use App\Factura;
 use App\Valor_adicional;
 use Illuminate\Http\Request;
+use PDF;
 use App;
 
 class PdfController extends Controller
@@ -46,8 +47,11 @@ class PdfController extends Controller
       $cuenta_cobros = Cuenta_cobro::where('cuenta_cobro.administrativa_id', '=', $id)->get();
       $facturas = Factura::where('factura.administrativa_id', '=', $id)->get();
 
-  		$pdf = \PDF::loadView('pdf.show-admin',compact('administrativa','clientes','juridicas','otrosis','distribuciones','transformaciones','pu_finales','departamentos','municipio','adicionales','consignaciones','cuenta_cobros','facturas'));
-  		return $pdf->download('archivo.pdf');
+  		// $pdf = \PDF::loadView('pdf.show-admin',compact('administrativa','clientes','juridicas','otrosis','distribuciones','transformaciones','pu_finales','departamentos','municipio','adicionales','consignaciones','cuenta_cobros','facturas'));
+  		// return $pdf->download('archivo.pdf');
+
+      $pdf = PDF::loadView('administrativas.show',compact('administrativa','clientes','juridicas','otrosis','distribuciones','transformaciones','pu_finales','departamentos','municipio','adicionales','consignaciones','cuenta_cobros','facturas'));
+	    return $pdf->stream('document.pdf');
     }
 
     /**

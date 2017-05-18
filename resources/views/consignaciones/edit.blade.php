@@ -4,8 +4,10 @@
     <center> <h3 class="box-title"> Editar consignaiones</h3> </center>
   </div>
   <div class="box-body">
+      <form class="form1" action="{{ url('editarconsignacion') }}" method="post">
+        {{ csrf_field() }}
+
       @foreach($consignaciones as $consignacion)
-      {!! Form::model($consignacion, ['method' => 'PATCH', 'action' => ['ConsignacionController@update',$consignacion->id]]) !!}
       {{ csrf_field() }}
       <input type="hidden" name="id" value="{{$consignacion->id}}">
         <div class="box-body col-md-12">
@@ -48,10 +50,10 @@
         </div>
       </div>
     </div>
-      {!! Form::close() !!}
       @endforeach
       <div class="box-footer">
         <button type="submit" data-target="" data-toggle="" class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;">Editar</button>
       </div>
+      </form>
     </div>
   </div>
