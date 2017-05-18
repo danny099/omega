@@ -143,8 +143,11 @@ class OtrosiController extends Controller
       $otrosi = Otrosi::findOrFail($id);
       $administrativas = Administrativa::findOrFail($otrosi->administrativa_id);
 
-      $administrativa->recordar = 1;
-      $administrativa->save();
+      $flag = 1;
+
+      $administrativas->recordar = $flag;
+
+      $administrativas->save();
 
       $nuevo_saldo = $administrativas->saldo - $otrosi->valor;
       $administrativas->saldo = $nuevo_saldo;
