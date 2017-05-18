@@ -37,12 +37,13 @@ class ObservacionController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-
-        $datos['observaciones'] = $request->observaciones;
-        $datos['administrativa_id'] =$request->administrativa_id;
-        dd($datos);
-        die();
-        Observacion::create($datos);
+        // dd($input);
+        // die();
+        // $datos['observaciones'] = $request->observaciones;
+        // $datos['administrativa_id'] =$request->administrativa_id;
+        // dd($datos);
+        // die();
+        Observacion::create($input);
     }
 
     /**

@@ -598,7 +598,7 @@
           <h4 class="modal-title"></h4>
         </div>
         <div class="modal-body">
-          {!! Form::open(['class'=>'form','url' => 'observaciones']) !!}
+          {!! Form::open(['class'=>'form2','url' => 'observaciones']) !!}
           {{ csrf_field() }}
             <div class="box-body">
               <div class="col-md-2">
@@ -608,16 +608,16 @@
               </div>
               <div class="col-md-10">
                 <div class="form-group">
-                  <td><textarea  rows="4" cols="60" name="observaciones" ></textarea></td>
+                  <td><textarea  rows="4" cols="60" name="observacion" required=""></textarea></td>
                 </div>
               </div>
-
+              <input type="hidden" name="administrativa_id" value="{{$administrativas->id}}">
               <div class="box-footer">
                 <button type="submit" data-target="" data-toggle="" class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;">Crear</button>
               </div>
             </div>
 
-            <input type="hidden" name="" value="{{$administrativas->id}}">
+
           {!! Form::close() !!}
         </div>
         <div class="modal-footer">
