@@ -292,6 +292,20 @@ class AdministrativaController extends Controller
        $input = $request->all();
        $depart = $request->departamento;
 
+       $administrativa['codigo_proyecto'] = $request->codigo;
+       $administrativa['nombre_proyecto'] = $request->nombre;
+       $administrativa['fecha_contrato'] = $request->fecha;
+       $administrativa['cliente_id'] = $request->cliente_id;
+       $administrativa['juridica_id'] = $request->juridica_id;
+       $administrativa['departamento_id'] = $request->departamento;
+       $administrativa['municipio'] = $request->municipio;
+       $administrativa['tipo_zona'] = $request->zona;
+       $administrativa['valor_contrato_inicial'] = str_replace(',','',$request->valor_contrato_inicial);
+       $administrativa['valor_iva'] = str_replace('.','',$request->iva);
+       $administrativa['valor_contrato_final'] =str_replace('.','',$request->contrato_final);
+       $administrativa['plan_pago'] = $request->plan_pago;
+       $administrativa['saldo'] =  $administrativa['valor_contrato_final'];
+       $administrativa['valor_total_contrato'] =  $administrativa['valor_contrato_final'];
        $administrativas = Administrativa::findOrFail($id);
 
 

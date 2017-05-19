@@ -30,7 +30,7 @@
             </div>
             <div class="col-md-6">
               <div class="form-group">
-                <input type="number" min="0" class="form-control" required="" name="cuenta[valor][]" value="{{ $cuenta->valor }}">
+                <input type="text" min="0" class="form-control" required="" name="cuenta[valor][]" onkeypress="mascara(this,cpf)" value="{{ number_format($cuenta->valor,0) }}">
                 <!-- {!! Form::number('cuenta[valor][]', null, ['class' => 'form-control' , 'required' => 'required','min'=>'0']) !!} -->
               </div>
             </div>

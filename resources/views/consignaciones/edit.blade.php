@@ -31,7 +31,7 @@
           </div>
           <div class="col-md-6">
             <div class="form-group">
-              <input type="text" name="consignacion[valor][]" class="form-control" onkeypress="mascara(this,cpf)" required="" value="{{ $consignacion->valor }}">
+              <input type="text" name="consignacion[valor][]" class="form-control" onkeypress="mascara(this,cpf)" required="" value="{{ number_format($consignacion->valor,0) }}">
 
 
               <!-- {!! Form::number('valor', null, ['class' => 'form-control' , 'required' => 'required', 'min'=>'0']) !!} -->

@@ -352,17 +352,18 @@
         </div>
         <div class="form-group">
           {!! Form::label('valor_contrato_inicial', 'Valor antes del iva') !!}
-          {!! Form::text('valor_contrato_inicial', $administrativas->valor_contrato_inicial, ['class' => 'form-control' , 'required' => 'required', 'onkeypress'=>'mascara(this,cpf)', 'onkeyup'=>'calcular()', 'min'=>'0']) !!}
+          {!! Form::text('valor_contrato_inicial',  number_format($administrativas->valor_contrato_inicial,0) , ['class' => 'form-control' , 'required' => 'required', 'onkeypress'=>'mascara(this,cpf)', 'onkeyup'=>'calcular()', 'min'=>'0']) !!}
+
         </div>
         <div class="form-group">
           <label >Valor iva</label>
-          <input type="text" min="0" class="form-control" id="iva" readonly="readonly" placeholder= "valor iva" name="iva" value="{{ $administrativas->valor_iva }}">
+          <input type="text" min="0" class="form-control" id="iva" readonly="readonly" placeholder= "valor iva" name="iva" value="{{ number_format($administrativas->valor_iva,0,",",".") }}">
         </div>
         <div class="form-group ">
           <div class="form-group">
 
             <label >Valor contrato final</label>
-            <input type="text" class="form-control" min="0" id="fin" readonly="readonly" placeholder= "Valor final" name="contrato_final" value="{{ $administrativas->valor_contrato_final}}">
+            <input type="text" class="form-control" min="0" id="fin" readonly="readonly" placeholder= "Valor final" name="contrato_final" value="{{ number_format($administrativas->valor_contrato_final,0,",",".") }}">
           </div>
           <div class="form-group">
             <label >Plan de pago</label>

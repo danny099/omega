@@ -17,7 +17,7 @@
             </div>
             <div class="form-group ">
               <div class="col-md-4">
-                <input type="text" class="form-control antesiva" id="antesiva"  onkeyup="calcular2();"  onkeypress="mascara(this,cpf)"  onpaste="return false" placeholder= "Ingrese valor" name="valor"   value="{{$otro->valor}}"   >
+                <input type="text" class="form-control antesiva" id="antesiva"  onkeyup="calcular2();"  onkeypress="mascara(this,cpf)"  onpaste="return false" placeholder= "Ingrese valor" name="valor"   value="{{ number_format($otro->valor,0) }}">
               </div>
               <div class="col-md-4" >
 
@@ -33,7 +33,7 @@
               </div>
               <div class="form-group ">
                 <div class="col-md-4">
-                  <input type="text" class="form-control iva" id="iva2" readonly placeholder= "valor" name="iva" value="{{$otro->iva}}" >
+                  <input type="text" class="form-control iva" id="iva2" readonly placeholder= "valor" name="iva" value="{{ number_format($otro->iva,0,",",".") }}" >
                 </div>
                 <div class="col-md-4" >
 
@@ -49,7 +49,7 @@
                 </div>
                 <div class="form-group ">
                   <div class="col-md-4">
-                    <input type="text" class="form-control otrosi" id="otrosi" readonly  placeholder= "valor" name="valor_tot" value="{{$otro->valor_tot}}">
+                    <input type="text" class="form-control otrosi" id="otrosi" readonly  placeholder= "valor" name="valor_tot" value="{{ number_format($otro->valor_tot,0,",",".") }}">
                   </div>
                   <div class="col-md-4" >
                   </div>

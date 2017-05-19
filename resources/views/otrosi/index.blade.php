@@ -18,9 +18,9 @@
           <tbody>
             @foreach($otrosis as $key => $otro)
             <tr>
-              <td>{{$otro->valor}}</td>
-              <td>{{$otro->iva}}</td>
-              <td>{{$otro->valor_tot}}</td>
+              <td>{{ number_format($otro->valor,0,",",".") }}</td>
+              <td>{{ number_format($otro->iva,0,",",".") }}</td>
+              <td>{{ number_format($otro->valor_tot,0,",",".") }}</td>
               <td>{{$otro->detalles}}</td>
               <td>
                 <a href="{{ route('otrosi.edit', $otro->id) }}" data-toggle="modal" data-target="#myModal21-{{ $key }}"><i class="glyphicon glyphicon-pencil"></i></a>
