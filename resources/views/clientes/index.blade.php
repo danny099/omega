@@ -1,5 +1,65 @@
 @extends('index')
+@section('scripts')
+<script>
+  $(function () {
+    $("table.display").DataTable({
+      "language":{
+      "sProcessing":     "Procesando...",
+      "sLengthMenu":     "Mostrar _MENU_ registros",
+      "sZeroRecords":    "No se encontraron resultados",
+      "sEmptyTable":     "Ningún dato disponible en esta tabla",
+      "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+      "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+      "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+      "sInfoPostFix":    "",
+      "sSearch":         "Buscar:",
+      "sUrl":            "",
+      "sInfoThousands":  ",",
+      "sLoadingRecords": "Cargando...",
+      "oPaginate": {
+          "sFirst":    "Primero",
+          "sLast":     "Último",
+          "sNext":     "Siguiente",
+          "sPrevious": "Anterior"
+      },
+      "oAria": {
+          "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+          "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+      }
+  }
+ });
+  });
+  $(document).ready(function(){
+  $(document).on('change','#departamento',function(){
 
+  var dep_id = $(this).val();
+  var div = $(this).parents();
+  var op=" ";
+  $.ajax({
+  type:'get',
+  url:'{{ url('selectmuni')}}',
+  data:{'id':dep_id},
+  success:function(data){
+  console.log(data);
+  op+='<option value="0" selected disabled>Seleccione</option>';
+
+  for (var i = 0; i < data.length; i++) {
+  op+='<option value="' +data[i].id+ '">' +data[i].nombre+ '</option>'
+  }
+
+  div.find('#municipio').html(" ");
+  div.find('#municipio').append(op);
+
+  },
+  error:function(){
+
+  }
+  });
+  });
+  });
+
+</script>
+@endsection
 @section('contenido')
   <ol class="breadcrumb">
     <li><a href="{{ url('index') }}">Inicio</a></li>
@@ -23,7 +83,7 @@
           <div class="box-header with-border">
             <center> <h3 class="box-title">Personas naturales</h3> </center>
           </div>
-          <table id="example1" class="table table-bordered table-striped">
+          <table id="example1" class="table table-bordered table-striped display">
             <thead>
               <tr>
                 <th>Nit</th>
@@ -63,7 +123,7 @@
           <div class="box-header with-border">
             <center> <h3 class="box-title">Personas juridicas</h3> </center>
           </div>
-          <table id="example2" class="table table-bordered table-striped">
+          <table id="example2" class="table table-bordered table-striped display">
             <thead>
               <tr>
                 <th>Razon social</th>
@@ -161,37 +221,4 @@
 
 
 
-@endsection
-
-@section('scripts')
-<script>
-  $(function () {
-    $("table").DataTable({
-      "language":{
-      "sProcessing":     "Procesando...",
-      "sLengthMenu":     "Mostrar _MENU_ registros",
-      "sZeroRecords":    "No se encontraron resultados",
-      "sEmptyTable":     "Ningún dato disponible en esta tabla",
-      "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-      "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
-      "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
-      "sInfoPostFix":    "",
-      "sSearch":         "Buscar:",
-      "sUrl":            "",
-      "sInfoThousands":  ",",
-      "sLoadingRecords": "Cargando...",
-      "oPaginate": {
-          "sFirst":    "Primero",
-          "sLast":     "Último",
-          "sNext":     "Siguiente",
-          "sPrevious": "Anterior"
-      },
-      "oAria": {
-          "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
-          "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-      }
-  }
- });
-  });
-</script>
 @endsection
