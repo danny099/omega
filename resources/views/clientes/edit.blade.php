@@ -50,7 +50,7 @@
 
           <div class="form-group">
             {!! Form::label('telefono', 'Telefono') !!}
-            {!! Form::number('telefono', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+            {!! Form::text('telefono', null, ['class' => 'form-control' , 'required' => 'required']) !!}
           </div>
 
           <div class="form-group">
@@ -68,7 +68,7 @@
         <!-- /.box-body -->
         <br>
         <div class="box-footer">
-          <button type="submit" class="btn btn-primary pull-right">Submit</button>
+          <button type="submit" class="btn btn-primary pull-right">Enviar</button>
         </div>
       {!! Form::close() !!}
     </div>

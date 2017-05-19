@@ -58,7 +58,7 @@
             {!! Form::label('password', 'Contraseña') !!}
             {!! Form::password('password', null, ['class' => 'form-control' , 'required' => 'required']) !!}
             <span id="show-pass" class="glyphicon glyphicon-eye-open"></span>
-            
+
           </div>
 
           <br>
@@ -74,7 +74,7 @@
         <!-- /.box-body -->
         <br>
         <div class="box-footer">
-          <button type="submit" class="btn btn-primary pull-right">Submit</button>
+          <button type="submit" class="btn btn-primary pull-right">Enviar</button>
         </div>
       {!! Form::close() !!}
     </div>
