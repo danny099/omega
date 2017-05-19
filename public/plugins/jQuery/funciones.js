@@ -294,7 +294,7 @@
                     data: $(this).serialize(),
                   // Mostramos un mensaje con la respuesta de PHP
                     success: function() {
-                      alert('Observacion agregad');
+                      alert('Observacion agregada');
                       $('.modal').modal('hide');
                     }
                 })

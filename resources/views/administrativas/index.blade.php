@@ -31,9 +31,6 @@
           }
       }
      });
-
-     
-
         $('.valor_factura').keyup(function(){
             var valor = parseInt($(this).val());
             var resultado = valor * 1.19;

@@ -16,7 +16,7 @@
   </style>
   <body>
     <center><h1>Datos del Pryecto</h1></center>
-    <table border="1">
+    <table>
       <thead>
         <tr>
           <th></th>

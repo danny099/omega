@@ -43,11 +43,15 @@ class OtrosiController extends Controller
     {
 
       $input = $request->all();
-
+      $datos['valor'] = str_replace(',','',$request->valor);
+      $datos['iva'] = str_replace('.','',$request->iva);
+      $datos['valor_tot'] = str_replace('.','',$request->valor_tot);
+      $datos['detalles'] =  $request->detalles;
+      $datos['administrativa_id'] = $request->administrativa_id;
       $id = $request->administrativa_id;
 
 
-      Otrosi::create($input);
+      Otrosi::create($datos);
 
       $other = Otrosi::all();
       $last_id = $other->last()->id;
@@ -143,11 +147,8 @@ class OtrosiController extends Controller
       $otrosi = Otrosi::findOrFail($id);
       $administrativas = Administrativa::findOrFail($otrosi->administrativa_id);
 
-      $flag = 1;
-
-      $administrativas->recordar = $flag;
-
-      $administrativas->save();
+      $administrativa->recordar = 1;
+      $administrativa->save();
 
       $nuevo_saldo = $administrativas->saldo - $otrosi->valor;
       $administrativas->saldo = $nuevo_saldo;
