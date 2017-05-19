@@ -122,26 +122,30 @@ class ValorAdicionalController extends Controller
     public function editar(Request $request)
     {
       $input = $request->all();
+
       // $adicional = Valor_adicional::findOrFail($id);
       // $administrativa = Administrativa::findOrFail($adicional->administrativa_id);
 
       for ($a=0; $a<count($input['adicional']['valor']); $a++){
 
+        $datos['valor'] = str_replace(',','',$input['adicional']['valor'][$a]);
 
-        $adicional = Valor_adicional::findOrFail($request->adicional['id'][$a]);
+        $datos['detalle'] = $input['adicional']['detalle'][$a];
+
+        $adicional = Valor_adicional::findOrFail($request->adicional['valor'][$a]);
         $administrativa = Administrativa::findOrFail($adicional->administrativa_id);
 
-        if ($administrativa->valor_total_contrato > $request->adicional['id'][$a]) {
+        if ($administrativa->valor_total_contrato > $request->adicional['valor'][$a]) {
 
           $valor1 = $administrativa->valor_total_contrato - $adicional->valor;
-          $valor2 = $valor1 + $request->adicional['id'][$a];
+          $valor2 = $valor1 + $request->adicional['valor'][$a];
           $administrativa->valor_total_contrato = $valor2;
           $administrativa->save();
 
         }else {
 
-          $valor1 = $otrosi->valor_tot - $administrativa->valor_total_contrato;
-          $valor2 = $valor1 + $datos['valor_tot'];
+          $valor1 = $adicional->valor_tot - $administrativa->valor_total_contrato;
+          $valor2 = $valor1 + $datos['valor'];
           $administrativa->valor_total_contrato = $valor2;
           $administrativa->save();
         }
@@ -151,23 +155,24 @@ class ValorAdicionalController extends Controller
 
           if ($administrativa->saldo > $adicional->valor) {
             $resta = $administrativa->saldo - $adicional->valor;
-            $nuevo_saldo = $resta + $datos['valor_tot'];
+            $nuevo_saldo = $resta + $datos['valor'];
             $administrativa->saldo = $nuevo_saldo;
             $administrativa->save();
           }
           else {
-            $resta =$adicional->valor - $administrativa->saldo ;
-            $nuevo_saldo = $resta + $datos['valor_tot'];
+            $resta =$adicional->valor - $administrativa->saldo;
+            $nuevo_saldo = $resta + $datos['valor'];
             $administrativa->saldo = $nuevo_saldo;
             $administrativa->save();
           }
 
         }
 
-        $datos1['valor'] = str_replace(',','',$input['adicional']['valor'][$a]);
-        $datos1['detalle'] = $input['adicional']['detalle'][$a];
 
-        $adicional->update($datos1);
+
+        $adicional->update($datos);
+        return redirect()->route('administrativas.index');
+
 
       }
 

@@ -4,7 +4,7 @@
     <center> <h3 class="box-title"> Editar consignaiones</h3> </center>
   </div>
   <div class="box-body">
-      <form class="form1" action="{{ url('editarconsignacion') }}" method="post">
+      <form class="" action="{{ url('editarconsignacion') }}" method="post">
         {{ csrf_field() }}
 
       @foreach($consignaciones as $consignacion)
@@ -61,23 +61,22 @@
       </div>
       </form>
     </div>
-  </div>
-  <!-- <script>
-    $(document).ready(function() {
-    // Interceptamos el evento submit
-    $('.form1').on('submit',function() {
-  // Enviamos el formulario usando AJAX
-          $.ajax({
-              type: 'POST',
-              url: $(this).attr('action'),
-              data: $(this).serialize(),
-            // Mostramos un mensaje con la respuesta de PHP
-              success: function() {
-                alert('Valor adicional editado');
-                $('.modal').modal('hide');
-              }
-          })
-          return false;
-      });
+<script>
+  $(document).ready(function() {
+  // Interceptamos el evento submit
+  $('.form1').on('submit',function() {
+// Enviamos el formulario usando AJAX
+        $.ajax({
+            type: 'POST',
+            url: $(this).attr('action'),
+            data: $(this).serialize(),
+          // Mostramos un mensaje con la respuesta de PHP
+            success: function() {
+              alert('Valor adicional editado');
+              $('.modal').modal('hide');
+            }
+        })
+        return false;
     });
-  </script> -->
+  });
+</script>

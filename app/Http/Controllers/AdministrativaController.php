@@ -94,7 +94,7 @@ class AdministrativaController extends Controller
        $administrativa['departamento_id'] = $request->departamento;
        $administrativa['municipio'] = $request->municipio;
        $administrativa['tipo_zona'] = $request->zona;
-       $administrativa['valor_contrato_inicial'] = str_replace(',','',$request->contrato_inicial);
+       $administrativa['valor_contrato_inicial'] = $request->contrato_inicial;
        $administrativa['valor_iva'] = str_replace('.','',$request->iva);
        $administrativa['valor_contrato_final'] =str_replace('.','',$request->contrato_final);
        $administrativa['plan_pago'] = $request->plan_pago;
@@ -304,7 +304,7 @@ class AdministrativaController extends Controller
        $administrativa['departamento_id'] = $request->departamento;
        $administrativa['municipio'] = $request->municipio;
        $administrativa['tipo_zona'] = $request->zona;
-       $administrativa['valor_contrato_inicial'] = str_replace(',','',$request->valor_contrato_inicial);
+       $administrativa['valor_contrato_inicial'] = $request->valor_contrato_inicial;
        $administrativa['valor_iva'] = str_replace('.','',$request->iva);
        $administrativa['valor_contrato_final'] =str_replace('.','',$request->contrato_final);
        $administrativa['plan_pago'] = $request->plan_pago;

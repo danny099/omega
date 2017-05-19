@@ -122,13 +122,13 @@ class ConsignacionController extends Controller
       public function editar(Request $request)
       {
         $input = $request->all();
+
         // $adicional = Valor_adicional::findOrFail($id);
         // $administrativa = Administrativa::findOrFail($adicional->administrativa_id);
 
         for ($a=0; $a<count($input['consignacion']['fecha_pago']); $a++){
 
-
-          $consignacion = Valor_adicional::findOrFail($request->consignacion['id'][$a]);
+          $consignacion = Consignacion::findOrFail($input['consignacion']['id'][$a]);
           $administrativa = Administrativa::findOrFail($consignacion->administrativa_id);
 
           if ($administrativa->saldo > 0) {
@@ -139,13 +139,13 @@ class ConsignacionController extends Controller
             $administrativa->save();
 
           }
-          $datos['fecha_pago'] = $input['adicional']['fecha_pago'][$a];
-          $datos['valor'] = str_replace(',','',$input['adicional']['valor'][$a]);
-          $datos['observaciones'] = $input['adicional']['observaciones'][$a];
+          $datos['fecha_pago'] = $input['consignacion']['fecha_pago'][$a];
+          $datos['valor'] = str_replace(',','',$input['consignacion']['valor'][$a]);
+          $datos['observaciones'] = $input['consignacion']['observaciones'][$a];
 
 
 
-          $adicional->update($datos);
+          $consignacion->update($datos);
 
         }
 

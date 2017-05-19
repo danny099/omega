@@ -49,8 +49,8 @@
 
                 <div class="col-md-3">
                   <div class="form-group">
-                    
-                    {{ number_format($administrativa->valor_contrato_inicial,0,",",".") }}
+
+                    {{$administrativa->valor_contrato_inicial}}
                   </div>
                 </div>
 

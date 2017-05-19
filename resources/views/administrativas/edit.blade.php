@@ -352,7 +352,7 @@
         </div>
         <div class="form-group">
           {!! Form::label('valor_contrato_inicial', 'Valor antes del iva') !!}
-          {!! Form::text('valor_contrato_inicial',  number_format($administrativas->valor_contrato_inicial,0) , ['class' => 'form-control' , 'required' => 'required', 'onkeypress'=>'mascara(this,cpf)', 'onkeyup'=>'calcular()', 'min'=>'0']) !!}
+          {!! Form::text('valor_contrato_inicial',  $administrativas->valor_contrato_inicial , ['class' => 'form-control' , 'required' => 'required', 'onkeypress'=>'mascara(this,cpf)', 'onkeyup'=>'calcular()', 'min'=>'0']) !!}
 
         </div>
         <div class="form-group">
@@ -382,7 +382,7 @@
         </div>
         @else
         <div class="col-md-12 div2">
-            <center><a href="{{ route('adicionales.edit', $administrativas->id) }}" class="btn btn-primary botoncito" data-toggle="modal" data-target="#myModal2" >Valor adicional</a></center>
+            <center><a href="" class="btn btn-primary botoncito" data-toggle="modal" data-target="#myModal2" >Valor adicional</a></center>
         </div>
         @endif
         @if(count($otrosis) == 0)
@@ -445,7 +445,7 @@
         </div>
         @else
         <div class="col-md-12 div2">
-            <center><a href="{{ route('consignaciones.edit', $administrativas->id) }}" class="btn btn-primary botoncito" data-toggle="modal" data-target="#myModal7">Consignaciones</a></center>
+            <center><a href="" class="btn btn-primary botoncito" data-toggle="modal" data-target="#myModal7">Consignaciones</a></center>
         </div>
         @endif
 
@@ -525,7 +525,48 @@
           <h4 class="modal-title"></h4>
         </div>
         <div class="modal-body">
-          @include('adicionales.edit')
+
+            <div class="box box-primary">
+              <div class="box-header with-border">
+                <center> <h3 class="box-title"> Editar valor adicional</h3> </center>
+              </div>
+              <div class="box-body">
+
+                <form action="{{ url('editaradicionales') }}" method="post">
+                {{ csrf_field() }}
+                @foreach($adicionales as $adici)
+                <input type="hidden" name="adicional[id][]" value="{{ $adici->id}}">
+                <div class="col-md-12">
+
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <center><label >Valor adicional</label></center>
+                      <input type="text" class="form-control" placeholder= "Valor" name="adicional[valor][]" onkeypress="mascara(this,cpf)" value="{{ number_format($adici->valor,0) }}">
+                    </div>
+                  </div>
+                  <div class="col-md-5">
+                    <div class="form-group">
+                      <center><label >Detalle</label></center>
+                      <input type="text" class="form-control" placeholder= "Detalle" name="adicional[detalle][]" value="{{ $adici->detalle }}">
+                    </div>
+                  </div>
+
+                  <div class="box-footer">
+                    <a href="{{ url('deleteadicional') }}/{{ $adici->id }}" onClick="javascript: return confirm('Esta seguro de eliminar registro?');"><i class="glyphicon glyphicon-minus-sign"></i></a>
+                  </div>
+                </div>
+
+                <!-- {!! Form::close() !!} -->
+                @endforeach
+                <div class="box-footer">
+                  <button type="submit" data-target="" data-toggle="" class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;">Editar</button>
+                </div>
+                </form>
+                <!-- <div class="box-footer">
+                  <button type="submit" data-target="" data-toggle="" class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;">Editar</button>
+                </div> -->
+              </div>
+            </div>
         </div>
         <div class="modal-footer">
         </div>
@@ -615,7 +656,71 @@
           <h4 class="modal-title"></h4>
         </div>
         <div class="modal-body">
-          @include('consignaciones.edit')
+
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <center> <h3 class="box-title"> Editar consignaiones</h3> </center>
+            </div>
+            <div class="box-body">
+                <form class="" action="{{ url('editarconsignacion') }}" method="post">
+                  {{ csrf_field() }}
+
+                @foreach($consignaciones as $consignacion)
+                {{ csrf_field() }}
+                  <div class="box-body col-md-12">
+
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        {!! Form::label('fecha_pago', 'Fecha de pago') !!}
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <input type="date" name="consignacion[fecha_pago][]" class="form-control" required="" value="{{ $consignacion->fecha_pago }}">
+                        <!-- {!! Form::date('fecha_pago', null, ['class' => 'form-control' , 'required' => 'required']) !!} -->
+                      </div>
+                    </div>
+                    <input type="hidden" name="consignacion[id][] " value="{{$consignacion->id}}">
+
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        {!! Form::label('valor', 'Valor') !!}
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <input type="text" name="consignacion[valor][]" class="form-control" onkeypress="mascara(this,cpf)" required="" value="{{ number_format($consignacion->valor,0) }}">
+
+
+                        <!-- {!! Form::number('valor', null, ['class' => 'form-control' , 'required' => 'required', 'min'=>'0']) !!} -->
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        {!! Form::label('observaciones', 'Observaciones') !!}
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <input type="text" name="consignacion[observaciones][]" class="form-control" required="" value="{{ $consignacion->observaciones}}">
+                        <!-- {!! Form::text('observaciones', null, ['class' => 'form-control' , 'required' => 'required']) !!} -->
+                      </div>
+                    </div>
+
+                  <div class="box-footer">
+                    <a href="{{ url('deleteconsignacion') }}/{{ $consignacion->id }}" onClick="javascript: return confirm('Esta seguro de eliminar registro?');"><i class="glyphicon glyphicon-minus-sign"></i></a>
+                  </div>
+                </div>
+              </div>
+                @endforeach
+                <div class="box-footer">
+                  <button type="submit" data-target="" data-toggle="" class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;">Editar</button>
+                </div>
+                </form>
+              </div>
+
+
         </div>
         <div class="modal-footer">
         </div>

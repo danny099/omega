@@ -5,7 +5,7 @@
     </div>
     <div class="box-body">
 
-      <form class="form1" action="{{ url('editaradicionales') }}" method="post">
+      <form action="{{ url('editaradicionales') }}" method="post">
       {{ csrf_field() }}
       @foreach($adicionales as $adici)
       <input type="hidden" name="adicional[id][]" value="{{ $adici->id}}">
