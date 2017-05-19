@@ -1,5 +1,51 @@
 @extends('index')
+<script type="text/javascript">
+function mascara(o,f){
+  v_obj=o;
+  v_fun=f;
+  setTimeout("execmascara()",1);
+}
+function execmascara(){
+  v_obj.value=v_fun(v_obj.value);
+}
+function cpf(v){
+  v=v.replace(/([^0-9\.]+)/g,'');
+  v=v.replace(/^[\.]/,'');
+  v=v.replace(/[\.][\.]/g,'');
+  v=v.replace(/\.(\d)(\d)(\d)/g,'.$1$2');
+  v=v.replace(/\.(\d{1,2})\./g,'.$1');
+  v = v.toString().split('').reverse().join('').replace(/(\d{3})/g,'$1,');
+  v = v.split('').reverse().join('').replace(/^[\,]/,'');
+  return v;
+}
+function calcular(){
+  var varMonto;
+  var varIva;
+  var varSubTotal;
 
+  varMonto = document.getElementById("ini").value;
+  varMonto = varMonto.replace(/[\,]/g,'');
+
+  varIva = parseFloat(varMonto) * 0.19;
+  document.getElementById("iva").value = addCommas(parseFloat(varIva)) ;
+
+  varSubTotal = parseFloat(varMonto) + parseFloat(varIva);
+  document.getElementById("fin").value = addCommas(parseFloat(varSubTotal)) ;
+
+}
+
+function addCommas(nStr){
+  nStr += '';
+  x = nStr.split('.');
+  x1 = x[0];
+  x2 = x.length > 1 ? '.' + x[1] : '';
+  var rgx = /(\d+)(\d{3})/;
+  while (rgx.test(x1)) {
+    x1 = x1.replace(rgx, '$1' + '.' + '$2');
+  }
+  return x1 + x2;
+}
+</script>
 @section('contenido')
 
   <ol class="breadcrumb">
@@ -92,7 +138,7 @@
           <div class="form-group">
             <label >Valor antes del iva</label>
 
-            <input type="number" min="0" id="ini" class="form-control" placeholder= "Ingrese valor" name="contrato_inicial" onkeyup="sumar()" required="ingrese asi sea un cero">
+            <input type="text" min="0" id="ini" class="form-control" placeholder= "Ingrese valor" name="contrato_inicial" onkeyup="calcular();"  onkeypress="mascara(this,cpf)"  onpaste="return false" required="ingrese asi sea un cero">
 
           </div>
         </div>
@@ -100,13 +146,13 @@
         <div class="col-md-4">
             <div class="form-group">
               <label >Valor iva</label>
-              <input type="number" min="0" class="form-control" id="iva" readonly="readonly" placeholder= "valor iva" name="iva"   >
+              <input type="text" min="0" class="form-control" id="iva" readonly="readonly" placeholder= "valor iva" name="iva"   >
 
             </div>
 
             <div class ="form-group">
               <label >Valor contrato final</label>
-              <input type="number" min="0" class="form-control" id="fin" readonly="readonly" placeholder= "Valor final" name="contrato_final"   >
+              <input type="text" min="0" class="form-control" id="fin" readonly="readonly" placeholder= "Valor final" name="contrato_final"   >
 
             </div>
             <div class="form-group">
@@ -322,15 +368,6 @@ $('#codigo').inputmask('CPS-9999-999');
 
 
 });
-function sumariva(){
-var valor = parseInt(document.getElementById('valor_factura').value);
-var resultado = valor*1.19;
-
-var iva = valor*0.19;
-
-document.getElementById('iva').value = iva ;
-document.getElementById('valor_total').value = resultado ;
-}
 
 </script>
 <script src="../../plugins/input-mask/jquery.inputmask.js"></script>

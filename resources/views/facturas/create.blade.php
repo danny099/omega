@@ -39,7 +39,7 @@
          </div>
          <div class="col-md-6">
            <div class="form-group">
-             {!! Form::number('valor_factura', null, ['class' => 'form-control valor_factura' , 'onKeyUp' => 'Suma()','required' => 'required', 'min'=>'0']) !!}
+             {!! Form::number('valor_factura', null, ['class' => 'form-control valor_factura' ,'required' => 'required', 'min'=>'0']) !!}
            </div>
          </div>
 
@@ -50,7 +50,7 @@
          </div>
          <div class="col-md-6">
            <div class="form-group">
-             {!! Form::number('iva', null, ['class' => 'form-control iva' ,'readonly', 'required' => 'required', 'min'=>'0']) !!}
+             {!! Form::text('iva', null, ['class' => 'form-control iva' ,'readonly', 'required' => 'required', 'min'=>'0']) !!}
            </div>
          </div>
 
@@ -61,7 +61,7 @@
          </div>
          <div class="col-md-6">
            <div class="form-group">
-             {!! Form::number('valor_total', null, ['class' => 'form-control valor_total' ,'readonly', 'required' => 'required', 'min'=>'0']) !!}
+             {!! Form::text('valor_total', null, ['class' => 'form-control valor_total' ,'readonly', 'required' => 'required', 'min'=>'0']) !!}
            </div>
          </div>
 
@@ -74,7 +74,7 @@
          <div class="col-md-6">
            <div class="form-group">
              {!! Form::number('rete_porcen', 0, ['class' => 'form-control retencionesporcen', 'min'=>'0']) !!}
-             {!! Form::number('retenciones', 0, ['class' => 'form-control retenciones', 'min'=>'0','readonly']) !!}
+             {!! Form::text('retenciones', 0, ['class' => 'form-control retenciones', 'min'=>'0','readonly']) !!}
            </div>
          </div>
 
@@ -87,7 +87,7 @@
          <div class="col-md-6">
            <div class="form-group">
              {!! Form::number('amorti_porcen', 0, ['class' => 'form-control amortizacionporcen', 'min'=>'0']) !!}
-             {!! Form::number('amortizacion', 0, ['class' => 'form-control amortizacion', 'min'=>'0','readonly']) !!}
+             {!! Form::text('amortizacion', 0, ['class' => 'form-control amortizacion', 'min'=>'0','readonly']) !!}
            </div>
          </div>
 
@@ -100,7 +100,7 @@
          <div class="col-md-6">
            <div class="form-group">
              {!! Form::number('poliza_porcen', 0, ['class' => 'form-control polizasporcen','min'=>'0' ]) !!}
-             {!! Form::number('polizas', 0, ['class' => 'form-control polizas','min'=>'0','readonly' ]) !!}
+             {!! Form::text('polizas', 0, ['class' => 'form-control polizas','min'=>'0','readonly' ]) !!}
            </div>
          </div>
 
@@ -113,7 +113,7 @@
          <div class="col-md-6">
            <div class="form-group">
              {!! Form::number('retegaran_porcen', 0, ['class' => 'form-control retegarantiaporcen', 'min'=>'0' ]) !!}
-             {!! Form::number('retegarantia', 0, ['class' => 'form-control retegarantia', 'min'=>'0','readonly' ]) !!}
+             {!! Form::text('retegarantia', 0, ['class' => 'form-control retegarantia', 'min'=>'0','readonly' ]) !!}
            </div>
          </div>
 
@@ -124,7 +124,7 @@
          </div>
          <div class="col-md-6">
            <div class="form-group">
-             {!! Form::number('valor_pagado', 0, ['class' => 'form-control valor_pagado', 'min'=>'0','readonly' ]) !!}
+             {!! Form::text('valor_pagado', 0, ['class' => 'form-control valor_pagado', 'min'=>'0','readonly' ]) !!}
            </div>
          </div>
 

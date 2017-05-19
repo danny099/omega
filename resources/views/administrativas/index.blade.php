@@ -1,6 +1,53 @@
 @extends('index')
 
 @section('scripts')
+<script type="text/javascript">
+  function mascara(o,f){
+    v_obj=o;
+    v_fun=f;
+    setTimeout("execmascara()",1);
+  }
+  function execmascara(){
+    v_obj.value=v_fun(v_obj.value);
+  }
+  function cpf(v){
+    v=v.replace(/([^0-9\.]+)/g,'');
+    v=v.replace(/^[\.]/,'');
+    v=v.replace(/[\.][\.]/g,'');
+    v=v.replace(/\.(\d)(\d)(\d)/g,'.$1$2');
+    v=v.replace(/\.(\d{1,2})\./g,'.$1');
+    v = v.toString().split('').reverse().join('').replace(/(\d{3})/g,'$1,');
+    v = v.split('').reverse().join('').replace(/^[\,]/,'');
+    return v;
+  }
+  function calcular(){
+    var varMonto;
+    var varIva;
+    var varSubTotal;
+
+    varMonto = document.getElementById("antesiva").value;
+    varMonto = varMonto.replace(/[\,]/g,'');
+
+    varIva = parseFloat(varMonto) * 0.19;
+    document.getElementById("iva").value = addCommas(parseFloat(varIva)) ;
+
+    varSubTotal = parseFloat(varMonto) + parseFloat(varIva);
+    document.getElementById("otrosi").value = addCommas(parseFloat(varSubTotal)) ;
+
+  }
+
+  function addCommas(nStr){
+    nStr += '';
+    x = nStr.split('.');
+    x1 = x[0];
+    x2 = x.length > 1 ? '.' + x[1] : '';
+    var rgx = /(\d+)(\d{3})/;
+    while (rgx.test(x1)) {
+      x1 = x1.replace(rgx, '$1' + '.' + '$2');
+    }
+    return x1 + x2;
+  }
+</script>
   <script type="text/javascript">
 
 
@@ -31,6 +78,8 @@
           }
       }
      });
+
+
         $('.valor_factura').keyup(function(){
             var valor = parseInt($(this).val());
             var resultado = valor * 1.19;

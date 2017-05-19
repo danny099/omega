@@ -18,7 +18,7 @@
             </div>
             <div class="col-md-6">
               <div class="form-group">
-                <input type="numbe" name="cuenta[porcentaje][]" class="form-control" required="" value="{{$cuenta->porcentaje}}">
+                <input type="numbe" name="cuenta[porcentaje][]" onkeypress="mascara(this,cpf)" class="form-control" required="" value="{{$cuenta->porcentaje}}">
                 <!-- {!! Form::number('cuenta[porcentaje][]', null, ['class' => 'form-control' , 'required' => 'required','min'=>'0','placeholder'=>'%']) !!} -->
               </div>
             </div>
