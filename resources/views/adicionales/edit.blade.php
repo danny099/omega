@@ -43,7 +43,6 @@
   <script>
     $(document).ready(function() {
 
-
     // Interceptamos el evento submit
     $('.form1').on('submit',function() {
   // Enviamos el formulario usando AJAX
@@ -60,6 +59,5 @@
           return false;
       });
     });
-
 
   </script>

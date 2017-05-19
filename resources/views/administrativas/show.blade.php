@@ -122,7 +122,7 @@
               <div class="form-group">
                 @foreach($adicionales as $adicional)
                   <span>{{ $adicional->detalle }}</span>
-                  <span>${{ $adicional->valor }}</span>
+                  <span>${{ number_format($adicional->valor,0,",",".") }}</span>
                   <br>
                 @endforeach
               </div>
@@ -176,7 +176,7 @@
             <div class="form-group">
               @foreach($otrosis as $otrosi)
               <span>{{ $otrosi->detalles }}</span><br>
-              <span>{{ number_format($otrosi->valor,0,",",".") }}</span><br>
+              <span>{{ number_format($otrosi->valor_tot,0,",",".") }}</span><br>
               @endforeach
             </div>
           </div>

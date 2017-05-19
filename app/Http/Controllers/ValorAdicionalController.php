@@ -108,7 +108,7 @@ class ValorAdicionalController extends Controller
 
       Session::flash('message', 'registro editado editado!');
       Session::flash('class', 'success');
-      return redirect()->route('administrativas.index');
+      // return redirect()->route('administrativas.index');
     }
 
 
@@ -139,7 +139,7 @@ class ValorAdicionalController extends Controller
           $administrativa->save();
 
         }
-        $datos1['valor'] = $input['adicional']['valor'][$a];
+        $datos1['valor'] = str_replace(',','',$input['adicional']['valor'][$a]);
         $datos1['detalle'] = $input['adicional']['detalle'][$a];
 
 
@@ -149,7 +149,7 @@ class ValorAdicionalController extends Controller
 
       Session::flash('message', 'registro editado editado!');
       Session::flash('class', 'success');
-      return redirect()->route('administrativas.index');
+      // return redirect()->route('administrativas.index');
     }
 
     /**
@@ -162,6 +162,8 @@ class ValorAdicionalController extends Controller
     {
       $adicional = Valor_adicional::findOrFail($id);
       $administrativas = Administrativa::findOrFail($adicional->administrativa_id);
+
+
       $nuevo_saldo = $administrativas->saldo - $adicional->valor;
       $administrativas->saldo = $nuevo_saldo;
       $nuevo_total = $administrativas->valor_total_contrato - $adicional->valor;

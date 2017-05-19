@@ -48,7 +48,7 @@ class OtrosiController extends Controller
       $datos['valor_tot'] = str_replace('.','',$request->valor_tot);
       $datos['detalles'] =  $request->detalles;
       $datos['administrativa_id'] = $request->administrativa_id;
-      
+
       $id = $request->administrativa_id;
 
 
@@ -118,20 +118,20 @@ class OtrosiController extends Controller
       $otrosi = Otrosi::findOrFail($id);
       $administrativa = Administrativa::findOrFail($otrosi->administrativa_id);
 
-      
+
       $administrativa->recordar = $request->recordarme;
       $administrativa->save();
 
       if ( $administrativa->saldo > 0) {
-        if ($administrativa->saldo > $otrosi->valor) {
-          $resta = $administrativa->saldo - $datos['valor'];
-          $nuevo_saldo = $resta + $datos['valor'];
+        if ($administrativa->saldo > $otrosi->valor_tot) {
+          $resta = $administrativa->saldo - $otrosi->valor_tot;
+          $nuevo_saldo = $resta + $datos['valor_tot'];
           $administrativa->saldo = $nuevo_saldo;
           $administrativa->save();
         }
         else {
-          $resta = $datos['valor'] - $administrativa->saldo ;
-          $nuevo_saldo = $resta + $datos['valor'];
+          $resta =$otrosi->valor_tot - $administrativa->saldo ;
+          $nuevo_saldo = $resta + $datos['valor_tot'];
           $administrativa->saldo = $nuevo_saldo;
           $administrativa->save();
         }
@@ -156,12 +156,12 @@ class OtrosiController extends Controller
       $otrosi = Otrosi::findOrFail($id);
       $administrativas = Administrativa::findOrFail($otrosi->administrativa_id);
 
-      $administrativa->recordar = 1;
-      $administrativa->save();
+      $administrativas->recordar = 1;
+      $administrativas->save();
 
-      $nuevo_saldo = $administrativas->saldo - $otrosi->valor;
+      $nuevo_saldo = $administrativas->saldo - $otrosi->valor_tot;
       $administrativas->saldo = $nuevo_saldo;
-      $nuevo_total = $administrativas->valor_total_contrato - $otrosi->valor;
+      $nuevo_total = $administrativas->valor_total_contrato - $otrosi->valor_tot;
       $administrativas->valor_total_contrato = $nuevo_total;
       $administrativas->save();
       $otrosi->delete();

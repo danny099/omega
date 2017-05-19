@@ -333,7 +333,12 @@ class AdministrativaController extends Controller
     // metodo que permite eliminar un registro de acuerdo a su id
    public function destroy($id)
    {
+     $observacion = Observacion::where('observacion.administrativa_id', '=', $id)->get();
+     foreach ($observacion as $key => $obs) {
 
+      $obs->delete();
+
+     }
      $otrosis = Otrosi::where('otrosi.administrativa_id', '=', $id)->get();
      foreach ($otrosis as $key => $otro) {
 

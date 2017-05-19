@@ -7,7 +7,7 @@
 
      <!-- /.box-header -->
      <!-- form start -->
-       {!! Form::open(['class'=>'form1','url' => 'facturas']) !!}
+       {!! Form::open(['url' => 'facturas']) !!}
        {{ csrf_field() }}
        <div class="box-body col-md-6">
          <br>

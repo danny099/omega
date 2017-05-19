@@ -44,8 +44,8 @@ class FacturaController extends Controller
 
       if ($request->valor_total <= $administrativa->saldo) {
 
-        $datos['num_factura'] = $request->num_factura
-        $datos['fecha_factura'] = $request->fecha_factura
+        $datos['num_factura'] = $request->num_factura;
+        $datos['fecha_factura'] = $request->fecha_factura;
         $datos['valor_factura'] = str_replace(',','',$request->valor_factura);
         $datos['iva'] =  str_replace('.','',$request->iva);
         $datos['valor_total'] = str_replace('.','',$request->valor_total);
@@ -61,7 +61,7 @@ class FacturaController extends Controller
         $datos['fecha_pago'] = $request->fecha_pago;
         $datos['observaciones'] = $request->observaciones;
         $datos['administrativa_id'] = $request->administrativa_id;
-        
+
         Factura::create($datos); //funcion para crear el registro
 
         $facturas = Factura::all();//funcion para recuperar todos los registros en la base de datos
