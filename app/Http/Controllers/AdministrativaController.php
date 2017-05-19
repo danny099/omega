@@ -100,6 +100,7 @@ class AdministrativaController extends Controller
        $administrativa['plan_pago'] = $request->plan_pago;
        $administrativa['saldo'] =  $administrativa['valor_contrato_final'];
        $administrativa['valor_total_contrato'] =  $administrativa['valor_contrato_final'];
+       $administrativa['recordar'] = 1;
 
 
 

@@ -132,7 +132,7 @@ class ValorAdicionalController extends Controller
 
         $datos['detalle'] = $input['adicional']['detalle'][$a];
 
-        $adicional = Valor_adicional::findOrFail($request->adicional['valor'][$a]);
+        $adicional = Valor_adicional::findOrFail($request->adicional['id'][$a]);
         $administrativa = Administrativa::findOrFail($adicional->administrativa_id);
 
         if ($administrativa->valor_total_contrato > $request->adicional['valor'][$a]) {
