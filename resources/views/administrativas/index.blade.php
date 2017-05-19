@@ -35,6 +35,7 @@
     document.getElementById("otrosi").value = addCommas(parseFloat(varSubTotal)) ;
 
   }
+  
 
   function addCommas(nStr){
     nStr += '';
