@@ -47,7 +47,7 @@ class OtrosiController extends Controller
       $datos['iva'] = str_replace('.','',$request->iva);
       $datos['valor_tot'] = str_replace('.','',$request->valor_tot);
       $datos['detalles'] =  $request->detalles;
-      $datos['administrativa_id'] = $request->administrativa_id;
+      $datos['administrativa_id'] = $request->codigo_proyecto;
       $id = $request->administrativa_id;
 
 
@@ -109,27 +109,31 @@ class OtrosiController extends Controller
     public function update(Request $request, $id)
     {
       $input = $request->all();
+      $datos['valor'] = str_replace(',','',$request->valor);
+      $datos['iva'] = str_replace('.','',$request->iva);
+      $datos['valor_tot'] = str_replace('.','',$request->valor_tot);
+      $datos['detalles'] =  $request->detalles;
 
       $otrosi = Otrosi::findOrFail($id);
       $administrativa = Administrativa::findOrFail($otrosi->administrativa_id);
 
       if ( $administrativa->saldo > 0) {
         if ($administrativa->saldo > $otrosi->valor) {
-          $resta = $administrativa->saldo - $otrosi->valor;
-          $nuevo_saldo = $resta + $request->valor;
+          $resta = $administrativa->saldo - $datos['valor'];
+          $nuevo_saldo = $resta + $datos['valor'];
           $administrativa->saldo = $nuevo_saldo;
           $administrativa->save();
         }
         else {
-          $resta = $otrosi->valor - $administrativa->saldo ;
-          $nuevo_saldo = $resta + $request->valor;
+          $resta = $datos['valor'] - $administrativa->saldo ;
+          $nuevo_saldo = $resta + $datos['valor'];
           $administrativa->saldo = $nuevo_saldo;
           $administrativa->save();
         }
 
       }
 
-      $otrosi->update($input);
+      $otrosi->update($datos);
 
       Session::flash('message', 'registro editado editado!');
       Session::flash('class', 'success');

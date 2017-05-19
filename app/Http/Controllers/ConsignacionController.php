@@ -37,9 +37,16 @@ class ConsignacionController extends Controller
     public function store(Request $request)
     {
 
-        $input = $request->all(); //funcion para sacar todos los valores almacenados en los input
+        $input = $request->all();
+
+        $datos['fecha_pago'] = $request->fecha_pago;
+        $datos['valor'] = str_replace(',','',$request->valor);
+        $datos['observaciones'] = $request->observaciones;
+        $datos['administrativa_id'] = $request->administrativa_id ;
+
+
         $administrativa = Administrativa::find($request->administrativa_id);
-        Consignacion::create($input);
+        Consignacion::create($datos);
         Session::flash('message', 'El valor de la consignacion creada!');
         Session::flash('class', 'success');
         return redirect()->route('administrativas.index');
@@ -133,7 +140,7 @@ class ConsignacionController extends Controller
 
           }
           $datos['fecha_pago'] = $input['adicional']['fecha_pago'][$a];
-          $datos['valor'] = $input['adicional']['valor'][$a];
+          $datos['valor'] = str_replace(',','',$input['adicional']['valor'][$a]);
           $datos['observaciones'] = $input['adicional']['observaciones'][$a];
 
 

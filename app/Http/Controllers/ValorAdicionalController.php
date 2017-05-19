@@ -50,7 +50,7 @@ class ValorAdicionalController extends Controller
             if (!empty($input['adicional']['valor'][$a]) &&
                 !empty($input['adicional']['detalle'][$a])) {
 
-                  $datos1['valor'] = $input['adicional']['valor'][$a];
+                  $datos1['valor'] = str_replace(',','',$input['adicional']['valor'][$a]);
                   $datos1['detalle'] = $input['adicional']['detalle'][$a];
                   $datos1['administrativa_id'] = $input['codigo_proyecto'];
 

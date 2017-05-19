@@ -37,12 +37,21 @@ class Cuenta_cobroController extends Controller
      */
     public function store(Request $request)
     {
-      $input = $request->all(); //funcion para sacar todos los valores almacenados en los input
+      $input = $request->all();
+
+      $datos['porcentaje'] = $request->porcentaje;
+      $datos['valor'] = str_replace(',','',$request->valor);
+      $datos['fecha_cuenta_cobro'] = $request->fecha_cuenta_cobro;
+      $datos['fecha_pago'] = $request->fecha_pago;
+      $datos['numero_cuenta_cobro'] = $request->numero_cuenta_cobro;
+      $datos['observaciones'] = $request->observaciones;
+      $datos['administrativa_id'] = $request->administrativa_id;
+
       $administrativa = Administrativa::find($request->administrativa_id);
 
       // if ($request->valor <= $administrativa->saldo){
 
-        Cuenta_cobro::create($input); //funcion para crear el registro
+        Cuenta_cobro::create($datos); //funcion para crear el registro
 
         // $cobros = Cuenta_cobro::all();//funcion para recuperar todos los registros en la base de datos
         //
@@ -128,7 +137,7 @@ class Cuenta_cobroController extends Controller
 
           }
           $datos['porcentaje'] = $input['cuenta']['porcentaje'][$a];
-          $datos['valor'] = $input['cuenta']['valor'][$a];
+          $datos['valor'] =  str_replace(',','',$input['cuenta']['valor'][$a]);
           $datos['fecha_cuenta_cobro'] = $input['cuenta']['fecha_cuenta_cobro'][$a];
           $datos['fecha_pago'] = $input['cuenta']['fecha_pago'][$a];
           $datos['numero_cuenta_cobro'] = $input['cuenta']['numero_cuenta_cobro'][$a];
