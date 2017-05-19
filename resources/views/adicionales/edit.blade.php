@@ -14,7 +14,7 @@
         <div class="col-md-3">
           <div class="form-group">
             <center><label >Valor adicional</label></center>
-            <input type="text" class="form-control" placeholder= "Valor" name="adicional[valor][]" value="{{ $adici->valor }}">
+            <input type="text" class="form-control" placeholder= "Valor" name="adicional[valor][]" onkeypress="mascara(this,cpf)" value="{{ $adici->valor }}">
           </div>
         </div>
         <div class="col-md-5">
