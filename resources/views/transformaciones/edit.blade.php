@@ -72,7 +72,7 @@
       </form>
     </div>
   </div>
-<!-- 
+
     <script>
       $(document).ready(function() {
 
@@ -92,4 +92,4 @@
             return false;
         });
       });
-    </script> -->
+    </script>

@@ -97,7 +97,7 @@ class Pu_finalController extends Controller
 
        for ($i=0; $i<count($input['pu_final']['descripcion_pu']); $i++) {
 
-          $pu = Pu_final::findOrFail($request->pu_final['id'][$a]);
+          $pu = Pu_final::findOrFail($request->pu_final['id'][$i]);
 
           $datos['descripcion'] = $input['pu_final']['descripcion_pu'][$i];
           $datos['tipo'] = $input['pu_final']['tipo_pu'][$i];

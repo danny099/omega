@@ -40,11 +40,26 @@
       </div> -->
     </div>
   </div>
-@section('scripts')
-<script>
-  $(document).ready(function() {
-  // Interceptamos el evento submit
+  <script>
+    $(document).ready(function() {
 
-  });
-</script>
-@endsection
+
+    // Interceptamos el evento submit
+    $('.form1').on('submit',function() {
+  // Enviamos el formulario usando AJAX
+          $.ajax({
+              type: 'POST',
+              url: $(this).attr('action'),
+              data: $(this).serialize(),
+            // Mostramos un mensaje con la respuesta de PHP
+              success: function() {
+                alert('Alcance de distribucion editado');
+                $('.modal').modal('hide');
+              }
+          })
+          return false;
+      });
+    });
+
+
+  </script>

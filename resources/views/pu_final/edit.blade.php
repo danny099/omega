@@ -62,13 +62,10 @@
   </div>
 </div>
 
-<!-- <script>
+<script>
   $(document).ready(function() {
 
-  function eliminar(){
-    var agree=confirm("¿Realmente desea eliminarlo? ");
-    $('.modal').modal('hide');
-  }
+
   // Interceptamos el evento submit
   $('.form1').on('submit',function() {
 // Enviamos el formulario usando AJAX
@@ -85,6 +82,6 @@
         return false;
     });
   });
- -->
 
-<!-- </script> -->
+
+</script>

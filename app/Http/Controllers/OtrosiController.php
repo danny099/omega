@@ -117,6 +117,10 @@ class OtrosiController extends Controller
       $otrosi = Otrosi::findOrFail($id);
       $administrativa = Administrativa::findOrFail($otrosi->administrativa_id);
 
+      
+      $administrativa->recordar = $request->recordarme;
+      $administrativa->save();
+
       if ( $administrativa->saldo > 0) {
         if ($administrativa->saldo > $otrosi->valor) {
           $resta = $administrativa->saldo - $datos['valor'];
