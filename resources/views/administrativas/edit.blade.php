@@ -43,7 +43,21 @@
       document.getElementById("fin").value = addCommas(parseFloat(varSubTotal)) ;
 
     }
+    function calcular2(){
+      var varMonto;
+      var varIva;
+      var varSubTotal;
 
+      varMonto = document.getElementById("antesiva").value;
+      varMonto = varMonto.replace(/[\,]/g,'');
+
+      varIva = parseFloat(varMonto) * 0.19;
+      document.getElementById("iva2").value = addCommas(parseFloat(varIva)) ;
+
+      varSubTotal = parseFloat(varMonto) + parseFloat(varIva);
+      document.getElementById("otrosi").value = addCommas(parseFloat(varSubTotal)) ;
+
+    }
     function addCommas(nStr){
       nStr += '';
       x = nStr.split('.');
@@ -115,15 +129,6 @@
 
      });
 
-     $('.antesiva').keyup(function(){
-         var valor = parseInt($(this).val());
-         var resultado = valor * 1.19;
-         var iva = valor*0.19;
-
-         $('.iva').val(iva);
-         $('.otrosi').val(resultado);
-     });
-   });
 
       $('.valor_factura').keyup(function(){
           var valor = parseInt($(this).val());
