@@ -62,7 +62,7 @@
   </div>
 </div>
 
-<script>
+<!-- <script>
   $(document).ready(function() {
 
 
@@ -82,6 +82,6 @@
         return false;
     });
   });
+ -->
 
-
-</script>
+<!-- </script> -->

@@ -255,6 +255,8 @@ class AdministrativaController extends Controller
       //  funcion que con el codigo capturado busca en la base de datos el registro a editar
       $administrativas = Administrativa::find($id);
 
+
+
       // $admin  = $administrativas->id;
       $departamentos = Departamento::all();
       $clientes =Cliente::all();
@@ -290,7 +292,9 @@ class AdministrativaController extends Controller
    public function update(Request $request, $id)
    {
        $input = $request->all();
+
        $depart = $request->departamento;
+
 
        $administrativa['codigo_proyecto'] = $request->codigo;
        $administrativa['nombre_proyecto'] = $request->nombre;
@@ -306,10 +310,9 @@ class AdministrativaController extends Controller
        $administrativa['plan_pago'] = $request->plan_pago;
        $administrativa['saldo'] =  $administrativa['valor_contrato_final'];
        $administrativa['valor_total_contrato'] =  $administrativa['valor_contrato_final'];
+
+
        $administrativas = Administrativa::findOrFail($id);
-
-
-
 
        //  condicional que permite saber si el codigo de proyecto que se envio es igual a uno ya exitente cumpla con la condicion de no permitir actualizar el codigo por uno ya existent
        $codigorepe = Administrativa::where('codigo_proyecto',$request->codigo)->get();

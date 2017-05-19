@@ -137,38 +137,42 @@ class FacturaController extends Controller
         $factura = Factura::findOrFail($id);
         $administrativa = Administrativa::findOrFail($factura->administrativa_id);
 
+        // if ($administrativa->saldo > $request->valor_total ) {
+        //
+        //   $nuevo_s = $administrativa->saldo - $factura->valor_total;
+        //   $suma  = $nuevo_s + $request->valor_total;
+        //   $administrativa->saldo = $suma;
+        //   $administrativa->save();
+        //
+        //   $factura->update($input);
+        //
+        //   Session::flash('message', 'registro editado editado!');
+        //   Session::flash('class', 'success');
+        // }else {
+        //   Session::flash('message', 'el valor no puede ser mayor al saldo!');
+        //   Session::flash('class', 'success');
+        // }
+
         if ($administrativa->saldo = 0){
 
           $nuevo_s = $administrativa->saldo + $request->valor_total;
           $administrativa->saldo = $nuevo_s;
           $administrativa->save();
 
-        }elseif ($administrativa->saldo < $request->valor_total){
+        }elseif ($administrativa->saldo >= $request->valor_total){
 
-          $nuevo_s = $request->valor_total - $administrativa->saldo;
-          $administrativa->saldo = $nuevo_s;
-          $administrativa->save();
-
-        }elseif ($administrativa->saldo > $request->valor_total){
-
-          $nuevo_s = $administrativa->saldo - $factura->valor_total;
-          $nuevo = $nuevo_s + $administrativa->saldo;
-          $administrativa->saldo = $nuevo;
+          $nuevo_s = $administrativa->saldo - $request->valor_total;
+          $suma = $administrativa->saldo + $nuevo_s;
+          $administrativa->saldo = $suma;
           $administrativa->save();
 
         }
+        else {
 
-        $factura->update($input);
-
-        Session::flash('message', 'registro editado editado!');
-        Session::flash('class', 'success');
-        // return redirect()->route('administrativas.index');
-
-      // }else {
-      //
-      //   Session::flash('message', 'El valor de la factura es mayo al saldo!');
-      //   Session::flash('class', 'danger');
-      // }
+        Session::flash('message', 'El valor de la factura es mayo al saldo!');
+        Session::flash('class', 'danger');
+        return redirect()->route('administrativas.index');
+        }
 
     }
 

@@ -16,7 +16,7 @@
   </style>
   <body>
     <center><h1>Datos del Pryecto</h1></center>
-    <table>
+    <table border="1">
       <thead>
         <tr>
           <th></th>
@@ -42,7 +42,13 @@
           <td>Fecha del contrato</td>
           <td>{{ $administrativa->fecha_contrato}}</td>
           <td>valor Adicional</td>
-          <td></td>
+          <td>
+            @foreach($adicionales as $adici)
+              {{ $adici->valor }}
+              {{ $adici->detalle }}
+              <br>
+            @endforeach
+          </td>
         </tr>
         <tr>
           <td>Cliente</td>
@@ -54,7 +60,13 @@
             @endif
           </td>
           <td>Otro si</td>
-          <td></td>
+          <td>
+            @foreach($otrosis as $otro)
+              {{ $otro->valor }}
+              {{ $otro->detalles }}
+              <br>
+            @endforeach
+          </td>
 
         </tr>
         <tr>
@@ -81,5 +93,75 @@
     </table>
     <center><h2>Saldo</h2></center>
     <center><span>{{ $administrativa->saldo }}</span></center>
+
+    <br>
+    <br>
+    <center><h2>Alcances</h2></center>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Descripcion</th>
+          <th>Tipo</th>
+          <th>Capacidad</th>
+          <th>Unidad</th>
+          <th>Cantidad</th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach($transformaciones as $transfor)
+          <tr>
+            <td>{{ $transfor->descripcion }}</td>
+            <td>{{ $transfor->tipo }}</td>
+            <td>{{ $transfor->capacidad }}</td>
+            <td>{{ $transfor->unidad }}</td>
+            <td>{{ $transfor->cantidad }}</td>
+          </tr>
+        @endforeach
+      </tbody>
+    </table>
+    <br>
+    <br>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Descripcion</th>
+          <th>Tipo</th>
+          <th>Unidad</th>
+          <th>Cantidad</th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach($distribuciones as $distri)
+          <tr>
+            <td>{{ $distri->descripcion }}</td>
+            <td>{{ $distri->tipo }}</td>
+            <td>{{ $distri->unidad }}</td>
+            <td>{{ $distri->cantidad }}</td>
+          </tr>
+        @endforeach
+      </tbody>
+    </table>
+    <br>
+    <br>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Descripcion</th>
+          <th>Tipo</th>
+          <th>Unidad</th>
+          <th>Cantidad</th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach($pu_finales as $pu)
+          <tr>
+            <td>{{ $distri->descripcion }}</td>
+            <td>{{ $distri->tipo }}</td>
+            <td>{{ $distri->unidad }}</td>
+            <td>{{ $distri->cantidad }}</td>
+          </tr>
+        @endforeach
+      </tbody>
+    </table>
   </body>
 </html>

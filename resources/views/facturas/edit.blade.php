@@ -158,7 +158,7 @@
   </div>
 </div>
 
-<script>
+<!-- <script>
   $(document).ready(function() {
 
   // Interceptamos el evento submit
@@ -178,4 +178,4 @@
     });
   });
 
-</script>
+</script> -->

@@ -122,6 +122,21 @@ class OtrosiController extends Controller
       $administrativa->recordar = $request->recordarme;
       $administrativa->save();
 
+      if ($administrativa->valor_total_contrato > $datos['valor_tot'] ) {
+
+        $valor1 = $administrativa->valor_total_contrato - $otrosi->valor_tot;
+        $valor2 = $valor1 + $datos['valor_tot'];
+        $administrativa->valor_total_contrato = $valor2;
+        $administrativa->save();
+
+      }else {
+        $valor1 = $otrosi->valor_tot - $administrativa->valor_total_contrato;
+        $valor2 = $valor1 + $datos['valor_tot'];
+        $administrativa->valor_total_contrato = $valor2;
+        $administrativa->save();
+      }
+
+
       if ( $administrativa->saldo > 0) {
         if ($administrativa->saldo > $otrosi->valor_tot) {
           $resta = $administrativa->saldo - $otrosi->valor_tot;
@@ -161,7 +176,15 @@ class OtrosiController extends Controller
 
       $nuevo_saldo = $administrativas->saldo - $otrosi->valor_tot;
       $administrativas->saldo = $nuevo_saldo;
+
+      $administrativas->save();
+
       $nuevo_total = $administrativas->valor_total_contrato - $otrosi->valor_tot;
+
+      $nuevo_total = $administrativas->valor_total_contrato - $otrosi->valor;
+
+      $nuevo_total = $administrativas->valor_total_contrato - $otrosi->valor_tot;
+
       $administrativas->valor_total_contrato = $nuevo_total;
       $administrativas->save();
       $otrosi->delete();
