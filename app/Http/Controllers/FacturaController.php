@@ -44,7 +44,25 @@ class FacturaController extends Controller
 
       if ($request->valor_total <= $administrativa->saldo) {
 
-        Factura::create($input); //funcion para crear el registro
+        $datos['num_factura'] = $request->num_factura
+        $datos['fecha_factura'] = $request->fecha_factura
+        $datos['valor_factura'] = str_replace(',','',$request->valor_factura);
+        $datos['iva'] =  str_replace('.','',$request->iva);
+        $datos['valor_total'] = str_replace('.','',$request->valor_total);
+        $datos['rete_porcen'] = str_replace('.','',$request->rete_porcen);
+        $datos['retenciones'] = str_replace('.','',$request->retenciones);
+        $datos['amorti_porcen'] = str_replace('.','',$request->amorti_porcen);
+        $datos['amortizacion'] = str_replace('.','',$request->amortizacion);
+        $datos['poliza_porcen'] = str_replace('.','',$request->poliza_porcen);
+        $datos['polizas'] = str_replace('.','',$request->polizas);
+        $datos['retegaran_porcen'] =str_replace('.','',$request->retegaran_porcen);
+        $datos['retegarantia'] = str_replace('.','',$request->retegarantia);
+        $datos['valor_pagado'] = str_replace('.','',$request->valor_pagado);
+        $datos['fecha_pago'] = $request->fecha_pago;
+        $datos['observaciones'] = $request->observaciones;
+        $datos['administrativa_id'] = $request->administrativa_id;
+        
+        Factura::create($datos); //funcion para crear el registro
 
         $facturas = Factura::all();//funcion para recuperar todos los registros en la base de datos
 
@@ -115,7 +133,7 @@ class FacturaController extends Controller
     public function update(Request $request, $id)
     {
         $input = $request->all();
-      
+
         $factura = Factura::findOrFail($id);
         $administrativa = Administrativa::findOrFail($factura->administrativa_id);
 
