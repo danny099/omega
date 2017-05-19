@@ -495,26 +495,6 @@
         </div>
       </div>
 
-      <hr>
-    </div>
-  </div>
-  <!-- inicio modal  -->
-  <div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-    <div class="modal-dialog modal-lg3">
-      <div class="modal-content ">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title"></h4>
-        </div>
-        <div class="modal-body">
-          @include('facturas.index')
-        </div>
-        <div class="modal-footer">
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- fin modal -->
 
   <!-- inicio modal2  -->
   <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -574,6 +554,25 @@
     </div>
   </div>
   <!-- fin modal -->
+  <!-- inicio modal  -->
+  <div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg3">
+      <div class="modal-content ">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"></h4>
+        </div>
+        <div class="modal-body">
+          @include('facturas.index')
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- fin modal -->
+
+
 
   <!-- inicio modal3  -->
   <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -647,87 +646,7 @@
   </div>
   <!-- fin modal -->
 
-  <!-- inicio modal7  -->
-  <div class="modal fade" id="myModal7" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog " role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title"></h4>
-        </div>
-        <div class="modal-body">
 
-          <div class="box box-primary">
-            <div class="box-header with-border">
-              <center> <h3 class="box-title"> Editar consignaiones</h3> </center>
-            </div>
-            <div class="box-body">
-                <form class="" action="{{ url('editarconsignacion') }}" method="post">
-                  {{ csrf_field() }}
-
-                @foreach($consignaciones as $consignacion)
-                {{ csrf_field() }}
-                  <div class="box-body col-md-12">
-
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        {!! Form::label('fecha_pago', 'Fecha de pago') !!}
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <input type="date" name="consignacion[fecha_pago][]" class="form-control" required="" value="{{ $consignacion->fecha_pago }}">
-                        <!-- {!! Form::date('fecha_pago', null, ['class' => 'form-control' , 'required' => 'required']) !!} -->
-                      </div>
-                    </div>
-                    <input type="hidden" name="consignacion[id][] " value="{{$consignacion->id}}">
-
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        {!! Form::label('valor', 'Valor') !!}
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <input type="text" name="consignacion[valor][]" class="form-control" onkeypress="mascara(this,cpf)" required="" value="{{ number_format($consignacion->valor,0) }}">
-
-
-                        <!-- {!! Form::number('valor', null, ['class' => 'form-control' , 'required' => 'required', 'min'=>'0']) !!} -->
-                      </div>
-                    </div>
-
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        {!! Form::label('observaciones', 'Observaciones') !!}
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <input type="text" name="consignacion[observaciones][]" class="form-control" required="" value="{{ $consignacion->observaciones}}">
-                        <!-- {!! Form::text('observaciones', null, ['class' => 'form-control' , 'required' => 'required']) !!} -->
-                      </div>
-                    </div>
-
-                  <div class="box-footer">
-                    <a href="{{ url('deleteconsignacion') }}/{{ $consignacion->id }}" onClick="javascript: return confirm('Esta seguro de eliminar registro?');"><i class="glyphicon glyphicon-minus-sign"></i></a>
-                  </div>
-                </div>
-              </div>
-                @endforeach
-                <div class="box-footer">
-                  <button type="submit" data-target="" data-toggle="" class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;">Editar</button>
-                </div>
-                </form>
-              </div>
-
-
-        </div>
-        <div class="modal-footer">
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- fin modal -->
 
   <!-- inicio modal8  -->
 
@@ -777,6 +696,27 @@
 
 
           {!! Form::close() !!}
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- fin modal -->
+  <!-- inicio modal7  -->
+  <div class="modal fade" id="myModal7" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog " role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"></h4>
+        </div>
+        <div class="modal-body">
+
+          @include('consignaciones.edit')
+
+
+
         </div>
         <div class="modal-footer">
         </div>
