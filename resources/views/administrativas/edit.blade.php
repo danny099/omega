@@ -495,75 +495,84 @@
         </div>
       </div>
 
-
-  <!-- inicio modal2  -->
-  <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog modal-lg" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title"></h4>
-        </div>
-        <div class="modal-body">
-
-            <div class="box box-primary">
-              <div class="box-header with-border">
-                <center> <h3 class="box-title"> Editar valor adicional</h3> </center>
-              </div>
-              <div class="box-body">
-
-                <form action="{{ url('editaradicionales') }}" method="post">
-                {{ csrf_field() }}
-                @foreach($adicionales as $adici)
-                <input type="hidden" name="adicional[id][]" value="{{ $adici->id}}">
-                <div class="col-md-12">
-
-                  <div class="col-md-3">
-                    <div class="form-group">
-                      <center><label >Valor adicional</label></center>
-                      <input type="text" class="form-control" placeholder= "Valor" name="adicional[valor][]" onkeypress="mascara(this,cpf)" value="{{ number_format($adici->valor,0) }}">
-                    </div>
-                  </div>
-                  <div class="col-md-5">
-                    <div class="form-group">
-                      <center><label >Detalle</label></center>
-                      <input type="text" class="form-control" placeholder= "Detalle" name="adicional[detalle][]" value="{{ $adici->detalle }}">
-                    </div>
-                  </div>
-
-                  <div class="box-footer">
-                    <a href="{{ url('deleteadicional') }}/{{ $adici->id }}" onClick="javascript: return confirm('Esta seguro de eliminar registro?');"><i class="glyphicon glyphicon-minus-sign"></i></a>
-                  </div>
-                </div>
-
-                <!-- {!! Form::close() !!} -->
-                @endforeach
-                <div class="box-footer">
-                  <button type="submit" data-target="" data-toggle="" class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;">Editar</button>
-                </div>
-                </form>
-                <!-- <div class="box-footer">
-                  <button type="submit" data-target="" data-toggle="" class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;">Editar</button>
-                </div> -->
-              </div>
+      <!-- inicio modal9  -->
+      <div class="modal fade" id="myModal9" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content ">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title"></h4>
             </div>
-        </div>
-        <div class="modal-footer">
+            <div class="modal-body">
+              {!! Form::open(['class'=>'form2','url' => 'observaciones']) !!}
+              {{ csrf_field() }}
+                <div class="box-body">
+                  <div class="col-md-2">
+                    <div class="form-group">
+                      {!! Form::label('observacion', 'Observacion') !!}
+                    </div>
+                  </div>
+                  <div class="col-md-10">
+                    <div class="form-group">
+                      <td><textarea  rows="4" cols="60" name="observacion" required=""></textarea></td>
+                    </div>
+                  </div>
+                  <input type="hidden" name="administrativa_id" value="{{$administrativas->id}}">
+                  <div class="box-footer">
+                    <button type="submit" data-target="" data-toggle="" class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;">Crear</button>
+                  </div>
+                </div>
+
+
+              {!! Form::close() !!}
+            </div>
+            <div class="modal-footer">
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-  <!-- fin modal -->
-  <!-- inicio modal  -->
-  <div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-    <div class="modal-dialog modal-lg3">
+      <!-- fin modal -->
+
+
+
+  <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg">
       <div class="modal-content ">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title"></h4>
         </div>
         <div class="modal-body">
-          @include('facturas.index')
+          <form action="{{ url('editaradicionales') }}" method="post">
+            <form action="{{ url('editaradicionales') }}" method="post">
+            {{ csrf_field() }}
+            @foreach($adicionales as $adici)
+            <input type="hidden" name="adicional[id][]" value="{{ $adici->id}}">
+            <div class="col-md-12">
+
+              <div class="col-md-3">
+                <div class="form-group">
+                  <center><label >Valor adicional</label></center>
+                  <input type="text" class="form-control" placeholder= "Valor" name="adicional[valor][]" onkeypress="mascara(this,cpf)" value="{{ number_format($adici->valor,0) }}">
+                </div>
+              </div>
+              <div class="col-md-5">
+                <div class="form-group">
+                  <center><label >Detalle</label></center>
+                  <input type="text" class="form-control" placeholder= "Detalle" name="adicional[detalle][]" value="{{ $adici->detalle }}">
+                </div>
+              </div>
+
+              <div class="box-footer">
+                <a href="{{ url('deleteadicional') }}/{{ $adici->id }}" onClick="javascript: return confirm('Esta seguro de eliminar registro?');"><i class="glyphicon glyphicon-minus-sign"></i></a>
+              </div>
+            </div>
+
+            @endforeach
+          <div class="box-footer">
+            <button type="submit" data-target="" data-toggle="" class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;">Editar</button>
+          </div>
+          </form>
         </div>
         <div class="modal-footer">
         </div>
@@ -572,36 +581,17 @@
   </div>
   <!-- fin modal -->
 
+  <!-- inicio modal8  -->
 
-
-  <!-- inicio modal3  -->
-  <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog modal-lg2" role="document">
-      <div class="modal-content">
+  <div class="modal fade" id="myModal8" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content ">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title"></h4>
         </div>
         <div class="modal-body">
-          @include('transformaciones.edit')
-        </div>
-        <div class="modal-footer">
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- fin modal -->
-
-  <!-- inicio modal4  -->
-  <div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog modal-lg2" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title"></h4>
-        </div>
-        <div class="modal-body">
-          @include('distribuciones.edit')
+          @include('otrosi.index')
         </div>
         <div class="modal-footer">
         </div>
@@ -628,6 +618,62 @@
   </div>
   <!-- fin modal -->
 
+  <!-- inicio modal4  -->
+  <div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg2" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"></h4>
+        </div>
+        <div class="modal-body">
+          @include('distribuciones.edit')
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- fin modal -->
+
+  <!-- inicio modal3  -->
+  <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg2" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"></h4>
+        </div>
+        <div class="modal-body">
+          @include('transformaciones.edit')
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- fin modal -->
+
+  <!-- inicio modal  -->
+  <div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg3">
+      <div class="modal-content ">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"></h4>
+        </div>
+        <div class="modal-body">
+          @include('facturas.index')
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- fin modal -->
+
+
+
   <!-- inicio modal6  -->
   <div class="modal fade" id="myModal6" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog " role="document">
@@ -646,63 +692,6 @@
   </div>
   <!-- fin modal -->
 
-
-
-  <!-- inicio modal8  -->
-
-  <div class="modal fade" id="myModal8" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content ">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title"></h4>
-        </div>
-        <div class="modal-body">
-          @include('otrosi.index')
-        </div>
-        <div class="modal-footer">
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- fin modal -->
-  <!-- inicio modal9  -->
-  <div class="modal fade" id="myModal9" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content ">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title"></h4>
-        </div>
-        <div class="modal-body">
-          {!! Form::open(['class'=>'form2','url' => 'observaciones']) !!}
-          {{ csrf_field() }}
-            <div class="box-body">
-              <div class="col-md-2">
-                <div class="form-group">
-                  {!! Form::label('observacion', 'Observacion') !!}
-                </div>
-              </div>
-              <div class="col-md-10">
-                <div class="form-group">
-                  <td><textarea  rows="4" cols="60" name="observacion" required=""></textarea></td>
-                </div>
-              </div>
-              <input type="hidden" name="administrativa_id" value="{{$administrativas->id}}">
-              <div class="box-footer">
-                <button type="submit" data-target="" data-toggle="" class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;">Crear</button>
-              </div>
-            </div>
-
-
-          {!! Form::close() !!}
-        </div>
-        <div class="modal-footer">
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- fin modal -->
   <!-- inicio modal7  -->
   <div class="modal fade" id="myModal7" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog " role="document">
@@ -724,6 +713,9 @@
     </div>
   </div>
   <!-- fin modal -->
+
+
+
 @endsection
 @section('scripts')
 

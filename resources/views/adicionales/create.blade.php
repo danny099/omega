@@ -35,7 +35,7 @@
           <div class="col-md-12">
               <div class="form-group">
                 <center><label >Codigo Proyecto</label></center>
-                <select class="form-control select2" name="codigo_proyecto" style="width: 100%" id="select">
+                <select class="form-control select2" name="codigo_proyecto" style="width: 100%" id="select" required="">
                   <option value="">Seleccione..</option>
                   @foreach($codigos as $codigo)
                   <option value="{{ $codigo->id }}">{{$codigo->codigo_proyecto}}</option>
@@ -48,13 +48,13 @@
             <div class="col-md-3">
               <div class="form-group">
                 <center><label >Valor adicional</label></center>
-                <input type="text" class="form-control" placeholder= "Valor" onkeypress="mascara(this,cpf)" name="adicional[valor][]">
+                <input type="text" class="form-control" placeholder= "Valor" onkeypress="mascara(this,cpf)" name="adicional[valor][]" required="">
               </div>
             </div>
             <div class="col-md-5">
               <div class="form-group">
                 <center><label >Detalle</label></center>
-                <input type="text" class="form-control" placeholder= "Detalle" name="adicional[detalle][]">
+                <input type="text" class="form-control" placeholder= "Detalle" name="adicional[detalle][]"required="">
               </div>
             </div>
 
