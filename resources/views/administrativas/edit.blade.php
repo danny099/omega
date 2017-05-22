@@ -492,13 +492,7 @@
 
       {!! Form::close() !!}
 
-      <div class="modal fade bs-example-modal-lg" id="myModal7"  role="dialog" aria-labelledby="myLargeModalLabel">
-        <div class="modal-dialog modal-lg3" role="document">
-          <div class="modal-content">
-            @include('facturas.index')
-          </div>
-        </div>
-      </div>
+
       <!-- inicio modal -->
         <div class="modal fade bs-example-modal-lg" id="myModal2" role="dialog" aria-labelledby="myLargeModalLabel">
           <div class="modal-dialog modal-lg" role="document">
@@ -508,10 +502,16 @@
           </div>
         </div>
       <!-- fin modal -->
-
+      <div class="modal fade bs-example-modal-lg" id="myModal7"  role="dialog" aria-labelledby="myLargeModalLabel">
+        <div class="modal-dialog modal-lg3" role="document">
+          <div class="modal-content">
+            @include('facturas.index')
+          </div>
+        </div>
+      </div>
       <!-- inicio modal -->
         <div class="modal fade bs-example-modal-lg" id="myModal3"  role="dialog" aria-labelledby="myLargeModalLabel">
-          <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-dialog modal-lg3" role="document">
             <div class="modal-content">
               @include('otrosi.index')
             </div>
