@@ -24,7 +24,7 @@ class ObservacionController extends Controller
      */
     public function create()
     {
-
+      return view('observaciones.create');
     }
 
 
@@ -37,12 +37,7 @@ class ObservacionController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-        // dd($input);
-        // die();
-        // $datos['observaciones'] = $request->observaciones;
-        // $datos['administrativa_id'] =$request->administrativa_id;
-        // dd($datos);
-        // die();
+
         Observacion::create($input);
     }
 

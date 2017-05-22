@@ -24,12 +24,12 @@
               <td>{{ number_format($factura->iva,0) }}</td>
               <td>{{ number_format($factura->valor_total,0) }}</td>
               <td>
-                <a href="{{ route('facturas.edit', $factura->id) }}" data-toggle="modal" data-target="#myModal20-{{ $key }}"><i class="glyphicon glyphicon-pencil"></i></a>
+                <a href="" data-toggle="modal" data-target="#myModal20-{{ $key }}"><i class="glyphicon glyphicon-pencil"></i></a>
                 <a href="{{ url('deletefactura') }}/{{ $factura->id }}" onClick="javascript: return confirm('Esta seguro de eliminar registro?');"><i class="glyphicon glyphicon-minus-sign"></i></a>
                 <!-- inicio modal 1 -->
 
                 <div class="modal fade" id="myModal20-{{ $key }}" role="dialog" aria-labelledby="myModalLabel">
-                  <div class="modal-dialog  ">
+                  <div class="modal-dialog">
                     <div class="modal-content">
                       <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>

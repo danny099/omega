@@ -9,7 +9,7 @@
 
       @foreach($consignaciones as $consignacion)
       {{ csrf_field() }}
-      <input type="hidden" name="id" value="{{$consignacion->id}}">
+      <input type="hidden" name="consignacion[id][]" value="{{$consignacion->id}}">
         <div class="box-body col-md-12">
 
           <div class="col-md-6">
@@ -45,7 +45,7 @@
           </div>
           <div class="col-md-6">
             <div class="form-group">
-              <input type="text" name="consignacion[observaciones][]" class="form-control" required="" value="{{ $consignacion->observacioness}}">
+              <input type="text" name="consignacion[observaciones][]" class="form-control" required="" value="{{ $consignacion->observaciones}}">
               <!-- {!! Form::text('observaciones', null, ['class' => 'form-control' , 'required' => 'required']) !!} -->
             </div>
           </div>
@@ -61,7 +61,7 @@
       </div>
       </form>
     </div>
-<script>
+<!-- <script>
   $(document).ready(function() {
   // Interceptamos el evento submit
   $('.form1').on('submit',function() {
@@ -79,4 +79,4 @@
         return false;
     });
   });
-</script>
+</script> -->

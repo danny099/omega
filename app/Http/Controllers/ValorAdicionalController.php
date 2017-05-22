@@ -93,18 +93,23 @@ class ValorAdicionalController extends Controller
      */
     public function edit($id)
     {
-      $input = $request->all();
 
-      for ($a=0; $a<count($input['adicional']['valor']); $a++){
+      $ide = Administrativa::findOrFail($id);
+      $adicionales = Valor_adicional::where('valor_adicional.administrativa_id', '=', $id)->get();
+      return view('adicionales.edit',compact('adicionales','id','ide'));
 
-        $adicional = Valor_adicional::findOrFail($request->adicional['id'][$a]);
-
-        $datos['valor'] = $input['adicional']['valor'][$a];
-        $datos['detalle'] = $input['adicional']['detalle'][$a];
-
-        $adicional->update($datos);
-
-      }
+      // $input = $request->all();
+      //
+      // for ($a=0; $a<count($input['adicional']['valor']); $a++){
+      //
+      //   $adicional = Valor_adicional::findOrFail($request->adicional['id'][$a]);
+      //
+      //   $datos['valor'] = $input['adicional']['valor'][$a];
+      //   $datos['detalle'] = $input['adicional']['detalle'][$a];
+      //
+      //   $adicional->update($datos);
+      //
+      // }
 
       Session::flash('message', 'registro editado editado!');
       Session::flash('class', 'success');
@@ -122,6 +127,9 @@ class ValorAdicionalController extends Controller
     public function editar(Request $request)
     {
       $input = $request->all();
+      dd($input);
+      die();
+      $datos['valor'] = str_replace(',','',$input['adicional']['valor']);
 
       // $adicional = Valor_adicional::findOrFail($id);
       // $administrativa = Administrativa::findOrFail($adicional->administrativa_id);
@@ -129,52 +137,57 @@ class ValorAdicionalController extends Controller
       for ($a=0; $a<count($input['adicional']['valor']); $a++){
 
         $datos['valor'] = str_replace(',','',$input['adicional']['valor'][$a]);
-
         $datos['detalle'] = $input['adicional']['detalle'][$a];
 
         $adicional = Valor_adicional::findOrFail($request->adicional['id'][$a]);
         $administrativa = Administrativa::findOrFail($adicional->administrativa_id);
 
-        if ($administrativa->valor_total_contrato > $request->adicional['valor'][$a]) {
+        if ($administrativa->valor_total_contrato > $datos['valor']) {
 
           $valor1 = $administrativa->valor_total_contrato - $adicional->valor;
-          $valor2 = $valor1 + $request->adicional['valor'][$a];
-          $administrativa->valor_total_contrato = $valor2;
-          $administrativa->save();
-
-        }else {
-
-          $valor1 = $adicional->valor_tot - $administrativa->valor_total_contrato;
           $valor2 = $valor1 + $datos['valor'];
           $administrativa->valor_total_contrato = $valor2;
           $administrativa->save();
+          $adicional->update($datos);
+
+
+        }else {
+
+          $valor1 = $administrativa->valor_total_contrato - $adicional->valor_tot;
+          $valor2 = $valor1 + $datos['valor'];
+          $administrativa->valor_total_contrato = $valor2;
+          $administrativa->save();
+          $adicional->update($datos);
+
         }
 
 
         if ( $administrativa->saldo > 0) {
 
-          if ($administrativa->saldo > $adicional->valor) {
+          if ($administrativa->saldo > $datos['valor']) {
             $resta = $administrativa->saldo - $adicional->valor;
             $nuevo_saldo = $resta + $datos['valor'];
             $administrativa->saldo = $nuevo_saldo;
             $administrativa->save();
+            $adicional->update($datos);
+
           }
           else {
             $resta =$adicional->valor - $administrativa->saldo;
             $nuevo_saldo = $resta + $datos['valor'];
             $administrativa->saldo = $nuevo_saldo;
             $administrativa->save();
+            $adicional->update($datos);
+
           }
 
         }
 
 
-
-        $adicional->update($datos);
-        return redirect()->route('administrativas.index');
-
-
+        // $adicional->update($datos);
+        // return redirect()->route('administrativas.index');
       }
+
 
       Session::flash('message', 'registro editado editado!');
       Session::flash('class', 'success');

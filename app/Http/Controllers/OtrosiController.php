@@ -15,11 +15,10 @@ class OtrosiController extends Controller
      */
     public function index()
     {
-      $otrosis=Otrosi::all();
-
-      return view('otrosi.index',compact('otrosis'));
+      // $otrosis=Otrosi::all();
+      //
+      // return view('otrosi.index',compact('otrosis'));
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -96,8 +95,8 @@ class OtrosiController extends Controller
     public function edit($id)
     {
       $ide = Administrativa::find($id);
-      $otrosi = Otrosi::where('otrosi.administrativa_id', '=', $id)->get();
-      return view('otrosi.edit',compact('otrosi','id','ide'));
+      $otrosis = Otrosi::where('otrosi.administrativa_id', '=', $id)->get();
+      return view('otrosi.index',compact('otrosis','id','ide'));
     }
 
     /**

@@ -47,6 +47,7 @@ Route::group(['middleware' => 'auth'],function(){
 	/**************************************************************/
 	/**************************************************************/
   Route::resource('otrosi','OtrosiController');
+	// Route::get('view/{id}','OtrosiController@view');
 	Route::get('deleteotrosi/{id}','OtrosiController@destroy');
   /**************************************************************/
   /**************************************************************/
@@ -100,7 +101,7 @@ Route::group(['middleware' => 'auth'],function(){
 	/**************************************************************/
 	/**************************************************************/
 	Route::resource('facturas','FacturaController');
-	Route::post('editarfacturas','FacturaController@editar');
+	Route::post('edita/{id}','FacturaController@edita');
 	Route::get('deletefactura/{id}','FacturaController@destroy');
 	/**************************************************************/
 	/**************************************************************/

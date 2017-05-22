@@ -120,7 +120,7 @@ class FacturaController extends Controller
 
       // dd($transformaciones);
       // die();
-      return view('facturas.edit',compact('facturas','id','ide'));
+      return view('facturas.index',compact('facturas','id','ide'));
     }
 
     /**
@@ -142,12 +142,16 @@ class FacturaController extends Controller
           $nuevo_s = $administrativa->saldo + $request->valor_total;
           $administrativa->saldo = $nuevo_s;
           $administrativa->save();
+          $factura->update($input);
+
 
         }elseif ($administrativa->saldo < $request->valor_total){
 
           $nuevo_s = $request->valor_total - $administrativa->saldo;
           $administrativa->saldo = $nuevo_s;
           $administrativa->save();
+          $factura->update($input);
+
 
         }elseif ($administrativa->saldo > $request->valor_total){
 
@@ -155,10 +159,11 @@ class FacturaController extends Controller
           $nuevo = $nuevo_s + $administrativa->saldo;
           $administrativa->saldo = $nuevo;
           $administrativa->save();
+          $factura->update($input);
+
 
         }
 
-        $factura->update($input);
 
         Session::flash('message', 'registro editado editado!');
         Session::flash('class', 'success');

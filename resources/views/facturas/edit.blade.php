@@ -8,7 +8,7 @@
 
     {!! Form::model($factura, ['class' => 'form1','method' => 'PATCH', 'action' => ['FacturaController@update',$factura->id]]) !!}
     {{ csrf_field() }}
-    <!-- <input type="hidden" name="id" value="{{$factura->id}}"> -->
+    <input type="hidden" name="id" value="{{$factura->id}}">
     <div class="box-body col-md-6">
       <br>
 

@@ -351,6 +351,7 @@ class AdministrativaController extends Controller
     // metodo que permite eliminar un registro de acuerdo a su id
    public function destroy($id)
    {
+
      $observacion = Observacion::where('observacion.administrativa_id', '=', $id)->get();
      foreach ($observacion as $key => $obs) {
 
@@ -390,10 +391,12 @@ class AdministrativaController extends Controller
        $adic->delete();
 
      }
+     $administrativa = Administrativa::findOrFail($id);
+
+     // $administrativas = Administrativa::select('id')->where('administrativa.id',$id)->get();
+     $administrativa->delete();
       //  //  funcion que permite encontrar o identificar un registro y almacenarlas en una variable
-      $administrativa = Administrativa::findOrFail($id);
-      // $administrativas = Administrativa::select('id')->where('administrativa.id',$id)->get();
-      $administrativa->delete();
+
       // dd($id);
       // die();
        //  redireccionamiento a una vista
