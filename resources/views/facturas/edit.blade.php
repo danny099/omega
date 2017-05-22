@@ -126,7 +126,7 @@
       </div>
       <div class="col-md-6">
         <div class="form-group">
-          {!! Form::text('valor_pagado',  number_format($factura->valor_pagado,0), ['class' => 'form-control valor_pagado', 'min'=>'0','readonly' ]) !!}
+          {!! Form::text('valor_pagado',  number_format($factura->valor_total,0), ['class' => 'form-control valor_pagado', 'min'=>'0','readonly' ]) !!}
         </div>
       </div>
 
