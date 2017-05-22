@@ -6,7 +6,7 @@
     </div>
 
 
-    {!! Form::model($factura, ['method' => 'PATCH', 'action' => ['FacturaController@update',$factura->id]]) !!}
+    {!! Form::model($factura, ['class' => 'form1','method' => 'PATCH', 'action' => ['FacturaController@update',$factura->id]]) !!}
     {{ csrf_field() }}
     <input type="hidden" name="id" value="{{$factura->id}}">
     <div class="box-body col-md-6">
@@ -40,7 +40,7 @@
       </div>
       <div class="col-md-6">
         <div class="form-group">
-          {!! Form::text('valor_factura',  number_format($factura->valor_factura,0), ['class' => 'form-control valor_factura' ,'required' => 'required', 'min'=>'0','onkeypress'=>"mascara(this,cpf)"]) !!}
+          {!! Form::text('valor_factura',  number_format($factura->valor_factura,0), ['class' => 'form-control valor_factura' ,'required' => 'required', 'min'=>'0','onkeypress'=>"mascara(this,cpf)",'onkeyup'=>"calcular3()"]) !!}
 
         </div>
       </div>
@@ -75,8 +75,8 @@
       </div>
       <div class="col-md-6">
         <div class="form-group">
-          {!! Form::number('retencionesporcen',  0, ['class' => 'form-control retencionesporcen', 'min'=>'0']) !!}
-          {!! Form::text('retenciones', 0, ['class' => 'form-control retenciones', 'min'=>'0','readonly']) !!}
+          {!! Form::number('retencionesporcen',  0, ['class' => 'form-control retencionesporcen', 'min'=>'0','onkeyup'=>"retencion()"]) !!}
+          {!! Form::text('retenciones', 0, ['class' => 'form-control retenciones', 'min'=>'0','readonly','onchange'=>"retencion2()"]) !!}
         </div>
       </div>
 

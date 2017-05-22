@@ -127,8 +127,7 @@ class ValorAdicionalController extends Controller
     public function editar(Request $request)
     {
       $input = $request->all();
-      dd($input);
-      die();
+
       $datos['valor'] = str_replace(',','',$input['adicional']['valor']);
 
       // $adicional = Valor_adicional::findOrFail($id);
@@ -148,7 +147,7 @@ class ValorAdicionalController extends Controller
           $valor2 = $valor1 + $datos['valor'];
           $administrativa->valor_total_contrato = $valor2;
           $administrativa->save();
-          $adicional->update($datos);
+          // $adicional->update($datos);
 
 
         }else {
@@ -157,7 +156,7 @@ class ValorAdicionalController extends Controller
           $valor2 = $valor1 + $datos['valor'];
           $administrativa->valor_total_contrato = $valor2;
           $administrativa->save();
-          $adicional->update($datos);
+          // $adicional->update($datos);
 
         }
 
@@ -169,7 +168,7 @@ class ValorAdicionalController extends Controller
             $nuevo_saldo = $resta + $datos['valor'];
             $administrativa->saldo = $nuevo_saldo;
             $administrativa->save();
-            $adicional->update($datos);
+            // $adicional->update($datos);
 
           }
           else {
@@ -177,14 +176,14 @@ class ValorAdicionalController extends Controller
             $nuevo_saldo = $resta + $datos['valor'];
             $administrativa->saldo = $nuevo_saldo;
             $administrativa->save();
-            $adicional->update($datos);
+            // $adicional->update($datos);
 
           }
 
         }
 
 
-        // $adicional->update($datos);
+        $adicional->update($datos);
         // return redirect()->route('administrativas.index');
       }
 

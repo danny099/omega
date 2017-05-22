@@ -58,6 +58,8 @@
       document.getElementById("otrosi").value = addCommas(parseFloat(varSubTotal)) ;
 
     }
+
+
     function addCommas(nStr){
       nStr += '';
       x = nStr.split(',');
@@ -80,6 +82,48 @@
       }
       return x1 + x2;
     }
+
+
+    function calcular3(){
+      $('.valor_factura').on('keyup',function(){
+          var valor = $(this).val().replace(/,/g,"");
+          var resultado = valor * 1.19;
+          var iva = valor*0.19;
+          $(this).parent().parent().parent().find('.iva').val(addCommas2(parseFloat(iva)));
+          $(this).parent().parent().parent().find('.valor_total').val(addCommas2(parseFloat(resultado)));
+
+          var retenciones = parseInt($(this).parent().parent().parent().find('.retenciones').val());
+          var amortizacion = parseInt($(this).parent().parent().parent().find('.amortizacion').val());
+          var polizas = parseInt($(this).parent().parent().parent().find('.polizas').val());
+          var retegarantia = parseInt($(this).parent().parent().parent().find('.retegarantia').val());
+          var valor_total = $(this).parent().parent().parent().find('.valor_total').val().replace(/,/g,"");
+          var resultado =valor_total-(retenciones+amortizacion+polizas+retegarantia);
+          $(this).parent().parent().parent().find('.valor_pagado').val(addCommas2(parseFloat(resultado)));
+      });
+    }
+
+    function retencion(){
+      $('.retencionesporcen').keyup(function(){
+        var retencionesporcen = parseInt($(this).val());
+        var valor = $(this).parent().parent().parent().find('.valor_factura').val().replace(/,/g,"");
+        var resultado = valor*retencionesporcen/100;
+        $(this).parent().parent().find('.retenciones').val(addCommas2(parseFloat(resultado)));
+      });
+    }
+
+    function retencion2(){
+      $('.retencionesporcen').change(function(){
+        var retenciones = $(this).parent().parent().parent().find('.retenciones').val().replace(/,/g,"");
+        var amortizacion = $(this).parent().parent().parent().find('.amortizacion').val().replace(/,/g,"");
+        var polizas = $(this).parent().parent().parent().find('.polizas').val().replace(/,/g,"");
+        var retegarantia = $(this).parent().parent().parent().find('.retegarantia').val().replace(/,/g,"");
+        var valor_total = $(this).parent().parent().parent().find('.valor_total').val().replace(/,/g,"");
+        var resultado =valor_total-(parseFloat(retenciones)+parseFloat(amortizacion)+parseFloat(polizas)+parseFloat(retegarantia));
+        $(this).parent().parent().parent().find('.valor_pagado').val(addCommas2(parseFloat(resultado)));
+      });
+    }
+
+
   </script>
   <script type="text/javascript">
 
@@ -142,38 +186,7 @@
 
 
 
-             $('.valor_factura').keyup(function(){
-                 var valor = $(this).val().replace(/,/g,"");
-                 var resultado = valor * 1.19;
-                 var iva = valor*0.19;
-                 $(this).parent().parent().parent().find('.iva').val(addCommas2(parseFloat(iva)));
-                 $(this).parent().parent().parent().find('.valor_total').val(addCommas2(parseFloat(resultado)));
 
-                 var retenciones = parseInt($(this).parent().parent().parent().find('.retenciones').val());
-                 var amortizacion = parseInt($(this).parent().parent().parent().find('.amortizacion').val());
-                 var polizas = parseInt($(this).parent().parent().parent().find('.polizas').val());
-                 var retegarantia = parseInt($(this).parent().parent().parent().find('.retegarantia').val());
-                 var valor_total = $(this).parent().parent().parent().find('.valor_total').val().replace(/,/g,"");
-                 var resultado =valor_total-(retenciones+amortizacion+polizas+retegarantia);
-                 $(this).parent().parent().parent().find('.valor_pagado').val(addCommas2(parseFloat(resultado)));
-
-
-             });
-             $('.retencionesporcen').keyup(function(){
-               var retencionesporcen = parseInt($(this).val());
-               var valor = $(this).parent().parent().parent().find('.valor_factura').val().replace(/,/g,"");
-               var resultado = valor*retencionesporcen/100;
-               $(this).parent().parent().find('.retenciones').val(addCommas2(parseFloat(resultado)));
-             });
-             $('.retencionesporcen').change(function(){
-               var retenciones = $(this).parent().parent().parent().find('.retenciones').val().replace(/,/g,"");
-               var amortizacion = $(this).parent().parent().parent().find('.amortizacion').val().replace(/,/g,"");
-               var polizas = $(this).parent().parent().parent().find('.polizas').val().replace(/,/g,"");
-               var retegarantia = $(this).parent().parent().parent().find('.retegarantia').val().replace(/,/g,"");
-               var valor_total = $(this).parent().parent().parent().find('.valor_total').val().replace(/,/g,"");
-               var resultado =valor_total-(parseFloat(retenciones)+parseFloat(amortizacion)+parseFloat(polizas)+parseFloat(retegarantia));
-               $(this).parent().parent().parent().find('.valor_pagado').val(addCommas2(parseFloat(resultado)));
-             });
              $('.amortizacionporcen').keyup(function(){
                var amortizacionporcen = parseInt($(this).val());
                var valor = $(this).parent().parent().parent().find('.valor_total').val().replace(/,/g,"");
@@ -492,7 +505,13 @@
 
       {!! Form::close() !!}
 
-
+      <div class="modal fade bs-example-modal-lg" id="myModal7"  role="dialog" aria-labelledby="myLargeModalLabel">
+        <div class="modal-dialog modal-lg3" role="document">
+          <div class="modal-content">
+            @include('facturas.index')
+          </div>
+        </div>
+      </div>
       <!-- inicio modal -->
         <div class="modal fade bs-example-modal-lg" id="myModal2" role="dialog" aria-labelledby="myLargeModalLabel">
           <div class="modal-dialog modal-lg" role="document">
@@ -502,13 +521,7 @@
           </div>
         </div>
       <!-- fin modal -->
-      <div class="modal fade bs-example-modal-lg" id="myModal7"  role="dialog" aria-labelledby="myLargeModalLabel">
-        <div class="modal-dialog modal-lg3" role="document">
-          <div class="modal-content">
-            @include('facturas.index')
-          </div>
-        </div>
-      </div>
+
       <!-- inicio modal -->
         <div class="modal fade bs-example-modal-lg" id="myModal3"  role="dialog" aria-labelledby="myLargeModalLabel">
           <div class="modal-dialog modal-lg3" role="document">
