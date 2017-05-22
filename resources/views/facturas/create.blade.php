@@ -39,7 +39,7 @@
          </div>
          <div class="col-md-6">
            <div class="form-group">
-             {!! Form::number('valor_factura', null, ['class' => 'form-control valor_factura' ,'required' => 'required', 'min'=>'0']) !!}
+             {!! Form::text('valor_factura', null, ['class' => 'form-control valor_factura' ,'required' => 'required', 'min'=>'0','onkeypress'=>"mascara(this,cpf)"]) !!}
            </div>
          </div>
 
