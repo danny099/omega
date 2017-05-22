@@ -44,8 +44,8 @@ class OtrosiController extends Controller
 
       $input = $request->all();
       $datos['valor'] = str_replace(',','',$request->valor);
-      $datos['iva'] = str_replace('.','',$request->iva);
-      $datos['valor_tot'] = str_replace('.','',$request->valor_tot);
+      $datos['iva'] = str_replace(',','',$request->iva);
+      $datos['valor_tot'] = str_replace(',','',$request->valor_tot);
       $datos['detalles'] =  $request->detalles;
       $datos['administrativa_id'] = $request->administrativa_id;
 

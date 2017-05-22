@@ -20,9 +20,9 @@
             <tr>
               <td>{{$factura->num_factura}}</td>
               <td>{{$factura->fecha_factura}}</td>
-              <td>{{ number_format($factura->valor_factura,0,",",".") }}</td>
-              <td>{{ number_format($factura->iva,0,",",".") }}</td>
-              <td>{{ number_format($factura->valor_total,0,",",".") }}</td>
+              <td>{{ number_format($factura->valor_factura,0) }}</td>
+              <td>{{ number_format($factura->iva,0) }}</td>
+              <td>{{ number_format($factura->valor_total,0) }}</td>
               <td>
                 <a href="{{ route('facturas.edit', $factura->id) }}" data-toggle="modal" data-target="#myModal20-{{ $key }}"><i class="glyphicon glyphicon-pencil"></i></a>
                 <a href="{{ url('deletefactura') }}/{{ $factura->id }}" onClick="javascript: return confirm('Esta seguro de eliminar registro?');"><i class="glyphicon glyphicon-minus-sign"></i></a>

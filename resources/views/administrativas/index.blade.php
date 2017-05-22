@@ -39,12 +39,12 @@
 
   function addCommas(nStr){
     nStr += '';
-    x = nStr.split('.');
+    x = nStr.split(',');
     x1 = x[0];
-    x2 = x.length > 1 ? '.' + x[1] : '';
+    x2 = x.length > 1 ? ',' + x[1] : '';
     var rgx = /(\d+)(\d{3})/;
     while (rgx.test(x1)) {
-      x1 = x1.replace(rgx, '$1' + '.' + '$2');
+      x1 = x1.replace(rgx, '$1' + ',' + '$2');
     }
     return x1 + x2;
   }
@@ -93,12 +93,21 @@
      });
 
 
+
         $('.valor_factura').keyup(function(){
             var valor = $(this).val().replace(/,/g,"");
             var resultado = valor * 1.19;
             var iva = valor*0.19;
             $(this).parent().parent().parent().find('.iva').val(addCommas2(parseFloat(iva)));
             $(this).parent().parent().parent().find('.valor_total').val(addCommas2(parseFloat(resultado)));
+
+            var retenciones = parseInt($(this).parent().parent().parent().find('.retenciones').val());
+            var amortizacion = parseInt($(this).parent().parent().parent().find('.amortizacion').val());
+            var polizas = parseInt($(this).parent().parent().parent().find('.polizas').val());
+            var retegarantia = parseInt($(this).parent().parent().parent().find('.retegarantia').val());
+            var valor_total = $(this).parent().parent().parent().find('.valor_total').val().replace(/,/g,"");
+            var resultado =valor_total-(retenciones+amortizacion+polizas+retegarantia);
+            $(this).parent().parent().parent().find('.valor_pagado').val(addCommas2(parseFloat(resultado)));
 
 
         });
@@ -162,6 +171,7 @@
           var resultado =valor_total-(retenciones+amortizacion+polizas+retegarantia);
           $(this).parent().parent().parent().find('.valor_pagado').val(addCommas2(parseFloat(resultado)));
         });
+
         $('.retencionesporcen').focus(function(){
           var retenciones = parseInt($(this).val(""));
         });
@@ -213,7 +223,7 @@
               <td>{{$administrativa->codigo_proyecto}}</td>
               <td>{{$administrativa->nombre_proyecto}}</td>
               <td>{{$administrativa->fecha_contrato}}</td>
-              <td>{{number_format($administrativa->valor_contrato_final,0,",",".")}}</td>
+              <td>{{number_format($administrativa->valor_contrato_final,0)}}</td>
               <td>
                 <a href="{{ route('administrativas.edit', $administrativa->id) }}"><i class="glyphicon glyphicon-pencil"></i></a>
                 <a href="{{ route('administrativas.show', $administrativa->id) }}" data-toggle="model" data-target="show-{{ $key }}"><i class="glyphicon glyphicon-eye-open"></i></a>

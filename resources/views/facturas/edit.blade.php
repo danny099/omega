@@ -11,6 +11,7 @@
     <!-- <input type="hidden" name="id" value="{{$factura->id}}"> -->
     <div class="box-body col-md-6">
       <br>
+
       <div class="col-md-6">
         <div class="form-group">
           {!! Form::label('codigo_factura', 'Codigo de la factura') !!}
@@ -39,7 +40,7 @@
       </div>
       <div class="col-md-6">
         <div class="form-group">
-          {!! Form::text('valor_factura', null, ['class' => 'form-control valor_factura' ,'required' => 'required', 'min'=>'0','onkeypress'=>"mascara(this,cpf)"]) !!}
+          {!! Form::text('valor_factura',  number_format($factura->valor_factura,0), ['class' => 'form-control valor_factura' ,'required' => 'required', 'min'=>'0','onkeypress'=>"mascara(this,cpf)"]) !!}
 
         </div>
       </div>
@@ -51,7 +52,7 @@
       </div>
       <div class="col-md-6">
         <div class="form-group">
-          {!! Form::number('iva', null, ['class' => 'form-control iva' ,'readonly', 'required' => 'required', 'min'=>'0']) !!}
+          {!! Form::text('iva', number_format($factura->iva,0), ['class' => 'form-control iva' ,'readonly', 'required' => 'required', 'min'=>'0']) !!}
         </div>
       </div>
 
@@ -62,7 +63,7 @@
       </div>
       <div class="col-md-6">
         <div class="form-group">
-          {!! Form::number('valor_total', null, ['class' => 'form-control valor_total' ,'readonly', 'required' => 'required', 'min'=>'0']) !!}
+          {!! Form::text('valor_total',  number_format($factura->valor_total,0), ['class' => 'form-control valor_total' ,'readonly', 'required' => 'required', 'min'=>'0']) !!}
         </div>
       </div>
 
@@ -74,8 +75,8 @@
       </div>
       <div class="col-md-6">
         <div class="form-group">
-          {!! Form::number('retencionesporcen', null, ['class' => 'form-control retencionesporcen', 'min'=>'0']) !!}
-          {!! Form::number('retenciones', null, ['class' => 'form-control retenciones', 'min'=>'0','readonly']) !!}
+          {!! Form::number('retencionesporcen',  0, ['class' => 'form-control retencionesporcen', 'min'=>'0']) !!}
+          {!! Form::text('retenciones', 0, ['class' => 'form-control retenciones', 'min'=>'0','readonly']) !!}
         </div>
       </div>
 
@@ -87,8 +88,8 @@
       </div>
       <div class="col-md-6">
         <div class="form-group">
-          {!! Form::number('amortizacionporcen', null, ['class' => 'form-control amortizacionporcen', 'min'=>'0']) !!}
-          {!! Form::number('amortizacion', null, ['class' => 'form-control amortizacion', 'min'=>'0','readonly']) !!}
+          {!! Form::number('amortizacionporcen', 0, ['class' => 'form-control amortizacionporcen', 'min'=>'0']) !!}
+          {!! Form::text('amortizacion', 0, ['class' => 'form-control amortizacion', 'min'=>'0','readonly']) !!}
         </div>
       </div>
 
@@ -100,8 +101,8 @@
       </div>
       <div class="col-md-6">
         <div class="form-group">
-          {!! Form::number('polizasporcen', null, ['class' => 'form-control polizasporcen','min'=>'0' ]) !!}
-          {!! Form::number('polizas', null, ['class' => 'form-control polizas','min'=>'0','readonly' ]) !!}
+          {!! Form::number('polizasporcen', 0, ['class' => 'form-control polizasporcen','min'=>'0' ]) !!}
+          {!! Form::text('polizas', 0, ['class' => 'form-control polizas','min'=>'0','readonly' ]) !!}
         </div>
       </div>
 
@@ -113,8 +114,8 @@
       </div>
       <div class="col-md-6">
         <div class="form-group">
-          {!! Form::number('retegarantiaporcen', null, ['class' => 'form-control retegarantiaporcen', 'min'=>'0' ]) !!}
-          {!! Form::number('retegarantia', null, ['class' => 'form-control retegarantia', 'min'=>'0','readonly' ]) !!}
+          {!! Form::number('retegarantiaporcen', 0, ['class' => 'form-control retegarantiaporcen', 'min'=>'0' ]) !!}
+          {!! Form::text('retegarantia', 0, ['class' => 'form-control retegarantia', 'min'=>'0','readonly' ]) !!}
         </div>
       </div>
 
@@ -125,7 +126,7 @@
       </div>
       <div class="col-md-6">
         <div class="form-group">
-          {!! Form::number('valor_pagado', null, ['class' => 'form-control valor_pagado', 'min'=>'0','readonly' ]) !!}
+          {!! Form::text('valor_pagado',  number_format($factura->valor_pagado,0), ['class' => 'form-control valor_pagado', 'min'=>'0','readonly' ]) !!}
         </div>
       </div>
 
@@ -150,6 +151,7 @@
           {!! Form::text('observaciones', null, ['class' => 'form-control' ]) !!}
         </div>
       </div>
+
           <div class="box-footer">
             <button type="submit"  data-target="" data-toggle="" class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;">Editar</button>
           </div>

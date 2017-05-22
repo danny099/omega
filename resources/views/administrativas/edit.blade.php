@@ -60,12 +60,12 @@
     }
     function addCommas(nStr){
       nStr += '';
-      x = nStr.split('.');
+      x = nStr.split(',');
       x1 = x[0];
-      x2 = x.length > 1 ? '.' + x[1] : '';
+      x2 = x.length > 1 ? ',' + x[1] : '';
       var rgx = /(\d+)(\d{3})/;
       while (rgx.test(x1)) {
-        x1 = x1.replace(rgx, '$1' + '.' + '$2');
+        x1 = x1.replace(rgx, '$1' + ',' + '$2');
       }
       return x1 + x2;
     }
@@ -148,7 +148,13 @@
          $(this).parent().parent().parent().find('.iva').val(addCommas2(parseFloat(iva)));
          $(this).parent().parent().parent().find('.valor_total').val(addCommas2(parseFloat(resultado)));
 
-
+         var retenciones = parseInt($(this).parent().parent().parent().find('.retenciones').val());
+         var amortizacion = parseInt($(this).parent().parent().parent().find('.amortizacion').val());
+         var polizas = parseInt($(this).parent().parent().parent().find('.polizas').val());
+         var retegarantia = parseInt($(this).parent().parent().parent().find('.retegarantia').val());
+         var valor_total = $(this).parent().parent().parent().find('.valor_total').val().replace(/,/g,"");
+         var resultado =valor_total-(retenciones+amortizacion+polizas+retegarantia);
+         $(this).parent().parent().parent().find('.valor_pagado').val(addCommas2(parseFloat(resultado)));
      });
      $('.retencionesporcen').keyup(function(){
        var retencionesporcen = parseInt($(this).val());
@@ -356,13 +362,13 @@
         </div>
         <div class="form-group">
           <label >Valor iva</label>
-          <input type="text" min="0" class="form-control" id="iva" readonly="readonly" placeholder= "valor iva" name="iva" value="{{ number_format($administrativas->valor_iva,0,",",".") }}">
+          <input type="text" min="0" class="form-control" id="iva" readonly="readonly" placeholder= "valor iva" name="iva" value="{{ number_format($administrativas->valor_iva,0) }}">
         </div>
         <div class="form-group ">
           <div class="form-group">
 
             <label >Valor contrato final</label>
-            <input type="text" class="form-control" min="0" id="fin" readonly="readonly" placeholder= "Valor final" name="contrato_final" value="{{ number_format($administrativas->valor_contrato_final,0,",",".") }}">
+            <input type="text" class="form-control" min="0" id="fin" readonly="readonly" placeholder= "Valor final" name="contrato_final" value="{{ number_format($administrativas->valor_contrato_final,0) }}">
           </div>
           <div class="form-group">
             <label >Plan de pago</label>
@@ -493,7 +499,23 @@
           <button type="submit" data-target="" data-toggle="" class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;">Agregar</button>
         </div>
       </div>
-
+      <!-- inicio modal  -->
+      <div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+        <div class="modal-dialog modal-lg3">
+          <div class="modal-content ">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body">
+              @include('facturas.index')
+            </div>
+            <div class="modal-footer">
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- fin modal -->
       <!-- inicio modal9  -->
       <div class="modal fade" id="myModal9" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog modal-lg">
@@ -608,7 +630,7 @@
           <h4 class="modal-title"></h4>
         </div>
         <div class="modal-body">
-          @include('pu_final.edit')
+          <!-- @include('pu_final.edit') -->
         </div>
         <div class="modal-footer">
         </div>
@@ -653,23 +675,7 @@
   </div>
   <!-- fin modal -->
 
-  <!-- inicio modal  -->
-  <div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-    <div class="modal-dialog modal-lg3">
-      <div class="modal-content ">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title"></h4>
-        </div>
-        <div class="modal-body">
-          @include('facturas.index')
-        </div>
-        <div class="modal-footer">
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- fin modal -->
+
 
 
 
