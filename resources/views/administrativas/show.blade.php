@@ -4,6 +4,10 @@
 
 	overflow-wrap: break-word;
   }
+  .adi{
+
+  overflow-wrap: break-word;
+  }
 </style>
 
 @section('contenido')
@@ -98,7 +102,7 @@
             </div>
 
             @if(count($adicionales) == 0)
-            <div class="col-md-3">
+            <div class="col-md-3 adi">
               <div class="form-group">
                 <label >Valor adicional</label>
               </div>
@@ -113,13 +117,13 @@
             </div>
 
             @else
-            <div class="col-md-3">
+            <div class="col-md-3 adi">
               <div class="form-group">
                 <label >Valor adicional</label>
               </div>
             </div>
 
-            <div class="col-md-3">
+            <div class="col-md-3 adi">
               <div class="form-group">
                 @foreach($adicionales as $adicional)
                   <span>{{ $adicional->detalle }}</span>

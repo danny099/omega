@@ -70,12 +70,12 @@ class Cuenta_cobroController extends Controller
         // $administra->saldo = $saldo;
         // $administra->save();
 
-        return redirect()->route('administrativas.index');
+        // return redirect()->route('administrativas.index');
 
       // }else {
 
-        Session::flash('message', 'El valor de la cuenta de cobro es mayor al saldo!');
-        Session::flash('class', 'danger');
+        Session::flash('message', 'Cuenta de cobro creada!');
+        Session::flash('class', 'success');
         return redirect()->route('administrativas.index');
 
 
@@ -117,8 +117,8 @@ class Cuenta_cobroController extends Controller
       public function editar(Request $request)
       {
         $input = $request->all();
-        // dd($input);
-        // die();
+
+
         // $adicional = Valor_adicional::findOrFail($id);
         // $administrativa = Administrativa::findOrFail($adicional->administrativa_id);
 
@@ -128,14 +128,14 @@ class Cuenta_cobroController extends Controller
           $cuenta = Cuenta_cobro::findOrFail($request->cuenta['id'][$a]);
           $administrativa = Administrativa::findOrFail($cuenta->administrativa_id);
 
-          if ($administrativa->saldo > 0) {
-
-            $resta = $administrativa->saldo - $cuenta->valor;
-            $nuevo_saldo = $resta + $request->cuenta['valor'][$a];
-            $administrativa->saldo = $nuevo_saldo;
-            $administrativa->save();
-
-          }
+          // if ($administrativa->saldo > 0) {
+          //
+          //   $resta = $administrativa->saldo - $cuenta->valor;
+          //   $nuevo_saldo = $resta + $request->cuenta['valor'][$a];
+          //   $administrativa->saldo = $nuevo_saldo;
+          //   $administrativa->save();
+          //
+          // }
           $datos['porcentaje'] = $input['cuenta']['porcentaje'][$a];
           $datos['valor'] =  str_replace(',','',$input['cuenta']['valor'][$a]);
           $datos['fecha_cuenta_cobro'] = $input['cuenta']['fecha_cuenta_cobro'][$a];
@@ -143,9 +143,15 @@ class Cuenta_cobroController extends Controller
           $datos['numero_cuenta_cobro'] = $input['cuenta']['numero_cuenta_cobro'][$a];
           $datos['observaciones'] = $input['cuenta']['observaciones'][$a];
 
+
           $cuenta->update($datos);
 
+
+
         }
+        Session::flash('message', 'registro editado!');
+        Session::flash('class', 'success');
+        return redirect()->route('administrativas.index');
 
      }
      public function update(Request $request, $id)
@@ -174,6 +180,9 @@ class Cuenta_cobroController extends Controller
 
          Session::flash('message', 'El valor de la consignacion es mayor al saldo!');
          Session::flash('class', 'danger');
+         return redirect()->route('administrativas.index');
+
+
        }
      }
 

@@ -184,12 +184,13 @@ class ValorAdicionalController extends Controller
 
 
         $adicional->update($datos);
-        return redirect()->route('administrativas.index');
+
       }
 
-
-      Session::flash('message', 'registro editado editado!');
+      Session::flash('message', 'registro editado!');
       Session::flash('class', 'success');
+      return redirect()->route('administrativas.index');
+
       // return redirect()->route('administrativas.index');
     }
 

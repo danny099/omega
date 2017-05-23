@@ -42,8 +42,6 @@ class FacturaController extends Controller
        //funcion para sacar todos los valores almacenados en los input
       $administrativa = Administrativa::find($request->administrativa_id);
 
-      if ($request->valor_total <= $administrativa->saldo) {
-
         $datos['num_factura'] = $request->num_factura;
         $datos['fecha_factura'] = $request->fecha_factura;
         $datos['valor_factura'] = str_replace(',','',$request->valor_factura);
@@ -62,6 +60,7 @@ class FacturaController extends Controller
         $datos['observaciones'] = $request->observaciones;
         $datos['administrativa_id'] = $request->administrativa_id;
 
+      if ($datos['valor_total'] <= $administrativa->saldo) {
         Factura::create($datos); //funcion para crear el registro
 
         $facturas = Factura::all();//funcion para recuperar todos los registros en la base de datos
@@ -83,7 +82,8 @@ class FacturaController extends Controller
         $administrativa->pagado = $nuevo;//asignacion de una variable a actualizar
         $administrativa->save();
 
-
+        Session::flash('message', 'Factura creada');
+        Session::flash('class', 'success');
 
         return redirect()->route('administrativas.index');
 

@@ -107,6 +107,7 @@ class Pu_finalController extends Controller
           $pu->update($datos);
 
        }
+       return redirect()->route('administrativas.index');
 
      }
     /**

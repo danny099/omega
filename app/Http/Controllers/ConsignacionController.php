@@ -131,14 +131,14 @@ class ConsignacionController extends Controller
           $consignacion = Consignacion::findOrFail($input['consignacion']['id'][$a]);
           $administrativa = Administrativa::findOrFail($consignacion->administrativa_id);
 
-          if ($administrativa->saldo > 0) {
-
-            $resta = $administrativa->saldo - $consignacion->valor;
-            $nuevo_saldo = $resta + $request->consignacion['valor'][$a];
-            $administrativa->saldo = $nuevo_saldo;
-            $administrativa->save();
-
-          }
+          // if ($administrativa->saldo > 0) {
+          //
+          //   $resta = $administrativa->saldo - $consignacion->valor;
+          //   $nuevo_saldo = $resta + $request->consignacion['valor'][$a];
+          //   $administrativa->saldo = $nuevo_saldo;
+          //   $administrativa->save();
+          //
+          // }
           $datos['fecha_pago'] = $input['consignacion']['fecha_pago'][$a];
           $datos['valor'] = str_replace(',','',$input['consignacion']['valor'][$a]);
           $datos['observaciones'] = $input['consignacion']['observaciones'][$a];

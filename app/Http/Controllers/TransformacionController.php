@@ -45,8 +45,7 @@ class TransformacionController extends Controller
     public function store(Request $request)
     {
       $input = $request->all();
-      // dd();
-      // die();
+
       for ($a=0; $a<count($input['transformacion']['descripcion']); $a++){
 
             if (!empty($input['transformacion']['descripcion'][$a]) &&

@@ -504,6 +504,36 @@
 
       {!! Form::close() !!}
 
+      <!-- inicio modal -->
+        <div class="modal fade bs-example-modal-lg" id="myModal10"  role="dialog" aria-labelledby="myLargeModalLabel">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              {!! Form::open(['class'=>'form2','url' => 'observaciones']) !!}
+              {{ csrf_field() }}
+                <div class="box-body">
+                  <div class="col-md-2">
+                    <div class="form-group">
+                      {!! Form::label('observacion', 'Observacion') !!}
+                    </div>
+                  </div>
+                  <div class="col-md-10">
+                    <div class="form-group">
+                      <td><textarea  rows="4" cols="60" name="observacion" required=""></textarea></td>
+                    </div>
+                  </div>
+                  <input type="hidden" name="administrativa_id" value="{{$administrativas->id}}">
+                  <div class="box-footer">
+                    <button type="submit" data-target="" data-toggle="" class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;">Crear</button>
+                  </div>
+                </div>
+
+
+              {!! Form::close() !!}
+            </div>
+          </div>
+        </div>
+      <!-- fin modal -->
+
       <div class="modal fade bs-example-modal-lg" id="myModal7"  role="dialog" aria-labelledby="myLargeModalLabel">
         <div class="modal-dialog modal-lg3" role="document">
           <div class="modal-content">
@@ -634,35 +664,7 @@
           </div>
         </div>
       <!-- fin modal -->
-      <!-- inicio modal -->
-        <div class="modal fade bs-example-modal-lg" id="myModal10"  role="dialog" aria-labelledby="myLargeModalLabel">
-          <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-              {!! Form::open(['class'=>'form2','url' => 'observaciones']) !!}
-              {{ csrf_field() }}
-                <div class="box-body">
-                  <div class="col-md-2">
-                    <div class="form-group">
-                      {!! Form::label('observacion', 'Observacion') !!}
-                    </div>
-                  </div>
-                  <div class="col-md-10">
-                    <div class="form-group">
-                      <td><textarea  rows="4" cols="60" name="observacion" required=""></textarea></td>
-                    </div>
-                  </div>
-                  <input type="hidden" name="administrativa_id" value="{{$administrativas->id}}">
-                  <div class="box-footer">
-                    <button type="submit" data-target="" data-toggle="" class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;">Crear</button>
-                  </div>
-                </div>
 
-
-              {!! Form::close() !!}
-            </div>
-          </div>
-        </div>
-      <!-- fin modal -->
     </div>
   </div>
 

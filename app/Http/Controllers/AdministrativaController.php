@@ -83,6 +83,8 @@ class AdministrativaController extends Controller
     public function store(Request $request)
     {
        $input = $request->all();
+
+
        //  ********************************************************************************
        //  ********************************************************************************
       //  almacenar en un arreglo $administrativa los datos provenientes desde el formulario de datos basicos
@@ -309,8 +311,8 @@ class AdministrativaController extends Controller
        $administrativa['valor_iva'] = str_replace(',','',$request->iva);
        $administrativa['valor_contrato_final'] =str_replace(',','',$request->contrato_final);
        $administrativa['plan_pago'] = $request->plan_pago;
-       $administrativa['saldo'] =  $administrativa['valor_contrato_final'];
-       $administrativa['valor_total_contrato'] =  $administrativa['valor_contrato_final'];
+      //  $administrativa['saldo'] =  $administrativa['valor_contrato_final'];
+      //  $administrativa['valor_total_contrato'] =  $administrativa['valor_contrato_final'];
 
        $administrativas = Administrativa::findOrFail($id);
 

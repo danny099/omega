@@ -73,18 +73,18 @@ function addCommas(nStr){
     <div class="box-body">
         <div class="col-md-4">
           <div class="form-group">
-            <label >Codigo del proyecto:</label>
+            <label>Codigo del proyecto:</label>
             <input id="codigo" type="text" class="form-control" placeholder="Ingrese codigo"  name="codigo" required pattern="[A-Z]{3}[-]{1}[0-9]{4}[-]{1}[0-9]{3}">
           </div>
           <div class="form-group">
-            <label >nombre del proyecto</label>
+            <label>Nombre del proyecto</label>
             <input type="text" class="form-control" placeholder="Ingrese nombre" name="nombre" required="Ingrese un pryexto">
           </div>
           <div class="form-group">
-            <label >Fecha del contrato:</label>
+            <label>Fecha del contrato:</label>
             <input type="date" class="form-control pull-right" name="fecha" id="datepicker" required="Ingrese una fecha">
           </div>
-          <div class="form-group" >
+          <div class="form-group">
             <label>Tipo Regimen</label>
             <select class="form-control" name="cliente_id" id="cliente" required="">
               <option value="">Seleccione</option>
@@ -101,7 +101,7 @@ function addCommas(nStr){
               @endforeach
             </select>
           </div>
-          <div class="form-group " style="Display:none" style="width: 100%" id="juridica">
+          <div class="form-group" style="Display:none" style="width: 100%" id="juridica">
             <label >Persona juridica</label>
             <select class="form-control" name="juridica_id" style="width: 100%">
               <option value="">Seleccione..</option>
@@ -162,7 +162,7 @@ function addCommas(nStr){
         </div>
         <hr>
         </div>
-  </div>
+
 
   <div class="box box-primary">
     <div class="box-header with-border">
@@ -241,7 +241,6 @@ function addCommas(nStr){
             <option value="">Seleccione..</option>
             <option value="aerea">tipo Aerea</option>
             <option value="subterranea">tipo subterranea</option>
-            <option value="aerea/subterranea">Aerea/Subterranea</option>
           </select>
         </div>
       </div>
@@ -315,7 +314,7 @@ function addCommas(nStr){
         <center> <h4 class="box-title">Observaciones de estado administrativo del proyecto</h4> </center>
       </div>
       <div class="col-md-12">
-        <textarea  rows="4" cols="196" name="observacion"></textarea>
+        <textarea  rows="4" cols="196" name="observacion" required=""></textarea>
       </div>
     </div>
     <div class="box-footer">
