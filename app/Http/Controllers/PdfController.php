@@ -58,12 +58,14 @@ class PdfController extends Controller
       $consignaciones = Consignacion::where('consignacion.administrativa_id', '=', $id)->get();
       $cuenta_cobros = Cuenta_cobro::where('cuenta_cobro.administrativa_id', '=', $id)->get();
       $facturas = Factura::where('factura.administrativa_id', '=', $id)->get();
+      $observaciones = Observacion::where('observacion.administrativa_id', '=', $id)->get();
+
 
   		// $pdf = \PDF::loadView('pdf.show-admin',compact('administrativa','clientes','juridicas','otrosis','distribuciones','transformaciones','pu_finales','departamentos','municipio','adicionales','consignaciones','cuenta_cobros','facturas'));
   		// return $pdf->download('archivo.pdf');
 
       $pdf = App::make('dompdf.wrapper');
-      $pdf->loadView('pdf.show-admin',compact('administrativa','clientes','juridicas','otrosis','distribuciones','transformaciones','pu_finales','departamentos','municipios','adicionales','consignaciones','cuenta_cobros','facturas'));
+      $pdf->loadView('pdf.show-admin',compact('administrativa','clientes','juridicas','otrosis','distribuciones','transformaciones','pu_finales','departamentos','municipios','adicionales','consignaciones','cuenta_cobros','facturas','observaciones'));
       return $pdf->stream();
     }
 

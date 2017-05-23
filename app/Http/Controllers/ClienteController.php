@@ -20,7 +20,7 @@ class ClienteController extends Controller
      {
          $this->middleware('admin');
      }
-     
+
     public function index()
     {
       $clientes=Cliente::all();
@@ -109,8 +109,9 @@ class ClienteController extends Controller
     public function edit($id)
     {
       $clientes = Cliente::findOrFail($id);
+      $departamentos = Departamento::all();
 
-      return view('clientes.edit',compact('clientes','roles'));
+      return view('clientes.edit',compact('clientes','roles','departamentos'));
     }
 
     /**

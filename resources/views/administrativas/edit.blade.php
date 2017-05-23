@@ -10,6 +10,34 @@
 </style>
 @section('scripts')
   <script type="text/javascript">
+  $(function () {
+    $("table").DataTable({
+      "language":{
+      "sProcessing":     "Procesando...",
+      "sLengthMenu":     "Mostrar _MENU_ registros",
+      "sZeroRecords":    "No se encontraron resultados",
+      "sEmptyTable":     "Ningún dato disponible en esta tabla",
+      "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+      "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+      "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+      "sInfoPostFix":    "",
+      "sSearch":         "Buscar:",
+      "sUrl":            "",
+      "sInfoThousands":  ",",
+      "sLoadingRecords": "Cargando...",
+      "oPaginate": {
+          "sFirst":    "Primero",
+          "sLast":     "Último",
+          "sNext":     "Siguiente",
+          "sPrevious": "Anterior"
+      },
+      "oAria": {
+          "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+          "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+      }
+  }
+ });
+  });
     function mascara(o,f){
       v_obj=o;
       v_fun=f;
@@ -83,6 +111,12 @@
       return x1 + x2;
     }
 
+
+
+
+      $(document).ready(function($){
+        $('#codigo_proyecto').inputmask('CPS-9999-999');
+      });
 
 
       $('.valor_factura').on('keyup',function(){
@@ -214,7 +248,7 @@
           <div class="col-md-4">
             <div class="form-group">
               {!! Form::label('codigo_proyecto', 'Codigo del proyecto:') !!}
-              {!! Form::text('codigo_proyecto', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+              {!! Form::text('codigo_proyecto', null, ['class' => 'form-control' , 'required' => 'required', 'pattern'=>'[A-Z]{3}[-]{1}[0-9]{4}[-]{1}[0-9]{3}']) !!}
             </div>
             <div class="form-group">
               {!! Form::label('nombre', 'Nombre del proyecto') !!}
@@ -253,7 +287,7 @@
             @endif
             @if(empty($administrativas->cliente->id ))
               <div class="form-group">
-                <label >Tipo cliente</label>
+                <label>Tipo Regimen</label>
                 <select class="form-control" name="cliente_id" id="cliente" required="">
                   <option value="2">Persona juridica</option>
                   <option value="1">Persona natural</option>
@@ -280,7 +314,7 @@
             @endif
             <div class="form-group">
               <label >Departamento</label>
-              <select class="form-control" name="departamento_id" id="departamento">
+              <select class="form-control" required="" name="departamento_id" id="departamento">
                 <option value="{{ $administrativas->departamento->id }}">{{ $administrativas->departamento->nombre }}</option>
                 @foreach($departamentos as $departamento)
                 <option value="{{ $departamento->id }}">{{$departamento->nombre}}</option>
@@ -289,7 +323,7 @@
             </div>
             <div class="form-group">
               <label >Municipios</label>
-              <select class="form-control" name="municipio" id="municipio">
+              <select class="form-control" required="" name="municipio" id="municipio">
                 <option value="{{ $municipio->id }}">{{ $municipio->nombre }}</option>
                 <option value=""></option>
               </select>
@@ -298,7 +332,7 @@
           <div class="col-md-4">
             <div class="form-group">
               <label >Tipo de zona</label>
-              <select class="form-control" name="zona">
+              <select class="form-control" required="" name="zona">
                 <option value="{{ $administrativas->tipo_zona }}">{{ $administrativas->tipo_zona }}</option>
                 <option value="Urbana">Urbana</option>
                 <option value="Rural">Rural</option>
@@ -319,7 +353,7 @@
             </div>
             <div class="form-group">
               <label >Plan de pago</label>
-              <input type="text" class="form-control" placeholder= "Ingrese valor" name="plan_pago" value="{{ $administrativas->plan_pago}}">
+              <input type="text" class="form-control" required="" placeholder= "Ingrese valor" name="plan_pago" value="{{ $administrativas->plan_pago}}">
             </div>
           </div>
           <div class="col-md-4">
@@ -403,6 +437,7 @@
             </div>
           </div>
           <div class="col-md-12">
+
             <div class="col-md-12">
               <div class="col-md-1">
                 <div class="form-group">
@@ -415,23 +450,24 @@
                 </div>
               </div>
             </div>
-            <table>
-              @foreach($observaciones as $key => $obs)
-                <div class="col-md-12">
-                  <div class="col-md-1">
-                    <div class="form-group">
-                      <td>{{ $key+1 }}</td>
-                    </div>
-                  </div>
-                  <div class="col-md-11">
-                    <div class="form-group">
-                      <td><textarea  rows="4" cols="110" name="resumen"  value="{{ $obs->observacion }}" readonly="">{{ $obs->observacion }}</textarea></td>
-                    </div>
+            @foreach($observaciones as $key => $obs)
+              <div class="col-md-12">
+                <div class="col-md-1">
+                  <div class="form-group">
+                    <td>{{ $key+1 }}</td>
                   </div>
                 </div>
-              @endforeach
-            </table>
+                <div class="col-md-11">
+                  <div class="form-group">
+                    <td><textarea  rows="4" cols="110" name="resumen"  value="{{ $obs->observacion }}" readonly="">{{ $obs->observacion }}</textarea></td>
+                  </div>
+                </div>
+              </div>
+            @endforeach
+
+
           </div>
+
         </div>
         <div class="box-footer">
           <button type="submit" data-target="" data-toggle="" class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;">Agregar</button>
@@ -542,7 +578,7 @@
       <!-- fin modal -->
       <!-- inicio modal -->
         <div class="modal fade bs-example-modal-lg" id="myModal6"  role="dialog" aria-labelledby="myLargeModalLabel">
-          <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-dialog modal-lg2" role="document">
             <div class="modal-content">
 
             </div>

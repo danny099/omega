@@ -30,13 +30,13 @@
           <td>Codigo del Proyecto</td>
           <td>{{ $administrativa->codigo_proyecto}}</td>
           <td>Valor antes de iva</td>
-          <td>{{ $administrativa->valor_contrato_inicial }}</td>
+          <td>{{  $administrativa->valor_contrato_inicial }}</td>
         </tr>
         <tr>
           <td>Nombre del proyecto</td>
           <td>{{ $administrativa->nombre_proyecto}}</td>
           <td>Valor iva</td>
-          <td>{{ $administrativa->valor_iva }}</td>
+          <td>{{  number_format($administrativa->valor_iva,0) }}</td>
         </tr>
         <tr>
           <td>Fecha del contrato</td>
@@ -44,7 +44,7 @@
           <td>valor Adicional</td>
           <td>
             @foreach($adicionales as $adici)
-              {{ $adici->valor }}
+              {{ number_format($adici->valor,0) }}
               {{ $adici->detalle }}
               <br>
             @endforeach
@@ -54,7 +54,7 @@
           <td>Cliente</td>
           <td>
             @if(empty($clientes))
-              <!-- <span>{{ $juridicas->razon_social }}</span> -->
+              <span>{{ $juridicas->razon_social }}</span>
             @else
               <span>{{ $clientes->nombre}}</span>
             @endif
@@ -62,7 +62,7 @@
           <td>Otro si</td>
           <td>
             @foreach($otrosis as $otro)
-              {{ $otro->valor }}
+              {{ number_format($otro->valor,0) }}
               {{ $otro->detalles }}
               <br>
             @endforeach
@@ -73,7 +73,7 @@
           <td>Municipio</td>
           <td>{{ $municipios->nombre }}</td>
           <td>Valor contrato final</td>
-          <td>{{ $administrativa->valor_contrato_final}}</td>
+          <td>{{ number_format($administrativa->valor_contrato_final,0)}}</td>
 
         </tr>
         <tr>
@@ -87,15 +87,35 @@
           <td>Tipo zona</td>
           <td>{{ $administrativa->tipo_zona }}</td>
           <td>Valor total</td>
-          <td>{{ $administrativa->Valor_total_contrato}}</td>
+          <td>{{ number_format($administrativa->Valor_total_contrato,0)}}</td>
         </tr>
       </tbody>
     </table>
     <center><h2>Saldo</h2></center>
-    <center><span>{{ $administrativa->saldo }}</span></center>
+    <center><span>{{ number_format($administrativa->saldo,0) }}</span></center>
 
     <br>
-    <br>
+    <div class="col-md-12">
+     <h4 class="box-title">Observaciones de estado administrativo del proyecto:</h4>
+    </div>
+
+    <div class="col-md-12">
+      <table border="1" class="table-responsive table-condensed" >
+        <thead>
+          <tr>
+            <th>N°</th>
+            <th>Observacion</th>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach($observaciones as $key => $obs)
+            <tr>
+              <td>{{ $key+1 }}</td>
+              <td>{{ $obs->observacion }}</td>
+            </tr>
+          @endforeach
+        </tbody>
+      </table>
     <center><h2>Alcances</h2></center>
     <table border="1">
       <thead>

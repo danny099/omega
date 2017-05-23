@@ -39,6 +39,8 @@ class ObservacionController extends Controller
         $input = $request->all();
 
         Observacion::create($input);
+        return redirect()->route('administrativas.index');
+        
     }
 
     /**

@@ -110,8 +110,8 @@ class OtrosiController extends Controller
     {
       $input = $request->all();
       $datos['valor'] = str_replace(',','',$request->valor);
-      $datos['iva'] = str_replace('.','',$request->iva);
-      $datos['valor_tot'] = str_replace('.','',$request->valor_tot);
+      $datos['iva'] = str_replace(',','',$request->iva);
+      $datos['valor_tot'] = str_replace(',','',$request->valor_tot);
       $datos['detalles'] =  $request->detalles;
 
       $otrosi = Otrosi::findOrFail($id);
@@ -125,6 +125,7 @@ class OtrosiController extends Controller
 
         $valor1 = $administrativa->valor_total_contrato - $otrosi->valor_tot;
         $valor2 = $valor1 + $datos['valor_tot'];
+
         $administrativa->valor_total_contrato = $valor2;
         $administrativa->save();
 
@@ -137,7 +138,7 @@ class OtrosiController extends Controller
 
 
       if ( $administrativa->saldo > 0) {
-        if ($administrativa->saldo > $otrosi->valor_tot) {
+        if ($administrativa->saldo > $datos['valor_tot']) {
           $resta = $administrativa->saldo - $otrosi->valor_tot;
           $nuevo_saldo = $resta + $datos['valor_tot'];
           $administrativa->saldo = $nuevo_saldo;

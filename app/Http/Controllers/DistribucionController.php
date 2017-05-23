@@ -114,7 +114,7 @@ class DistribucionController extends Controller
 
        Session::flash('message', 'registro editado editado!');
        Session::flash('class', 'success');
-      //  return redirect()->route('administrativas.index');
+       return redirect()->route('administrativas.index');
      }
 
     /**
