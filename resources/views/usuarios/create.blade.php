@@ -1,5 +1,9 @@
 @extends('index')
-
+<style media="screen">
+  #password, #rol_id{
+    width: 90%;
+  }
+</style>
 @section('contenido')
   <ol class="breadcrumb">
     <li><a href="{{ url('index') }}">Inicio</a></li>
@@ -42,12 +46,9 @@
             {!! Form::label('apellidos', 'Apellidos') !!}
             {!! Form::text('apellidos', null, ['class' => 'form-control' , 'required' => 'required']) !!}
           </div>
-
-
         </div>
         <div class="box-body col-md-6">
           <br>
-
           <div class="form-group">
             {!! Form::label('email', 'Email') !!}
             {!! Form::text('email', null, ['class' => 'form-control' , 'required' => 'required']) !!}
@@ -59,16 +60,11 @@
             <span id="show-pass" class="glyphicon glyphicon-eye-open"></span>
 
           </div>
-
           <br>
-          <br>
-
           <div class="form-group">
             {!! Form::label('rol_id', 'Rol') !!}
             {!! Form::select('rol_id',$roles,['class' => 'form-control','required' => 'required']) !!}
           </div>
-
-
         </div>
         <!-- /.box-body -->
         <br>
