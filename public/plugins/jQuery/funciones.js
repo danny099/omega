@@ -38,9 +38,6 @@
           }
 
 
-
-
-
     $(function() {
         var count = 1;
        $(document).on("click","#btnadd",function( event ) {

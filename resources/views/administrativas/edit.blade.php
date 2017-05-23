@@ -84,8 +84,9 @@
     }
 
 
-    function calcular3(){
+
       $('.valor_factura').on('keyup',function(){
+
           var valor = $(this).val().replace(/,/g,"");
           var resultado = valor * 1.19;
           var iva = valor*0.19;
@@ -100,18 +101,17 @@
           var resultado =valor_total-(retenciones+amortizacion+polizas+retegarantia);
           $(this).parent().parent().parent().find('.valor_pagado').val(addCommas2(parseFloat(resultado)));
       });
-    }
 
-    function retencion(){
+
       $('.retencionesporcen').keyup(function(){
         var retencionesporcen = parseInt($(this).val());
         var valor = $(this).parent().parent().parent().find('.valor_factura').val().replace(/,/g,"");
         var resultado = valor*retencionesporcen/100;
         $(this).parent().parent().find('.retenciones').val(addCommas2(parseFloat(resultado)));
       });
-    }
 
-    function retencion2(){
+
+
       $('.retencionesporcen').change(function(){
         var retenciones = $(this).parent().parent().parent().find('.retenciones').val().replace(/,/g,"");
         var amortizacion = $(this).parent().parent().parent().find('.amortizacion').val().replace(/,/g,"");
@@ -121,132 +121,67 @@
         var resultado =valor_total-(parseFloat(retenciones)+parseFloat(amortizacion)+parseFloat(polizas)+parseFloat(retegarantia));
         $(this).parent().parent().parent().find('.valor_pagado').val(addCommas2(parseFloat(resultado)));
       });
-    }
+
+      $('.amortizacionporcen').keyup(function(){
+        var amortizacionporcen = parseInt($(this).val());
+        var valor = $(this).parent().parent().parent().find('.valor_total').val().replace(/,/g,"");
+        var resultado = valor*amortizacionporcen/100;
+        $(this).parent().parent().parent().find('.amortizacion').val(addCommas2(parseFloat(resultado)));
+      });
+      $('.amortizacionporcen').change(function(){
+        var retenciones = $(this).parent().parent().parent().find('.retenciones').val().replace(/,/g,"");
+        var amortizacion = $(this).parent().parent().parent().find('.amortizacion').val().replace(/,/g,"");
+        var polizas = $(this).parent().parent().parent().find('.polizas').val().replace(/,/g,"");
+        var retegarantia = $(this).parent().parent().parent().find('.retegarantia').val().replace(/,/g,"");
+        var valor_total = $(this).parent().parent().parent().find('.valor_total').val().replace(/,/g,"");
+        var resultado =valor_total-(parseFloat(retenciones)+parseFloat(amortizacion)+parseFloat(polizas)+parseFloat(retegarantia));
+        $(this).parent().parent().parent().find('.valor_pagado').val(addCommas2(parseFloat(resultado)));
+        });
+      $('.polizasporcen').keyup(function(){
+        var polizasporcen = parseInt($(this).val());
+        var valor = $(this).parent().parent().parent().find('.valor_total').val().replace(/,/g,"");
+        var resultado = valor*polizasporcen/100;
+        $(this).parent().parent().parent().find('.polizas').val(addCommas2(parseFloat(resultado)));
+      });
+      $('.polizasporcen').change(function(){
+        var retenciones = $(this).parent().parent().parent().find('.retenciones').val().replace(/,/g,"");
+        var amortizacion = $(this).parent().parent().parent().find('.amortizacion').val().replace(/,/g,"");
+        var polizas = $(this).parent().parent().parent().find('.polizas').val().replace(/,/g,"");
+        var retegarantia = $(this).parent().parent().parent().find('.retegarantia').val().replace(/,/g,"");
+        var valor_total = $(this).parent().parent().parent().find('.valor_total').val().replace(/,/g,"");
+        var resultado =valor_total-(parseFloat(retenciones)+parseFloat(amortizacion)+parseFloat(polizas)+parseFloat(retegarantia));
+        $(this).parent().parent().parent().find('.valor_pagado').val(addCommas2(parseFloat(resultado)));
+      });
+      $('.retegarantiaporcen').keyup(function(){
+        var retegarantiaporcen = parseInt($(this).val());
+        var valor = $(this).parent().parent().parent().find('.valor_total').val().replace(/,/g,"");
+        var resultado = valor*retegarantiaporcen/100;
+        $(this).parent().parent().parent().find('.retegarantia').val(addCommas2(parseFloat(resultado)));
+      });
+      $('.retegarantiaporcen').change(function(){
+        var retenciones = $(this).parent().parent().parent().find('.retenciones').val().replace(/,/g,"");
+        var amortizacion = $(this).parent().parent().parent().find('.amortizacion').val().replace(/,/g,"");
+        var polizas = $(this).parent().parent().parent().find('.polizas').val().replace(/,/g,"");
+        var retegarantia = $(this).parent().parent().parent().find('.retegarantia').val().replace(/,/g,"");
+        var valor_total = $(this).parent().parent().parent().find('.valor_total').val().replace(/,/g,"");
+        var resultado =valor_total-(parseFloat(retenciones)+parseFloat(amortizacion)+parseFloat(polizas)+parseFloat(retegarantia));
+        $(this).parent().parent().parent().find('.valor_pagado').val(addCommas2(parseFloat(resultado)));
+      });
+
+      $('.retencionesporcen').focus(function(){
+        var retenciones = parseInt($(this).val(""));
+      });
+      $('.amortizacionporcen').focus(function(){
+        var amortizacion = parseInt($(this).val(""));
+      });
+      $('.polizasporcen').focus(function(){
+        var polizas = parseInt($(this).val(""));
+      });
+      $('.retegarantiaporcen').focus(function(){
+        var retegarantia = parseInt($(this).val(""));
+      });
 
 
-  </script>
-  <script type="text/javascript">
-
-    $(function() {
-      $('table').DataTable({
-        "language":{
-        "sProcessing":     "Procesando...",
-        "sLengthMenu":     "Mostrar _MENU_ registros",
-        "sZeroRecords":    "No se encontraron resultados",
-        "sEmptyTable":     "Ningún dato disponible en esta tabla",
-        "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-        "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
-        "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
-        "sInfoPostFix":    "",
-        "sSearch":         "Buscar:",
-        "sUrl":            "",
-        "sInfoThousands":  ",",
-        "sLoadingRecords": "Cargando...",
-        "oPaginate": {
-            "sFirst":    "Primero",
-            "sLast":     "Último",
-            "sNext":     "Siguiente",
-            "sPrevious": "Anterior"
-        },
-        "oAria": {
-            "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
-            "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-        }
-    }
-   });
-
-   $(function() {
-
-     $(document).ready(function(){
-       $(document).on('change','#departamento',function(){
-         var dep_id = $(this).val();
-         var div = $(this).parents();
-         var op=" ";
-         $.ajax({
-           type:'get',
-           url:'{{ url('selectmuni')}}',
-           data:{'id':dep_id},
-           success:function(data){
-             console.log(data);
-             op+='<option value="0" selected disabled>Seleccione</option>';
-             for (var i = 0; i < data.length; i++) {
-               op+='<option value="' +data[i].id+ '">' +data[i].nombre+ '</option>'
-             }
-             div.find('#municipio').html(" ");
-             div.find('#municipio').append(op);
-           },
-           error:function(){
-           }
-         });
-       });
-
-
-
-     });
-
-
-
-
-             $('.amortizacionporcen').keyup(function(){
-               var amortizacionporcen = parseInt($(this).val());
-               var valor = $(this).parent().parent().parent().find('.valor_total').val().replace(/,/g,"");
-               var resultado = valor*amortizacionporcen/100;
-               $(this).parent().parent().parent().find('.amortizacion').val(addCommas2(parseFloat(resultado)));
-             });
-             $('.amortizacionporcen').change(function(){
-               var retenciones = $(this).parent().parent().parent().find('.retenciones').val().replace(/,/g,"");
-               var amortizacion = $(this).parent().parent().parent().find('.amortizacion').val().replace(/,/g,"");
-               var polizas = $(this).parent().parent().parent().find('.polizas').val().replace(/,/g,"");
-               var retegarantia = $(this).parent().parent().parent().find('.retegarantia').val().replace(/,/g,"");
-               var valor_total = $(this).parent().parent().parent().find('.valor_total').val().replace(/,/g,"");
-               var resultado =valor_total-(parseFloat(retenciones)+parseFloat(amortizacion)+parseFloat(polizas)+parseFloat(retegarantia));
-               $(this).parent().parent().parent().find('.valor_pagado').val(addCommas2(parseFloat(resultado)));
-               });
-             $('.polizasporcen').keyup(function(){
-               var polizasporcen = parseInt($(this).val());
-               var valor = $(this).parent().parent().parent().find('.valor_total').val().replace(/,/g,"");
-               var resultado = valor*polizasporcen/100;
-               $(this).parent().parent().parent().find('.polizas').val(addCommas2(parseFloat(resultado)));
-             });
-             $('.polizasporcen').change(function(){
-               var retenciones = $(this).parent().parent().parent().find('.retenciones').val().replace(/,/g,"");
-               var amortizacion = $(this).parent().parent().parent().find('.amortizacion').val().replace(/,/g,"");
-               var polizas = $(this).parent().parent().parent().find('.polizas').val().replace(/,/g,"");
-               var retegarantia = $(this).parent().parent().parent().find('.retegarantia').val().replace(/,/g,"");
-               var valor_total = $(this).parent().parent().parent().find('.valor_total').val().replace(/,/g,"");
-               var resultado =valor_total-(parseFloat(retenciones)+parseFloat(amortizacion)+parseFloat(polizas)+parseFloat(retegarantia));
-               $(this).parent().parent().parent().find('.valor_pagado').val(addCommas2(parseFloat(resultado)));
-             });
-             $('.retegarantiaporcen').keyup(function(){
-               var retegarantiaporcen = parseInt($(this).val());
-               var valor = $(this).parent().parent().parent().find('.valor_total').val().replace(/,/g,"");
-               var resultado = valor*retegarantiaporcen/100;
-               $(this).parent().parent().parent().find('.retegarantia').val(addCommas2(parseFloat(resultado)));
-             });
-             $('.retegarantiaporcen').change(function(){
-               var retenciones = $(this).parent().parent().parent().find('.retenciones').val().replace(/,/g,"");
-               var amortizacion = $(this).parent().parent().parent().find('.amortizacion').val().replace(/,/g,"");
-               var polizas = $(this).parent().parent().parent().find('.polizas').val().replace(/,/g,"");
-               var retegarantia = $(this).parent().parent().parent().find('.retegarantia').val().replace(/,/g,"");
-               var valor_total = $(this).parent().parent().parent().find('.valor_total').val().replace(/,/g,"");
-               var resultado =valor_total-(parseFloat(retenciones)+parseFloat(amortizacion)+parseFloat(polizas)+parseFloat(retegarantia));
-               $(this).parent().parent().parent().find('.valor_pagado').val(addCommas2(parseFloat(resultado)));
-             });
-
-             $('.retencionesporcen').focus(function(){
-               var retenciones = parseInt($(this).val(""));
-             });
-             $('.amortizacionporcen').focus(function(){
-               var amortizacion = parseInt($(this).val(""));
-             });
-             $('.polizasporcen').focus(function(){
-               var polizas = parseInt($(this).val(""));
-             });
-             $('.retegarantiaporcen').focus(function(){
-               var retegarantia = parseInt($(this).val(""));
-             });
-           });
-         });
   </script>
 @endsection
 @section('contenido')
@@ -442,7 +377,7 @@
               </div>
             @else
               <div class="col-md-12 div2">
-                <center><a href="{{ route('facturas.edit', $administrativas->id) }}" class="btn btn-primary botoncito" data-toggle="modal" data-target="#myModal7">Facturas</a></center>
+                <center><a href="" class="btn btn-primary botoncito" data-toggle="modal" data-target="#myModal7">Facturas</a></center>
               </div>
             @endif
             @if(count($cuenta_cobros) == 0)
@@ -508,7 +443,62 @@
       <div class="modal fade bs-example-modal-lg" id="myModal7"  role="dialog" aria-labelledby="myLargeModalLabel">
         <div class="modal-dialog modal-lg3" role="document">
           <div class="modal-content">
-            @include('facturas.index')
+
+            <div class="box box-primary">
+              <div class="box-header with-border">
+                <center> <h3 class="box-title"> Editar factura</h3> </center>
+              </div>
+              <div class="box-body">
+                <div class="col-md-12 well">
+                    <table id="example" class="table table-bordered table-striped">
+                      <thead>
+                        <tr>
+                          <th>Numero factura</th>
+                          <th>Fecha de la factura</th>
+                          <th>Valor antes de iva</th>
+                          <th>Iva</th>
+                          <th>Valor con iva</th>
+                          <th>Acciones</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        @foreach($facturas as $key => $factura)
+                        <tr>
+                          <td>{{$factura->num_factura}}</td>
+                          <td>{{$factura->fecha_factura}}</td>
+                          <td>{{ number_format($factura->valor_factura,0) }}</td>
+                          <td>{{ number_format($factura->iva,0) }}</td>
+                          <td>{{ number_format($factura->valor_total,0) }}</td>
+                          <td>
+                            <a href="" data-toggle="modal" data-target="#myModal20-{{ $key }}"><i class="glyphicon glyphicon-pencil"></i></a>
+                            <a href="{{ url('deletefactura') }}/{{ $factura->id }}" onClick="javascript: return confirm('Esta seguro de eliminar registro?');"><i class="glyphicon glyphicon-minus-sign"></i></a>
+                            <!-- inicio modal 1 -->
+
+                            <div class="modal fade" id="myModal20-{{ $key }}" role="dialog" aria-labelledby="myModalLabel">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title"></h4>
+                                  </div>
+                                  <div class="modal-body">
+                                    @include('facturas.edit')
+                                  </div>
+                                  <div class="modal-footer">
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- fin modal -->
+                          </td>
+                        </tr>
+                          @endforeach
+                    </tbody>
+                  </table>
+                  </div>
+                </div>
+              </div>
+
           </div>
         </div>
       </div>

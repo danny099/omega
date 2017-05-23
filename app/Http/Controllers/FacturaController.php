@@ -47,17 +47,17 @@ class FacturaController extends Controller
         $datos['num_factura'] = $request->num_factura;
         $datos['fecha_factura'] = $request->fecha_factura;
         $datos['valor_factura'] = str_replace(',','',$request->valor_factura);
-        $datos['iva'] =  str_replace(',','',$request->iva);
-        $datos['valor_total'] = str_replace(',','',$request->valor_total);
-        $datos['rete_porcen'] = str_replace(',','',$request->rete_porcen);
-        $datos['retenciones'] = str_replace(',','',$request->retenciones);
-        $datos['amorti_porcen'] = str_replace(',','',$request->amorti_porcen);
-        $datos['amortizacion'] = str_replace(',','',$request->amortizacion);
-        $datos['poliza_porcen'] = str_replace(',','',$request->poliza_porcen);
-        $datos['polizas'] = str_replace(',','',$request->polizas);
-        $datos['retegaran_porcen'] =str_replace(',','',$request->retegaran_porcen);
-        $datos['retegarantia'] = str_replace(',','',$request->retegarantia);
-        $datos['valor_pagado'] = str_replace(',','',$request->valor_pagado);
+        $datos['iva'] =  str_replace('.','',$request->iva);
+        $datos['valor_total'] = str_replace('.','',$request->valor_total);
+        $datos['rete_porcen'] = str_replace('.','',$request->rete_porcen);
+        $datos['retenciones'] = str_replace('.','',$request->retenciones);
+        $datos['amorti_porcen'] = str_replace('.','',$request->amorti_porcen);
+        $datos['amortizacion'] = str_replace('.','',$request->amortizacion);
+        $datos['poliza_porcen'] = str_replace('.','',$request->poliza_porcen);
+        $datos['polizas'] = str_replace('.','',$request->polizas);
+        $datos['retegaran_porcen'] =str_replace('.','',$request->retegaran_porcen);
+        $datos['retegarantia'] = str_replace('.','',$request->retegarantia);
+        $datos['valor_pagado'] = str_replace('.','',$request->valor_pagado);
         $datos['fecha_pago'] = $request->fecha_pago;
         $datos['observaciones'] = $request->observaciones;
         $datos['administrativa_id'] = $request->administrativa_id;
@@ -134,36 +134,44 @@ class FacturaController extends Controller
     {
         $input = $request->all();
 
+        $datos['num_factura'] = $request->num_factura;
+        $datos['fecha_factura'] = $request->fecha_factura;
+        $datos['valor_factura'] = str_replace(',','',$request->valor_factura);
+        $datos['iva'] =  str_replace(',','',$request->iva);
+        $datos['valor_total'] = str_replace(',','',$request->valor_total);
+        $datos['rete_porcen'] = str_replace(',','',$request->retencionesporcen);
+        $datos['retenciones'] = str_replace(',','',$request->retenciones);
+        $datos['amorti_porcen'] = str_replace(',','',$request->amortizacionporcen);
+        $datos['amortizacion'] = str_replace(',','',$request->amortizacion);
+        $datos['poliza_porcen'] = str_replace(',','',$request->polizasporcen);
+        $datos['polizas'] = str_replace(',','',$request->polizas);
+        $datos['retegaran_porcen'] =str_replace(',','',$request->retegarantiaporcen);
+        $datos['retegarantia'] = str_replace(',','',$request->retegarantia);
+        $datos['valor_pagado'] = str_replace(',','',$request->valor_pagado);
+        $datos['fecha_pago'] = $request->fecha_pago;
+        $datos['observaciones'] = $request->observaciones;
+
         $factura = Factura::findOrFail($id);
         $administrativa = Administrativa::findOrFail($factura->administrativa_id);
 
-        if ($administrativa->saldo = 0){
-
-          $nuevo_s = $administrativa->saldo + $request->valor_total;
-          $administrativa->saldo = $nuevo_s;
+        if($administrativa->saldo > $factura->valor_total){
+          $suma = $administrativa->saldo + $factura->valor_total;
+          $resta = $suma - $datos['valor_total'];
+          $administrativa->saldo = $resta;
+          dd($resta);
+          die();
           $administrativa->save();
-          $factura->update($input);
-
-
-        }elseif ($administrativa->saldo < $request->valor_total){
-
-          $nuevo_s = $request->valor_total - $administrativa->saldo;
-          $administrativa->saldo = $nuevo_s;
+        }
+        if($administrativa->saldo < $factura->valor_total){
+          $suma = $factura->valor_total + $administrativa->saldo;
+          $resta = $suma - $datos['valor_total'];
+          $administrativa->saldo = $resta;
           $administrativa->save();
-          $factura->update($input);
-
-
-        }elseif ($administrativa->saldo > $request->valor_total){
-
-          $nuevo_s = $administrativa->saldo - $factura->valor_total;
-          $nuevo = $nuevo_s + $administrativa->saldo;
-          $administrativa->saldo = $nuevo;
-          $administrativa->save();
-          $factura->update($input);
-
-
         }
 
+
+
+        $factura->update($datos);
 
         Session::flash('message', 'registro editado editado!');
         Session::flash('class', 'success');

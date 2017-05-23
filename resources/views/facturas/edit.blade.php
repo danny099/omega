@@ -40,7 +40,7 @@
       </div>
       <div class="col-md-6">
         <div class="form-group">
-          {!! Form::text('valor_factura',  number_format($factura->valor_factura,0), ['class' => 'form-control valor_factura' ,'required' => 'required', 'min'=>'0','onkeypress'=>"mascara(this,cpf)",'onkeyup'=>"calcular3()"]) !!}
+          {!! Form::text('valor_factura',  number_format($factura->valor_factura,0), ['class' => 'form-control valor_factura' ,'required' => 'required', 'min'=>'0','onkeypress'=>"mascara(this,cpf)"]) !!}
 
         </div>
       </div>
@@ -75,8 +75,8 @@
       </div>
       <div class="col-md-6">
         <div class="form-group">
-          {!! Form::number('retencionesporcen',  0, ['class' => 'form-control retencionesporcen', 'min'=>'0','onkeyup'=>"retencion()"]) !!}
-          {!! Form::text('retenciones', 0, ['class' => 'form-control retenciones', 'min'=>'0','readonly','onchange'=>"retencion2()"]) !!}
+          {!! Form::number('retencionesporcen',  0, ['class' => 'form-control retencionesporcen', 'min'=>'0']) !!}
+          {!! Form::text('retenciones', 0, ['class' => 'form-control retenciones', 'min'=>'0','readonly']) !!}
         </div>
       </div>
 
