@@ -99,21 +99,7 @@
       document.getElementById("fin").value = addCommas(parseFloat(varSubTotal)) ;
 
     }
-    function calcular2(){
-      var varMonto;
-      var varIva;
-      var varSubTotal;
 
-      varMonto = document.getElementById("antesiva").value;
-      varMonto = varMonto.replace(/[\,]/g,'');
-
-      varIva = parseFloat(varMonto) * 0.19;
-      document.getElementById("iva2").value = addCommas(parseFloat(varIva)) ;
-
-      varSubTotal = parseFloat(varMonto) + parseFloat(varIva);
-      document.getElementById("otrosi").value = addCommas(parseFloat(varSubTotal)) ;
-
-    }
 
 
     function addCommas(nStr){
@@ -146,15 +132,14 @@
         $('#codigo_proyecto').inputmask('CPS-9999-999');
       });
 
-
-
       $('.antesiva').on('keyup',function(){
-
           var valor = $(this).val().replace(/,/g,"");
           var resultado = valor * 1.19;
           var iva = valor*0.19;
-          $(this).parent().parent().parent().find('.iva2').val(addCommas2(parseFloat(iva)));
-          $(this).parent().parent().parent().find('.otrosi').val(addCommas2(parseFloat(resultado)));
+          $(this).parent().parent().parent().parent().parent().find('.iva').val(addCommas2(parseFloat(iva)));
+          $(this).parent().parent().parent().parent().parent().find('.otrosi').val(addCommas2(parseFloat(resultado)));
+
+
       });
 
       $('.valor_factura').on('keyup',function(){
@@ -651,8 +636,8 @@
 
                               <div class="modal fade" id="myModal21-{{ $key }}" role="dialog" aria-labelledby="myModalLabel">
                                 <div class="modal-dialog" role="document">
-                                  <div class="modal-content">
-                                    
+
+                                    <div class="modal-header">
                                       <button type="button" class="close" data-dismiss="modal">&times;</button>
                                       <h4 class="modal-title"></h4>
                                     </div>
@@ -661,8 +646,8 @@
                                     </div>
                                     <div class="modal-footer">
                                     </div>
+                                  </div>
 
-                                </div>
                               </div>
                               <!-- fin modal -->
                             </td>
@@ -674,8 +659,6 @@
                     </div>
                   </div>
                 </div>
-
-
             </div>
           </div>
         </div>
@@ -683,7 +666,7 @@
 
       <!-- inicio modal -->
         <div class="modal fade bs-example-modal-lg" id="myModal4"  role="dialog" aria-labelledby="myLargeModalLabel">
-          <div class="modal-dialog modal-lg3" role="document">
+          <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
 
             </div>
@@ -692,7 +675,7 @@
       <!-- fin modal -->
       <!-- inicio modal -->
         <div class="modal fade bs-example-modal-lg" id="myModal5"  role="dialog" aria-labelledby="myLargeModalLabel">
-          <div class="modal-dialog modal-lg3" role="document">
+          <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
 
             </div>
@@ -701,7 +684,7 @@
       <!-- fin modal -->
       <!-- inicio modal -->
         <div class="modal fade bs-example-modal-lg" id="myModal6"  role="dialog" aria-labelledby="myLargeModalLabel">
-          <div class="modal-dialog modal-lg3" role="document">
+          <div class="modal-dialog modal-lg2" role="document">
             <div class="modal-content">
 
             </div>
