@@ -189,7 +189,7 @@ class OtrosiController extends Controller
         $administrativas->valor_total_contrato = $nuevo_total;
         $administrativas->save();
       }else {
-        $nuevo_total = $administrativas->valor_total_contrato - $otrosi->valor_tot;
+        $nuevo_total = $otrosi->valor_tot - $administrativas->valor_total_contrato;
         $administrativas->valor_total_contrato = $nuevo_total;
         $administrativas->save();
       }
