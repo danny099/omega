@@ -9,7 +9,7 @@
       @foreach($distribuciones as $distribucion)
         <input type="hidden" name="distribucion[id][]" value="{{ $distribucion->id}}">
         <div class="col-md-12">
-          <div class="col-md-3">
+          <div class="col-md-4">
             <div class="form-group">
               <center><label >Descripcion</label></center>
               <select class="form-control" name="distribucion[descripcion_dis][]">

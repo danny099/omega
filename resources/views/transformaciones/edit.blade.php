@@ -11,7 +11,7 @@
       @foreach($transformaciones as $transfor)
       <input type="hidden" name="transformacion[id][]" value="{{ $transfor->id}}">
       <div class="col-md-12">
-        <div class="col-md-3">
+        <div class="col-md-4">
           <div class="form-group">
             <center><label >Descripcion</label></center>
             <input type="text" class="form-control" value="{{ $transfor->descripcion }}"  readonly=”readonly” name="transformacion[descripcion][]">
@@ -30,7 +30,7 @@
           </div>
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-2">
           <div class="form-group">
             <center><label >Capacidad</label></center>
             <select class="form-control" name="transformacion[capacidad][]">

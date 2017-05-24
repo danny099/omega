@@ -9,7 +9,7 @@
     @foreach($pu_finales as $pu)
       <input type="hidden" name="pu_final[id][]" value="{{ $pu->id}}">
       <div class="col-md-12">
-        <div class="col-md-3">
+        <div class="col-md-4">
           <div class="form-group">
             <center><label >Descripcion</label></center>
             <select class="form-control"name="pu_final[descripcion_pu][]">
