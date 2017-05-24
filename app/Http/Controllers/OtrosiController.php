@@ -174,7 +174,7 @@ class OtrosiController extends Controller
       $administrativas->recordar = 1;
       $administrativas->save();
 
-      if ($administrativa->saldo > $otrosi->valor_tot) {
+      if ($administrativas->saldo > $otrosi->valor_tot) {
         $nuevo_saldo = $administrativas->saldo - $otrosi->valor_tot;
         $administrativas->saldo = $nuevo_saldo;
         $administrativas->save();

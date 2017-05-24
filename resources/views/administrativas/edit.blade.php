@@ -651,8 +651,8 @@
 
                               <div class="modal fade" id="myModal21-{{ $key }}" role="dialog" aria-labelledby="myModalLabel">
                                 <div class="modal-dialog" role="document">
-
-                                    <div class="modal-header">
+                                  <div class="modal-content">
+                                    
                                       <button type="button" class="close" data-dismiss="modal">&times;</button>
                                       <h4 class="modal-title"></h4>
                                     </div>
@@ -674,6 +674,7 @@
                     </div>
                   </div>
                 </div>
+
 
             </div>
           </div>
