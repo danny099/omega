@@ -155,29 +155,28 @@ class FacturaController extends Controller
         $administrativa = Administrativa::findOrFail($factura->administrativa_id);
 
 
-        if($administrativa->saldo > $datos['valor_total']){
+        if($administrativa->saldo >= $datos['valor_total']){
           $suma = $administrativa->saldo + $factura->valor_total;
           $resta = $suma - $datos['valor_total'];
           $administrativa->saldo = $resta;
 
           $administrativa->save();
-          $factura->update($datos);
           Session::flash('message', 'registro editado editado!');
           Session::flash('class', 'success');
 
         }
-        if($administrativa->saldo < $datos['valor_total']){
-          // $suma = $factura->valor_total + $administrativa->saldo;
-          // $resta = $suma - $datos['valor_total'];
-          // $administrativa->saldo = $resta;
-          // $administrativa->save();
-          Session::flash('message', 'El valor de la Factura es mayor al saldo!');
-          Session::flash('class', 'danger');
-          return redirect()->route('administrativas.index');
 
+        if($administrativa->saldo < $datos['valor_total']){
+          $suma = $factura->valor_total + $administrativa->saldo;
+          $resta = $datos['valor_total'] - $suma;
+          $administrativa->saldo = $resta;
+          $administrativa->save();
+          Session::flash('message', 'registro editado editado!');
+          Session::flash('class', 'success');
         }
 
 
+        $factura->update($datos);
 
 
 
@@ -202,7 +201,7 @@ class FacturaController extends Controller
       $factu = Factura::findOrFail($id);
       $administrativas = Administrativa::findOrFail($factu->administrativa_id);
 
-      $nuevo_saldo = $administrativas->saldo + $factu->valor_total;
+      // $nuevo_saldo = $administrativas->saldo + $factu->valor_total;
       $administrativas->saldo = $nuevo_saldo;
       $administrativas->save();
 
