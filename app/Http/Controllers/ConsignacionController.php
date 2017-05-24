@@ -124,28 +124,33 @@ class ConsignacionController extends Controller
         $input = $request->all();
 
         // $adicional = Valor_adicional::findOrFail($id);
-        // $administrativa = Administrativa::findOrFail($adicional->administrativa_id);
+        $administrativa = Administrativa::findOrFail($adicional->administrativa_id);
 
         for ($a=0; $a<count($input['consignacion']['fecha_pago']); $a++){
 
-          $consignacion = Consignacion::findOrFail($input['consignacion']['id'][$a]);
-          $administrativa = Administrativa::findOrFail($consignacion->administrativa_id);
+          if ($administrativa->saldo > $input['consignacion']['valor'][$a]) {
+            $consignacion = Consignacion::findOrFail($input['consignacion']['id'][$a]);
+            $administrativa = Administrativa::findOrFail($consignacion->administrativa_id);
 
-          // if ($administrativa->saldo > 0) {
-          //
-          //   $resta = $administrativa->saldo - $consignacion->valor;
-          //   $nuevo_saldo = $resta + $request->consignacion['valor'][$a];
-          //   $administrativa->saldo = $nuevo_saldo;
-          //   $administrativa->save();
-          //
-          // }
-          $datos['fecha_pago'] = $input['consignacion']['fecha_pago'][$a];
-          $datos['valor'] = str_replace(',','',$input['consignacion']['valor'][$a]);
-          $datos['observaciones'] = $input['consignacion']['observaciones'][$a];
+            // if ($administrativa->saldo > 0) {
+            //
+            //   $resta = $administrativa->saldo - $consignacion->valor;
+            //   $nuevo_saldo = $resta + $request->consignacion['valor'][$a];
+            //   $administrativa->saldo = $nuevo_saldo;
+            //   $administrativa->save();
+            //
+            // }
+            $datos['fecha_pago'] = $input['consignacion']['fecha_pago'][$a];
+            $datos['valor'] = str_replace(',','',$input['consignacion']['valor'][$a]);
+            $datos['observaciones'] = $input['consignacion']['observaciones'][$a];
 
+            $consignacion->update($datos);
 
-
-          $consignacion->update($datos);
+          }else {
+            Session::flash('message', 'Valor de la consignacion no puede ser mayor al saldo');
+            Session::flash('class', 'success');
+            return redirect()->route('administrativas.index');
+          }
 
         }
 
@@ -197,9 +202,9 @@ class ConsignacionController extends Controller
        $consignaciones = Consignacion::findOrFail($id);
        $administrativas = Administrativa::findOrFail($consignaciones->administrativa_id);
 
-       $nuevo_saldo = $administrativas->saldo + $consignaciones->valor;
-       $administrativas->saldo = $nuevo_saldo;
-       $administrativas->save();
+      //  $nuevo_saldo = $administrativas->saldo + $consignaciones->valor;
+      //  $administrativas->saldo = $nuevo_saldo;
+      //  $administrativas->save();
 
       //  $pagado = $administrativas->pagado - $consignaciones->valor;
       //  $administrativas->pagado = $pagado;
