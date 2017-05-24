@@ -234,6 +234,7 @@ class ValorAdicionalController extends Controller
           $nuevo_total = $adicional->valor - $administrativas->valor_total_contrato;
           $administrativas->valor_total_contrato = $nuevo_total;
           $administrativas->save();
+        }
       }
 
       $adicional->delete();
