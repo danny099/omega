@@ -70,7 +70,7 @@ class ValorAdicionalController extends Controller
                   $administrativa->save();
             }
       }
-      return redirect()->route('administrativas.index');
+      return redirect()->route('adicionales.create');
 
     }
 
