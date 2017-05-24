@@ -55,7 +55,8 @@ class Pu_finalController extends Controller
                  Pu_final::create($datos3);
            }
        }
-
+       Session::flash('message', 'Proceso de uso final creado!');
+       Session::flash('class', 'success');
        return redirect()->route('administrativas.index');
 
     }
@@ -107,6 +108,8 @@ class Pu_finalController extends Controller
           $pu->update($datos);
 
        }
+       Session::flash('message', 'Procesos de usos finales editado!');
+       Session::flash('class', 'success');
        return redirect()->route('administrativas.index');
 
      }
@@ -120,7 +123,7 @@ class Pu_finalController extends Controller
     {
       $pu = Pu_final::findOrFail($id);
       $pu->delete();
-      Session::flash('message', 'Alcance Transformacion eliminado');
+      Session::flash('message', 'Proceso de usos final eliminado');
       Session::flash('class', 'danger');
       return redirect()->route('administrativas.index');
 

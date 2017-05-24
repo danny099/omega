@@ -178,7 +178,7 @@ class Cuenta_cobroController extends Controller
 
        }else {
 
-         Session::flash('message', 'El valor de la consignacion es mayor al saldo!');
+         Session::flash('message', 'El valor de la Cuenta de cobro es mayor al saldo!');
          Session::flash('class', 'danger');
          return redirect()->route('administrativas.index');
 

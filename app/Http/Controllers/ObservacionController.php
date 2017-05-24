@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Observacion;
+use Session;
 
 class ObservacionController extends Controller
 {
@@ -39,8 +40,10 @@ class ObservacionController extends Controller
         $input = $request->all();
 
         Observacion::create($input);
+        Session::flash('message', 'Observacion creada!');
+        Session::flash('class', 'success');
         return redirect()->route('administrativas.index');
-        
+
     }
 
     /**

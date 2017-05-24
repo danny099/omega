@@ -376,7 +376,7 @@ class AdministrativaController extends Controller
    public function destroy($id)
    {
 
-     $observacion = Observacion::where('observacion.administrativa_id', '=', $id)->get();
+     $observacion = Observacion::where('observacion.administrativa_id', '=', $id);
      foreach ($observacion as $key => $obs) {
 
       $obs->delete();
@@ -389,27 +389,27 @@ class AdministrativaController extends Controller
 
      }
 
-     $transformacion = Transformacion::where('transformacion.administrativa_id', '=', $id)->get();
+     $transformacion = Transformacion::where('transformacion.administrativa_id', '=', $id);
      foreach ($transformacion as $key => $transfo) {
 
        $transfo->delete();
 
      }
 
-     $distribucion = Distribucion::where('distribucion.administrativa_id', '=', $id)->get();
+     $distribucion = Distribucion::where('distribucion.administrativa_id', '=', $id);
      foreach ($distribucion as $key => $distri) {
 
        $distri->delete();
      }
 
-     $pu_final = Pu_final::where('pu_final.administrativa_id', '=', $id)->get();
+     $pu_final = Pu_final::where('pu_final.administrativa_id', '=', $id);
      foreach ($pu_final as $key => $pu) {
 
        $pu_final->delete();
 
      }
 
-     $adicional = Valor_adicional::where('valor_adicional.administrativa_id', '=', $id)->get();
+     $adicional = Valor_adicional::where('valor_adicional.administrativa_id', '=', $id);
      foreach ($adicional as $key => $adic) {
 
        $adic->delete();
