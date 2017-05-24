@@ -137,7 +137,7 @@ class OtrosiController extends Controller
       }
 
 
-      if ( $administrativa->saldo > 0) {
+      if ( $administrativa->saldo >= 0) {
         if ($administrativa->saldo > $datos['valor_tot']) {
           $resta = $administrativa->saldo - $otrosi->valor_tot;
           $nuevo_saldo = $resta + $datos['valor_tot'];
@@ -174,31 +174,45 @@ class OtrosiController extends Controller
       $administrativas->recordar = 1;
       $administrativas->save();
 
-      if ($administrativas->saldo > $otrosi->valor_tot) {
-        $nuevo_saldo = $administrativas->saldo - $otrosi->valor_tot;
-        $administrativas->saldo = $nuevo_saldo;
-        $administrativas->save();
+      if ($administrativas->saldo > 0) {
+        if ($administrativas->saldo >= $otrosi->valor_tot) {
+          $nuevo_saldo = $administrativas->saldo - $otrosi->valor_tot;
+          $administrativas->saldo = $nuevo_saldo;
+          $administrativas->save();
+        }else {
+          $nuevo_saldo = $otrosi->valor_tot - $administrativas->saldo;
+          $administrativas->saldo = $nuevo_saldo;
+          $administrativas->save();
+        }
+
+        if ($administrativas->valor_total_contrato > $otrosi->valor_tot) {
+          $nuevo_total = $administrativas->valor_total_contrato - $otrosi->valor_tot;
+          $administrativas->valor_total_contrato = $nuevo_total;
+          $administrativas->save();
+        }else {
+          $nuevo_total = $otrosi->valor_tot - $administrativas->valor_total_contrato;
+          $administrativas->valor_total_contrato = $nuevo_total;
+          $administrativas->save();
+        }
       }else {
-        $nuevo_saldo = $otrosi->valor_tot - $administrativas->saldo;
-        $administrativas->saldo = $nuevo_saldo;
-        $administrativas->save();
+        if ($administrativas->valor_total_contrato > $otrosi->valor_tot) {
+          $nuevo_total = $administrativas->valor_total_contrato - $otrosi->valor_tot;
+          $administrativas->valor_total_contrato = $nuevo_total;
+          $administrativas->save();
+        }else {
+          $nuevo_total = $otrosi->valor_tot - $administrativas->valor_total_contrato;
+          $administrativas->valor_total_contrato = $nuevo_total;
+          $administrativas->save();
+          }
       }
 
-      if ($administrativas->valor_total_contrato > $otrosi->valor_tot) {
-        $nuevo_total = $administrativas->valor_total_contrato - $otrosi->valor_tot;
-        $administrativas->valor_total_contrato = $nuevo_total;
-        $administrativas->save();
-      }else {
-        $nuevo_total = $otrosi->valor_tot - $administrativas->valor_total_contrato;
-        $administrativas->valor_total_contrato = $nuevo_total;
-        $administrativas->save();
-      }
       $otrosi->delete();
 
 
       Session::flash('message', 'Otro si eliminado');
       Session::flash('class', 'danger');
       return redirect()->route('administrativas.index');
+
 
     }
 }
