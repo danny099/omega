@@ -30,6 +30,8 @@ class ValorAdicionalController extends Controller
 
       // dd($codigos);
       // die();
+      Session::flash('message', 'Valor adicional creado!');
+      Session::flash('class', 'success');
       return view('adicionales.create',compact('codigos'));
     }
 

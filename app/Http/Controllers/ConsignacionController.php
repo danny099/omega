@@ -38,18 +38,26 @@ class ConsignacionController extends Controller
     {
 
         $input = $request->all();
-
-        $datos['fecha_pago'] = $request->fecha_pago;
-        $datos['valor'] = str_replace(',','',$request->valor);
-        $datos['observaciones'] = $request->observaciones;
-        $datos['administrativa_id'] = $request->administrativa_id ;
-
-
         $administrativa = Administrativa::find($request->administrativa_id);
-        Consignacion::create($datos);
-        Session::flash('message', 'El valor de la consignacion creada!');
-        Session::flash('class', 'success');
-        return redirect()->route('administrativas.index');
+
+        if ($administrativa->saldo > str_replace(',','',$request->valor)) {
+          $datos['fecha_pago'] = $request->fecha_pago;
+          $datos['valor'] = str_replace(',','',$request->valor);
+          $datos['observaciones'] = $request->observaciones;
+          $datos['administrativa_id'] = $request->administrativa_id ;
+
+
+          $administrativa = Administrativa::find($request->administrativa_id);
+          Consignacion::create($datos);
+          Session::flash('message', 'El valor de la consignacion creada!');
+          Session::flash('class', 'success');
+          return redirect()->route('administrativas.index');
+        }else {
+          Session::flash('message', 'El valor de la consignacion no puede ser mayor al saldo!');
+          Session::flash('class', 'danger');
+          return redirect()->route('administrativas.index');
+        }
+
 
         // if ($request->valor <= $administrativa->saldo ) {
         //
@@ -128,7 +136,7 @@ class ConsignacionController extends Controller
 
         for ($a=0; $a<count($input['consignacion']['fecha_pago']); $a++){
 
-          if ($administrativa->saldo > $input['consignacion']['valor'][$a]) {
+          if ($administrativa->saldo > str_replace(',','',$input['consignacion']['valor'][$a])) {
             $consignacion = Consignacion::findOrFail($input['consignacion']['id'][$a]);
             $administrativa = Administrativa::findOrFail($consignacion->administrativa_id);
 

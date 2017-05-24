@@ -38,20 +38,32 @@ class Cuenta_cobroController extends Controller
     public function store(Request $request)
     {
       $input = $request->all();
-
-      $datos['porcentaje'] = $request->porcentaje;
-      $datos['valor'] = str_replace(',','',$request->valor);
-      $datos['fecha_cuenta_cobro'] = $request->fecha_cuenta_cobro;
-      $datos['fecha_pago'] = $request->fecha_pago;
-      $datos['numero_cuenta_cobro'] = $request->numero_cuenta_cobro;
-      $datos['observaciones'] = $request->observaciones;
-      $datos['administrativa_id'] = $request->administrativa_id;
-
       $administrativa = Administrativa::find($request->administrativa_id);
 
-      // if ($request->valor <= $administrativa->saldo){
+      if ($administrativa->saldo > str_replace(',','',$request->valor)) {
+        $datos['porcentaje'] = $request->porcentaje;
+        $datos['valor'] = str_replace(',','',$request->valor);
+        $datos['fecha_cuenta_cobro'] = $request->fecha_cuenta_cobro;
+        $datos['fecha_pago'] = $request->fecha_pago;
+        $datos['numero_cuenta_cobro'] = $request->numero_cuenta_cobro;
+        $datos['observaciones'] = $request->observaciones;
+        $datos['administrativa_id'] = $request->administrativa_id;
+
+        $administrativa = Administrativa::find($request->administrativa_id);
+
+        // if ($request->valor <= $administrativa->saldo){
 
         Cuenta_cobro::create($datos); //funcion para crear el registro
+        Session::flash('message', 'Cuenta de cobro creada!');
+        Session::flash('class', 'success');
+        return redirect()->route('administrativas.index');
+      }else {
+
+        Session::flash('message', 'el valor de la cuenta de cobro no puede ser mayor al saldo!');
+        Session::flash('class', 'danger');
+        return redirect()->route('administrativas.index');
+      }
+
 
         // $cobros = Cuenta_cobro::all();//funcion para recuperar todos los registros en la base de datos
         //
@@ -74,9 +86,7 @@ class Cuenta_cobroController extends Controller
 
       // }else {
 
-        Session::flash('message', 'Cuenta de cobro creada!');
-        Session::flash('class', 'success');
-        return redirect()->route('administrativas.index');
+
 
 
       // }
@@ -124,27 +134,33 @@ class Cuenta_cobroController extends Controller
 
         for ($a=0; $a<count($input['cuenta']['porcentaje']); $a++){
 
+          if ($administrativa->saldo > str_replace(',','',$input['cuenta']['valor'][$a])) {
+            $cuenta = Cuenta_cobro::findOrFail($request->cuenta['id'][$a]);
+            $administrativa = Administrativa::findOrFail($cuenta->administrativa_id);
 
-          $cuenta = Cuenta_cobro::findOrFail($request->cuenta['id'][$a]);
-          $administrativa = Administrativa::findOrFail($cuenta->administrativa_id);
+            // if ($administrativa->saldo > 0) {
+            //
+            //   $resta = $administrativa->saldo - $cuenta->valor;
+            //   $nuevo_saldo = $resta + $request->cuenta['valor'][$a];
+            //   $administrativa->saldo = $nuevo_saldo;
+            //   $administrativa->save();
+            //
+            // }
+            $datos['porcentaje'] = $input['cuenta']['porcentaje'][$a];
+            $datos['valor'] =  str_replace(',','',$input['cuenta']['valor'][$a]);
+            $datos['fecha_cuenta_cobro'] = $input['cuenta']['fecha_cuenta_cobro'][$a];
+            $datos['fecha_pago'] = $input['cuenta']['fecha_pago'][$a];
+            $datos['numero_cuenta_cobro'] = $input['cuenta']['numero_cuenta_cobro'][$a];
+            $datos['observaciones'] = $input['cuenta']['observaciones'][$a];
 
-          // if ($administrativa->saldo > 0) {
-          //
-          //   $resta = $administrativa->saldo - $cuenta->valor;
-          //   $nuevo_saldo = $resta + $request->cuenta['valor'][$a];
-          //   $administrativa->saldo = $nuevo_saldo;
-          //   $administrativa->save();
-          //
-          // }
-          $datos['porcentaje'] = $input['cuenta']['porcentaje'][$a];
-          $datos['valor'] =  str_replace(',','',$input['cuenta']['valor'][$a]);
-          $datos['fecha_cuenta_cobro'] = $input['cuenta']['fecha_cuenta_cobro'][$a];
-          $datos['fecha_pago'] = $input['cuenta']['fecha_pago'][$a];
-          $datos['numero_cuenta_cobro'] = $input['cuenta']['numero_cuenta_cobro'][$a];
-          $datos['observaciones'] = $input['cuenta']['observaciones'][$a];
+            $cuenta->update($datos);
 
+          }else {
+            Session::flash('message', 'Valor de la cuenta de cobro no puede ser mayor al saldo');
+            Session::flash('class', 'success');
+            return redirect()->route('administrativas.index');
+          }
 
-          $cuenta->update($datos);
 
 
 
