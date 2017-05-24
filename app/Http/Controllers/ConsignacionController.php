@@ -201,9 +201,9 @@ class ConsignacionController extends Controller
        $administrativas->saldo = $nuevo_saldo;
        $administrativas->save();
 
-       $pagado = $administrativas->pagado - $consignaciones->valor;
-       $administrativas->pagado = $pagado;
-       $administrativas->save();
+      //  $pagado = $administrativas->pagado - $consignaciones->valor;
+      //  $administrativas->pagado = $pagado;
+      //  $administrativas->save();
 
        $consignaciones->delete();
 

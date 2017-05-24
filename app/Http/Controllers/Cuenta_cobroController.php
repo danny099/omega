@@ -201,9 +201,9 @@ class Cuenta_cobroController extends Controller
        $administrativas->saldo = $nuevo_saldo;
        $administrativas->save();
 
-       $pagado = $administrativas->pagado - $cuentas->valor;
-       $administrativas->pagado = $pagado;
-       $administrativas->save();
+      //  $pagado = $administrativas->pagado - $cuentas->valor;
+      //  $administrativas->pagado = $pagado;
+      //  $administrativas->save();
 
        $cuentas->delete();
 

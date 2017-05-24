@@ -174,20 +174,27 @@ class OtrosiController extends Controller
       $administrativas->recordar = 1;
       $administrativas->save();
 
-      $nuevo_saldo = $administrativas->saldo - $otrosi->valor_tot;
-      $administrativas->saldo = $nuevo_saldo;
+      if ($administrativa->saldo > $otrosi->valor_tot) {
+        $nuevo_saldo = $administrativas->saldo - $otrosi->valor_tot;
+        $administrativas->saldo = $nuevo_saldo;
+        $administrativas->save();
+      }else {
+        $nuevo_saldo = $otrosi->valor_tot - $administrativas->saldo;
+        $administrativas->saldo = $nuevo_saldo;
+        $administrativas->save();
+      }
 
-      $administrativas->save();
-
-      $nuevo_total = $administrativas->valor_total_contrato - $otrosi->valor_tot;
-
-      $nuevo_total = $administrativas->valor_total_contrato - $otrosi->valor;
-
-      $nuevo_total = $administrativas->valor_total_contrato - $otrosi->valor_tot;
-
-      $administrativas->valor_total_contrato = $nuevo_total;
-      $administrativas->save();
+      if ($administrativas->valor_total_contrato > $otrosi->valor_tot) {
+        $nuevo_total = $administrativas->valor_total_contrato - $otrosi->valor_tot;
+        $administrativas->valor_total_contrato = $nuevo_total;
+        $administrativas->save();
+      }else {
+        $nuevo_total = $administrativas->valor_total_contrato - $otrosi->valor_tot;
+        $administrativas->valor_total_contrato = $nuevo_total;
+        $administrativas->save();
+      }
       $otrosi->delete();
+
 
       Session::flash('message', 'Otro si eliminado');
       Session::flash('class', 'danger');

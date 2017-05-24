@@ -77,10 +77,10 @@ class FacturaController extends Controller
 
         $administrativa->save();
 
-        $nuevo = $administrativa->pagado + $factura->valor_total;  //
-
-        $administrativa->pagado = $nuevo;//asignacion de una variable a actualizar
-        $administrativa->save();
+        // $nuevo = $administrativa->pagado + $factura->valor_total;  //
+        //
+        // $administrativa->pagado = $nuevo;//asignacion de una variable a actualizar
+        // $administrativa->save();
 
         Session::flash('message', 'Factura creada');
         Session::flash('class', 'success');
@@ -206,9 +206,9 @@ class FacturaController extends Controller
       $administrativas->saldo = $nuevo_saldo;
       $administrativas->save();
 
-      $pagado = $administrativas->pagado - $factu->valor_total;
-      $administrativas->pagado = $pagado;
-      $administrativas->save();
+      // $pagado = $administrativas->pagado - $factu->valor_total;
+      // $administrativas->pagado = $pagado;
+      // $administrativas->save();
 
       $factu->delete();
 

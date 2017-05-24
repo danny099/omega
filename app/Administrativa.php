@@ -8,7 +8,7 @@ class Administrativa extends Model
 {
   protected $table = 'administrativa';
 
-  protected $fillable = ['id','codigo_proyecto','nombre_proyecto','fecha_contrato','cliente_id','juridica_id','municipio','departamento_id','tipo_zona','valor_contrato_inicial','valor_iva','valor_adicional','valor_contrato_final','plan_pago','resumen','saldo','valor_total_contrato','recordar'];
+  protected $fillable = ['id','codigo_proyecto','nombre_proyecto','fecha_contrato','cliente_id','juridica_id','municipio','departamento_id','tipo_zona','valor_contrato_inicial','valor_iva','valor_adicional','valor_contrato_final','plan_pago','saldo','valor_total_contrato'];
 
   public $timestamps = false;
 
