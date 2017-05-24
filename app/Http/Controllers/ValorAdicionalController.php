@@ -141,7 +141,7 @@ class ValorAdicionalController extends Controller
         $adicional = Valor_adicional::findOrFail($request->adicional['id'][$a]);
         $administrativa = Administrativa::findOrFail($adicional->administrativa_id);
 
-        if ($administrativa->valor_total_contrato > $datos['valor']) {
+        if ($administrativa->valor_total_contrato >= $datos['valor']) {
 
           $valor1 = $administrativa->valor_total_contrato - $adicional->valor;
           $valor2 = $valor1 + $datos['valor'];
@@ -163,7 +163,7 @@ class ValorAdicionalController extends Controller
 
         if ( $administrativa->saldo > 0) {
 
-          if ($administrativa->saldo > $datos['valor']) {
+          if ($administrativa->saldo >= $datos['valor']) {
             $resta = $administrativa->saldo - $adicional->valor;
             $nuevo_saldo = $resta + $datos['valor'];
             $administrativa->saldo = $nuevo_saldo;
@@ -205,27 +205,36 @@ class ValorAdicionalController extends Controller
       $adicional = Valor_adicional::findOrFail($id);
       $administrativas = Administrativa::findOrFail($adicional->administrativa_id);
 
-      if ($administrativas->saldo > $adicional->valor) {
-        $nuevo_saldo = $administrativas->saldo - $adicional->valor;
-        $administrativas->saldo = $nuevo_saldo;
-        $administrativas->save();
+      if ($administrativas->saldo > 0) {
+        if ($administrativas->saldo > $adicional->valor) {
+          $nuevo_saldo = $administrativas->saldo - $adicional->valor;
+          $administrativas->saldo = $nuevo_saldo;
+          $administrativas->save();
+        }else {
+          $nuevo_saldo = $adicional->valor - $administrativas->saldo;
+          $administrativas->saldo = $nuevo_saldo;
+          $administrativas->save();
+        }
+
+        if ($administrativas->valor_total_contrato > $adicional->valor) {
+          $nuevo_total = $administrativas->valor_total_contrato - $adicional->valor;
+          $administrativas->valor_total_contrato = $nuevo_total;
+          $administrativas->save();
+        }else {
+          $nuevo_total = $adicional->valor - $administrativas->valor_total_contrato;
+          $administrativas->valor_total_contrato = $nuevo_total;
+          $administrativas->save();
+        }
       }else {
-        $nuevo_saldo = $adicional->valor - $administrativas->saldo;
-        $administrativas->saldo = $nuevo_saldo;
-        $administrativas->save();
+        if ($administrativas->valor_total_contrato > $adicional->valor) {
+          $nuevo_total = $administrativas->valor_total_contrato - $adicional->valor;
+          $administrativas->valor_total_contrato = $nuevo_total;
+          $administrativas->save();
+        }else {
+          $nuevo_total = $adicional->valor - $administrativas->valor_total_contrato;
+          $administrativas->valor_total_contrato = $nuevo_total;
+          $administrativas->save();
       }
-
-      if ($administrativas->valor_total_contrato > $adicional->valor) {
-        $nuevo_total = $administrativas->valor_total_contrato - $adicional->valor;
-        $administrativas->valor_total_contrato = $nuevo_total;
-        $administrativas->save();
-      }else {
-        $nuevo_total = $adicional->valor - $administrativas->valor_total_contrato;
-        $administrativas->valor_total_contrato = $nuevo_total;
-        $administrativas->save();
-      }
-
-
 
       $adicional->delete();
 
