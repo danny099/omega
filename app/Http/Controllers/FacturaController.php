@@ -156,31 +156,40 @@ class FacturaController extends Controller
 
 
         if($administrativa->saldo >= $datos['valor_total']){
+
           $suma = $administrativa->saldo + $factura->valor_total;
           $resta = $suma - $datos['valor_total'];
           $administrativa->saldo = $resta;
+          // dd($administrativa->saldo);
+          // die();
 
           $administrativa->save();
+          $factura->update($datos);
+
           Session::flash('message', 'registro editado editado!');
           Session::flash('class', 'success');
+          return redirect()->route('administrativas.index');
+
 
         }
 
         if($administrativa->saldo < $datos['valor_total']){
-          $suma = $factura->valor_total + $administrativa->saldo;
-          $resta = $datos['valor_total'] - $suma;
-          $administrativa->saldo = $resta;
-          $administrativa->save();
-          Session::flash('message', 'registro editado editado!');
-          Session::flash('class', 'success');
+          // $suma = $factura->valor_total + $administrativa->saldo;
+          // $resta = $datos['valor_total'] - $suma;
+          // $administrativa->saldo = $resta;
+          // // dd('dos');
+          // // die();
+          // $administrativa->save();
+          Session::flash('message', 'el saldo es menor al valor de la factura ingresada!');
+          Session::flash('class', 'danger');
+          return redirect()->route('administrativas.index');
+
         }
 
 
-        $factura->update($datos);
 
 
 
-        return redirect()->route('administrativas.index');
 
       // }else {
       //

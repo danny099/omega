@@ -312,7 +312,7 @@
               </td>
 
               @if($administrativa->recordar == 0)
-              <td><a><i class="glyphicon glyphicon-alert" style="color:#ff9b00"></i></a></td>
+              <td><a title="Recuerde que tiene un pendiente en otrosi"><i class="glyphicon glyphicon-alert" style="color:#ff9b00"></i></a></td>
               @else
               <td></td>
               @endif

@@ -300,7 +300,7 @@
               </div>
               <div class="form-group" style="Display:none" id="juridica">
                 <label>Persona juridica</label>
-                <select class="form-control" name="juridica_id" >
+                <select class="form-control" name="juridica_id" style="width: 100%" >
                   <option value="">Seleccione</option>
                   @foreach($juridicas as $juridica)
                   <option value="{{ $juridica->id }}">{{$juridica->razon_social}}</option>
