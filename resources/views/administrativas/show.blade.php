@@ -178,7 +178,7 @@
           </div>
 
           <div class="col-md-3">
-            <div class="form-group">
+            <div class="form-group adi">
               @foreach($otrosis as $otrosi)
               <span>{{ $otrosi->detalles }}</span><br>
               <span>{{ number_format($otrosi->valor_tot,0) }}</span><br>
