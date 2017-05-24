@@ -201,7 +201,8 @@ class FacturaController extends Controller
       $factu = Factura::findOrFail($id);
       $administrativas = Administrativa::findOrFail($factu->administrativa_id);
 
-      // $nuevo_saldo = $administrativas->saldo + $factu->valor_total;
+
+      $nuevo_saldo = $administrativas->saldo + $factu->valor_total;
       $administrativas->saldo = $nuevo_saldo;
       $administrativas->save();
 
