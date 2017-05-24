@@ -314,6 +314,29 @@ class AdministrativaController extends Controller
       //  $administrativa['saldo'] =  $administrativa['valor_contrato_final'];
       //  $administrativa['valor_total_contrato'] =  $administrativa['valor_contrato_final'];
 
+      if ($administrativas->saldo > $administrativa['valor_contrato_inicial']) {
+
+        $resta = $administrativas->saldo - $administrativas->valor_contrato_inicial;
+        $suma = $resta + $administrativa['valor_contrato_inicial'];
+        $administrativa['saldo'] = $suma;
+
+      }else {
+        $resta = $administrativas->valor_contrato_inicial - $administrativas->saldo;
+        $suma = $resta + $administrativa['valor_contrato_inicial'];
+        $administrativa['saldo'] = $suma;
+      }
+      if ($administrativas->valor_total_contrato > $administrativa['valor_contrato_final']) {
+
+        $resta2 = $administrativas->valor_total_contrato - $administrativas->valor_contrato_final;
+        $suma2 = $resta2 + $administrativa['valor_contrato_final'];
+        $administrativa['valor_total_contrato'] = $suma2;
+      }else {
+        $resta2 = $administrativas->valor_contrato_final - $administrativas->valor_total_contrato;
+        $suma2 = $resta2 + $administrativa['valor_contrato_final'];
+        $administrativa['valor_total_contrato'] = $suma2;
+      }
+
+
        $administrativas = Administrativa::findOrFail($id);
 
        //  condicional que permite saber si el codigo de proyecto que se envio es igual a uno ya exitente cumpla con la condicion de no permitir actualizar el codigo por uno ya existent
