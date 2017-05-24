@@ -297,6 +297,7 @@ class AdministrativaController extends Controller
        $input = $request->all();
 
        $depart = $request->departamento;
+       $administrativas = Administrativa::findOrFail($id);
 
 
        $administrativa['codigo_proyecto'] = $request->codigo_proyecto;
@@ -307,22 +308,22 @@ class AdministrativaController extends Controller
        $administrativa['departamento_id'] = $request->departamento_id;
        $administrativa['municipio'] = $request->municipio;
        $administrativa['tipo_zona'] = $request->zona;
-       $administrativa['valor_contrato_inicial'] = str_replace(',','',$request->valor_contrato_inicial);
+       $administrativa['valor_contrato_inicial'] = $request->valor_contrato_inicial;
        $administrativa['valor_iva'] = str_replace(',','',$request->iva);
        $administrativa['valor_contrato_final'] =str_replace(',','',$request->contrato_final);
        $administrativa['plan_pago'] = $request->plan_pago;
       //  $administrativa['saldo'] =  $administrativa['valor_contrato_final'];
       //  $administrativa['valor_total_contrato'] =  $administrativa['valor_contrato_final'];
 
-      if ($administrativas->saldo > $administrativa['valor_contrato_inicial']) {
+      if ($administrativas->saldo > $administrativa['valor_contrato_final']) {
 
-        $resta = $administrativas->saldo - $administrativas->valor_contrato_inicial;
-        $suma = $resta + $administrativa['valor_contrato_inicial'];
+        $resta = $administrativas->saldo - $administrativas->valor_contrato_final;
+        $suma = $resta + $administrativa['valor_contrato_final'];
         $administrativa['saldo'] = $suma;
 
       }else {
-        $resta = $administrativas->valor_contrato_inicial - $administrativas->saldo;
-        $suma = $resta + $administrativa['valor_contrato_inicial'];
+        $resta = $administrativas->valor_contrato_final - $administrativas->saldo;
+        $suma = $resta + $administrativa['valor_contrato_final'];
         $administrativa['saldo'] = $suma;
       }
       if ($administrativas->valor_total_contrato > $administrativa['valor_contrato_final']) {
@@ -337,7 +338,6 @@ class AdministrativaController extends Controller
       }
 
 
-       $administrativas = Administrativa::findOrFail($id);
 
        //  condicional que permite saber si el codigo de proyecto que se envio es igual a uno ya exitente cumpla con la condicion de no permitir actualizar el codigo por uno ya existent
        $codigorepe = Administrativa::where('codigo_proyecto',$request->codigo)->get();
