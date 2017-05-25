@@ -147,6 +147,17 @@
           {!! Form::text('observaciones', null, ['class' => 'form-control' ]) !!}
         </div>
       </div>
+      <div class="col-md-6">
+        <div class="form-group">
+           <center><label>Recordarme</label></center>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <input type="radio" name="recordarme" value="0" required> Si<br>
+          <input type="radio" name="recordarme" value="1"> No<br>
+        </div>
+      </div>
 
           <div class="box-footer">
             <button type="submit"  data-target="" data-toggle="" class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;">Editar</button>

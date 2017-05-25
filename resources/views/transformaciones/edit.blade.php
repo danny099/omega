@@ -33,13 +33,8 @@
         <div class="col-md-2">
           <div class="form-group">
             <center><label >Capacidad</label></center>
-            <select class="form-control" name="transformacion[capacidad][]">
-              <option value="{{ $transfor->capacidad }}">{{ $transfor->capacidad }}</option>
-              <option value="5KVA">5KVA</option>
-              <option value="10KVA">10KVA</option>
-              <option value="15KVA">15KVA</option>
-              <option value="150KVA">150KVA</option>
-            </select>
+            <input type="text" class="form-control" placeholder="Capacidad"   name="transformacion[capacidad][]">
+
           </div>
         </div>
 

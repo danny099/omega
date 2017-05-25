@@ -309,6 +309,7 @@
               <tr>
                 <th>N°</th>
                 <th>Observacion</th>
+                <th>Fecha de creación</th>
               </tr>
             </thead>
             <tbody>
@@ -316,6 +317,7 @@
                 <tr>
                   <td>{{ $key+1 }}</td>
                   <td>{{ $obs->observacion }}</td>
+                  <td>{{ date_format(new DateTime($obs->created_at), 'd-m-y') }}</td>
                 </tr>
               @endforeach
             </tbody>

@@ -145,6 +145,17 @@
              {!! Form::text('observaciones', null, ['class' => 'form-control' ]) !!}
            </div>
          </div>
+         <div class="col-md-6">
+           <div class="form-group">
+              <center><label>Recordarme</label></center>
+           </div>
+         </div>
+         <div class="col-md-6">
+           <div class="form-group">
+             <input type="radio" name="recordarme" value="0" checked> Si<br>
+             <input type="radio" name="recordarme" value="1"> No<br>
+           </div>
+         </div>
 
 
            <input type="hidden" name="administrativa_id" value="{{ $administrativa->id }}">
