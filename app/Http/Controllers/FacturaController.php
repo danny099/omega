@@ -42,7 +42,7 @@ class FacturaController extends Controller
        //funcion para sacar todos los valores almacenados en los input
       $administrativa = Administrativa::find($request->administrativa_id);
       $administrativa->recor_fac = $request->recor_fac;
-      
+
       $administrativa->save();
 
       $datos['num_factura'] = $request->num_factura;
@@ -208,7 +208,8 @@ class FacturaController extends Controller
     {
       $factu = Factura::findOrFail($id);
       $administrativas = Administrativa::findOrFail($factu->administrativa_id);
-
+      $administrativas->recor_fac = 1;
+      $administrativas->save();
 
       $nuevo_saldo = $administrativas->saldo + $factu->valor_total;
       $administrativas->saldo = $nuevo_saldo;
