@@ -41,7 +41,8 @@ class FacturaController extends Controller
       $input = $request->all();
        //funcion para sacar todos los valores almacenados en los input
       $administrativa = Administrativa::find($request->administrativa_id);
-      $administrativa->record_fac = $request->record_fac;
+      $administrativa->recor_fac = $request->recor_fac;
+      
       $administrativa->save();
 
       $datos['num_factura'] = $request->num_factura;
