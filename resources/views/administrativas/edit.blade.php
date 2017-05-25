@@ -493,7 +493,7 @@
 
         </div>
         <div class="box-footer">
-          <button type="submit" data-target="" data-toggle="" class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;">Agregar</button>
+          <button type="submit" data-target="" data-toggle="" class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;">Editar</button>
         </div>
 
 
@@ -666,7 +666,7 @@
 
       <!-- inicio modal -->
         <div class="modal fade bs-example-modal-lg" id="myModal4"  role="dialog" aria-labelledby="myLargeModalLabel">
-          <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-dialog modal-lg2" role="document">
             <div class="modal-content">
 
             </div>
@@ -675,7 +675,7 @@
       <!-- fin modal -->
       <!-- inicio modal -->
         <div class="modal fade bs-example-modal-lg" id="myModal5"  role="dialog" aria-labelledby="myLargeModalLabel">
-          <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-dialog modal-lg2" role="document">
             <div class="modal-content">
 
             </div>
