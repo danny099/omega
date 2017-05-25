@@ -199,7 +199,7 @@
         <table id="example1" class="table table-bordered table-striped">
           <thead>
             <tr>
-              <th>Codigo del proyecto</th>
+              <th>Código del proyecto</th>
               <th>Nombre del proyecto</th>
               <th>Fecha del contrato</th>
               <th>Valor final del contrato</th>

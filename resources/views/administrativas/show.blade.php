@@ -35,7 +35,7 @@
               <div class="col-md-12">
                 <div class="col-md-3">
                   <div class="form-group">
-                    <label >Codigo del proyecto:</label>
+                    <label >Código del proyecto:</label>
                   </div>
                 </div>
 
@@ -54,7 +54,7 @@
                 <div class="col-md-3">
                   <div class="form-group">
 
-                    {{$administrativa->valor_contrato_inicial}}
+                    ${{$administrativa->valor_contrato_inicial}}
                   </div>
                 </div>
 
@@ -75,13 +75,13 @@
 
               <div class="col-md-3">
                 <div class="form-group">
-                    <label >Valor iva</label>
+                    <label >Valor IVA</label>
                 </div>
               </div>
 
               <div class="col-md-3">
                 <div class="form-group">
-                  <span>{{ number_format($administrativa->valor_iva,0) }}</span>
+                  <span>${{ number_format($administrativa->valor_iva,0) }}</span>
               </div>
               </div>
 
@@ -180,8 +180,8 @@
           <div class="col-md-3">
             <div class="form-group adi">
               @foreach($otrosis as $otrosi)
-              <span>{{ $otrosi->detalles }}</span><br>
-              <span>{{ number_format($otrosi->valor_tot,0) }}</span><br>
+              <span>{{ $otrosi->detalles }}</span>
+              <span>${{ number_format($otrosi->valor_tot,0) }}</span><br>
               @endforeach
             </div>
           </div>
@@ -209,7 +209,7 @@
 
           <div class="col-md-3">
             <div class="form-group">
-              {{ number_format($administrativa->valor_contrato_final,0) }}<br>
+              ${{ number_format($administrativa->valor_contrato_final,0) }}<br>
 
             </div>
           </div>
@@ -265,7 +265,7 @@
 
           <div class="col-md-3">
             <div class="form-group">
-              {{ number_format($administrativa->valor_total_contrato,0) }}<br>
+              ${{ number_format($administrativa->valor_total_contrato,0) }}<br>
 
             </div>
           </div>
@@ -308,7 +308,7 @@
             <thead>
               <tr>
                 <th>N°</th>
-                <th>Observacion</th>
+                <th>Observación</th>
                 <th>Fecha de creación</th>
               </tr>
             </thead>
@@ -341,7 +341,7 @@
                 <div class="col-md-12">
                   <div class="col-md-8">
                     <div class="form-group">
-                    <center><label >Descripcion</label></center>
+                    <center><label >Descripción</label></center>
                     </div>
                   </div>
                   <div class="col-md-2">
@@ -496,7 +496,7 @@
                     </div>
                     <div class="col-md-10">
                       <div class="form-group">
-                        <span>{{ number_format($consignacion->valor,0) }}</span>
+                        <span>${{ number_format($consignacion->valor,0) }}</span>
                       </div>
                     </div>
                 </div>
@@ -548,7 +548,7 @@
                 </div>
                 <div class="col-md-10">
                   <div class="form-group">
-                    <span>{{ number_format($cuenta_cobro->valor,0) }}</span>
+                    <span>${{ number_format($cuenta_cobro->valor,0) }}</span>
                   </div>
                 </div>
             </div>
@@ -632,12 +632,12 @@
                     <div class="col-md-12">
                       <div class="col-md-6">
                         <div class="form-group">
-                          <label>Valor factura antes de iva:</label>
+                          <label>Valor factura antes de IVA:</label>
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
-                          <span>{{ number_format($factura->valor_factura,0) }}</span>
+                          <span>${{ number_format($factura->valor_factura,0) }}</span>
                         </div>
                       </div>
                     </div>
@@ -661,7 +661,7 @@
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
-                          <span>{{ number_format($factura->valor_total,0) }}</span>
+                          <span>${{ number_format($factura->valor_total,0) }}</span>
                         </div>
                       </div>
                     </div>
@@ -692,7 +692,7 @@
                     <div class="col-md-12">
                       <div class="col-md-6">
                         <div class="form-group">
-                          <label>Amortizacion:</label>
+                          <label>Amortización:</label>
                         </div>
                       </div>
                       <div class="col-md-6">
@@ -704,7 +704,7 @@
                     <div class="col-md-12">
                       <div class="col-md-6">
                         <div class="form-group">
-                          <label>Polizas:</label>
+                          <label>Pólizas:</label>
                         </div>
                       </div>
                       <div class="col-md-6">
@@ -716,7 +716,7 @@
                     <div class="col-md-12">
                       <div class="col-md-6">
                         <div class="form-group">
-                          <label>Porcentaje retegarantia:</label>
+                          <label>Porcentaje retegarantía:</label>
                         </div>
                       </div>
                       <div class="col-md-6">
@@ -728,7 +728,7 @@
                     <div class="col-md-12">
                       <div class="col-md-6">
                         <div class="form-group">
-                          <label>Retegarantia:</label>
+                          <label>Retegarantía:</label>
                         </div>
                       </div>
                       <div class="col-md-6">
@@ -745,7 +745,7 @@
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
-                          <span>{{ number_format($factura->valor_pagado,0) }}</span>
+                          <span>${{ number_format($factura->valor_pagado,0) }}</span>
                         </div>
                       </div>
                     </div>

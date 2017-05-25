@@ -81,13 +81,13 @@
                 <div class="col-md-12">
                   <div class="col-md-4">
                     <div class="form-group">
-                      <center><label >Codigo Proyecto</label></center>
+                      <label >Código Proyecto</label>
                     </div>
                   </div>
                   <div class="form-group ">
                     <div class="col-md-4">
                       <select class="form-control select2" name="administrativa_id" style="width: 100%" id="select" required="">
-                        <option value="">Seleccione..</option>
+                        <option value="">Seleccione...</option>
                         @foreach($codigos as $codigo)
                         <option value="{{ $codigo->id }}">{{$codigo->codigo_proyecto}}</option>
                         @endforeach
@@ -102,7 +102,7 @@
               <div class="row">
                 <div class="col-md-12">
                   <div class="col-md-4">
-                    <center><label >Valor otro si antes de iva</label></center>
+                    <label >Valor otro si antes de IVA</label>
                   </div>
                   <div class="form-group ">
                     <div class="col-md-4">
@@ -118,11 +118,11 @@
                 <div class="row">
                   <div class="col-md-12">
                     <div class="col-md-4">
-                      <center><label >Iva</label></center>
+                      <label >IVA</label>
                     </div>
                     <div class="form-group ">
                       <div class="col-md-4">
-                        <input type="text" class="form-control iva" id="iva" readonly placeholder= "valor" name="iva"  >
+                        <input type="text" class="form-control iva" id="iva" readonly placeholder= "Valor" name="iva"  >
                       </div>
                       <div class="col-md-4" >
 
@@ -134,11 +134,11 @@
                   <div class="row">
                     <div class="col-md-12">
                       <div class="col-md-4">
-                        <center><label >Valor total otro si</label></center>
+                        <label >Valor total otro si</label>
                       </div>
                       <div class="form-group ">
                         <div class="col-md-4">
-                          <input type="text" class="form-control otrosi" id="otrosi" readonly  placeholder= "valor" name="valor_tot">
+                          <input type="text" class="form-control otrosi" id="otrosi" readonly  placeholder= "Valor" name="valor_tot">
                         </div>
                         <div class="col-md-4" >
                         </div>
@@ -149,7 +149,7 @@
                   <div class="row">
                     <div class="col-md-12">
                       <div class="col-md-4">
-                        <center><label >detalles</label></center>
+                        <label >Detalles</label>
                       </div>
                       <div class="form-group ">
                         <div class="col-md-4">
@@ -164,7 +164,7 @@
                   <div class="row">
                     <div class="col-md-12">
                       <div class="col-md-4">
-                        <center><label>Recordarme</label></center>
+                        <label>Recordarme</label>
                       </div>
                       <div class="form-group ">
                         <div class="col-md-4">
