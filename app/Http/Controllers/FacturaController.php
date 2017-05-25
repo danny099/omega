@@ -49,9 +49,7 @@ class FacturaController extends Controller
         $datos['valor_total'] = str_replace(',','',$request->valor_total);
         $datos['rete_porcen'] = str_replace(',','',$request->rete_porcen);
         $datos['retenciones'] = str_replace(',','',$request->retenciones);
-        $datos['amorti_porcen'] = str_replace(',','',$request->amorti_porcen);
         $datos['amortizacion'] = str_replace(',','',$request->amortizacion);
-        $datos['poliza_porcen'] = str_replace(',','',$request->poliza_porcen);
         $datos['polizas'] = str_replace(',','',$request->polizas);
         $datos['retegaran_porcen'] =str_replace(',','',$request->retegaran_porcen);
         $datos['retegarantia'] = str_replace(',','',$request->retegarantia);
@@ -141,9 +139,7 @@ class FacturaController extends Controller
         $datos['valor_total'] = str_replace(',','',$request->valor_total);
         $datos['rete_porcen'] = str_replace(',','',$request->retencionesporcen);
         $datos['retenciones'] = str_replace(',','',$request->retenciones);
-        $datos['amorti_porcen'] = str_replace(',','',$request->amortizacionporcen);
         $datos['amortizacion'] = str_replace(',','',$request->amortizacion);
-        $datos['poliza_porcen'] = str_replace(',','',$request->polizasporcen);
         $datos['polizas'] = str_replace(',','',$request->polizas);
         $datos['retegaran_porcen'] =str_replace(',','',$request->retegarantiaporcen);
         $datos['retegarantia'] = str_replace(',','',$request->retegarantia);

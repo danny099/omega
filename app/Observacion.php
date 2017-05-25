@@ -10,7 +10,6 @@ class Observacion extends Model
 
   protected $fillable = ['id','observacion','administrativa_id'];
 
-  public $timestamps = false;
 
   public function administrativa(){
     return $this->hasMany('App\Administrativa');
