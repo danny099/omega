@@ -172,7 +172,7 @@
 
     <br>
     <br>
-    @if(empty($pu_fianales))
+    @if(empty($pu_finales))
     @else
     <table border="1">
       <thead>
@@ -186,10 +186,10 @@
       <tbody>
         @foreach($pu_finales as $pu)
           <tr>
-            <td>{{ $distri->descripcion }}</td>
-            <td>{{ $distri->tipo }}</td>
-            <td>{{ $distri->unidad }}</td>
-            <td>{{ $distri->cantidad }}</td>
+            <td>{{ $pu->descripcion }}</td>
+            <td>{{ $pu->tipo }}</td>
+            <td>{{ $pu->unidad }}</td>
+            <td>{{ $pu->cantidad }}</td>
           </tr>
         @endforeach
       </tbody>
