@@ -117,6 +117,8 @@
         </tbody>
       </table>
     <center><h2>Alcances</h2></center>
+    @if(empty($transformaciones))
+    @else
     <table border="1">
       <thead>
         <tr>
@@ -139,8 +141,13 @@
         @endforeach
       </tbody>
     </table>
+    @endif
+
     <br>
     <br>
+    @if(empty($distribuciones))
+
+    @else
     <table border="1">
       <thead>
         <tr>
@@ -161,8 +168,12 @@
         @endforeach
       </tbody>
     </table>
+    @endif
+
     <br>
     <br>
+    @if(empty($pu_fianales))
+    @else
     <table border="1">
       <thead>
         <tr>
@@ -183,5 +194,7 @@
         @endforeach
       </tbody>
     </table>
+    @endif
+
   </body>
 </html>
