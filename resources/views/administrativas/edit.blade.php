@@ -93,10 +93,10 @@
       varMonto = varMonto.replace(/[\,]/g,'');
 
       varIva = parseFloat(varMonto) * 0.19;
-      document.getElementById("iva").value = addCommas(parseFloat(varIva)) ;
+      document.getElementById("iva").value = addCommas(parseInt(varIva)) ;
 
       varSubTotal = parseFloat(varMonto) + parseFloat(varIva);
-      document.getElementById("fin").value = addCommas(parseFloat(varSubTotal)) ;
+      document.getElementById("fin").value = addCommas(parseInt(varSubTotal)) ;
 
     }
 
@@ -543,7 +543,7 @@
                         @foreach($facturas as $key => $factura)
                         <tr>
                           <td>{{$factura->num_factura}}</td>
-                          <td>{{$factura->fecha_factura}}</td>
+                          <td>{{ date_format(new DateTime($factura->fecha_factura), 'd-m-y') }}</td>
                           <td>{{ number_format($factura->valor_factura,0) }}</td>
                           <td>{{ number_format($factura->iva,0) }}</td>
                           <td>{{ number_format($factura->valor_total,0) }}</td>

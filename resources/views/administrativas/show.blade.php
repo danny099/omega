@@ -97,7 +97,7 @@
 
             <div class="col-md-3">
               <div class="form-group">
-                <span>{{ $administrativa->fecha_contrato }}</span>
+                <span>{{ date_format(new DateTime($administrativa->fecha_contrato), 'd-m-y') }}</span>
               </div>
             </div>
 
@@ -482,7 +482,7 @@
                   </div>
                   <div class="col-md-10">
                     <div class="form-group">
-                      <span>{{ $consignacion->fecha_pago }}</span>
+                      <span>{{ date_format(new DateTime($consignacion->fecha_pago), 'd-m-y') }}</span>
                     </div>
                   </div>
                 </div>
@@ -558,7 +558,7 @@
               </div>
               <div class="col-md-10">
                 <div class="form-group">
-                  <span>{{ $cuenta_cobro->fecha_cuenta_cobro }}</span>
+                  <span>{{ date_format(new DateTime($cuenta_cobro->fecha_cuenta_cobro), 'd-m-y') }}</span>
                 </div>
               </div>
             </div>
@@ -597,184 +597,191 @@
           <div class="">
             <center><h3>Facturas</h3></center>
           </div>
-          @foreach($facturas as $factura)
-            <div class="box box-primary">
-              <div class="box-body">
-                <div class="col-md-12">
-                  <div class="col-md-2">
-                    <div class="form-group">
-                      <label>Numero Factura:</label>
-                    </div>
-                  </div>
-                  <div class="col-md-10">
-                    <div class="form-group">
-                      <span>{{ $factura->num_factura }}</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-12">
-                  <div class="col-md-2">
-                    <div class="form-group">
-                      <label>Fecha de factura:</label>
-                    </div>
-                  </div>
-                  <div class="col-md-10">
-                    <div class="form-group">
-                      <span>{{ $factura->fecha_factura }}</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-12">
-                  <div class="col-md-2">
-                    <div class="form-group">
-                      <label>Valor factura antes de iva:</label>
-                    </div>
-                  </div>
-                  <div class="col-md-10">
-                    <div class="form-group">
-                      <span>{{ number_format($factura->valor_factura,0) }}</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-12">
-                  <div class="col-md-2">
-                    <div class="form-group">
-                      <label>IVA:</label>
-                    </div>
-                  </div>
-                  <div class="col-md-10">
-                    <div class="form-group">
-                      <span>{{ number_format($factura->iva,0) }}</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-12">
-                  <div class="col-md-2">
-                    <div class="form-group">
-                      <label>Valor total de la factura:</label>
-                    </div>
-                  </div>
-                  <div class="col-md-10">
-                    <div class="form-group">
-                      <span>{{ number_format($factura->valor_total,0) }}</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-12">
-                  <div class="col-md-2">
-                    <div class="form-group">
-                      <label>Porcentaje retenciones:</label>
-                    </div>
-                  </div>
-                  <div class="col-md-10">
-                    <div class="form-group">
-                      <span>{{ $factura->rete_porcen }}%</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-12">
-                  <div class="col-md-2">
-                    <div class="form-group">
-                      <label>Retenciones:</label>
-                    </div>
-                  </div>
-                  <div class="col-md-10">
-                    <div class="form-group">
-                      <span>{{ number_format($factura->retenciones,0) }}</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-12">
-                  <div class="col-md-2">
-                    <div class="form-group">
-                      <label>Amortizacion:</label>
-                    </div>
-                  </div>
-                  <div class="col-md-10">
-                    <div class="form-group">
-                      <span>{{ number_format($factura->amortizacion,0) }}</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-12">
-                  <div class="col-md-2">
-                    <div class="form-group">
-                      <label>Polizas:</label>
-                    </div>
-                  </div>
-                  <div class="col-md-10">
-                    <div class="form-group">
-                      <span>{{ number_format($factura->polizas,0) }}</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-12">
-                  <div class="col-md-2">
-                    <div class="form-group">
-                      <label>Porcentaje retegarantia:</label>
-                    </div>
-                  </div>
-                  <div class="col-md-10">
-                    <div class="form-group">
-                      <span>{{ $factura->retegaran_porcen }}%</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-12">
-                  <div class="col-md-2">
-                    <div class="form-group">
-                      <label>Retegarantia:</label>
-                    </div>
-                  </div>
-                  <div class="col-md-10">
-                    <div class="form-group">
-                      <span>{{ number_format($factura->retegarantia,0) }}</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-12">
-                  <div class="col-md-2">
-                    <div class="form-group">
-                      <label>Valor pagado:</label>
-                    </div>
-                  </div>
-                  <div class="col-md-10">
-                    <div class="form-group">
-                      <span>{{ number_format($factura->valor_pagado,0) }}</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-12">
-                  <div class="col-md-2">
-                    <div class="form-group">
-                      <label>Fecha de pago:</label>
-                    </div>
-                  </div>
-                  <div class="col-md-10">
-                    <div class="form-group">
-                      <span>{{ $factura->fecha_pago }}</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-12">
-                  <div class="col-md-2">
-                    <div class="form-group">
-                      <label>Observaciones:</label>
-                    </div>
-                  </div>
-                  <div class="col-md-10">
-                    <div class="form-group">
-                      <span>{{ $factura->observaciones }}</span>
-                    </div>
-                  </div>
-                </div>
+          <div class="box box-primary">
+          <div class="box-body">
+            <div class="col-md-12">
 
-              </div>
+              @foreach($facturas as $factura)
+                  <div class="col-md-4 well">
+                    <div class="col-md-12">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label>Numero Factura:</label>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <span>{{ $factura->num_factura }}</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label>Fecha de factura:</label>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <span>{{ date_format(new DateTime($factura->fecha_factura), 'd-m-y') }}</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label>Valor factura antes de iva:</label>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <span>{{ number_format($factura->valor_factura,0) }}</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label>IVA:</label>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <span>{{ number_format($factura->iva,0) }}</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label>Valor total de la factura:</label>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <span>{{ number_format($factura->valor_total,0) }}</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label>Porcentaje retenciones:</label>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <span>{{ $factura->rete_porcen }}%</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label>Retenciones:</label>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <span>{{ number_format($factura->retenciones,0) }}</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label>Amortizacion:</label>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <span>{{ number_format($factura->amortizacion,0) }}</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label>Polizas:</label>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <span>{{ number_format($factura->polizas,0) }}</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label>Porcentaje retegarantia:</label>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <span>{{ $factura->retegaran_porcen }}%</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label>Retegarantia:</label>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <span>{{ number_format($factura->retegarantia,0) }}</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label>Valor pagado:</label>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <span>{{ number_format($factura->valor_pagado,0) }}</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label>Fecha de pago:</label>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <span>{{ date_format(new DateTime($factura->fecha_pago), 'd-m-y') }}</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label>Observaciones:</label>
+                        </div>
+                      </div>
 
+                    </div>
+                    <div class="col-md-12 adi">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <span>{{ $factura->observaciones }}</span>
+                        </div>
+                      </div>
+                    </div>
 
+                  </div>
 
+              @endforeach
             </div>
-          @endforeach
+          </div>
+        </div>
+
         </div>
       @endif
       </div>
