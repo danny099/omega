@@ -57,9 +57,9 @@ class JuridicaController extends Controller
         $cliente['departamento_id'] = $request->departamento;
         $cliente['municipio'] = $request->municipio;
 
-        $cedularepe = Cliente::where('cedula',$request->cedula)->get();
-        $nitrepe = Cliente::where('nit',$request->nit)->get();
-        $emailrepe = Cliente::where('email',$request->email)->get();
+        $cedularepe = Juridica::where('cedula',$request->cedula)->get();
+        $nitrepe = Juridica::where('nit',$request->nit)->get();
+        $emailrepe = Juridica::where('email',$request->email)->get();
     		if ($cedularepe->count() == 1) {
     			Session::flash('message', 'la cedula ya esta registrada!');
           Session::flash('class', 'danger');
