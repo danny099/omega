@@ -204,7 +204,7 @@
               <th>Fecha del contrato</th>
               <th>Valor final del contrato</th>
               <th>Acciones</th>
-              <th>Recordatorios</th>
+              <th>Alertas</th>
             </tr>
           </thead>
           <tbody>
@@ -300,12 +300,18 @@
 
 
               </td>
+              <td>
+                @if($administrativa->recordar == 0)
+                <a title="Recuerde que tiene un pendiente en otrosi"><i class="glyphicon glyphicon-alert" style="color:#ff9b00"></i></a>
+                @else
 
-              @if($administrativa->recordar == 0)
-              <td><a title="Recuerde que tiene un pendiente en otrosi"><i class="glyphicon glyphicon-alert" style="color:#ff9b00"></i></a></td>
-              @else
-              <td></td>
-              @endif
+                @endif
+                @if($administrativa->recor_fac == 0)
+                <a title="Recuerde que tiene un pendiente en facturas"><i class="glyphicon glyphicon-alert" style="color:#fd0000"></i></a>
+                @else
+
+                @endif
+              </td>
 
             </tr>
             @endforeach

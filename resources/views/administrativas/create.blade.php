@@ -87,7 +87,7 @@ function addCommas(nStr){
           <div class="form-group">
             <label>Tipo Regimen</label>
             <select class="form-control" name="cliente_id" id="cliente" required="">
-              <option value="">Seleccione</option>
+              <option value="">Seleccione...</option>
               <option value="1">Persona narural</option>
               <option value="2">Persona juridica</option>
             </select>
@@ -95,7 +95,7 @@ function addCommas(nStr){
           <div class="form-group" style="Display:none" id="natural">
             <label >Persona natural</label>
             <select class="form-control select2" name="cliente_id" style="width: 100%" id="select-natural">
-              <option value="">Seleccione..</option>
+              <option value="">Seleccione...</option>
               @foreach($clientes as $cliente)
               <option value="{{ $cliente->id }}">{{$cliente->nombre}}</option>
               @endforeach
@@ -104,7 +104,7 @@ function addCommas(nStr){
           <div class="form-group" style="Display:none" style="width: 100%" id="juridica">
             <label >Persona juridica</label>
             <select class="form-control" name="juridica_id" style="width: 100%">
-              <option value="">Seleccione..</option>
+              <option value="">Seleccione...</option>
               @foreach($juridicas as $juridica)
               <option value="{{ $juridica->id }}">{{$juridica->razon_social}}</option>
               @endforeach
@@ -180,7 +180,7 @@ function addCommas(nStr){
           <div class="form-group">
             <center><label >Tipo</label></center>
             <select class="form-control" name="transformacion[tipo][]">
-              <option value="">Seleccione..</option>
+              <option value="">Seleccione...</option>
               <option value="tipo_poste">Tipo poste</option>
               <option value="tipo_interior">Tipo interior</option>
               <option value="tipo_exterior">Tipo exterior</option>
@@ -222,9 +222,9 @@ function addCommas(nStr){
         <div class="form-group">
           <center><label >Descripción</label></center>
           <select class="form-control" name="distribucion[descripcion_dis][]">
-            <option value="">Seleccione..</option>
-            <option value="Inspeccion retie proceso de distribucion en MT">Inspeccion retie proceso de distribución en MT</option>
-            <option value="Inspeccion retie proceso de distribucion en BT">Inspeccion retie proceso de distribución en BT</option>
+            <option value="">Seleccione...</option>
+            <option value="Inspección retie proceso de distribucion en MT">Inspección retie proceso de distribución en MT</option>
+            <option value="Inspección retie proceso de distribucion en BT">Inspección retie proceso de distribución en BT</option>
           </select>
         </div>
       </div>
@@ -232,10 +232,10 @@ function addCommas(nStr){
         <div class="form-group">
           <center><label >Tipo</label></center>
           <select class="form-control" name="distribucion[tipo_dis][]">
-            <option value="">Seleccione..</option>
-            <option value="aerea">Tipo Aerea</option>
-            <option value="subterranea">Tipo subterranea</option>
-            <option value="aerea/subterranea">Aerea/Subterranea</option>
+            <option value="">Seleccione...</option>
+            <option value="aérea">Tipo Aérea</option>
+            <option value="subterránea">Tipo subterránea</option>
+            <option value="aérea/subterránea">Aérea/subterránea</option>
           </select>
         </div>
       </div>
@@ -266,9 +266,9 @@ function addCommas(nStr){
         <div class="form-group">
           <center><label >Descripcion</label></center>
           <select class="form-control"name="pu_final[descripcion_pu][]">
-            <option value="">Seleccione..</option>
-            <option value="Inspeccion retie proceso uso final residencial">Inspeccion retie proceso uso final residencial</option>
-            <option value="Inspeccion retie proceso uso final comercial">Inspeccion retie proceso uso final comercial</option>
+            <option value="">Seleccione...</option>
+            <option value="Inspección retie proceso uso final residencial">Inspección retie proceso uso final residencial</option>
+            <option value="Inspección retie proceso uso final comercial">Inspección retie proceso uso final comercial</option>
           </select>
         </div>
       </div>
@@ -276,10 +276,10 @@ function addCommas(nStr){
         <div class="form-group">
           <center><label >Tipo</label></center>
           <select class="form-control" name="pu_final[tipo_pu][]">
-            <option value="">Seleccione..</option>
+            <option value="">Seleccione...</option>
             <option value="Casa">Casa</option>
             <option value="Apartamentos">Apartamentos</option>
-            <option value="Zona comun">Zona comun</option>
+            <option value="Zona común">Zona común</option>
             <option value="Local comercial">Local comercial</option>
             <option value="Punto fijo">Punto fijo</option>
           </select>
