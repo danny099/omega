@@ -33,7 +33,7 @@
         <div class="col-md-2">
           <div class="form-group">
             <center><label >Capacidad</label></center>
-            <input type="text" class="form-control" placeholder="Capacidad"   name="transformacion[capacidad][]">
+            <input type="text" class="form-control" placeholder="Capacidad"  value="{{$transfor->capacidad}}" name="transformacion[capacidad][]">
 
           </div>
         </div>

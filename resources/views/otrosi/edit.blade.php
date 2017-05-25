@@ -1,6 +1,6 @@
 <div class="box box-primary">
   <div class="box-header with-border">
-    <center> <h3 class="box-title"> Editar otrosi</h3> </center>
+    <center> <h3 class="box-title"> Editar otro si</h3> </center>
   </div>
   <div class="box-body">
 
@@ -13,7 +13,7 @@
         <div class="row">
           <div class="col-md-12">
             <div class="col-md-4">
-              <center><label >otro si antes iva</label></center>
+              <center><label >Otro si antes IVA</label></center>
             </div>
             <div class="form-group ">
               <div class="col-md-4">
@@ -29,7 +29,7 @@
           <div class="row">
             <div class="col-md-12">
               <div class="col-md-4">
-                <center><label >Iva</label></center>
+                <center><label >IVA</label></center>
               </div>
               <div class="form-group ">
                 <div class="col-md-4">
@@ -60,7 +60,7 @@
             <div class="row">
               <div class="col-md-12">
                 <div class="col-md-4">
-                  <center><label >detalles</label></center>
+                  <center><label >Detalles</label></center>
                 </div>
                 <div class="form-group ">
                   <div class="col-md-4">

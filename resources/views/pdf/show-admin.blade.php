@@ -15,7 +15,7 @@
       }
   </style>
   <body>
-    <center><h1>Datos del Pryecto</h1></center>
+    <center><h1>Datos del Proyecto</h1></center>
     <table border="1">
       <thead>
         <tr>
@@ -27,15 +27,15 @@
       </thead>
       <tbody>
         <tr>
-          <td>Codigo del Proyecto</td>
+          <td>Código del Proyecto</td>
           <td>{{ $administrativa->codigo_proyecto}}</td>
-          <td>Valor antes de iva</td>
+          <td>Valor antes de IVA</td>
           <td>{{  $administrativa->valor_contrato_inicial }}</td>
         </tr>
         <tr>
           <td>Nombre del proyecto</td>
           <td>{{ $administrativa->nombre_proyecto}}</td>
-          <td>Valor iva</td>
+          <td>Valor IVA</td>
           <td>{{  number_format($administrativa->valor_iva,0) }}</td>
         </tr>
         <tr>
@@ -122,7 +122,7 @@
     <table border="1">
       <thead>
         <tr>
-          <th>Descripcion</th>
+          <th>Descripción</th>
           <th>Tipo</th>
           <th>Capacidad</th>
           <th>Unidad</th>
@@ -151,7 +151,7 @@
     <table border="1">
       <thead>
         <tr>
-          <th>Descripcion</th>
+          <th>Descripción</th>
           <th>Tipo</th>
           <th>Unidad</th>
           <th>Cantidad</th>
@@ -177,7 +177,7 @@
     <table border="1">
       <thead>
         <tr>
-          <th>Descripcion</th>
+          <th>Descripción</th>
           <th>Tipo</th>
           <th>Unidad</th>
           <th>Cantidad</th>

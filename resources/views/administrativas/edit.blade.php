@@ -445,7 +445,7 @@
               </div>
             @endif
             <div class="col-md-12 div2">
-              <center><a href="#myModal10" class="btn btn-primary botoncito" data-toggle="modal" data-target="">Crear observacion</a></center>
+              <center><a href="#myModal10" class="btn btn-primary botoncito" data-toggle="modal" data-target="">Crear observación</a></center>
             </div>
           </div>
           <div class="col-md-12">
@@ -497,7 +497,7 @@
                 <div class="box-body">
                   <div class="col-md-2">
                     <div class="form-group">
-                      {!! Form::label('observacion', 'Observacion') !!}
+                      {!! Form::label('observacion', 'Observación') !!}
                     </div>
                   </div>
                   <div class="col-md-10">
@@ -533,9 +533,9 @@
                         <tr>
                           <th>Numero factura</th>
                           <th>Fecha de la factura</th>
-                          <th>Valor antes de iva</th>
-                          <th>Iva</th>
-                          <th>Valor con iva</th>
+                          <th>Valor antes de IVA</th>
+                          <th>IVA</th>
+                          <th>Valor con IVA</th>
                           <th>Acciones</th>
                         </tr>
                       </thead>
@@ -596,7 +596,7 @@
             <div class="modal-content">
               <div class="box box-primary">
                 <div class="box-header with-border">
-                  <center> <h3 class="box-title"> Editar otrosi</h3> </center>
+                  <center> <h3 class="box-title"> Editar otro si</h3> </center>
                 </div>
                 <div class="box-body">
                   <div class="col-md-12 well">
@@ -604,10 +604,10 @@
                       <table id="example" class="table table-bordered table-striped">
                         <thead>
                           <tr>
-                            <th>Valor antes de iva</th>
-                            <th>Iva</th>
-                            <th>Valor con iva</th>
-                            <th>detalles</th>
+                            <th>Valor antes de IVA</th>
+                            <th>IVA</th>
+                            <th>Valor con IVA</th>
+                            <th>Detalles</th>
                             <th>Acciones</th>
                           </tr>
                         </thead>

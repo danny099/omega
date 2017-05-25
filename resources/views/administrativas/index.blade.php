@@ -212,7 +212,7 @@
             <tr>
               <td>{{$administrativa->codigo_proyecto}}</td>
               <td>{{$administrativa->nombre_proyecto}}</td>
-              <td>{{$administrativa->fecha_contrato}}</td>
+              <td>{{ date_format(new DateTime($administrativa->fecha_contrato), 'd-m-y') }}</td>
               <td>{{number_format($administrativa->valor_contrato_final,0)}}</td>
               <td>
                 <a href="{{ route('administrativas.edit', $administrativa->id) }}"><i class="glyphicon glyphicon-pencil"></i></a>
