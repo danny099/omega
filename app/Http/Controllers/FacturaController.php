@@ -41,22 +41,24 @@ class FacturaController extends Controller
       $input = $request->all();
        //funcion para sacar todos los valores almacenados en los input
       $administrativa = Administrativa::find($request->administrativa_id);
+      $administrativa->record_fac = $request->record_fac;
+      $administrativa->save();
 
-        $datos['num_factura'] = $request->num_factura;
-        $datos['fecha_factura'] = $request->fecha_factura;
-        $datos['valor_factura'] = str_replace(',','',$request->valor_factura);
-        $datos['iva'] =  str_replace(',','',$request->iva);
-        $datos['valor_total'] = str_replace(',','',$request->valor_total);
-        $datos['rete_porcen'] = str_replace(',','',$request->rete_porcen);
-        $datos['retenciones'] = str_replace(',','',$request->retenciones);
-        $datos['amortizacion'] = str_replace(',','',$request->amortizacion);
-        $datos['polizas'] = str_replace(',','',$request->polizas);
-        $datos['retegaran_porcen'] =str_replace(',','',$request->retegaran_porcen);
-        $datos['retegarantia'] = str_replace(',','',$request->retegarantia);
-        $datos['valor_pagado'] = str_replace(',','',$request->valor_pagado);
-        $datos['fecha_pago'] = $request->fecha_pago;
-        $datos['observaciones'] = ucfirst($request->observaciones);
-        $datos['administrativa_id'] = $request->administrativa_id;
+      $datos['num_factura'] = $request->num_factura;
+      $datos['fecha_factura'] = $request->fecha_factura;
+      $datos['valor_factura'] = str_replace(',','',$request->valor_factura);
+      $datos['iva'] =  str_replace(',','',$request->iva);
+      $datos['valor_total'] = str_replace(',','',$request->valor_total);
+      $datos['rete_porcen'] = str_replace(',','',$request->rete_porcen);
+      $datos['retenciones'] = str_replace(',','',$request->retenciones);
+      $datos['amortizacion'] = str_replace(',','',$request->amortizacion);
+      $datos['polizas'] = str_replace(',','',$request->polizas);
+      $datos['retegaran_porcen'] =str_replace(',','',$request->retegaran_porcen);
+      $datos['retegarantia'] = str_replace(',','',$request->retegarantia);
+      $datos['valor_pagado'] = str_replace(',','',$request->valor_pagado);
+      $datos['fecha_pago'] = $request->fecha_pago;
+      $datos['observaciones'] = ucfirst($request->observaciones);
+      $datos['administrativa_id'] = $request->administrativa_id;
 
       if ($datos['valor_total'] <= $administrativa->saldo) {
         Factura::create($datos); //funcion para crear el registro
