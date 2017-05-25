@@ -8,15 +8,15 @@
     {{ csrf_field() }}
     <div class="box box-primary">
       <div class="col-md-12">
-        <center> <h4 class="box-title">Alcance: proceso de distribucion</h4> </center>
+        <center> <h4 class="box-title">Alcance: proceso de distribución</h4> </center>
       </div>
       <div class="box-body">
         <div class="row">
           <div class="col-md-12">
               <div class="form-group">
-                <center><label >Codigo Proyecto</label></center>
+                <center><label >Código Proyecto</label></center>
                 <select class="form-control select2" name="codigo_proyecto" style="width: 100%" id="select" required="">
-                  <option value="">Seleccione..</option>
+                  <option value="">Seleccione...</option>
                   @foreach($codigos as $codigo)
                   <option value="{{ $codigo->id }}">{{$codigo->codigo_proyecto}}</option>
                   @endforeach
@@ -29,11 +29,11 @@
           <div class="col-md-12">
             <div class="col-md-3">
               <div class="form-group">
-                <center><label >Descripcion</label></center>
+                <center><label >Descripción</label></center>
                 <select class="form-control" name="distribucion[descripcion_dis][]">
-                  <option value="">Seleccione..</option>
-                  <option value="Inspeccion retie proceso de distribucion en MT">Inspeccion retie proceso de distribucion en MT</option>
-                  <option value="Inspeccion retie proceso de distribucion en BT">Inspeccion retie proceso de distribucion en BT</option>
+                  <option value="">Seleccione...</option>
+                  <option value="Inspeccion retie proceso de distribución en MT">Inspeccion retie proceso de distribución en MT</option>
+                  <option value="Inspeccion retie proceso de distribución en BT">Inspeccion retie proceso de distribución en BT</option>
                 </select>
               </div>
             </div>
@@ -42,7 +42,7 @@
               <div class="form-group">
                 <center><label >Tipo</label></center>
                 <select class="form-control" name="distribucion[tipo_dis][]">
-                  <option value="">Seleccione..</option>
+                  <option value="">Seleccione...</option>
                   <option value="aerea">tipo Aerea</option>
                   <option value="subterranea">tipo subterranea</option>
                   <option value="aerea/subterranea">Aerea/Subterranea</option>

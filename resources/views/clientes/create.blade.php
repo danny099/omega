@@ -41,12 +41,12 @@
           </div>
 
           <div class="form-group">
-            {!! Form::label('direccion', 'Direccion') !!}
+            {!! Form::label('direccion', 'Dirección') !!}
             {!! Form::text('direccion', null, ['class' => 'form-control' , 'required' => 'required']) !!}
           </div>
 
           <div class="form-group">
-            {!! Form::label('telefono', 'Telefono') !!}
+            {!! Form::label('telefono', 'Teléfono') !!}
             {!! Form::text('telefono', null, ['class' => 'form-control' , 'required' => 'required']) !!}
           </div>
 

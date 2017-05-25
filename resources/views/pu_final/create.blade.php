@@ -16,9 +16,9 @@
         <div class="row">
           <div class="col-md-12">
               <div class="form-group">
-                <center><label >Codigo Proyecto</label></center>
+                <center><label >Codigó Proyecto</label></center>
                 <select class="form-control select2" name="codigo_proyecto" style="width: 100%" id="select" required="">
-                  <option value="">Seleccione..</option>
+                  <option value="">Seleccione...</option>
                   @foreach($codigos as $codigo)
                   <option value="{{ $codigo->id }}">{{$codigo->codigo_proyecto}}</option>
                   @endforeach
@@ -30,9 +30,9 @@
           <div class="col-md-12">
             <div class="col-md-3">
               <div class="form-group">
-                <center><label >Descripcion</label></center>
+                <center><label >Descripción</label></center>
                 <select class="form-control"name="pu_final[descripcion_pu][]">
-                  <option value="">Seleccione..</option>
+                  <option value="">Seleccione...</option>
                   <option value="Inspeccion retie proceso uso final residencial">Inspeccion retie proceso uso final residencial</option>
                   <option value="Inspeccion retie proceso uso final comercial">Inspeccion retie proceso uso final comercial</option>
                 </select>
@@ -43,7 +43,7 @@
               <div class="form-group">
                 <center><label >Tipo</label></center>
                 <select class="form-control" name="pu_final[tipo_pu][]">
-                  <option value="">Seleccione..</option>
+                  <option value="">Seleccione...</option>
                   <option value="Casa">Casa</option>
                   <option value="Apartamentos">Apartamentos</option>
                   <option value="Zona comun">Zona comun</option>

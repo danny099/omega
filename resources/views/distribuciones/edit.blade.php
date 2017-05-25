@@ -1,7 +1,7 @@
 
   <div class="box box-primary">
     <div class="box-header with-border">
-      <center> <h4 class="box-title">Alcance: proceso de distribucion</h4> </center>
+      <center> <h4 class="box-title">Alcance: proceso de distribución</h4> </center>
     </div>
     <div class="box-body">
       <form class="form1" action="{{ url('editard') }}" method="post">
@@ -11,11 +11,11 @@
         <div class="col-md-12">
           <div class="col-md-4">
             <div class="form-group">
-              <center><label >Descripcion</label></center>
+              <center><label >Descripción</label></center>
               <select class="form-control" name="distribucion[descripcion_dis][]">
                 <option value="{{ $distribucion->descripcion }}">{{ $distribucion->descripcion }}</option>
-                <option value="Inspeccion retie proceso de distribucion en MT">Inspeccion retie proceso de distribucion en MT</option>
-                <option value="Inspeccion retie proceso de distribucion en BT">Inspeccion retie proceso de distribucion en BT</option>
+                <option value="Inspeccion retie proceso de distribución en MT">Inspeccion retie proceso de distribución en MT</option>
+                <option value="Inspeccion retie proceso de distribución en BT">Inspeccion retie proceso de distribución en BT</option>
               </select>
             </div>
           </div>

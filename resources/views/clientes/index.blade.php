@@ -90,8 +90,8 @@
                 <th>Cedula</th>
                 <th>Nombre</th>
                 <th>Contacto</th>
-                <th>Telefono</th>
-                <th>Direccion</th>
+                <th>Télefono</th>
+                <th>Dirección</th>
                 <th>Email</th>
                 <th>Aciones</th>
               </tr>
@@ -121,17 +121,17 @@
         </div>
         <div class="box box-primary">
           <div class="box-header with-border">
-            <center> <h3 class="box-title">Personas juridicas</h3> </center>
+            <center> <h3 class="box-title">Personas jurídicas</h3> </center>
           </div>
           <table id="example2" class="table table-bordered table-striped display">
             <thead>
               <tr>
-                <th>Razon social</th>
+                <th>Razón social</th>
                 <th>Nit</th>
                 <th>Nombre representante</th>
                 <th>Cedula</th>
-                <th>Direccion</th>
-                <th>Telefono</th>
+                <th>Dirección</th>
+                <th>Télefono</th>
                 <th>Email</th>
                 <th>Aciones</th>
               </tr>

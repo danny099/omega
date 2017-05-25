@@ -1,7 +1,7 @@
 <div class="container">
   <div class="">
     <div class="">
-      <h3 class="box-title">Crear persona juridica</h3>
+      <h3 class="box-title">Crear persona jurídica</h3>
     </div>
       <!-- /.box-header -->
       <!-- form start -->
@@ -10,7 +10,7 @@
         <div class="box-body col-md-6">
 
           <div class="form-group">
-            {!! Form::label('razon', 'Razon social') !!}
+            {!! Form::label('razon', 'Razón social') !!}
             {!! Form::text('razon', null, ['class' => 'form-control' , 'required' => 'required']) !!}
           </div>
 
@@ -45,12 +45,12 @@
           </div>
 
           <div class="form-group">
-            {!! Form::label('direccion', 'Direccion') !!}
+            {!! Form::label('direccion', 'Dirección') !!}
             {!! Form::text('direccion', null, ['class' => 'form-control' , 'required' => 'required']) !!}
           </div>
 
           <div class="form-group">
-            {!! Form::label('telefono', 'Telefono') !!}
+            {!! Form::label('telefono', 'Teléfono') !!}
             {!! Form::text('telefono', null, ['class' => 'form-control' , 'required' => 'required']) !!}
           </div>
 

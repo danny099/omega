@@ -11,7 +11,7 @@
       <div class="col-md-12">
         <div class="col-md-4">
           <div class="form-group">
-            <center><label >Descripcion</label></center>
+            <center><label >Descripción</label></center>
             <select class="form-control"name="pu_final[descripcion_pu][]">
               <option value="{{ $pu->descripcion }}">{{ $pu->descripcion }}</option>
               <option value="Inspeccion retie proceso uso final residencial">Inspeccion retie proceso uso final residencial</option>
