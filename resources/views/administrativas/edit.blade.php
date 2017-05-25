@@ -259,7 +259,7 @@
         <div class="box-body">
           <div class="col-md-4">
             <div class="form-group">
-              {!! Form::label('codigo_proyecto', 'Codigo del proyecto:') !!}
+              {!! Form::label('codigo_proyecto', 'Código del proyecto:') !!}
               {!! Form::text('codigo_proyecto', null, ['class' => 'form-control' , 'required' => 'required', 'pattern'=>'[A-Z]{3}[-]{1}[0-9]{4}[-]{1}[0-9]{3}']) !!}
             </div>
             <div class="form-group">
@@ -352,12 +352,12 @@
               </select>
             </div>
             <div class="form-group">
-              {!! Form::label('valor_contrato_inicial', 'Valor antes del iva') !!}
+              {!! Form::label('valor_contrato_inicial', 'Valor antes de IVA') !!}
               {!! Form::text('valor_contrato_inicial',  $administrativas->valor_contrato_inicial , ['class' => 'form-control' , 'required' => 'required', 'onkeypress'=>'mascara(this,cpf)', 'onkeyup'=>'calcular()', 'min'=>'0']) !!}
             </div>
             <div class="form-group">
-              <label >Valor iva</label>
-              <input type="text" min="0" class="form-control" id="iva" readonly="readonly" placeholder= "valor iva" name="iva" value="{{ number_format($administrativas->valor_iva,0) }}">
+              <label >Valor IVA</label>
+              <input type="text" min="0" class="form-control" id="iva" readonly="readonly" placeholder= "valor IVA" name="iva" value="{{ number_format($administrativas->valor_iva,0) }}">
             </div>
             <div class="form-group">
               <label >Valor contrato final</label>
@@ -401,20 +401,20 @@
             @endif
             @if(count($distribuciones) == 0)
               <div class="col-md-12 div2">
-                <center><a class="btn btn-primary botoncito" disabled>Alcance distribucion</a></center>
+                <center><a class="btn btn-primary botoncito" disabled>Alcance distribución</a></center>
               </div>
             @else
               <div class="col-md-12 div2">
-                <center><a href="{{ route('distribuciones.edit', $administrativas->id) }}" class="btn btn-primary botoncito"data-toggle="modal" data-target="#myModal5">Alcance distribucion</a></center>
+                <center><a href="{{ route('distribuciones.edit', $administrativas->id) }}" class="btn btn-primary botoncito"data-toggle="modal" data-target="#myModal5">Alcance distribución</a></center>
               </div>
             @endif
             @if(count($transformaciones) == 0)
               <div class="col-md-12 div2">
-                <center><a  class="btn btn-primary botoncito" disabled >Alcance transformacion</a></center>
+                <center><a  class="btn btn-primary botoncito" disabled >Alcance transformación</a></center>
               </div>
             @else
               <div class="col-md-12 div2">
-                <center><a href="{{ route('transformaciones.edit', $administrativas->id) }}" class="btn btn-primary botoncito"data-toggle="modal" data-target="#myModal6" >Alcance transformacion</a></center>
+                <center><a href="{{ route('transformaciones.edit', $administrativas->id) }}" class="btn btn-primary botoncito"data-toggle="modal" data-target="#myModal6" >Alcance transformación</a></center>
               </div>
             @endif
             @if(count($facturas) == 0)

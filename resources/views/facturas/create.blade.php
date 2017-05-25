@@ -73,7 +73,7 @@
          </div>
          <div class="col-md-6">
            <div class="form-group">
-             {!! Form::number('rete_porcen', 0, ['class' => 'form-control retencionesporcen', 'min'=>'0']) !!}
+             {!! Form::text('rete_porcen', 0, ['class' => 'form-control retencionesporcen', 'min'=>'0']) !!}
              {!! Form::text('retenciones', 0, ['class' => 'form-control retenciones', 'min'=>'0','readonly']) !!}
            </div>
          </div>
@@ -108,7 +108,7 @@
          </div>
          <div class="col-md-6">
            <div class="form-group">
-             {!! Form::number('retegaran_porcen', 0, ['class' => 'form-control retegarantiaporcen', 'min'=>'0' ]) !!}
+             {!! Form::text('retegaran_porcen', 0, ['class' => 'form-control retegarantiaporcen', 'min'=>'0' ]) !!}
              {!! Form::text('retegarantia', 0, ['class' => 'form-control retegarantia', 'min'=>'0','readonly' ]) !!}
            </div>
          </div>

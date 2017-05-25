@@ -166,14 +166,14 @@ function addCommas(nStr){
 
   <div class="box box-primary">
     <div class="box-header with-border">
-      <center> <h3 class="box-title">Alcance: proceso de transformacion</h3> </center>
+      <center> <h3 class="box-title">Alcance: proceso de transformación</h3> </center>
     </div>
     <div class="box-body">
       <div class="col-md-12">
         <div class="col-md-3">
           <div class="form-group">
-            <center><label >Descripcion</label></center>
-            <input type="text" class="form-control" value="Inspecion RETIE proceso de transformacion"  readonly=”readonly” name="transformacion[descripcion][]">
+            <center><label >Descripción</label></center>
+            <input type="text" class="form-control" value="Inspección  RETIE proceso de transformación"  readonly=”readonly” name="transformacion[descripcion][]">
           </div>
         </div>
         <div class="col-md-3">
@@ -181,9 +181,9 @@ function addCommas(nStr){
             <center><label >Tipo</label></center>
             <select class="form-control" name="transformacion[tipo][]">
               <option value="">Seleccione..</option>
-              <option value="tipo_poste">tipo poste</option>
-              <option value="tipo_interior">tipo interior</option>
-              <option value="tipo_exterior">tipo exterior</option>
+              <option value="tipo_poste">Tipo poste</option>
+              <option value="tipo_interior">Tipo interior</option>
+              <option value="tipo_exterior">Tipo exterior</option>
             </select>
           </div>
         </div>
@@ -215,16 +215,16 @@ function addCommas(nStr){
         </div>
       </div>
       <div class="col-md-12">
-        <center> <h4 class="box-title">Alcance: proceso de distribucion</h4> </center>
+        <center> <h4 class="box-title">Alcance: proceso de distribución</h4> </center>
       </div>
 
       <div class="col-md-3">
         <div class="form-group">
-          <center><label >Descripcion</label></center>
+          <center><label >Descripción</label></center>
           <select class="form-control" name="distribucion[descripcion_dis][]">
             <option value="">Seleccione..</option>
-            <option value="Inspeccion retie proceso de distribucion en MT">Inspeccion retie proceso de distribucion en MT</option>
-            <option value="Inspeccion retie proceso de distribucion en BT">Inspeccion retie proceso de distribucion en BT</option>
+            <option value="Inspeccion retie proceso de distribucion en MT">Inspeccion retie proceso de distribución en MT</option>
+            <option value="Inspeccion retie proceso de distribucion en BT">Inspeccion retie proceso de distribución en BT</option>
           </select>
         </div>
       </div>
@@ -233,8 +233,8 @@ function addCommas(nStr){
           <center><label >Tipo</label></center>
           <select class="form-control" name="distribucion[tipo_dis][]">
             <option value="">Seleccione..</option>
-            <option value="aerea">tipo Aerea</option>
-            <option value="subterranea">tipo subterranea</option>
+            <option value="aerea">Tipo Aerea</option>
+            <option value="subterranea">Tipo subterranea</option>
             <option value="aerea/subterranea">Aerea/Subterranea</option>
           </select>
         </div>
