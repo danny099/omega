@@ -73,7 +73,7 @@ function addCommas(nStr){
     <div class="box-body">
         <div class="col-md-4">
           <div class="form-group">
-            <label>Codigo del proyecto:</label>
+            <label>Código del proyecto:</label>
             <input id="codigo" type="text" class="form-control" placeholder="Ingrese codigo"  name="codigo" required pattern="[A-Z]{3}[-]{1}[0-9]{4}[-]{1}[0-9]{3}">
           </div>
           <div class="form-group">
@@ -136,17 +136,17 @@ function addCommas(nStr){
             </select>
           </div>
           <div class="form-group">
-            <label >Valor antes del iva</label>
+            <label >Valor antes de IVA</label>
 
-            <input type="text" min="0" id="ini" class="form-control" placeholder= "Ingrese valor" name="contrato_inicial" onkeyup="calcular();"  onkeypress="mascara(this,cpf)"  onpaste="return false" required="ingrese asi sea un cero">
+            <input type="text" min="0" id="ini" class="form-control" placeholder= "Ingrese valor" name="contrato_inicial" onkeyup="calcular();"  onkeypress="mascara(this,cpf)"  onpaste="return false" required="ingrese así sea un cero">
 
           </div>
         </div>
 
         <div class="col-md-4">
             <div class="form-group">
-              <label >Valor iva</label>
-              <input type="text" min="0" class="form-control" id="iva" readonly="readonly" placeholder= "valor iva" name="iva"   >
+              <label >Valor IVA</label>
+              <input type="text" min="0" class="form-control" id="iva" readonly="readonly" placeholder= "valor IVA" name="iva"   >
 
             </div>
 
@@ -190,7 +190,7 @@ function addCommas(nStr){
         <div class="col-md-3">
           <div class="form-group">
             <center><label >Capacidad</label></center>
-              <input type="text" class="form-control" placeholder="Capacidad"   name="transformacion[capacidad][]">            
+              <input type="text" class="form-control" placeholder="Capacidad"   name="transformacion[capacidad][]">
           </div>
         </div>
         <div class="col-md-1">
