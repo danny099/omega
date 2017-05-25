@@ -53,7 +53,7 @@ class ValorAdicionalController extends Controller
                 !empty($input['adicional']['detalle'][$a])) {
 
                   $datos1['valor'] = str_replace(',','',$input['adicional']['valor'][$a]);
-                  $datos1['detalle'] = $input['adicional']['detalle'][$a];
+                  $datos1['detalle'] = ucfirst($input['adicional']['detalle'][$a]);
                   $datos1['administrativa_id'] = $input['codigo_proyecto'];
 
                   Valor_adicional::create($datos1);
@@ -138,7 +138,7 @@ class ValorAdicionalController extends Controller
       for ($a=0; $a<count($input['adicional']['valor']); $a++){
 
         $datos['valor'] = str_replace(',','',$input['adicional']['valor'][$a]);
-        $datos['detalle'] = $input['adicional']['detalle'][$a];
+        $datos['detalle'] = ucfirst($input['adicional']['detalle'][$a]);
 
         $adicional = Valor_adicional::findOrFail($request->adicional['id'][$a]);
         $administrativa = Administrativa::findOrFail($adicional->administrativa_id);

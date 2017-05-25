@@ -45,7 +45,7 @@ class OtrosiController extends Controller
       $datos['valor'] = str_replace(',','',$request->valor);
       $datos['iva'] = str_replace(',','',$request->iva);
       $datos['valor_tot'] = str_replace(',','',$request->valor_tot);
-      $datos['detalles'] =  $request->detalles;
+      $datos['detalles'] = ucfirst($request->detalles);
       $datos['administrativa_id'] = $request->administrativa_id;
 
       $id = $request->administrativa_id;
@@ -112,7 +112,7 @@ class OtrosiController extends Controller
       $datos['valor'] = str_replace(',','',$request->valor);
       $datos['iva'] = str_replace(',','',$request->iva);
       $datos['valor_tot'] = str_replace(',','',$request->valor_tot);
-      $datos['detalles'] =  $request->detalles;
+      $datos['detalles'] = ucfirst($request->detalles);
 
       $otrosi = Otrosi::findOrFail($id);
       $administrativa = Administrativa::findOrFail($otrosi->administrativa_id);

@@ -52,8 +52,8 @@ class UsuarioController extends Controller
         $usuarios = $request->all();
 
         $usuarios['cedula'] = $request->cedula;
-        $usuarios['nombres'] = $request->nombres;
-        $usuarios['apellidos'] = $request->apellidos;
+        $usuarios['nombres'] = ucwords(strtolower($request->nombres));
+        $usuarios['apellidos'] = ucwords(strtolower($request->apellidos));
         $usuarios['email'] = $request->email;
         $usuarios['password'] = Hash::make($request->password);
 
@@ -114,8 +114,11 @@ class UsuarioController extends Controller
     {
 
         $usuario = Usuario::findOrFail($id);
-        $input = $request->all();
-        $input['password'] = Hash::make($request->password);
+        $usuarios['cedula'] = $request->cedula;
+        $usuarios['nombres'] =ucwords(strtolower($request->nombres));
+        $usuarios['apellidos'] = ucwords(strtolower($request->apellidos));
+        $usuarios['email'] = $request->email;
+        $usuarios['password'] = Hash::make($request->password);
 
         $usuario->update($input);
         Session::flash('message', 'Usuario editado!');

@@ -43,7 +43,8 @@ class ConsignacionController extends Controller
         if ($administrativa->saldo > str_replace(',','',$request->valor)) {
           $datos['fecha_pago'] = $request->fecha_pago;
           $datos['valor'] = str_replace(',','',$request->valor);
-          $datos['observaciones'] = $request->observaciones;
+          $datos['observaciones'] = ucfirst($request->observaciones); 
+          // ucwords(strtolower());
           $datos['administrativa_id'] = $request->administrativa_id ;
 
 

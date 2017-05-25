@@ -46,7 +46,7 @@ class Cuenta_cobroController extends Controller
         $datos['fecha_cuenta_cobro'] = $request->fecha_cuenta_cobro;
         $datos['fecha_pago'] = $request->fecha_pago;
         $datos['numero_cuenta_cobro'] = $request->numero_cuenta_cobro;
-        $datos['observaciones'] = $request->observaciones;
+        $datos['observaciones'] = ucfirst($request->observaciones);
         $datos['administrativa_id'] = $request->administrativa_id;
 
         $administrativa = Administrativa::find($request->administrativa_id);

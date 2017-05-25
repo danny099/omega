@@ -55,7 +55,7 @@ class FacturaController extends Controller
         $datos['retegarantia'] = str_replace(',','',$request->retegarantia);
         $datos['valor_pagado'] = str_replace(',','',$request->valor_pagado);
         $datos['fecha_pago'] = $request->fecha_pago;
-        $datos['observaciones'] = $request->observaciones;
+        $datos['observaciones'] = ucfirst($request->observaciones);
         $datos['administrativa_id'] = $request->administrativa_id;
 
       if ($datos['valor_total'] <= $administrativa->saldo) {
@@ -145,7 +145,7 @@ class FacturaController extends Controller
         $datos['retegarantia'] = str_replace(',','',$request->retegarantia);
         $datos['valor_pagado'] = str_replace(',','',$request->valor_pagado);
         $datos['fecha_pago'] = $request->fecha_pago;
-        $datos['observaciones'] = $request->observaciones;
+        $datos['observaciones'] = ucfirst($request->observaciones);
 
         $factura = Factura::findOrFail($id);
         $administrativa = Administrativa::findOrFail($factura->administrativa_id);
