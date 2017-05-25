@@ -63,7 +63,7 @@
               <div class="col-md-12">
                 <div class="col-md-3">
                   <div class="form-group">
-                    <label >nombre del proyecto</label>
+                    <label >Nombre del proyecto</label>
                   </div>
                 </div>
 
@@ -687,36 +687,12 @@
                 <div class="col-md-12">
                   <div class="col-md-2">
                     <div class="form-group">
-                      <label>Porcentaje amortizacion:</label>
-                    </div>
-                  </div>
-                  <div class="col-md-10">
-                    <div class="form-group">
-                      <span>{{ $factura->amorti_porcen }}%</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-12">
-                  <div class="col-md-2">
-                    <div class="form-group">
                       <label>Amortizacion:</label>
                     </div>
                   </div>
                   <div class="col-md-10">
                     <div class="form-group">
                       <span>{{ number_format($factura->amortizacion,0) }}</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-12">
-                  <div class="col-md-2">
-                    <div class="form-group">
-                      <label>Porcentaje polizas:</label>
-                    </div>
-                  </div>
-                  <div class="col-md-10">
-                    <div class="form-group">
-                      <span>{{ $factura->poliza_porcen }}%</span>
                     </div>
                   </div>
                 </div>

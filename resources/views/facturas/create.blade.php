@@ -13,7 +13,7 @@
          <br>
          <div class="col-md-6">
            <div class="form-group">
-             {!! Form::label('codigo_factura', 'Codigo de la factura') !!}
+             {!! Form::label('codigo_factura', 'Numero de la factura') !!}
            </div>
          </div>
          <div class="col-md-6">
@@ -80,27 +80,23 @@
 
          <div class="col-md-6">
            <div class="form-group">
-             {!! Form::label('amorti_porcen', 'Amortizacion%:') !!}
              {!! Form::label('amortizacion2', 'Amortizacion valor:') !!}
            </div>
          </div>
          <div class="col-md-6">
            <div class="form-group">
-             {!! Form::number('amorti_porcen', 0, ['class' => 'form-control amortizacionporcen', 'min'=>'0']) !!}
-             {!! Form::text('amortizacion', 0, ['class' => 'form-control amortizacion', 'min'=>'0','readonly']) !!}
+             {!! Form::text('amortizacion', 0, ['class' => 'form-control amortizacion', 'min'=>'0','onkeypress'=>"mascara(this,cpf)"]) !!}
            </div>
          </div>
 
          <div class="col-md-6">
            <div class="form-group">
-             {!! Form::label('poliza_porcen', 'Polizas%:') !!}<br>
              {!! Form::label('polizas', 'Polizas valor:') !!}
            </div>
          </div>
          <div class="col-md-6">
            <div class="form-group">
-             {!! Form::number('poliza_porcen', 0, ['class' => 'form-control polizasporcen','min'=>'0' ]) !!}
-             {!! Form::text('polizas', 0, ['class' => 'form-control polizas','min'=>'0','readonly' ]) !!}
+             {!! Form::text('polizas', 0, ['class' => 'form-control polizas','min'=>'0','onkeypress'=>"mascara(this,cpf)" ]) !!}
            </div>
          </div>
 
