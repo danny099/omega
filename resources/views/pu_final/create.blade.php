@@ -33,8 +33,8 @@
                 <center><label >Descripción</label></center>
                 <select class="form-control"name="pu_final[descripcion_pu][]">
                   <option value="">Seleccione...</option>
-                  <option value="Inspeccion retie proceso uso final residencial">Inspeccion retie proceso uso final residencial</option>
-                  <option value="Inspeccion retie proceso uso final comercial">Inspeccion retie proceso uso final comercial</option>
+                  <option value="Inspeccion RETIE proceso uso final residencial">Inspeccion RETIE proceso uso final residencial</option>
+                  <option value="Inspeccion RETIE proceso uso final comercial">Inspeccion RETIE proceso uso final comercial</option>
                 </select>
               </div>
             </div>

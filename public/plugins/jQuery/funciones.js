@@ -130,7 +130,7 @@
         var count = 1;
        $(document).on("click","#btnadd2",function( event ) {
         count++;
-        $('#tblprod2').after('<div class="col-md-3" id="quitar5"><div class="form-group"><center><label >Descripciòn</label></center><input type="text" class="form-control" value="Inspeciòn RETIE proceso de transformaciòn"  readonly=”readonly” name="transformacion[descripcion][]"></div</div>');
+        $('#tblprod2').after('<div class="col-md-3" id="quitar5"><div class="form-group"><center><label >Descripciòn</label></center><input type="text" class="form-control" value="Inspeciòn RETIE proceso de transformación"  readonly=”readonly” name="transformacion[descripcion][]"></div</div>');
           event.preventDefault();
        });
     });
@@ -187,7 +187,7 @@
             var count = 1;
            $(document).on("click","#btnadd3",function( event ) {
             count++;
-            $('#tblprod3').after('<div class="col-md-4 " id="quitar9"><div class="form-group"><center><label >Descripcion</label></center><select class="form-control" name="distribucion[descripcion_dis][]"><option value="Inspección retie proceso de distribución en MT">Inspección retie proceso de distribución en MT</option><option value="Inspección retie proceso de distribución en BT">Inspección retie proceso de distribución en BT</option></select></div></div>');
+            $('#tblprod3').after('<div class="col-md-4 " id="quitar9"><div class="form-group"><center><label >Descripcion</label></center><select class="form-control" name="distribucion[descripcion_dis][]"><option value="Inspección RETIE proceso de distribución en MT">Inspección RETIE proceso de distribución en MT</option><option value="Inspección RETIE proceso de distribución en BT">Inspección RETIE proceso de distribución en BT</option></select></div></div>');
               event.preventDefault();
            });
         });
@@ -248,7 +248,7 @@
             var count = 1;
            $(document).on("click","#btnadd4",function( event ) {
             count++;
-            $('#tblprod4').after('<div class="col-md-4" id="quitar13"><div class="form-group"><center><label >Descripcion</label></center><select class="form-control"name="pu_final[descripcion_pu][]"><option value="Inspección retie proceso uso final residencial">Inspección retie proceso uso final residencial</option><option value="Inspección retie proceso uso final comercial">Inspección retie proceso uso final comercial</option></select></div></div>');
+            $('#tblprod4').after('<div class="col-md-4" id="quitar13"><div class="form-group"><center><label >Descripcion</label></center><select class="form-control"name="pu_final[descripcion_pu][]"><option value="Inspección retie proceso uso final residencial">Inspección RETIE proceso uso final residencial</option><option value="Inspección RETIE proceso uso final comercial">Inspección RETIE proceso uso final comercial</option></select></div></div>');
               event.preventDefault();
            });
         });

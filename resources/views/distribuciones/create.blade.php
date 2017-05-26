@@ -32,8 +32,8 @@
                 <center><label >Descripción</label></center>
                 <select class="form-control" name="distribucion[descripcion_dis][]">
                   <option value="">Seleccione...</option>
-                  <option value="Inspeccion retie proceso de distribución en MT">Inspeccion retie proceso de distribución en MT</option>
-                  <option value="Inspeccion retie proceso de distribución en BT">Inspeccion retie proceso de distribución en BT</option>
+                  <option value="Inspeccion RETIE proceso de distribución en MT">Inspeccion RETIE proceso de distribución en MT</option>
+                  <option value="Inspeccion RETIE proceso de distribución en BT">Inspeccion RETIE proceso de distribución en BT</option>
                 </select>
               </div>
             </div>

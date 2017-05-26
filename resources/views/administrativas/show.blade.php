@@ -47,7 +47,7 @@
 
                 <div class="col-md-3">
                   <div class="form-group">
-                    <label >Valor antes del iva</label>
+                    <label >Valor antes de iva</label>
                   </div>
                 </div>
 

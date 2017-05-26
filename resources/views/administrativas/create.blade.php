@@ -85,11 +85,11 @@ function addCommas(nStr){
             <input type="date" class="form-control pull-right" name="fecha" id="datepicker" required="Ingrese una fecha">
           </div>
           <div class="form-group">
-            <label>Tipo Regimen</label>
+            <label>Tipo Régimen</label>
             <select class="form-control" name="cliente_id" id="cliente" required="">
               <option value="">Seleccione...</option>
-              <option value="1">Persona narural</option>
-              <option value="2">Persona juridica</option>
+              <option value="1">Persona natural</option>
+              <option value="2">Persona jurídica</option>
             </select>
           </div>
           <div class="form-group" style="Display:none" id="natural">
@@ -223,8 +223,8 @@ function addCommas(nStr){
           <center><label >Descripción</label></center>
           <select class="form-control" name="distribucion[descripcion_dis][]">
             <option value="">Seleccione...</option>
-            <option value="Inspección retie proceso de distribucion en MT">Inspección retie proceso de distribución en MT</option>
-            <option value="Inspección retie proceso de distribucion en BT">Inspección retie proceso de distribución en BT</option>
+            <option value="Inspección RETIE proceso de distribución en MT">Inspección RETIE proceso de distribución en MT</option>
+            <option value="Inspección RETIE proceso de distribución en BT">Inspección RETIE proceso de distribución en BT</option>
           </select>
         </div>
       </div>
@@ -264,11 +264,11 @@ function addCommas(nStr){
       </div>
       <div class="col-md-4">
         <div class="form-group">
-          <center><label >Descripcion</label></center>
+          <center><label >Descripción</label></center>
           <select class="form-control"name="pu_final[descripcion_pu][]">
             <option value="">Seleccione...</option>
-            <option value="Inspección retie proceso uso final residencial">Inspección retie proceso uso final residencial</option>
-            <option value="Inspección retie proceso uso final comercial">Inspección retie proceso uso final comercial</option>
+            <option value="Inspección RETIE proceso uso final residencial">Inspección RETIE proceso uso final residencial</option>
+            <option value="Inspección RETIE proceso uso final comercial">Inspección RETIE proceso uso final comercial</option>
           </select>
         </div>
       </div>

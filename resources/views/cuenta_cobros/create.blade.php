@@ -61,7 +61,7 @@
 
           <div class="col-md-6">
             <div class="form-group">
-              {!! Form::label('numero_cuenta_cobro', 'Numero cuenta de cobro:') !!}
+              {!! Form::label('numero_cuenta_cobro', 'Número cuenta de cobro:') !!}
             </div>
           </div>
           <div class="col-md-6">
