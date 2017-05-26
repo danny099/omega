@@ -66,7 +66,7 @@ class PdfController extends Controller
 
       $pdf = App::make('dompdf.wrapper');
       $pdf->loadView('pdf.show-admin',compact('administrativa','clientes','juridicas','otrosis','distribuciones','transformaciones','pu_finales','departamentos','municipios','adicionales','consignaciones','cuenta_cobros','facturas','observaciones'));
-      return $pdf->stream();
+      return $pdf->stream($administrativa->codigo_proyecto);
     }
 
     /**
