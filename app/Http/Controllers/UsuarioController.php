@@ -120,7 +120,7 @@ class UsuarioController extends Controller
         $usuarios['email'] = $request->email;
         $usuarios['password'] = Hash::make($request->password);
 
-        $usuario->update($input);
+        $usuario->update($usuarios);
         Session::flash('message', 'Usuario editado!');
         Session::flash('class', 'success');
         return redirect()->route('usuarios.index');
