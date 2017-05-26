@@ -23,14 +23,14 @@ function calcular(){
   var varIva;
   var varSubTotal;
 
-  varMonto = document.getElementById("ini").value;
+  varMonto = document.getElementById("fin").value;
   varMonto = varMonto.replace(/[\,]/g,'');
 
   varIva = parseFloat(varMonto) * 0.16;
   document.getElementById("iva").value = addCommas(Math.round(varIva)) ;
 
-  varSubTotal = parseFloat(varMonto) + parseFloat(varIva);
-  document.getElementById("fin").value = addCommas(Math.round(varSubTotal)) ;
+  varSubTotal = parseFloat(varMonto) - parseFloat(varIva);
+  document.getElementById("ini").value = addCommas(Math.round(varSubTotal)) ;
 
 }
 
@@ -135,10 +135,9 @@ function addCommas(nStr){
               <option value="Urbana/Rural">Urbana/Rural</option>
             </select>
           </div>
-          <div class="form-group">
-            <label >Valor antes de IVA</label>
-
-            <input type="text" min="0" id="ini" class="form-control" placeholder= "Ingrese valor" name="contrato_inicial" onkeyup="calcular();"  onkeypress="mascara(this,cpf)"  onpaste="return false" required="ingrese así sea un cero">
+          <div class ="form-group">
+            <label >Valor contrato final</label>
+            <input type="text" min="0" class="form-control" id="fin"  placeholder= "Valor final" name="contrato_final"  onkeyup="calcular();"  onkeypress="mascara(this,cpf)"  onpaste="return false" required="ingrese así sea un cero" >
 
           </div>
         </div>
@@ -149,12 +148,13 @@ function addCommas(nStr){
               <input type="text" min="0" class="form-control" id="iva" readonly="readonly" placeholder= "valor IVA" name="iva"   >
 
             </div>
+            <div class="form-group">
+              <label >Valor antes de IVA</label>
 
-            <div class ="form-group">
-              <label >Valor contrato final</label>
-              <input type="text" min="0" class="form-control" id="fin" readonly="readonly" placeholder= "Valor final" name="contrato_final"   >
+              <input type="text" min="0" id="ini" class="form-control"  readonly="readonly" placeholder= "Valor antes IVA" name="contrato_inicial" >
 
             </div>
+
             <div class="form-group">
               <label >Plan de pago</label>
               <input type="text" class="form-control" placeholder= "Ingrese valor" name="plan_pago" required="">

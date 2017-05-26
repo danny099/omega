@@ -89,14 +89,14 @@
       var varIva;
       var varSubTotal;
 
-      varMonto = document.getElementById("valor_contrato_inicial").value;
+      varMonto = document.getElementById("fin").value;
       varMonto = varMonto.replace(/[\,]/g,'');
 
       varIva = parseFloat(varMonto) * 0.16;
       document.getElementById("iva").value = addCommas(Math.round(varIva)) ;
 
-      varSubTotal = parseFloat(varMonto) + parseFloat(varIva);
-      document.getElementById("fin").value = addCommas(Math.round(varSubTotal)) ;
+      varSubTotal = parseFloat(varMonto) - parseFloat(varIva);
+      document.getElementById("valor_contrato_inicial").value = addCommas(Math.round(varSubTotal)) ;
 
     }
 
@@ -362,16 +362,16 @@
               </select>
             </div>
             <div class="form-group">
-              {!! Form::label('valor_contrato_inicial', 'Valor antes de IVA') !!}
-              {!! Form::text('valor_contrato_inicial',  $administrativas->valor_contrato_inicial , ['class' => 'form-control' , 'required' => 'required', 'onkeypress'=>'mascara(this,cpf)', 'onkeyup'=>'calcular()', 'min'=>'0']) !!}
+              <label >Valor contrato final</label>
+              <input type="text" class="form-control" min="0" id="fin"  onkeyup="calcular();"  onkeypress="mascara(this,cpf)"  onpaste="return false" required="ingrese así sea un cero" placeholder= "Valor final" name="contrato_final" value="{{ number_format($administrativas->valor_contrato_final,0)}}">
             </div>
             <div class="form-group">
               <label >Valor IVA</label>
               <input type="text" min="0" class="form-control" id="iva" readonly="readonly" placeholder= "valor IVA" name="iva" value="{{ number_format($administrativas->valor_iva,0) }}">
             </div>
             <div class="form-group">
-              <label >Valor contrato final</label>
-              <input type="text" class="form-control" min="0" id="fin" readonly="readonly" placeholder= "Valor final" name="contrato_final" value="{{ number_format($administrativas->valor_contrato_final,0) }}">
+              {!! Form::label('valor_contrato_inicial', 'Valor antes de IVA') !!}
+              {!! Form::text('valor_contrato_inicial',  $administrativas->valor_contrato_inicial , ['class' => 'form-control' ,'readonly', 'required' => 'required', 'min'=>'0']) !!}
             </div>
             <div class="form-group">
               <label >Plan de pago</label>
@@ -393,11 +393,11 @@
             @endif
             @if(count($otrosis) == 0)
               <div class="col-md-12 div2">
-                <center><a class="btn btn-primary botoncito" disabled>Otro si</a></center>
+                <center><a class="btn btn-primary botoncito" disabled>Otro sí</a></center>
               </div>
             @else
               <div class="col-md-12 div2">
-                <center><a href="" class="btn btn-primary botoncito" data-toggle="modal" data-target="#myModal3">Otro si</a></center>
+                <center><a href="" class="btn btn-primary botoncito" data-toggle="modal" data-target="#myModal3">Otro sí</a></center>
               </div>
             @endif
             @if(count($pu_finales) == 0)

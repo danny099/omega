@@ -161,7 +161,7 @@
           @if(count($otrosis) == 0)
           <div class="col-md-3">
             <div class="form-group">
-              <label >Otro si</label>
+              <label >Otro sí</label>
             </div>
           </div>
 
@@ -176,7 +176,7 @@
           @else
           <div class="col-md-3">
             <div class="form-group">
-              <label >Otro si</label>
+              <label >Otro sí</label>
             </div>
           </div>
 
@@ -186,7 +186,7 @@
               <span>{{ $otrosi->detalles }}</span>
               <span>${{ number_format($otrosi->valor_tot,0) }}</span>
               @if($otrosi->recuerdame == 1)
-              <a title="Esta es la factura pendiente">
+              <a title="Este otro sí esta pendiente">
                 <i class="glyphicon glyphicon-alert" style="color: #f39c12"></i>
               </a><br>
               @else

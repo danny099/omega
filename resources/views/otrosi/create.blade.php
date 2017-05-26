@@ -55,7 +55,7 @@
 
 <ol class="breadcrumb">
   <li><a href="{{ url('index') }}">Inicio</a></li>
-  <li class="active">Crear otrosi</li>
+  <li class="active">Crear otro sí</li>
 </ol>
 
   <form class="" action="{{ url('otrosi') }}" method="post">
@@ -63,7 +63,7 @@
     <div class="container">
       <div class="box box-primary">
         <div class="box-header with-borde">
-          <center> <h2 class="box-title">Agregar Otro si</h2> </center>
+          <center> <h2 class="box-title">Agregar Otro sí</h2> </center>
         </div>
         @if(Session::has('message'))
         <div id="alert">
@@ -102,7 +102,7 @@
               <div class="row">
                 <div class="col-md-12">
                   <div class="col-md-4">
-                    <label >Valor otro si antes de IVA</label>
+                    <label >Valor otro sí antes de IVA</label>
                   </div>
                   <div class="form-group ">
                     <div class="col-md-4">
@@ -134,7 +134,7 @@
                   <div class="row">
                     <div class="col-md-12">
                       <div class="col-md-4">
-                        <label >Valor total otro si</label>
+                        <label >Valor total otro sí</label>
                       </div>
                       <div class="form-group ">
                         <div class="col-md-4">

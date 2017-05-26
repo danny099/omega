@@ -144,7 +144,7 @@
           </a>
           <ul class="treeview-menu">
             <li class="active"><a href="{{ url('administrativas') }}"><i class="fa fa-circle-o"></i>Administrativa</a></li>
-            <li class="active"><a href="{{ url('otrosi/create') }}"><i class="fa fa-circle-o"></i>Otro Si</a></li>
+            <li class="active"><a href="{{ url('otrosi/create') }}"><i class="fa fa-circle-o"></i>Otro sí</a></li>
             <li class="active"><a href="{{ url('adicionales/create') }}"><i class="fa fa-circle-o"></i>Valor adicional</a></li>
           </ul>
         </li>
@@ -159,7 +159,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{ url('transformaciones/create') }}"><i class="fa fa-circle-o"></i>Transformacion</a></li>
+            <li><a href="{{ url('transformaciones/create') }}"><i class="fa fa-circle-o"></i>Transformación</a></li>
             <li><a href="{{ url('distribuciones/create') }}"><i class="fa fa-circle-o"></i>Distribuciones</a></li>
             <li><a href="{{ url('pu_final/create') }}"><i class="fa fa-circle-o"></i>Uso final</a></li>
           </ul>
