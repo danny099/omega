@@ -134,9 +134,12 @@ class ConsignacionController extends Controller
       {
         $input = $request->all();
 
-        // $adicional = Valor_adicional::findOrFail($id);
-        $administrativa = Administrativa::findOrFail($adicional->administrativa_id);
+        // $ide = Consignacion::findOrFail($input['consignacion']['id']);
 
+        $ide = Administrativa::select('id')->where('id',$input['consignacion']['administrativa_id'])->get();
+
+        $administrativa = Administrativa::findOrFail($ide);
+        
         for ($a=0; $a<count($input['consignacion']['fecha_pago']); $a++){
 
           if ($administrativa->saldo > str_replace(',','',$input['consignacion']['valor'][$a])) {

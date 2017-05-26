@@ -130,7 +130,9 @@ class Cuenta_cobroController extends Controller
 
 
         // $adicional = Valor_adicional::findOrFail($id);
-        // $administrativa = Administrativa::findOrFail($adicional->administrativa_id);
+        $ide = Administrativa::select('id')->where('id',$input['cuenta']['administrativa_id'])->get();
+
+        $administrativa = Administrativa::findOrFail($ide);
 
         for ($a=0; $a<count($input['cuenta']['porcentaje']); $a++){
 
