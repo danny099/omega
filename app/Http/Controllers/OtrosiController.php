@@ -117,7 +117,7 @@ class OtrosiController extends Controller
       $datos['iva'] = str_replace(',','',$request->iva);
       $datos['valor_tot'] = str_replace(',','',$request->valor_tot);
       $datos['detalles'] = ucfirst($request->detalles);
-
+      $datos['recuerdame'] = $request->recordarme;
       $otrosi = Otrosi::findOrFail($id);
       $administrativa = Administrativa::findOrFail($otrosi->administrativa_id);
 
@@ -192,8 +192,8 @@ class OtrosiController extends Controller
       $otrosi = Otrosi::findOrFail($id);
       $administrativas = Administrativa::findOrFail($otrosi->administrativa_id);
 
-      if ($administrativas->contado_otro > 0) {
-        $administrativas->contado_otro = $administrativas->contado_otro - 1;
+      if ($administrativas->contador_otro > 0) {
+        $administrativas->contador_otro = $administrativas->contador_otro - 1;
         $administrativas->save();
       }
 
