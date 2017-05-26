@@ -202,70 +202,67 @@
 
     @if(empty($facturas))
     @else
-    <table border="1">
-
-      <tbody>
-        @foreach($facturas as $fac)
-          <tr>
-            <th>Numero de la factura</th>
-            <td>{{ $fac->num_factura }}</td>
-          </tr>
-          <tr>
-            <th>Fecha de la factura</th>
-            <td>{{ $fac->fecha_factura }}</td>
-          </tr>
-          <tr>
-            <th>Valor antes de IVA</th>
-            <td>{{ $fac->valor_factura }}</td>
-          </tr>
-          <tr>
-            <th>IVA</th>
-            <td>{{ $fac->iva }}</td>
-          </tr>
-          <tr>
-            <th>Valor total de la factura</th>
-            <td>{{ $fac->valor_total }}</td>
-          </tr>
-          <tr>
-            <th>Renciones %</th>
-            <td>{{ $fac->rete_porcen }}</td>
-          </tr>
-          <tr>
-            <th>Retenciones valor</th>
-            <td>{{ $fac->retenciones }}</td>
-          </tr>
-          <tr>
-            <th>Amortización</th>
-            <td>{{ $fac->amortizacion }}</td>
-          </tr>
-          <tr>
-            <th>Pólizas valor</th>
-            <td>{{ $fac->polizas }}</td>
-          </tr>
-          <tr>
-            <th>Retegarantia %</th>
-            <td>{{ $fac->retegaran_porcen }}</td>
-          </tr>
-          <tr>
-            <th>Retegarantia valor</th>
-            <td>{{ $fac->retegarantia }}</td>
-          </tr>
-          <tr>
-            <th>Valor pagado</th>
-            <td>{{ $fac->valor_pagado }}</td>
-          </tr>
-          <tr>
-            <th>Fecha pago</th>
-            <td>{{ $fac->fecha_pago }}</td>
-          </tr>
-          <tr>
-            <th>Observaciones</th>
-            <td>{{ $fac->observaciones }}</td>
-          </tr>
-
+      @foreach($facturas as $fac)
+          <table border="1">
+            <tr>
+              <th>Numero de la factura</th>
+              <td>{{ $fac->num_factura }}</td>
+            </tr>
+            <tr>
+              <th>Fecha de la factura</th>
+              <td>{{ $fac->fecha_factura }}</td>
+            </tr>
+            <tr>
+              <th>Valor antes de IVA</th>
+              <td>{{ $fac->valor_factura }}</td>
+            </tr>
+            <tr>
+              <th>IVA</th>
+              <td>{{ $fac->iva }}</td>
+            </tr>
+            <tr>
+              <th>Valor total de la factura</th>
+              <td>{{ $fac->valor_total }}</td>
+            </tr>
+            <tr>
+              <th>Renciones %</th>
+              <td>{{ $fac->rete_porcen }}</td>
+            </tr>
+            <tr>
+              <th>Retenciones valor</th>
+              <td>{{ $fac->retenciones }}</td>
+            </tr>
+            <tr>
+              <th>Amortización</th>
+              <td>{{ $fac->amortizacion }}</td>
+            </tr>
+            <tr>
+              <th>Pólizas valor</th>
+              <td>{{ $fac->polizas }}</td>
+            </tr>
+            <tr>
+              <th>Retegarantia %</th>
+              <td>{{ $fac->retegaran_porcen }}</td>
+            </tr>
+            <tr>
+              <th>Retegarantia valor</th>
+              <td>{{ $fac->retegarantia }}</td>
+            </tr>
+            <tr>
+              <th>Valor pagado</th>
+              <td>{{ $fac->valor_pagado }}</td>
+            </tr>
+            <tr>
+              <th>Fecha pago</th>
+              <td>{{ $fac->fecha_pago }}</td>
+            </tr>
+            <tr>
+              <th>Observaciones</th>
+              <td>{{ $fac->observaciones }}</td>
+            </tr>
+          </table>
+          <br>
         @endforeach
-      </tbody>
-    </table>
     @endif
 
   </body>
