@@ -87,7 +87,7 @@
             <thead>
               <tr>
                 <th>Nit</th>
-                <th>Cedula</th>
+                <th>Cédula</th>
                 <th>Nombre</th>
                 <th>Contacto</th>
                 <th>Télefono</th>
@@ -129,7 +129,7 @@
                 <th>Razón social</th>
                 <th>Nit</th>
                 <th>Nombre representante</th>
-                <th>Cedula</th>
+                <th>Cédula</th>
                 <th>Dirección</th>
                 <th>Télefono</th>
                 <th>Email</th>
@@ -171,7 +171,7 @@
                 <br>
                 <center>
                   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal2" name="button">Persona natural</button>
-                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal3" name="button">Persona juridica</button>
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal3" name="button">Persona jurídica</button>
                 </center>
               </div>
               <div class="modal-footer">

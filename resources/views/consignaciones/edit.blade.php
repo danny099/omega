@@ -10,6 +10,7 @@
       @foreach($consignaciones as $consignacion)
       {{ csrf_field() }}
       <input type="hidden" name="consignacion[id][]" value="{{$consignacion->id}}">
+      <input type="hidden" name="consignacion[administrativa_id][]" value="{{$consignacion->administrativa_id}}">
         <div class="box-body col-md-12">
 
           <div class="col-md-6">

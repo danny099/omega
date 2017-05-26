@@ -38,7 +38,7 @@
           </div>
 
           <div class="form-group">
-            {!! Form::label('cedula', 'Cedula') !!}
+            {!! Form::label('cedula', 'Cédula') !!}
             {!! Form::text('cedula', null, ['class' => 'form-control' , 'required' => 'required']) !!}
           </div>
 
