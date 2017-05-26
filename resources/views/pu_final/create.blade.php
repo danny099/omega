@@ -28,7 +28,7 @@
         </ddiv>
         <div class="row">
           <div class="col-md-12">
-            <div class="col-md-3">
+            <div class="col-md-4">
               <div class="form-group">
                 <center><label >Descripción</label></center>
                 <select class="form-control"name="pu_final[descripcion_pu][]">

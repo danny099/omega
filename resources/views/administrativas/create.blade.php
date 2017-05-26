@@ -218,7 +218,7 @@ function addCommas(nStr){
         <center> <h3>Alcance: proceso de distribución</h3> </center>
       </div>
 
-      <div class="col-md-3">
+      <div class="col-md-4">
         <div class="form-group">
           <center><label >Descripción</label></center>
           <select class="form-control" name="distribucion[descripcion_dis][]">
@@ -262,7 +262,7 @@ function addCommas(nStr){
       <div class="col-md-12">
         <center> <h3>Alcance: proceso de uso final</h3> </center>
       </div>
-      <div class="col-md-3">
+      <div class="col-md-4">
         <div class="form-group">
           <center><label >Descripcion</label></center>
           <select class="form-control"name="pu_final[descripcion_pu][]">
