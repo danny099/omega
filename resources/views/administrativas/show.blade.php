@@ -181,7 +181,14 @@
             <div class="form-group adi">
               @foreach($otrosis as $otrosi)
               <span>{{ $otrosi->detalles }}</span>
-              <span>${{ number_format($otrosi->valor_tot,0) }}</span><br>
+              <span>${{ number_format($otrosi->valor_tot,0) }}</span>
+              @if($otrosi->recuerdame == 1)
+              <a title="Esta es la factura pendiente">
+                <i class="glyphicon glyphicon-alert" style="color: #f39c12"></i>
+              </a><br>
+              @else
+              <br>
+              @endif
               @endforeach
             </div>
           </div>
@@ -611,9 +618,17 @@
                           <label>Numero Factura:</label>
                         </div>
                       </div>
-                      <div class="col-md-6">
+                      <div class="col-md-5">
                         <div class="form-group">
                           <span>{{ $factura->num_factura }}</span>
+                          @if($factura->recuerdame == 1)
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          <a title="Esta es la factura pendiente">
+                            <i class="glyphicon glyphicon-alert" style="color: #ff2f00; font-size:30px; position:absolute"></i>
+                          </a>
+                          @else
+
+                          @endif
                         </div>
                       </div>
                     </div>
@@ -794,9 +809,3 @@
   </div>
 
 @endsection
-
-<script type="text/javascript">
-  $(function(){
-    $('table').DataTable();
-  });
-</script>

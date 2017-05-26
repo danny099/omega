@@ -35,7 +35,7 @@
 
       <div class="col-md-6">
         <div class="form-group">
-          {!! Form::label('valor_factura', 'Valor factura antes de iva') !!}
+          {!! Form::label('valor_factura', 'Valor factura antes de IVA') !!}
         </div>
       </div>
       <div class="col-md-6">
@@ -69,7 +69,7 @@
 
       <div class="col-md-6">
         <div class="form-group">
-          {!! Form::label('retenciones', 'Retenciones %') !!}
+          {!! Form::label('retenciones', 'Retenciones %') !!}<br>
           {!! Form::label('retenciones2', 'Retenciones valor') !!}
         </div>
       </div>
@@ -82,7 +82,7 @@
 
       <div class="col-md-6">
         <div class="form-group">
-          {!! Form::label('amortizacion2', 'Amortizacion valor:') !!}
+          {!! Form::label('amortizacion2', 'Amortización valor:') !!}
         </div>
       </div>
       <div class="col-md-6">
@@ -93,7 +93,7 @@
 
       <div class="col-md-6">
         <div class="form-group">
-          {!! Form::label('polizas2', 'Polizas valor:') !!}
+          {!! Form::label('polizas2', 'Pólizas valor:') !!}
         </div>
       </div>
       <div class="col-md-6">
@@ -104,8 +104,8 @@
 
       <div class="col-md-6">
         <div class="form-group">
-          {!! Form::label('retegarantia', 'Retegarantia%:') !!}
-          {!! Form::label('retegarantia2', 'Retegarantia valor:') !!}
+          {!! Form::label('retegarantia', 'Retegarantía%:') !!}
+          {!! Form::label('retegarantia2', 'Retegarantía valor:') !!}
         </div>
       </div>
       <div class="col-md-6">

@@ -537,6 +537,7 @@
                           <th>IVA</th>
                           <th>Valor con IVA</th>
                           <th>Acciones</th>
+                          <th>Alertas</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -569,6 +570,17 @@
                             </div>
                             <!-- fin modal -->
                           </td>
+                          <td>
+                            @if($factura->recuerdame == 1)
+                            <a title="Esta es la factura pendiente">
+                              <i class="glyphicon glyphicon-alert" style="color: #ff2f00"></i>
+                            </a>
+                            @else
+
+                            @endif
+
+                          </td>
+
                         </tr>
                           @endforeach
                     </tbody>
@@ -609,6 +621,7 @@
                             <th>Valor con IVA</th>
                             <th>Detalles</th>
                             <th>Acciones</th>
+                            <th>Alertas</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -640,6 +653,16 @@
                               </div>
                               <!-- fin modal -->
                             </td>
+                            <td>
+                              @if($otro->recuerdame == 1)
+                              <a title="Esta es la factura pendiente">
+                                <i class="glyphicon glyphicon-alert" style="color: #f39c12"></i>
+                              </a>
+                              @else
+
+                              @endif
+                            </td>
+
                           </tr>
                             @endforeach
                       </tbody>
