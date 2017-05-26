@@ -303,7 +303,7 @@
               <td>
 
                 @if($administrativa->contador_otro > 0)
-                <a title="Recuerde que tiene un pendientes en facturas">
+                <a title="Recuerde que tiene un pendientes en otro si">
                   <span class="label label-warning" style="background-color: #f39c12">{{$administrativa->contador_otro}}</span>
                 </a>
                 @else
