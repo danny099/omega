@@ -104,6 +104,8 @@ class AdministrativaController extends Controller
        $administrativa['valor_total_contrato'] =  $administrativa['valor_contrato_final'];
        $administrativa['recordar'] = 1;
        $administrativa['recor_fac'] = 1;
+       $administrativa['contado_otro'] = 0;
+       $administrativa['contador_fac'] = 1;
 
 
 

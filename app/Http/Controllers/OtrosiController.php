@@ -58,7 +58,7 @@ class OtrosiController extends Controller
       $reg_otro = Otrosi::find($last_id);
       $administrativa = Administrativa::find($id);
 
-      $administrativa->recordar = $request->recordarme;
+      $administrativa->contador_otro = $administrativa->contador_otro +$request->recordarme;
       $administrativa->save();
 
       $total = $administrativa->saldo + $reg_otro->valor_tot;

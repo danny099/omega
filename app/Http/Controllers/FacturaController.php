@@ -71,11 +71,11 @@ class FacturaController extends Controller
         $factura = Factura::find($lastId_factura);//funcion que permite encontrar un registro mediante un id
 
         $administrativa = Administrativa::find($factura->administrativa_id);//funcion que hace una consulta a una tabla relacionada en la base de datos y saca un registro mediante un id
+        $administrativa->contador_fac = $administrativa->contador_fac + $request->recor_fac;
+        $administrativa->save();
 
         $saldo = $administrativa->saldo - $factura->valor_total;
-
         $administrativa->saldo =$saldo;
-
         $administrativa->save();
 
         // $nuevo = $administrativa->pagado + $factura->valor_total;  //
