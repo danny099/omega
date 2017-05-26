@@ -61,6 +61,9 @@ class FacturaController extends Controller
       $datos['observaciones'] = ucfirst(strtolower($request->observaciones));
       $datos['administrativa_id'] = $request->administrativa_id;
 
+      $numrepe = Factura::where('num_factura',$request->num_factura)->get();
+
+
       if ($request->recor_fac == 1) {
         $datos['recuerdame'] = 1;
       }else {
@@ -68,31 +71,42 @@ class FacturaController extends Controller
 
       }
       if ($datos['valor_total'] <= $administrativa->saldo) {
-        Factura::create($datos); //funcion para crear el registro
 
-        $facturas = Factura::all();//funcion para recuperar todos los registros en la base de datos
+        if ($numrepe->count() == 1) {
+          Session::flash('message', 'el numero de la factura ya esta registrado!');
+          Session::flash('class', 'danger');
+          return redirect()->route('administrativas.index');
+        }
+        else {
+          Factura::create($datos);
+          $facturas = Factura::all();//funcion para recuperar todos los registros en la base de datos
 
-        $lastId_factura = $facturas->last()->id;//funcion que consigue capturar el ultimo registro y sacar el id de este mismo
+          $lastId_factura = $facturas->last()->id;//funcion que consigue capturar el ultimo registro y sacar el id de este mismo
 
-        $factura = Factura::find($lastId_factura);//funcion que permite encontrar un registro mediante un id
+          $factura = Factura::find($lastId_factura);//funcion que permite encontrar un registro mediante un id
 
-        $administrativa = Administrativa::find($factura->administrativa_id);//funcion que hace una consulta a una tabla relacionada en la base de datos y saca un registro mediante un id
-        $administrativa->contador_fac = $administrativa->contador_fac + $request->recor_fac;
-        $administrativa->save();
+          $administrativa = Administrativa::find($factura->administrativa_id);//funcion que hace una consulta a una tabla relacionada en la base de datos y saca un registro mediante un id
+          $administrativa->contador_fac = $administrativa->contador_fac + $request->recor_fac;
+          $administrativa->save();
 
-        $saldo = $administrativa->saldo - $factura->valor_total;
-        $administrativa->saldo =$saldo;
-        $administrativa->save();
+          $saldo = $administrativa->saldo - $factura->valor_total;
+          $administrativa->saldo =$saldo;
+          $administrativa->save();
 
-        // $nuevo = $administrativa->pagado + $factura->valor_total;  //
-        //
-        // $administrativa->pagado = $nuevo;//asignacion de una variable a actualizar
-        // $administrativa->save();
+          // $nuevo = $administrativa->pagado + $factura->valor_total;  //
+          //
+          // $administrativa->pagado = $nuevo;//asignacion de una variable a actualizar
+          // $administrativa->save();
 
-        Session::flash('message', 'Factura creada');
-        Session::flash('class', 'success');
+          Session::flash('message', 'Factura creada');
+          Session::flash('class', 'success');
 
-        return redirect()->route('administrativas.index');
+          return redirect()->route('administrativas.index');
+        }
+
+
+
+
 
       }else {
         Session::flash('message', 'El valor de la Factura es mayor al saldo!');
