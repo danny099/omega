@@ -47,7 +47,7 @@
 
                 <div class="col-md-3">
                   <div class="form-group">
-                    <label >Valor antes de iva</label>
+                    <label >Valor antes de IVA</label>
                   </div>
                 </div>
 
@@ -366,6 +366,7 @@
                 @if(count($transformaciones) == 0)
 
                 @else
+                <div class="">
                   @foreach($transformaciones as $transformacion)
                 <div class="col-md-12">
                   <div class="col-md-8">
@@ -399,7 +400,7 @@
                 @else
                 <div class="">
 
-                <div class="col-md-12">
+
 
                 @foreach($distribuciones as $distribucion)
                 <div class="col-md-12">

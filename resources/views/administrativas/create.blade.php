@@ -27,10 +27,10 @@ function calcular(){
   varMonto = varMonto.replace(/[\,]/g,'');
 
   varIva = parseFloat(varMonto) * 0.16;
-  document.getElementById("iva").value = addCommas(parseInt(varIva)) ;
+  document.getElementById("iva").value = addCommas(Math.round(varIva)) ;
 
   varSubTotal = parseFloat(varMonto) + parseFloat(varIva);
-  document.getElementById("fin").value = addCommas(parseInt(varSubTotal)) ;
+  document.getElementById("fin").value = addCommas(Math.round(varSubTotal)) ;
 
 }
 
@@ -85,7 +85,7 @@ function addCommas(nStr){
             <input type="date" class="form-control pull-right" name="fecha" id="datepicker" required="Ingrese una fecha">
           </div>
           <div class="form-group">
-            <label>Tipo Régimen</label>
+            <label>Tipo régimen</label>
             <select class="form-control" name="cliente_id" id="cliente" required="">
               <option value="">Seleccione...</option>
               <option value="1">Persona natural</option>

@@ -29,10 +29,10 @@
   		varMonto = varMonto.replace(/[\,]/g,'');
 
   		varIva = parseFloat(varMonto) * 0.16;
-  		document.getElementById("iva").value = addCommas(parseInt(varIva)) ;
+  		document.getElementById("iva").value = addCommas(Math.round(varIva)) ;
 
   		varSubTotal = parseFloat(varMonto) + parseFloat(varIva);
-  		document.getElementById("otrosi").value = addCommas(parseInt(varSubTotal)) ;
+  		document.getElementById("otrosi").value = addCommas(Math.round(varSubTotal)) ;
 
   	}
 

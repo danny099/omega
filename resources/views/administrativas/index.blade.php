@@ -29,10 +29,10 @@
     varMonto = varMonto.replace(/[\,]/g,'');
 
     varIva = parseFloat(varMonto) * 0.16;
-    document.getElementById("iva").value = addCommas(parseFloat(varIva)) ;
+    document.getElementById("iva").value = addCommas(Math.round(varIva)) ;
 
     varSubTotal = parseFloat(varMonto) + parseFloat(varIva);
-    document.getElementById("otrosi").value = addCommas(parseFloat(varSubTotal)) ;
+    document.getElementById("otrosi").value = addCommas(Math.round(varSubTotal)) ;
 
   }
 
@@ -98,8 +98,8 @@
             var valor = $(this).val().replace(/,/g,"");
             var resultado = valor * 1.16;
             var iva = valor*0.16;
-            $(this).parent().parent().parent().find('.iva').val(addCommas2(parseInt(iva)));
-            $(this).parent().parent().parent().find('.valor_total').val(addCommas2(parseInt(resultado)));
+            $(this).parent().parent().parent().find('.iva').val(addCommas2(Math.round(iva)));
+            $(this).parent().parent().parent().find('.valor_total').val(addCommas2(Math.round(resultado)));
 
             var retenciones = parseInt($(this).parent().parent().parent().find('.retenciones').val());
             var amortizacion = parseInt($(this).parent().parent().parent().find('.amortizacion').val());
@@ -107,7 +107,7 @@
             var retegarantia = parseInt($(this).parent().parent().parent().find('.retegarantia').val());
             var valor_total = $(this).parent().parent().parent().find('.valor_total').val().replace(/,/g,"");
             var resultado =valor_total-(retenciones+amortizacion+polizas+retegarantia);
-            $(this).parent().parent().parent().find('.valor_pagado').val(addCommas2(parseInt(resultado)));
+            $(this).parent().parent().parent().find('.valor_pagado').val(addCommas2(Math.round(resultado)));
 
 
         });
@@ -115,7 +115,7 @@
           var retencionesporcen = parseFloat($(this).val());
           var valor = $(this).parent().parent().parent().find('.valor_factura').val().replace(/,/g,"");
           var resultado = valor*retencionesporcen/100;
-          $(this).parent().parent().find('.retenciones').val(addCommas2(parseInt(resultado)));
+          $(this).parent().parent().find('.retenciones').val(addCommas2(Math.round(resultado)));
         });
         $('.retencionesporcen').change(function(){
           var retenciones = $(this).parent().parent().parent().find('.retenciones').val().replace(/,/g,"");
@@ -124,7 +124,7 @@
           var retegarantia = $(this).parent().parent().parent().find('.retegarantia').val().replace(/,/g,"");
           var valor_total = $(this).parent().parent().parent().find('.valor_total').val().replace(/,/g,"");
           var resultado =valor_total-(parseFloat(retenciones)+parseFloat(amortizacion)+parseFloat(polizas)+parseFloat(retegarantia));
-          $(this).parent().parent().parent().find('.valor_pagado').val(addCommas2(parseInt(resultado)));
+          $(this).parent().parent().parent().find('.valor_pagado').val(addCommas2(Math.round(resultado)));
         });
 
         $('.amortizacion').keyup(function(){
@@ -134,7 +134,7 @@
           var retegarantia = $(this).parent().parent().parent().find('.retegarantia').val().replace(/,/g,"");
           var valor_total = $(this).parent().parent().parent().find('.valor_total').val().replace(/,/g,"");
           var resultado =valor_total-(parseFloat(retenciones)+parseFloat(amortizacion)+parseFloat(polizas)+parseFloat(retegarantia));
-          $(this).parent().parent().parent().find('.valor_pagado').val(addCommas2(parseInt(resultado)));
+          $(this).parent().parent().parent().find('.valor_pagado').val(addCommas2(Math.round(resultado)));
           });
 
         $('.polizas').keyup(function(){
@@ -144,13 +144,13 @@
           var retegarantia = $(this).parent().parent().parent().find('.retegarantia').val().replace(/,/g,"");
           var valor_total = $(this).parent().parent().parent().find('.valor_total').val().replace(/,/g,"");
           var resultado =valor_total-(parseFloat(retenciones)+parseFloat(amortizacion)+parseFloat(polizas)+parseFloat(retegarantia));
-          $(this).parent().parent().parent().find('.valor_pagado').val(addCommas2(parseInt(resultado)));
+          $(this).parent().parent().parent().find('.valor_pagado').val(addCommas2(Math.round(resultado)));
         });
         $('.retegarantiaporcen').keyup(function(){
           var retegarantiaporcen = parseFloat($(this).val());
           var valor = $(this).parent().parent().parent().find('.valor_total').val().replace(/,/g,"");
           var resultado = valor*retegarantiaporcen/100;
-          $(this).parent().parent().parent().find('.retegarantia').val(addCommas2(parseInt(resultado)));
+          $(this).parent().parent().parent().find('.retegarantia').val(addCommas2(Math.round(resultado)));
         });
         $('.retegarantiaporcen').change(function(){
           var retenciones = $(this).parent().parent().parent().find('.retenciones').val().replace(/,/g,"");
@@ -159,7 +159,7 @@
           var retegarantia = $(this).parent().parent().parent().find('.retegarantia').val().replace(/,/g,"");
           var valor_total = $(this).parent().parent().parent().find('.valor_total').val().replace(/,/g,"");
           var resultado =valor_total-(parseFloat(retenciones)+parseFloat(amortizacion)+parseFloat(polizas)+parseFloat(retegarantia));
-          $(this).parent().parent().parent().find('.valor_pagado').val(addCommas2(parseInt(resultado)));
+          $(this).parent().parent().parent().find('.valor_pagado').val(addCommas2(Math.round(resultado)));
         });
 
         $('.retencionesporcen').focus(function(){
