@@ -56,7 +56,7 @@ class TransformacionController extends Controller
 
                   $datos1['descripcion'] = $input['transformacion']['descripcion'][$a];
                   $datos1['tipo'] = $input['transformacion']['tipo'][$a];
-                  $datos1['capacidad'] = $input['transformacion']['capacidad'][$a];
+                  $datos1['capacidad'] = strtoupper($input['transformacion']['capacidad'][$a]);
                   $datos1['unidad'] = $input['transformacion']['unidad_transformacion'][$a];
                   $datos1['cantidad'] = $input['transformacion']['cantidad'][$a];
                   $datos1['administrativa_id'] = $input['codigo_proyecto'];
@@ -115,7 +115,7 @@ class TransformacionController extends Controller
 
         $datos1['descripcion'] = $input['transformacion']['descripcion'][$a];
         $datos1['tipo'] = $input['transformacion']['tipo'][$a];
-        $datos1['capacidad'] = $input['transformacion']['capacidad'][$a];
+        $datos1['capacidad'] = strtoupper($input['transformacion']['capacidad'][$a]);
         $datos1['unidad'] = $input['transformacion']['unidad_transformacion'][$a];
         $datos1['cantidad'] = $input['transformacion']['cantidad'][$a];
 
