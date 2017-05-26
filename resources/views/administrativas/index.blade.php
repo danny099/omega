@@ -301,13 +301,20 @@
 
               </td>
               <td>
-                @if($administrativa->recordar == 0)
-                <a title="Recuerde que tiene un pendiente en otrosi"><i class="glyphicon glyphicon-alert" style="color:#ff9b00"></i></a>
+
+                @if($administrativa->contador_otro > 0)
+                <a title="Recuerde que tiene un pendientes en facturas">
+                  <span class="label label-warning" style="background-color: #f39c12">{{$administrativa->contador_otro}}</span>
+                </a>
                 @else
 
                 @endif
-                @if($administrativa->recor_fac == 0)
-                <a title="Recuerde que tiene un pendiente en facturas"><i class="glyphicon glyphicon-alert" style="color:#fd0000"></i></a>
+                @if($administrativa->contador_fac > 0)
+
+                  <a title="Recuerde que tiene un pendientes en facturas">
+                    <span class="label label-warning" style="background-color: #ff2f00">{{$administrativa->contador_fac}}</span>
+                  </a>
+
                 @else
 
                 @endif
