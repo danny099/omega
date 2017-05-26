@@ -93,7 +93,15 @@
      });
 
 
+     $('.valor').keyup(function(){
+         var valor = $(this).val().replace(/,/g,"");
+         var resultado = valor * 1.16;
+         var iva = valor*0.16;
+         $(this).parent().parent().parent().find('.iva').val(addCommas2(Math.round(iva)));
+         $(this).parent().parent().parent().find('.valor_total').val(addCommas2(Math.round(resultado)));
 
+
+     });
         $('.valor_factura').keyup(function(){
             var valor = $(this).val().replace(/,/g,"");
             var resultado = valor * 1.16;
@@ -231,7 +239,7 @@
                         <center><h4> ¿Desea anexar un pago? </h4></center>
                         <br>
                         <center>
-                          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal2-{{ $key }}" name="button">Consignacion</button>
+                          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal2-{{ $key }}" name="button">Consignación</button>
                           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal3-{{ $key }}" name="button">Cuenta de Cobro</button>
                           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal4-{{ $key }}" name="button">Factura</button>
                         </center>

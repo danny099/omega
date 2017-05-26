@@ -24,12 +24,34 @@
 
           <div class="col-md-6">
             <div class="form-group">
-              {!! Form::label('valor', 'Valor') !!}
+              {!! Form::label('valor', 'Valor antes de IVA') !!}
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-group">
-              {!! Form::text('valor', null, ['class' => 'form-control' , 'required' => 'required', 'min'=>'0','onkeypress'=>"mascara(this,cpf)"]) !!}
+              {!! Form::text('valor', null, ['class' => 'form-control valor' , 'required' => 'required', 'min'=>'0','onkeypress'=>"mascara(this,cpf)"]) !!}
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group">
+              {!! Form::label('valor_iva', 'IVA') !!}
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              {!! Form::text('valor_iva', null, ['class' => 'form-control iva' , 'readonly','required' => 'required', 'min'=>'0','onkeypress'=>"mascara(this,cpf)"]) !!}
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group">
+              {!! Form::label('valor_total', 'Valor total') !!}
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              {!! Form::text('valor_total', null, ['class' => 'form-control valor_total' ,'readonly', 'required' => 'required', 'min'=>'0','onkeypress'=>"mascara(this,cpf)"]) !!}
             </div>
           </div>
 

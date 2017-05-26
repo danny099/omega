@@ -17,13 +17,16 @@
   <li><a href="{{ url('administrativas') }}">Administrativa</a></li>
   <li class="active">Datos del Contrato</li>
 </ol>
-  <a href="{{ url('pdf') }}/{{ $administrativa->id }}">Pdf</a>
   <div class="row">
     <div class="col-md-12">
       <div class="container">
         <div class="box box-primary">
           <div class="">
            <center><h2>Datos del Proyecto</h2></center>
+           <a href="{{ url('pdf') }}/{{ $administrativa->id }}">
+             <i class="glyphicon glyphicon-print"  style=" font-size:40px; color:rgb(60, 141, 188) ; position:absolute; right:2%; padding:10px;"></i>
+           </a>
+
           </div>
 
 
@@ -296,7 +299,7 @@
 
           <div class="col-md-3">
             <div class="form-group">
-              <span>{{ number_format($administrativa->saldo,0) }}</span>
+              <span>${{ number_format($administrativa->saldo,0) }}</span>
             </div>
           </div>
 
@@ -544,7 +547,7 @@
                   </div>
                   <div class="col-md-10">
                     <div class="form-group">
-                      <span>{{ $cuenta_cobro->porcentaje }}%</span>
+                      <span>{{ $cuenta_cobro->porcentaje }}&nbsp;%</span>
                     </div>
                   </div>
               </div>
@@ -665,7 +668,7 @@
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
-                          <span>{{ number_format($factura->iva,0) }}</span>
+                          <span>${{ number_format($factura->iva,0) }}</span>
                         </div>
                       </div>
                     </div>
@@ -689,7 +692,7 @@
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
-                          <span>{{ $factura->rete_porcen }}%</span>
+                          <span>{{ $factura->rete_porcen }}&nbsp;%</span>
                         </div>
                       </div>
                     </div>
@@ -737,7 +740,7 @@
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
-                          <span>{{ $factura->retegaran_porcen }}%</span>
+                          <span>{{ $factura->retegaran_porcen }}&nbsp;%</span>
                         </div>
                       </div>
                     </div>
