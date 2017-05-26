@@ -154,8 +154,8 @@
       </div>
       <div class="col-md-6">
         <div class="form-group">
-          <input type="radio" name="recor_fac" value="0" required> Si<br>
-          <input type="radio" name="recor_fac" value="1"> No<br>
+          <input type="radio" name="recor_fac" value="1" required> Si<br>
+          <input type="radio" name="recor_fac" value="0"> No<br>
         </div>
       </div>
 
