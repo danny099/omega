@@ -153,6 +153,25 @@ class FacturaController extends Controller
         $factura = Factura::findOrFail($id);
         $administrativa = Administrativa::findOrFail($factura->administrativa_id);
 
+        if ($request->recor_fac == 1) {
+
+          if ($administrativa->contador_fac > 1) {
+
+            $administrativa->contador_fac = $administrativa->contador_fac - 1;
+            $administrativa->contador_fac = $administrativa->contador_fac + $request->recor_fac;
+            $administrativa->save();
+
+          }else {
+
+            $administrativa->contador_fac = $administrativa->contador_fac + $request->recor_fac;
+            $administrativa->save();
+
+          }
+
+        }else {
+          $administrativa->contador_fac = $administrativa->contador_fac + $request->recor_fac;
+          $administrativa->save();
+        }
 
         if($administrativa->saldo >= $datos['valor_total']){
 
@@ -208,8 +227,11 @@ class FacturaController extends Controller
     {
       $factu = Factura::findOrFail($id);
       $administrativas = Administrativa::findOrFail($factu->administrativa_id);
-      $administrativas->recor_fac = 1;
-      $administrativas->save();
+
+      if ($administrativas->contador_fac > 0) {
+        $administrativas->contador_fac = $administrativas->contador_fac - 1;
+        $administrativas->save();
+      }
 
       $nuevo_saldo = $administrativas->saldo + $factu->valor_total;
       $administrativas->saldo = $nuevo_saldo;

@@ -118,8 +118,25 @@ class OtrosiController extends Controller
       $administrativa = Administrativa::findOrFail($otrosi->administrativa_id);
 
 
-      $administrativa->recordar = $request->recordarme;
-      $administrativa->save();
+      if ($request->recordarme == 1) {
+
+        if ($administrativa->contador_otro > 1) {
+
+          $administrativa->contador_otro = $administrativa->contador_otro - 1;
+          $administrativa->contador_otro = $administrativa->contador_otro + $request->recordarme;
+          $administrativa->save();
+
+        }else {
+
+          $administrativa->contador_otro = $administrativa->contador_otro + $request->recordarme;
+          $administrativa->save();
+
+        }
+
+      }else {
+        $administrativa->contador_otro = $administrativa->contador_otro + $request->recordarme;
+        $administrativa->save();
+      }
 
       if ($administrativa->valor_total_contrato > $datos['valor_tot'] ) {
 
@@ -171,9 +188,11 @@ class OtrosiController extends Controller
       $otrosi = Otrosi::findOrFail($id);
       $administrativas = Administrativa::findOrFail($otrosi->administrativa_id);
 
-      $administrativas->recordar = 1;
-      $administrativas->save();
-
+      if ($administrativas->contado_otro > 0) {
+        $administrativas->contado_otro = $administrativas->contado_otro - 1;
+        $administrativas->save();
+      }
+      
       if ($administrativas->saldo > 0) {
         if ($administrativas->saldo >= $otrosi->valor_tot) {
           $nuevo_saldo = $administrativas->saldo - $otrosi->valor_tot;
@@ -205,6 +224,7 @@ class OtrosiController extends Controller
           $administrativas->save();
           }
       }
+
 
       $otrosi->delete();
 
