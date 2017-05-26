@@ -38,7 +38,7 @@ class ObservacionController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-    
+
         Observacion::create($input);
         Session::flash('message', 'Observacion creada!');
         Session::flash('class', 'success');

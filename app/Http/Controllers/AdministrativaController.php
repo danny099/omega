@@ -88,7 +88,7 @@ class AdministrativaController extends Controller
        //  ********************************************************************************
       //  almacenar en un arreglo $administrativa los datos provenientes desde el formulario de datos basicos
        $administrativa['codigo_proyecto'] = $request->codigo;
-       $administrativa['nombre_proyecto'] = ucfirst($request->nombre);
+       $administrativa['nombre_proyecto'] = ucfirst(strtolower($request->nombre));
        $administrativa['fecha_contrato'] = $request->fecha;
        $administrativa['cliente_id'] = $request->cliente_id;
        $administrativa['juridica_id'] = $request->juridica_id;
@@ -98,7 +98,7 @@ class AdministrativaController extends Controller
        $administrativa['valor_contrato_inicial'] = $request->contrato_inicial;
        $administrativa['valor_iva'] = str_replace(',','',$request->iva);
        $administrativa['valor_contrato_final'] =str_replace(',','',$request->contrato_final);
-       $administrativa['plan_pago'] = ucfirst($request->plan_pago);
+       $administrativa['plan_pago'] = ucfirst(strtolower($request->plan_pago));
        $administrativa['saldo'] =  $administrativa['valor_contrato_final'];
        $administrativa['valor_total_contrato'] =  $administrativa['valor_contrato_final'];
        $administrativa['recordar'] = 1;
@@ -138,7 +138,7 @@ class AdministrativaController extends Controller
       //  funcion para traer el ultimo registro de administrativa
        $lastId_admin = $admin->last()->id;
 
-       $obs['observacion'] = $request->observacion;
+       $obs['observacion'] = ucfirst(strtolower($request->observacion));
        $obs['administrativa_id'] = $lastId_admin;
 
 
@@ -303,7 +303,7 @@ class AdministrativaController extends Controller
 
 
        $administrativa['codigo_proyecto'] = $request->codigo_proyecto;
-       $administrativa['nombre_proyecto'] = ucfirst($request->nombre_proyecto);
+       $administrativa['nombre_proyecto'] = ucfirst(strtolower($request->nombre_proyecto));
        $administrativa['fecha_contrato'] = $request->fecha_contrato;
        $administrativa['cliente_id'] = $request->cliente_id;
        $administrativa['juridica_id'] = $request->juridica_id;
@@ -313,7 +313,7 @@ class AdministrativaController extends Controller
        $administrativa['valor_contrato_inicial'] = $request->valor_contrato_inicial;
        $administrativa['valor_iva'] = str_replace(',','',$request->iva);
        $administrativa['valor_contrato_final'] =str_replace(',','',$request->contrato_final);
-       $administrativa['plan_pago'] = ucfirst($request->plan_pago);
+       $administrativa['plan_pago'] = ucfirst(strtolower($request->plan_pago));
       //  $administrativa['saldo'] =  $administrativa['valor_contrato_final'];
       //  $administrativa['valor_total_contrato'] =  $administrativa['valor_contrato_final'];
 

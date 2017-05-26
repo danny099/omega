@@ -64,7 +64,7 @@ class TransformacionController extends Controller
                   Transformacion::create($datos1);
             }
       }
-      Session::flash('message', 'Alcance de transformacion creado!');
+      Session::flash('message', 'Alcance de transformación creado!');
       Session::flash('class', 'success');
       return redirect()->route('administrativas.index');
 
@@ -123,7 +123,7 @@ class TransformacionController extends Controller
 
       }
 
-      Session::flash('message', 'Alcance de transformacion editado!');
+      Session::flash('message', 'Alcance de transformación editado!');
       Session::flash('class', 'success');
       return redirect()->route('administrativas.index');
     }
@@ -139,7 +139,7 @@ class TransformacionController extends Controller
        $transfor = Transformacion::findOrFail($id);
        $transfor->delete();
 
-       Session::flash('message', 'Alcance Transformacion eliminado');
+       Session::flash('message', 'Alcance Transformación eliminado');
        Session::flash('class', 'danger');
        return redirect()->route('administrativas.index');
 

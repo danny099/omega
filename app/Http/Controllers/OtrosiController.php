@@ -45,7 +45,7 @@ class OtrosiController extends Controller
       $datos['valor'] = str_replace(',','',$request->valor);
       $datos['iva'] = str_replace(',','',$request->iva);
       $datos['valor_tot'] = str_replace(',','',$request->valor_tot);
-      $datos['detalles'] = ucfirst($request->detalles);
+      $datos['detalles'] = ucfirst(strtolower($request->detalles));
       $datos['administrativa_id'] = $request->administrativa_id;
 
       if ($request->recordarme == 1) {
@@ -119,7 +119,7 @@ class OtrosiController extends Controller
       $datos['valor'] = str_replace(',','',$request->valor);
       $datos['iva'] = str_replace(',','',$request->iva);
       $datos['valor_tot'] = str_replace(',','',$request->valor_tot);
-      $datos['detalles'] = ucfirst($request->detalles);
+      $datos['detalles'] = ucfirst(strtolower($request->detalles));
       $datos['recuerdame'] = $request->recordarme;
       $otrosi = Otrosi::findOrFail($id);
       $administrativa = Administrativa::findOrFail($otrosi->administrativa_id);
