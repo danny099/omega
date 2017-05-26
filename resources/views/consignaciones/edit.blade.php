@@ -26,18 +26,40 @@
 
           <div class="col-md-6">
             <div class="form-group">
-              {!! Form::label('valor', 'Valor') !!}
+              {!! Form::label('valor', 'Valor antes de IVA') !!}
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-group">
-              <input type="text" name="consignacion[valor][]" class="form-control" onkeypress="mascara(this,cpf)" required="" value="{{ number_format($consignacion->valor,0) }}">
-
-
+              <input type="text" name="consignacion[valor][]" class="form-control valor" onkeypress="mascara(this,cpf)" required="" value="{{ number_format($consignacion->valor,0) }}">
               <!-- {!! Form::number('valor', null, ['class' => 'form-control' , 'required' => 'required', 'min'=>'0']) !!} -->
             </div>
           </div>
 
+
+          <div class="col-md-6">
+            <div class="form-group">
+              {!! Form::label('iva', 'IVA') !!}
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <input type="text" name="consignacion[valor_iva][]" class="form-control iva"  readonly="" value="{{ number_format($consignacion->valor_iva,0) }}">
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group">
+              {!! Form::label('valor_total', 'Valor total') !!}
+
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <input type="text" name="consignacion[valor_total][]" class="form-control valor_total"  readonly="" value="{{ number_format($consignacion->valor_total,0) }}">
+
+            </div>
+          </div>
           <div class="col-md-6">
             <div class="form-group">
               {!! Form::label('observaciones', 'Observaciones') !!}
@@ -50,9 +72,12 @@
             </div>
           </div>
 
+
+
         <div class="box-footer">
           <a href="{{ url('deleteconsignacion') }}/{{ $consignacion->id }}" onClick="javascript: return confirm('Esta seguro de eliminar registro?');"><i class="glyphicon glyphicon-minus-sign"></i></a>
         </div>
+
       </div>
       @endforeach
       </div>

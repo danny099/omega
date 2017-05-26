@@ -142,6 +142,15 @@
 
 
       });
+      $('.valor').keyup(function(){
+          var valor = $(this).val().replace(/,/g,"");
+          var resultado = valor * 1.16;
+          var iva = valor*0.16;
+          $(this).parent().parent().parent().find('.iva').val(addCommas2(Math.round(iva)));
+          $(this).parent().parent().parent().find('.valor_total').val(addCommas2(Math.round(resultado)));
+
+
+      });
 
       $('.valor_factura').on('keyup',function(){
 
