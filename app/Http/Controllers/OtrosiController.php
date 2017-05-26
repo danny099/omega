@@ -48,6 +48,10 @@ class OtrosiController extends Controller
       $datos['detalles'] = ucfirst($request->detalles);
       $datos['administrativa_id'] = $request->administrativa_id;
 
+      if ($request->recordarme == 1) {
+        $datos['recuerdame'] = 1;
+      }
+
       $id = $request->administrativa_id;
 
 
@@ -192,7 +196,7 @@ class OtrosiController extends Controller
         $administrativas->contado_otro = $administrativas->contado_otro - 1;
         $administrativas->save();
       }
-      
+
       if ($administrativas->saldo > 0) {
         if ($administrativas->saldo >= $otrosi->valor_tot) {
           $nuevo_saldo = $administrativas->saldo - $otrosi->valor_tot;

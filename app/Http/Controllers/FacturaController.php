@@ -61,6 +61,9 @@ class FacturaController extends Controller
       $datos['observaciones'] = ucfirst($request->observaciones);
       $datos['administrativa_id'] = $request->administrativa_id;
 
+      if ($request->recor_fac == 1) {
+        $datos['recuerdame'] = 1;
+      }
       if ($datos['valor_total'] <= $administrativa->saldo) {
         Factura::create($datos); //funcion para crear el registro
 
