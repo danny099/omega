@@ -8,6 +8,8 @@
 
       @foreach($cuenta_cobros as $cuenta)
       <input type="hidden" name="cuenta[id][]" value="{{ $cuenta->id }}">
+      <input type="hidden" name="cuenta[administrativa_id][]" value="{{$cuenta->administrativa_id}}">
+
         <div class="box-body col-md-12">
 
             <br>
