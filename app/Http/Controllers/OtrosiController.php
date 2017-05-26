@@ -122,9 +122,9 @@ class OtrosiController extends Controller
       $administrativa = Administrativa::findOrFail($otrosi->administrativa_id);
 
 
-      if ($request->recordarme == 1) {
+      if ($request->recordarme == 0) {
 
-        if ($administrativa->contador_otro > 1) {
+        if ($administrativa->contador_otro >= 1) {
 
           $administrativa->contador_otro = $administrativa->contador_otro - 1;
           $administrativa->contador_otro = $administrativa->contador_otro + $request->recordarme;

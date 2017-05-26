@@ -158,9 +158,9 @@ class FacturaController extends Controller
         $factura = Factura::findOrFail($id);
         $administrativa = Administrativa::findOrFail($factura->administrativa_id);
 
-        if ($request->recor_fac == 1) {
+        if ($request->recor_fac == 0) {
 
-          if ($administrativa->contador_fac > 1) {
+          if ($administrativa->contador_fac >= 1) {
 
             $administrativa->contador_fac = $administrativa->contador_fac - 1;
             $administrativa->contador_fac = $administrativa->contador_fac + $request->recor_fac;
