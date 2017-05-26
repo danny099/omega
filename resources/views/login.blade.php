@@ -34,7 +34,7 @@
 		<![endif]-->
 	</head>
 
-	<body class="login-layout light-login" style="background-image: url('{{ url('Fondo3.jpg')}}">
+	<body class="login-layout light-login" style="background-size: cover; background-image: url('{{ url('Fondo3.jpg')}}">
 
 		<div class="main-container">
 
@@ -118,6 +118,7 @@
 					</div><!-- /.col -->
 				</div><!-- /.row -->
 			</div><!-- /.main-content -->
+			<img src="{{url('logo.png')}}" style="position:absolute; right:2%; top:70%">
 		</div><!-- /.main-container -->
 
 		<!-- basic scripts -->
