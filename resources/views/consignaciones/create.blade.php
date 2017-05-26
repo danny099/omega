@@ -35,7 +35,7 @@
 
           <div class="col-md-6">
             <div class="form-group">
-              {!! Form::label('valor_iva', 'IVA') !!}
+              {!! Form::label('iva', 'IVA') !!}
             </div>
           </div>
           <div class="col-md-6">
