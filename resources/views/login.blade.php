@@ -44,10 +44,7 @@
 					<div class="col-sm-10 col-sm-offset-1">
 						<div class="login-container">
 							<div class="center">
-								<h1>
-									<span class="blue">Certicol</span>
-									<span class="grey" id="id-text2">v 1.0</span>
-								</h1>
+						
 							</div>
 
 							<div class="space-6"></div>
