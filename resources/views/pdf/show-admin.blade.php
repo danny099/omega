@@ -104,7 +104,7 @@
         <thead>
           <tr>
             <th>N°</th>
-            <th>Observacion</th>
+            <th>Observación</th>
           </tr>
         </thead>
         <tbody>
@@ -205,7 +205,7 @@
       @foreach($facturas as $fac)
           <table border="1">
             <tr>
-              <th>Numero de la factura</th>
+              <th>Numeró de la factura</th>
               <td>{{ $fac->num_factura }}</td>
             </tr>
             <tr>
@@ -241,11 +241,11 @@
               <td>{{ $fac->polizas }}</td>
             </tr>
             <tr>
-              <th>Retegarantia %</th>
+              <th>Retegarantía %</th>
               <td>{{ $fac->retegaran_porcen }}</td>
             </tr>
             <tr>
-              <th>Retegarantia valor</th>
+              <th>Retegarantía valor</th>
               <td>{{ $fac->retegarantia }}</td>
             </tr>
             <tr>

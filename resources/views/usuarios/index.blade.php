@@ -20,7 +20,7 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                   <tr>
-                    <th>Cedula</th>
+                    <th>Cédula</th>
                     <th>Nombres</th>
                     <th>Apellidos</th>
                     <th>Email</th>
