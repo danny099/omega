@@ -50,6 +50,9 @@ class OtrosiController extends Controller
 
       if ($request->recordarme == 1) {
         $datos['recuerdame'] = 1;
+      }else {
+        $datos['recuerdame'] = 0;
+
       }
 
       $id = $request->administrativa_id;

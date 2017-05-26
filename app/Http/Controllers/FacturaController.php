@@ -63,6 +63,9 @@ class FacturaController extends Controller
 
       if ($request->recor_fac == 1) {
         $datos['recuerdame'] = 1;
+      }else {
+        $datos['recuerdame'] = 0;
+
       }
       if ($datos['valor_total'] <= $administrativa->saldo) {
         Factura::create($datos); //funcion para crear el registro

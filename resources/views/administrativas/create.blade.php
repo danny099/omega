@@ -26,7 +26,7 @@ function calcular(){
   varMonto = document.getElementById("ini").value;
   varMonto = varMonto.replace(/[\,]/g,'');
 
-  varIva = parseFloat(varMonto) * 0.19;
+  varIva = parseFloat(varMonto) * 0.16;
   document.getElementById("iva").value = addCommas(parseInt(varIva)) ;
 
   varSubTotal = parseFloat(varMonto) + parseFloat(varIva);
