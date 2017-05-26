@@ -103,7 +103,7 @@ function addCommas(nStr){
           </div>
           <div class="form-group" style="Display:none" style="width: 100%" id="juridica">
             <label >Persona juridica</label>
-            <select class="form-control" name="juridica_id" style="width: 100%">
+            <select class="form-control" name="juridica_id" style="width: 100%" id="juri">
               <option value="">Seleccione...</option>
               @foreach($juridicas as $juridica)
               <option value="{{ $juridica->id }}">{{$juridica->razon_social}}</option>
