@@ -81,7 +81,7 @@
         <br>
         <div class="box box-primary">
           <div class="box-header with-border">
-            <center> <h3 class="box-title">Personas naturales</h3> </center>
+            <center> <h3 >Personas naturales</h3> </center>
           </div>
           <table id="example1" class="table table-bordered table-striped display">
             <thead>
@@ -93,7 +93,7 @@
                 <th>Télefono</th>
                 <th>Dirección</th>
                 <th>Email</th>
-                <th>Aciones</th>
+                <th>Acciones</th>
               </tr>
             </thead>
 
@@ -121,7 +121,7 @@
         </div>
         <div class="box box-primary">
           <div class="box-header with-border">
-            <center> <h3 class="box-title">Personas jurídicas</h3> </center>
+            <center> <h3 >Personas jurídicas</h3> </center>
           </div>
           <table id="example2" class="table table-bordered table-striped display">
             <thead>
@@ -133,7 +133,7 @@
                 <th>Dirección</th>
                 <th>Télefono</th>
                 <th>Email</th>
-                <th>Aciones</th>
+                <th>Acciones</th>
               </tr>
             </thead>
             <tbody>

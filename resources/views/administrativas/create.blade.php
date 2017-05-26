@@ -55,7 +55,7 @@ function addCommas(nStr){
   </ol>
   <div class="box box-primary">
     <div class="box-header with-border">
-      <center> <h3 class="box-title">Datos del proyecto</h3> </center>
+      <center> <h3>Datos del proyecto</h3> </center>
     </div>
     @if(Session::has('message'))
       <div id="alert">
@@ -166,7 +166,7 @@ function addCommas(nStr){
 
   <div class="box box-primary">
     <div class="box-header with-border">
-      <center> <h3 class="box-title">Alcance: proceso de transformación</h3> </center>
+      <center> <h3>Alcance: proceso de transformación</h3> </center>
     </div>
     <div class="box-body">
       <div class="col-md-12">
@@ -215,7 +215,7 @@ function addCommas(nStr){
         </div>
       </div>
       <div class="col-md-12">
-        <center> <h4 class="box-title">Alcance: proceso de distribución</h4> </center>
+        <center> <h3>Alcance: proceso de distribución</h3> </center>
       </div>
 
       <div class="col-md-3">
@@ -260,7 +260,7 @@ function addCommas(nStr){
         </div>
       </div>
       <div class="col-md-12">
-        <center> <h4 class="box-title">Alcance: proceso de uso final</h4> </center>
+        <center> <h3>Alcance: proceso de uso final</h3> </center>
       </div>
       <div class="col-md-3">
         <div class="form-group">
@@ -306,7 +306,7 @@ function addCommas(nStr){
         </div>
       </div>
       <div class="col-md-12">
-        <center> <h4 class="box-title">Observaciones de estado administrativo del proyecto</h4> </center>
+        <center> <h3>Observaciones de estado administrativo del proyecto</h3> </center>
       </div>
       <div class="col-md-12">
         <textarea  rows="4" cols="196" name="observacion" required=""></textarea>

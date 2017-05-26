@@ -54,8 +54,8 @@
           <a href="{{ url('deleteconsignacion') }}/{{ $consignacion->id }}" onClick="javascript: return confirm('Esta seguro de eliminar registro?');"><i class="glyphicon glyphicon-minus-sign"></i></a>
         </div>
       </div>
-    </div>
       @endforeach
+      </div>
       <div class="box-footer">
         <button type="submit" data-target="" data-toggle="" class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;">Editar</button>
       </div>
