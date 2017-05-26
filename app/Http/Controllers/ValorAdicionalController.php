@@ -113,7 +113,7 @@ class ValorAdicionalController extends Controller
       //
       // }
 
-      Session::flash('message', 'registro editado editado!');
+      Session::flash('message', 'Valor adicional editado!');
       Session::flash('class', 'success');
       return redirect()->route('administrativas.index');
     }
@@ -189,7 +189,7 @@ class ValorAdicionalController extends Controller
 
       }
 
-      Session::flash('message', 'registro editado!');
+      Session::flash('message', 'Valor adicional editado!');
       Session::flash('class', 'success');
       return redirect()->route('administrativas.index');
 

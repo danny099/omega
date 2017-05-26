@@ -61,17 +61,17 @@ class JuridicaController extends Controller
         $nitrepe = Juridica::where('nit',$request->nit)->get();
         $emailrepe = Juridica::where('email',$request->email)->get();
     		if ($cedularepe->count() == 1) {
-    			Session::flash('message', 'la cedula ya esta registrada!');
+    			Session::flash('message', 'La cédula ya está registrada!');
           Session::flash('class', 'danger');
           return redirect()->route('clientes.index');
     		}
         else if ($nitrepe->count() == 1) {
-    			Session::flash('message', 'el nit ya esta registrado!');
+    			Session::flash('message', 'El nit ya está registrado!');
           Session::flash('class', 'danger');
           return redirect()->route('clientes.index');
     		}
         else if ($emailrepe->count() == 1) {
-          Session::flash('message', 'el email ya esta registrado!');
+          Session::flash('message', 'El email ya está registrado!');
           Session::flash('class', 'danger');
           return redirect()->route('clientes.index');
         }
@@ -123,7 +123,7 @@ class JuridicaController extends Controller
 
 
         $juridica->update($input);
-        Session::flash('message', 'Persona juridica  editada!');
+        Session::flash('message', 'Persona juridica editada!');
         Session::flash('class', 'success');
         return redirect()->route('clientes.index');
 

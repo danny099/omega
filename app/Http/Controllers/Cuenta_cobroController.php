@@ -59,7 +59,7 @@ class Cuenta_cobroController extends Controller
         return redirect()->route('administrativas.index');
       }else {
 
-        Session::flash('message', 'el valor de la cuenta de cobro no puede ser mayor al saldo!');
+        Session::flash('message', 'El valor de la cuenta de cobro no puede ser mayor al saldo!');
         Session::flash('class', 'danger');
         return redirect()->route('administrativas.index');
       }
@@ -156,7 +156,7 @@ class Cuenta_cobroController extends Controller
             $cuenta->update($datos);
 
           }else {
-            Session::flash('message', 'Valor de la cuenta de cobro no puede ser mayor al saldo');
+            Session::flash('message', 'Valor de la cuenta de cobro es mayor al saldo');
             Session::flash('class', 'success');
             return redirect()->route('administrativas.index');
           }
@@ -165,7 +165,7 @@ class Cuenta_cobroController extends Controller
 
 
         }
-        Session::flash('message', 'registro editado!');
+        Session::flash('message', 'Cuenta de cobro editada!');
         Session::flash('class', 'success');
         return redirect()->route('administrativas.index');
 
@@ -188,7 +188,7 @@ class Cuenta_cobroController extends Controller
 
          $consignaciones->update($input);
 
-         Session::flash('message', 'registro editado!');
+         Session::flash('message', 'Cuenta de cobro editada!');
          Session::flash('class', 'success');
          return redirect()->route('administrativas.index');
 
@@ -223,7 +223,7 @@ class Cuenta_cobroController extends Controller
 
        $cuentas->delete();
 
-       Session::flash('message', 'Cuenta cobro  eliminada');
+       Session::flash('message', 'Cuenta cobro eliminada');
        Session::flash('class', 'danger');
        return redirect('administrativas');
 

@@ -112,7 +112,7 @@ class AdministrativaController extends Controller
        //  condicional
        if ($codigorepe->count() == 1) {
          //  mensajes de confirmacion enviados a la vista
-         Session::flash('message', 'el codigo ya esta registrado no se puede crear!');
+         Session::flash('message', 'El código ya está registrado no se puede crear!');
          Session::flash('class', 'danger');
 
         //  redireccionamiento a una vista
@@ -426,7 +426,7 @@ class AdministrativaController extends Controller
       // dd($id);
       // die();
        //  redireccionamiento a una vista
-       Session::flash('message', 'Proyecto eliminado eliminado');
+       Session::flash('message', 'Proyecto eliminado');
        Session::flash('class', 'danger');
        return redirect('administrativas');
 

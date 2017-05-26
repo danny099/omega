@@ -40,7 +40,7 @@ class ObservacionController extends Controller
         $input = $request->all();
 
         Observacion::create($input);
-        Session::flash('message', 'Observacion creada!');
+        Session::flash('message', 'Observación creada!');
         Session::flash('class', 'success');
         return redirect()->route('administrativas.index');
 

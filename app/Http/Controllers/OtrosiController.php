@@ -76,7 +76,7 @@ class OtrosiController extends Controller
       $administrativa->valor_total_contrato = $nuevo_total;
       $administrativa->save();
 
-      Session::flash('message', 'Otro si creado!!');
+      Session::flash('message', 'Otro sí creado!!');
       Session::flash('class', 'success');
       return redirect()->route('otrosi.create');
 
@@ -179,7 +179,7 @@ class OtrosiController extends Controller
 
       $otrosi->update($datos);
 
-      Session::flash('message', 'Otro si editado!');
+      Session::flash('message', 'Otro sí editado!');
       Session::flash('class', 'success');
       return redirect()->route('administrativas.index');
     }
@@ -236,7 +236,7 @@ class OtrosiController extends Controller
       $otrosi->delete();
 
 
-      Session::flash('message', 'Otro si eliminado');
+      Session::flash('message', 'Otro sí eliminado');
       Session::flash('class', 'danger');
       return redirect()->route('administrativas.index');
 

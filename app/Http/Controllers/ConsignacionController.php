@@ -50,11 +50,11 @@ class ConsignacionController extends Controller
 
           $administrativa = Administrativa::find($request->administrativa_id);
           Consignacion::create($datos);
-          Session::flash('message', 'El valor de la consignacion creada!');
+          Session::flash('message', 'El valor de la consignación creado!');
           Session::flash('class', 'success');
           return redirect()->route('administrativas.index');
         }else {
-          Session::flash('message', 'El valor de la consignacion no puede ser mayor al saldo!');
+          Session::flash('message', 'El valor de la consignación no puede ser mayor al saldo!');
           Session::flash('class', 'danger');
           return redirect()->route('administrativas.index');
         }
@@ -156,14 +156,14 @@ class ConsignacionController extends Controller
             $consignacion->update($datos);
 
           }else {
-            Session::flash('message', 'Valor de la consignacion no puede ser mayor al saldo');
+            Session::flash('message', 'Valor de la consignación no puede ser mayor al saldo');
             Session::flash('class', 'success');
             return redirect()->route('administrativas.index');
           }
 
         }
 
-        Session::flash('message', 'registro editado editado!');
+        Session::flash('message', 'registro editado!');
         Session::flash('class', 'success');
         return redirect()->route('administrativas.index');
       }
@@ -221,7 +221,7 @@ class ConsignacionController extends Controller
 
        $consignaciones->delete();
 
-       Session::flash('message', 'Consignacion  eliminada');
+       Session::flash('message', 'Consignación eliminada');
        Session::flash('class', 'danger');
        return redirect('administrativas');
 

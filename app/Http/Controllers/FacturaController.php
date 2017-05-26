@@ -73,7 +73,7 @@ class FacturaController extends Controller
       if ($datos['valor_total'] <= $administrativa->saldo) {
 
         if ($numrepe->count() == 1) {
-          Session::flash('message', 'el numero de la factura ya esta registrado!');
+          Session::flash('message', 'El numero de la factura ya está registrado!');
           Session::flash('class', 'danger');
           return redirect()->route('administrativas.index');
         }
@@ -206,7 +206,7 @@ class FacturaController extends Controller
           $administrativa->save();
           $factura->update($datos);
 
-          Session::flash('message', 'registro editado editado!');
+          Session::flash('message', 'Factura editada!');
           Session::flash('class', 'success');
           return redirect()->route('administrativas.index');
 
@@ -220,7 +220,7 @@ class FacturaController extends Controller
           // // dd('dos');
           // // die();
           // $administrativa->save();
-          Session::flash('message', 'el saldo es menor al valor de la factura ingresada!');
+          Session::flash('message', 'El valor de la factura es mayor al saldo!');
           Session::flash('class', 'danger');
           return redirect()->route('administrativas.index');
 
@@ -265,7 +265,7 @@ class FacturaController extends Controller
 
       $factu->delete();
 
-      Session::flash('message', 'Factura  eliminada');
+      Session::flash('message', 'Factura eliminada');
       Session::flash('class', 'danger');
       return redirect('administrativas');
 
