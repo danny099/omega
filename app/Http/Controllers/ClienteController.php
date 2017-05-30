@@ -133,7 +133,7 @@ class ClienteController extends Controller
       $datos['direccion'] = ucfirst(mb_strtolower($request->direccion));
       $datos['email'] = mb_strtolower($request->email);
       // $datos['departamento_id'] = $request->departamento;
-      $datos['municipio'] = $request->municipio;
+      // $datos['municipio'] = $request->municipio;
 
 
         $cliente->update($datos);
