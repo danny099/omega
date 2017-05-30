@@ -124,7 +124,12 @@ class OtrosiController extends Controller
       $otrosi = Otrosi::findOrFail($id);
       $administrativa = Administrativa::findOrFail($otrosi->administrativa_id);
 
-
+      if ($administrativas->saldo < $otrosi->valor_tot) {
+        Session::flash('message', 'El otro sí no se puede eliminar ya que se efectuaron los pagos');
+        Session::flash('class', 'danger');
+        return redirect()->route('administrativas.index');
+      }
+      
       if ($request->recordarme == 0) {
 
         if ($administrativa->contador_otro >= 1) {
