@@ -10,7 +10,7 @@
   }
   #factura{
     overflow: auto;
-    height: 90%;
+    height: 100%;
   }
   #img{
     width: 50%;
