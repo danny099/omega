@@ -201,10 +201,16 @@
     </section>
 
     <!-- Main content -->
-    <section class="content">
-        @yield('contenido')
-        @yield('modales')
-    </section>
+    <div class="row">
+      <div class="col-md-12">
+        <section class="content">
+            @yield('contenido')
+            @yield('modales')
+        </section>
+      </div>
+    </div>
+
+
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->

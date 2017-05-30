@@ -7,7 +7,7 @@
 
      <!-- /.box-header -->
      <!-- form start -->
-       {!! Form::open(['url' => 'facturas']) !!}
+       {!! Form::open(['url' => 'facturas', 'autocomplete'=>"off"]) !!}
        {{ csrf_field() }}
        <div class="box-body col-md-6">
          <br>
@@ -151,12 +151,15 @@
            </div>
          </div>
          <div class="col-md-6">
-           <div class="form-group">
-             <input type="radio" name="recor_fac" value="1" required=""> Si<br>
-             <input type="radio" name="recor_fac" value="0"> No<br>
-           </div>
+           <label class="radio-inline">
+             <input type="radio" name="recordarme" value="1" required > Si
+           </label>
+           <label class="radio-inline">
+             <input type="radio" name="recordarme" value="0"> No
+           </label>
          </div>
-
+         <br>
+         <br>
 
            <input type="hidden" name="administrativa_id" value="{{ $administrativa->id }}">
            <div class="box-footer">

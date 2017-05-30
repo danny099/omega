@@ -1,4 +1,4 @@
-<form action="{{ url('editaradicionales') }}" method="post">
+<form action="{{ url('editaradicionales') }}" method="post" autocomplete="off">
   {{ csrf_field() }}
   @foreach($adicionales as $adici)
   <input type="hidden" name="adicional[id][]" value="{{ $adici->id}}">

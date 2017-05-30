@@ -34,12 +34,12 @@
 
           <div class="form-group">
             {!! Form::label('nit', 'Nit') !!}
-            {!! Form::text('nit', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+            {!! Form::text('nit', null, ['class' => 'form-control' ]) !!}
           </div>
 
           <div class="form-group">
             {!! Form::label('cedula', 'Cédula') !!}
-            {!! Form::text('cedula', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+            {!! Form::text('cedula', null, ['class' => 'form-control' ]) !!}
           </div>
 
 

@@ -24,7 +24,7 @@
   <li><a href="{{ url('index') }}">Inicio</a></li>
   <li class="active">Crear adicionales</li>
 </ol>
-  <form class="" action="{{ url('adicionales') }}" method="post">
+  <form class="" action="{{ url('adicionales') }}" method="post" autocomplete="off">
     {{ csrf_field() }}
     <div class="box box-primary">
       <div class="col-md-12">

@@ -91,7 +91,6 @@
                 <th>Nit</th>
                 <th>Cédula</th>
                 <th>Nombre</th>
-                <th>Contacto</th>
                 <th>Télefono</th>
                 <th>Dirección</th>
                 <th>Email</th>
@@ -105,7 +104,6 @@
                 <td>{{ $cliente->nit }}</td>
                 <td>{{ $cliente->cedula }}</td>
                 <td>{{ $cliente->nombre }}</td>
-                <td>{{ $cliente->contacto }}</td>
                 <td>{{ $cliente->telefono }}</td>
                 <td>{{ $cliente->direccion }}</td>
                 <td>{{ $cliente->email }}</td>

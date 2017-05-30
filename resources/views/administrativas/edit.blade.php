@@ -9,6 +9,10 @@
   textarea{
     width:100%;
   }
+  select{
+    width:100%;
+  }
+
 </style>
 @section('scripts')
   <script type="text/javascript">
@@ -173,7 +177,7 @@
 
 
       $('.retencionesporcen').keyup(function(){
-        var retencionesporcen = parseFloat($(this).val());
+        var retencionesporcen = parseFloat($(this).val().replace(/,/g,"."));
         var valor = $(this).parent().parent().parent().find('.valor_factura').val().replace(/,/g,"");
         var resultado = valor*retencionesporcen/100;
         $(this).parent().parent().find('.retenciones').val(addCommas2(Math.round(resultado)));
@@ -211,7 +215,7 @@
         $(this).parent().parent().parent().find('.valor_pagado').val(addCommas2(Math.round(resultado)));
       });
       $('.retegarantiaporcen').keyup(function(){
-        var retegarantiaporcen = parseFloat($(this).val());
+        var retegarantiaporcen = parseFloat($(this).val().replace(/,/g,"."));
         var valor = $(this).parent().parent().parent().find('.valor_total').val().replace(/,/g,"");
         var resultado = valor*retegarantiaporcen/100;
         $(this).parent().parent().parent().find('.retegarantia').val(addCommas2(Math.round(resultado)));
@@ -365,7 +369,7 @@
             </div>
             <div class="form-group">
               <label >Valor contrato final</label>
-              <input type="text" class="form-control" min="0" id="fin"  onkeyup="calcular();"  onkeypress="mascara(this,cpf)"  onpaste="return false" required="ingrese así sea un cero" placeholder= "Valor final" name="contrato_final" value="{{ number_format($administrativas->valor_contrato_final,0)}}">
+              <input type="text" class="form-control" min="0" id="fin" autocomplete="off" onkeyup="calcular();"  onkeypress="mascara(this,cpf)"  onpaste="return false" required="ingrese así sea un cero" placeholder= "Valor final" name="contrato_final" value="{{ number_format($administrativas->valor_contrato_final,0)}}">
             </div>
             <div class="form-group">
               <label >Valor IVA</label>
@@ -468,9 +472,14 @@
                   <label>#</label>
                 </div>
               </div>
-              <div class="col-md-11">
+              <div class="col-md-6">
                 <div class="form-group">
                   <label>Observaciones</label>
+                </div>
+              </div>
+              <div class="col-md-5">
+                <div class="form-group">
+                  <label>Fecha</label>
                 </div>
               </div>
             </div>
@@ -481,9 +490,14 @@
                     <td>{{ $key+1 }}</td>
                   </div>
                 </div>
-                <div class="col-md-11">
+                <div class="col-md-6">
                   <div class="form-group">
-                    <td><textarea  rows="4" cols="110" name="resumen"  value="{{ $obs->observacion }}" readonly="">{{ $obs->observacion }}</textarea></td>
+                    <td>{{ $obs->observacion }}</td>
+                  </div>
+                </div>
+                <div class="col-md-5">
+                  <div class="form-group">
+                    <td>{{ date_format(new DateTime($obs->created_at), 'd-m-y') }}</td>
                   </div>
                 </div>
               </div>

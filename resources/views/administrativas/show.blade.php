@@ -727,7 +727,7 @@
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
-                          <span>{{ number_format($factura->retenciones,0) }}</span>
+                          <span>${{ number_format($factura->retenciones,0) }}</span>
                         </div>
                       </div>
                     </div>
@@ -739,7 +739,7 @@
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
-                          <span>{{ number_format($factura->amortizacion,0) }}</span>
+                          <span>${{ number_format($factura->amortizacion,0) }}</span>
                         </div>
                       </div>
                     </div>
@@ -751,7 +751,7 @@
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
-                          <span>{{ number_format($factura->polizas,0) }}</span>
+                          <span>${{ number_format($factura->polizas,0) }}</span>
                         </div>
                       </div>
                     </div>
@@ -775,7 +775,7 @@
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
-                          <span>{{ number_format($factura->retegarantia,0) }}</span>
+                          <span>${{ number_format($factura->retegarantia,0) }}</span>
                         </div>
                       </div>
                     </div>
@@ -803,6 +803,11 @@
                         </div>
                       </div>
                     </div>
+
+                    @if($factura->observaciones == null)
+
+
+                    @else
                     <div class="col-md-12">
                       <div class="col-md-12">
                         <div class="form-group">
@@ -818,7 +823,7 @@
                         </div>
                       </div>
                     </div>
-
+                    @endif
                   </div>
 
               @endforeach

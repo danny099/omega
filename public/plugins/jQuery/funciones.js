@@ -120,7 +120,7 @@
         var count = 1;
        $(document).on("click","#btnadd2",function( event ) {
         count++;
-        $('.tblprod2').after('<div class="col-md-3" id="quitar4"><div class="form-group"><center><label >Tipo</label></center><select class="form-control" name="transformacion[tipo][]"><option value="Tipo_poste">tipo poste</option><option value="Tipo_interior">tipo interior</option><option value="Tipo_exterior">tipo exterior</option></select></div></div>');
+        $('.tblprod2').after('<div class="col-md-3" id="quitar4"><div class="form-group"><center><label >Tipo</label></center><select class="form-control" name="transformacion[tipo][]"><option value="Tipo_poste">Tipo poste</option><option value="Tipo_interior">Tipo interior</option><option value="Tipo_exterior">Tipo exterior</option></select></div></div>');
           event.preventDefault();
        });
     });
@@ -263,12 +263,15 @@
               $('#natural').css('display','block');
                $('#juridica').css('display','none');
                $("#select-natural").prop('required',true);
+               $("#juri").prop('required',false);
              }
              else if(valorCambiado == "2")
              {
                $('#juridica').css('display','block');
                 $('#natural').css('display','none');
                 $("#juri").prop('required',true);
+                $("#select-natural").prop('required',false);
+
              }
         });
 

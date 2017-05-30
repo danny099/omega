@@ -6,7 +6,7 @@
     </div>
 
 
-    {!! Form::model($factura, ['class' => 'form1','method' => 'PATCH', 'action' => ['FacturaController@update',$factura->id]]) !!}
+    {!! Form::model($factura, ['class' => 'form1','method' => 'PATCH', 'action' => ['FacturaController@update',$factura->id],'autocomplete'=>"off"]) !!}
     {{ csrf_field() }}
     <input type="hidden" name="id" value="{{$factura->id}}">
     <div class="box-body col-md-6">
@@ -153,11 +153,15 @@
         </div>
       </div>
       <div class="col-md-6">
-        <div class="form-group">
-          <input type="radio" name="recor_fac" value="1" required> Si<br>
-          <input type="radio" name="recor_fac" value="0"> No<br>
-        </div>
+        <label class="radio-inline">
+          <input type="radio" name="recordarme" value="1" required > Si
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="recordarme" value="0"> No
+        </label>
       </div>
+      <br>
+      <br>
 
           <div class="box-footer">
             <button type="submit"  data-target="" data-toggle="" class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;">Editar</button>

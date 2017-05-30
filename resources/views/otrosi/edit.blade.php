@@ -5,7 +5,7 @@
   <div class="box-body">
 
 
-        {!! Form::model($otro, ['method' => 'PATCH', 'action' => ['OtrosiController@update',$otro->id]]) !!}
+        {!! Form::model($otro, ['method' => 'PATCH', 'action' => ['OtrosiController@update',$otro->id],'autocomplete'=>"off"]) !!}
         {{ csrf_field() }}
         <input type="hidden" name="id" value="{{ $otro->id}}">
 
@@ -77,14 +77,18 @@
                 <div class="col-md-4">
                   <center><label>Recordarme</label></center>
                 </div>
-                  <div class="form-group ">
-                    <div class="col-md-4">
-                      <input type="radio" name="recordarme" value="1" required > Si<br>
-                      <input type="radio" name="recordarme" value="0"> No<br>
+
+                    <div class="col-md-6">
+                      <label class="radio-inline">
+                        <input type="radio" name="recordarme" value="1" required > Si
+                      </label>
+                      <label class="radio-inline">
+                        <input type="radio" name="recordarme" value="0"> No
+                      </label>
                     </div>
-                    <div class="col-md-4" id="tblprod7">
+                    <div class="col-md-2" id="tblprod7">
                     </div>
-                  </div>
+
                   <div class="box-footer">
                     <button type="submit" data-target="" data-toggle="" class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;">Editar</button>
                   </div>

@@ -58,7 +58,7 @@
   <li class="active">Crear otro sí</li>
 </ol>
 
-  <form class="" action="{{ url('otrosi') }}" method="post">
+  <form class="" action="{{ url('otrosi') }}" method="post" autocomplete="off">
     {{ csrf_field() }}
     <div class="container">
       <div class="box box-primary">
@@ -166,13 +166,15 @@
                       <div class="col-md-4">
                         <label>Recordarme</label>
                       </div>
-                      <div class="form-group ">
-                        <div class="col-md-4">
-                          <input type="radio" name="recordarme" value="1" required=""> Si<br>
-                          <input type="radio" name="recordarme" value="0"> No<br>
-                        </div>
-                        <div class="col-md-4" id="tblprod7">
-                        </div>
+                      <div class="col-md-6">
+                        <label class="radio-inline">
+                          <input type="radio" name="recordarme" value="1" required > Si
+                        </label>
+                        <label class="radio-inline">
+                          <input type="radio" name="recordarme" value="0"> No
+                        </label>
+                      </div>
+                      <div class="col-md-2" id="tblprod7">
                       </div>
                     </div>
                   </div>

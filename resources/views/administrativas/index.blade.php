@@ -123,7 +123,7 @@
 
         });
         $('.retencionesporcen').keyup(function(){
-          var retencionesporcen = parseFloat($(this).val());
+          var retencionesporcen = parseFloat($(this).val().replace(/,/g,"."));
           var valor = $(this).parent().parent().parent().find('.valor_factura').val().replace(/,/g,"");
           var resultado = valor*retencionesporcen/100;
           $(this).parent().parent().find('.retenciones').val(addCommas2(Math.round(resultado)));
@@ -158,7 +158,7 @@
           $(this).parent().parent().parent().find('.valor_pagado').val(addCommas2(Math.round(resultado)));
         });
         $('.retegarantiaporcen').keyup(function(){
-          var retegarantiaporcen = parseFloat($(this).val());
+          var retegarantiaporcen = parseFloat($(this).val().replace(/,/g,"."));
           var valor = $(this).parent().parent().parent().find('.valor_total').val().replace(/,/g,"");
           var resultado = valor*retegarantiaporcen/100;
           $(this).parent().parent().parent().find('.retegarantia').val(addCommas2(Math.round(resultado)));
@@ -204,6 +204,7 @@
       </div>
     </div>
     @endif
+
     <div class="col-md-12 well">
       <a class="btn btn-primary" data-toggle="modal" href="{{ url('administrativas/create') }}"><i class="fa fa-user-plus"></i> Crear Contrato</a>
       <div class="box-body">
