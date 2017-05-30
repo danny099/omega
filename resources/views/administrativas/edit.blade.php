@@ -541,7 +541,7 @@
                     <table id="example" class="table table-bordered table-striped">
                       <thead>
                         <tr>
-                          <th>Numero factura</th>
+                          <th>Número factura</th>
                           <th>Fecha de la factura</th>
                           <th>Valor antes de IVA</th>
                           <th>IVA</th>

@@ -16,7 +16,7 @@
         <div class="row">
           <div class="col-md-12">
               <div class="form-group">
-                <center><label >Codigó Proyecto</label></center>
+                <center><label >Código Proyecto</label></center>
                 <select class="form-control select2" name="codigo_proyecto" style="width: 100%" id="select" required="">
                   <option value="">Seleccione...</option>
                   @foreach($codigos as $codigo)
@@ -33,8 +33,8 @@
                 <center><label >Descripción</label></center>
                 <select class="form-control"name="pu_final[descripcion_pu][]">
                   <option value="">Seleccione...</option>
-                  <option value="Inspeccion RETIE proceso uso final residencial">Inspeccion RETIE proceso uso final residencial</option>
-                  <option value="Inspeccion RETIE proceso uso final comercial">Inspeccion RETIE proceso uso final comercial</option>
+                  <option value="Inspección RETIE proceso uso final residencial">Inspección RETIE proceso uso final residencial</option>
+                  <option value="Inspección RETIE proceso uso final comercial">Inspección RETIE proceso uso final comercial</option>
                 </select>
               </div>
             </div>
@@ -46,7 +46,7 @@
                   <option value="">Seleccione...</option>
                   <option value="Casa">Casa</option>
                   <option value="Apartamentos">Apartamentos</option>
-                  <option value="Zona comun">Zona comun</option>
+                  <option value="Zona común">Zona común</option>
                   <option value="Local comercial">Local comercial</option>
                   <option value="Punto fijo">Punto fijo</option>
                 </select>

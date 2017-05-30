@@ -32,8 +32,8 @@
                 <center><label >Descripción</label></center>
                 <select class="form-control" name="distribucion[descripcion_dis][]">
                   <option value="">Seleccione...</option>
-                  <option value="Inspeccion RETIE proceso de distribución en MT">Inspeccion RETIE proceso de distribución en MT</option>
-                  <option value="Inspeccion RETIE proceso de distribución en BT">Inspeccion RETIE proceso de distribución en BT</option>
+                  <option value="Inspección RETIE proceso de distribución en MT">Inspección RETIE proceso de distribución en MT</option>
+                  <option value="Inspección RETIE proceso de distribución en BT">Inspección RETIE proceso de distribución en BT</option>
                 </select>
               </div>
             </div>
@@ -43,9 +43,9 @@
                 <center><label >Tipo</label></center>
                 <select class="form-control" name="distribucion[tipo_dis][]">
                   <option value="">Seleccione...</option>
-                  <option value="aerea">tipo Aerea</option>
-                  <option value="subterranea">tipo subterranea</option>
-                  <option value="aerea/subterranea">Aerea/Subterranea</option>
+                  <option value="aérea">tipo Aérea</option>
+                  <option value="subterránea">tipo subterránea</option>
+                  <option value="aérea/subterránea">Aérea/Subterránea</option>
                 </select>
               </div>
             </div>

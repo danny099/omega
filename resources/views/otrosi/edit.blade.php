@@ -45,7 +45,7 @@
             <div class="row">
               <div class="col-md-12">
                 <div class="col-md-4">
-                  <center><label >Valor total otro si</label></center>
+                  <center><label >Valor total otro sí</label></center>
                 </div>
                 <div class="form-group ">
                   <div class="col-md-4">

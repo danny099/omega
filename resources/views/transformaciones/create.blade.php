@@ -30,7 +30,7 @@
             <div class="col-md-3">
               <div class="form-group">
                 <center><label >Descripción</label></center>
-                <input type="text" class="form-control" value="Inspecion RETIE proceso de transformación"  readonly=”readonly” name="transformacion[descripcion][]">
+                <input type="text" class="form-control" value="Inspección RETIE proceso de transformación"  readonly=”readonly” name="transformacion[descripcion][]">
               </div>
             </div>
 

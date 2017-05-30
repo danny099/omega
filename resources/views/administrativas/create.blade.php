@@ -74,11 +74,11 @@ function addCommas(nStr){
         <div class="col-md-4">
           <div class="form-group">
             <label>Código del proyecto:</label>
-            <input id="codigo" type="text" class="form-control" placeholder="Ingrese codigo"  name="codigo" required pattern="[A-Z]{3}[-]{1}[0-9]{4}[-]{1}[0-9]{3}">
+            <input id="codigo" type="text" class="form-control" placeholder="Ingrese código"  name="codigo" required pattern="[A-Z]{3}[-]{1}[0-9]{4}[-]{1}[0-9]{3}">
           </div>
           <div class="form-group">
             <label>Nombre del proyecto</label>
-            <input type="text" class="form-control" placeholder="Ingrese nombre" name="nombre" required="Ingrese un pryexto">
+            <input type="text" class="form-control" placeholder="Ingrese nombre" name="nombre" required="Ingrese nombre del proyecto">
           </div>
           <div class="form-group">
             <label>Fecha del contrato:</label>

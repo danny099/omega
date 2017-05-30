@@ -130,7 +130,7 @@
         var count = 1;
        $(document).on("click","#btnadd2",function( event ) {
         count++;
-        $('#tblprod2').after('<div class="col-md-3" id="quitar5"><div class="form-group"><center><label >Descripciòn</label></center><input type="text" class="form-control" value="Inspeciòn RETIE proceso de transformación"  readonly=”readonly” name="transformacion[descripcion][]"></div</div>');
+        $('#tblprod2').after('<div class="col-md-3" id="quitar5"><div class="form-group"><center><label >Descripciòn</label></center><input type="text" class="form-control" value="Inspección RETIE proceso de transformación"  readonly=”readonly” name="transformacion[descripcion][]"></div</div>');
           event.preventDefault();
        });
     });
