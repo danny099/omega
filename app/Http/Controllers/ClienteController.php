@@ -126,8 +126,17 @@ class ClienteController extends Controller
       $cliente = Cliente::findOrFail($id);
       $input = $request->all();
 
+      $datos['nit'] =$request->nit;
+      $datos['cedula'] =$request->cedula;
+      $datos['nombre'] =ucwords(mb_strtolower($request->nombre));
+      $datos['telefono'] = $request->telefono;
+      $datos['direccion'] = ucfirst(mb_strtolower($request->direccion));
+      $datos['email'] = mb_strtolower($request->email);
+      $datos['departamento_id'] = $request->departamento;
+      $datos['municipio'] = $request->municipio;
 
-        $cliente->update($input);
+
+        $cliente->update($datos);
         Session::flash('message', 'Cliente  editado!');
         Session::flash('class', 'success');
         return redirect()->route('clientes.index');
