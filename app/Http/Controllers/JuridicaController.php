@@ -49,7 +49,7 @@ class JuridicaController extends Controller
         $cliente = $request->all();
         $cliente['razon_social'] =$request->razon;
         $cliente['nit'] =$request->nit;
-        $cliente['nombre_representante'] = ucfirst(strtolower($request->nombre));
+        $cliente['nombre_representante'] = ucfirst(mb_strtolower($request->nombre));
         $cliente['cedula'] =$request->cedula;
         $cliente['direccion'] = $request->direccion;
         $cliente['telefono'] =$request->telefono;

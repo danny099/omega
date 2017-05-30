@@ -58,7 +58,7 @@ class FacturaController extends Controller
       $datos['retegarantia'] = str_replace(',','',$request->retegarantia);
       $datos['valor_pagado'] = str_replace(',','',$request->valor_pagado);
       $datos['fecha_pago'] = $request->fecha_pago;
-      $datos['observaciones'] = ucfirst(strtolower($request->observaciones));
+      $datos['observaciones'] = ucfirst(mb_strtolower($request->observaciones));
       $datos['administrativa_id'] = $request->administrativa_id;
 
       $numrepe = Factura::where('num_factura',$request->num_factura)->get();
@@ -168,7 +168,7 @@ class FacturaController extends Controller
         $datos['retegarantia'] = str_replace(',','',$request->retegarantia);
         $datos['valor_pagado'] = str_replace(',','',$request->valor_pagado);
         $datos['fecha_pago'] = $request->fecha_pago;
-        $datos['observaciones'] = ucfirst(strtolower($request->observaciones));
+        $datos['observaciones'] = ucfirst(mb_strtolower($request->observaciones));
         $datos['recuerdame'] = $request->recor_fac;
 
 

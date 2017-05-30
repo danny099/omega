@@ -45,7 +45,7 @@ class OtrosiController extends Controller
       $datos['valor'] = str_replace(',','',$request->valor);
       $datos['iva'] = str_replace(',','',$request->iva);
       $datos['valor_tot'] = str_replace(',','',$request->valor_tot);
-      $datos['detalles'] = ucfirst(strtolower($request->detalles));
+      $datos['detalles'] = ucfirst(mb_strtolower($request->detalles));
       $datos['administrativa_id'] = $request->administrativa_id;
 
       if ($request->recordarme == 1) {
