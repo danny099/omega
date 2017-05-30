@@ -57,7 +57,7 @@
 @section('scripts')
   <script>
     $(function () {
-      $("#example1").DataTable({
+      $('table').dataTable( {
         "language":{
         "sProcessing":     "Procesando...",
         "sLengthMenu":     "Mostrar _MENU_ registros",
@@ -81,8 +81,10 @@
             "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
             "sSortDescending": ": Activar para ordenar la columna de manera descendente"
         }
-    }
-   });
+    },
+          "scrollX": true
+
+  } );
     });
   </script>
 @endsection

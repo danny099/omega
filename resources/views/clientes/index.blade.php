@@ -2,7 +2,7 @@
 @section('scripts')
 <script>
   $(function () {
-    $("table.display").DataTable({
+    $('table.display').dataTable( {
       "language":{
       "sProcessing":     "Procesando...",
       "sLengthMenu":     "Mostrar _MENU_ registros",
@@ -26,8 +26,10 @@
           "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
           "sSortDescending": ": Activar para ordenar la columna de manera descendente"
       }
-  }
- });
+  },
+        "scrollX": true
+
+} );
   });
   $(document).ready(function(){
   $(document).on('change','#departamento',function(){
