@@ -141,8 +141,8 @@ class OtrosiController extends Controller
           $administrativa->save();
         }
       }else {
-        $administrativa->contador_otro = $administrativa->contador_otro - 1;
         $administrativa->contador_otro = $administrativa->contador_otro + $request->recordarme;
+        $administrativa->contador_otro = $administrativa->contador_otro - 1;
         $administrativa->save();
       }
 

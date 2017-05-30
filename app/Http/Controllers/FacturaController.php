@@ -201,9 +201,9 @@ class FacturaController extends Controller
 
             }
 
-          }else {
-            $administrativa->contador_fac = $administrativa->contador_fac - 1;
+          }else {        
             $administrativa->contador_fac = $administrativa->contador_fac + $request->recor_fac;
+            $administrativa->contador_fac = $administrativa->contador_fac - 1;
             $administrativa->save();
           }
 
