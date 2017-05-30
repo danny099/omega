@@ -230,10 +230,10 @@ class OtrosiController extends Controller
           $administrativas->valor_total_contrato = $nuevo_total;
           $administrativas->save();
           }
+
+          $otrosi->delete();
+
       }
-
-
-      $otrosi->delete();
 
 
       Session::flash('message', 'Otro sí eliminado');
