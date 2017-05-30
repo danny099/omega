@@ -175,25 +175,7 @@ class FacturaController extends Controller
         $factura = Factura::findOrFail($id);
         $administrativa = Administrativa::findOrFail($factura->administrativa_id);
 
-        if ($request->recor_fac == 0) {
 
-          if ($administrativa->contador_fac >= 1) {
-
-            $administrativa->contador_fac = $administrativa->contador_fac - 1;
-            $administrativa->contador_fac = $administrativa->contador_fac + $request->recor_fac;
-            $administrativa->save();
-
-          }else {
-
-            $administrativa->contador_fac = $administrativa->contador_fac + $request->recor_fac;
-            $administrativa->save();
-
-          }
-
-        }else {
-          $administrativa->contador_fac = $administrativa->contador_fac + $request->recor_fac;
-          $administrativa->save();
-        }
 
         if($administrativa->saldo >= $datos['valor_total']){
 
@@ -202,8 +184,29 @@ class FacturaController extends Controller
           $administrativa->saldo = $resta;
           // dd($administrativa->saldo);
           // die();
-
           $administrativa->save();
+
+          if ($request->recor_fac == 0) {
+
+            if ($administrativa->contador_fac >= 1) {
+
+              $administrativa->contador_fac = $administrativa->contador_fac - 1;
+              $administrativa->contador_fac = $administrativa->contador_fac + $request->recor_fac;
+              $administrativa->save();
+
+            }else {
+
+              $administrativa->contador_fac = $administrativa->contador_fac + $request->recor_fac;
+              $administrativa->save();
+
+            }
+
+          }else {
+            $administrativa->contador_fac = $administrativa->contador_fac - 1;
+            $administrativa->contador_fac = $administrativa->contador_fac + $request->recor_fac;
+            $administrativa->save();
+          }
+
           $factura->update($datos);
 
           Session::flash('message', 'Factura editada!');
