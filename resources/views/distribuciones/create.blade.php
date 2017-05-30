@@ -66,7 +66,7 @@
               </div>
             </div>
 
-            <div class="col-md-1" id="tblprod3" >
+            <div class="col-md-1 tblprod3"  >
               <div class="form-group">
                 <br>
                 <a class="btn btn-primary" data-toggle="modal" id="btnadd3" href="#" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-plus"></i></a>

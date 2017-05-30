@@ -69,7 +69,7 @@
               </div>
             </div>
 
-          <div class="col-md-1" id="tblprod4">
+          <div class="col-md-1 tblprod4" >
             <div class="form-group">
               <br>
               <a class="btn btn-primary" data-toggle="modal" href="#" id="btnadd4" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-plus"></i></a>

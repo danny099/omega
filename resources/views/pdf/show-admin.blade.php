@@ -214,15 +214,15 @@
             </tr>
             <tr>
               <th>Valor antes de IVA</th>
-              <td>{{ $fac->valor_factura }}</td>
+              <td>{{ number_format($fac->valor_factura,0)}}</td>
             </tr>
             <tr>
               <th>IVA</th>
-              <td>{{ $fac->iva }}</td>
+              <td>{{ number_format($fac->iva,0)}}</td>
             </tr>
             <tr>
               <th>Valor total de la factura</th>
-              <td>{{ $fac->valor_total }}</td>
+              <td>{{ number_format($fac->valor_total,0)}}</td>
             </tr>
             <tr>
               <th>Renciones %</th>
@@ -230,15 +230,15 @@
             </tr>
             <tr>
               <th>Retenciones valor</th>
-              <td>{{ $fac->retenciones }}</td>
+              <td>{{ number_format($fac->retenciones,0)}}</td>
             </tr>
             <tr>
               <th>Amortización</th>
-              <td>{{ $fac->amortizacion }}</td>
+              <td>{{ number_format($fac->amortizacion,0)}}</td>
             </tr>
             <tr>
               <th>Pólizas valor</th>
-              <td>{{ $fac->polizas }}</td>
+              <td>{{ number_format($fac->polizas,0)}}</td>
             </tr>
             <tr>
               <th>Retegarantía %</th>
@@ -246,11 +246,11 @@
             </tr>
             <tr>
               <th>Retegarantía valor</th>
-              <td>{{ $fac->retegarantia }}</td>
+              <td>{{ number_format($fac->retegarantia,0)}}</td>
             </tr>
             <tr>
               <th>Valor pagado</th>
-              <td>{{ $fac->valor_pagado }}</td>
+              <td>{{ number_format($fac->valor_pagado,0)}}</td>
             </tr>
             <tr>
               <th>Fecha pago</th>

@@ -6,7 +6,9 @@
   .div2{
     padding: 5px;
   }
-
+  textarea{
+    width:100%;
+  }
 </style>
 @section('scripts')
   <script type="text/javascript">

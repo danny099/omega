@@ -1,4 +1,10 @@
 @extends('index')
+<style media="screen">
+
+  textarea{
+    width:100%;
+  }
+</style>
 <script type="text/javascript">
 function mascara(o,f){
   v_obj=o;
@@ -207,7 +213,7 @@ function addCommas(nStr){
             <input type="text" class="form-control" placeholder= "Cantidad" name="transformacion[cantidad][]">
           </div>
         </div>
-        <div class="col-md-1" id="tblprod2">
+        <div class="col-md-1 tblprod2" >
           <div class="form-group">
             <br>
             <a class="btn btn-primary" data-toggle="modal" href="#" id="btnadd2" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-plus"></i></a>
@@ -253,7 +259,7 @@ function addCommas(nStr){
           <input type="text" class="form-control" placeholder= "Cantidad" name="distribucion[cantidad_dis][]">
         </div>
       </div>
-      <div class="col-md-1" id="tblprod3" >
+      <div class="col-md-1 tblprod3" >
         <div class="form-group">
           <br>
           <a class="btn btn-primary" data-toggle="modal" id="btnadd3" href="#" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-plus"></i></a>
@@ -299,7 +305,7 @@ function addCommas(nStr){
           <input type="text" class="form-control" placeholder= "Cantidad" name="pu_final[cantidad_pu][]">
         </div>
       </div>
-      <div class="col-md-1" id="tblprod4">
+      <div class="col-md-1 tblprod4" >
         <div class="form-group">
           <br>
           <a class="btn btn-primary" data-toggle="modal" href="#" id="btnadd4" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-plus"></i></a>

@@ -8,6 +8,14 @@
 
   overflow-wrap: break-word;
   }
+  #factura{
+    overflow: auto;
+    height: 90%;
+  }
+  #img{
+    width: 50%;
+    height: auto;
+  }
 </style>
 
 @section('contenido')
@@ -23,7 +31,7 @@
         <div class="box box-primary">
           <div class="">
            <center><h2>Datos del Proyecto</h2></center>
-           <a href="{{ url('pdf') }}/{{ $administrativa->id }}">
+           <a  target="_blank" href="{{ url('pdf') }}/{{ $administrativa->id }}">
              <i class="glyphicon glyphicon-print"  style=" font-size:40px; color:rgb(60, 141, 188) ; position:absolute; right:2%; padding:10px;"></i>
            </a>
 
@@ -33,7 +41,7 @@
           <div class="box box-primary">
             <div class="box-body">
               <div class="col-md-12">
-                <center><img src="{{url('Certicol2.png')}}" ></center><br><br><br>
+                <center><img id="img" src="{{url('Certicol2.png')}}" ></center><br><br><br>
               </div>
               <div class="col-md-12">
                 <div class="col-md-3">
@@ -624,14 +632,13 @@
 
       @else
           <div class="">
-            <center><h3>Facturas</h3></center>
+            <center><h3><a name="facturas" style="color: black;">Facturas</a></h3></center>
           </div>
           <div class="box box-primary">
           <div class="box-body">
             <div class="col-md-12">
-
               @foreach($facturas as $factura)
-                  <div class="col-md-4 well">
+                  <div class="col-md-4 well factura" id='factura'>
                     <div class="col-md-12">
                       <div class="col-md-6">
                         <div class="form-group">

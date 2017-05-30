@@ -314,7 +314,7 @@
               <td>
 
                 @if($administrativa->contador_otro > 0)
-                <a title="Recuerde que tiene un pendientes en otro sí">
+                <a title="Recuerde que tiene un pendiente en otro sí" href="{{ route('administrativas.show', $administrativa->id) }}">
                   <span class="label label-warning" style="background-color: #f39c12">{{$administrativa->contador_otro}}</span>
                 </a>
                 @else
@@ -322,7 +322,7 @@
                 @endif
                 @if($administrativa->contador_fac > 0)
 
-                  <a title="Recuerde que tiene un pendientes en facturas">
+                  <a title="Recuerde que tiene un pendiente en facturas" href="{{ route('administrativas.show', $administrativa->id) }}#facturas" >
                     <span class="label label-warning" style="background-color: #ff2f00">{{$administrativa->contador_fac}}</span>
                   </a>
 
