@@ -207,6 +207,11 @@ class ValorAdicionalController extends Controller
       $adicional = Valor_adicional::findOrFail($id);
       $administrativas = Administrativa::findOrFail($adicional->administrativa_id);
 
+      if ($administrativas->saldo < $adicional->valor) {
+        Session::flash('message', 'El valor adicional no se puede eliminar ya que se efectuaron los pagos');
+        Session::flash('class', 'danger');
+        return redirect()->route('administrativas.index');
+      }
       if ($administrativas->saldo > 0) {
         if ($administrativas->saldo > $adicional->valor) {
           $nuevo_saldo = $administrativas->saldo - $adicional->valor;
