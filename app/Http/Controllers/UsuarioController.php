@@ -138,6 +138,7 @@ class UsuarioController extends Controller
     {
       $usuario = Usuario::findOrFail($id);
       Session::flash('message', 'Usuario eliminado');
+      Session::flash('class', 'danger');
       $usuario->delete();
       return redirect('usuarios');
     }
