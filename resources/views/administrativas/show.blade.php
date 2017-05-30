@@ -372,10 +372,15 @@
                 <div class="">
                   @foreach($transformaciones as $transformacion)
                 <div class="col-md-12">
-                  <div class="col-md-8">
+                  <div class="col-md-5">
                     <div class="form-group">
                       <span>{{ $transformacion->descripcion }}</span>
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                    </div>
+                  </div>
+
+                  <div class="col-md-3">
+                    <div class="form-group">
                       <span>{{ $transformacion->tipo }}</span>
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                       <span>{{ $transformacion->capacidad }}</span>
@@ -407,10 +412,16 @@
 
                 @foreach($distribuciones as $distribucion)
                 <div class="col-md-12">
-                  <div class="col-md-8">
+                  <div class="col-md-5">
                     <div class="form-group">
+
                       <span>{{ $distribucion->descripcion }}</span>
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="form-group">
+
                       <span>{{ $distribucion->tipo }}</span>
 
                     </div>
@@ -441,15 +452,20 @@
 
               @foreach($pu_finales as $pu_final)
               <div class="col-md-12">
-                <div class="col-md-8">
+                <div class="col-md-5">
                   <div class="form-group">
                     <span>{{ $pu_final->descripcion }}</span>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-group">
                     <span>{{ $pu_final->tipo }}</span>
 
                   </div>
                 </div>
-
                 <div class="col-md-2">
                   <div class="form-group">
                     <span>{{ $pu_final->unidad }}</span>

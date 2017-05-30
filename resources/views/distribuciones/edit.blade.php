@@ -25,9 +25,9 @@
               <center><label >Tipo</label></center>
               <select class="form-control" name="distribucion[tipo_dis][]">
                 <option value="{{ $distribucion->tipo }}">{{ $distribucion->tipo }}</option>
-                <option value="aérea">tipo Aérea</option>
-                <option value="subterránea">tipo subterránea</option>
-                <option value="aérea/subterránea">Aérea/Subterránea</option>
+                <option value="Aérea">tipo Aérea</option>
+                <option value="Subterránea">tipo subterránea</option>
+                <option value="Aérea/subterránea">Aérea/Subterránea</option>
               </select>
             </div>
           </div>

@@ -39,9 +39,9 @@
                 <center><label >Tipo</label></center>
                 <select class="form-control" name="transformacion[tipo][]">
                   <option value="">Seleccione...</option>
-                  <option value="tipo_poste">tipo poste</option>
-                  <option value="tipo_interior">tipo interior</option>
-                  <option value="tipo_exterior">tipo exterior</option>
+                  <option value="Tipo_poste">tipo poste</option>
+                  <option value="Tipo_interior">tipo interior</option>
+                  <option value="Tipo_exterior">tipo exterior</option>
                 </select>
               </div>
             </div>

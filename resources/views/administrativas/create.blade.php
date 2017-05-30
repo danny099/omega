@@ -181,9 +181,9 @@ function addCommas(nStr){
             <center><label >Tipo</label></center>
             <select class="form-control" name="transformacion[tipo][]">
               <option value="">Seleccione...</option>
-              <option value="tipo_poste">Tipo poste</option>
-              <option value="tipo_interior">Tipo interior</option>
-              <option value="tipo_exterior">Tipo exterior</option>
+              <option value="Tipo_poste">Tipo poste</option>
+              <option value="Tipo_interior">Tipo interior</option>
+              <option value="Tipo_exterior">Tipo exterior</option>
             </select>
           </div>
         </div>
@@ -233,9 +233,9 @@ function addCommas(nStr){
           <center><label >Tipo</label></center>
           <select class="form-control" name="distribucion[tipo_dis][]">
             <option value="">Seleccione...</option>
-            <option value="aérea">Tipo Aérea</option>
-            <option value="subterránea">Tipo subterránea</option>
-            <option value="aérea/subterránea">Aérea/subterránea</option>
+            <option value="Aérea">Tipo Aérea</option>
+            <option value="Subterránea">Tipo subterránea</option>
+            <option value="Aérea/subterránea">Aérea/subterránea</option>
           </select>
         </div>
       </div>
