@@ -55,8 +55,8 @@ class ClienteController extends Controller
         $cliente['cedula'] =$request->cedula;
         $cliente['nombre'] =ucwords(mb_strtolower($request->nombre));
         $cliente['telefono'] = $request->telefono;
-        $cliente['direccion'] = $request->direccion;
-        $cliente['email'] = $request->email;
+        $cliente['direccion'] = ucfirst(mb_strtolower($request->direccion));
+        $cliente['email'] = mb_strtolower($request->email);
         $cliente['departamento_id'] = $request->departamento;
         $cliente['municipio'] = $request->municipio;
 
