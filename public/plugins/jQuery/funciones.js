@@ -121,7 +121,7 @@
         var count = 1;
        $(document).on("click","#btnadd2",function( event ) {
         count++;
-        $('#tblprod2').after('<div class="col-md-3" id="quitar4"><div class="form-group"><center><label >Tipo</label></center><select class="form-control" name="transformacion[tipo][]"><option value="tipo_poste">tipo poste</option><option value="tipo_interior">tipo interior</option><option value="tipo_exterior">tipo exterior</option></select></div></div>');
+        $('#tblprod2').after('<div class="col-md-3" id="quitar4"><div class="form-group"><center><label >Tipo</label></center><select class="form-control" name="transformacion[tipo][]"><option value="Tipo_poste">tipo poste</option><option value="Tipo_interior">tipo interior</option><option value="Tipo_exterior">tipo exterior</option></select></div></div>');
           event.preventDefault();
        });
     });
@@ -178,7 +178,7 @@
             var count = 1;
            $(document).on("click","#btnadd3",function( event ) {
             count++;
-            $('#tblprod3').after('<div class="col-md-3 " id="quitar8"><div class="form-group"><center><label >Tipo</label></center><select class="form-control" name="distribucion[tipo_dis][]"><option value="">Seleccione..</option><option value="aérea">tipo Aérea</option><option value="subterránea">tipo subterránea</option><option value="aérea/subterrénea">Aérea/Subterrénea</option></select></div></div>');
+            $('#tblprod3').after('<div class="col-md-3 " id="quitar8"><div class="form-group"><center><label >Tipo</label></center><select class="form-control" name="distribucion[tipo_dis][]"><option value="">Seleccione..</option><option value="Aérea">tipo Aérea</option><option value="Subterránea">tipo subterránea</option><option value="Aérea/subterrénea">Aérea/Subterrénea</option></select></div></div>');
               event.preventDefault();
            });
         });
