@@ -125,9 +125,9 @@ class JuridicaController extends Controller
       $juridica = Juridica::findOrFail($id);
       $input = $request->all();
 
-      $datos['razon_social'] =$request->razon;
+      $datos['razon_social'] =$request->razon_social;
       $datos['nit'] =$request->nit;
-      $datos['nombre_representante'] = ucfirst(mb_strtolower($request->nombre));
+      $datos['nombre_representante'] = ucfirst(mb_strtolower($request->nombre_representante));
       $datos['cedula'] =$request->cedula;
       $datos['direccion'] = $request->direccion;
       $datos['telefono'] =$request->telefono;
