@@ -16,4 +16,11 @@ class Departamento extends Model
   public function municipio(){
     return $this->belongsTo('App\Municipio');
   }
+
+  public function cliente(){
+    return $this->hasOne('App\Cliente');
+  }
+  public function juridica(){
+    return $this->hasOne('App\Juridica');
+  }
 }

@@ -15,4 +15,8 @@ class Juridica extends Model
     public function administrativa(){
       return $this->hasMany('App\Administrativa');
     }
+    public function departamento(){
+      return $this->belongsTo('App\Departamento');
+    }
+    
 }
