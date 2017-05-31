@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Juridica;
 use App\Cliente;
 use App\Departamento;
+use App\Municipio;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
@@ -131,7 +132,7 @@ class JuridicaController extends Controller
       $datos['direccion'] = $request->direccion;
       $datos['telefono'] =$request->telefono;
       $datos['email'] = $request->email;
-      $datos['departamento_id'] = $request->departamento;
+      $datos['departamento_id'] = $request->departamento_id;
       $datos['municipio'] = $request->municipio;
 
       $juridica->update($datos);
