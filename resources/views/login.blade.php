@@ -115,8 +115,7 @@
 					</div><!-- /.col -->
 				</div><!-- /.row -->
 			</div><!-- /.main-content -->
-			<img src="{{url('logo.png')}}" style="position:absolute; right:2%; top:70%; 
-						height: auto;">
+			<img src="{{url('logo.png')}}" style="position:absolute; right:2%; top:70%; height: auto;">
 		</div><!-- /.main-container -->
 
 		<!-- basic scripts -->

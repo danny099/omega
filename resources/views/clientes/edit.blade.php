@@ -44,18 +44,21 @@
 
           <div class="form-group">
             <label >Departamento</label>
-              <select class="form-control" name="departamento" style="width: 100%" id="departamento" required="">
-                @foreach($departamentos as $departamento)
-                <option value="{{ $departamento->id }}">{{$departamento->nombre}}</option>
-                @endforeach
-              </select>
+            <select class="form-control" required="" name="departamento_id" id="departamento">
+              <option value="{{ $clientes->departamento->id }}">{{ $clientes->departamento->nombre }}</option>
+              @foreach($departamentos as $departamento)
+              <option value="{{ $departamento->id }}">{{$departamento->nombre}}</option>
+              @endforeach
+            </select>
           </div>
           <div class="form-group">
             <label >Municipios</label>
-              <select class="form-control" name="municipio" style="width: 100%" id="municipio" required="">
-                <option value=""></option>
-              </select>
+            <select class="form-control" required="" name="municipio" id="municipio">
+              <option value="{{ $municipios->id }}">{{ $municipios->nombre }}</option>
+              <option value=""></option>
+            </select>
           </div>
+
 
 
         </div>
@@ -82,7 +85,7 @@
         <!-- /.box-body -->
         <br>
         <div class="box-footer">
-          <button type="submit" class="btn btn-primary pull-right">Enviar</button>
+          <button type="submit" class="btn btn-primary pull-right">Editar</button>
         </div>
       {!! Form::close() !!}
     </div>

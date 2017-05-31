@@ -112,6 +112,7 @@
             $(this).parent().parent().parent().find('.iva').val(addCommas2(Math.round(iva)));
             $(this).parent().parent().parent().find('.valor_total').val(addCommas2(Math.round(resultado)));
 
+
             var retenciones = parseInt($(this).parent().parent().parent().find('.retenciones').val());
             var amortizacion = parseInt($(this).parent().parent().parent().find('.amortizacion').val());
             var polizas = parseInt($(this).parent().parent().parent().find('.polizas').val());
@@ -186,6 +187,11 @@
           var retegarantia = parseInt($(this).val(""));
         });
       });
+      $(document).ready(function() {
+        setTimeout(function() {
+            $("#alert").fadeOut(1500);
+        },3000);
+      });
 
   </script>
 @endsection
@@ -225,7 +231,7 @@
               <td>{{$administrativa->codigo_proyecto}}</td>
               <td>{{$administrativa->nombre_proyecto}}</td>
               <td>{{ date_format(new DateTime($administrativa->fecha_contrato), 'd-m-y') }}</td>
-              <td>{{number_format($administrativa->valor_contrato_final,0)}}</td>
+              <td>${{number_format($administrativa->valor_contrato_final,0)}}</td>
               <td>
                 <a href="{{ route('administrativas.edit', $administrativa->id) }}"><i class="glyphicon glyphicon-pencil"></i></a>
                 <a href="{{ route('administrativas.show', $administrativa->id) }}" data-toggle="model" data-target="show-{{ $key }}"><i class="glyphicon glyphicon-eye-open"></i></a>

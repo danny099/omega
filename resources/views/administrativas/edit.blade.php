@@ -256,7 +256,7 @@
 
   <div class="box box-primary">
     <div class="box-header with-border">
-      <center><h3 class="box-title">Datos del proyecto</h3></center>
+      <center><h3 >Datos del proyecto</h3></center>
     </div>
 
     @if(Session::has('message'))
@@ -288,7 +288,7 @@
             </div>
             @if(empty($administrativas->juridica->id ))
               <div class="form-group">
-                <label >Tipo cliente</label>
+                <label >Tipo de régimen</label>
                 <select class="form-control" name="cliente_id" id="cliente" required="">
                   <option value="1">Persona natural</option>
                   <option value="2">Persona jurídica</option>
@@ -571,9 +571,9 @@
                         <tr>
                           <td>{{$factura->num_factura}}</td>
                           <td>{{ date_format(new DateTime($factura->fecha_factura), 'd-m-y') }}</td>
-                          <td>{{ number_format($factura->valor_factura,0) }}</td>
-                          <td>{{ number_format($factura->iva,0) }}</td>
-                          <td>{{ number_format($factura->valor_total,0) }}</td>
+                          <td>${{ number_format($factura->valor_factura,0) }}</td>
+                          <td>${{ number_format($factura->iva,0) }}</td>
+                          <td>${{ number_format($factura->valor_total,0) }}</td>
                           <td>
                             <a href="" data-toggle="modal" data-target="#myModal20-{{ $key }}"><i class="glyphicon glyphicon-pencil"></i></a>
                             <a href="{{ url('deletefactura') }}/{{ $factura->id }}" onClick="javascript: return confirm('Esta seguro de eliminar registro?');"><i class="glyphicon glyphicon-minus-sign"></i></a>
@@ -653,9 +653,9 @@
                         <tbody>
                           @foreach($otrosis as $key => $otro)
                           <tr>
-                            <td>{{ number_format($otro->valor,0) }}</td>
-                            <td>{{ number_format($otro->iva,0) }}</td>
-                            <td>{{ number_format($otro->valor_tot,0) }}</td>
+                            <td>${{ number_format($otro->valor,0) }}</td>
+                            <td>${{ number_format($otro->iva,0) }}</td>
+                            <td>${{ number_format($otro->valor_tot,0) }}</td>
                             <td>{{$otro->detalles}}</td>
                             <td>
                               <a href="{{ route('otrosi.edit', $otro->id) }}" data-toggle="modal" data-target="#myModal21-{{ $key }}"><i class="glyphicon glyphicon-pencil"></i></a>

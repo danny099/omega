@@ -91,7 +91,7 @@ function addCommas(nStr){
             <input type="date" class="form-control pull-right" name="fecha" id="datepicker" required="Ingrese una fecha">
           </div>
           <div class="form-group">
-            <label>Tipo régimen</label>
+            <label>Tipo de régimen</label>
             <select class="form-control" name="cliente_id" id="cliente" required="">
               <option value="">Seleccione...</option>
               <option value="1">Persona natural</option>

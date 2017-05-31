@@ -100,7 +100,7 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Perfil</a>
+                  <!-- <a href="#" class="btn btn-default btn-flat">Perfil</a> -->
                 </div>
                 <div class="pull-right">
                   <a href="{{ url('logout') }}" class="btn btn-default btn-flat">Cerrar Sesion</a>
@@ -138,13 +138,13 @@
         </li>
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-dashboard"></i> <span>Contratos</span>
+            <i class="glyphicon glyphicon-file"></i> <span>Administrativa</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="{{ url('administrativas') }}"><i class="fa fa-circle-o"></i>Administrativa</a></li>
+            <li class="active"><a href="{{ url('administrativas') }}"><i class="fa fa-circle-o"></i>Contratos</a></li>
             <li class="active"><a href="{{ url('otrosi/create') }}"><i class="fa fa-circle-o"></i>Otro sí</a></li>
             <li class="active"><a href="{{ url('adicionales/create') }}"><i class="fa fa-circle-o"></i>Valor adicional</a></li>
           </ul>
@@ -154,7 +154,7 @@
       <ul class="sidebar-menu">
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-dashboard"></i> <span>Alcance</span>
+            <i class="fa fa-plus-square"></i> <span>Alcance</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -171,7 +171,7 @@
       <ul class="sidebar-menu">
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-dashboard"></i> <span>Usuarios/Clientes</span>
+            <i class="fa fa-users"></i> <span>Usuarios/Clientes</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
             </span>
