@@ -30,13 +30,13 @@
           <td>Código del Proyecto</td>
           <td>{{ $administrativa->codigo_proyecto}}</td>
           <td>Valor antes de IVA</td>
-          <td>{{  $administrativa->valor_contrato_inicial }}</td>
+          <td>${{  $administrativa->valor_contrato_inicial }}</td>
         </tr>
         <tr>
           <td>Nombre del proyecto</td>
           <td>{{ $administrativa->nombre_proyecto}}</td>
           <td>Valor IVA</td>
-          <td>{{  number_format($administrativa->valor_iva,0) }}</td>
+          <td>${{  number_format($administrativa->valor_iva,0) }}</td>
         </tr>
         <tr>
           <td>Fecha del contrato</td>
@@ -44,7 +44,7 @@
           <td>valor Adicional</td>
           <td>
             @foreach($adicionales as $adici)
-              {{ number_format($adici->valor,0) }}
+              ${{ number_format($adici->valor,0) }}
               {{ $adici->detalle }}
               <br>
             @endforeach
@@ -62,7 +62,7 @@
           <td>Otro si</td>
           <td>
             @foreach($otrosis as $otro)
-              {{ number_format($otro->valor,0) }}
+              ${{ number_format($otro->valor,0) }}
               {{ $otro->detalles }}
               <br>
             @endforeach
@@ -73,7 +73,7 @@
           <td>Municipio</td>
           <td>{{ $municipios->nombre }}</td>
           <td>Valor contrato final</td>
-          <td>{{ number_format($administrativa->valor_contrato_final,0)}}</td>
+          <td>${{ number_format($administrativa->valor_contrato_final,0)}}</td>
 
         </tr>
         <tr>
@@ -87,12 +87,12 @@
           <td>Tipo zona</td>
           <td>{{ $administrativa->tipo_zona }}</td>
           <td>Valor total</td>
-          <td>{{ number_format($administrativa->Valor_total_contrato,0)}}</td>
+          <td>${{ number_format($administrativa->Valor_total_contrato,0)}}</td>
         </tr>
       </tbody>
     </table>
     <center><h2>Saldo</h2></center>
-    <center><span>{{ number_format($administrativa->saldo,0) }}</span></center>
+    <center><span>${{ number_format($administrativa->saldo,0) }}</span></center>
 
     <br>
     <div class="col-md-12">
@@ -214,15 +214,15 @@
             </tr>
             <tr>
               <th>Valor antes de IVA</th>
-              <td>{{ number_format($fac->valor_factura,0)}}</td>
+              <td>${{ number_format($fac->valor_factura,0)}}</td>
             </tr>
             <tr>
               <th>IVA</th>
-              <td>{{ number_format($fac->iva,0)}}</td>
+              <td>${{ number_format($fac->iva,0)}}</td>
             </tr>
             <tr>
               <th>Valor total de la factura</th>
-              <td>{{ number_format($fac->valor_total,0)}}</td>
+              <td>${{ number_format($fac->valor_total,0)}}</td>
             </tr>
             <tr>
               <th>Renciones %</th>
@@ -230,27 +230,27 @@
             </tr>
             <tr>
               <th>Retenciones valor</th>
-              <td>{{ number_format($fac->retenciones,0)}}</td>
+              <td>${{ number_format($fac->retenciones,0)}}</td>
             </tr>
             <tr>
               <th>Amortización</th>
-              <td>{{ number_format($fac->amortizacion,0)}}</td>
+              <td>${{ number_format($fac->amortizacion,0)}}</td>
             </tr>
             <tr>
               <th>Pólizas valor</th>
-              <td>{{ number_format($fac->polizas,0)}}</td>
+              <td>${{ number_format($fac->polizas,0)}}</td>
             </tr>
             <tr>
               <th>Retegarantía %</th>
-              <td>{{ $fac->retegaran_porcen }}</td>
+              <td>${{ $fac->retegaran_porcen }}</td>
             </tr>
             <tr>
               <th>Retegarantía valor</th>
-              <td>{{ number_format($fac->retegarantia,0)}}</td>
+              <td>${{ number_format($fac->retegarantia,0)}}</td>
             </tr>
             <tr>
               <th>Valor pagado</th>
-              <td>{{ number_format($fac->valor_pagado,0)}}</td>
+              <td>${{ number_format($fac->valor_pagado,0)}}</td>
             </tr>
             <tr>
               <th>Fecha pago</th>
@@ -260,6 +260,71 @@
               <th>Observaciones</th>
               <td>{{ $fac->observaciones }}</td>
             </tr>
+          </table>
+          <br>
+        @endforeach
+    @endif
+
+
+    @if(empty($consignaciones))
+    @else
+      @foreach($consignaciones as $consig)
+          <table border="1">
+            <tr>
+              <th>Fecha Pago</th>
+              <td>{{ $consig->fecha_pago }}</td>
+            </tr>
+            <tr>
+              <th>Valor</th>
+              <td>${{ number_format($consig->valor,0) }}</td>
+            </tr>
+            <tr>
+              <th>Valor IVA</th>
+              <td>${{ number_format($consig->valor_iva,0)}}</td>
+            </tr>
+            <tr>
+              <th>Valor total</th>
+              <td>${{ number_format($consig->valor_total,0)}}</td>
+            </tr>
+            <tr>
+              <th>Observaciones</th>
+              <td>${{ $consig->observaciones }}</td>
+            </tr>
+          </table>
+          <br>
+        @endforeach
+    @endif
+
+
+    @if(empty($cuenta_cobros))
+    @else
+      @foreach($cuenta_cobros as $cuenta)
+          <table border="1">
+            <tr>
+              <th>Porcentaje</th>
+              <td>{{ $cuenta->porcentaje }}</td>
+            </tr>
+            <tr>
+              <th>Valor</th>
+              <td>${{ number_format($cuenta->valor,0) }}</td>
+            </tr>
+            <tr>
+              <th>Fecha cuenta cobro</th>
+              <td>{{ number_format($cuenta->fecha_cuenta_cobro,0) }}</td>
+            </tr>
+            <tr>
+              <th>Fecha pago</th>
+              <td>{{ $cuenta->fecha_pago }}</td>
+            </tr>
+            <tr>
+              <th>Numero cuenta cobro</th>
+              <td>{{ $cuenta->numero_cuenta_cobro }}</td>
+            </tr>
+            <tr>
+              <th>Observaciones</th>
+              <td>{{ $cuenta->observaciones }}</td>
+            </tr>
+
           </table>
           <br>
         @endforeach
