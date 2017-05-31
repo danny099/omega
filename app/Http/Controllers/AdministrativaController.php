@@ -186,7 +186,8 @@ class AdministrativaController extends Controller
                   $datos2['descripcion'] = $input['distribucion']['descripcion_dis'][$x];
                   $datos2['tipo'] = $input['distribucion']['tipo_dis'][$x];
                   $datos2['unidad'] = $input['distribucion']['unidad_distribucion'][$x];
-                  $datos2['cantidad'] = $input['distribucion']['cantidad_dis'][$x];
+                  $datos2['cantidad'] = str_replace('.',',',$input['distribucion']['cantidad_dis'][$x]);
+
                   $datos2['administrativa_id'] = $lastId_admin;
 
                   Distribucion::create($datos2);

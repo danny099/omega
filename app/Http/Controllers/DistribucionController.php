@@ -49,7 +49,7 @@ class DistribucionController extends Controller
                 $datos2['descripcion'] = $input['distribucion']['descripcion_dis'][$x];
                 $datos2['tipo'] = $input['distribucion']['tipo_dis'][$x];
                 $datos2['unidad'] = $input['distribucion']['unidad_distribucion'][$x];
-                $datos2['cantidad'] = $input['distribucion']['cantidad_dis'][$x];
+                $datos2['cantidad'] = str_replace('.',',',$input['distribucion']['cantidad_dis'][$x]);
                 $datos2['administrativa_id'] =$input['codigo_proyecto'];
 
                 Distribucion::create($datos2);
@@ -105,7 +105,8 @@ class DistribucionController extends Controller
          $datos['descripcion'] = $input['distribucion']['descripcion_dis'][$x];
          $datos['tipo'] = $input['distribucion']['tipo_dis'][$x];
          $datos['unidad'] = $input['distribucion']['unidad_distribucion'][$x];
-         $datos['cantidad'] = $input['distribucion']['cantidad_dis'][$x];
+         $datos['cantidad'] = str_replace('.',',',$input['distribucion']['cantidad_dis'][$x]);
+
 
          $distri->update($datos);
 
