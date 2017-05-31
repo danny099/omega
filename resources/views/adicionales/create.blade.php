@@ -28,7 +28,7 @@
     {{ csrf_field() }}
     <div class="box box-primary">
       <div class="col-md-12">
-        <center> <h4 class="box-title">Valor adicional</h4> </center>
+        <center> <h3>Valor adicional</h3> </center>
       </div>
       <div class="box-body">
         <div class="row">

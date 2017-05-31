@@ -13,7 +13,7 @@
   <div class="container">
     <div class="box box-primary">
       <div class="box-header with-border">
-        <h3 class="box-title">Crear Usuario</h3>
+        <h3 >Crear Usuario</h3>
       </div>
       @if(Session::has('message'))
         <div id="alert">

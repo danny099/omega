@@ -1,7 +1,7 @@
 <div class="container">
    <div class="">
      <div class="">
-       <h3 class="box-title">Crear Facturas</h3>
+       <h3 >Crear Facturas</h3>
      </div>
 
 

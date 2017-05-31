@@ -1,7 +1,7 @@
 
 <div class="box box-primary">
   <div class="box-header with-border">
-    <center> <h3 class="box-title"> Editar consignaiones</h3> </center>
+    <center> <h3 > Editar consignaiones</h3> </center>
   </div>
   <div class="box-body">
       <form class="" action="{{ url('editarconsignacion') }}" method="post">

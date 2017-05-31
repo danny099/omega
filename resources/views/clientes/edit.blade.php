@@ -9,7 +9,7 @@
   <div class="container">
     <div class="box box-primary">
       <div class="box-header with-border">
-        <h3 class="box-title">Editar clientes</h3>
+        <h3 >Editar clientes</h3>
       </div>
       @if(Session::has('message'))
         <div id="alert">
@@ -42,6 +42,20 @@
             {!! Form::text('cedula', null, ['class' => 'form-control' ]) !!}
           </div>
 
+          <div class="form-group">
+            <label >Departamento</label>
+              <select class="form-control" name="departamento" style="width: 100%" id="departamento" required="">
+                @foreach($departamentos as $departamento)
+                <option value="{{ $departamento->id }}">{{$departamento->nombre}}</option>
+                @endforeach
+              </select>
+          </div>
+          <div class="form-group">
+            <label >Municipios</label>
+              <select class="form-control" name="municipio" style="width: 100%" id="municipio" required="">
+                <option value=""></option>
+              </select>
+          </div>
 
 
         </div>
@@ -74,4 +88,37 @@
     </div>
   </div>
 
+@endsection
+
+@section('scripts')
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $(document).on('change','#departamento',function(){
+
+        var dep_id = $(this).val();
+        var div = $(this).parents();
+        var op=" ";
+        $.ajax({
+          type:'get',
+          url:'{{ url('selectmuni')}}',
+          data:{'id':dep_id},
+          success:function(data){
+            console.log(data);
+            op+='<option value="0" selected disabled>Seleccione</option>';
+
+            for (var i = 0; i < data.length; i++) {
+              op+='<option value="' +data[i].id+ '">' +data[i].nombre+ '</option>'
+            }
+
+            div.find('#municipio').html(" ");
+            div.find('#municipio').append(op);
+
+          },
+          error:function(){
+
+          }
+        });
+      });
+    });
+  </script>
 @endsection

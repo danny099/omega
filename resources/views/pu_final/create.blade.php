@@ -9,7 +9,7 @@
     {{ csrf_field() }}
     <div class="box box-primary">
       <div class="col-md-12">
-        <center> <h4 class="box-title">Alcance: proceso de uso final</h4> </center>
+        <center> <h3>Alcance: proceso de uso final</h3> </center>
       </div>
 
       <div class="box-body">
@@ -77,10 +77,10 @@
           </div>
           </div>
         </div>
-        <button type="submit" class="btn btn-primary pull-right">
-          Guardar
-        </button>
       </div>
+      <button type="submit" class="btn btn-primary pull-right">
+        Guardar
+      </button>
     </div>
   </form>
 @endsection

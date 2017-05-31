@@ -63,7 +63,7 @@
     <div class="container">
       <div class="box box-primary">
         <div class="box-header with-borde">
-          <center> <h2 class="box-title">Agregar Otro sí</h2> </center>
+          <center> <h3>Agregar Otro sí</h3> </center>
         </div>
         @if(Session::has('message'))
         <div id="alert">

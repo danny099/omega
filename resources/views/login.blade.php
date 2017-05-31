@@ -44,7 +44,7 @@
 					<div class="col-sm-10 col-sm-offset-1">
 						<div class="login-container">
 							<div class="center">
-						
+
 							</div>
 
 							<div class="space-6"></div>
@@ -115,7 +115,8 @@
 					</div><!-- /.col -->
 				</div><!-- /.row -->
 			</div><!-- /.main-content -->
-			<img src="{{url('logo.png')}}" style="position:absolute; right:2%; top:70%">
+			<img src="{{url('logo.png')}}" style="position:absolute; right:2%; top:70%; 
+						height: auto;">
 		</div><!-- /.main-container -->
 
 		<!-- basic scripts -->

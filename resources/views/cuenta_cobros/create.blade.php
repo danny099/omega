@@ -4,7 +4,7 @@
   <div class="container">
     <div class="">
       <div class="">
-        <h3 class="box-title">Cuenta de cobro</h3>
+        <h3 >Cuenta de cobro</h3>
       </div>
 
 

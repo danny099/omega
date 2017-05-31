@@ -2,7 +2,7 @@
 <div class="container">
   <div class="">
     <div class="">
-      <h3 class="box-title">Editar facturas</h3>
+      <h3 >Editar facturas</h3>
     </div>
 
 

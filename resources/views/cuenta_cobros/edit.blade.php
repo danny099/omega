@@ -1,6 +1,6 @@
 <div class="box box-primary">
   <div class="box-header with-border">
-    <center> <h3 class="box-title"> Editar cuentas de cobro</h3> </center>
+    <center> <h3 > Editar cuentas de cobro</h3> </center>
   </div>
   <div class="box-body">
       <form class="form1" action="{{ url('editarcobros') }}" method="post">

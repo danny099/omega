@@ -2,7 +2,7 @@
   <div class="container">
     <div class="">
       <div class="">
-        <h3 class="box-title">Consignación</h3>
+        <h3 >Consignación</h3>
       </div>
       <!-- /.box-header -->
       <!-- form start -->
