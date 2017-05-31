@@ -46,7 +46,7 @@
               <!-- {!! Form::label('cantidad_dis', 'Cantidad') !!}
               {!! Form::text('cantidad', null, ['class' => 'form-control' , 'required' => 'required']) !!} -->
               <center><label >Cantidad</label></center>
-              <input type="number" class="form-control" placeholder= "Cantidad" name="distribucion[cantidad_dis][]" value="{{ $distribucion->cantidad }}">
+              <input type="text" class="form-control" placeholder= "Cantidad" name="distribucion[cantidad_dis][]" value="{{ $distribucion->cantidad }}">
             </div>
           </div>
 
