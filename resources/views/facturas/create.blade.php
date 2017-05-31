@@ -163,6 +163,10 @@
 
            <input type="hidden" name="administrativa_id" value="{{ $administrativa->id }}">
            <div class="box-footer">
+             <br>
+             <br>
+             <br>
+             <br>
              <button type="submit" class="btn btn-primary pull-right">Enviar</button>
              <button type="submit" data-dismiss="modal" class="btn btn-primary pull-left">Cancelar</button>
            </div>

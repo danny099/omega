@@ -8,6 +8,7 @@
   }
   textarea{
     width:100%;
+    resize: none;
   }
   select{
     width:100%;
@@ -98,11 +99,11 @@
       varMonto = document.getElementById("fin").value;
       varMonto = varMonto.replace(/[\,]/g,'');
 
-      varIva = parseFloat(varMonto) * 0.16;
-      document.getElementById("iva").value = addCommas(Math.round(varIva)) ;
+      varIva = parseFloat(varMonto) / 1.19;
+      document.getElementById("valor_contrato_inicial").value = addCommas(Math.round(varIva)) ;
 
       varSubTotal = parseFloat(varMonto) - parseFloat(varIva);
-      document.getElementById("valor_contrato_inicial").value = addCommas(Math.round(varSubTotal)) ;
+      document.getElementById("iva").value = addCommas(Math.round(varSubTotal)) ;
 
     }
 
@@ -140,8 +141,8 @@
 
       $('.antesiva').on('keyup',function(){
           var valor = $(this).val().replace(/,/g,"");
-          var resultado = valor * 1.16;
-          var iva = valor*0.16;
+          var resultado = valor * 1.19;
+          var iva = valor*0.19;
           $(this).parent().parent().parent().parent().parent().find('.iva').val(addCommas2(Math.round(iva)));
           $(this).parent().parent().parent().parent().parent().find('.otrosi').val(addCommas2(Math.round(resultado)));
 
@@ -150,8 +151,8 @@
       });
       $('.valor').keyup(function(){
           var valor = $(this).val().replace(/,/g,"");
-          var resultado = valor * 1.16;
-          var iva = valor*0.16;
+          var resultado = valor * 1.19;
+          var iva = valor*0.19;
           $(this).parent().parent().parent().find('.iva').val(addCommas2(Math.round(iva)));
           $(this).parent().parent().parent().find('.valor_total').val(addCommas2(Math.round(resultado)));
 
@@ -161,8 +162,8 @@
       $('.valor_factura').on('keyup',function(){
 
           var valor = $(this).val().replace(/,/g,"");
-          var resultado = valor * 1.16;
-          var iva = valor*0.16;
+          var resultado = valor * 1.19;
+          var iva = valor*0.19;
           $(this).parent().parent().parent().find('.iva').val(addCommas2(Math.round(iva)));
           $(this).parent().parent().parent().find('.valor_total').val(addCommas2(Math.round(resultado)));
 
@@ -296,7 +297,7 @@
               </div>
               <div class="form-group" id="natural">
                 <label >Persona natural</label>
-                <select class="form-control select2" name="cliente_id" style="width: 100%" id="select-natural">
+                <select class="form-control select2" name="cliente_id" style="width: 100%;" id="select-natural">
                   <option value="{{ $administrativas->cliente->id }}">{{ $administrativas->cliente->nombre }}</option>
                   @foreach($clientes as $cliente)
                   <option value="{{ $cliente->id }}">{{$cliente->nombre}}</option>
@@ -305,7 +306,7 @@
               </div>
               <div class="form-group" style="Display:none" id="juridica">
                 <label>Persona jurídica</label>
-                <select class="form-control" name="juridica_id" style="width: 100%" >
+                <select class="form-control" name="juridica_id" style="width: 100%;" >
                   <option value="">Seleccione</option>
                   @foreach($juridicas as $juridica)
                   <option value="{{ $juridica->id }}">{{$juridica->razon_social}}</option>
@@ -323,7 +324,7 @@
               </div>
               <div class="form-group" style="Display:none" id="natural">
                 <label >Persona natural</label>
-                <select class="form-control select2" style="Display:none" name="cliente_id" style="width: 100%" id="select-natural">
+                <select class="form-control select2" style="Display:none;width: 100%;" name="cliente_id" id="select-natural">
                   <option value="">Seleccione</option>
                   @foreach($clientes as $cliente)
                   <option value="{{ $cliente->id }}">{{$cliente->nombre}}</option>
@@ -332,7 +333,7 @@
               </div>
               <div class="form-group"  id="juridica">
                 <label >Persona jurídica</label>
-                <select class="form-control" name="juridica_id" style="width: 100%" >
+                <select class="form-control" name="juridica_id" style="width: 100%;" >
                   <option value="{{ $administrativas->juridica->id }}">{{ $administrativas->juridica->razon_social }}</option>
                   @foreach($juridicas as $juridica)
                   <option value="{{ $juridica->id }}">{{$juridica->razon_social}}</option>
@@ -521,6 +522,8 @@
               {!! Form::open(['class'=>'form2','url' => 'observaciones']) !!}
               {{ csrf_field() }}
                 <div class="box-body">
+
+                  <br>
                   <div class="col-md-2">
                     <div class="form-group">
                       {!! Form::label('observacion', 'Observación') !!}

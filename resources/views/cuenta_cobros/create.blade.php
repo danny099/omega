@@ -80,7 +80,15 @@
               {!! Form::text('observaciones', null, ['class' => 'form-control' , 'required' => 'required']) !!}
             </div>
           </div>
-
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
             <input type="hidden" name="administrativa_id" value="{{ $administrativa->id }}">
 
             <div class="box-footer">

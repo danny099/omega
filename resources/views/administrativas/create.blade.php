@@ -3,9 +3,11 @@
 
   textarea{
     width:100%;
+    resize: none;
   }
 </style>
 <script type="text/javascript">
+
 function mascara(o,f){
   v_obj=o;
   v_fun=f;
@@ -32,11 +34,11 @@ function calcular(){
   varMonto = document.getElementById("fin").value;
   varMonto = varMonto.replace(/[\,]/g,'');
 
-  varIva = parseFloat(varMonto) * 0.16;
-  document.getElementById("iva").value = addCommas(Math.round(varIva)) ;
+  varIva = parseFloat(varMonto) /1.19;
+  document.getElementById("ini").value = addCommas(Math.round(varIva)) ;
 
   varSubTotal = parseFloat(varMonto) - parseFloat(varIva);
-  document.getElementById("ini").value = addCommas(Math.round(varSubTotal)) ;
+  document.getElementById("iva").value = addCommas(Math.round(varSubTotal)) ;
 
 }
 
@@ -336,37 +338,34 @@ function addCommas(nStr){
 $(document).ready(function(){
 $(document).on('change','#departamento',function(){
 
-var dep_id = $(this).val();
-var div = $(this).parents();
-var op=" ";
-$.ajax({
-type:'get',
-url:'{{ url('selectmuni')}}',
-data:{'id':dep_id},
-success:function(data){
-console.log(data);
-op+='<option value="0" selected disabled>Seleccione</option>';
+  var dep_id = $(this).val();
+  var div = $(this).parents();
+  var op=" ";
+  $.ajax({
+    type:'get',
+    url:'{{ url('selectmuni')}}',
+    data:{'id':dep_id},
+    success:function(data){
+    console.log(data);
+    op+='<option value="0" selected disabled>Seleccione</option>';
 
-for (var i = 0; i < data.length; i++) {
-op+='<option value="' +data[i].id+ '">' +data[i].nombre+ '</option>'
-}
+    for (var i = 0; i < data.length; i++) {
+      op+='<option value="' +data[i].id+ '">' +data[i].nombre+ '</option>'
+    }
 
-div.find('#municipio').html(" ");
-div.find('#municipio').append(op);
+      div.find('#municipio').html(" ");
+      div.find('#municipio').append(op);
 
-},
-error:function(){
+    },
+      error:function(){
 
-}
-});
+    }
+  });
 });
 });
 
 $(document).ready(function($){
-$('#codigo').inputmask('CPS-9999-999');
-
-
-
+  $('#codigo').inputmask('CPS-9999-999');
 });
 
 </script>

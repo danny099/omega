@@ -66,6 +66,15 @@
             </div>
           </div>
 
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
 
             <input type="hidden" name="administrativa_id" value="{{ $administrativa->id}}">
 

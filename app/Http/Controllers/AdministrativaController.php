@@ -301,13 +301,26 @@ class AdministrativaController extends Controller
 
        $depart = $request->departamento;
        $administrativas = Administrativa::findOrFail($id);
+       
+       if (empty($administrativas->cliente_id)) {
+         $administrativa['cliente_id'] = $request->cliente_id;
+         $administrativas->juridica_id = null;
+         $administrativas->save();
+
+       }else {
+         $administrativa['juridica_id'] = $request->juridica_id;
+         $administrativas->cliente_id = null;
+         $administrativas->save();
+       }
+
+
 
 
        $administrativa['codigo_proyecto'] = $request->codigo_proyecto;
        $administrativa['nombre_proyecto'] = ucfirst(mb_strtolower($request->nombre_proyecto));
        $administrativa['fecha_contrato'] = $request->fecha_contrato;
-       $administrativa['cliente_id'] = $request->cliente_id;
-       $administrativa['juridica_id'] = $request->juridica_id;
+      //  $administrativa['cliente_id'] = $request->cliente_id;
+      //  $administrativa['juridica_id'] = $request->juridica_id;
        $administrativa['departamento_id'] = $request->departamento_id;
        $administrativa['municipio'] = $request->municipio;
        $administrativa['tipo_zona'] = $request->zona;
