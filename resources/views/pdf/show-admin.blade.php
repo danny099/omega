@@ -197,6 +197,76 @@
     @endif
     <br>
     <br>
+    <center><h2>Cuenta cobro</h2></center>
+
+    @if(empty($cuenta_cobros))
+    @else
+      @foreach($cuenta_cobros as $cuenta)
+          <table border="1">
+            <tr>
+              <th>Porcentaje</th>
+              <td>{{ $cuenta->porcentaje }}</td>
+            </tr>
+            <tr>
+              <th>Valor</th>
+              <td>${{ number_format($cuenta->valor,0) }}</td>
+            </tr>
+            <tr>
+              <th>Fecha cuenta cobro</th>
+              <td>{{ $cuenta->fecha_cuenta_cobro }}</td>
+            </tr>
+            <tr>
+              <th>Fecha pago</th>
+              <td>{{ $cuenta->fecha_pago }}</td>
+            </tr>
+            <tr>
+              <th>Numero cuenta cobro</th>
+              <td>{{ $cuenta->numero_cuenta_cobro }}</td>
+            </tr>
+            <tr>
+              <th>Observaciones</th>
+              <td>{{ $cuenta->observaciones }}</td>
+            </tr>
+
+          </table>
+          <br>
+        @endforeach
+    @endif
+    <br>
+    <br>
+    <center><h2>Facturas</h2></center>
+
+    @if(empty($consignaciones))
+    @else
+      @foreach($consignaciones as $consig)
+          <table border="1">
+            <tr>
+              <th>Fecha Pago</th>
+              <td>{{ $consig->fecha_pago }}</td>
+            </tr>
+            <tr>
+              <th>Valor</th>
+              <td>${{ number_format($consig->valor,0) }}</td>
+            </tr>
+            <tr>
+              <th>Valor IVA</th>
+              <td>${{ number_format($consig->valor_iva,0)}}</td>
+            </tr>
+            <tr>
+              <th>Valor total</th>
+              <td>${{ number_format($consig->valor_total,0)}}</td>
+            </tr>
+            <tr>
+              <th>Observaciones</th>
+              <td>${{ $consig->observaciones }}</td>
+            </tr>
+          </table>
+          <br>
+        @endforeach
+    @endif
+
+    <br>
+    <br>
     <center><h2>Facturas</h2></center>
 
 
@@ -260,71 +330,6 @@
               <th>Observaciones</th>
               <td>{{ $fac->observaciones }}</td>
             </tr>
-          </table>
-          <br>
-        @endforeach
-    @endif
-
-
-    @if(empty($consignaciones))
-    @else
-      @foreach($consignaciones as $consig)
-          <table border="1">
-            <tr>
-              <th>Fecha Pago</th>
-              <td>{{ $consig->fecha_pago }}</td>
-            </tr>
-            <tr>
-              <th>Valor</th>
-              <td>${{ number_format($consig->valor,0) }}</td>
-            </tr>
-            <tr>
-              <th>Valor IVA</th>
-              <td>${{ number_format($consig->valor_iva,0)}}</td>
-            </tr>
-            <tr>
-              <th>Valor total</th>
-              <td>${{ number_format($consig->valor_total,0)}}</td>
-            </tr>
-            <tr>
-              <th>Observaciones</th>
-              <td>${{ $consig->observaciones }}</td>
-            </tr>
-          </table>
-          <br>
-        @endforeach
-    @endif
-
-
-    @if(empty($cuenta_cobros))
-    @else
-      @foreach($cuenta_cobros as $cuenta)
-          <table border="1">
-            <tr>
-              <th>Porcentaje</th>
-              <td>{{ $cuenta->porcentaje }}</td>
-            </tr>
-            <tr>
-              <th>Valor</th>
-              <td>${{ number_format($cuenta->valor,0) }}</td>
-            </tr>
-            <tr>
-              <th>Fecha cuenta cobro</th>
-              <td>{{ $cuenta->fecha_cuenta_cobro }}</td>
-            </tr>
-            <tr>
-              <th>Fecha pago</th>
-              <td>{{ $cuenta->fecha_pago }}</td>
-            </tr>
-            <tr>
-              <th>Numero cuenta cobro</th>
-              <td>{{ $cuenta->numero_cuenta_cobro }}</td>
-            </tr>
-            <tr>
-              <th>Observaciones</th>
-              <td>{{ $cuenta->observaciones }}</td>
-            </tr>
-
           </table>
           <br>
         @endforeach
