@@ -106,7 +106,10 @@ class JuridicaController extends Controller
     {
       $juridica = Juridica::findOrFail($id);
 
-      return view('juridica.edit',compact('juridica','roles'));
+      $departamentos = Departamento::all();
+      $municipio = Departamento::findOrFail($juridica->municipio);
+
+      return view('juridica.edit',compact('juridica','roles','departamentos','municipios'));
     }
 
     /**
@@ -121,11 +124,21 @@ class JuridicaController extends Controller
       $juridica = Juridica::findOrFail($id);
       $input = $request->all();
 
+      $datos['razon_social'] =$request->razon;
+      $datos['nit'] =$request->nit;
+      $datos['nombre_representante'] = ucfirst(mb_strtolower($request->nombre));
+      $datos['cedula'] =$request->cedula;
+      $datos['direccion'] = $request->direccion;
+      $datos['telefono'] =$request->telefono;
+      $datos['email'] = $request->email;
+      $datos['departamento_id'] = $request->departamento;
+      $datos['municipio'] = $request->municipio;
 
-        $juridica->update($input);
-        Session::flash('message', 'Persona juridica editada!');
-        Session::flash('class', 'success');
-        return redirect()->route('clientes.index');
+      $juridica->update($datos);
+
+      Session::flash('message', 'Persona juridica editada!');
+      Session::flash('class', 'success');
+      return redirect()->route('clientes.index');
 
 
 

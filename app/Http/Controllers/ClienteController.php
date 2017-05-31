@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Cliente;
 use App\Juridica;
 use App\Departamento;
+use App\Municipio;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
@@ -109,9 +110,13 @@ class ClienteController extends Controller
     public function edit($id)
     {
       $clientes = Cliente::findOrFail($id);
-      $departamentos = Departamento::all();
 
-      return view('clientes.edit',compact('clientes','roles','departamentos'));
+      $departamentos = Departamento::all();
+      // $departamentos = Departamento::findOrFail($clientes->departamento_id);
+
+      $municipios = Municipio::findOrFail($clientes->municipio);
+
+      return view('clientes.edit',compact('clientes','roles','departamentos','municipios'));
     }
 
     /**
@@ -132,8 +137,8 @@ class ClienteController extends Controller
       $datos['telefono'] = $request->telefono;
       $datos['direccion'] = ucfirst(mb_strtolower($request->direccion));
       $datos['email'] = mb_strtolower($request->email);
-      // $datos['departamento_id'] = $request->departamento;
-      // $datos['municipio'] = $request->municipio;
+      $datos['departamento_id'] = $request->departamento;
+      $datos['municipio'] = $request->municipio;
 
 
         $cliente->update($datos);
