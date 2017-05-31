@@ -310,7 +310,7 @@
             </tr>
             <tr>
               <th>Fecha cuenta cobro</th>
-              <td>{{ number_format($cuenta->fecha_cuenta_cobro,0) }}</td>
+              <td>{{ $cuenta->fecha_cuenta_cobro }}</td>
             </tr>
             <tr>
               <th>Fecha pago</th>
