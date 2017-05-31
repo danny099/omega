@@ -197,10 +197,10 @@
     @endif
     <br>
     <br>
-    <center><h2>Cuenta cobro</h2></center>
 
     @if(empty($cuenta_cobros))
     @else
+    <center><h2>Cuenta cobro</h2></center>
       @foreach($cuenta_cobros as $cuenta)
           <table border="1">
             <tr>
@@ -234,10 +234,11 @@
     @endif
     <br>
     <br>
-    <center><h2>Facturas</h2></center>
+
 
     @if(empty($consignaciones))
     @else
+    <center><h2>Consignaciones</h2></center>
       @foreach($consignaciones as $consig)
           <table border="1">
             <tr>
@@ -267,11 +268,11 @@
 
     <br>
     <br>
-    <center><h2>Facturas</h2></center>
 
 
     @if(empty($facturas))
     @else
+    <center><h2>Facturas</h2></center>
       @foreach($facturas as $fac)
           <table border="1">
             <tr>
