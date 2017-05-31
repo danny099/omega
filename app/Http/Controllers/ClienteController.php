@@ -137,14 +137,15 @@ class ClienteController extends Controller
       $datos['telefono'] = $request->telefono;
       $datos['direccion'] = ucfirst(mb_strtolower($request->direccion));
       $datos['email'] = mb_strtolower($request->email);
-      $datos['departamento_id'] = $request->departamento;
+      $datos['departamento_id'] = $request->departamento_id;
       $datos['municipio'] = $request->municipio;
 
+      
 
-        $cliente->update($datos);
-        Session::flash('message', 'Cliente  editado!');
-        Session::flash('class', 'success');
-        return redirect()->route('clientes.index');
+      $cliente->update($datos);
+      Session::flash('message', 'Cliente  editado!');
+      Session::flash('class', 'success');
+      return redirect()->route('clientes.index');
 
 
 
