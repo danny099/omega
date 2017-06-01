@@ -12,6 +12,7 @@
     overflow: auto;
     height: 100%;
   }
+
   #img{
     width: 50%;
     height: auto;
@@ -508,51 +509,52 @@
           <div class="">
             <center><h3>Consignaciones</h3></center>
           </div>
-          @foreach($consignaciones as $consignacion)
-            <div class="box box-primary">
-              <div class="box-body">
-                <div class="col-md-12">
-                  <div class="col-md-2">
-                    <div class="form-group">
-                      <label>Fecha de pago:</label>
-                    </div>
-                  </div>
-                  <div class="col-md-10">
-                    <div class="form-group">
-                      <span>{{ date_format(new DateTime($consignacion->fecha_pago), 'd-m-y') }}</span>
-                    </div>
-                  </div>
-                </div>
-                  <div class="col-md-12">
-                    <div class="col-md-2">
-                      <div class="form-group">
-                        <label>Valor:</label>
+          <div class="box box-primary">
+            <div class="box-body">
+              <div class="col-md-12">
+                @foreach($consignaciones as $consignacion)
+                <div class="col-md-4 well consig" id='consig'>
+                      <div class="col-md-12">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label>Fecha de pago:</label>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <span>{{ date_format(new DateTime($consignacion->fecha_pago), 'd-m-y') }}</span>
+                          </div>
+                        </div>
+                      </div>
+                        <div class="col-md-12">
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label>Valor:</label>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <span>${{ number_format($consignacion->valor,0) }}</span>
+                            </div>
+                          </div>
+                      </div>
+                      <div class="col-md-12">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                              <label>Observaciones:</label>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <span>{{ $consignacion->observaciones }}</span>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                    <div class="col-md-10">
-                      <div class="form-group">
-                        <span>${{ number_format($consignacion->valor,0) }}</span>
-                      </div>
-                    </div>
+                @endforeach
                 </div>
-                <div class="col-md-12">
-                  <div class="col-md-2">
-                    <div class="form-group">
-                        <label>Observaciones:</label>
-                    </div>
-                  </div>
-                  <div class="col-md-10">
-                    <div class="form-group">
-                      <span>{{ $consignacion->observaciones }}</span>
-                    </div>
-                  </div>
               </div>
-              </div>
-
-
             </div>
-          @endforeach
-
           @endif
           @if(count($cuenta_cobros) == 0)
 
@@ -560,72 +562,76 @@
           <div class="">
             <center><h3>Cuentas de Cobro</h3></center>
           </div>
-          @foreach($cuenta_cobros as $cuenta_cobro)
-            <div class="box box-primary">
-              <div class="box-body">
-                <div class="col-md-12">
-                  <div class="col-md-2">
-                    <div class="form-group">
-                      <label>Porcentaje:</label>
-                    </div>
-                  </div>
-                  <div class="col-md-10">
-                    <div class="form-group">
-                      <span>{{ $cuenta_cobro->porcentaje }}&nbsp;%</span>
-                    </div>
-                  </div>
-              </div>
+          <div class="box box-primary">
+            <div class="box-body">
               <div class="col-md-12">
-                <div class="col-md-2">
-                  <div class="form-group">
-                    <label>Valor:</label>
+                @foreach($cuenta_cobros as $cuenta_cobro)
+                  <div class="col-md-4 well cuenta" id='cuenta'>
+                    <div class="col-md-12">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label>Porcentaje:</label>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <span>{{ $cuenta_cobro->porcentaje }}&nbsp;%</span>
+                          </div>
+                        </div>
+                      </div>
+                    <div class="col-md-12">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label>Valor:</label>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <span>${{ number_format($cuenta_cobro->valor,0) }}</span>
+                        </div>
+                      </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Fecha cuenta de cobro:</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <span>{{ date_format(new DateTime($cuenta_cobro->fecha_cuenta_cobro), 'd-m-y') }}</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Número cuenta de cobro:</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <span>{{ $cuenta_cobro->numero_cuenta_cobro }}</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Observaciones:</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <span>{{ $cuenta_cobro->observaciones }}</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
-                <div class="col-md-10">
-                  <div class="form-group">
-                    <span>${{ number_format($cuenta_cobro->valor,0) }}</span>
-                  </div>
-                </div>
-            </div>
-            <div class="col-md-12">
-              <div class="col-md-2">
-                <div class="form-group">
-                  <label>Fecha cuenta de cobro:</label>
-                </div>
-              </div>
-              <div class="col-md-10">
-                <div class="form-group">
-                  <span>{{ date_format(new DateTime($cuenta_cobro->fecha_cuenta_cobro), 'd-m-y') }}</span>
-                </div>
+                @endforeach
               </div>
             </div>
-            <div class="col-md-12">
-              <div class="col-md-2">
-                <div class="form-group">
-                  <label>Número cuenta de cobro:</label>
-                </div>
-              </div>
-              <div class="col-md-10">
-                <div class="form-group">
-                  <span>{{ $cuenta_cobro->numero_cuenta_cobro }}</span>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-12">
-              <div class="col-md-2">
-                <div class="form-group">
-                  <label>Observaciones:</label>
-                </div>
-              </div>
-              <div class="col-md-10">
-                <div class="form-group">
-                  <span>{{ $cuenta_cobro->observaciones }}</span>
-                </div>
-              </div>
-            </div>
-
           </div>
-          @endforeach
 
       @endif
       @if(count($facturas) == 0)
