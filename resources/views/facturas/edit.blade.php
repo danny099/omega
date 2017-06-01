@@ -147,7 +147,7 @@
           {!! Form::text('observaciones', null, ['class' => 'form-control' ]) !!}
         </div>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-6" style="height:27px">
         <div class="form-group">
            <center><label>Recordarme</label></center>
         </div>

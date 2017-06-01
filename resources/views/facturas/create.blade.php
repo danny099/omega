@@ -145,12 +145,12 @@
              {!! Form::text('observaciones', null, ['class' => 'form-control' ]) !!}
            </div>
          </div>
-         <div class="col-md-6">
+         <div class="col-md-6" style="height:40px">
            <div class="form-group">
               <center><label>Recordarme</label></center>
            </div>
          </div>
-         <div class="col-md-6">
+         <div class="col-md-6" style="height:40px">
            <label class="radio-inline">
              <input type="radio" name="recordarme" value="1" required > Si
            </label>
@@ -158,15 +158,10 @@
              <input type="radio" name="recordarme" value="0"> No
            </label>
          </div>
-         <br>
-         <br>
+
 
            <input type="hidden" name="administrativa_id" value="{{ $administrativa->id }}">
            <div class="box-footer">
-             <br>
-             <br>
-             <br>
-             <br>
              <button type="submit" class="btn btn-primary pull-right">Enviar</button>
              <button type="submit" data-dismiss="modal" class="btn btn-primary pull-left">Cancelar</button>
            </div>

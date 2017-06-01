@@ -17,8 +17,7 @@
 		<link rel="stylesheet" href="{{url('assets/css/fonts.googleapis.com.css')}}" />
 		<!-- ace styles -->
 		<link rel="stylesheet" href="{{url('assets/css/ace.min.css')}}" />
-		{{-- estilo fondo --}}
-		<link rel="stylesheet" href="{{url('assets/css/estilo.css')}}" />
+
 		<!--[if lte IE 9]>
 			<link rel="stylesheet" href="{{url('assets/css/ace-part2.min.css')}}" />
 		<![endif]-->

@@ -558,7 +558,7 @@
 
           @else
           <div class="">
-            <center><h3>Cuanta de Cobro</h3></center>
+            <center><h3>Cuentas de Cobro</h3></center>
           </div>
           @foreach($cuenta_cobros as $cuenta_cobro)
             <div class="box box-primary">
@@ -602,7 +602,7 @@
             <div class="col-md-12">
               <div class="col-md-2">
                 <div class="form-group">
-                  <label>Numero cuenta de cobro:</label>
+                  <label>Número cuenta de cobro:</label>
                 </div>
               </div>
               <div class="col-md-10">
@@ -642,7 +642,7 @@
                     <div class="col-md-12">
                       <div class="col-md-6">
                         <div class="form-group">
-                          <label>Numero Factura:</label>
+                          <label>Número Factura:</label>
                         </div>
                       </div>
                       <div class="col-md-5">

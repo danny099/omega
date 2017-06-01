@@ -251,7 +251,7 @@
             var count = 1;
            $(document).on("click","#btnadd4",function( event ) {
             count++;
-            $('.tblprod4').after('<div class="col-md-4" id="quitar13"><div class="form-group"><center><label >Descripción</label></center><select class="form-control"name="pu_final[descripcion_pu][]"><option value="Inspección retie proceso uso final residencial">Inspección RETIE proceso uso final residencial</option><option value="Inspección RETIE proceso uso final comercial">Inspección RETIE proceso uso final comercial</option></select></div></div>');
+            $('.tblprod4').after('<div class="col-md-4" id="quitar13"><div class="form-group"><center><label >Descripción</label></center><select class="form-control"name="pu_final[descripcion_pu][]"><option value="Inspección RETIE proceso uso final residencial">Inspección RETIE proceso uso final residencial</option><option value="Inspección RETIE proceso uso final comercial">Inspección RETIE proceso uso final comercial</option></select></div></div>');
               event.preventDefault();
            });
         });
