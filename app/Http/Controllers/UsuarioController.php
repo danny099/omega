@@ -115,8 +115,8 @@ class UsuarioController extends Controller
 
         $usuario = Usuario::findOrFail($id);
         $usuarios['cedula'] = $request->cedula;
-        $usuarios['nombres'] =ucwords(strtolower($request->nombres));
-        $usuarios['apellidos'] = ucwords(strtolower($request->apellidos));
+        $usuarios['nombres'] = ucwords(mb_strtolower($request->nombres));
+        $usuarios['apellidos'] = ucwords(mb_strtolower($request->apellidos));
         $usuarios['email'] = $request->email;
         $usuarios['password'] = Hash::make($request->password);
 

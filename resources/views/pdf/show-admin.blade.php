@@ -117,7 +117,7 @@
         </tbody>
       </table>
     <center><h2>Alcances</h2></center>
-    @if(empty($transformaciones))
+    @if(count($transformaciones) == 0)
     @else
     <table border="1">
       <thead>
@@ -143,9 +143,8 @@
     </table>
     @endif
 
-    <br>
-    <br>
-    @if(empty($distribuciones))
+
+    @if(count($distribuciones) == 0)
 
     @else
     <table border="1">
@@ -170,9 +169,7 @@
     </table>
     @endif
 
-    <br>
-    <br>
-    @if(empty($pu_finales))
+    @if(count($pu_finales) == 0)
     @else
     <table border="1">
       <thead>
@@ -195,10 +192,8 @@
       </tbody>
     </table>
     @endif
-    <br>
-    <br>
-
-    @if(empty($cuenta_cobros))
+  
+    @if(count($cuenta_cobros) == 0)
     @else
     <center><h2>Cuenta cobro</h2></center>
       @foreach($cuenta_cobros as $cuenta)
@@ -236,7 +231,7 @@
     <br>
 
 
-    @if(empty($consignaciones))
+    @if(count($consignaciones) == 0)
     @else
     <center><h2>Consignaciones</h2></center>
       @foreach($consignaciones as $consig)
@@ -270,7 +265,7 @@
     <br>
 
 
-    @if(empty($facturas))
+    @if(count($facturas) == 0)
 
     @else
     <center><h2>Facturas</h2></center>
@@ -297,7 +292,7 @@
               <td>${{ number_format($fac->valor_total,0)}}</td>
             </tr>
             <tr>
-              <th>Renciones %</th>
+              <th>Retenciones %</th>
               <td>{{ $fac->rete_porcen }} %</td>
             </tr>
             <tr>
