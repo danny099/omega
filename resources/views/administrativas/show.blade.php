@@ -32,7 +32,7 @@
           <div class="">
            <center><h2>Datos del Proyecto</h2></center>
            <a  target="_blank" href="{{ url('pdf') }}/{{ $administrativa->id }}">
-             <i class="glyphicon glyphicon-print"  title="Imprimir" style=" font-size:40px; color:rgb(60, 141, 188) ; position:absolute; right:2%; padding:10px;"></i>
+             <i class="glyphicon glyphicon-print"  title="Imprimir" style=" font-size:40px; color:#33579A ; position:absolute; right:2%; padding:10px;"></i>
            </a>
 
           </div>
