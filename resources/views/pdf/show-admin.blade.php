@@ -29,7 +29,7 @@ html{font-family:sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:1
         </tr>
         <tr>
           <td>Fecha del contrato</td>
-          <td>{{ $administrativa->fecha_contrato}}</td>
+          <td>{{  date_format(new DateTime($administrativa->fecha_contrato), 'd-m-y')}}</td>
           <td>valor Adicional</td>
           <td>
             @foreach($adicionales as $adici)
@@ -199,11 +199,11 @@ html{font-family:sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:1
             </tr>
             <tr>
               <th>Fecha cuenta cobro</th>
-              <td>{{ $cuenta->fecha_cuenta_cobro }}</td>
+              <td>{{date_format(new DateTime($cuenta->fecha_cuenta_cobro), 'd-m-y') }}</td>
             </tr>
             <tr>
               <th>Fecha pago</th>
-              <td>{{ $cuenta->fecha_pago }}</td>
+              <td>{{date_format(new DateTime($cuenta->fecha_pago), 'd-m-y') }}</td>
             </tr>
             <tr>
               <th>Número cuenta cobro</th>
@@ -228,7 +228,7 @@ html{font-family:sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:1
           <table class="table table-bordered">
             <tr>
               <th>Fecha Pago</th>
-              <td>{{ $consig->fecha_pago }}</td>
+              <td>{{date_format(new DateTime($consig->fecha_pago), 'd-m-y')}}</td>
             </tr>
             <tr>
               <th>Valor</th>
@@ -251,6 +251,9 @@ html{font-family:sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:1
         @endforeach
     @endif
 
+    <br>
+    <br>
+
 
     @if(count($facturas) == 0)
 
@@ -264,7 +267,7 @@ html{font-family:sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:1
             </tr>
             <tr>
               <th>Fecha de la factura</th>
-              <td>{{ $fac->fecha_factura }}</td>
+              <td>{{date_format(new DateTime($fac->fecha_factura), 'd-m-y') }}</td>
             </tr>
             <tr>
               <th>Valor antes de IVA</th>
@@ -308,7 +311,7 @@ html{font-family:sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:1
             </tr>
             <tr>
               <th>Fecha pago</th>
-              <td>{{ $fac->fecha_pago }}</td>
+              <td>{{  date_format(new DateTime($fac->fecha_pago), 'd-m-y')}}</td>
             </tr>
             <tr>
               <th>Observaciones</th>
