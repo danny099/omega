@@ -212,7 +212,7 @@
     @endif
 
     <div class="col-md-12 well">
-      <a class="btn btn-primary" data-toggle="modal" href="{{ url('administrativas/create') }}"><i class="fa fa-user-plus"></i> Crear Contrato</a>
+      <a class="btn btn-primary" data-toggle="modal" href="{{ url('administrativas/create') }}" style="background-color: #33579A; border-color:#33579A;"><i class="fa fa-user-plus"></i> Crear Contrato</a>
       <div class="box-body">
         <table id="example1" class="table table-bordered table-striped">
           <thead>
@@ -233,10 +233,10 @@
               <td>{{ date_format(new DateTime($administrativa->fecha_contrato), 'd-m-y') }}</td>
               <td>${{number_format($administrativa->valor_contrato_final,0)}}</td>
               <td>
-                <a href="{{ route('administrativas.edit', $administrativa->id) }}"><i class="glyphicon glyphicon-pencil"></i></a>
-                <a href="{{ route('administrativas.show', $administrativa->id) }}" data-toggle="model" data-target="show-{{ $key }}"><i class="glyphicon glyphicon-eye-open"></i></a>
-                <a href="#myModal-{{ $key }}" data-toggle="modal" data-target=""><i class="fa fa-money"></i></a>
-                <a href="{{ url('deleteadminstrativa') }}/{{ $administrativa->id }}" onClick="javascript: return confirm('Esta seguro de eliminar registro?');"><i class="glyphicon glyphicon-minus-sign"></i></a>
+                <a href="{{ route('administrativas.edit', $administrativa->id) }}"><i class="glyphicon glyphicon-pencil" style="color: #33579A"></i></a>
+                <a href="{{ route('administrativas.show', $administrativa->id) }}" data-toggle="model" data-target="show-{{ $key }}"><i class="glyphicon glyphicon-eye-open" style="color: #33579A"></i></a>
+                <a href="#myModal-{{ $key }}" data-toggle="modal" data-target=""><i class="fa fa-money" style="color: #33579A"></i></a>
+                <a href="{{ url('deleteadminstrativa') }}/{{ $administrativa->id }}" onClick="javascript: return confirm('Esta seguro de eliminar registro?');"><i class="glyphicon glyphicon-minus-sign" style="color: #33579A"></i></a>
                 <!-- inicio modal 1 -->
                 <div class="modal fade" id="myModal-{{ $key }}" role="dialog">
                   <div class="modal-dialog">
@@ -249,9 +249,9 @@
                         <center><h4> ¿Desea anexar un pago? </h4></center>
                         <br>
                         <center>
-                          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal2-{{ $key }}" name="button">Consignación</button>
-                          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal3-{{ $key }}" name="button">Cuenta de Cobro</button>
-                          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal4-{{ $key }}" name="button">Factura</button>
+                          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal2-{{ $key }}" name="button" style="background-color: #33579A; border-color:#33579A;">Consignación</button>
+                          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal3-{{ $key }}" name="button" style="background-color: #33579A; border-color:#33579A;">Cuenta de Cobro</button>
+                          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal4-{{ $key }}" name="button" style="background-color: #33579A; border-color:#33579A;">Factura</button>
                         </center>
                       </div>
                       <div class="modal-footer">

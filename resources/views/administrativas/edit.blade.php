@@ -18,32 +18,32 @@
 @section('scripts')
   <script type="text/javascript">
   $(document).ready(function(){
-  $(document).on('change','#departamento',function(){
+    $(document).on('change','#departamento',function(){
 
-  var dep_id = $(this).val();
-  var div = $(this).parents();
-  var op=" ";
-  $.ajax({
-  type:'get',
-  url:'{{ url('selectmuni')}}',
-  data:{'id':dep_id},
-  success:function(data){
-  console.log(data);
-  op+='<option value="0" selected disabled>Seleccione</option>';
+      var dep_id = $(this).val();
+      var div = $(this).parents();
+      var op=" ";
+        $.ajax({
+          type:'get',
+          url:'{{ url('selectmuni')}}',
+          data:{'id':dep_id},
+          success:function(data){
+          console.log(data);
+          op+='<option value="0" selected disabled>Seleccione</option>';
 
-  for (var i = 0; i < data.length; i++) {
-  op+='<option value="' +data[i].id+ '">' +data[i].nombre+ '</option>'
-  }
+          for (var i = 0; i < data.length; i++) {
+          op+='<option value="' +data[i].id+ '">' +data[i].nombre+ '</option>'
+          }
 
-  div.find('#municipio').html(" ");
-  div.find('#municipio').append(op);
+          div.find('#municipio').html(" ");
+          div.find('#municipio').append(op);
 
-  },
-  error:function(){
+          },
+          error:function(){
 
-  }
-  });
-  });
+          }
+      });
+    });
   });
   $(function () {
     $("table").DataTable({
@@ -395,7 +395,7 @@
               </div>
             @else
               <div class="col-md-12 div2">
-                <center><a href="{{ route('adicionales.edit', $administrativas->id) }}" class="btn btn-primary botoncito" data-toggle="modal" data-target="#myModal2">Valor adicional</a></center>
+                <center><a href="{{ route('adicionales.edit', $administrativas->id) }}" class="btn btn-primary botoncito" data-toggle="modal" data-target="#myModal2" style="background-color: #33579A; border-color:#33579A;">Valor adicional</a></center>
               </div>
             @endif
             @if(count($otrosis) == 0)
@@ -404,7 +404,7 @@
               </div>
             @else
               <div class="col-md-12 div2">
-                <center><a href="" class="btn btn-primary botoncito" data-toggle="modal" data-target="#myModal3">Otro sí</a></center>
+                <center><a href="" class="btn btn-primary botoncito" data-toggle="modal" data-target="#myModal3" style="background-color: #33579A; border-color:#33579A;">Otro sí</a></center>
               </div>
             @endif
             @if(count($pu_finales) == 0)
@@ -413,7 +413,7 @@
               </div>
             @else
               <div class="col-md-12 div2">
-                <center><a href="{{ route('pu_final.edit', $administrativas->id) }}" class="btn btn-primary botoncito" data-toggle="modal" data-target="#myModal4">Proceso uso final</a></center>
+                <center><a href="{{ route('pu_final.edit', $administrativas->id) }}" class="btn btn-primary botoncito" data-toggle="modal" data-target="#myModal4" style="background-color: #33579A; border-color:#33579A;">Proceso uso final</a></center>
               </div>
             @endif
             @if(count($distribuciones) == 0)
@@ -422,7 +422,7 @@
               </div>
             @else
               <div class="col-md-12 div2">
-                <center><a href="{{ route('distribuciones.edit', $administrativas->id) }}" class="btn btn-primary botoncito"data-toggle="modal" data-target="#myModal5">Alcance distribución</a></center>
+                <center><a href="{{ route('distribuciones.edit', $administrativas->id) }}" class="btn btn-primary botoncito"data-toggle="modal" data-target="#myModal5" style="background-color: #33579A; border-color:#33579A;">Alcance distribución</a></center>
               </div>
             @endif
             @if(count($transformaciones) == 0)
@@ -431,7 +431,7 @@
               </div>
             @else
               <div class="col-md-12 div2">
-                <center><a href="{{ route('transformaciones.edit', $administrativas->id) }}" class="btn btn-primary botoncito"data-toggle="modal" data-target="#myModal6" >Alcance transformación</a></center>
+                <center><a href="{{ route('transformaciones.edit', $administrativas->id) }}" class="btn btn-primary botoncito"data-toggle="modal" data-target="#myModal6" style="background-color: #33579A; border-color:#33579A;" >Alcance transformación</a></center>
               </div>
             @endif
             @if(count($facturas) == 0)
@@ -440,7 +440,7 @@
               </div>
             @else
               <div class="col-md-12 div2">
-                <center><a href="" class="btn btn-primary botoncito" data-toggle="modal" data-target="#myModal7">Facturas</a></center>
+                <center><a href="" class="btn btn-primary botoncito" data-toggle="modal" data-target="#myModal7" style="background-color: #33579A; border-color:#33579A;">Facturas</a></center>
               </div>
             @endif
             @if(count($cuenta_cobros) == 0)
@@ -449,7 +449,7 @@
               </div>
             @else
               <div class="col-md-12 div2">
-                <center><a href="{{ route('cuenta_cobros.edit', $administrativas->id) }}" class="btn btn-primary botoncito" data-toggle="modal" data-target="#myModal8">Cuentas de cobro</a></center>
+                <center><a href="{{ route('cuenta_cobros.edit', $administrativas->id) }}" class="btn btn-primary botoncito " data-toggle="modal" data-target="#myModal8"style="background-color: #33579A; border-color:#33579A;">Cuentas de cobro</a></center>
               </div>
             @endif
             @if(count($consignaciones) == 0)
@@ -458,11 +458,11 @@
               </div>
             @else
               <div class="col-md-12 div2">
-                <center><a href="" class="btn btn-primary botoncito" data-toggle="modal" data-target="#myModal9">Consignaciones</a></center>
+                <center><a href="" class="btn btn-primary botoncito" data-toggle="modal" data-target="#myModal9" style="background-color: #33579A; border-color:#33579A;">Consignaciones</a></center>
               </div>
             @endif
             <div class="col-md-12 div2">
-              <center><a href="#myModal10" class="btn btn-primary botoncito" data-toggle="modal" data-target="">Crear observación</a></center>
+              <center><a href="#myModal10" class="btn btn-primary botoncito" data-toggle="modal" data-target="" style="background-color: #33579A; border-color:#33579A;">Crear observación</a></center>
             </div>
           </div>
           <div class="col-md-12">
@@ -578,8 +578,8 @@
                           <td>${{ number_format($factura->iva,0) }}</td>
                           <td>${{ number_format($factura->valor_total,0) }}</td>
                           <td>
-                            <a href="" data-toggle="modal" data-target="#myModal20-{{ $key }}"><i class="glyphicon glyphicon-pencil"></i></a>
-                            <a href="{{ url('deletefactura') }}/{{ $factura->id }}" onClick="javascript: return confirm('Esta seguro de eliminar registro?');"><i class="glyphicon glyphicon-minus-sign"></i></a>
+                            <a href="" data-toggle="modal" data-target="#myModal20-{{ $key }}"><i class="glyphicon glyphicon-pencil" style="color: #33579A"></i></a>
+                            <a href="{{ url('deletefactura') }}/{{ $factura->id }}" onClick="javascript: return confirm('Esta seguro de eliminar registro?');"><i class="glyphicon glyphicon-minus-sign" style="color: #33579A"></i></a>
                             <!-- inicio modal 1 -->
 
                             <div class="modal fade" id="myModal20-{{ $key }}" role="dialog" aria-labelledby="myModalLabel">
@@ -661,8 +661,8 @@
                             <td>${{ number_format($otro->valor_tot,0) }}</td>
                             <td>{{$otro->detalles}}</td>
                             <td>
-                              <a href="{{ route('otrosi.edit', $otro->id) }}" data-toggle="modal" data-target="#myModal21-{{ $key }}"><i class="glyphicon glyphicon-pencil"></i></a>
-                              <a href="{{ url('deleteotrosi') }}/{{ $otro->id }}" onClick="javascript: return confirm('Esta seguro de eliminar registro?');"><i class="glyphicon glyphicon-minus-sign"></i></a>
+                              <a href="{{ route('otrosi.edit', $otro->id) }}" data-toggle="modal" data-target="#myModal21-{{ $key }}"><i class="glyphicon glyphicon-pencil" style="color: #33579A"></i></a>
+                              <a href="{{ url('deleteotrosi') }}/{{ $otro->id }}" onClick="javascript: return confirm('Esta seguro de eliminar registro?');"><i class="glyphicon glyphicon-minus-sign" style="color: #33579A"></i></a>
                               <!-- inicio modal 1 -->
 
                               <div class="modal fade" id="myModal21-{{ $key }}" role="dialog" aria-labelledby="myModalLabel">

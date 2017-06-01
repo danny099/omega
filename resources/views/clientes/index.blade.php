@@ -78,7 +78,7 @@
     @endif
     <div class="col-md-12 well">
       <div class="box-body">
-        <a href="#modal" class="btn btn-primary" data-toggle="modal" ><i class="fa fa-user-plus"></i> Crear Cliente</a>
+        <a href="#modal" class="btn btn-primary" data-toggle="modal" style="background-color: #33579A; border-color:#33579A;"><i class="fa fa-user-plus"></i> Crear Cliente</a>
         <br>
         <br>
         <div class="box box-primary">
@@ -108,9 +108,9 @@
                 <td>{{ $cliente->direccion }}</td>
                 <td>{{ $cliente->email }}</td>
                 <td>
-                  <a href="{{ route('clientes.edit', $cliente->id) }}"><i class="glyphicon glyphicon-pencil"></i></a>
+                  <a href="{{ route('clientes.edit', $cliente->id) }}"><i class="glyphicon glyphicon-pencil" style="color: #33579A"></i></a>
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <a href="{{ url('deleteclientes') }}/{{ $cliente->id }}" onClick="javascript: return confirm('Esta seguro de eliminar registro?');"><i class="glyphicon glyphicon-minus-sign"></i></a>
+                  <a href="{{ url('deleteclientes') }}/{{ $cliente->id }}" onClick="javascript: return confirm('Esta seguro de eliminar registro?');"><i class="glyphicon glyphicon-minus-sign" style="color: #33579A"></i></a>
                 </td>
               </tr>
               @endforeach
@@ -147,9 +147,9 @@
                 <td>{{ $juridica->telefono }}</td>
                 <td>{{ $juridica->email }}</td>
                 <td>
-                  <a href="{{ route('juridica.edit', $juridica->id) }}"><i class="glyphicon glyphicon-pencil"></i></a>
+                  <a href="{{ route('juridica.edit', $juridica->id) }}"><i class="glyphicon glyphicon-pencil" style="color: #33579A"></i></a>
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <a href="{{ url('deletejuridica') }}/{{ $juridica->id }}" onClick="javascript: return confirm('Esta seguro de eliminar registro?');"><i class="glyphicon glyphicon-minus-sign"></i></a>
+                  <a href="{{ url('deletejuridica') }}/{{ $juridica->id }}" onClick="javascript: return confirm('Esta seguro de eliminar registro?');"><i class="glyphicon glyphicon-minus-sign" style="color: #33579A"></i></a>
                 </td>
               </tr>
               @endforeach
@@ -170,8 +170,8 @@
                 <center><h4> ¿Desea crear un cliente? </h4></center>
                 <br>
                 <center>
-                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal2" name="button">Persona natural</button>
-                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal3" name="button">Persona jurídica</button>
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal2" name="button" style="background-color: #33579A; border-color:#33579A;">Persona natural</button>
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal3" name="button" style="background-color: #33579A; border-color:#33579A;">Persona jurídica</button>
                 </center>
               </div>
               <div class="modal-footer">

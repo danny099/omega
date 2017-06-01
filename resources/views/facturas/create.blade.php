@@ -162,8 +162,8 @@
 
            <input type="hidden" name="administrativa_id" value="{{ $administrativa->id }}">
            <div class="box-footer">
-             <button type="submit" class="btn btn-primary pull-right">Enviar</button>
-             <button type="submit" data-dismiss="modal" class="btn btn-primary pull-left">Cancelar</button>
+             <button type="submit" class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;">Enviar</button>
+             <button type="submit" data-dismiss="modal" class="btn btn-primary pull-left" style="background-color: #33579A; border-color:#33579A;">Cancelar</button>
            </div>
        </div>
        <!-- /.box-body -->

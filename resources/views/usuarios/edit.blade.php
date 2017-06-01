@@ -64,11 +64,10 @@
 
           </div>
 
-          <br>
 
 
           <div class="form-group">
-            {!! Form::label('rol_id', 'Rol') !!}
+            {!! Form::label('rol_id', 'Rol') !!}<br>
             {!! Form::select('rol_id',$roles,['class' => 'form-control','required' => 'required']) !!}
           </div>
 
@@ -77,7 +76,7 @@
         <!-- /.box-body -->
         <br>
         <div class="box-footer" style="width">
-          <button type="submit" class="btn btn-primary pull-right">Enviar</button>
+          <button type="submit" class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;">Editar</button>
         </div>
       {!! Form::close() !!}
     </div>

@@ -78,7 +78,7 @@
           </div>
         </div>
       </div>
-      <button type="submit" class="btn btn-primary pull-right">
+      <button type="submit" class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;">
         Guardar
       </button>
     </div>

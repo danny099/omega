@@ -69,7 +69,7 @@
         <!-- /.box-body -->
         <br>
         <div class="box-footer">
-          <button type="submit" class="btn btn-primary pull-right">Enviar</button>
+          <button type="submit" class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;">Enviar</button>
         </div>
       {!! Form::close() !!}
     </div>
