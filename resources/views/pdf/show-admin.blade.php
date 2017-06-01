@@ -220,7 +220,7 @@
               <td>{{ $cuenta->fecha_pago }}</td>
             </tr>
             <tr>
-              <th>Numero cuenta cobro</th>
+              <th>Número cuenta cobro</th>
               <td>{{ $cuenta->numero_cuenta_cobro }}</td>
             </tr>
             <tr>
@@ -271,12 +271,13 @@
 
 
     @if(empty($facturas))
+
     @else
     <center><h2>Facturas</h2></center>
       @foreach($facturas as $fac)
           <table border="1">
             <tr>
-              <th>Numeró de la factura</th>
+              <th>Número de la factura</th>
               <td>{{ $fac->num_factura }}</td>
             </tr>
             <tr>
@@ -297,7 +298,7 @@
             </tr>
             <tr>
               <th>Renciones %</th>
-              <td>{{ $fac->rete_porcen }}</td>
+              <td>{{ $fac->rete_porcen }} %</td>
             </tr>
             <tr>
               <th>Retenciones valor</th>
@@ -313,7 +314,7 @@
             </tr>
             <tr>
               <th>Retegarantía %</th>
-              <td>${{ $fac->retegaran_porcen }}</td>
+              <td>{{ $fac->retegaran_porcen }} %</td>
             </tr>
             <tr>
               <th>Retegarantía valor</th>
