@@ -125,7 +125,30 @@ class OtrosiController extends Controller
       $administrativa = Administrativa::findOrFail($otrosi->administrativa_id);
 
       if ($otrosi->valor_tot == $datos['valor_tot']) {
-        $factura->update($datos);
+        
+        if ($request->recordarme == 0) {
+          if ($administrativa->contador_otro >= 1) {
+            $administrativa->contador_otro = $administrativa->contador_otro - 1;
+            $administrativa->contador_otro = $administrativa->contador_otro + $request->recordarme;
+            $administrativa->save();
+
+          }else {
+            $administrativa->contador_otro = $administrativa->contador_otro + $request->recordarme;
+            $administrativa->save();
+          }
+        }else {
+          if ($administrativa->contador_otro == 0) {
+            $administrativa->contador_otro = $administrativa->contador_otro + $request->recordarme;
+            $administrativa->save();
+          }else {
+            $administrativa->contador_otro = $administrativa->contador_otro - 1;
+            $administrativa->contador_otro = $administrativa->contador_otro + $request->recordarme;
+            $administrativa->save();
+          }
+
+        }
+
+        $otrosi->update($datos);
 
         Session::flash('message', 'Factura editada!');
         Session::flash('class', 'success');
