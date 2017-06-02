@@ -185,21 +185,36 @@ class FacturaController extends Controller
           if ($datos['recuerdame'] == 0) {
 
 
-            if ($administrativa->contador_fac >= 1) {
+            if ($factura->recuerdame == 1) {
 
-              $administrativa->contador_fac = $administrativa->contador_fac - 1 ;
+              $administrativa->contador_fac = $administrativa->contador_fac - 1;
+              $administrativa->contador_fac = $administrativa->contador_fac + $datos['recuerdame'];
+
               $administrativa->save();
 
             }
 
-          }else {
-            if ($administrativa->contador_fac >= 0) {
+            if ($factura->recuerdame == 0) {
+
               $administrativa->contador_fac = $administrativa->contador_fac + $datos['recuerdame'];
               $administrativa->save();
-            }else {
+
+            }
+          }else {
+            if ($factura->recuerdame == 1) {
+
               $administrativa->contador_fac = $administrativa->contador_fac - $datos['recuerdame'];
               $administrativa->contador_fac = $administrativa->contador_fac + $datos['recuerdame'];
               $administrativa->save();
+
+              // $administrativa->contador_fac = $administrativa->contador_fac + $datos['recuerdame'];
+              // $administrativa->save();
+            }
+            if ($factura->recuerdame == 0) {
+
+              $administrativa->contador_fac = $administrativa->contador_fac + $datos['recuerdame'];
+              $administrativa->save();
+
             }
 
           }
@@ -281,11 +296,7 @@ class FacturaController extends Controller
           return redirect()->route('administrativas.index');
 
         }
-
-
-
-
-
+      }
 
       // }else {
       //
@@ -293,7 +304,6 @@ class FacturaController extends Controller
       //   Session::flash('class', 'danger');
       // }
 
-    }
 
     /**
      * Remove the specified resource from storage.
