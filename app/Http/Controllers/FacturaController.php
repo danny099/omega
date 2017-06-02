@@ -181,6 +181,34 @@ class FacturaController extends Controller
         $administrativa = Administrativa::findOrFail($factura->administrativa_id);
 
         if ($factura->valor_total == $datos['valor_total']) {
+
+          if ($datos['recuerdame'] == 0) {
+
+            if ($administrativa->contador_fac >= 1) {
+
+              $administrativa->contador_fac = $administrativa->contador_fac - 1;
+              $administrativa->contador_fac = $administrativa->contador_fac + $datos['recuerdame'] ;
+              $administrativa->save();
+
+            }else {
+
+              $administrativa->contador_fac = $administrativa->contador_fac + $datos['recuerdame'] ;
+              $administrativa->save();
+
+            }
+
+          }else {
+            if ($administrativa->contador_fac == 0) {
+              $administrativa->contador_fac = $administrativa->contador_fac + $datos['recuerdame'] ;
+              $administrativa->save();
+            }else {
+              $administrativa->contador_fac = $administrativa->contador_fac - 1;
+              $administrativa->contador_fac = $administrativa->contador_fac + $datos['recuerdame'];
+              $administrativa->save();
+            }
+
+          }
+          
           $factura->update($datos);
 
           Session::flash('message', 'Factura editada!');
