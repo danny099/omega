@@ -48,7 +48,7 @@ class OtrosiController extends Controller
       $datos['detalles'] = ucfirst(mb_strtolower($request->detalles));
       $datos['administrativa_id'] = $request->administrativa_id;
 
-      if ($request->recordarme == 1) {
+      if ($request->recuerdame == 1) {
         $datos['recuerdame'] = 1;
       }else {
         $datos['recuerdame'] = 0;
@@ -65,7 +65,7 @@ class OtrosiController extends Controller
       $reg_otro = Otrosi::find($last_id);
       $administrativa = Administrativa::find($id);
 
-      $administrativa->contador_otro = $administrativa->contador_otro +$request->recordarme;
+      $administrativa->contador_otro = $administrativa->contador_otro + $request->recuerdame;
       $administrativa->save();
 
       $total = $administrativa->saldo + $reg_otro->valor_tot;
@@ -124,7 +124,7 @@ class OtrosiController extends Controller
       $otrosi = Otrosi::findOrFail($id);
       $administrativa = Administrativa::findOrFail($otrosi->administrativa_id);
 
-      if ($otrosi->valor_total == $datos['valor_tot']) {
+      if ($otrosi->valor_tot == $datos['valor_tot']) {
 
         if ($datos['recuerdame'] == 0) {
 
@@ -176,27 +176,42 @@ class OtrosiController extends Controller
         return redirect()->route('administrativas.index');
       }
 
-      if ($request->recordarme == 0) {
-        if ($administrativa->contador_otro >= 1) {
+
+
+      if ($datos['recuerdame'] == 0) {
+
+
+        if ($otrosi->recuerdame == 1) {
+
           $administrativa->contador_otro = $administrativa->contador_otro - 1;
-          $administrativa->contador_otro = $administrativa->contador_otro + $request->recordarme;
+          $administrativa->contador_otro = $administrativa->contador_otro + $datos['recuerdame'];
           $administrativa->save();
 
-        }else {
-          $administrativa->contador_otro = $administrativa->contador_otro + $request->recordarme;
+        }
+
+        if ($otrosi->recuerdame == 0) {
+
+          $administrativa->contador_otro = $administrativa->contador_otro + $datos['recuerdame'];
           $administrativa->save();
+
         }
       }else {
-        if ($administrativa->contador_otro == 0) {
-          $administrativa->contador_otro = $administrativa->contador_otro + $request->recordarme;
+        if ($otrosi->recuerdame == 1) {
+
+          $administrativa->contador_otro = $administrativa->contador_otro - $datos['recuerdame'];
+          $administrativa->contador_otro = $administrativa->contador_otro + $datos['recuerdame'];
           $administrativa->save();
-        }else {
-          $administrativa->contador_otro = $administrativa->contador_otro - 1;
-          $administrativa->contador_otro = $administrativa->contador_otro + $request->recordarme;
+
+        }
+        if ($otrosi->recuerdame == 0) {
+
+          $administrativa->contador_otro = $administrativa->contador_otro + $datos['recuerdame'];
           $administrativa->save();
+
         }
 
       }
+
 
       if ($administrativa->valor_total_contrato > $datos['valor_tot'] ) {
 

@@ -232,48 +232,44 @@ class FacturaController extends Controller
           $suma = $administrativa->saldo + $factura->valor_total;
           $resta = $suma - $datos['valor_total'];
           $administrativa->saldo = $resta;
-          // dd($administrativa->saldo);
-          // die();
           $administrativa->save();
-
-          // if ($administrativa->contador_fac == 0) {
-          //   $var = $administrativa->contador_fac + $datos['recuerdame'];
-          //   $administrativa->contador_fac = $var;
-          //   $administrativa->save();
-          // }
-          // if ($administrativa->contador_fac > 0) {
-          //   $resta = $administrativa->contador_fac - $datos['recuerdame'];
-          //   $suma = $resta + $datos['recuerdame'];
-          //   $administrativa->contador_fac = $suma;
-          //   $administrativa->save();
-          // }
 
           if ($datos['recuerdame'] == 0) {
 
-            if ($administrativa->contador_fac >= 1) {
 
-              $administrativa->contador_fac = $administrativa->contador_fac - $datos['recuerdame'];
+            if ($factura->recuerdame == 1) {
+
+              $administrativa->contador_fac = $administrativa->contador_fac - 1;
               $administrativa->contador_fac = $administrativa->contador_fac + $datos['recuerdame'];
-              $administrativa->save();
 
-            }else {
-
-              $administrativa->contador_fac = $administrativa->contador_fac + $datos['recuerdame'] ;
               $administrativa->save();
 
             }
 
+            if ($factura->recuerdame == 0) {
+
+              $administrativa->contador_fac = $administrativa->contador_fac + $datos['recuerdame'];
+              $administrativa->save();
+
+            }
           }else {
-            if ($administrativa->contador_fac == 0) {
-              $administrativa->contador_fac = $administrativa->contador_fac + $datos['recuerdame'] ;
-              $administrativa->save();
-            }else {
+            if ($factura->recuerdame == 1) {
+
               $administrativa->contador_fac = $administrativa->contador_fac - $datos['recuerdame'];
               $administrativa->contador_fac = $administrativa->contador_fac + $datos['recuerdame'];
               $administrativa->save();
+
+              // $administrativa->contador_fac = $administrativa->contador_fac + $datos['recuerdame'];
+              // $administrativa->save();
+            }
+            if ($factura->recuerdame == 0) {
+
+              $administrativa->contador_fac = $administrativa->contador_fac + $datos['recuerdame'];
+              $administrativa->save();
+
             }
 
-          }
+
 
           $factura->update($datos);
 
