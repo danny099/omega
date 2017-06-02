@@ -87,7 +87,7 @@
       </div>
       <div class="col-md-6">
         <div class="form-group">
-          {!! Form::text('amortizacion', 0, ['class' => 'form-control amortizacion', 'min'=>'0','onkeypress'=>"mascara(this,cpf)"]) !!}
+          {!! Form::text('amortizacion', number_format($factura->amortizacion,0), ['class' => 'form-control amortizacion', 'min'=>'0','onkeypress'=>"mascara(this,cpf)"]) !!}
         </div>
       </div>
 
@@ -98,7 +98,7 @@
       </div>
       <div class="col-md-6">
         <div class="form-group">
-          {!! Form::text('polizas', 0, ['class' => 'form-control polizas','min'=>'0','onkeypress'=>"mascara(this,cpf)" ]) !!}
+          {!! Form::text('polizas', number_format($factura->polizas,0), ['class' => 'form-control polizas','min'=>'0','onkeypress'=>"mascara(this,cpf)" ]) !!}
         </div>
       </div>
 
@@ -122,7 +122,7 @@
       </div>
       <div class="col-md-6">
         <div class="form-group">
-          {!! Form::text('valor_pagado',  number_format($factura->valor_total,0), ['class' => 'form-control valor_pagado', 'min'=>'0','readonly' ]) !!}
+          {!! Form::text('valor_pagado',  number_format($factura->valor_pagado,0), ['class' => 'form-control valor_pagado', 'min'=>'0','readonly' ]) !!}
         </div>
       </div>
 
