@@ -150,7 +150,7 @@ class OtrosiController extends Controller
 
         $otrosi->update($datos);
 
-        Session::flash('message', 'Factura editada!');
+        Session::flash('message', 'Otro sí editado!');
         Session::flash('class', 'success');
         return redirect()->route('administrativas.index');
       }
