@@ -312,7 +312,7 @@ class FacturaController extends Controller
       $factu = Factura::findOrFail($id);
       $administrativas = Administrativa::findOrFail($factu->administrativa_id);
 
-      if ($administrativas->contador_fac > 0) {
+      if ($factu->recuerdame == 1) {
         $administrativas->contador_fac = $administrativas->contador_fac - 1;
         $administrativas->save();
       }
