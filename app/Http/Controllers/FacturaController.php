@@ -182,33 +182,18 @@ class FacturaController extends Controller
 
         if ($factura->valor_total == $datos['valor_total']) {
 
-          if ($datos['recuerdame'] == 0) {
-
-            if ($administrativa->contador_fac >= 1) {
-
-              $administrativa->contador_fac = $administrativa->contador_fac - 1;
-              $administrativa->contador_fac = $administrativa->contador_fac + $datos['recuerdame'] ;
-              $administrativa->save();
-
-            }else {
-
-              $administrativa->contador_fac = $administrativa->contador_fac + $datos['recuerdame'] ;
-              $administrativa->save();
-
-            }
-
-          }else {
-            if ($administrativa->contador_fac == 0) {
-              $administrativa->contador_fac = $administrativa->contador_fac + $datos['recuerdame'] ;
-              $administrativa->save();
-            }else {
-              $administrativa->contador_fac = $administrativa->contador_fac - 1;
-              $administrativa->contador_fac = $administrativa->contador_fac + $datos['recuerdame'];
-              $administrativa->save();
-            }
-
+          if ($administrativa->contador_otro == 0) {
+            $var = $administrativa->contador_otro + $datos['recuerdame'];
+            $administrativa->contador_otro = $var;
+            $administrativa->save();
           }
-          
+          if ($administrativa->contador_otro > 0) {
+            $resta = $administrativa->contador_otro - $datos['recuerdame'];
+            $suma = $resta + $datos['recuerdame'];
+            $administrativa->contador_otro = $suma;
+            $administrativa->save();
+          }
+
           $factura->update($datos);
 
           Session::flash('message', 'Factura editada!');
@@ -226,32 +211,44 @@ class FacturaController extends Controller
           // die();
           $administrativa->save();
 
-          if ($datos['recuerdame'] == 0) {
-
-            if ($administrativa->contador_fac >= 1) {
-
-              $administrativa->contador_fac = $administrativa->contador_fac - 1;
-              $administrativa->contador_fac = $administrativa->contador_fac + $datos['recuerdame'] ;
-              $administrativa->save();
-
-            }else {
-
-              $administrativa->contador_fac = $administrativa->contador_fac + $datos['recuerdame'] ;
-              $administrativa->save();
-
-            }
-
-          }else {
-            if ($administrativa->contador_fac == 0) {
-              $administrativa->contador_fac = $administrativa->contador_fac + $datos['recuerdame'] ;
-              $administrativa->save();
-            }else {
-              $administrativa->contador_fac = $administrativa->contador_fac - 1;
-              $administrativa->contador_fac = $administrativa->contador_fac + $datos['recuerdame'];
-              $administrativa->save();
-            }
-
+          if ($administrativa->contador_otro == 0) {
+            $var = $administrativa->contador_otro + $datos['recuerdame'];
+            $administrativa->contador_otro = $var;
+            $administrativa->save();
           }
+          if ($administrativa->contador_otro > 0) {
+            $resta = $administrativa->contador_otro - $datos['recuerdame'];
+            $suma = $resta + $datos['recuerdame'];
+            $administrativa->contador_otro = $suma;
+            $administrativa->save();
+          }
+          
+          // if ($datos['recuerdame'] == 0) {
+          //
+          //   if ($administrativa->contador_fac >= 1) {
+          //
+          //     $administrativa->contador_fac = $administrativa->contador_fac - 1;
+          //     $administrativa->contador_fac = $administrativa->contador_fac + $datos['recuerdame'] ;
+          //     $administrativa->save();
+          //
+          //   }else {
+          //
+          //     $administrativa->contador_fac = $administrativa->contador_fac + $datos['recuerdame'] ;
+          //     $administrativa->save();
+          //
+          //   }
+          //
+          // }else {
+          //   if ($administrativa->contador_fac == 0) {
+          //     $administrativa->contador_fac = $administrativa->contador_fac + $datos['recuerdame'] ;
+          //     $administrativa->save();
+          //   }else {
+          //     $administrativa->contador_fac = $administrativa->contador_fac - 1;
+          //     $administrativa->contador_fac = $administrativa->contador_fac + $datos['recuerdame'];
+          //     $administrativa->save();
+          //   }
+          //
+          // }
 
           $factura->update($datos);
 
