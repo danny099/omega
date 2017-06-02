@@ -317,45 +317,57 @@ class AdministrativaController extends Controller
 
 
        if ($request->tipo_regimen == 1) {
+
          $administrativa['cliente_id'] = $request->cliente_id;
          $administrativas->juridica_id = null;
          $administrativas->save();
+
        }else {
+
          $administrativa['juridica_id'] = $request->juridica_id;
          $administrativas->cliente_id = null;
          $administrativas->save();
 
        }
 
+       if ($administrativas->saldo == 0 && $administrativa['valor_contrato_final'] < str_replace(',','',$administrativas->valor_contrato_final)) {
+         Session::flash('message', 'El valor es menor al saldo por favor verifique los pagos!');
+         Session::flash('class', 'danger');
+
+        //  redireccionamiento a una vista
+         return redirect()->route('administrativas.index');
+       }
+
+       if ($administrativas->saldo >= str_replace(',','',$administrativas->valor_contrato_final)) {
+
+          $anexo = $administrativas->saldo - str_replace(',','',$administrativas->valor_contrato_final);
+          $suma = $administrativa['valor_contrato_final'] + $anexo;
+          $administrativa['saldo'] = $suma;
+
+       }else {
+
+         $anexo = str_replace(',','',$administrativas->valor_contrato_final) - $administrativas->saldo;
+         $suma = $administrativa['valor_contrato_final'] + $anexo;
+         $administrativa['saldo'] = $suma;
+
+       }
 
 
+       if ($administrativas->valor_total_contrato >= str_replace(',','',$administrativas->valor_contrato_final)) {
+
+         $anexo = $administrativas->valor_total_contrato - str_replace(',','',$administrativas->valor_contrato_final);
+         $suma = $administrativa['valor_contrato_final'] + $anexo;
+         $administrativa['valor_total_contrato'] = $suma;
 
 
+       }else {
 
-      //  $administrativa['saldo'] =  $administrativa['valor_contrato_final'];
-      //  $administrativa['valor_total_contrato'] =  $administrativa['valor_contrato_final'];
+         $anexo = str_replace(',','',$administrativas->valor_contrato_final) - $administrativas->valor_total_contrato;
+         $suma = $administrativa['valor_contrato_final'] + $anexo;
+         $administrativa['valor_total_contrato'] = $suma;
 
-      if ($administrativas->saldo > $administrativa['valor_contrato_final']) {
+       }
 
-        $resta = $administrativas->saldo - $administrativas->valor_contrato_final;
-        $suma = $resta + $administrativa['valor_contrato_final'];
-        $administrativa['saldo'] = $suma;
-
-      }else {
-        $resta = $administrativas->valor_contrato_final - $administrativas->saldo;
-        $suma = $resta + $administrativa['valor_contrato_final'];
-        $administrativa['saldo'] = $suma;
-      }
-      if ($administrativas->valor_total_contrato > $administrativa['valor_contrato_final']) {
-
-        $resta2 = $administrativas->valor_total_contrato - $administrativas->valor_contrato_final;
-        $suma2 = $resta2 + $administrativa['valor_contrato_final'];
-        $administrativa['valor_total_contrato'] = $suma2;
-      }else {
-        $resta2 = $administrativas->valor_contrato_final - $administrativas->valor_total_contrato;
-        $suma2 = $resta2 + $administrativa['valor_contrato_final'];
-        $administrativa['valor_total_contrato'] = $suma2;
-      }
 
 
 
@@ -396,45 +408,7 @@ class AdministrativaController extends Controller
    public function destroy($id)
    {
 
-    //  $observacion = Observacion::where('observacion.administrativa_id', '=', $id);
-    //  foreach ($observacion as $key => $obs) {
-     //
-    //   $obs->delete();
-     //
-    //  }
-    //  $otrosis = Otrosi::where('otrosi.administrativa_id', '=', $id)->get();
-    //  foreach ($otrosis as $key => $otro) {
-     //
-    //   $otro->delete();
-     //
-    //  }
-     //
-    //  $transformacion = Transformacion::where('transformacion.administrativa_id', '=', $id);
-    //  foreach ($transformacion as $key => $transfo) {
-     //
-    //    $transfo->delete();
-     //
-    //  }
-     //
-    //  $distribucion = Distribucion::where('distribucion.administrativa_id', '=', $id);
-    //  foreach ($distribucion as $key => $distri) {
-     //
-    //    $distri->delete();
-    //  }
-     //
-    //  $pu_final = Pu_final::where('pu_final.administrativa_id', '=', $id);
-    //  foreach ($pu_final as $key => $pu) {
-     //
-    //    $pu_final->delete();
-     //
-    //  }
-     //
-    //  $adicional = Valor_adicional::where('valor_adicional.administrativa_id', '=', $id);
-    //  foreach ($adicional as $key => $adic) {
-     //
-    //    $adic->delete();
-     //
-    //  }
+
      $administrativa = Administrativa::findOrFail($id);
 
      // $administrativas = Administrativa::select('id')->where('administrativa.id',$id)->get();
