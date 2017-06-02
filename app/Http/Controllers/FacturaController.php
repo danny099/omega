@@ -176,7 +176,6 @@ class FacturaController extends Controller
         $datos['recuerdame'] = $request->recuerdame;
 
 
-
         $factura = Factura::findOrFail($id);
         $administrativa = Administrativa::findOrFail($factura->administrativa_id);
 
@@ -237,6 +236,7 @@ class FacturaController extends Controller
           if ($datos['recuerdame'] == 0) {
 
 
+
             if ($factura->recuerdame == 1) {
 
               $administrativa->contador_fac = $administrativa->contador_fac - 1;
@@ -263,13 +263,14 @@ class FacturaController extends Controller
               // $administrativa->save();
             }
             if ($factura->recuerdame == 0) {
-
+              dd('hola');
+              die();
               $administrativa->contador_fac = $administrativa->contador_fac + $datos['recuerdame'];
               $administrativa->save();
 
             }
 
-
+          }
 
           $factura->update($datos);
 
@@ -293,14 +294,6 @@ class FacturaController extends Controller
 
         }
       }
-    }
-
-      // }else {
-      //
-      //   Session::flash('message', 'El valor de la factura es mayo al saldo!');
-      //   Session::flash('class', 'danger');
-      // }
-
 
     /**
      * Remove the specified resource from storage.
