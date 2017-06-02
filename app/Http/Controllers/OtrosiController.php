@@ -240,7 +240,7 @@ class OtrosiController extends Controller
       }
 
       if ($administrativas->contador_otro > 0) {
-        $administrativas->contador_otro = $administrativas->contador_otro - 1;
+        $administrativas->contador_otro =$administrativas->contador_otro - 1;
         $administrativas->save();
       }
 
@@ -249,32 +249,10 @@ class OtrosiController extends Controller
           $nuevo_saldo = $administrativas->saldo - $otrosi->valor_tot;
           $administrativas->saldo = $nuevo_saldo;
           $administrativas->save();
-        }else {
-          // $nuevo_saldo = $otrosi->valor_tot - $administrativas->saldo;
-          // $administrativas->saldo = $nuevo_saldo;
-          // $administrativas->save();
-          Session::flash('message', 'No se puede eliminar el otro si por que se realizaron pagos');
-          Session::flash('class', 'danger');
-          return redirect()->route('administrativas.index');
-        }
 
-        if ($administrativas->valor_total_contrato > $otrosi->valor_tot) {
-          $nuevo_total = $administrativas->valor_total_contrato - $otrosi->valor_tot;
-          $administrativas->valor_total_contrato = $nuevo_total;
+          $nuevo = $administrativas->valor_total_contrato - $otrosi->valor_tot;
+          $administrativas->valor_total_contrato = $nuevo;
           $administrativas->save();
-        }else {
-          Session::flash('message', 'No se puede eliminar el otro si por que se realizaron pagos');
-          Session::flash('class', 'danger');
-          return redirect()->route('administrativas.index');
-        }
-      }else {
-        if ($administrativas->valor_total_contrato > $otrosi->valor_tot) {
-          $nuevo_total = $administrativas->valor_total_contrato - $otrosi->valor_tot;
-          $administrativas->valor_total_contrato = $nuevo_total;
-          $administrativas->save();
-        }else {
-          echo "hola";
-          }
 
           $otrosi->delete();
 
@@ -282,7 +260,70 @@ class OtrosiController extends Controller
           Session::flash('class', 'danger');
           return redirect()->route('administrativas.index');
 
+        }else{
+          Session::flash('message', 'No se puede eliminar el otro sí por pagos echos anteriormente');
+          Session::flash('class', 'danger');
+          return redirect()->route('administrativas.index');
+        }
+
       }
+
+      if ($administrativas->saldo == 0) {
+        Session::flash('message', 'No se puede eliminar el otro sí por pagos echos anteriormente');
+        Session::flash('class', 'danger');
+        return redirect()->route('administrativas.index');
+      }
+
+      // if ($administrativas->saldo < $otrosi->valor_tot) {
+      //   Session::flash('message', 'El otro sí no se puede eliminar ya que se efectuaron los pagos');
+      //   Session::flash('class', 'danger');
+      //   return redirect()->route('administrativas.index');
+      // }
+      //
+      // if ($administrativas->contador_otro > 0) {
+      //   $administrativas->contador_otro = $administrativas->contador_otro - 1;
+      //   $administrativas->save();
+      // }
+      //
+      // if ($administrativas->saldo > 0) {
+      //   if ($administrativas->saldo >= $otrosi->valor_tot) {
+      //     $nuevo_saldo = $administrativas->saldo - $otrosi->valor_tot;
+      //     $administrativas->saldo = $nuevo_saldo;
+      //     $administrativas->save();
+      //   }else {
+      //     // $nuevo_saldo = $otrosi->valor_tot - $administrativas->saldo;
+      //     // $administrativas->saldo = $nuevo_saldo;
+      //     // $administrativas->save();
+      //     Session::flash('message', 'No se puede eliminar el otro si por que se realizaron pagos');
+      //     Session::flash('class', 'danger');
+      //     return redirect()->route('administrativas.index');
+      //   }
+      //
+      //   if ($administrativas->valor_total_contrato > $otrosi->valor_tot) {
+      //     $nuevo_total = $administrativas->valor_total_contrato - $otrosi->valor_tot;
+      //     $administrativas->valor_total_contrato = $nuevo_total;
+      //     $administrativas->save();
+      //   }else {
+      //     Session::flash('message', 'No se puede eliminar el otro si por que se realizaron pagos');
+      //     Session::flash('class', 'danger');
+      //     return redirect()->route('administrativas.index');
+      //   }
+      // }else {
+      //   if ($administrativas->valor_total_contrato > $otrosi->valor_tot) {
+      //     $nuevo_total = $administrativas->valor_total_contrato - $otrosi->valor_tot;
+      //     $administrativas->valor_total_contrato = $nuevo_total;
+      //     $administrativas->save();
+      //   }else {
+      //     echo "hola";
+      //     }
+      //
+      //     $otrosi->delete();
+      //
+      //     Session::flash('message', 'Otro sí eliminado');
+      //     Session::flash('class', 'danger');
+      //     return redirect()->route('administrativas.index');
+      //
+      // }
 
     }
 }
