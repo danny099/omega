@@ -119,10 +119,18 @@ class OtrosiController extends Controller
       $datos['valor'] = str_replace(',','',$request->valor);
       $datos['iva'] = str_replace(',','',$request->iva);
       $datos['valor_tot'] = str_replace(',','',$request->valor_tot);
-      $datos['detalles'] = ucfirst(strtolower($request->detalles));
+      $datos['detalles'] = ucfirst(mb_strtolower($request->detalles));
       $datos['recuerdame'] = $request->recordarme;
       $otrosi = Otrosi::findOrFail($id);
       $administrativa = Administrativa::findOrFail($otrosi->administrativa_id);
+
+      if ($otrosi->valor_tot == $datos['valor_tot']) {
+        $factura->update($datos);
+
+        Session::flash('message', 'Factura editada!');
+        Session::flash('class', 'success');
+        return redirect()->route('administrativas.index');
+      }
 
       if ($administrativa->saldo < $otrosi->valor_tot) {
         Session::flash('message', 'El otro sí no se puede editar ya que se efectuaron los pagos');

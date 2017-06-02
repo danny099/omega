@@ -64,7 +64,7 @@ class FacturaController extends Controller
       $numrepe = Factura::where('num_factura',$request->num_factura)->get();
 
 
-      if ($request->recor_fac == 1) {
+      if ($request->recuerdame == 1) {
         $datos['recuerdame'] = 1;
       }else {
         $datos['recuerdame'] = 0;
@@ -169,12 +169,19 @@ class FacturaController extends Controller
         $datos['valor_pagado'] = str_replace(',','',$request->valor_pagado);
         $datos['fecha_pago'] = $request->fecha_pago;
         $datos['observaciones'] = ucfirst(mb_strtolower($request->observaciones));
-        $datos['recuerdame'] = $request->recor_fac;
+        $datos['recuerdame'] = $request->recordarme;
 
 
         $factura = Factura::findOrFail($id);
         $administrativa = Administrativa::findOrFail($factura->administrativa_id);
 
+        if ($factura->valor_total == $datos['valor_total']) {
+          $factura->update($datos);
+
+          Session::flash('message', 'Factura editada!');
+          Session::flash('class', 'success');
+          return redirect()->route('administrativas.index');
+        }
 
 
         if($administrativa->saldo >= $datos['valor_total']){
@@ -186,28 +193,28 @@ class FacturaController extends Controller
           // die();
           $administrativa->save();
 
-          if ($request->recor_fac == 0) {
+          if ($request->recuerdame == 0) {
 
             if ($administrativa->contador_fac >= 1) {
 
               $administrativa->contador_fac = $administrativa->contador_fac - 1;
-              $administrativa->contador_fac = $administrativa->contador_fac + $request->recor_fac;
+              $administrativa->contador_fac = $administrativa->contador_fac + $request->recuerdame;
               $administrativa->save();
 
             }else {
 
-              $administrativa->contador_fac = $administrativa->contador_fac + $request->recor_fac;
+              $administrativa->contador_fac = $administrativa->contador_fac + $request->recuerdame;
               $administrativa->save();
 
             }
 
           }else {
             if ($administrativa->contador_fac == 0) {
-              $administrativa->contador_fac = $administrativa->contador_fac + $request->recor_fac;
+              $administrativa->contador_fac = $administrativa->contador_fac + $request->recuerdame;
               $administrativa->save();
             }else {
               $administrativa->contador_fac = $administrativa->contador_fac - 1;
-              $administrativa->contador_fac = $administrativa->contador_fac + $request->recor_fac;
+              $administrativa->contador_fac = $administrativa->contador_fac + $request->recuerdame;
               $administrativa->save();
             }
 
