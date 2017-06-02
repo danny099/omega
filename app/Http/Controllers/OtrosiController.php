@@ -125,7 +125,7 @@ class OtrosiController extends Controller
       $administrativa = Administrativa::findOrFail($otrosi->administrativa_id);
 
       if ($otrosi->valor_tot == $datos['valor_tot']) {
-        
+
         if ($request->recordarme == 0) {
           if ($administrativa->contador_otro >= 1) {
             $administrativa->contador_otro = $administrativa->contador_otro - 1;
@@ -250,9 +250,12 @@ class OtrosiController extends Controller
           $administrativas->saldo = $nuevo_saldo;
           $administrativas->save();
         }else {
-          $nuevo_saldo = $otrosi->valor_tot - $administrativas->saldo;
-          $administrativas->saldo = $nuevo_saldo;
-          $administrativas->save();
+          // $nuevo_saldo = $otrosi->valor_tot - $administrativas->saldo;
+          // $administrativas->saldo = $nuevo_saldo;
+          // $administrativas->save();
+          Session::flash('message', 'No se puede eliminar el otro si por que se realizaron pagos');
+          Session::flash('class', 'danger');
+          return redirect()->route('administrativas.index');
         }
 
         if ($administrativas->valor_total_contrato > $otrosi->valor_tot) {
@@ -260,9 +263,9 @@ class OtrosiController extends Controller
           $administrativas->valor_total_contrato = $nuevo_total;
           $administrativas->save();
         }else {
-          $nuevo_total = $otrosi->valor_tot - $administrativas->valor_total_contrato;
-          $administrativas->valor_total_contrato = $nuevo_total;
-          $administrativas->save();
+          Session::flash('message', 'No se puede eliminar el otro si por que se realizaron pagos');
+          Session::flash('class', 'danger');
+          return redirect()->route('administrativas.index');
         }
       }else {
         if ($administrativas->valor_total_contrato > $otrosi->valor_tot) {
@@ -270,20 +273,16 @@ class OtrosiController extends Controller
           $administrativas->valor_total_contrato = $nuevo_total;
           $administrativas->save();
         }else {
-          $nuevo_total = $otrosi->valor_tot - $administrativas->valor_total_contrato;
-          $administrativas->valor_total_contrato = $nuevo_total;
-          $administrativas->save();
+          echo "hola";
           }
 
           $otrosi->delete();
 
+          Session::flash('message', 'Otro sí eliminado');
+          Session::flash('class', 'danger');
+          return redirect()->route('administrativas.index');
+
       }
-
-
-      Session::flash('message', 'Otro sí eliminado');
-      Session::flash('class', 'danger');
-      return redirect()->route('administrativas.index');
-
 
     }
 }
