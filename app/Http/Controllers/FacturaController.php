@@ -173,10 +173,9 @@ class FacturaController extends Controller
         $datos['valor_pagado'] = str_replace(',','',$request->valor_pagado);
         $datos['fecha_pago'] = $request->fecha_pago;
         $datos['observaciones'] = ucfirst(mb_strtolower($request->observaciones));
-        $datos['recuerdame'] = $request->recordarme;
+        $datos['recuerdame'] = $request->recuerdame;
 
-        dd($datos);
-        die();
+
 
         $factura = Factura::findOrFail($id);
         $administrativa = Administrativa::findOrFail($factura->administrativa_id);
