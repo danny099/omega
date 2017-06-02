@@ -75,8 +75,8 @@
       </div>
       <div class="col-md-6">
         <div class="form-group">
-          {!! Form::text('retencionesporcen',  0, ['class' => 'form-control retencionesporcen', 'min'=>'0']) !!}
-          {!! Form::text('retenciones', 0, ['class' => 'form-control retenciones', 'min'=>'0','readonly']) !!}
+          {!! Form::text('retencionesporcen',  $factura->rete_porcen, ['class' => 'form-control retencionesporcen', 'min'=>'0']) !!}
+          {!! Form::text('retenciones', number_format($factura->retenciones,0), ['class' => 'form-control retenciones', 'min'=>'0','readonly']) !!}
         </div>
       </div>
 
@@ -110,8 +110,8 @@
       </div>
       <div class="col-md-6">
         <div class="form-group">
-          {!! Form::text('retegarantiaporcen', 0, ['class' => 'form-control retegarantiaporcen', 'min'=>'0' ]) !!}
-          {!! Form::text('retegarantia', 0, ['class' => 'form-control retegarantia', 'min'=>'0','readonly' ]) !!}
+          {!! Form::text('retegarantiaporcen', $factura->retegaran_porcen, ['class' => 'form-control retegarantiaporcen', 'min'=>'0' ]) !!}
+          {!! Form::text('retegarantia', number_format($factura->retengarantia,0), ['class' => 'form-control retegarantia', 'min'=>'0','readonly' ]) !!}
         </div>
       </div>
 
