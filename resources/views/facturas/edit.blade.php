@@ -154,10 +154,10 @@
       </div>
       <div class="col-md-6">
         <label class="radio-inline">
-          <input type="radio" name="recordarme" value="1" required > Si
+          <input type="radio" name="recuerdame" value="1" required > Si
         </label>
         <label class="radio-inline">
-          <input type="radio" name="recordarme" value="0"> No
+          <input type="radio" name="recuerdame" value="0"> No
         </label>
       </div>
       <br>

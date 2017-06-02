@@ -606,6 +606,18 @@
                   <div class="col-md-12">
                     <div class="col-md-6">
                       <div class="form-group">
+                        <label>Fecha de pago:</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <span>{{ date_format(new DateTime($cuenta_cobro->fecha_pago), 'd-m-y') }}</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="col-md-6">
+                      <div class="form-group">
                         <label>Número cuenta de cobro:</label>
                       </div>
                     </div>
