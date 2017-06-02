@@ -182,15 +182,15 @@ class FacturaController extends Controller
 
         if ($factura->valor_total == $datos['valor_total']) {
 
-          if ($administrativa->contador_otro == 0) {
-            $var = $administrativa->contador_otro + $datos['recuerdame'];
-            $administrativa->contador_otro = $var;
+          if ($administrativa->contador_fac == 0) {
+            $var = $administrativa->contador_fac + $datos['recuerdame'];
+            $administrativa->contador_fac = $var;
             $administrativa->save();
           }
-          if ($administrativa->contador_otro > 0) {
-            $resta = $administrativa->contador_otro - $datos['recuerdame'];
+          if ($administrativa->contador_fac > 0) {
+            $resta = $administrativa->contador_fac - $datos['recuerdame'];
             $suma = $resta + $datos['recuerdame'];
-            $administrativa->contador_otro = $suma;
+            $administrativa->contador_fac = $suma;
             $administrativa->save();
           }
 
@@ -211,18 +211,18 @@ class FacturaController extends Controller
           // die();
           $administrativa->save();
 
-          if ($administrativa->contador_otro == 0) {
-            $var = $administrativa->contador_otro + $datos['recuerdame'];
-            $administrativa->contador_otro = $var;
+          if ($administrativa->contador_fac == 0) {
+            $var = $administrativa->contador_fac + $datos['recuerdame'];
+            $administrativa->contador_fac = $var;
             $administrativa->save();
           }
-          if ($administrativa->contador_otro > 0) {
-            $resta = $administrativa->contador_otro - $datos['recuerdame'];
+          if ($administrativa->contador_fac > 0) {
+            $resta = $administrativa->contador_fac - $datos['recuerdame'];
             $suma = $resta + $datos['recuerdame'];
-            $administrativa->contador_otro = $suma;
+            $administrativa->contador_fac = $suma;
             $administrativa->save();
           }
-          
+
           // if ($datos['recuerdame'] == 0) {
           //
           //   if ($administrativa->contador_fac >= 1) {
