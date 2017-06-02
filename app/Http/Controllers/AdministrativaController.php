@@ -301,7 +301,7 @@ class AdministrativaController extends Controller
 
        $depart = $request->departamento;
        $administrativas = Administrativa::findOrFail($id);
-       
+
        $administrativa['codigo_proyecto'] = $request->codigo_proyecto;
        $administrativa['nombre_proyecto'] = ucfirst(mb_strtolower($request->nombre_proyecto));
        $administrativa['fecha_contrato'] = $request->fecha_contrato;
@@ -315,16 +315,18 @@ class AdministrativaController extends Controller
        $administrativa['valor_contrato_final'] =str_replace(',','',$request->contrato_final);
        $administrativa['plan_pago'] = ucfirst(mb_strtolower($request->plan_pago));
 
-       if (empty($administrativas->cliente_id)) {
+
+       if ($request->tipo_regimen == 1) {
          $administrativa['cliente_id'] = $request->cliente_id;
          $administrativas->juridica_id = null;
          $administrativas->save();
-
        }else {
          $administrativa['juridica_id'] = $request->juridica_id;
          $administrativas->cliente_id = null;
          $administrativas->save();
+
        }
+
 
 
 
