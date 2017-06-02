@@ -175,6 +175,8 @@ class FacturaController extends Controller
         $datos['observaciones'] = ucfirst(mb_strtolower($request->observaciones));
         $datos['recuerdame'] = $request->recordarme;
 
+        dd($datos);
+        die();
 
         $factura = Factura::findOrFail($id);
         $administrativa = Administrativa::findOrFail($factura->administrativa_id);
