@@ -94,7 +94,7 @@ function addCommas(nStr){
           </div>
           <div class="form-group">
             <label>Tipo de régimen</label>
-            <select class="form-control" name="cliente_id" id="cliente" required="">
+            <select class="form-control" name="tipo_regimen" id="cliente" required="">
               <option value="">Seleccione...</option>
               <option value="1">Persona natural</option>
               <option value="2">Persona jurídica</option>

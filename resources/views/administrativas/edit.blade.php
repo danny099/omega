@@ -298,7 +298,7 @@
             @if(empty($administrativas->juridica->id ))
               <div class="form-group">
                 <label >Tipo de régimen</label>
-                <select class="form-control" name="cliente_id" id="cliente" required="">
+                <select class="form-control" name="tipo_regimen" id="cliente" required="">
                   <option value="1">Persona natural</option>
                   <option value="2">Persona jurídica</option>
                 </select>
@@ -325,7 +325,7 @@
             @if(empty($administrativas->cliente->id ))
               <div class="form-group">
                 <label>Tipo Regimen</label>
-                <select class="form-control" name="cliente_id" id="cliente" required="">
+                <select class="form-control" name="tipo_regimen" id="cliente" required="">
                   <option value="2">Persona jurídica</option>
                   <option value="1">Persona natural</option>
                 </select>
