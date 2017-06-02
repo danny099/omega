@@ -184,22 +184,17 @@ class FacturaController extends Controller
 
           if ($datos['recuerdame'] == 0) {
 
+
             if ($administrativa->contador_fac >= 1) {
 
-              $administrativa->contador_fac = $administrativa->contador_fac - $datos['recuerdame'] ;
-              $administrativa->contador_fac = $administrativa->contador_fac + $datos['recuerdame'] ;
-              $administrativa->save();
-
-            }else {
-
-              $administrativa->contador_fac = $administrativa->contador_fac + $datos['recuerdame'] ;
+              $administrativa->contador_fac = $administrativa->contador_fac - 1 ;
               $administrativa->save();
 
             }
 
           }else {
-            if ($administrativa->contador_fac == 0) {
-              $administrativa->contador_fac = $administrativa->contador_fac + $datos['recuerdame'] ;
+            if ($administrativa->contador_fac >= 0) {
+              $administrativa->contador_fac = $administrativa->contador_fac + $datos['recuerdame'];
               $administrativa->save();
             }else {
               $administrativa->contador_fac = $administrativa->contador_fac - $datos['recuerdame'];
