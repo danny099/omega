@@ -302,6 +302,19 @@ class AdministrativaController extends Controller
        $depart = $request->departamento;
        $administrativas = Administrativa::findOrFail($id);
        
+       $administrativa['codigo_proyecto'] = $request->codigo_proyecto;
+       $administrativa['nombre_proyecto'] = ucfirst(mb_strtolower($request->nombre_proyecto));
+       $administrativa['fecha_contrato'] = $request->fecha_contrato;
+      //  $administrativa['cliente_id'] = $request->cliente_id;
+      //  $administrativa['juridica_id'] = $request->juridica_id;
+       $administrativa['departamento_id'] = $request->departamento_id;
+       $administrativa['municipio'] = $request->municipio;
+       $administrativa['tipo_zona'] = $request->zona;
+       $administrativa['valor_contrato_inicial'] = $request->valor_contrato_inicial;
+       $administrativa['valor_iva'] = str_replace(',','',$request->iva);
+       $administrativa['valor_contrato_final'] =str_replace(',','',$request->contrato_final);
+       $administrativa['plan_pago'] = ucfirst(mb_strtolower($request->plan_pago));
+
        if (empty($administrativas->cliente_id)) {
          $administrativa['cliente_id'] = $request->cliente_id;
          $administrativas->juridica_id = null;
@@ -316,18 +329,7 @@ class AdministrativaController extends Controller
 
 
 
-       $administrativa['codigo_proyecto'] = $request->codigo_proyecto;
-       $administrativa['nombre_proyecto'] = ucfirst(mb_strtolower($request->nombre_proyecto));
-       $administrativa['fecha_contrato'] = $request->fecha_contrato;
-      //  $administrativa['cliente_id'] = $request->cliente_id;
-      //  $administrativa['juridica_id'] = $request->juridica_id;
-       $administrativa['departamento_id'] = $request->departamento_id;
-       $administrativa['municipio'] = $request->municipio;
-       $administrativa['tipo_zona'] = $request->zona;
-       $administrativa['valor_contrato_inicial'] = $request->valor_contrato_inicial;
-       $administrativa['valor_iva'] = str_replace(',','',$request->iva);
-       $administrativa['valor_contrato_final'] =str_replace(',','',$request->contrato_final);
-       $administrativa['plan_pago'] = ucfirst(mb_strtolower($request->plan_pago));
+
       //  $administrativa['saldo'] =  $administrativa['valor_contrato_final'];
       //  $administrativa['valor_total_contrato'] =  $administrativa['valor_contrato_final'];
 
