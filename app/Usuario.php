@@ -34,6 +34,8 @@ class Usuario extends Authenticatable implements AuditableContract
     return $this->belongsToMany(Administrativa::class,'usuario_administrativa','usuario_id','administrativa_id');
   }
 
+  
+
 
 
 }

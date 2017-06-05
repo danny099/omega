@@ -26,6 +26,8 @@ class UsuarioController extends Controller
     public function index()
     {
         $usuarios = Usuario::all();
+        $all = $usuarios->audits;
+        
         return view('usuarios.index',compact('usuarios'));
     }
 
