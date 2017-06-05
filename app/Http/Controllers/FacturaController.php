@@ -26,7 +26,8 @@ class FacturaController extends Controller
     public function create()
     {
 
-      return view('facturas.create');
+      // $Administrativa = Administrativa::findOrFail();
+      // return view('facturas.create');
 
     }
 
@@ -52,11 +53,11 @@ class FacturaController extends Controller
       $datos['valor_factura'] = str_replace(',','',$request->valor_factura);
       $datos['iva'] =  str_replace(',','',$request->iva);
       $datos['valor_total'] = str_replace(',','',$request->valor_total);
-      $datos['rete_porcen'] = str_replace(',','',$request->rete_porcen);
+      $datos['rete_porcen'] = str_replace(',','.',$request->rete_porcen);
       $datos['retenciones'] = str_replace(',','',$request->retenciones);
       $datos['amortizacion'] = str_replace(',','',$request->amortizacion);
       $datos['polizas'] = str_replace(',','',$request->polizas);
-      $datos['retegaran_porcen'] =str_replace(',','',$request->retegaran_porcen);
+      $datos['retegaran_porcen'] =str_replace(',','.',$request->retegaran_porcen);
       $datos['retegarantia'] = str_replace(',','',$request->retegarantia);
       $datos['valor_pagado'] = str_replace(',','',$request->valor_pagado);
       $datos['fecha_pago'] = $request->fecha_pago;
@@ -164,11 +165,11 @@ class FacturaController extends Controller
         $datos['valor_factura'] = str_replace(',','',$request->valor_factura);
         $datos['iva'] =  str_replace(',','',$request->iva);
         $datos['valor_total'] = str_replace(',','',$request->valor_total);
-        $datos['rete_porcen'] = str_replace(',','',$request->retencionesporcen);
+        $datos['rete_porcen'] = str_replace(',','.',$request->retencionesporcen);
         $datos['retenciones'] = str_replace(',','',$request->retenciones);
         $datos['amortizacion'] = str_replace(',','',$request->amortizacion);
         $datos['polizas'] = str_replace(',','',$request->polizas);
-        $datos['retegaran_porcen'] =str_replace(',','',$request->retegarantiaporcen);
+        $datos['retegaran_porcen'] =str_replace(',','.',$request->retegarantiaporcen);
         $datos['retegarantia'] = str_replace(',','',$request->retegarantia);
         $datos['valor_pagado'] = str_replace(',','',$request->valor_pagado);
         $datos['fecha_pago'] = $request->fecha_pago;
