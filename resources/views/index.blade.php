@@ -194,7 +194,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{ url('auditoria') }}"><i class="fa fa-circle-o"></i>Auditoria</a></li>
+            <li><a href="{{ url('auditorias') }}"><i class="fa fa-circle-o"></i>Auditoria</a></li>
           </ul>
         </li>
       </ul>
