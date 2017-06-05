@@ -143,7 +143,7 @@
          </div>
          <div class="col-md-6">
            <div class="form-group">
-             {!! Form::text('observaciones', null, ['class' => 'form-control' ]) !!}
+             {!! Form::text('observaciones', null, ['class' => 'form-control', 'required' => 'required' ]) !!}
            </div>
          </div>
          <div class="col-md-6" style="height:40px">
