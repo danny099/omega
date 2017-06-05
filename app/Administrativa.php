@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
-class Administrativa extends Model
+use OwenIt\Auditing\Auditable;
+use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
+class Administrativa extends Model implements AuditableContract
 {
+  use Auditable;
+
   protected $table = 'administrativa';
 
   protected $fillable = ['id','codigo_proyecto','nombre_proyecto','fecha_contrato','cliente_id','juridica_id','municipio','departamento_id','tipo_zona','valor_contrato_inicial','valor_iva','valor_adicional','valor_contrato_final','plan_pago','saldo','valor_total_contrato','recordar','recor_fac','contador_otro','contador_fac'];

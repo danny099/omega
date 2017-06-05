@@ -3,12 +3,16 @@
 namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use OwenIt\Auditing\Auditable;
+use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
 use Illuminate\Database\Eloquent\Model;
 
 
-class Usuario extends Authenticatable
+
+class Usuario extends Authenticatable implements AuditableContract
 {
   use Notifiable;
+  use Auditable;
   protected $table = 'usuarios';
 
   protected $fillable = ['id','cedula','nombres','apellidos','email','password','rol_id'];
