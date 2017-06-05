@@ -115,7 +115,7 @@ class ValorAdicionalController extends Controller
 
       Session::flash('message', 'Valor adicional editado!');
       Session::flash('class', 'success');
-      return redirect()->route('administrativas.index');
+      return redirect()->route('adicional.create');
     }
 
 
