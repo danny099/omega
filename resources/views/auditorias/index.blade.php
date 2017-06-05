@@ -17,32 +17,26 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                   <tr>
-                    <th>Cédula</th>
-                    <th>Nombres</th>
-                    <th>Apellidos</th>
-                    <th>Email</th>
-                    <th>Rol</th>
-                    <th>Acciones</th>
+                    <th>Usuario</th>
+                    <th>Acción</th>
+                    <th>Archivo</th>
+                    <th>Antiguo registro</th>
+                    <th>Nuevo registro</th>
+                    <th>Fecha</th>
                   </tr>
                 </thead>
                 <tbody>
-                    @foreach($usuarios as $usuario)
-                    <tr>
-                    <td>{{ $usuario->cedula }}</td>
-                    <td>{{ $usuario->nombres }}</td>
-                    <td>{{ $usuario->apellidos }}</td>
-                    <td>{{ $usuario->email }}</td>
-                    <td>{{ $usuario->roles->rol }}</td>
-                    <td>
-                      <a href="{{ route('usuarios.edit', $usuario->id) }}"><i class="glyphicon glyphicon-pencil"></i></a>
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      <a href="{{ url('deleteusuarios') }}/{{ $usuario->id }}" onClick="javascript: return confirm('Esta seguro de eliminar registro?');"><i class="glyphicon glyphicon-minus-sign"></i></a>
-                    </td>
+                  @foreach($auditorias as $auditoria)
+                  <tr>
+                    <td>{{ $auditoria->user_id }}</td>
+                    <td>{{ $auditoria->event }}</td>
+                    <td>{{ $auditoria->auditable_id }}</td>
+                    <td>{{ $auditoria->old_values }}</td>
+                    <td>{{ $auditoria->new_values }}</td>
+                    <td>{{ $auditoria->created_at }}</td>
+                  </tr>
 
-
-                    </tr>
-
-                    @endforeach
+                  @endforeach
                 </tbody>
               </table>
             </div>
