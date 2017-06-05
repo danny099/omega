@@ -167,12 +167,12 @@
           $(this).parent().parent().parent().find('.iva').val(addCommas2(Math.round(iva)));
           $(this).parent().parent().parent().find('.valor_total').val(addCommas2(Math.round(resultado)));
 
-          var retencionesporcen = $(this).parent().parent().parent().find('.retencionesporcen').val().replace(/,/g,"");
+          var retencionesporcen = $(this).parent().parent().parent().find('.retencionesporcen').val().replace(/,/g,".");
           var valor2 = $(this).parent().parent().parent().find('.valor_factura').val().replace(/,/g,"");
           var resultado2 = valor2*retencionesporcen/100;
           $(this).parent().parent().parent().find('.retenciones').val(addCommas2(Math.round(resultado2)));
 
-          var retegarantiaporcen = $(this).parent().parent().parent().find('.retegarantiaporcen').val().replace(/,/g,"");
+          var retegarantiaporcen = $(this).parent().parent().parent().find('.retegarantiaporcen').val().replace(/,/g,".");
           var valor3 = $(this).parent().parent().parent().find('.valor_total').val().replace(/,/g,"");
           var resultado3 = valor3*retegarantiaporcen/100;
           $(this).parent().parent().parent().find('.retegarantia').val(addCommas2(Math.round(resultado3)));

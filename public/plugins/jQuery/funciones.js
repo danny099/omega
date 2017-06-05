@@ -298,14 +298,25 @@
               $(this).parent().parent().parent().find('.iva').val(addCommas2(Math.round(iva)));
               $(this).parent().parent().parent().find('.valor_total').val(addCommas2(Math.round(resultado)));
 
+              var retencionesporcen = $(this).parent().parent().parent().find('.retencionesporcen').val().replace(/,/g,".");
+              var valor2 = $(this).parent().parent().parent().find('.valor_factura').val().replace(/,/g,"");
+              var resultado2 = valor2*retencionesporcen/100;
+              $(this).parent().parent().parent().find('.retenciones').val(addCommas2(Math.round(resultado2)));
 
-              var retenciones = parseInt($(this).parent().parent().parent().find('.retenciones').val());
-              var amortizacion = parseInt($(this).parent().parent().parent().find('.amortizacion').val());
-              var polizas = parseInt($(this).parent().parent().parent().find('.polizas').val());
-              var retegarantia = parseInt($(this).parent().parent().parent().find('.retegarantia').val());
+              var retegarantiaporcen = $(this).parent().parent().parent().find('.retegarantiaporcen').val().replace(/,/g,".");
+              var valor3 = $(this).parent().parent().parent().find('.valor_total').val().replace(/,/g,"");
+              var resultado3 = valor3*retegarantiaporcen/100;
+              $(this).parent().parent().parent().find('.retegarantia').val(addCommas2(Math.round(resultado3)));
+
+
+              var retenciones = $(this).parent().parent().parent().find('.retenciones').val().replace(/,/g,"");
+              var amortizacion = $(this).parent().parent().parent().find('.amortizacion').val().replace(/,/g,"");
+              var polizas = $(this).parent().parent().parent().find('.polizas').val().replace(/,/g,"");
+              var retegarantia = $(this).parent().parent().parent().find('.retegarantia').val().replace(/,/g,"");
               var valor_total = $(this).parent().parent().parent().find('.valor_total').val().replace(/,/g,"");
-              var resultado =valor_total-(retenciones+amortizacion+polizas+retegarantia);
-              $(this).parent().parent().parent().find('.valor_pagado').val(addCommas2(Math.round(resultado)));
+              var resultado4 =valor_total-(parseFloat(retenciones)+parseFloat(amortizacion)+parseFloat(polizas)+parseFloat(retegarantia));
+              $(this).parent().parent().parent().find('.valor_pagado').val(addCommas2(Math.round(resultado4)));
+
 
 
           });
