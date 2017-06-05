@@ -140,9 +140,6 @@ class ClienteController extends Controller
       $datos['departamento_id'] = $request->departamento_id;
       $datos['municipio'] = $request->municipio;
 
-      dd($datos);
-      die();
-
 
       $cliente->update($datos);
       Session::flash('message', 'Cliente  editado!');
