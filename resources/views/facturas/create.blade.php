@@ -1,7 +1,8 @@
 <div class="container">
    <div class="">
      <div class="">
-       <h3 >Crear Facturas</h3>
+       <h3 >Crear Facturas &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Saldo: {{ $administrativa->saldo }}</h3>
+
      </div>
 
 

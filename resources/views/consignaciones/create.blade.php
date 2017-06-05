@@ -2,7 +2,9 @@
   <div class="container">
     <div class="">
       <div class="">
-        <h3 >Consignación</h3>
+
+        <h3 >Consignación &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Saldo: {{ $administrativa->saldo }}</h3>
+
       </div>
       <!-- /.box-header -->
       <!-- form start -->

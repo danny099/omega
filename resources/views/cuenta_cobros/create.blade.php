@@ -4,7 +4,9 @@
   <div class="container">
     <div class="">
       <div class="">
-        <h3 >Cuenta de cobro</h3>
+
+        <h3 >Cuenta de cobro &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Saldo: {{ $administrativa->saldo }}</h3>
+
       </div>
 
 
