@@ -19,7 +19,8 @@
                   <tr>
                     <th>Usuario</th>
                     <th>Acción</th>
-                    <th>Archivo</th>
+                    <th>Modulo</th>
+                    <th>Registro</th>
                     <th>Antiguo registro</th>
                     <th>Nuevo registro</th>
                     <th>Fecha y hora</th>
@@ -30,6 +31,7 @@
                   <tr>
                     <td>{{ $auditoria->user_id }}</td>
                     <td>{{ $auditoria->event }}</td>
+                    <td>{{ $auditoria->auditable_type }}</td>
                     <td>{{ $auditoria->auditable_id }}</td>
                     <td>{{ $auditoria->old_values }}</td>
                     <td>{{ $auditoria->new_values }}</td>

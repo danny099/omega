@@ -6,7 +6,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use OwenIt\Auditing\Auditable;
 use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
 use OwenIt\Auditing\Contracts\UserResolver;
-
+use Illuminate\Support\Arr;
 use Illuminate\Database\Eloquent\Model;
 
 
@@ -22,9 +22,19 @@ class Usuario extends Authenticatable implements AuditableContract
   public $timestamps = false;
 
   public static function resolveId()
-{
-    return Auth::check() ? Auth::user()->nombres : null;
-}
+    {
+        return Auth::check() ? Auth::user()->nombres : null;
+    }
+
+    public function transformAudit(array $data)
+    {
+        if (Arr::has($data, 'auditable_id')) {
+            Arr::set($data, 'auditable_id',  $this->cedula);
+        }
+
+        return $data;
+    }
+
 
   public function roles(){
     return $this->belongsTo('App\Rol', 'rol_id');

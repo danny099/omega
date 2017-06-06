@@ -15,9 +15,7 @@ class AuditoriaController extends Controller
     public function index()
     {
         $auditorias = Auditoria::all();
-        foreach ($$auditorias as $key => $value) {
-          # code...
-        }
+
 
         return view('auditorias.index',compact('auditorias'));
     }
