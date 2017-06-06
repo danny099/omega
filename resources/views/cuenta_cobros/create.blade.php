@@ -5,7 +5,7 @@
     <div class="">
       <div class="">
 
-        <h3 >Cuenta de cobro &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Saldo: {{ $administrativa->saldo }}</h3>
+        <h3 >Cuenta de cobro &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Saldo: ${{ number_format($administrativa->saldo,0) }}</h3>
 
       </div>
 

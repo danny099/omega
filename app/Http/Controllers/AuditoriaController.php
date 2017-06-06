@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Auditoria;
+
 class AuditoriaController extends Controller
 {
     /**
@@ -17,6 +18,7 @@ class AuditoriaController extends Controller
         foreach ($$auditorias as $key => $value) {
           # code...
         }
+
         return view('auditorias.index',compact('auditorias'));
     }
 

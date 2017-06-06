@@ -22,7 +22,7 @@
                     <th>Archivo</th>
                     <th>Antiguo registro</th>
                     <th>Nuevo registro</th>
-                    <th>Fecha</th>
+                    <th>Fecha y hora</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -33,7 +33,7 @@
                     <td>{{ $auditoria->auditable_id }}</td>
                     <td>{{ $auditoria->old_values }}</td>
                     <td>{{ $auditoria->new_values }}</td>
-                    <td>{{ $auditoria->created_at }}</td>
+                    <td>{{date_format(new DateTime($auditoria->created_at ),'d-m-y H:i:s')}}</td>
                   </tr>
 
                   @endforeach
