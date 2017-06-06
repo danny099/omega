@@ -132,7 +132,7 @@
       <ul class="sidebar-menu">
         <li class="header">Modulos</li>
         <li>
-          <a href="{{ url('index') }}">
+          <a href="{{ url('home') }}">
             <i class="glyphicon glyphicon-home"></i> <span>Inicio</span>
           </a>
         </li>
@@ -188,13 +188,13 @@
       <ul class="sidebar-menu">
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-book"></i> <span>Auditoria</span>
+            <i class="fa fa-book"></i> <span>Auditoría</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{ url('auditorias') }}"><i class="fa fa-circle-o"></i>Auditoria</a></li>
+            <li><a href="{{ url('auditorias') }}"><i class="fa fa-circle-o"></i>Auditoría</a></li>
           </ul>
         </li>
       </ul>
@@ -213,13 +213,9 @@
       </h1>
 
     </section>
-
-    <!-- Main content -->
-    <div class="row">
-      <div class="col-md-12">
-        <section class="content">
             @yield('contenido')
             @yield('modales')
+            
         </section>
       </div>
     </div>

@@ -1,6 +1,10 @@
 @extends('index')
 
 @section('contenido')
+    <ol class="breadcrumb">
+      <li><a href="{{ url('index') }}">Inicio</a></li>
+      <li class="active">Auditoría</li>
+    </ol>
       <div class="container">
         @if(Session::has('message'))
           <div id="alert">
