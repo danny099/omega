@@ -30,11 +30,40 @@
                   @foreach($auditorias as $auditoria)
                   <tr>
                     <td>{{ $auditoria->user_id }}</td>
-                    <td>{{ $auditoria->event }}</td>
-                    <td>{{ $auditoria->auditable_type }}</td>
-                    <td>{{ $auditoria->auditable_id }}</td>
-                    <td>{{ $auditoria->old_values }}</td>
-                    <td>{{ $auditoria->new_values }}</td>
+                    @if( $auditoria->event == 'created')
+                      <td> Creo </td>
+                    @elseif($auditoria->event == 'updated')
+                      <td> Actualizo </td>
+                    @else
+                      <td>Elimino </td>
+                    @endif
+
+                    <?php
+                    $modulo = str_replace('App\\','',$auditoria->auditable_type);
+                     ?>
+                    <td><?php echo $modulo ?></td>
+
+                    <td class="td">{{ $auditoria->auditable_id }}</td>
+
+                    <?php
+                    $modulo = str_replace('"','',$auditoria->old_values);
+                    $modulo2 = str_replace('{','',$modulo);
+                    $modulo3 = str_replace('}','',$modulo2);
+                    $modulo4 = str_replace(',','<br>',$modulo3);
+                    $modulo5 = str_replace(':',': ',$modulo4);
+
+                     ?>
+                    <td><?php echo $modulo5 ?></td>
+
+                    <?php
+                    $modulo = str_replace('"','',$auditoria->new_values);
+                    $modulo2 = str_replace('{','',$modulo);
+                    $modulo3 = str_replace('}','',$modulo2);
+                    $modulo4 = str_replace(',','<br>',$modulo3);
+                    $modulo5 = str_replace(':',': ',$modulo4);
+
+                     ?>
+                    <td><?php echo $modulo5 ?></td>
                     <td>{{date_format(new DateTime($auditoria->created_at ),'d-m-y H:i:s')}}</td>
                   </tr>
 
@@ -78,6 +107,14 @@
           "scrollX": true
 
   } );
+    });
+
+    $(document).ready(function($){
+      var prueba= $('.prueba').val();
+      var obj = JSON.parse(prueba);
+
+      $('.td').after(obj[0])
+
     });
   </script>
 @endsection

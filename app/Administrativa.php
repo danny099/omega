@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Auditable;
 use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
+use Illuminate\Support\Arr;
 class Administrativa extends Model implements AuditableContract
 {
   use Auditable;
@@ -14,6 +15,16 @@ class Administrativa extends Model implements AuditableContract
   protected $fillable = ['id','codigo_proyecto','nombre_proyecto','fecha_contrato','cliente_id','juridica_id','municipio','departamento_id','tipo_zona','valor_contrato_inicial','valor_iva','valor_adicional','valor_contrato_final','plan_pago','saldo','valor_total_contrato','recordar','recor_fac','contador_otro','contador_fac'];
 
   public $timestamps = false;
+
+  public function transformAudit(array $data)
+  {
+      if (Arr::has($data, 'auditable_id')) {
+          Arr::set($data, 'auditable_id',  $this->codigo_proyecto);
+      }
+
+      return $data;
+  }
+
 
   public function cliente(){
     return $this->belongsTo('App\Cliente');
