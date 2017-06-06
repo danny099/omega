@@ -529,7 +529,7 @@
                         <div class="col-md-12">
                           <div class="col-md-6">
                             <div class="form-group">
-                              <label>Valor:</label>
+                              <label>Valor antes de IVA:</label>
                             </div>
                           </div>
                           <div class="col-md-6">
@@ -538,6 +538,30 @@
                             </div>
                           </div>
                       </div>
+                      <div class="col-md-12">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label>IVA:</label>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <span>${{ number_format($consignacion->valor_iva,0) }}</span>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label>Valor:</label>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <span>${{ number_format($consignacion->valor_total,0) }}</span>
+                        </div>
+                      </div>
+                  </div>
                       <div class="col-md-12">
                         <div class="col-md-6">
                           <div class="form-group">

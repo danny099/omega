@@ -301,6 +301,8 @@ class AdministrativaController extends Controller
 
        $depart = $request->departamento;
        $administrativas = Administrativa::findOrFail($id);
+       $facturas = Factura::where('factura.administrativa_id', '=', $administrativas->id)->get();
+
 
        $administrativa['codigo_proyecto'] = $request->codigo_proyecto;
        $administrativa['nombre_proyecto'] = ucfirst(mb_strtolower($request->nombre_proyecto));
@@ -330,8 +332,54 @@ class AdministrativaController extends Controller
 
        }
 
+       if (str_replace(',','',$administrativas->valor_contrato_final) == $administrativa['valor_contrato_final']) {
+
+         $administrativa2['codigo_proyecto'] = $request->codigo_proyecto;
+         $administrativa2['nombre_proyecto'] = ucfirst(mb_strtolower($request->nombre_proyecto));
+         $administrativa2['fecha_contrato'] = $request->fecha_contrato;
+        //  $administrativa['cliente_id'] = $request->cliente_id;
+        //  $administrativa['juridica_id'] = $request->juridica_id;
+         $administrativa2['departamento_id'] = $request->departamento_id;
+         $administrativa2['municipio'] = $request->municipio;
+         $administrativa2['tipo_zona'] = $request->zona;
+         $administrativa2['valor_contrato_inicial'] = $request->valor_contrato_inicial;
+         $administrativa2['valor_iva'] = str_replace(',','',$request->iva);
+         $administrativa2['plan_pago'] = ucfirst(mb_strtolower($request->plan_pago));
+
+         if ($request->tipo_regimen == 1) {
+
+           $administrativa2['cliente_id'] = $request->cliente_id;
+           $administrativas->juridica_id = null;
+           $administrativas->save();
+
+         }else {
+
+           $administrativa2['juridica_id'] = $request->juridica_id;
+           $administrativas->cliente_id = null;
+           $administrativas->save();
+
+         }
+
+         $administrativas->update($administrativa2);
+
+         //  mensajes de confirmacion enviados a la vista
+         Session::flash('message', 'Contrato editado!');
+         Session::flash('class', 'success');
+
+         //  redireccionamiento a una vista
+         return redirect()->route('administrativas.index');
+
+       }
+
        if ($administrativas->saldo == 0 && $administrativa['valor_contrato_final'] < str_replace(',','',$administrativas->valor_contrato_final)) {
          Session::flash('message', 'El valor es menor al saldo por favor verifique los pagos!');
+         Session::flash('class', 'danger');
+
+        //  redireccionamiento a una vista
+         return redirect()->route('administrativas.index');
+       }
+       if (count($facturas) > 0) {
+         Session::flash('message', 'No se puede editar el valor debido a que existen pagos!');
          Session::flash('class', 'danger');
 
         //  redireccionamiento a una vista
