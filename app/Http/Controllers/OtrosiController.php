@@ -171,7 +171,7 @@ class OtrosiController extends Controller
       }
 
       if ($administrativa->saldo < $otrosi->valor_tot) {
-        Session::flash('message', 'El otro sí no se puede editar ya que se efectuaron los pagos');
+        Session::flash('message', 'El otro sí no se puede editar puede que ya se hayan hecho pagos');
         Session::flash('class', 'danger');
         return redirect()->route('administrativas.index');
       }
@@ -228,20 +228,36 @@ class OtrosiController extends Controller
       }
 
 
-      if ( $administrativa->saldo >= 0) {
+      if ( $administrativa->saldo > 0) {
 
         if ($administrativa->saldo >= $datos['valor_tot']) {
           $resta = $administrativa->saldo - $otrosi->valor_tot;
-          $nuevo_saldo = $resta + $datos['valor_tot'];
-          $administrativa->saldo = $nuevo_saldo;
+          $nuevo2 = $resta + $datos['valor_tot'];
+          $administrativa->saldo = $nuevo2;
+        
           $administrativa->save();
 
         }
         else {
-          $resta =$otrosi->valor_tot - $administrativa->saldo ;
-          $nuevo_saldo = $resta + $datos['valor_tot'];
-          $administrativa->saldo = $nuevo_saldo;
-          $administrativa->save();
+
+          if ($otrosi->valor_tot > $administrativa->saldo) {
+
+            $resta =$otrosi->valor_tot - $administrativa->saldo;
+            $nuevo2 = $resta + $datos['valor_tot'];
+
+            $administrativa->saldo = $nuevo2;
+            $administrativa->save();
+
+          }else {
+
+            $resta = $administrativa->saldo - $otrosi->valor_tot;
+            $nuevo2 = $resta + $datos['valor_tot'];
+
+            $administrativa->saldo = $nuevo2;
+            $administrativa->save();
+
+          }
+
         }
 
       }
