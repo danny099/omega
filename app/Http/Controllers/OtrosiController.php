@@ -234,7 +234,7 @@ class OtrosiController extends Controller
           $resta = $administrativa->saldo - $otrosi->valor_tot;
           $nuevo2 = $resta + $datos['valor_tot'];
           $administrativa->saldo = $nuevo2;
-        
+
           $administrativa->save();
 
         }
@@ -260,6 +260,13 @@ class OtrosiController extends Controller
 
         }
 
+      }else {
+        if ($administrativa->saldo == 0) {
+
+          $nuevo2 = $administrativa->saldo + $datos['valor_tot'];
+          $administrativa->saldo = $nuevo2;
+          $administrativa->save();
+        }
       }
 
       $otrosi->update($datos);
