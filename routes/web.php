@@ -19,9 +19,7 @@ Route::post('check', 'LoginController@check');
 
 Route::get('logout', 'LoginController@logout');
 
-Route::get('home', array('before' => 'auth', function(){
-	return view('home');
-}));
+
 
 
 
@@ -30,13 +28,19 @@ Route::get('home', array('before' => 'auth', function(){
 
 Route::group(['middleware' => 'auth'],function(){
 
-  Route::get('/home', 'HomeController@index');
+  // Route::get('/home', 'HomeController@index');
+
+	Route::get('home', array('before' => 'auth', function(){
+		return view('home');
+	}));
+
   Route::get('/index', function () {
       return view('index');
   });
 
   /**************************************************************/
   /**************************************************************/
+	Route::resource('inicio','DirectivaController');
   Route::resource('roles','RolController');
 
   /**************************************************************/
