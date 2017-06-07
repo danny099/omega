@@ -59,7 +59,7 @@
 
                 <div class="col-md-3">
                   <div class="form-group">
-                    <label >Valor antes de IVA</label>
+                    <label >Valor antes de IVA:</label>
                   </div>
                 </div>
 
@@ -75,7 +75,7 @@
               <div class="col-md-12">
                 <div class="col-md-3">
                   <div class="form-group">
-                    <label >Nombre del proyecto</label>
+                    <label >Nombre del proyecto:</label>
                   </div>
                 </div>
 
@@ -87,7 +87,7 @@
 
               <div class="col-md-3">
                 <div class="form-group">
-                    <label >Valor IVA</label>
+                    <label >Valor IVA:</label>
                 </div>
               </div>
 
@@ -116,7 +116,7 @@
             @if(count($adicionales) == 0)
             <div class="col-md-3 adi">
               <div class="form-group">
-                <label >Valor adicional</label>
+                <label >Valor adicional:</label>
               </div>
             </div>
 
@@ -131,7 +131,7 @@
             @else
             <div class="col-md-3 adi">
               <div class="form-group">
-                <label >Valor adicional</label>
+                <label >Valor adicional:</label>
               </div>
             </div>
 
@@ -170,7 +170,7 @@
           @if(count($otrosis) == 0)
           <div class="col-md-3">
             <div class="form-group">
-              <label >Otro sí</label>
+              <label >Otro sí:</label>
             </div>
           </div>
 
@@ -185,7 +185,7 @@
           @else
           <div class="col-md-3">
             <div class="form-group">
-              <label >Otro sí</label>
+              <label >Otro sí:</label>
             </div>
           </div>
 
@@ -222,7 +222,7 @@
 
           <div class="col-md-3">
             <div class="form-group">
-              <label >Valor contrato final</label>
+              <label >Valor contrato final:</label>
             </div>
           </div>
 
@@ -250,7 +250,7 @@
 
           <div class="col-md-3">
             <div class="form-group">
-              <label >Plan de pago</label>
+              <label >Plan de pago:</label>
             </div>
           </div>
 
@@ -278,7 +278,7 @@
 
           <div class="col-md-3">
             <div class="form-group">
-              <label >Valor Total</label>
+              <label >Valor Total:</label>
             </div>
           </div>
 
@@ -302,7 +302,7 @@
 
           <div class="col-md-3">
             <div class="form-group">
-              <label >Saldo</label>
+              <label >Saldo:</label>
             </div>
           </div>
 
