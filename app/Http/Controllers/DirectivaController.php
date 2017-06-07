@@ -7,6 +7,7 @@ use App\Administrativa;
 use App\Cliente;
 use App\Juridica;
 use App\Usuario;
+use App\Auditoria;
 
 class DirectivaController extends Controller
 {
