@@ -56,14 +56,14 @@
           <!-- small box -->
           <div class="small-box bg-red">
             <div class="inner">
-              <h3>65</h3>
+              <h3>{{$auditorias}}</h3>
 
-              <p>Unique Visitors</p>
+              <p>Cambios realizados</p>
             </div>
             <div class="icon">
-              <i class="ion ion-pie-graph"></i>
+              <i class="ion-ios-paper"></i>
             </div>
-            <a href="#" class="small-box-footer">Más información <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{ url('auditorias') }}" class="small-box-footer">Más información <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
