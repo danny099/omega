@@ -18,7 +18,7 @@ class LoginController extends Controller
 
         if(Auth::attempt(['cedula'=>$name,'password'=>$pass]))
         {
-            return Redirect::intended('index');
+            return Redirect::intended('home');
 
         }else
 
