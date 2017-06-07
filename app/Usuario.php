@@ -23,7 +23,12 @@ class Usuario extends Authenticatable implements AuditableContract
 
   public static function resolveId()
     {
-        return Auth::check() ? Auth::user()->nombres : null;
+      $datos1 = Auth::user()->nombres;
+      $datos2 = Auth::user()->apellidos;
+      $datos3 = $datos1." ".$datos2;
+
+      return Auth::check() ? $datos3 : null;
+
     }
 
     public function transformAudit(array $data)
