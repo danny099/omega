@@ -159,7 +159,7 @@ class Cuenta_cobroController extends Controller
 
           }else {
             Session::flash('message', 'Valor de la cuenta de cobro es mayor al saldo');
-            Session::flash('class', 'success');
+            Session::flash('class', 'danger');
             return redirect()->route('administrativas.index');
           }
 

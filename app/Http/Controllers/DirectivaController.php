@@ -21,13 +21,15 @@ class DirectivaController extends Controller
         $clien = Cliente::all();
         $juri = Juridica::all();
         $usuar = Usuario::all();
+        $audti = Auditoria::all();
 
 
         $contratos = count($contra);
         $clientes = count($clien) + count($juri);
         $usuarios = count($usuar);
+        $auditorias = count($audti);
 
-        return view('inicio',compact('contratos','clientes','usuarios'));
+        return view('inicio',compact('contratos','clientes','usuarios','auditorias'));
     }
 
     /**
