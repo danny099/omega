@@ -20,7 +20,7 @@ Route::post('check', 'LoginController@check');
 Route::get('logout', 'LoginController@logout');
 
 Route::get('home', array('before' => 'auth', function(){
-	return view('index');
+	return view('home');
 }));
 
 
