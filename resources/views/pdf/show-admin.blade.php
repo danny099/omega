@@ -30,11 +30,11 @@ html{font-family:sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:1
         <tr>
           <td>Fecha del contrato</td>
           <td>{{  date_format(new DateTime($administrativa->fecha_contrato), 'd-m-y')}}</td>
-          <td>valor Adicional</td>
+          <td>Valor adicional</td>
           <td>
             @foreach($adicionales as $adici)
-              ${{ number_format($adici->valor,0) }}
               {{ $adici->detalle }}
+              ${{ number_format($adici->valor,0) }}
               <br>
             @endforeach
           </td>

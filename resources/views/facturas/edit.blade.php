@@ -29,7 +29,7 @@
       </div>
       <div class="col-md-6">
         <div class="form-group">
-          {!! Form::date('fecha_factura', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+          {!! Form::date('fecha_factura', null, ['class' => 'form-control' , 'required' => 'required', 'style'=>'width:110%']) !!}
         </div>
       </div>
 
@@ -133,7 +133,7 @@
       </div>
       <div class="col-md-6">
         <div class="form-group">
-          {!! Form::date('fecha_pago', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+          {!! Form::date('fecha_pago', null, ['class' => 'form-control' , 'required' => 'required', 'style'=>'width:110%']) !!}
         </div>
       </div>
 

@@ -9,9 +9,9 @@
   }
   function sumariva(){
     var valor = document.getElementById('valor_factura').value;
-    var resultado = valor*1.19;
+    var resultado = valor*1.16;
 
-    var iva = valor*0.19;
+    var iva = valor*0.16;
 
     document.getElementsBy('iva').value = iva ;
     document.getElementById('valor_total').value = resultado ;
@@ -19,9 +19,9 @@
 
   function sumar(){
     var valor = parseInt(document.getElementById('ini').value);
-    var resultado = valor*1.19;
+    var resultado = valor*1.16
 
-    var iva = valor*0.19;
+    var iva = valor*0.16;
 
     document.getElementById('iva').value = iva ;
     document.getElementById('fin').value = resultado ;
@@ -29,9 +29,9 @@
 
       function sumar3(){
         var valor = parseInt(document.getElementById('valor_contrato_inicial').value);
-        var resultado = valor*1.19;
+        var resultado = valor*1.16;
 
-        var iva = valor*0.19;
+        var iva = valor*0.16;
 
         document.getElementById('iva').value = iva ;
         document.getElementById('fin').value = resultado ;

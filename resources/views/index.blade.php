@@ -132,7 +132,7 @@
       <ul class="sidebar-menu">
         <li class="header">Modulos</li>
         <li>
-          <a href="{{ url('home') }}">
+          <a href="{{ url('inicio') }}">
             <i class="glyphicon glyphicon-home"></i> <span>Inicio</span>
           </a>
         </li>
@@ -215,7 +215,7 @@
     </section>
             @yield('contenido')
             @yield('modales')
-            
+
         </section>
       </div>
     </div>

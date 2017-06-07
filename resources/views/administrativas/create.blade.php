@@ -34,7 +34,7 @@ function calcular(){
   varMonto = document.getElementById("fin").value;
   varMonto = varMonto.replace(/[\,]/g,'');
 
-  varIva = parseFloat(varMonto) /1.19;
+  varIva = parseFloat(varMonto) /1.16;
   document.getElementById("ini").value = addCommas(Math.round(varIva)) ;
 
   varSubTotal = parseFloat(varMonto) - parseFloat(varIva);

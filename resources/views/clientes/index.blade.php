@@ -63,9 +63,10 @@
 </script>
 @endsection
 @section('contenido')
-  <ol class="breadcrumb">
-    <li><a href="{{ url('index') }}">Inicio</a></li>
-  </ol>
+<ol class="breadcrumb">
+  <li><a href="{{ url('index') }}">Inicio</a></li>
+  <li class="active">Clientes</li>
+</ol>
   <div class="container">
     @if(Session::has('message'))
     <div id="alert">
