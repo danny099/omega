@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Administrativa;
 use App\Cliente;
+use App\Juridica;
 use App\Usuario;
 
 class DirectivaController extends Controller
@@ -18,10 +19,12 @@ class DirectivaController extends Controller
     {
         $contra = Administrativa::all();
         $clien = Cliente::all();
+        $juri = Juridica::all();
         $usuar = Usuario::all();
 
+
         $contratos = count($contra);
-        $clientes = count($clien);
+        $clientes = count($clien) + count($juri);
         $usuarios = count($usuar);
 
         return view('inicio',compact('contratos','clientes','usuarios'));
