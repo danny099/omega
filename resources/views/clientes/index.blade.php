@@ -64,7 +64,7 @@
 @endsection
 @section('contenido')
 <ol class="breadcrumb">
-  <li><a href="{{ url('index') }}">Inicio</a></li>
+  <li><a href="{{ url('inicio') }}">Inicio</a></li>
   <li class="active">Clientes</li>
 </ol>
   <div class="container">

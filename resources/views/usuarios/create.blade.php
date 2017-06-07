@@ -6,7 +6,7 @@
 </style>
 @section('contenido')
   <ol class="breadcrumb">
-    <li><a href="{{ url('index') }}">Inicio</a></li>
+    <li><a href="{{ url('inicio') }}">Inicio</a></li>
     <li><a href="{{ url('usuarios') }}">Usuarios</a></li>
     <li class="active">Crear Usuario</li>
   </ol>

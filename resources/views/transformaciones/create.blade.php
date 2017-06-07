@@ -2,7 +2,7 @@
 
 @section('contenido')
 <ol class="breadcrumb">
-  <li><a href="{{ url('index') }}">Inicio</a></li>
+  <li><a href="{{ url('inicio') }}">Inicio</a></li>
   <li class="active">Crear transformaciones</li>
 </ol>
   <form class="" action="{{ url('transformaciones') }}" method="post">

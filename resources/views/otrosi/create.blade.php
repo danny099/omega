@@ -54,7 +54,7 @@
 @section('contenido')
 
 <ol class="breadcrumb">
-  <li><a href="{{ url('index') }}">Inicio</a></li>
+  <li><a href="{{ url('inicio') }}">Inicio</a></li>
   <li class="active">Crear otro sí</li>
 </ol>
 
