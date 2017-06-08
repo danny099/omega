@@ -5,7 +5,7 @@
       <li><a href="{{ url('inicio') }}">Inicio</a></li>
       <li class="active">Auditoría</li>
     </ol>
-      <div class="container">
+
         @if(Session::has('message'))
           <div id="alert">
             <div class="col-sm-12 hr hr-18 hr-double dotted"></div>
@@ -77,7 +77,7 @@
             </div>
           </div>
         </div>
-      </div>
+
 @endsection
 
 @section('scripts')
