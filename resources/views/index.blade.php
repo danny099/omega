@@ -203,7 +203,7 @@
       <ul class="sidebar-menu">
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-book"></i> <span>Cotizaciones</span>
+            <i class="fa fa-dollar"></i> <span>Cotizaciones</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
             </span>
