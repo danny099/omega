@@ -17,6 +17,11 @@ class Departamento extends Model implements AuditableContract
   public function administrativa(){
     return $this->hasOne('App\Administrativa');
   }
+
+  public function cotizacion(){
+    return $this->hasMany('App\Cotizacion');
+  }
+  
   public function municipio(){
     return $this->belongsTo('App\Municipio');
   }

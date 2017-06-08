@@ -44,13 +44,17 @@ class Pu_finalController extends Controller
            if (!empty($input['pu_final']['descripcion_pu'][$i]) &&
                !empty($input['pu_final']['tipo_pu'][$i]) &&
                !empty($input['pu_final']['unidad_pu_final'][$i]) &&
-               !empty($input['pu_final']['cantidad_pu'][$i])) {
+               !empty($input['pu_final']['cantidad_pu'][$i] &&
+               !empty($input['pu_final']['estrato_pu'][$i] &&
+               !empty($input['pu_final']['acometidas_pu'][$i] )) {
 
                  $datos3['descripcion'] = $input['pu_final']['descripcion_pu'][$i];
                  $datos3['tipo'] = $input['pu_final']['tipo_pu'][$i];
                  $datos3['unidad'] = $input['pu_final']['unidad_pu_final'][$i];
                  $datos3['cantidad'] = $input['pu_final']['cantidad_pu'][$i];
                  $datos3['administrativa_id'] = $input['codigo_proyecto'];
+                 $datos3['estrato'] = $input['pu_final']['estrato_pu'][$i];
+                 $datos3['acometidas'] = $input['pu_final']['acometidas_pu'][$i];
 
                  Pu_final::create($datos3);
            }
@@ -104,6 +108,8 @@ class Pu_finalController extends Controller
           $datos['tipo'] = $input['pu_final']['tipo_pu'][$i];
           $datos['unidad'] = $input['pu_final']['unidad_pu_final'][$i];
           $datos['cantidad'] = $input['pu_final']['cantidad_pu'][$i];
+          $datos['estrato'] = $input['pu_final']['estrato_pu'][$i];
+          $datos['acometidas'] = $input['pu_final']['acometidas_pu'][$i];
 
           $pu->update($datos);
 

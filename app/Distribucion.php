@@ -12,11 +12,16 @@ class Distribucion extends Model implements AuditableContract
 
   protected $table = 'distribucion';
 
-  protected $fillable = ['id','descripcion','tipo','unidad','cantidad','administrativa_id'];
+  protected $fillable = ['id','descripcion','tipo','unidad','cantidad','apoyos','cajas','notas','administrativa_id'];
 
   public $timestamps = false;
 
   public function administrativa(){
     return $this->hasMany('App\Administrativa');
   }
+
+  public function cotizacion(){
+    return $this->hasMany('App\Cotizacion');
+  }
+
 }

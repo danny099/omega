@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Cliente;
+use App\Juridica;
+use App\Departamento;
 
 class CotizacionController extends Controller
 {
@@ -23,7 +26,10 @@ class CotizacionController extends Controller
      */
     public function create()
     {
-        return view('cotizaciones.create');
+        $clientes = Cliente::all();
+        $juridicas = Juridica::all();
+        $departamentos = Departamento::all();
+        return view('cotizaciones.create'compact('clientes','juridicas','departamentos'));
     }
 
     /**

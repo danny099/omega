@@ -18,6 +18,10 @@ class Cliente extends Model implements AuditableContract
     public function administrativa(){
       return $this->hasMany('App\Administrativa');
     }
+    
+    public function cotizacion(){
+      return $this->hasMany('App\Cotizacion');
+    }
 
     public function departamento(){
       return $this->belongsTo('App\Departamento');

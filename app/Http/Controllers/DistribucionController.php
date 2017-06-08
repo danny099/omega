@@ -44,12 +44,18 @@ class DistribucionController extends Controller
           if (!empty($input['distribucion']['descripcion_dis'][$x]) &&
               !empty($input['distribucion']['tipo_dis'][$x]) &&
               !empty($input['distribucion']['unidad_distribucion'][$x]) &&
-              !empty($input['distribucion']['cantidad_dis'][$x])){
+              !empty($input['distribucion']['cantidad_dis'][$x] &&
+              !empty($input['distribucion']['apoyos_dis'][$x] &&
+              !empty($input['distribucion']['cajas_dis'][$x] &&
+              !empty($input['distribucion']['notas_dis'][$x])){
 
                 $datos2['descripcion'] = $input['distribucion']['descripcion_dis'][$x];
                 $datos2['tipo'] = $input['distribucion']['tipo_dis'][$x];
                 $datos2['unidad'] = $input['distribucion']['unidad_distribucion'][$x];
                 $datos2['cantidad'] = str_replace('.',',',$input['distribucion']['cantidad_dis'][$x]);
+                $datos2['apoyos'] = $input['distribucion']['apoyos_dis'][$x]
+                $datos2['cajas'] = $input['distribucion']['cajas_dis'][$x]
+                $datos2['notas'] = $input['distribucion']['notas_dis'][$x]
                 $datos2['administrativa_id'] =$input['codigo_proyecto'];
 
                 Distribucion::create($datos2);
@@ -106,7 +112,9 @@ class DistribucionController extends Controller
          $datos['tipo'] = $input['distribucion']['tipo_dis'][$x];
          $datos['unidad'] = $input['distribucion']['unidad_distribucion'][$x];
          $datos['cantidad'] = str_replace('.',',',$input['distribucion']['cantidad_dis'][$x]);
-
+         $datos['apoyos'] = $input['distribucion']['apoyos_dis'][$x]
+         $datos['cajas'] = $input['distribucion']['cajas_dis'][$x]
+         $datos['notas'] = $input['distribucion']['notas_dis'][$x]
 
          $distri->update($datos);
 

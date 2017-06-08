@@ -52,7 +52,9 @@ class TransformacionController extends Controller
                 !empty($input['transformacion']['tipo'][$a]) &&
                 !empty($input['transformacion']['capacidad'][$a]) &&
                 !empty($input['transformacion']['unidad_transformacion'][$a]) &&
-                !empty($input['transformacion']['cantidad'][$a])) {
+                !empty($input['transformacion']['cantidad'][$a] &&
+                !empty($input['transformacion']['potencia'][$a] &&
+                !empty($input['transformacion']['tipo_refrigeracion'][$a])) {
 
                   $datos1['descripcion'] = $input['transformacion']['descripcion'][$a];
                   $datos1['tipo'] = $input['transformacion']['tipo'][$a];
@@ -60,6 +62,9 @@ class TransformacionController extends Controller
                   $datos1['unidad'] = $input['transformacion']['unidad_transformacion'][$a];
                   $datos1['cantidad'] = $input['transformacion']['cantidad'][$a];
                   $datos1['administrativa_id'] = $input['codigo_proyecto'];
+                  $datos1['potencia'] = $input['transformacion']['potencia'][$a;
+                  $datos1['tipo_refrigeracion'] = $input['transformacion']['tipo_refrigeracion'][$a];
+
 
                   Transformacion::create($datos1);
             }
@@ -118,7 +123,9 @@ class TransformacionController extends Controller
         $datos1['capacidad'] = strtoupper($input['transformacion']['capacidad'][$a]);
         $datos1['unidad'] = $input['transformacion']['unidad_transformacion'][$a];
         $datos1['cantidad'] = $input['transformacion']['cantidad'][$a];
-
+        $datos1['potencia'] = $input['transformacion']['potencia'][$a;
+        $datos1['tipo_refrigeracion'] = $input['transformacion']['tipo_refrigeracion'][$a];
+        
         $transfor->update($datos1);
 
       }
