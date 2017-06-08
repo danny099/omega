@@ -29,7 +29,7 @@ class CotizacionController extends Controller
         $clientes = Cliente::all();
         $juridicas = Juridica::all();
         $departamentos = Departamento::all();
-        return view('cotizaciones.create'compact('clientes','juridicas','departamentos'));
+        return view('cotizaciones.create',compact('clientes','juridicas','departamentos'));
     }
 
     /**
