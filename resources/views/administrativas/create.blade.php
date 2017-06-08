@@ -178,7 +178,7 @@ function addCommas(nStr){
     </div>
     <div class="box-body">
       <div class="col-md-12">
-        <div class="col-md-3">
+        <div class="col-md-4">
           <div class="form-group">
             <center><label >Descripción</label></center>
             <input type="text" class="form-control" value="Inspección  RETIE proceso de transformación"  readonly=”readonly” name="transformacion[descripcion][]">
@@ -195,7 +195,7 @@ function addCommas(nStr){
             </select>
           </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-2">
           <div class="form-group">
             <center><label >Capacidad</label></center>
               <input type="text" class="form-control" placeholder="Capacidad"   name="transformacion[capacidad][]">
