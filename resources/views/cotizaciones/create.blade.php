@@ -88,48 +88,74 @@
         <div class="col-md-1 tblprod2" >
           <div class="form-group">
             <br>
-            <a class="btn btn-primary" data-toggle="modal" href="#" id="btnadd2" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-plus"></i></a>
+            <a class="btn btn-primary" data-toggle="modal" href="#" id="btnadd2" style="background-color: #fdea08; border-color:#fdea08"><i class="glyphicon glyphicon-plus"></i></a>
           </div>
         </div>
       </div>
-      <div class="col-md-12">
+      <div class="col-md-12"  style="margin-bottom: 10px;">
         <center> <h3>Alcance: proceso de distribución</h3> </center>
       </div>
+      <div class="col-md-12">
+        <div class="col-md-3">
+          <div class="form-group">
+            <center style="margin-bottom: 25px;"><label >Descripción</label></center>
+            <select class="form-control" name="distribucion[descripcion_dis][]" style="top:25px important!">
+              <option value="">Seleccione...</option>
+              <option value="Inspección RETIE proceso de distribución en MT">Inspección RETIE proceso de distribución en MT</option>
+              <option value="Inspección RETIE proceso de distribución en BT">Inspección RETIE proceso de distribución en BT</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="form-group">
+            <center style="margin-bottom: 25px;"><label >Tipo</label></center>
+            <select class="form-control" name="distribucion[tipo_dis][]" >
+              <option value="">Seleccione...</option>
+              <option value="Aérea">Tipo Aérea</option>
+              <option value="Subterránea">Tipo subterránea</option>
+              <option value="Aérea/subterránea">Aérea/subterránea</option>
+            </select>
+          </div>
+        </div>
 
-      <div class="col-md-3">
-        <div class="form-group">
-          <center><label >Descripción</label></center>
-          <select class="form-control" name="distribucion[descripcion_dis][]">
-            <option value="">Seleccione...</option>
-            <option value="Inspección RETIE proceso de distribución en MT">Inspección RETIE proceso de distribución en MT</option>
-            <option value="Inspección RETIE proceso de distribución en BT">Inspección RETIE proceso de distribución en BT</option>
-          </select>
+        <div class="col-md-1">
+          <div class="form-group">
+            <center><label >Nivel de tensión  </label></center>
+            <input type="text" class="form-control" placeholder= "Longitud" name="distribucion[nivel_tension_dis][]">
+          </div>
         </div>
-      </div>
-      <div class="col-md-2">
-        <div class="form-group">
-          <center><label >Tipo</label></center>
-          <select class="form-control" name="distribucion[tipo_dis][]">
-            <option value="">Seleccione...</option>
-            <option value="Aérea">Tipo Aérea</option>
-            <option value="Subterránea">Tipo subterránea</option>
-            <option value="Aérea/subterránea">Aérea/subterránea</option>
-          </select>
-        </div>
-      </div>
 
-      <div class="col-md-2">
-        <div class="form-group">
-          <center><label >Cantidad</label></center>
-          <input type="text" class="form-control" placeholder= "Cantidad" name="distribucion[cantidad_dis][]">
+        <div class="col-md-1">
+          <div class="form-group">
+            <center><label >longitud de red (km)</label></center>
+            <input type="text" class="form-control" placeholder= "Cantidad" name="distribucion[cantidad_dis][]">
+          </div>
         </div>
-      </div>
-      <div class="col-md-1 tblprod3" >
-        <div class="form-group">
-          <br>
-          <a class="btn btn-primary" data-toggle="modal" id="btnadd3" href="#" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-plus"></i></a>
+        <div class="col-md-1">
+          <div class="form-group">
+            <center><label >apoyos o estructuras</label></center>
+            <input type="number" class="form-control" placeholder= "Cantidad" name="distribucion[apoyos_dis][]">
+          </div>
         </div>
-      </div>
+        <div class="col-md-1">
+          <div class="form-group">
+            <center><label >cajas de inspección</label></center>
+            <input type="number" class="form-control" placeholder= "Cantidad" name="distribucion[cajas_dis][]">
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="form-group">
+            <center style="margin-bottom: 25px;"><label >Notas</label></center>
+            <input type="text" class="form-control" placeholder= "Notas" name="distribucion[notas_dis][]">
+          </div>
+        </div>
+        <div class="col-md-1 tblprod3" >
+          <div class="form-group">
+            <br>
+            <a class="btn btn-primary" data-toggle="modal" id="btnadd3" href="#" style="background-color: #fdea08; border-color:#fdea08;margin-top: 29px;"><i class="glyphicon glyphicon-plus"></i></a>
+          </div>
+        </div>
+    </div>
       <div class="col-md-12">
         <center> <h3>Alcance: proceso de uso final</h3> </center>
       </div>
@@ -156,11 +182,42 @@
           </select>
         </div>
       </div>
-
       <div class="col-md-2">
+        <div class="form-group">
+          <center><label >Estrato</label></center>
+          <select class="form-control"name="pu_final[estrato_pu][]">
+            <option value="">Seleccione...</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-1">
         <div class="form-group">
           <center><label >Cantidad</label></center>
           <input type="text" class="form-control" placeholder= "Cantidad" name="pu_final[cantidad_pu][]">
+        </div>
+      </div>
+      <div class="col-md-1">
+        <div class="form-group">
+          <center><label >m²</label></center>
+          <input type="text" class="form-control" placeholder= "Cantidad" name="pu_final[metros_pu][]">
+        </div>
+      </div>
+      <div class="col-md-1">
+        <div class="form-group">
+          <center><label >KVA</label></center>
+          <input type="text" class="form-control" placeholder= "Cantidad" name="pu_final[kva_pu][]">
+        </div>
+      </div>
+      <div class="col-md-1">
+        <div class="form-group">
+          <center><label >Acomedidas</label></center>
+          <input type="number" class="form-control" placeholder= "Cantidad" name="pu_final[acomedidas_pu][]">
         </div>
       </div>
       <div class="col-md-1 tblprod4" >
