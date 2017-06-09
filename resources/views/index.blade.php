@@ -279,6 +279,7 @@
 <!-- AdminLTE for demo purposes -->
 <script src="{{url('dist/js/demo.js')}}"></script>
 <script src="{{url('plugins/jQuery/funciones.js')}}"></script>
+<script src="{{url('plugins/jQuery/jquery.steps.js')}}"></script>
 <script src="{{url('plugins/input-mask/jquery.inputmask.js')}}"></script>
 
 @yield('scripts')

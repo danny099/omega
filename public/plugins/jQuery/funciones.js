@@ -37,6 +37,83 @@
         document.getElementById('fin').value = resultado ;
           }
 
+          $(function() {
+              var count = 1;
+             $(document).on("click","#btnadd10",function( event ) {
+              count++;
+              $('#tblprod10').after(
+              '<div class="row" id="quitar50">'+' '+
+              '<div class="col-md-12">'+' '+
+                '<div class="col-md-3">'+' '+
+                  '<div class="form-group">'+' '+
+                    '<center><label >Descripción</label></center>'+' '+
+                    '<input type="text" class="form-control desc" value="Inspección  RETIE proceso de transformación"  readonly=”readonly” name="transformacion[descripcion][]">'+' '+
+                  '</div>'+' '+
+                '</div>'+' '+
+                '<div class="col-md-2">'+' '+
+                  '<div class="form-group">'+' '+
+                    '<center><label >Tipo</label></center>'+' '+
+                    '<select class="form-control tipo" name="transformacion[tipo][]">'+' '+
+                      '<option value="">Seleccione...</option>'+' '+
+                      '<option value="Tipo_poste">Tipo poste</option>'+' '+
+                      '<option value="Tipo_interior">Tipo interior</option>'+' '+
+                      '<option value="Tipo_exterior">Tipo exterior</option>'+' '+
+                    '</select>'+' '+
+                  '</div>'+' '+
+                '</div>'+' '+
+                '<div class="col-md-2">'+' '+
+                  '<div class="form-group">'+' '+
+                    '<center><label >Nivel de tencion (kv)</label></center>'+' '+
+                    '<select class="form-control" name="transformacion[nivel_tension][]">'+' '+
+                      '<option value="">Seleccione...</option>'+' '+
+                      '<option value="13,2">13,2</option>'+' '+
+                      '<option value="13,4">13,4</option>'+' '+
+                      '<option value="13,8">13,8</option>'+' '+
+                    '</select>'+' '+
+                  '</div>'+' '+
+                '</div>'+' '+
+                '<div class="col-md-1">'+' '+
+                  '<div class="form-group">'+' '+
+                    '<center><label >Capacidad</label></center>'+' '+
+                      '<input type="text" class="form-control capacidad" placeholder="Capacidad"   name="transformacion[capacidad][]">'+' '+
+                  '</div>'+' '+
+                '</div>'+' '+
+                '<div class="col-md-1">'+' '+
+                  '<div class="form-group">'+' '+
+                    '<center><label >Cantidad</label></center>'+' '+
+                    '<input type="text" class="form-control cantidad" id="cantidad" placeholder= "Cantidad" name="transformacion[cantidad][]">'+' '+
+                  '</div>'+' '+
+                '</div>'+' '+
+                '<div class="col-md-2">'+' '+
+                  '<div class="form-group">'+' '+
+                    '<center><label >refrigeración </label></center>'+' '+
+                    '<select class="form-control" name="transformacion[tipo_refrigeracion][]">'+' '+
+                      '<option value="">Seleccione...</option>'+' '+
+                      '<option value="Seco">Seco</option>'+' '+
+                      '<option value="Aceite">Aceite</option>'+' '+
+                    '</select>'+' '+
+                  '</div>'+' '+
+                '</div>'+' '+
+                '<div class="col-md-1 tblprod10" >'+' '+
+                  '<div class="form-group">'+' '+
+                    '<br>'+' '+
+                    '<a class="btn btn-primary delete50" data-toggle="modal" href="#" id="delete50" style="background-color: #fdea08; border-color:#fdea08"><i class="glyphicon glyphicon-minus"></i></a>'+' '+
+                  '</div>'+' '+
+                '</div>'+' '+
+                '</div>'+' '+
+              '</div>'
+            );
+                event.preventDefault();
+             });
+             $(document).on("click",".delete50",function( event ) {
+               $(this).closest("#quitar50").remove();
+                  return false;
+             });
+          });
+
+
+
+
 
     $(function() {
         var count = 1;
