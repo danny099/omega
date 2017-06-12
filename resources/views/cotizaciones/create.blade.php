@@ -422,8 +422,16 @@ $(function() {
     if (cantidad2 != '' && desc2!= '' && tipo2!='') {
 
       $('.tabla tr:last').after('<tr><td>'+nFilas+'</td><td>'+desc2+' '+tipo2+'</td><td>'+cantidad2+' km'+
-      '</td><td><input type="text" class="form-control" placeholder= "Valor" onkeypress="mascara(this,cpf)" name="valor_uni_dis" required=""></td><td><input type="text" class="form-control" placeholder= "Valor"  name="valor_multi_dis" required="" readonly ></td></tr>');
+      '</td><td><input type="text" class="form-control valor_uni_dis" placeholder= "Valor" onkeypress="mascara(this,cpf)" name="valor_uni_dis" required=""></td><td><input type="text" class="form-control valor_uni_dis" placeholder= "Valor"  name="valor_uni_dis" required="" readonly ></td></tr>');
         event.preventDefault();
+
+        $('.valor_uni_dis').keyup(function(){
+          var valor_uni_dis = $(this).val().replace(/,/g,"");
+          var resultado= valor_uni_dis;
+
+          $(this).parent().parent().find('.valor_uni_dis').val(addCommas(Math.round(resultado)));
+
+          });
     }
 
     var cantidad3 = $(".cantidad3").val().replace(/,/g,"");
@@ -435,8 +443,17 @@ $(function() {
     if (cantidad3 != '' && desc3!= '' && tipo3!='') {
 
       $('.tabla tr:last').after('<tr><td>'+nFilas+'</td><td>'+desc3+' '+tipo3+'</td><td>'+cantidad3+
-      '</td><td><input type="text" class="form-control" placeholder= "Valor" onkeypress="mascara(this,cpf)" name="valor_uni_pu" required=""></td><td><input type="text" class="form-control" placeholder= "Valor"  name="valor_multi_pu" required="" readonly ></td></tr>');
+      '</td><td><input type="text" class="form-control valor_uni_pu" placeholder= "Valor" onkeypress="mascara(this,cpf)" name="valor_uni_pu" required=""></td><td><input type="text" class="form-control valor_multi_pu" placeholder= "Valor"  name="valor_multi_pu" required="" readonly ></td></tr>');
         event.preventDefault();
+
+        $('.valor_uni_pu').keyup(function(){
+          var valor_uni_pu = $(this).val().replace(/,/g,"");
+          var cant3 = cantidad3;
+          var resultado= valor_uni_pu * cant3;
+
+          $(this).parent().parent().find('.valor_multi_pu').val(addCommas(Math.round(resultado)));
+
+          });
     }
 
    });
