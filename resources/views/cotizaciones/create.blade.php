@@ -310,7 +310,7 @@
       <div class="col-md-1 tblprod12" id="tblprod12" >
         <div class="form-group">
           <br>
-          <a class="btn btn-primary" data-toggle="modal" href="#" id="btnadd11" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-plus"></i></a>
+          <a class="btn btn-primary" data-toggle="modal" href="#" id="btnadd12" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-plus"></i></a>
         </div>
       </div>
     </div>
