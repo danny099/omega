@@ -69,6 +69,46 @@ class PdfController extends Controller
       return $pdf->stream($administrativa->codigo_proyecto);
     }
 
+
+
+    public function cotizacionPdf($id)
+    {
+
+
+      $cotizaciones = Cotizaciones::find($id);
+      // $admin  = $administrativas->id;
+
+
+      $departamentos = Departamento::findOrFail($cotizaciones->departamento_id);
+
+      if (!empty($cotizaciones->cliente_id)) {
+        $clientes = Cliente::findOrFail($cotizaciones->cliente_id);
+      }
+
+      if (!empty($cotizaciones->juridica_id)) {
+        $juridicas = Juridica::findOrFail($cotizaciones->juridica_id);
+
+      }
+
+      $municipios = Municipio::find($cotizaciones->municipio);
+
+
+
+      $transformaciones = Transformacion::where('transformacion.cotizacion_id', '=', $id)->get();
+      $distribuciones = Distribucion::where('distribucion.cotizacion_id', '=', $id)->get();
+      $pu_finales = Pu_final::where('pu_final.cotizacion_id', '=', $id)->get();
+
+
+
+
+  		// $pdf = \PDF::loadView('pdf.show-admin',compact('administrativa','clientes','juridicas','otrosis','distribuciones','transformaciones','pu_finales','departamentos','municipio','adicionales','consignaciones','cuenta_cobros','facturas'));
+  		// return $pdf->download('archivo.pdf');
+
+      $pdf = App::make('dompdf.wrapper');
+      $pdf->loadView('pdf.show-cotizacion',compact('administrativa','clientes','juridicas','otrosis','distribuciones','transformaciones','pu_finales','departamentos','municipios',));
+      return $pdf->stream('pdf-cotizacion');
+    }
+
     /**
      * Show the form for creating a new resource.
      *

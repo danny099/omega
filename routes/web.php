@@ -116,6 +116,7 @@ Route::group(['middleware' => 'auth'],function(){
 	/**************************************************************/
 	/**************************************************************/
 	Route::get('pdf/{id}','PdfController@viewPdf');
+	Route::get('pdf-cotizacion/{id}','PdfController@cotizacionPdf');
 
 	/**************************************************************/
 	// /**
