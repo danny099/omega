@@ -44,9 +44,9 @@ class Pu_finalController extends Controller
            if (!empty($input['pu_final']['descripcion_pu'][$i]) &&
                !empty($input['pu_final']['tipo_pu'][$i]) &&
                !empty($input['pu_final']['unidad_pu_final'][$i]) &&
-               !empty($input['pu_final']['cantidad_pu'][$i] &&
-               !empty($input['pu_final']['estrato_pu'][$i] &&
-               !empty($input['pu_final']['acometidas_pu'][$i] )) {
+               !empty($input['pu_final']['cantidad_pu'][$i]) &&
+               !empty($input['pu_final']['estrato_pu'][$i]) &&
+               !empty($input['pu_final']['acometidas_pu'][$i])) {
 
                  $datos3['descripcion'] = $input['pu_final']['descripcion_pu'][$i];
                  $datos3['tipo'] = $input['pu_final']['tipo_pu'][$i];
