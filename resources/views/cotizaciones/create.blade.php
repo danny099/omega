@@ -29,7 +29,7 @@
     @endif
   <!-- /.box-header -->
   <!-- form start -->
-  <form role="form" name="" action="" method="post" id="example-basic">
+  <form role="form" name="" action="{{ url('cotizaciones') }}" method="post" id="example-basic">
     {{ csrf_field() }}
     <h3>Paso 1</h3>
     <section>
@@ -175,6 +175,7 @@
         </div>
       </div>
     </div>
+    <div class="row">
       <div class="col-md-12"  style="margin-bottom: 10px;">
         <center> <h3>Alcance: proceso de distribución</h3> </center>
       </div>
@@ -232,13 +233,15 @@
             <input type="text" class="form-control" placeholder= "Notas" name="distribucion[notas_dis][]">
           </div>
         </div>
-        <div class="col-md-1 tblprod3" >
+        <div class="col-md-1 tblprod11" id="tblprod11" >
           <div class="form-group">
             <br>
-            <a class="btn btn-primary" data-toggle="modal" id="btnadd3" href="#" style="background-color: #fdea08; border-color:#fdea08;margin-top: 29px;"><i class="glyphicon glyphicon-plus"></i></a>
+            <a class="btn btn-primary" data-toggle="modal" id="btnadd11" href="#" style="background-color: #fdea08; border-color:#fdea08;margin-top: 29px;"><i class="glyphicon glyphicon-plus"></i></a>
           </div>
         </div>
     </div>
+  </div>
+    <div class="row">
       <div class="col-md-12">
         <center> <h3>Alcance: proceso de uso final</h3> </center>
       </div>
@@ -304,12 +307,13 @@
           <input type="number" class="form-control" placeholder= "Cantidad" name="pu_final[acomedidas_pu][]">
         </div>
       </div>
-      <div class="col-md-1 tblprod4" >
+      <div class="col-md-1 tblprod12" id="tblprod12" >
         <div class="form-group">
           <br>
-          <a class="btn btn-primary" data-toggle="modal" href="#" id="btnadd4" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-plus"></i></a>
+          <a class="btn btn-primary" data-toggle="modal" href="#" id="btnadd11" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-plus"></i></a>
         </div>
       </div>
+    </div>
     </div>
       <div class="col-md-12">
         <center> <h3>Observaciones de estado administrativo del proyecto</h3> </center>
@@ -318,6 +322,7 @@
         <textarea  rows="4" cols="196" name="observacion" required=""></textarea>
       </div>
     </div>
+
 </section>
   <h3>Paso 2</h3>
     <section>
@@ -335,7 +340,7 @@
        </tr>
 
      </table>
-
+     <button type="submit" data-target="" data-toggle="  " class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;">Agregar</button>
    </section>
   </form>
   </div>
@@ -382,7 +387,7 @@ $(function() {
     var count = 1;
    $(".sgte").on("click",function( event ) {
     count++;
-    var x= $("input[@name='transformacion[]'").val();
+    var x= $().val();
 
 
 

@@ -112,8 +112,167 @@
           });
 
 
+          $(function() {
+              var count = 1;
+             $(document).on("click","#btnadd11",function( event ) {
+              count++;
+              $('#tblprod11').after(
+                '<div class="row" id="quitar51">'+' '+
+                  '<div class="col-md-12">'+' '+
+                    '<div class="col-md-3">'+' '+
+                      '<div class="form-group">'+' '+
+                        '<center style="margin-bottom: 25px;"><label >Descripción</label></center>'+' '+
+                        '<select class="form-control desc2" name="distribucion[descripcion_dis][]" style="top:25px important!">'+' '+
+                          '<option value="">Seleccione...</option>'+' '+
+                          '<option value="Inspección RETIE proceso de distribución en MT">Inspección RETIE proceso de distribución en MT</option>'+' '+
+                          '<option value="Inspección RETIE proceso de distribución en BT">Inspección RETIE proceso de distribución en BT</option>'+' '+
+                        '</select>'+' '+
+                      '</div>'+' '+
+                    '</div>'+' '+
+                    '<div class="col-md-2">'+' '+
+                      '<div class="form-group">'+' '+
+                        '<center style="margin-bottom: 25px;"><label >Tipo</label></center>'+' '+
+                        '<select class="form-control tipo2" name="distribucion[tipo_dis][]" >'+' '+
+                          '<option value="">Seleccione...</option>'+' '+
+                          '<option value="Aérea">Tipo Aérea</option>'+' '+
+                          '<option value="Subterránea">Tipo subterránea</option>'+' '+
+                          '<option value="Aérea/subterránea">Aérea/subterránea</option>'+' '+
+                        '</select>'+' '+
+                      '</div>'+' '+
+                    '</div>'+' '+
+                    '<div class="col-md-1">'+' '+
+                      '<div class="form-group">'+' '+
+                        '<center><label >Nivel de tensión  </label></center>'+' '+
+                        '<input type="text" class="form-control" placeholder= "Longitud" name="distribucion[nivel_tension_dis][]">'+' '+
+                      '</div>'+' '+
+                    '</div>'+' '+
+
+                    '<div class="col-md-1">'+' '+
+                      '<div class="form-group">'+' '+
+                        '<center><label >longitud de red (km)</label></center>'+' '+
+                        '<input type="text" class="form-control cantidad2" placeholder= "Cantidad" name="distribucion[cantidad_dis][]">'+' '+
+                      '</div>'+' '+
+                    '</div>'+' '+
+                    '<div class="col-md-1">'+' '+
+                      '<div class="form-group">'+' '+
+                        '<center><label >apoyos o estructuras</label></center>'+' '+
+                        '<input type="number" class="form-control" placeholder= "Cantidad" name="distribucion[apoyos_dis][]">'+' '+
+                      '</div>'+' '+
+                    '</div>'+' '+
+                    '<div class="col-md-1">'+' '+
+                      '<div class="form-group">'+' '+
+                        '<center><label >cajas de inspección</label></center>'+' '+
+                        '<input type="number" class="form-control" placeholder= "Cantidad" name="distribucion[cajas_dis][]">'+' '+
+                      '</div>'+' '+
+                    '</div>'+' '+
+                    '<div class="col-md-2">'+' '+
+                      '<div class="form-group">'+' '+
+                        '<center style="margin-bottom: 25px;"><label >Notas</label></center>'+' '+
+                        '<input type="text" class="form-control" placeholder= "Notas" name="distribucion[notas_dis][]">'+' '+
+                      '</div>'+' '+
+                    '</div>'+' '+
+                    '<div class="col-md-1 tblprod11" >'+' '+
+                      '<div class="form-group">'+' '+
+                        '<br>'+' '+
+                        '<a class="btn btn-primary delete51" data-toggle="modal" id="delete51" href="#" style="background-color: #fdea08; border-color:#fdea08;margin-top: 29px;"><i class="glyphicon glyphicon-minus"></i></a>'+' '+
+                      '</div>'+' '+
+                    '</div>'+' '+
+                '</div>'+' '+
+              '</div>'
+            );
+                event.preventDefault();
+             });
+             $(document).on("click",".delete51",function( event ) {
+               $(this).closest("#quitar51").remove();
+                  return false;
+             });
+          });
 
 
+          $(function() {
+              var count = 1;
+             $(document).on("click","#btnadd12",function( event ) {
+              count++;
+              $('#tblprod12').after(
+                '<div class="row" id="quitar52">'+' '+
+                    '<div class="col-md-12">'+' '+
+                    '<div class="col-md-3">'+' '+
+                      '<div class="form-group">'+' '+
+                        '<center><label >Descripción</label></center>'+' '+
+                        '<select class="form-control desc3"name="pu_final[descripcion_pu][]">'+' '+
+                          '<option value="">Seleccione...</option>'+' '+
+                          '<option value="Inspección RETIE proceso uso final residencial">Inspección RETIE proceso uso final residencial</option>'+' '+
+                          '<option value="Inspección RETIE proceso uso final comercial">Inspección RETIE proceso uso final comercial</option>'+' '+
+                        '</select>'+' '+
+                      '</div>'+' '+
+                    '</div>'+' '+
+                    '<div class="col-md-2">'+' '+
+                      '<div class="form-group">'+' '+
+                        '<center><label >Tipo</label></center>'+' '+
+                        '<select class="form-control tipo3" name="pu_final[tipo_pu][]">'+' '+
+                          '<option value="">Seleccione...</option>'+' '+
+                          '<option value="Casa">Casa</option>'+' '+
+                          '<option value="Apartamentos">Apartamentos</option>'+' '+
+                          '<option value="Zona común">Zona común</option>'+' '+
+                          '<option value="Local comercial">Local comercial</option>'+' '+
+                          '<option value="Punto fijo">Punto fijo</option>'+' '+
+                        '</select>'+' '+
+                      '</div>'+' '+
+                    '</div>'+' '+
+                    '<div class="col-md-2">'+' '+
+                      '<div class="form-group">'+' '+
+                        '<center><label >Estrato</label></center>'+' '+
+                        '<select class="form-control"name="pu_final[estrato_pu][]">'+' '+
+                          '<option value="">Seleccione...</option>'+' '+
+                          '<option value="1">1</option>'+' '+
+                          '<option value="2">2</option>'+' '+
+                          '<option value="3">3</option>'+' '+
+                          '<option value="4">4</option>'+' '+
+                          '<option value="5">5</option>'+' '+
+                          '<option value="6">6</option>'+' '+
+                        '</select>'+' '+
+                      '</div>'+' '+
+                    '</div>'+' '+
+                    '<div class="col-md-1">'+' '+
+                      '<div class="form-group">'+' '+
+                        '<center><label >Cantidad</label></center>'+' '+
+                        '<input type="text" class="form-control cantidad3" placeholder= "Cantidad" name="pu_final[cantidad_pu][]">'+' '+
+                      '</div>'+' '+
+                    '</div>'+' '+
+                    '<div class="col-md-1">'+' '+
+                      '<div class="form-group">'+' '+
+                        '<center><label >m²</label></center>'+' '+
+                        '<input type="text" class="form-control" placeholder= "Cantidad" name="pu_final[metros_pu][]">'+' '+
+                      '</div>'+' '+
+                    '</div>'+' '+
+                    '<div class="col-md-1">'+' '+
+                      '<div class="form-group">'+' '+
+                        '<center><label >KVA</label></center>'+' '+
+                        '<input type="text" class="form-control" placeholder= "Cantidad" name="pu_final[kva_pu][]">'+' '+
+                      '</div>'+' '+
+                    '</div>'+' '+
+                    '<div class="col-md-1">'+' '+
+                      '<div class="form-group">'+' '+
+                        '<center><label >Acomedidas</label></center>'+' '+
+                        '<input type="number" class="form-control" placeholder= "Cantidad" name="pu_final[acomedidas_pu][]">'+' '+
+                      '</div>'+' '+
+                    '</div>'+' '+
+                    '<div class="col-md-1 tblprod12" >'+' '+
+                      '<div class="form-group">'+' '+
+                        '<br>'+' '+
+                        '<a class="btn btn-primary delete52" data-toggle="modal" href="#" id="delete52" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-minus"></i></a>'+' '+
+                      '</div>'+' '+
+                    '</div>'+' '+
+                  '</div>'+' '+
+                '</div>'
+            );
+                event.preventDefault();
+             });
+             $(document).on("click",".delete52",function( event ) {
+               $(this).closest("#quitar52").remove();
+                  return false;
+             });
+          });
 
     $(function() {
         var count = 1;
