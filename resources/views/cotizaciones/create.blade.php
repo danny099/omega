@@ -384,9 +384,7 @@ $(function() {
     count++;
     var x= $("input[@name='transformacion[]'").val();
 
-    for (var i = 0; i < x.length; i++) {
-      alert(x[i]);
-    }
+
 
     var cantidad = $(".cantidad").val().replace(/,/g,"");
     var desc = $(".desc").val().replace(/,/g,"");
