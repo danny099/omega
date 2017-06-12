@@ -422,14 +422,14 @@ $(function() {
     if (cantidad2 != '' && desc2!= '' && tipo2!='') {
 
       $('.tabla tr:last').after('<tr><td>'+nFilas+'</td><td>'+desc2+' '+tipo2+'</td><td>'+cantidad2+' km'+
-      '</td><td><input type="text" class="form-control valor_uni_dis" placeholder= "Valor" onkeypress="mascara(this,cpf)" name="valor_uni_dis" required=""></td><td><input type="text" class="form-control valor_uni_dis" placeholder= "Valor"  name="valor_uni_dis" required="" readonly ></td></tr>');
+      '</td><td><input type="text" class="form-control valor_uni_dis" placeholder= "Valor" onkeypress="mascara(this,cpf)" name="valor_uni_dis" required=""></td><td><input type="text" class="form-control valor_multi_dis" placeholder= "Valor"  name="valor_multi_dis" required="" readonly ></td></tr>');
         event.preventDefault();
 
         $('.valor_uni_dis').keyup(function(){
           var valor_uni_dis = $(this).val().replace(/,/g,"");
-          var resultado= valor_uni_dis;
+          var resultado2= valor_uni_dis;
 
-          $(this).parent().parent().find('.valor_uni_dis').val(addCommas(Math.round(resultado)));
+          $(this).parent().parent().find('.valor_multi_dis').val(addCommas(Math.round(resultado2)));
 
           });
     }
@@ -449,12 +449,21 @@ $(function() {
         $('.valor_uni_pu').keyup(function(){
           var valor_uni_pu = $(this).val().replace(/,/g,"");
           var cant3 = cantidad3;
-          var resultado= valor_uni_pu * cant3;
+          var resultado3= valor_uni_pu * cant3;
+          var dis = 0;
+          var trans = 0;
+          dis = $(this).parent().parent().parent().parent().parent().parent().find('.valor_multi_dis').val().replace(/,/g,"");
+          trans = $(this).parent().parent().parent().parent().parent().parent().find('.valor_multi').val().replace(/,/g,"");
+          var sub = parseFloat(dis)+parseFloat(trans)+parseFloat(resultado3)
+          alert(sub);
+          $(this).parent().parent().find('.valor_multi_pu').val(addCommas(Math.round(resultado3)));
 
-          $(this).parent().parent().find('.valor_multi_pu').val(addCommas(Math.round(resultado)));
+          $(this).parent().parent().parent().parent().parent().parent().find('.subtotal').text(addCommas(Math.round(sub)));
 
           });
     }
+    $('.tabla tr:last').after('<tr><td Colspan="3"></td><td><label>Subtotal</label></td><td><label class="subtotal">0</label></td></tr>');
+
 
    });
 
