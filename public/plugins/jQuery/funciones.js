@@ -42,7 +42,7 @@
              $(document).on("click","#btnadd10",function( event ) {
               count++;
               $('#tblprod10').after(
-              '<div class="row" id="quitar50">'+' '+
+              '<div class="row quitar50" id="quitar50">'+' '+
               '<div class="col-md-12">'+' '+
                 '<div class="col-md-3">'+' '+
                   '<div class="form-group">'+' '+
@@ -117,7 +117,7 @@
              $(document).on("click","#btnadd11",function( event ) {
               count++;
               $('#tblprod11').after(
-                '<div class="row" id="quitar51">'+' '+
+                '<div class="row quitar51" id="quitar51">'+' '+
                   '<div class="col-md-12">'+' '+
                     '<div class="col-md-3">'+' '+
                       '<div class="form-group">'+' '+
@@ -194,7 +194,7 @@
              $(document).on("click","#btnadd12",function( event ) {
               count++;
               $('#tblprod12').after(
-                '<div class="row" id="quitar52">'+' '+
+                '<div class="row quitar52" id="quitar52">'+' '+
                     '<div class="col-md-12">'+' '+
                     '<div class="col-md-3">'+' '+
                       '<div class="form-group">'+' '+

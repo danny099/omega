@@ -115,7 +115,7 @@
       <center> <h3>Alcance: proceso de transformación</h3> </center>
     </div>
     <div class="box-body">
-      <div class="row">
+      <div class="row quitar50" id="quitar50">
       <div class="col-md-12">
         <div class="col-md-3">
           <div class="form-group">
@@ -175,7 +175,7 @@
         </div>
       </div>
     </div>
-    <div class="row">
+    <div class="row quitar51" id="quitar51">
       <div class="col-md-12"  style="margin-bottom: 10px;">
         <center> <h3>Alcance: proceso de distribución</h3> </center>
       </div>
@@ -241,7 +241,7 @@
         </div>
     </div>
   </div>
-    <div class="row">
+    <div class="row quitar52" id="quitar52">
       <div class="col-md-12">
         <center> <h3>Alcance: proceso de uso final</h3> </center>
       </div>
@@ -391,78 +391,98 @@ $(function() {
 
 
 
-    var cantidad = $(".cantidad").val().replace(/,/g,"");
-    var desc = $(".desc").val().replace(/,/g,"");
-    var tipo = $(".tipo").val().replace(/_/g," ");
-    var capacidad = $(".capacidad").val().replace(/,/g," ");
-    var nFilas = $(".tabla tr").length - 1;
+    $(".quitar50").each(function(i){
 
-    if (cantidad != '' && desc!= '' && capacidad!='' && tipo!='') {
+          var cantidad =$(this).find(".cantidad").val();
+          var desc =$(this).find(".desc").val();
+          var tipo =$(this).find(".tipo").val();
+          var capacidad =$(this).find(".capacidad").val();
+          var nFilas = $(".tabla tr").length - 1;
 
-      $('.tabla tr:last').after('<tr><td>'+nFilas+'</td><td>'+desc+' '+tipo+' '+capacidad+'</td><td>'+cantidad+
-      '</td><td><input type="text" class="form-control valor_uni" placeholder= "Valor" onkeypress="mascara(this,cpf)" name="valor_uni" required=""></td><td><input type="text" class="form-control valor_multi" placeholder= "Valor"  name="valor_multi" required="" readonly ></td></tr>');
-        event.preventDefault();
+          if (cantidad != '' && desc!= '' && capacidad!='' && tipo!='') {
 
-        $('.valor_uni').keyup(function(){
-          var valor_uni = $(this).val().replace(/,/g,"");
-          var cant = cantidad;
-          var resultado= valor_uni * cant;
+            $('.tabla tr:last').after('<tr><td>'+nFilas+'</td><td>'+desc+' '+tipo+' '+capacidad+'</td><td>'+cantidad+
+            '</td><td><input type="text" class="form-control valor_uni" placeholder= "Valor" onkeypress="mascara(this,cpf)" name="valores[valor_uni][]" required=""></td><td><input type="text" class="form-control valor_multi" placeholder= "Valor"  name="valores[valor_multi][]" required="" readonly ></td></tr>');
+              event.preventDefault();
+              if (true) {
 
-          $(this).parent().parent().find('.valor_multi').val(addCommas(Math.round(resultado)));
+              }
+              $('.valor_uni').keyup(function(){
+
+
+                var valor_uni = $(this).val().replace(/,/g,"");
+                var cantidad =$(this).parent().parent().parent().parent().parent().parent().find(".cantidad").val();
+                var cant = cantidad;
+                alert(cant);
+                var resultado= valor_uni * cant;
+
+                $(this).parent().parent().find('.valor_multi').val(addCommas(Math.round(resultado)));
+
+                });
+          }
+
+      });
+
+
+      $(".quitar51").each(function(){
+
+            var cantidad2 =$(this).find(".cantidad2").val();
+            var desc2 =$(this).find(".desc2").val();
+            var tipo2 =$(this).find(".tipo2").val();
+            var nFilas = $(".tabla tr").length - 1;
+
+            if (cantidad2 != '' && desc2!= '' && tipo2!='') {
+
+              $('.tabla tr:last').after('<tr><td>'+nFilas+'</td><td>'+desc2+' '+tipo2+'</td><td>'+cantidad2+' km'+
+              '</td><td><input type="text" class="form-control valor_uni_dis" placeholder= "Valor" onkeypress="mascara(this,cpf)" name="valor_uni_dis" required=""></td><td><input type="text" class="form-control valor_multi_dis" placeholder= "Valor"  name="valor_multi_dis" required="" readonly ></td></tr>');
+                event.preventDefault();
+
+                $('.valor_uni_dis').keyup(function(){
+                  var valor_uni_dis = $(this).val().replace(/,/g,"");
+                  var resultado2= valor_uni_dis;
+
+                  $(this).parent().parent().find('.valor_multi_dis').val(addCommas(Math.round(resultado2)));
+
+                  });
+            }
+
+        });
+
+        $(".quitar52").each(function(){
+
+              var cantidad3 =$(this).find(".cantidad3").val();
+              var desc3 =$(this).find(".desc3").val();
+              var tipo3 =$(this).find(".tipo3").val();
+              var nFilas = $(".tabla tr").length - 1;
+
+              if (cantidad3 != '' && desc3!= '' && tipo3!='') {
+
+                $('.tabla tr:last').after('<tr><td>'+nFilas+'</td><td>'+desc3+' '+tipo3+'</td><td>'+cantidad3+
+                '</td><td><input type="text" class="form-control valor_uni_pu" placeholder= "Valor" onkeypress="mascara(this,cpf)" name="valor_uni_pu" required=""></td><td><input type="text" class="form-control valor_multi_pu" placeholder= "Valor"  name="valor_multi_pu" required="" readonly ></td></tr>');
+                  event.preventDefault();
+
+                  $('.valor_uni_pu').keyup(function(){
+                    var valor_uni_pu = $(this).val().replace(/,/g,"");
+                    var cant3 = cantidad3;
+                    var resultado3= valor_uni_pu * cant3;
+                    var dis = 0;
+                    var trans = 0;
+                    dis = $(this).parent().parent().parent().parent().parent().parent().find('.valor_multi_dis').val().replace(/,/g,"");
+                    trans = $(this).parent().parent().parent().parent().parent().parent().find('.valor_multi').val().replace(/,/g,"");
+                    var sub = parseFloat(dis)+parseFloat(trans)+parseFloat(resultado3)
+                    $(this).parent().parent().find('.valor_multi_pu').val(addCommas(Math.round(resultado3)));
+                    $(this).parent().parent().parent().parent().parent().parent().find('.subtotal').text(addCommas(Math.round(sub)));
+
+                    });
+              }
+
 
           });
-    }
-
-    var cantidad2 = $(".cantidad2").val().replace(/,/g,"");
-    var desc2 = $(".desc2").val().replace(/,/g,"");
-    var tipo2 = $(".tipo2").val().replace(/_/g," ");
-    var nFilas = $(".tabla tr").length - 1;
 
 
-    if (cantidad2 != '' && desc2!= '' && tipo2!='') {
-
-      $('.tabla tr:last').after('<tr><td>'+nFilas+'</td><td>'+desc2+' '+tipo2+'</td><td>'+cantidad2+' km'+
-      '</td><td><input type="text" class="form-control valor_uni_dis" placeholder= "Valor" onkeypress="mascara(this,cpf)" name="valor_uni_dis" required=""></td><td><input type="text" class="form-control valor_multi_dis" placeholder= "Valor"  name="valor_multi_dis" required="" readonly ></td></tr>');
-        event.preventDefault();
-
-        $('.valor_uni_dis').keyup(function(){
-          var valor_uni_dis = $(this).val().replace(/,/g,"");
-          var resultado2= valor_uni_dis;
-
-          $(this).parent().parent().find('.valor_multi_dis').val(addCommas(Math.round(resultado2)));
-
-          });
-    }
-
-    var cantidad3 = $(".cantidad3").val().replace(/,/g,"");
-    var desc3 = $(".desc3").val().replace(/,/g,"");
-    var tipo3 = $(".tipo3").val().replace(/_/g," ");
-    var nFilas = $(".tabla tr").length - 1;
-
-
-    if (cantidad3 != '' && desc3!= '' && tipo3!='') {
-
-      $('.tabla tr:last').after('<tr><td>'+nFilas+'</td><td>'+desc3+' '+tipo3+'</td><td>'+cantidad3+
-      '</td><td><input type="text" class="form-control valor_uni_pu" placeholder= "Valor" onkeypress="mascara(this,cpf)" name="valor_uni_pu" required=""></td><td><input type="text" class="form-control valor_multi_pu" placeholder= "Valor"  name="valor_multi_pu" required="" readonly ></td></tr>');
-        event.preventDefault();
-
-        $('.valor_uni_pu').keyup(function(){
-          var valor_uni_pu = $(this).val().replace(/,/g,"");
-          var cant3 = cantidad3;
-          var resultado3= valor_uni_pu * cant3;
-          var dis = 0;
-          var trans = 0;
-          dis = $(this).parent().parent().parent().parent().parent().parent().find('.valor_multi_dis').val().replace(/,/g,"");
-          trans = $(this).parent().parent().parent().parent().parent().parent().find('.valor_multi').val().replace(/,/g,"");
-          var sub = parseFloat(dis)+parseFloat(trans)+parseFloat(resultado3)
-          alert(sub);
-          $(this).parent().parent().find('.valor_multi_pu').val(addCommas(Math.round(resultado3)));
-
-          $(this).parent().parent().parent().parent().parent().parent().find('.subtotal').text(addCommas(Math.round(sub)));
-
-          });
-    }
     $('.tabla tr:last').after('<tr><td Colspan="3"></td><td><label>Subtotal</label></td><td><label class="subtotal">0</label></td></tr>');
+    $('.tabla tr:last').after('<tr><td Colspan="3"></td><td><label>IVA</label></td><td><label class="iva">0</label></td></tr>');
+    $('.tabla tr:last').after('<tr><td Colspan="3"></td><td><label>Total</label></td><td><label class="total">0</label></td></tr>');
 
 
    });
