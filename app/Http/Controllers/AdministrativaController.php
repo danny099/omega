@@ -125,7 +125,7 @@ class AdministrativaController extends Controller
          $lastId_admin = $admins->last()->id;//funcion que consigue capturar el ultimo registro y sacar el id de este mismo
 
          $registro = Administrativa::findOrFail($lastId_admin);
-         $registro->saldo = $registro->valor_contrato_final - $registro->pagado;
+        //  $registro->saldo = $registro->valor_contrato_final - $registro->pagado;
 
          //  mensajes de confirmacion enviados a la vista
          Session::flash('message', 'Contrato creado!');
@@ -145,19 +145,6 @@ class AdministrativaController extends Controller
        Observacion::create($obs);
       //  codigo para insertar los otrosi que vienen desde un arreglo y recorrerlo para hacer el create
 
-
-
-        // for ($f=0; $f<count($input['adicional']['detalle']); $f++) {
-        //
-        //     if (!empty($input['adicional']['valor'][$f]) && !empty($input['adicional']['detalle'][$f])){
-        //
-        //           $datos4['valor'] = $input['adicional']['valor'][$f];
-        //           $datos4['detalle'] = $input['adicional']['detalle'][$f];
-        //           $datos4['administrativa_id'] = $lastId_admin;
-        //
-        //           Valor_adicional::create($datos4);
-        //     }
-        // }
         for ($a=0; $a<count($input['transformacion']['descripcion']); $a++){
 
               if (!empty($input['transformacion']['descripcion'][$a]) &&

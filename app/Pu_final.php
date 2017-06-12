@@ -12,7 +12,7 @@ class Pu_final extends Model implements AuditableContract
 
   protected $table = 'pu_final';
 
-  protected $fillable = ['id','descripcion','tipo','unidad','cantidad','estrato','acometidas','administrativa_id'];
+  protected $fillable = ['id','descripcion','tipo','estrato','unidad','cantidad','metros','kva','acometidas','administrativa_id','cotizacion_id'];
 
   public $timestamps = false;
 

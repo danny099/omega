@@ -3,12 +3,16 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+// use OwenIt\Auditing\Auditable;
+// use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
 
 class Cotizacion extends Model
 {
+  // use Auditable;
+
   protected $table = 'cotizacion';
 
-  protected $fillable = ['id','codigo','cliente_id','juridica_id','nombre_proyecto','direccion','municipio','departamento_id'];
+  protected $fillable = ['id','dirigido','codigo','cliente_id','juridica_id','nombre','municipio','departamento_id'];
 
   public $timestamps = false;
 
@@ -40,10 +44,9 @@ class Cotizacion extends Model
   public function pu_final(){
     return $this->belongsTo('App\Pu_final');
   }
-  
+
   public function departamento(){
     return $this->belongsTo('App\Departamento');
   }
-
 
 }

@@ -12,7 +12,7 @@ class Transformacion extends Model implements AuditableContract
 
   protected $table = 'transformacion';
 
-  protected $fillable = ['id','descripcion','tipo','capacidad','unidad','cantidad','potencia','tipo_refrigeracion','administrativa_id'];
+  protected $fillable = ['id','descripcion','tipo','nivel_tension','unidad','cantidad','tipo_refrigeracion','administrativa_id','cotizacion_id'];
 
   public $timestamps = false;
 

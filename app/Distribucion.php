@@ -12,7 +12,7 @@ class Distribucion extends Model implements AuditableContract
 
   protected $table = 'distribucion';
 
-  protected $fillable = ['id','descripcion','tipo','unidad','cantidad','apoyos','cajas','notas','administrativa_id'];
+  protected $fillable = ['id','descripcion','tipo','nivel_tension','unidad','cantidad','apoyos','cajas','notas','administrativa_id','cotizacion_id'];
 
   public $timestamps = false;
 
