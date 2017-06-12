@@ -37,7 +37,7 @@
       <div class="col-md-12">
         <div class="col-md-3">
           <label>Dirigido a :</label>
-          <select name="pu_final[dirigido][]" style="width:100%">
+          <select name="dirigido" style="width:100%">
             <option value="">Seleccione...</option>
             <option value="Señor">Señor</option>
             <option value="Señora">Señora</option>
