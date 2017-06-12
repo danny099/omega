@@ -24,30 +24,29 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                   <tr>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
+                    <th>Codigo</th>
+                    <th>Nombre</th>
+                    <th>Acciones</th>
                   </tr>
                 </thead>
                 <tbody>
-
+                    @foreach($cotizaciones as $cotizacion)
                     <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
+                    <td>{{ $cotizacion->codigo }}</td>
+                    <td>{{ $cotizacion->nombre }}</td>
 
+                    <td>
+                      <a href="{{ route('cotizaciones.edit', $cotizacion->id) }}"><i class="glyphicon glyphicon-pencil"></i></a>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <a href="{{ url('pdf-cotizacion') }}/{{ $cotizacion->id }}" data-toggle="model" data-target=""><i class="glyphicon glyphicon-eye-open" style="color: #33579A"></i></a>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <a href="{{ url('delete$cotizaciones') }}/{{ $cotizacion->id }}" onClick="javascript: return confirm('Esta seguro de eliminar registro?');"><i class="glyphicon glyphicon-minus-sign"></i></a>
                     </td>
 
 
                     </tr>
 
-
+                    @endforeach
                 </tbody>
               </table>
             </div>
