@@ -76,7 +76,7 @@ class PdfController extends Controller
     {
 
 
-      $cotizaciones = Cotizaciones::find($id);
+      $cotizaciones = Cotizacion::find($id);
       // $admin  = $administrativas->id;
 
 
