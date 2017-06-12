@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\Administrativa;
 use App\Cliente;
-use App\Cotizaciones;
+use App\Cotizacion;
 use App\Juridica;
 use App\Otrosi;
 use App\Distribucion;
