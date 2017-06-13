@@ -15,6 +15,7 @@ use App\Consignacion;
 use App\Cuenta_cobro;
 use App\Factura;
 use App\Cotizacion;
+use App\Valorcot;
 use App\Valor_adicional;
 use App\Observacion;
 use Illuminate\Http\Request;
@@ -43,6 +44,23 @@ class CotizacionController extends Controller
          $clientes = Cliente::all();
          $juridicas = Juridica::all();
          $departamentos = Departamento::all();
+      //  for ($i=65; $i <90 ; $i++) { // esto busca los caracteres especiales para poder encontrar las letras del abecedario
+      //    $letra = "a";
+      //    echo chr($i);
+      //   //  echo $letra;
+      //  }
+      //  die();
+
+        //  $cantidad = Cotizacion::count();
+        //  if ($cantidad == 0) {
+        //    $codigo = "A-002";
+        //  }else {
+        //    $cod = Cotizacion::max('codigo');
+         //
+        //  }
+         //
+        //  dd($cod);
+        //  die();
          return view('cotizaciones.create',compact('clientes','juridicas','departamentos'));
      }
 
@@ -56,7 +74,6 @@ class CotizacionController extends Controller
      {
          $input = $request->all();
 
-
          $cotizacion['dirigido'] = $request->dirigido;
          $cotizacion['codigo'] = '0001';
          $cotizacion['cliente_id'] = $request->cliente_id;
@@ -64,6 +81,10 @@ class CotizacionController extends Controller
          $cotizacion['nombre'] = $request->nombre;
          $cotizacion['municipio'] = $request->municipio;
          $cotizacion['departamento_id'] = $request->departamento;
+         $cotizacion['subtotal'] = $request->subtotal;
+         $cotizacion['iva'] = $request->iva;
+         $cotizacion['total'] = $request->total;
+         $cotizacion['observaciones'] = $request->observacion;
 
          Cotizacion::create($cotizacion);
          $cotiza = Cotizacion::all();
@@ -87,11 +108,20 @@ class CotizacionController extends Controller
                      $datos1['tipo'] = $input['transformacion']['tipo'][$a];
                      $datos1['nivel_tension'] = $input['transformacion']['nivel_tension'][$a];
                      $datos1['unidad'] = 'Und';
+                     $datos1['capacidad'] = $input['transformacion']['capacidad'][$a];
                      $datos1['cantidad'] = $input['transformacion']['cantidad'][$a];
                      $datos1['tipo_refrigeracion'] = $input['transformacion']['tipo_refrigeracion'][$a];
                      $datos1['cotizacion_id'] = $lastId_cotiza;
 
+                     $texto['detalles'] = $datos1['descripcion'].' '.$datos1['tipo'].' '. $datos1['cantidad'].' '.$datos1['capacidad'];
+                     $texto['cantidad'] = $datos1['cantidad'];
+                     $texto['valor_uni'] = $input['valores']['valor_uni'][$a];
+                     $texto['valor_total'] = $input['valores']['valor_multi'][$a];
+                     $texto['cotizacion_id'] = $lastId_cotiza;
+
+                     Valorcot::create($texto);
                      Transformacion::create($datos1);
+
                }
          }
 
@@ -112,9 +142,15 @@ class CotizacionController extends Controller
                    $datos2['apoyos'] = $input['distribucion']['apoyos_dis'][$x];
                    $datos2['cajas'] = $input['distribucion']['cajas_dis'][$x];
                    $datos2['notas'] = $input['distribucion']['notas_dis'][$x];
-
                    $datos2['cotizacion_id'] = $lastId_cotiza;
 
+                   $texto['detalles'] = $datos2['descripcion'].' '.$datos2['tipo'].' '. $datos2['cantidad'];
+                   $texto['cantidad'] = $datos2['cantidad'];
+                   $texto['valor_uni'] = $input['valores']['valor_uni'][$x];
+                   $texto['valor_total'] = $input['valores']['valor_multi'][$x];
+                   $texto['cotizacion_id'] = $lastId_cotiza;
+
+                   Valorcot::create($texto);
                    Distribucion::create($datos2);
              }
          }
@@ -136,8 +172,15 @@ class CotizacionController extends Controller
                    $datos3['metros'] = $input['pu_final']['metros_pu'][$i];
                    $datos3['kva'] = $input['pu_final']['kva_pu'][$i];
                    $datos3['acometidas'] = $input['pu_final']['acomedidas_pu'][$i];
-
                    $datos3['cotizacion_id'] = $lastId_cotiza;
+
+                   $texto['detalles'] = $datos3['descripcion'].' '.$datos3['tipo'].' '. $datos3['cantidad'];
+                   $texto['cantidad'] = $datos3['cantidad'];
+                   $texto['valor_uni'] = $input['valores']['valor_uni'][$i];
+                   $texto['valor_total'] = $input['valores']['valor_multi'][$i];
+                   $texto['cotizacion_id'] = $lastId_cotiza;
+
+                   Valorcot::create($texto);
 
                    Pu_final::create($datos3);
 

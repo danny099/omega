@@ -12,7 +12,7 @@ class Cotizacion extends Model
 
   protected $table = 'cotizacion';
 
-  protected $fillable = ['id','dirigido','codigo','cliente_id','juridica_id','nombre','municipio','departamento_id'];
+  protected $fillable = ['id','dirigido','codigo','cliente_id','juridica_id','nombre','municipio','subtotal','iva','total','observaciones','departamento_id'];
 
   public $timestamps = false;
 
@@ -27,6 +27,10 @@ class Cotizacion extends Model
 
   public function cliente(){
     return $this->belongsTo('App\Cliente');
+  }
+
+  public function valorcot(){
+    return $this->belongsTo('App\Valorcot');
   }
 
   public function juridica(){

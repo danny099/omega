@@ -48,9 +48,6 @@
             <option value="Arquitecta">Arquitecta</option>
           </select>
         </div>
-
-      </div>
-      <div class="col-md-12" style="margin-top:20px; margin-bottom:20px">
         <div class="col-md-3">
           <label>Tipo de régimen</label>
           <select class="" name="tipo_regimen" id="cliente" style="width: 100%" required="">
@@ -78,38 +75,29 @@
           </select>
         </div>
       </div>
-      <div class="col-md-12">
-        <div class="col-md-1">
-          <label>Objeto:</label>
+
+      <div class="col-md-12" style="margin-top:20px; margin-bottom:20px">
+        <div class="col-md-3">
+          <label>Nombre del proyecto:</label>
+          <input type="text" class="form-control" placeholder="Ingrese nombre" name="nombre" required="Ingrese nombre del proyecto">
         </div>
-        <div class="col-md-11 form-group">
-          <div class="col-md-12 form-group">
-          <p> Este Documento Constituye la Oferta Tecnica y Economica para la prestacion de servicios de inspectoria RETIE a las instalaciones electricas en inspección RETIE proyecto
-          </div>
-            <div class="col-md-4">
-              <input type="text" class="form-control" placeholder="Ingrese nombre" name="nombre" required="Ingrese nombre del proyecto">
-            </div>
-            <div class="col-md-2">
-                ubicado en el Municipio de
-            </div>
-            <div class="col-md-2">
-              <select class="form-control" name="municipio" id="municipio" required="">
-                <option value=""></option>
-              </select>
-            </div>
-            <div class="col-md-2">
-              departamento del
-            </div>
-            <div class="col-md-2">
-              <select class="form-control" name="departamento" id="departamento" required="">
-                @foreach($departamentos as $departamento)
-                <option value="{{ $departamento->id }}">{{$departamento->nombre}}</option>
-                @endforeach
-              </select>
-            </div>
-          </p>
+        <div class="col-md-3">
+          <label>Departamento</label>
+
+          <select class="form-control" name="departamento" id="departamento" required="">
+            @foreach($departamentos as $departamento)
+            <option value="{{ $departamento->id }}">{{$departamento->nombre}}</option>
+            @endforeach
+          </select>
+        </div>
+        <div class="col-md-3"id="natural">
+          <label >Municipio</label>
+          <select class="form-control" name="municipio" id="municipio" required="">
+            <option value=""></option>
+          </select>
         </div>
       </div>
+
 
 
       <center> <h3>Alcance: proceso de transformación</h3> </center>
@@ -401,7 +389,7 @@ $(function() {
 
           if (cantidad != '' && desc!= '' && capacidad!='' && tipo!='') {
 
-            $('.tabla tr:last').after('<tr><td>'+nFilas+'</td><td>'+desc+' '+tipo+' '+capacidad+'</td><td>'+cantidad+
+            $('.tabla tr:last').after('<tr><td>'+nFilas+'</td><td>'+desc+' '+tipo+' '+capacidad+'</td><td class="cant">'+cantidad+
             '</td><td><input type="text" class="form-control valor_uni" placeholder= "Valor" onkeypress="mascara(this,cpf)" name="valores[valor_uni][]" required=""></td><td><input type="text" class="form-control valor_multi" placeholder= "Valor"  name="valores[valor_multi][]" required="" readonly ></td></tr>');
               event.preventDefault();
               if (true) {
@@ -409,12 +397,9 @@ $(function() {
               }
               $('.valor_uni').keyup(function(){
 
-
                 var valor_uni = $(this).val().replace(/,/g,"");
-                var cantidad =$(this).parent().parent().parent().parent().parent().parent().find(".cantidad").val();
-                var cant = cantidad;
-                alert(cant);
-                var resultado= valor_uni * cant;
+                var cantidad = $(this).parent().parent().find(".cant").text();
+                var resultado= valor_uni * cantidad;
 
                 $(this).parent().parent().find('.valor_multi').val(addCommas(Math.round(resultado)));
 
@@ -433,7 +418,7 @@ $(function() {
 
             if (cantidad2 != '' && desc2!= '' && tipo2!='') {
 
-              $('.tabla tr:last').after('<tr><td>'+nFilas+'</td><td>'+desc2+' '+tipo2+'</td><td>'+cantidad2+' km'+
+              $('.tabla tr:last').after('<tr><td>'+nFilas+'</td><td name="detalles2">'+desc2+' '+tipo2+'</td><td>'+cantidad2+' km'+
               '</td><td><input type="text" class="form-control valor_uni_dis" placeholder= "Valor" onkeypress="mascara(this,cpf)" name="valor_uni_dis" required=""></td><td><input type="text" class="form-control valor_multi_dis" placeholder= "Valor"  name="valor_multi_dis" required="" readonly ></td></tr>');
                 event.preventDefault();
 
@@ -457,21 +442,20 @@ $(function() {
 
               if (cantidad3 != '' && desc3!= '' && tipo3!='') {
 
-                $('.tabla tr:last').after('<tr><td>'+nFilas+'</td><td>'+desc3+' '+tipo3+'</td><td>'+cantidad3+
+                $('.tabla tr:last').after('<tr><td>'+nFilas+'</td><td>'+desc3+' '+tipo3+'</td><td class="cant3">'+cantidad3+
                 '</td><td><input type="text" class="form-control valor_uni_pu" placeholder= "Valor" onkeypress="mascara(this,cpf)" name="valor_uni_pu" required=""></td><td><input type="text" class="form-control valor_multi_pu" placeholder= "Valor"  name="valor_multi_pu" required="" readonly ></td></tr>');
                   event.preventDefault();
 
                   $('.valor_uni_pu').keyup(function(){
                     var valor_uni_pu = $(this).val().replace(/,/g,"");
-                    var cant3 = cantidad3;
-                    var resultado3= valor_uni_pu * cant3;
-                    var dis = 0;
-                    var trans = 0;
+                    var cantidad3 = $(this).parent().parent().find(".cant3").text();
+                    var resultado3= valor_uni_pu * cantidad3;
                     dis = $(this).parent().parent().parent().parent().parent().parent().find('.valor_multi_dis').val().replace(/,/g,"");
                     trans = $(this).parent().parent().parent().parent().parent().parent().find('.valor_multi').val().replace(/,/g,"");
                     var sub = parseFloat(dis)+parseFloat(trans)+parseFloat(resultado3)
                     $(this).parent().parent().find('.valor_multi_pu').val(addCommas(Math.round(resultado3)));
                     $(this).parent().parent().parent().parent().parent().parent().find('.subtotal').text(addCommas(Math.round(sub)));
+                    $(this).parent().parent().parent().parent().parent().parent().find('.subtotal').val(addCommas(Math.round(sub)));
 
                     });
               }
@@ -480,9 +464,9 @@ $(function() {
           });
 
 
-    $('.tabla tr:last').after('<tr><td Colspan="3"></td><td><label>Subtotal</label></td><td><label class="subtotal">0</label></td></tr>');
-    $('.tabla tr:last').after('<tr><td Colspan="3"></td><td><label>IVA</label></td><td><label class="iva">0</label></td></tr>');
-    $('.tabla tr:last').after('<tr><td Colspan="3"></td><td><label>Total</label></td><td><label class="total">0</label></td></tr>');
+    $('.tabla tr:last').after('<tr><td Colspan="3"></td><td><label>Subtotal</label></td><td><label class="subtotal">0</label><input type="hidden" class="form-control subtotal" placeholder= "Valor" value="0"  name="subtotal"  required="" readonly ></td></tr>');
+    $('.tabla tr:last').after('<tr><td Colspan="3"></td><td><label>IVA</label></td><td><label class="iva">0</label><input type="hidden" class="form-control iva" placeholder= "Valor"  name="iva" value="0"  required="" readonly ></td></tr>');
+    $('.tabla tr:last').after('<tr><td Colspan="3"></td><td><label>Total</label></td><td><label class="total">0</label><input type="hidden" class="form-control total" placeholder= "Valor" value="0" name="total"  required="" readonly ></td></tr>');
 
 
    });
