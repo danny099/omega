@@ -30,8 +30,11 @@
     @endif
   <!-- /.box-header -->
   <!-- form start -->
-  <form role="form" name="" action="{{ url('cotizaciones') }}" method="post" id="example-basic">
+  <form role="form" name="" action="{{ url('cotizaciones') }}" method="post" id="example-form">
     {{ csrf_field() }}
+    <div class="">
+
+
     <h3>Paso 1</h3>
     <section>
     <div class="box-header with-border">
@@ -331,6 +334,7 @@
      </table>
      <button type="submit" data-target="" data-toggle="  " class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;">Agregar</button>
    </section>
+   </div>
   </form>
   </div>
 
@@ -374,6 +378,11 @@ function addCommas(nStr){
 
 $(function() {
     var count = 1;
+    $(".sgte").on("click",function( event ) {
+      $(this).closest("#quitar50").remove();
+         return false;
+    });
+
    $(".sgte").on("click",function( event ) {
     count++;
     var x= $().val();
@@ -452,9 +461,7 @@ $(function() {
                         var subtotal=  parseFloat(valor_multi_dis)+parseFloat(valor_multi)+parseFloat(valor_multi_pu);
                         var iva = subtotal*0.19;
                         var total = subtotal;
-                        alert(subtotal);
-                        alert(iva);
-                        alert(total);
+
                         $(this).parent().parent().parent().parent().parent().parent().find('.subtotal').text(addCommas(Math.round(subtotal)));
                         $(this).parent().parent().parent().parent().parent().parent().find('.subtotal').val(addCommas(Math.round(subtotal)));
                         $(this).parent().parent().parent().parent().parent().parent().find('.iva').text(addCommas(Math.round(iva)));
@@ -513,8 +520,8 @@ $(function() {
     $('.tabla tr:last').after('<tr><td Colspan="3"></td><td><label>IVA</label></td><td><label class="iva">0</label><input type="hidden" class="form-control iva" placeholder= "Valor"  name="iva" value="0"  required="" readonly ></td></tr>');
     $('.tabla tr:last').after('<tr><td Colspan="3"></td><td><label>Total</label></td><td><label class="total">0</label><input type="hidden" class="form-control total" placeholder= "Valor" value="0" name="total"  required="" readonly ></td></tr>');
     $('.tabla tr:last').after('<input type="hidden" class="form-control valor_multi"  value="0"  >');
-    $('.tabla tr:last').after('<input type="hidden" class="form-control total valor_multi_dis"  value="0"  >');
-    $('.tabla tr:last').after('<input type="hidden" class="form-control total valor_multi_pu"  value="0"  >');
+    $('.tabla tr:last').after('<input type="hidden" class="form-control  valor_multi_dis"  value="0"  >');
+    $('.tabla tr:last').after('<input type="hidden" class="form-control  valor_multi_pu"  value="0"  >');
 
 
    });
@@ -570,11 +577,14 @@ $(document).on('change','#departamento',function(){
 });
 });
 
-$("#example-basic").steps({
+var form = $("#example-form");
+
+form.children("div").steps({
     headerTag: "h3",
     bodyTag: "section",
     transitionEffect: "slideLeft",
-    autoFocus: true
+
+
 });
 </script>
 

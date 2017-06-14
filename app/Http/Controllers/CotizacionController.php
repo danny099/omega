@@ -96,7 +96,8 @@ class CotizacionController extends Controller
      public function store(Request $request)
      {
          $input = $request->all();
-
+        //  dd($input);
+        //  die();
          $cotizacion['dirigido'] = $request->dirigido;
          $cotizacion['codigo'] = '0001';
          $cotizacion['cliente_id'] = $request->cliente_id;
