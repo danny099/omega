@@ -44,6 +44,29 @@ class CotizacionController extends Controller
          $clientes = Cliente::all();
          $juridicas = Juridica::all();
          $departamentos = Departamento::all();
+         $cantidad = Cotizacion::count('codigo');
+         $flag = true;
+         $contador = 64;
+
+         while ($flag) {
+
+           $contador++;
+
+           if ($cantidad == 0) {
+             $codigo =  "A-001";
+             $flag = false;
+           }
+
+           if ($cantidad < 10) {
+
+             $codigo = chr($contador)."00".$cantidad+1;
+
+           }elseif ($cantidad < 99) {
+             
+           }
+         }
+
+
       //  for ($i=65; $i <90 ; $i++) { // esto busca los caracteres especiales para poder encontrar las letras del abecedario
       //    $letra = "a";
       //    echo chr($i);
