@@ -104,9 +104,9 @@ class CotizacionController extends Controller
          $cotizacion['nombre'] = $request->nombre;
          $cotizacion['municipio'] = $request->municipio;
          $cotizacion['departamento_id'] = $request->departamento;
-         $cotizacion['subtotal'] = $request->subtotal;
-         $cotizacion['iva'] = $request->iva;
-         $cotizacion['total'] = $request->total;
+         $cotizacion['subtotal'] = str_replace(',','',$request->subtotal);
+         $cotizacion['iva'] = str_replace(',','',$request->iva);
+         $cotizacion['total'] = str_replace(',','',$request->total);
          $cotizacion['observaciones'] = $request->observacion;
 
          Cotizacion::create($cotizacion);
@@ -138,8 +138,8 @@ class CotizacionController extends Controller
 
                      $texto['detalles'] = $datos1['descripcion'].' '.$datos1['tipo'].' '. $datos1['cantidad'].' '.$datos1['capacidad'];
                      $texto['cantidad'] = $datos1['cantidad'];
-                     $texto['valor_uni'] = $input['valores']['valor_uni'][$a];
-                     $texto['valor_total'] = $input['valores']['valor_multi'][$a];
+                     $texto['valor_uni'] = str_replace(',','',$input['valores']['valor_uni'][$a]);
+                     $texto['valor_total'] = str_replace(',','',$input['valores']['valor_multi'][$a]);
                      $texto['cotizacion_id'] = $lastId_cotiza;
 
                      Valorcot::create($texto);
@@ -169,8 +169,8 @@ class CotizacionController extends Controller
 
                    $texto['detalles'] = $datos2['descripcion'].' '.$datos2['tipo'].' '. $datos2['cantidad'];
                    $texto['cantidad'] = $datos2['cantidad'];
-                   $texto['valor_uni'] = $input['valores']['valor_uni'][$x];
-                   $texto['valor_total'] = $input['valores']['valor_multi'][$x];
+                   $texto['valor_uni'] = str_replace(',','',$input['valores']['valor_uni'][$x]);
+                   $texto['valor_total'] = str_replace(',','',$input['valores']['valor_multi'][$x]);
                    $texto['cotizacion_id'] = $lastId_cotiza;
 
                    Valorcot::create($texto);
@@ -199,8 +199,8 @@ class CotizacionController extends Controller
 
                    $texto['detalles'] = $datos3['descripcion'].' '.$datos3['tipo'].' '. $datos3['cantidad'];
                    $texto['cantidad'] = $datos3['cantidad'];
-                   $texto['valor_uni'] = $input['valores']['valor_uni'][$i];
-                   $texto['valor_total'] = $input['valores']['valor_multi'][$i];
+                   $texto['valor_uni'] = str_replace(',','',$input['valores']['valor_uni'][$i]);
+                   $texto['valor_total'] = str_replace(',','',$input['valores']['valor_multi'][$i]);
                    $texto['cotizacion_id'] = $lastId_cotiza;
 
                    Valorcot::create($texto);

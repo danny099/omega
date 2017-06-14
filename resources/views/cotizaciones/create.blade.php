@@ -1,6 +1,7 @@
 @extends('index')
 <style media="screen">
 
+
   textarea{
     width:100%;
     resize: none;
@@ -376,7 +377,9 @@ $(function() {
    $(".sgte").on("click",function( event ) {
     count++;
     var x= $().val();
-
+    var valor_multi = 0;
+    var valor_multi_dis = 0;
+    var valor_multi_pu = 0;
 
 
     $(".quitar50").each(function(i){
@@ -390,18 +393,33 @@ $(function() {
           if (cantidad != '' && desc!= '' && capacidad!='' && tipo!='') {
 
             $('.tabla tr:last').after('<tr><td>'+nFilas+'</td><td>'+desc+' '+tipo+' '+capacidad+'</td><td class="cant">'+cantidad+
-            '</td><td><input type="text" class="form-control valor_uni" placeholder= "Valor" onkeypress="mascara(this,cpf)" name="valores[valor_uni][]" required=""></td><td><input type="text" class="form-control valor_multi" placeholder= "Valor"  name="valores[valor_multi][]" required="" readonly ></td></tr>');
+            '</td><td><input type="text" class="form-control valor_uni" placeholder= "Valor" onkeypress="mascara(this,cpf)" name="valores[valor_uni][]" required=""></td><td><input type="text" class="form-control valor_multi" placeholder= "Valor"  value="0" name="valores[valor_multi][]" required="" readonly ></td></tr>');
+
               event.preventDefault();
-              if (true) {
 
-              }
               $('.valor_uni').keyup(function(){
-
                 var valor_uni = $(this).val().replace(/,/g,"");
                 var cantidad = $(this).parent().parent().find(".cant").text();
                 var resultado= valor_uni * cantidad;
 
+
+
                 $(this).parent().parent().find('.valor_multi').val(addCommas(Math.round(resultado)));
+                 valor_multi = 0;
+
+                $(".valor_multi").each(function(i){
+                       valor_multi = valor_multi + parseFloat($(this).val().replace(/,/g,"")) ;
+                       var subtotal=  parseFloat(valor_multi_dis)+parseFloat(valor_multi)+parseFloat(valor_multi_pu);
+                       var iva = subtotal*0.19;
+                       var total = subtotal+iva;
+
+                       $(this).parent().parent().parent().parent().parent().parent().find('.subtotal').text(addCommas(Math.round(subtotal)));
+                       $(this).parent().parent().parent().parent().parent().parent().find('.subtotal').val(addCommas(Math.round(subtotal)));
+                       $(this).parent().parent().parent().parent().parent().parent().find('.iva').text(addCommas(Math.round(iva)));
+                       $(this).parent().parent().parent().parent().parent().parent().find('.iva').val(addCommas(Math.round(iva)));
+                       $(this).parent().parent().parent().parent().parent().parent().find('.total').text(addCommas(Math.round(total)));
+                       $(this).parent().parent().parent().parent().parent().parent().find('.total').val(addCommas(Math.round(total)));
+                  });
 
                 });
           }
@@ -419,15 +437,32 @@ $(function() {
             if (cantidad2 != '' && desc2!= '' && tipo2!='') {
 
               $('.tabla tr:last').after('<tr><td>'+nFilas+'</td><td name="detalles2">'+desc2+' '+tipo2+'</td><td>'+cantidad2+' km'+
-              '</td><td><input type="text" class="form-control valor_uni_dis" placeholder= "Valor" onkeypress="mascara(this,cpf)" name="valor_uni_dis" required=""></td><td><input type="text" class="form-control valor_multi_dis" placeholder= "Valor"  name="valor_multi_dis" required="" readonly ></td></tr>');
+              '</td><td><input type="text" class="form-control valor_uni_dis" placeholder= "Valor" onkeypress="mascara(this,cpf)" name="valor_uni_dis" required=""></td><td><input type="text" class="form-control valor_multi_dis" placeholder= "Valor" value="0" name="valor_multi_dis" required="" readonly ></td></tr>');
                 event.preventDefault();
 
                 $('.valor_uni_dis').keyup(function(){
+
                   var valor_uni_dis = $(this).val().replace(/,/g,"");
                   var resultado2= valor_uni_dis;
-
                   $(this).parent().parent().find('.valor_multi_dis').val(addCommas(Math.round(resultado2)));
+                  valor_multi_dis = 0;
 
+                 $(".valor_multi_dis").each(function(i){
+                        valor_multi_dis = valor_multi_dis + parseFloat($(this).val().replace(/,/g,"")) ;
+                        var subtotal=  parseFloat(valor_multi_dis)+parseFloat(valor_multi)+parseFloat(valor_multi_pu);
+                        var iva = subtotal*0.19;
+                        var total = subtotal;
+                        alert(subtotal);
+                        alert(iva);
+                        alert(total);
+                        $(this).parent().parent().parent().parent().parent().parent().find('.subtotal').text(addCommas(Math.round(subtotal)));
+                        $(this).parent().parent().parent().parent().parent().parent().find('.subtotal').val(addCommas(Math.round(subtotal)));
+                        $(this).parent().parent().parent().parent().parent().parent().find('.iva').text(addCommas(Math.round(iva)));
+                        $(this).parent().parent().parent().parent().parent().parent().find('.iva').val(addCommas(Math.round(iva)));
+                        $(this).parent().parent().parent().parent().parent().parent().find('.total').text(addCommas(Math.round(total)));
+                        $(this).parent().parent().parent().parent().parent().parent().find('.total').val(addCommas(Math.round(total)));
+
+                   });
                   });
             }
 
@@ -443,19 +478,29 @@ $(function() {
               if (cantidad3 != '' && desc3!= '' && tipo3!='') {
 
                 $('.tabla tr:last').after('<tr><td>'+nFilas+'</td><td>'+desc3+' '+tipo3+'</td><td class="cant3">'+cantidad3+
-                '</td><td><input type="text" class="form-control valor_uni_pu" placeholder= "Valor" onkeypress="mascara(this,cpf)" name="valor_uni_pu" required=""></td><td><input type="text" class="form-control valor_multi_pu" placeholder= "Valor"  name="valor_multi_pu" required="" readonly ></td></tr>');
+                '</td><td><input type="text" class="form-control valor_uni_pu" placeholder= "Valor" onkeypress="mascara(this,cpf)" name="valor_uni_pu" required=""></td><td><input type="text" class="form-control valor_multi_pu" placeholder= "Valor" value="0" name="valor_multi_pu" required="" readonly ></td></tr>');
                   event.preventDefault();
 
                   $('.valor_uni_pu').keyup(function(){
                     var valor_uni_pu = $(this).val().replace(/,/g,"");
                     var cantidad3 = $(this).parent().parent().find(".cant3").text();
                     var resultado3= valor_uni_pu * cantidad3;
-                    dis = $(this).parent().parent().parent().parent().parent().parent().find('.valor_multi_dis').val().replace(/,/g,"");
-                    trans = $(this).parent().parent().parent().parent().parent().parent().find('.valor_multi').val().replace(/,/g,"");
-                    var sub = parseFloat(dis)+parseFloat(trans)+parseFloat(resultado3)
                     $(this).parent().parent().find('.valor_multi_pu').val(addCommas(Math.round(resultado3)));
-                    $(this).parent().parent().parent().parent().parent().parent().find('.subtotal').text(addCommas(Math.round(sub)));
-                    $(this).parent().parent().parent().parent().parent().parent().find('.subtotal').val(addCommas(Math.round(sub)));
+                    valor_multi_pu = 0;
+
+                     $(".valor_multi_pu").each(function(i){
+                          valor_multi_pu = valor_multi_pu + parseFloat($(this).val().replace(/,/g,""));
+                          var subtotal=  parseFloat(valor_multi_dis)+parseFloat(valor_multi)+parseFloat(valor_multi_pu);
+                           var iva = subtotal*0.19;
+                           var total = subtotal+iva;
+
+                          $(this).parent().parent().parent().parent().parent().parent().find('.subtotal').text(addCommas(Math.round(subtotal)));
+                          $(this).parent().parent().parent().parent().parent().parent().find('.subtotal').val(addCommas(Math.round(subtotal)));
+                          $(this).parent().parent().parent().parent().parent().parent().find('.iva').text(addCommas(Math.round(iva)));
+                          $(this).parent().parent().parent().parent().parent().parent().find('.iva').val(addCommas(Math.round(iva)));
+                          $(this).parent().parent().parent().parent().parent().parent().find('.total').text(addCommas(Math.round(total)));
+                          $(this).parent().parent().parent().parent().parent().parent().find('.total').val(addCommas(Math.round(total)));
+                       });
 
                     });
               }
@@ -467,6 +512,9 @@ $(function() {
     $('.tabla tr:last').after('<tr><td Colspan="3"></td><td><label>Subtotal</label></td><td><label class="subtotal">0</label><input type="hidden" class="form-control subtotal" placeholder= "Valor" value="0"  name="subtotal"  required="" readonly ></td></tr>');
     $('.tabla tr:last').after('<tr><td Colspan="3"></td><td><label>IVA</label></td><td><label class="iva">0</label><input type="hidden" class="form-control iva" placeholder= "Valor"  name="iva" value="0"  required="" readonly ></td></tr>');
     $('.tabla tr:last').after('<tr><td Colspan="3"></td><td><label>Total</label></td><td><label class="total">0</label><input type="hidden" class="form-control total" placeholder= "Valor" value="0" name="total"  required="" readonly ></td></tr>');
+    $('.tabla tr:last').after('<input type="hidden" class="form-control valor_multi"  value="0"  >');
+    $('.tabla tr:last').after('<input type="hidden" class="form-control total valor_multi_dis"  value="0"  >');
+    $('.tabla tr:last').after('<input type="hidden" class="form-control total valor_multi_pu"  value="0"  >');
 
 
    });
