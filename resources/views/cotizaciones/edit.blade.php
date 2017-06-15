@@ -12,7 +12,8 @@
 @section('contenido')
 <ol class="breadcrumb">
   <li><a href="{{ url('inicio') }}">Inicio</a></li>
-  <li class="active">Cotizaciones</li>
+  <li><a href="{{ url('cotizaciones') }}">Cotización</a></li>
+  <li class="active">Editar cotización</li>
 </ol>
 
   <div class="box box-primary" >
