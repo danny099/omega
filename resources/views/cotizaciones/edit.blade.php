@@ -330,14 +330,14 @@
             <input type="number" class="form-control" placeholder= "Cantidad" value="{{ $pu->acometidas }}" name="pu_final[acometidas_pu][]">
           </div>
         </div>
+      </div>
+      </div>
       @endforeach
-      </div>
+      <div class="col-md-12">
+        <center> <h3>Observaciones</h3> </center>
       </div>
       <div class="col-md-12">
-        <center> <h3>Observaciones de estado administrativo del proyecto</h3> </center>
-      </div>
-      <div class="col-md-12">
-        <textarea  rows="4" cols="196" name="observacion" required=""></textarea>
+        <textarea  rows="4" cols="196" name="observacion"  required="">{{ $cotizaciones->observaciones}}</textarea>
       </div>
     </div>
 
@@ -355,6 +355,7 @@
          <th><center><label> Cantidad</label></center></th>
          <th><center><label> Valor unitario</label></center></th>
          <th><center><label> Valor</label></center></th>
+         <th><center><label> <button type="button" class="generar" name="button">Generar</button></label></center></th>
        </tr>
 
      </table>
@@ -406,12 +407,9 @@ function addCommas(nStr){
 
 $(function() {
     var count = 1;
-    $(".sgte").on("click",function( event ) {
-      $(this).closest("#quitar50").remove();
-         return false;
-    });
 
-   $(".sgte").on("click",function( event ) {
+
+   $(".generar").on("click",function( event ) {
     count++;
     var x= $().val();
     var valor_multi = 0;
@@ -474,7 +472,7 @@ $(function() {
             if (cantidad2 != '' && desc2!= '' && tipo2!='') {
 
               $('.tabla tr:last').after('<tr><td>'+nFilas+'</td><td name="detalles2">'+desc2+' '+tipo2+'</td><td>'+cantidad2+' km'+
-              '</td><td><input type="text" class="form-control valor_uni_dis" placeholder= "Valor" onkeypress="mascara(this,cpf)" name="valores[valor_uni_dis][]" required=""></td><td><input type="text" class="form-control valor_multi_dis" placeholder= "Valor" value="0" name="valores[valor_multi_dis][]" required="" readonly ></td></tr>');
+              '</td><td><input type="text" class="form-control valor_uni_dis"  placeholder= "Valor" onkeypress="mascara(this,cpf)" name="valores[valor_uni_dis][]" required=""></td><td><input type="text" class="form-control valor_multi_dis" placeholder= "Valor" value="0" name="valores[valor_multi_dis][]" required="" readonly ></td></tr>');
                 event.preventDefault();
 
                 $('.valor_uni_dis').keyup(function(){
@@ -630,7 +628,7 @@ form.children("div").steps({
     },
     onFinished: function (event, currentIndex)
     {
-        alert("Submitted!");
+        $("#example-form").submit();
     }
 });
 </script>

@@ -314,7 +314,7 @@
     </div>
     </div>
       <div class="col-md-12">
-        <center> <h3>Observaciones de estado administrativo del proyecto</h3> </center>
+        <center> <h3>Observaciones</h3> </center>
       </div>
       <div class="col-md-12">
         <textarea  rows="4" cols="196" name="observacion" required=""></textarea>
@@ -608,7 +608,7 @@ form.children("div").steps({
     },
     onFinished: function (event, currentIndex)
     {
-        alert("Submitted!");
+        $("#example-form").submit();
     }
 });
 </script>
