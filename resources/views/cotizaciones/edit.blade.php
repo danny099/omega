@@ -30,8 +30,7 @@
     @endif
   <!-- /.box-header -->
   <!-- form start -->
-  <form role="form" name="" action="{{ url('cotizaciones') }}" method="post" id="example-form">
-    {!! Form::model($cotizaciones, ['method' => 'PATCH', 'action' => ['CotizacionController@update',$cotizaciones->id]]) !!}
+  <form role="form" name="" action="{{ url('cotizaciones') }}/{{ $cotizacion->id }}" method="post" id="example-form">
     {{ csrf_field() }}
 
     <div class="">
@@ -361,7 +360,6 @@
      </table>
    </section>
    </div>
-   {!! Form::close() !!}
   </form>
 
   </div>
