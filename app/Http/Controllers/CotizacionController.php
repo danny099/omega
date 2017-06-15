@@ -44,41 +44,50 @@ class CotizacionController extends Controller
          $clientes = Cliente::all();
          $juridicas = Juridica::all();
          $departamentos = Departamento::all();
-         $cantidad = 0;
+         $cantidad = 1;
+         $contador = 0;
          $flag = true;
-        //  $abecedario=array('A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z');
-         //
-        //  if ($cantidad == 0) {
-        //    $codigo = "A-001";
-        //    $contador = 1;
-        //  }
-         //
-        //  for ($i=0; $i <= $cantidad ; $i++) {
-         //
-        //    if ($cantidad < 10) {
-        //      $i++;
-        //      $codigo = $abecedario."-00".$i;
-        //    }
-         //
-        //    if ($cantidad >= 10 && $cantidad <= 99) {
-         //
-        //      $codigo = $abecedario."-0".$i;
-        //    }
-         //
-        //    if ($cantidad >= 100 && $cantidad <= 999) {
-         //
-        //      $codigo = $abecedario."-".$i;
-        //    }
-         //
-        //    if ($cantidad > 999) {
-        //      $cantidad = 1;
-        //      $i = 0;
-        //      $codigo = "B-001";
-        //    }
-         //
-        //  }
-        //  dd($codigo);
-        //  die();
+         $abecedario=array('A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z');
+
+         if ($cantidad == 0) {
+           $codigo = "A-001";
+           $contador = 1;
+         }
+
+         for ($i=0; $i <= $contador ; $i++) {
+
+           if ($contador < 10) {
+
+             $codigo = $abecedario[0]."-00".$i;
+
+           }
+
+           if ($contador >= 10 && $contador <= 99) {
+
+             $codigo = $abecedario[$i]."-0".$i;
+
+           }
+
+           if ($contador >= 100 && $contador <= 999) {
+
+             $codigo = $abecedario[$i]."-".$i;
+           }
+
+         }
+
+         $id = Cotizacion::max('id');
+         $ultimo = Cotizacion::findOrFail($id);
+
+         if ($ultimo->contador >= 1000) {
+
+           $contador = 1;
+           $ultmo->contador = $contador;
+           $ultimo->save();
+
+         }
+
+         dd($ultimo->contador);
+         die();
 
          return view('cotizaciones.create',compact('clientes','juridicas','departamentos'));
      }
@@ -191,7 +200,7 @@ class CotizacionController extends Controller
                    $datos3['cantidad'] = $input['pu_final']['cantidad_pu'][$i];
                    $datos3['metros'] = $input['pu_final']['metros_pu'][$i];
                    $datos3['kva'] = $input['pu_final']['kva_pu'][$i];
-                   $datos3['acometidas'] = $input['pu_final']['acomedidas_pu'][$i];
+                   $datos3['acometidas'] = $input['pu_final']['acometidas_pu'][$i];
                    $datos3['cotizacion_id'] = $lastId_cotiza;
 
                    $texto['detalles'] = $datos3['descripcion'].' '.$datos3['tipo'].' '. $datos3['cantidad'];
@@ -250,8 +259,9 @@ class CotizacionController extends Controller
       $transformaciones = Transformacion::where('transformacion.cotizacion_id', '=', $id)->get();
       $distribuciones = Distribucion::where('distribucion.cotizacion_id', '=', $id)->get();
       $pu_finales = Pu_final::where('pu_final.cotizacion_id', '=', $id)->get();
+      $valorcot = Valorcot::where('valorcot.cotizacion_id', '=', $id)->get();
 
-      return view('cotizaciones.edit',compact('cotizaciones','departamentos','clientes','juridicas','transformaciones','distribuciones','pu_finales','municipio'));
+      return view('cotizaciones.edit',compact('cotizaciones','departamentos','clientes','juridicas','transformaciones','distribuciones','pu_finales','municipio','valorcot'));
     }
 
     /**
