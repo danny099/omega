@@ -301,8 +301,8 @@
       </div>
       <div class="col-md-1">
         <div class="form-group">
-          <center><label >Acomedidas</label></center>
-          <input type="number" class="form-control" placeholder= "Cantidad" name="pu_final[acomedidas_pu][]">
+          <center><label >acometidas</label></center>
+          <input type="number" class="form-control" placeholder= "Cantidad" name="pu_final[acometidas_pu][]">
         </div>
       </div>
       <div class="col-md-1 tblprod12" id="tblprod12" >
