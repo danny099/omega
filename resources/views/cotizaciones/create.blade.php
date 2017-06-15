@@ -446,7 +446,7 @@ $(function() {
             if (cantidad2 != '' && desc2!= '' && tipo2!='') {
 
               $('.tabla tr:last').after('<tr><td>'+nFilas+'</td><td name="detalles2">'+desc2+' '+tipo2+'</td><td>'+cantidad2+' km'+
-              '</td><td><input type="text" class="form-control valor_uni_dis" placeholder= "Valor" onkeypress="mascara(this,cpf)" name="valor_uni_dis" required=""></td><td><input type="text" class="form-control valor_multi_dis" placeholder= "Valor" value="0" name="valor_multi_dis" required="" readonly ></td></tr>');
+              '</td><td><input type="text" class="form-control valor_uni_dis" placeholder= "Valor" onkeypress="mascara(this,cpf)" name="valores[valor_uni_dis][]" required=""></td><td><input type="text" class="form-control valor_multi_dis" placeholder= "Valor" value="0" name="valores[valor_multi_dis][]" required="" readonly ></td></tr>');
                 event.preventDefault();
 
                 $('.valor_uni_dis').keyup(function(){
@@ -485,7 +485,7 @@ $(function() {
               if (cantidad3 != '' && desc3!= '' && tipo3!='') {
 
                 $('.tabla tr:last').after('<tr><td>'+nFilas+'</td><td>'+desc3+' '+tipo3+'</td><td class="cant3">'+cantidad3+
-                '</td><td><input type="text" class="form-control valor_uni_pu" placeholder= "Valor" onkeypress="mascara(this,cpf)" name="valor_uni_pu" required=""></td><td><input type="text" class="form-control valor_multi_pu" placeholder= "Valor" value="0" name="valor_multi_pu" required="" readonly ></td></tr>');
+                '</td><td><input type="text" class="form-control valor_uni_pu" placeholder= "Valor" onkeypress="mascara(this,cpf)" name="valores[valor_uni_pu][]" required=""></td><td><input type="text" class="form-control valor_multi_pu" placeholder= "Valor" value="0" name="valores[valor_multi_pu][]" required="" readonly ></td></tr>');
                   event.preventDefault();
 
                   $('.valor_uni_pu').keyup(function(){
