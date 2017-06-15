@@ -46,37 +46,37 @@ class CotizacionController extends Controller
          $departamentos = Departamento::all();
          $cantidad = 0;
          $flag = true;
-         $abecedario=array('A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z');
-
-         if ($cantidad == 0) {
-           $codigo = "A-001";
-           $contador = 1;
-         }
-
-         for ($i=0; $i <= $cantidad ; $i++) {
-
-           if ($cantidad < 10) {
-             $i++;
-             $codigo = $abecedario."-00".$i;
-           }
-
-           if ($cantidad >= 10 && $cantidad <= 99) {
-
-             $codigo = $abecedario."-0".$i;
-           }
-
-           if ($cantidad >= 100 && $cantidad <= 999) {
-
-             $codigo = $abecedario."-".$i;
-           }
-
-           if ($cantidad > 999) {
-             $cantidad = 1;
-             $i = 0;
-             $codigo = "B-001";
-           }
-
-         }
+        //  $abecedario=array('A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z');
+         //
+        //  if ($cantidad == 0) {
+        //    $codigo = "A-001";
+        //    $contador = 1;
+        //  }
+         //
+        //  for ($i=0; $i <= $cantidad ; $i++) {
+         //
+        //    if ($cantidad < 10) {
+        //      $i++;
+        //      $codigo = $abecedario."-00".$i;
+        //    }
+         //
+        //    if ($cantidad >= 10 && $cantidad <= 99) {
+         //
+        //      $codigo = $abecedario."-0".$i;
+        //    }
+         //
+        //    if ($cantidad >= 100 && $cantidad <= 999) {
+         //
+        //      $codigo = $abecedario."-".$i;
+        //    }
+         //
+        //    if ($cantidad > 999) {
+        //      $cantidad = 1;
+        //      $i = 0;
+        //      $codigo = "B-001";
+        //    }
+         //
+        //  }
         //  dd($codigo);
         //  die();
 
