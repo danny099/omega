@@ -31,7 +31,8 @@
     @endif
   <!-- /.box-header -->
   <!-- form start -->
-  <form role="form" name="" action="{{ url('cotizaciones') }}/{{ $cotizaciones->id }}" method="post" id="example-form">
+
+    {!! Form::model($cotizaciones, ['id'=>'form','method' => 'PATCH', 'action' => ['CotizacionController@update',$cotizaciones->id]]) !!}
     {{ csrf_field() }}
 
     <div class="">
@@ -361,7 +362,8 @@
      </table>
    </section>
    </div>
-  </form>
+   {!! Form::close() !!}
+
 
   </div>
 
@@ -601,7 +603,7 @@ $(document).on('change','#departamento',function(){
 });
 });
 
-var form = $("#example-form");
+var form = $("#form");
 form.validate({
     errorPlacement: function errorPlacement(error, element) { element.before(error); },
     rules: {
@@ -626,7 +628,7 @@ form.children("div").steps({
     },
     onFinished: function (event, currentIndex)
     {
-        $("#example-form").submit();
+        $("#form").submit();
     }
 });
 </script>
