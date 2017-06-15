@@ -122,7 +122,8 @@
               <option value="">Seleccione...</option>
               <option value="Tipo_poste">Tipo poste</option>
               <option value="Tipo_interior">Tipo interior</option>
-              <option value="Tipo_exterior">Tipo exterior</option>
+              <option value="Tipo_pedestal/jardin">Tipo pedestal/jardin</option>
+              <option value="Tipo_patio">Tipo Patio</option>
             </select>
           </div>
         </div>
@@ -197,7 +198,12 @@
         <div class="col-md-1">
           <div class="form-group">
             <center><label >Nivel de tensión  </label></center>
-            <input type="text" class="form-control" placeholder= "Longitud" name="distribucion[nivel_tension_dis][]">
+            <select class="form-control tipo2" name="distribucion[nivel_tension_dis][]" >
+              <option value="">Seleccione...</option>
+              <option value="110-220">110-220</option>
+              <option value="220-240">220-240</option>
+              <option value="No aplica">No aplica</option>
+            </select>
           </div>
         </div>
 
@@ -460,7 +466,7 @@ $(function() {
                         valor_multi_dis = valor_multi_dis + parseFloat($(this).val().replace(/,/g,"")) ;
                         var subtotal=  parseFloat(valor_multi_dis)+parseFloat(valor_multi)+parseFloat(valor_multi_pu);
                         var iva = subtotal*0.19;
-                        var total = subtotal;
+                        var total = subtotal+iva;
 
                         $(this).parent().parent().parent().parent().parent().parent().find('.subtotal').text(addCommas(Math.round(subtotal)));
                         $(this).parent().parent().parent().parent().parent().parent().find('.subtotal').val(addCommas(Math.round(subtotal)));
