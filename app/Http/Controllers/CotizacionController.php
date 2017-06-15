@@ -248,12 +248,14 @@ class CotizacionController extends Controller
       $clientes = Cliente::all();
       $juridicas = Juridica::all();
       $departamentos = Departamento::all();
+      $muni_Id = Municipio::select('id')->where('id',$cotizaciones->municipio)->get();
+      $municipio = Municipio::find($muni_Id);
 
       $transformaciones = Transformacion::where('transformacion.cotizacion_id', '=', $id)->get();
       $distribuciones = Distribucion::where('distribucion.cotizacion_id', '=', $id)->get();
       $pu_finales = Pu_final::where('pu_final.cotizacion_id', '=', $id)->get();
 
-      return view('cotizaciones.edit',compact('cotizaciones','departamentos','clientes','juridicas','transformaciones','distribuciones','pu_finales'));
+      return view('cotizaciones.edit',compact('cotizaciones','departamentos','clientes','juridicas','transformaciones','distribuciones','pu_finales','muni_Id'));
     }
 
     /**
