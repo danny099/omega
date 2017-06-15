@@ -156,7 +156,7 @@ class CotizacionController extends Controller
 
                    $datos2['descripcion'] = $input['distribucion']['descripcion_dis'][$x];
                    $datos2['tipo'] = $input['distribucion']['tipo_dis'][$x];
-                   $datos['nivel_tension'] = $input['distribucion']['nivel_tension_dis'][$x];
+                   $datos2['nivel_tension'] = $input['distribucion']['nivel_tension_dis'][$x];
                    $datos2['unidad'] = 'km';
                    $datos2['cantidad'] = str_replace('.',',',$input['distribucion']['cantidad_dis'][$x]);
                    $datos2['apoyos'] = $input['distribucion']['apoyos_dis'][$x];
