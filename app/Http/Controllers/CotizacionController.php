@@ -163,8 +163,8 @@ class CotizacionController extends Controller
 
                    $texto['detalles'] = $datos2['descripcion'].' '.$datos2['tipo'].' '. $datos2['cantidad'];
                    $texto['cantidad'] = $datos2['cantidad'];
-                   $texto['valor_uni'] = str_replace(',','',$input['valores']['valor_uni'][$x]);
-                   $texto['valor_total'] = str_replace(',','',$input['valores']['valor_multi'][$x]);
+                   $texto['valor_uni'] = str_replace(',','',$input['valores']['valor_uni_dis'][$x]);
+                   $texto['valor_total'] = str_replace(',','',$input['valores']['valor_multi_dis'][$x]);
                    $texto['cotizacion_id'] = $lastId_cotiza;
 
                    Valorcot::create($texto);
@@ -193,8 +193,8 @@ class CotizacionController extends Controller
 
                    $texto['detalles'] = $datos3['descripcion'].' '.$datos3['tipo'].' '. $datos3['cantidad'];
                    $texto['cantidad'] = $datos3['cantidad'];
-                   $texto['valor_uni'] = str_replace(',','',$input['valores']['valor_uni'][$i]);
-                   $texto['valor_total'] = str_replace(',','',$input['valores']['valor_multi'][$i]);
+                   $texto['valor_uni'] = str_replace(',','',$input['valores']['valor_uni_pu'][$i]);
+                   $texto['valor_total'] = str_replace(',','',$input['valores']['valor_multi_pu'][$i]);
                    $texto['cotizacion_id'] = $lastId_cotiza;
 
                    Valorcot::create($texto);
