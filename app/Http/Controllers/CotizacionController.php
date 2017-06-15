@@ -244,7 +244,16 @@ class CotizacionController extends Controller
      */
     public function edit($id)
     {
-        return view('cotizaciones.edit');
+      $cotizaciones = Cotizacion::findOrFail($id);
+      $clientes = Cliente::all();
+      $juridicas = Juridica::all();
+      $departamentos = Departamento::all();
+
+      $transformaciones = Transformacion::where('transformacion.cotizacion_id', '=', $id)->get();
+      $distribuciones = Distribucion::where('distribucion.cotizacion_id', '=', $id)->get();
+      $pu_finales = Pu_final::where('pu_final.cotizacion_id', '=', $id)->get();
+
+      return view('cotizaciones.edit',compact('cotizaciones','departamentos','clientes','juridicas','transformaciones','distribuciones','pu_finales'));
     }
 
     /**
