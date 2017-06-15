@@ -338,7 +338,6 @@
        </tr>
 
      </table>
-     <button type="submit" data-target="" data-toggle="  " class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;">Agregar</button>
    </section>
    </div>
   </form>
