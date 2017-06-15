@@ -276,6 +276,14 @@ class CotizacionController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+      $cotizacion =Cotizacion::findOrFail($id);
+      $cotizacion->delete();
+
+      Session::flash('message', 'Cotización eliminado');
+      Session::flash('class', 'danger');
+      return redirect('administrativas');Cotizacion::findOrFail($id);
+
+
     }
 }
