@@ -12,6 +12,7 @@
 @section('contenido')
 <ol class="breadcrumb">
   <li><a href="{{ url('inicio') }}">Inicio</a></li>
+  <li><a href="{{ url('cotizaciones') }}">Cotizacion</a></li>
   <li class="active">Cotizaciones</li>
 </ol>
 

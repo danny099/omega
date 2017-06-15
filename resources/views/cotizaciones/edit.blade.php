@@ -30,7 +30,7 @@
     @endif
   <!-- /.box-header -->
   <!-- form start -->
-  <form role="form" name="" action="{{ url('cotizaciones') }}/{{ $cotizacion->id }}" method="post" id="example-form">
+  <form role="form" name="" action="{{ url('cotizaciones') }}/{{ $cotizaciones->id }}" method="post" id="example-form">
     {{ csrf_field() }}
 
     <div class="">
