@@ -326,7 +326,7 @@
         </div>
         <div class="col-md-1">
           <div class="form-group">
-            <center><label >acometidas</label></center>
+            <center><label >Acometidas</label></center>
             <input type="number" class="form-control" placeholder= "Cantidad" value="{{ $pu->acometidas }}" name="pu_final[acometidas_pu][]">
           </div>
         </div>
