@@ -44,38 +44,38 @@ class CotizacionController extends Controller
          $clientes = Cliente::all();
          $juridicas = Juridica::all();
          $departamentos = Departamento::all();
-         $cantidad = 1001;
-         $flag = true;
-         $contador = 64;
-
-         if ($cantidad == 0) {
-           $codigo = "A-001";
-         }
-
-         for ($i=0; $i < $cantidad ; $i++) {
-           $letra = 65;
-
-           if ($cantidad < 10) {
-             $codigo = chr($letra)."-00".$cantidad;
-           }
-
-           if ($cantidad < 99) {
-             $codigo = chr($letra)."-0".$cantidad;
-           }
-
-           if ($cantidad >= 100 && $cantidad <= 999) {
-             $codigo = chr($letra)."-".$cantidad;
-           }
-
-           if ($cantidad > 999) {
-             $cantidad = 0;
-             $codigo = "B-001";
-             $letra++;
-           }
-
-         }
-         dd($codigo);
-         die();
+        //  $cantidad = 1001;
+        //  $flag = true;
+        //  $contador = 64;
+         //
+        //  if ($cantidad == 0) {
+        //    $codigo = "A-001";
+        //  }
+         //
+        //  for ($i=0; $i < $cantidad ; $i++) {
+        //    $letra = 65;
+         //
+        //    if ($cantidad < 10) {
+        //      $codigo = chr($letra)."-00".$cantidad;
+        //    }
+         //
+        //    if ($cantidad < 99) {
+        //      $codigo = chr($letra)."-0".$cantidad;
+        //    }
+         //
+        //    if ($cantidad >= 100 && $cantidad <= 999) {
+        //      $codigo = chr($letra)."-".$cantidad;
+        //    }
+         //
+        //    if ($cantidad > 999) {
+        //      $cantidad = 0;
+        //      $codigo = "B-001";
+        //      $letra++;
+        //    }
+         //
+        //  }
+        //  dd($codigo);
+        //  die();
 
          return view('cotizaciones.create',compact('clientes','juridicas','departamentos'));
      }
