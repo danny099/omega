@@ -255,7 +255,7 @@ class CotizacionController extends Controller
       $distribuciones = Distribucion::where('distribucion.cotizacion_id', '=', $id)->get();
       $pu_finales = Pu_final::where('pu_final.cotizacion_id', '=', $id)->get();
 
-      return view('cotizaciones.edit',compact('cotizaciones','departamentos','clientes','juridicas','transformaciones','distribuciones','pu_finales','muni_Id'));
+      return view('cotizaciones.edit',compact('cotizaciones','departamentos','clientes','juridicas','transformaciones','distribuciones','pu_finales','municipio'));
     }
 
     /**
