@@ -129,7 +129,7 @@
         </div>
         <div class="col-md-2">
           <div class="form-group">
-            <center><label >Nivel de tencion (kv)</label></center>
+            <center><label >Nivel de tensión </label></center>
             <select class="form-control" name="transformacion[nivel_tension][]">
               <option value="">Seleccione...</option>
               <option value="13,2">13,2</option>

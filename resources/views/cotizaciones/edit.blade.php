@@ -58,7 +58,6 @@
         <div class="col-md-3">
           <label>Tipo de régimen</label>
           <select class="" name="tipo_regimen" id="cliente" style="width: 100%" required="">
-            <option value="">Seleccione...</option>
             <option value="1">Persona natural</option>
             <option value="2">Persona jurídica</option>
           </select>
@@ -72,7 +71,7 @@
             @endforeach
           </select>
         </div>
-        <div class="col-md-3" style="Display:none" style="width: 100%" id="juridica">
+        <div class="col-md-3" style="Display:none" id="juridica">
           <label >Persona juridica</label>
           <select class="form-control" name="juridica_id" style="width: 100%;" >
             <option value="">Seleccione</option>
@@ -86,9 +85,8 @@
         <div class="col-md-3">
           <label>Tipo de régimen</label>
           <select class="" name="tipo_regimen" id="cliente" style="width: 100%" required="">
-            <option value="">Seleccione...</option>
-            <option value="1">Persona natural</option>
             <option value="2">Persona jurídica</option>
+            <option value="1">Persona natural</option>
           </select>
         </div>
         <div class="col-md-3" style="Display:none" id="natural">
@@ -100,7 +98,7 @@
             @endforeach
           </select>
         </div>
-        <div class="col-md-3"  style="width: 100%" id="juridica">
+        <div class="col-md-3"  id="juridica">
           <label >Persona juridica</label>
           <select class="form-control" name="juridica_id" style="width: 100%;" >
             <option value="{{ $cotizaciones->juridica->id }}">{{ $cotizaciones->juridica->razon_social }}</option>
@@ -141,67 +139,63 @@
       <center> <h3>Alcance: proceso de transformación</h3> </center>
     </div>
     <div class="box-body">
-      <div class="row quitar50" id="quitar50">
-      <div class="col-md-12">
-        <div class="col-md-3">
-          <div class="form-group">
-            <center><label >Descripción</label></center>
-            <input type="text" class="form-control desc" value="Inspección  RETIE proceso de transformación"  readonly=”readonly” name="transformacion[descripcion][]">
+    @foreach($transformaciones as $transfor)
+        <div class="row quitar50" id="quitar50">
+        <div class="col-md-12">
+          <div class="col-md-3">
+            <div class="form-group">
+              <center><label >Descripción</label></center>
+              <input type="text" class="form-control desc" value="Inspección  RETIE proceso de transformación"  readonly=”readonly” name="transformacion[descripcion][]">
+            </div>
           </div>
-        </div>
-        <div class="col-md-2">
-          <div class="form-group">
-            <center><label >Tipo</label></center>
-            <select class="form-control tipo" name="transformacion[tipo][]">
-              <option value="">Seleccione...</option>
-              <option value="Tipo_poste">Tipo poste</option>
-              <option value="Tipo_interior">Tipo interior</option>
-              <option value="Tipo_pedestal/jardin">Tipo pedestal/jardin</option>
-              <option value="Tipo_patio">Tipo Patio</option>
-            </select>
+          <div class="col-md-2">
+            <div class="form-group">
+              <center><label >Tipo</label></center>
+              <select class="form-control tipo" name="transformacion[tipo][]">
+                <option value="{{ $transfor->tipo }}">{{ $transfor->tipo }}</option>
+                <option value="Tipo_poste">Tipo poste</option>
+                <option value="Tipo_interior">Tipo interior</option>
+                <option value="Tipo_pedestal/jardin">Tipo pedestal/jardin</option>
+                <option value="Tipo_patio">Tipo Patio</option>
+              </select>
+            </div>
           </div>
-        </div>
-        <div class="col-md-2">
-          <div class="form-group">
-            <center><label >Nivel de tencion (kv)</label></center>
-            <select class="form-control" name="transformacion[nivel_tension][]">
-              <option value="">Seleccione...</option>
-              <option value="13,2">13,2</option>
-              <option value="13,4">13,4</option>
-              <option value="13,8">13,8</option>
-            </select>
+          <div class="col-md-2">
+            <div class="form-group">
+              <center><label >Nivel de tensión (kv)</label></center>
+              <select class="form-control" name="transformacion[nivel_tension][]">
+                <option value="{{ $transfor->nivel_tension }}">{{ $transfor->nivel_tension }}</option>
+                <option value="13,2">13,2</option>
+                <option value="13,4">13,4</option>
+                <option value="13,8">13,8</option>
+              </select>
+            </div>
           </div>
-        </div>
-        <div class="col-md-1">
-          <div class="form-group">
-            <center><label >Capacidad</label></center>
-              <input type="text" class="form-control capacidad" placeholder="Capacidad"   name="transformacion[capacidad][]">
+          <div class="col-md-1">
+            <div class="form-group">
+              <center><label >Capacidad</label></center>
+                <input type="text" class="form-control capacidad" placeholder="Capacidad"   value="{{$transfor->capacidad}}" name="transformacion[capacidad][]">
+            </div>
           </div>
-        </div>
-        <div class="col-md-1">
-          <div class="form-group">
-            <center><label >Cantidad</label></center>
-            <input type="text" class="form-control cantidad" id="cantidad" placeholder= "Cantidad" name="transformacion[cantidad][]">
+          <div class="col-md-1">
+            <div class="form-group">
+              <center><label >Cantidad</label></center>
+              <input type="text" class="form-control cantidad" id="cantidad" placeholder= "Cantidad" value="{{$transfor->cantidad}}"  name="transformacion[cantidad][]">
+            </div>
           </div>
-        </div>
-        <div class="col-md-2">
-          <div class="form-group">
-            <center><label >refrigeración </label></center>
-            <select class="form-control" name="transformacion[tipo_refrigeracion][]">
-              <option value="">Seleccione...</option>
-              <option value="Seco">Seco</option>
-              <option value="Aceite">Aceite</option>
-            </select>
+          <div class="col-md-2">
+            <div class="form-group">
+              <center><label >refrigeración </label></center>
+              <select class="form-control" name="transformacion[tipo_refrigeracion][]">
+                <option value="{{ $transfor->tipo_refrigeracion }}">{{ $transfor->tipo_refrigeracion }}</option>
+                <option value="Seco">Seco</option>
+                <option value="Aceite">Aceite</option>
+              </select>
+            </div>
           </div>
-        </div>
-        <div class="col-md-1 " id="tblprod10">
-          <div class="form-group">
-            <br>
-            <a class="btn btn-primary" data-toggle="modal" href="#" id="btnadd10" style="background-color: #fdea08; border-color:#fdea08"><i class="glyphicon glyphicon-plus"></i></a>
-          </div>
-        </div>
       </div>
     </div>
+    @endforeach
     <div class="row quitar51" id="quitar51">
       <div class="col-md-12"  style="margin-bottom: 10px;">
         <center> <h3>Alcance: proceso de distribución</h3> </center>
