@@ -130,7 +130,7 @@ Route::group(['middleware' => 'auth'],function(){
 	/**************************************************************/
 	/**************************************************************/
 	Route::resource('cotizaciones','CotizacionController');
-	Route::get('deletecot/{id}','TransformacionController@destroy');
+	Route::get('deletecot/{id}','CotizacionController@destroy');
 
 	/**************************************************************/
 	/**************************************************************/

@@ -282,11 +282,12 @@ class CotizacionController extends Controller
     {
 
       $cotizacion =Cotizacion::findOrFail($id);
+
       $cotizacion->delete();
 
       Session::flash('message', 'Cotización eliminado');
       Session::flash('class', 'danger');
-      return redirect('administrativas');Cotizacion::findOrFail($id);
+      return redirect('cotizaciones');Cotizacion::findOrFail($id);
 
 
     }
