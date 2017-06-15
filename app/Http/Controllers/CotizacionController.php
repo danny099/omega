@@ -44,50 +44,46 @@ class CotizacionController extends Controller
          $clientes = Cliente::all();
          $juridicas = Juridica::all();
          $departamentos = Departamento::all();
-         $cantidad = 1;
-         $contador = 0;
-         $flag = true;
-         $abecedario=array('A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z');
+        //  $cantidad = 1;
+        //  $contador = 0;
+        //  $flag = true;
+        //  $abecedario=array('A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z');
+        //
+        //  if ($cantidad == 0) {
+        //    $codigo = "A-001";
+        //    $contador = 1;
+        //  }
+        //
+        //  for ($i=0; $i <= $contador ; $i++) {
+        //
+        //    if ($contador < 10) {
+        //
+        //      $codigo = $abecedario[0]."-00".$i;
+        //
+        //    }
+        //
+        //    if ($contador >= 10 && $contador <= 99) {
+        //
+        //      $codigo = $abecedario[$i]."-0".$i;
+        //
+        //    }
+        //
+        //    if ($contador >= 100 && $contador <= 999) {
+        //
+        //      $codigo = $abecedario[$i]."-".$i;
+        //    }
+        //
+        //  }
+        // //  $id = Cotizacion::max('id');
+        //
+        //  if (!empty($id)) {
+        //    $ultimo = Cotizacion::findOrFail($id);
+        //    dd($ultimo);
+        //    die();
+        //  }
+        //
 
-         if ($cantidad == 0) {
-           $codigo = "A-001";
-           $contador = 1;
-         }
 
-         for ($i=0; $i <= $contador ; $i++) {
-
-           if ($contador < 10) {
-
-             $codigo = $abecedario[0]."-00".$i;
-
-           }
-
-           if ($contador >= 10 && $contador <= 99) {
-
-             $codigo = $abecedario[$i]."-0".$i;
-
-           }
-
-           if ($contador >= 100 && $contador <= 999) {
-
-             $codigo = $abecedario[$i]."-".$i;
-           }
-
-         }
-
-         $id = Cotizacion::max('id');
-         $ultimo = Cotizacion::findOrFail($id);
-
-         if ($ultimo->contador >= 1000) {
-
-           $contador = 1;
-           $ultmo->contador = $contador;
-           $ultimo->save();
-
-         }
-
-         dd($ultimo->contador);
-         die();
 
          return view('cotizaciones.create',compact('clientes','juridicas','departamentos'));
      }
