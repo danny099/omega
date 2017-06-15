@@ -187,7 +187,7 @@ class CotizacionController extends Controller
                  !empty($input['pu_final']['cantidad_pu'][$i]) &&
                  !empty($input['pu_final']['metros_pu'][$i]) &&
                  !empty($input['pu_final']['kva_pu'][$i])  &&
-                 !empty($input['pu_final']['acomedidas_pu'][$i])) {
+                 !empty($input['pu_final']['acometidas_pu'][$i])) {
 
                    $datos3['descripcion'] = $input['pu_final']['descripcion_pu'][$i];
                    $datos3['tipo'] = $input['pu_final']['tipo_pu'][$i];
@@ -269,7 +269,9 @@ class CotizacionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input = $request->all();
+        dd($input);
+        die();
     }
 
     /**
