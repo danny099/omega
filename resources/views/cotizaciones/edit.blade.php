@@ -275,7 +275,7 @@
         <div class="col-md-12">
         <div class="col-md-3">
           <div class="form-group">
-            <input type="hidden"  name="pu[id][]" value="$pu->id"  >
+            <input type="hidden"  name="pu[id][]" value="$pu->id" >
             <center><label >Descripción</label></center>
             <select class="form-control desc3"name="pu_final[descripcion_pu][]">
               <option value="{{ $pu->descripcion }}">{{ $pu->descripcion }}</option>
@@ -419,7 +419,7 @@ $(function() {
     var valor_multi = 0;
     var valor_multi_dis = 0;
     var valor_multi_pu = 0;
-
+    $('.actualizar').remove();
 
     $(".quitar50").each(function(i){
 
@@ -431,8 +431,8 @@ $(function() {
 
           if (cantidad != '' && desc!= '' && capacidad!='' && tipo!='') {
 
-            $('.tabla tr:last').after('@foreach($valorcot as $valor)<tr><td>{{$valor->id}}</td><td>'+desc+' '+tipo+' '+capacidad+'</td><td class="cant">'+cantidad+
-            '</td><td><input type="text" class="form-control valor_uni" value="{{$valor->valor_uni}}" placeholder= "Valor" onkeypress="mascara(this,cpf)" name="valores[valor_uni][]" required=""></td><td><input type="text" class="form-control valor_multi" placeholder= "Valor"  value="0" name="valores[valor_multi][]" required="" readonly ></td></tr>@endforeach');
+            $('.tabla tr:last').after('@foreach($datos1 as $valor)<tr class="actualizar"><td>'+nFilas+'</td><td>'+desc+' '+tipo+' '+capacidad+'</td><td class="cant">'+cantidad+
+            '</td><td><input type="text" class="form-control valor_uni" value="{{$valor->valor_uni}}" placeholder= "Valor" onkeypress="mascara(this,cpf)" name="valores[valor_uni][]" required=""></td><td><input type="text" class="form-control valor_multi" placeholder= "Valor" value="{{$valor->valor_total}}" name="valores[valor_multi][]" required="" readonly ></td></tr>@endforeach');
 
               event.preventDefault();
 
@@ -472,11 +472,10 @@ $(function() {
             var desc2 =$(this).find(".desc2").val();
             var tipo2 =$(this).find(".tipo2").val();
             var nFilas = $(".tabla tr").length - 1;
-
             if (cantidad2 != '' && desc2!= '' && tipo2!='') {
 
-              $('.tabla tr:last').after('<tr><td>'+nFilas+'</td><td name="detalles2">'+desc2+' '+tipo2+'</td><td>'+cantidad2+' km'+
-              '</td><td><input type="text" class="form-control valor_uni_dis"  placeholder= "Valor" onkeypress="mascara(this,cpf)" name="valores[valor_uni_dis][]" required=""></td><td><input type="text" class="form-control valor_multi_dis" placeholder= "Valor" value="0" name="valores[valor_multi_dis][]" required="" readonly ></td></tr>');
+              $('.tabla tr:last').after('@foreach($datos2 as $valor)<tr class="actualizar"><td>'+nFilas+'</td><td name="detalles2">'+desc2+' '+tipo2+'</td><td>'+cantidad2+' km'+
+              '</td><td><input type="text" class="form-control valor_uni_dis"  value="{{$valor->valor_uni}}" placeholder= "Valor" onkeypress="mascara(this,cpf)" name="valores[valor_uni_dis][]" required=""></td><td><input type="text" class="form-control valor_multi_dis" placeholder= "Valor"  value="{{$valor->valor_total}}" name="valores[valor_multi_dis][]" required="" readonly ></td></tr>@endforeach');
                 event.preventDefault();
 
                 $('.valor_uni_dis').keyup(function(){
@@ -502,7 +501,6 @@ $(function() {
                    });
                   });
             }
-
         });
 
         $(".quitar52").each(function(){
@@ -514,8 +512,8 @@ $(function() {
 
               if (cantidad3 != '' && desc3!= '' && tipo3!='') {
 
-                $('.tabla tr:last').after('<tr><td>'+nFilas+'</td><td>'+desc3+' '+tipo3+'</td><td class="cant3">'+cantidad3+
-                '</td><td><input type="text" class="form-control valor_uni_pu" placeholder= "Valor" onkeypress="mascara(this,cpf)" name="valores[valor_uni_pu][]" required=""></td><td><input type="text" class="form-control valor_multi_pu" placeholder= "Valor" value="0" name="valores[valor_multi_pu][]" required="" readonly ></td></tr>');
+                $('.tabla tr:last').after('@foreach($datos3 as $valor)<tr class="actualizar"><td>'+nFilas+'</td><td>'+desc3+' '+tipo3+'</td><td class="cant3">'+cantidad3+
+                '</td><td><input type="text" class="form-control valor_uni_pu"  value="{{$valor->valor_uni}}" placeholder= "Valor" onkeypress="mascara(this,cpf)" name="valores[valor_uni_pu][]" required=""></td><td><input type="text" class="form-control valor_multi_pu" placeholder= "Valor"  value="{{$valor->valor_total}}" name="valores[valor_multi_pu][]" required="" readonly ></td></tr>@endforeach');
                   event.preventDefault();
 
                   $('.valor_uni_pu').keyup(function(){
@@ -546,12 +544,12 @@ $(function() {
           });
 
 
-    $('.tabla tr:last').after('<tr><td Colspan="3"></td><td><label>Subtotal</label></td><td><label class="subtotal">0</label><input type="hidden" class="form-control subtotal" placeholder= "Valor" value="0"  name="subtotal"  required="" readonly ></td></tr>');
-    $('.tabla tr:last').after('<tr><td Colspan="3"></td><td><label>IVA</label></td><td><label class="iva">0</label><input type="hidden" class="form-control iva" placeholder= "Valor"  name="iva" value="0"  required="" readonly ></td></tr>');
-    $('.tabla tr:last').after('<tr><td Colspan="3"></td><td><label>Total</label></td><td><label class="total">0</label><input type="hidden" class="form-control total" placeholder= "Valor" value="0" name="total"  required="" readonly ></td></tr>');
-    $('.tabla tr:last').after('<input type="hidden" class="form-control valor_multi"  value="0"  >');
-    $('.tabla tr:last').after('<input type="hidden" class="form-control  valor_multi_dis"  value="0"  >');
-    $('.tabla tr:last').after('<input type="hidden" class="form-control  valor_multi_pu"  value="0"  >');
+    $('.tabla tr:last').after('<tr class="actualizar"><td Colspan="3"></td><td><label>Subtotal</label></td><td><label class="subtotal">{{$cotizaciones->subtotal}}</label><input type="hidden" class="form-control subtotal" placeholder= "Valor" value="0"  name="subtotal"  required="" readonly ></td></tr>');
+    $('.tabla tr:last').after('<tr class="actualizar"><td Colspan="3"></td><td><label>IVA</label></td><td><label class="iva">{{$cotizaciones->iva}}</label><input type="hidden" class="form-control iva" placeholder= "Valor"  name="iva" value="0"  required="" readonly ></td></tr>');
+    $('.tabla tr:last').after('<tr class="actualizar"><td Colspan="3"></td><td><label>Total</label></td><td><label class="total">{{$cotizaciones->total}}</label><input type="hidden" class="form-control total" placeholder= "Valor" value="0" name="total"  required="" readonly ></td></tr>');
+    $('.tabla tr:last').after('<input type="hidden" class="form-control valor_multi actualizar"  value="0"  >');
+    $('.tabla tr:last').after('<input type="hidden" class="form-control  valor_multi_dis actualizar"  value="0"  >');
+    $('.tabla tr:last').after('<input type="hidden" class="form-control  valor_multi_pu actualizar"  value="0"  >');
 
 
    });
