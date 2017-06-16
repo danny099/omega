@@ -141,207 +141,215 @@
       <center> <h3>Alcance: proceso de transformación</h3> </center>
     </div>
     <div class="box-body">
-    @foreach($transformaciones as $transfor)
-        <div class="row quitar50" id="quitar50">
-        <div class="col-md-12">
+      @if(count($transformaciones) == 0)
+        <input type="hidden"  name="transformacion" value="transformacion"  >
+      @else
+      @foreach($transformaciones as $transfor)
+          <div class="row quitar50" id="quitar50">
+          <div class="col-md-12">
+            <div class="col-md-3">
+              <input type="hidden"  name="transformacion[id][]" value="{{$transfor->id}}"  >
+              <div class="form-group">
+                <center><label >Descripción</label></center>
+                <input type="text" class="form-control desc" value="Inspección  RETIE proceso de transformación"  readonly=”readonly” name="transformacion[descripcion][]">
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="form-group">
+                <center><label >Tipo</label></center>
+                <select class="form-control tipo" name="transformacion[tipo][]">
+                  <option value="{{ $transfor->tipo }}">{{ $transfor->tipo }}</option>
+                  <option value="Tipo_poste">Tipo poste</option>
+                  <option value="Tipo_interior">Tipo interior</option>
+                  <option value="Tipo_pedestal/jardin">Tipo pedestal/jardin</option>
+                  <option value="Tipo_patio">Tipo Patio</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="form-group">
+                <center><label >Nivel de tensión (kv)</label></center>
+                <select class="form-control" name="transformacion[nivel_tension][]">
+                  <option value="{{ $transfor->nivel_tension }}">{{ $transfor->nivel_tension }}</option>
+                  <option value="13,2">13,2</option>
+                  <option value="13,4">13,4</option>
+                  <option value="13,8">13,8</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-1">
+              <div class="form-group">
+                <center><label >Capacidad</label></center>
+                  <input type="text" class="form-control capacidad" placeholder="Capacidad"   value="{{$transfor->capacidad}}" name="transformacion[capacidad][]">
+              </div>
+            </div>
+            <div class="col-md-1">
+              <div class="form-group">
+                <center><label >Cantidad</label></center>
+                <input type="text" class="form-control cantidad" id="cantidad" placeholder= "Cantidad" value="{{$transfor->cantidad}}"  name="transformacion[cantidad][]">
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="form-group">
+                <center><label >refrigeración </label></center>
+                <select class="form-control" name="transformacion[tipo_refrigeracion][]">
+                  <option value="{{ $transfor->tipo_refrigeracion }}">{{ $transfor->tipo_refrigeracion }}</option>
+                  <option value="Seco">Seco</option>
+                  <option value="Aceite">Aceite</option>
+                </select>
+              </div>
+            </div>
+        </div>
+      </div>
+      @endforeach
+    @endif
+    @if(count($distribuciones) == 0)
+      <input type="hidden"  name="distribucion" value="distribucion"  >
+    @else
+      @foreach($distribuciones as $distribucion)
+        <div class="row quitar51" id="quitar51">
+          <div class="col-md-12"  style="margin-bottom: 10px;">
+            <center> <h3>Alcance: proceso de distribución</h3> </center>
+          </div>
+          <div class="col-md-12">
+            <div class="col-md-3">
+              <div class="form-group">
+                <input type="hidden"  name="distribucion[id][]" value="{{$distribucion->id}}"  >
+                <center style="margin-bottom: 25px;"><label >Descripción</label></center>
+                <select class="form-control desc2" name="distribucion[descripcion_dis][]" style="top:25px important!">
+                  <option value="{{ $distribucion->descripcion }}">{{ $distribucion->descripcion }}</option>
+                  <option value="Inspección RETIE proceso de distribución en MT">Inspección RETIE proceso de distribución en MT</option>
+                  <option value="Inspección RETIE proceso de distribución en BT">Inspección RETIE proceso de distribución en BT</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="form-group">
+                <center style="margin-bottom: 25px;"><label >Tipo</label></center>
+                <select class="form-control tipo2" name="distribucion[tipo_dis][]" >
+                  <option value="{{ $distribucion->tipo }}">{{ $distribucion->tipo }}</option>
+                  <option value="Aérea">Tipo Aérea</option>
+                  <option value="Subterránea">Tipo subterránea</option>
+                  <option value="Aérea/subterránea">Aérea/subterránea</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-md-1">
+              <div class="form-group">
+                <center><label >Nivel de tensión  </label></center>
+                <select class="form-control tipo2" name="distribucion[nivel_tension_dis][]" >
+                  <option value="{{ $distribucion->nivel_tension }}">{{ $distribucion->nivel_tension }}</option>
+                  <option value="110-220">110-220</option>
+                  <option value="220-240">220-240</option>
+                  <option value="No aplica">No aplica</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-md-1">
+              <div class="form-group">
+                <center><label >longitud de red (km)</label></center>
+                <input type="text" class="form-control cantidad2" placeholder= "Cantidad" value="{{ $distribucion->cantidad }}" name="distribucion[cantidad_dis][]">
+              </div>
+            </div>
+            <div class="col-md-1">
+              <div class="form-group">
+                <center><label >apoyos o estructuras</label></center>
+                <input type="number" class="form-control" placeholder= "Cantidad" value="{{ $distribucion->apoyos }}" name="distribucion[apoyos_dis][]">
+              </div>
+            </div>
+            <div class="col-md-1">
+              <div class="form-group">
+                <center><label >cajas de inspección</label></center>
+                <input type="number" class="form-control" placeholder= "Cantidad" value="{{ $distribucion->cajas }}" name="distribucion[cajas_dis][]">
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="form-group">
+                <center style="margin-bottom: 25px;"><label >Notas</label></center>
+                <input type="text" class="form-control" placeholder= "Notas" value="{{ $distribucion->notas }}" name="distribucion[notas_dis][]">
+              </div>
+            </div>
+        </div>
+      </div>
+      @endforeach
+    @endif
+    @if(count($pu_finales) == 0)
+      <input type="hidden"  name="pu_final" value="pu_final"  >
+    @else
+      @foreach($pu_finales as $pu)
+        <div class="row quitar52" id="quitar52">
+          <div class="col-md-12">
+            <center> <h3>Alcance: proceso de uso final</h3> </center>
+          </div>
+          <div class="col-md-12">
           <div class="col-md-3">
-            <input type="hidden"  name="transformacion[id][]" value="{{$transfor->id}}"  >
             <div class="form-group">
+              <input type="hidden"  name="pu[id][]" value="{{$pu->id}}" >
               <center><label >Descripción</label></center>
-              <input type="text" class="form-control desc" value="Inspección  RETIE proceso de transformación"  readonly=”readonly” name="transformacion[descripcion][]">
+              <select class="form-control desc3"name="pu_final[descripcion_pu][]">
+                <option value="{{ $pu->descripcion }}">{{ $pu->descripcion }}</option>
+                <option value="Inspección RETIE proceso uso final residencial">Inspección RETIE proceso uso final residencial</option>
+                <option value="Inspección RETIE proceso uso final comercial">Inspección RETIE proceso uso final comercial</option>
+              </select>
             </div>
           </div>
           <div class="col-md-2">
             <div class="form-group">
               <center><label >Tipo</label></center>
-              <select class="form-control tipo" name="transformacion[tipo][]">
-                <option value="{{ $transfor->tipo }}">{{ $transfor->tipo }}</option>
-                <option value="Tipo_poste">Tipo poste</option>
-                <option value="Tipo_interior">Tipo interior</option>
-                <option value="Tipo_pedestal/jardin">Tipo pedestal/jardin</option>
-                <option value="Tipo_patio">Tipo Patio</option>
+              <select class="form-control tipo3" name="pu_final[tipo_pu][]">
+                <option value="{{ $pu->tipo }}">{{ $pu->tipo }}</option>
+                <option value="Casa">Casa</option>
+                <option value="Apartamentos">Apartamentos</option>
+                <option value="Zona común">Zona común</option>
+                <option value="Local comercial">Local comercial</option>
+                <option value="Punto fijo">Punto fijo</option>
               </select>
             </div>
           </div>
           <div class="col-md-2">
             <div class="form-group">
-              <center><label >Nivel de tensión (kv)</label></center>
-              <select class="form-control" name="transformacion[nivel_tension][]">
-                <option value="{{ $transfor->nivel_tension }}">{{ $transfor->nivel_tension }}</option>
-                <option value="13,2">13,2</option>
-                <option value="13,4">13,4</option>
-                <option value="13,8">13,8</option>
+              <center><label >Estrato</label></center>
+              <select class="form-control"name="pu_final[estrato_pu][]">
+                <option value="{{ $pu->estrato }}">{{ $pu->estrato }}</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
               </select>
-            </div>
-          </div>
-          <div class="col-md-1">
-            <div class="form-group">
-              <center><label >Capacidad</label></center>
-                <input type="text" class="form-control capacidad" placeholder="Capacidad"   value="{{$transfor->capacidad}}" name="transformacion[capacidad][]">
             </div>
           </div>
           <div class="col-md-1">
             <div class="form-group">
               <center><label >Cantidad</label></center>
-              <input type="text" class="form-control cantidad" id="cantidad" placeholder= "Cantidad" value="{{$transfor->cantidad}}"  name="transformacion[cantidad][]">
-            </div>
-          </div>
-          <div class="col-md-2">
-            <div class="form-group">
-              <center><label >refrigeración </label></center>
-              <select class="form-control" name="transformacion[tipo_refrigeracion][]">
-                <option value="{{ $transfor->tipo_refrigeracion }}">{{ $transfor->tipo_refrigeracion }}</option>
-                <option value="Seco">Seco</option>
-                <option value="Aceite">Aceite</option>
-              </select>
-            </div>
-          </div>
-      </div>
-    </div>
-    @endforeach
-    @if(count($distribuciones) == 0)
-      <input type="hidden"  name="distribucion" value="distribucion"  >
-    @else
-    @foreach($distribuciones as $distribucion)
-      <div class="row quitar51" id="quitar51">
-        <div class="col-md-12"  style="margin-bottom: 10px;">
-          <center> <h3>Alcance: proceso de distribución</h3> </center>
-        </div>
-        <div class="col-md-12">
-          <div class="col-md-3">
-            <div class="form-group">
-              <input type="hidden"  name="distribucion[id][]" value="{{$distribucion->id}}"  >
-              <center style="margin-bottom: 25px;"><label >Descripción</label></center>
-              <select class="form-control desc2" name="distribucion[descripcion_dis][]" style="top:25px important!">
-                <option value="{{ $distribucion->descripcion }}">{{ $distribucion->descripcion }}</option>
-                <option value="Inspección RETIE proceso de distribución en MT">Inspección RETIE proceso de distribución en MT</option>
-                <option value="Inspección RETIE proceso de distribución en BT">Inspección RETIE proceso de distribución en BT</option>
-              </select>
-            </div>
-          </div>
-          <div class="col-md-2">
-            <div class="form-group">
-              <center style="margin-bottom: 25px;"><label >Tipo</label></center>
-              <select class="form-control tipo2" name="distribucion[tipo_dis][]" >
-                <option value="{{ $distribucion->tipo }}">{{ $distribucion->tipo }}</option>
-                <option value="Aérea">Tipo Aérea</option>
-                <option value="Subterránea">Tipo subterránea</option>
-                <option value="Aérea/subterránea">Aérea/subterránea</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="col-md-1">
-            <div class="form-group">
-              <center><label >Nivel de tensión  </label></center>
-              <select class="form-control tipo2" name="distribucion[nivel_tension_dis][]" >
-                <option value="{{ $distribucion->nivel_tension }}">{{ $distribucion->nivel_tension }}</option>
-                <option value="110-220">110-220</option>
-                <option value="220-240">220-240</option>
-                <option value="No aplica">No aplica</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="col-md-1">
-            <div class="form-group">
-              <center><label >longitud de red (km)</label></center>
-              <input type="text" class="form-control cantidad2" placeholder= "Cantidad" value="{{ $distribucion->cantidad }}" name="distribucion[cantidad_dis][]">
+              <input type="text" class="form-control cantidad3" value="{{ $pu->cantidad }}" placeholder= "Cantidad" name="pu_final[cantidad_pu][]">
             </div>
           </div>
           <div class="col-md-1">
             <div class="form-group">
-              <center><label >apoyos o estructuras</label></center>
-              <input type="number" class="form-control" placeholder= "Cantidad" value="{{ $distribucion->apoyos }}" name="distribucion[apoyos_dis][]">
+              <center><label >m²</label></center>
+              <input type="text" class="form-control" placeholder= "Cantidad" value="{{ $pu->metros }}" name="pu_final[metros_pu][]">
             </div>
           </div>
           <div class="col-md-1">
             <div class="form-group">
-              <center><label >cajas de inspección</label></center>
-              <input type="number" class="form-control" placeholder= "Cantidad" value="{{ $distribucion->cajas }}" name="distribucion[cajas_dis][]">
+              <center><label >KVA</label></center>
+              <input type="text" class="form-control" placeholder= "Cantidad" value="{{ $pu->kva }}" name="pu_final[kva_pu][]">
             </div>
           </div>
-          <div class="col-md-2">
+          <div class="col-md-1">
             <div class="form-group">
-              <center style="margin-bottom: 25px;"><label >Notas</label></center>
-              <input type="text" class="form-control" placeholder= "Notas" value="{{ $distribucion->notas }}" name="distribucion[notas_dis][]">
+              <center><label >Acometidas</label></center>
+              <input type="number" class="form-control" placeholder= "Cantidad" value="{{ $pu->acometidas }}" name="pu_final[acometidas_pu][]">
             </div>
           </div>
-      </div>
-    </div>
-    @endforeach
-    @endif
-    @foreach($pu_finales as $pu)
-      <div class="row quitar52" id="quitar52">
-        <div class="col-md-12">
-          <center> <h3>Alcance: proceso de uso final</h3> </center>
         </div>
-        <div class="col-md-12">
-        <div class="col-md-3">
-          <div class="form-group">
-            <input type="hidden"  name="pu[id][]" value="{{$pu->id}}" >
-            <center><label >Descripción</label></center>
-            <select class="form-control desc3"name="pu_final[descripcion_pu][]">
-              <option value="{{ $pu->descripcion }}">{{ $pu->descripcion }}</option>
-              <option value="Inspección RETIE proceso uso final residencial">Inspección RETIE proceso uso final residencial</option>
-              <option value="Inspección RETIE proceso uso final comercial">Inspección RETIE proceso uso final comercial</option>
-            </select>
-          </div>
         </div>
-        <div class="col-md-2">
-          <div class="form-group">
-            <center><label >Tipo</label></center>
-            <select class="form-control tipo3" name="pu_final[tipo_pu][]">
-              <option value="{{ $pu->tipo }}">{{ $pu->tipo }}</option>
-              <option value="Casa">Casa</option>
-              <option value="Apartamentos">Apartamentos</option>
-              <option value="Zona común">Zona común</option>
-              <option value="Local comercial">Local comercial</option>
-              <option value="Punto fijo">Punto fijo</option>
-            </select>
-          </div>
-        </div>
-        <div class="col-md-2">
-          <div class="form-group">
-            <center><label >Estrato</label></center>
-            <select class="form-control"name="pu_final[estrato_pu][]">
-              <option value="{{ $pu->estrato }}">{{ $pu->estrato }}</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-            </select>
-          </div>
-        </div>
-        <div class="col-md-1">
-          <div class="form-group">
-            <center><label >Cantidad</label></center>
-            <input type="text" class="form-control cantidad3" value="{{ $pu->cantidad }}" placeholder= "Cantidad" name="pu_final[cantidad_pu][]">
-          </div>
-        </div>
-        <div class="col-md-1">
-          <div class="form-group">
-            <center><label >m²</label></center>
-            <input type="text" class="form-control" placeholder= "Cantidad" value="{{ $pu->metros }}" name="pu_final[metros_pu][]">
-          </div>
-        </div>
-        <div class="col-md-1">
-          <div class="form-group">
-            <center><label >KVA</label></center>
-            <input type="text" class="form-control" placeholder= "Cantidad" value="{{ $pu->kva }}" name="pu_final[kva_pu][]">
-          </div>
-        </div>
-        <div class="col-md-1">
-          <div class="form-group">
-            <center><label >Acometidas</label></center>
-            <input type="number" class="form-control" placeholder= "Cantidad" value="{{ $pu->acometidas }}" name="pu_final[acometidas_pu][]">
-          </div>
-        </div>
-      </div>
-      </div>
-      @endforeach
+        @endforeach
+      @endif
       <div class="col-md-12">
         <center> <h3>Observaciones</h3> </center>
       </div>
