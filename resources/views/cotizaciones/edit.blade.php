@@ -199,6 +199,9 @@
       </div>
     </div>
     @endforeach
+    @if(count($distribuciones) == 0)
+      <input type="hidden"  name="distribucion" value="distribucion"  >
+    @else
     @foreach($distribuciones as $distribucion)
       <div class="row quitar51" id="quitar51">
         <div class="col-md-12"  style="margin-bottom: 10px;">
@@ -267,6 +270,7 @@
       </div>
     </div>
     @endforeach
+    @endif
     @foreach($pu_finales as $pu)
       <div class="row quitar52" id="quitar52">
         <div class="col-md-12">

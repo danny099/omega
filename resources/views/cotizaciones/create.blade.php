@@ -336,6 +336,8 @@
          <th><center><label> Cantidad</label></center></th>
          <th><center><label> Valor unitario</label></center></th>
          <th><center><label> Valor</label></center></th>
+         <th><center><label> <button type="button" class="btn btn-primary generar" style="background-color: #33579A; border-color:#33579A;" name="button">Generar</button></label></center></th>
+
        </tr>
 
      </table>
@@ -384,12 +386,9 @@ function addCommas(nStr){
 
 $(function() {
     var count = 1;
-    $(".sgte").on("click",function( event ) {
-      $(this).closest("#quitar50").remove();
-         return false;
-    });
 
-   $(".sgte").on("click",function( event ) {
+
+   $(".generar").on("click",function( event ) {
     count++;
     var x= $().val();
     var valor_multi = 0;
