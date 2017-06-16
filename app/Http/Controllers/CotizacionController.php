@@ -220,10 +220,14 @@ class CotizacionController extends Controller
       $pu_finales = Pu_final::where('pu_final.cotizacion_id', '=', $id)->get();
       $valorcot = Valorcot::where('valorcot.cotizacion_id', '=', $id)->get();
 
-      $datos1 = DB::table('valorcot')->where('cotizacion_id', '=', $id)->where('detalles', 'like', '%transformacion%')->get();
-      $datos2 = DB::table('valorcot')->where('cotizacion_id', '=', $id)->where('detalles', 'like', '%distribucion%')->get();
-      $datos3 = DB::table('valorcot')->where('cotizacion_id', '=', $id)->where('detalles', 'like', '%final%')->get();
+      $dt1 = DB::table('valorcot')->where('cotizacion_id', '=', $id)->where('detalles', 'like', '%transformacion%')->get();
+      $dt2 = DB::table('valorcot')->where('cotizacion_id', '=', $id)->where('detalles', 'like', '%distribucion%')->get();
+      $dt3 = DB::table('valorcot')->where('cotizacion_id', '=', $id)->where('detalles', 'like', '%final%')->get();
 
+      $datos1 = json_encode($dt1);
+      $datos2 = json_encode($dt2);
+      $datos3 = json_encode($dt3);
+      
 
       return view('cotizaciones.edit',compact('cotizaciones','departamentos','clientes','juridicas','transformaciones','distribuciones','pu_finales','municipio','valorcot','datos1','datos2','datos3'));
     }
