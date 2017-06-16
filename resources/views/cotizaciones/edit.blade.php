@@ -435,8 +435,7 @@ $(function() {
           var nFilas = $(".tabla tr").length - 1;
           var datos1 = ($(".datos1").val());
           var datos = JSON.parse($(".datos1").val())
-          console.log(datos1)
-          alert(JSON.stringify(datos1));
+
           if (cantidad != '' && desc!= '' && capacidad!='' && tipo!='') {
 
             $('.tabla tr:last').after('<tr class="actualizar"><td>'+nFilas+'</td><td>'+desc+' '+tipo+' '+capacidad+'</td><td class="cant">'+cantidad+
@@ -552,9 +551,9 @@ $(function() {
           });
 
 
-    $('.tabla tr:last').after('<tr class="actualizar"><td Colspan="3"></td><td><label>Subtotal</label></td><td><label class="subtotal"></label><input type="hidden" class="form-control subtotal" placeholder= "Valor" value="0"  name="subtotal"  required="" readonly ></td></tr>');
-    $('.tabla tr:last').after('<tr class="actualizar"><td Colspan="3"></td><td><label>IVA</label></td><td><label class="iva">{{$cotizaciones->iva}}</label><input type="hidden" class="form-control iva" placeholder= "Valor"  name="iva" value="0"  required="" readonly ></td></tr>');
-    $('.tabla tr:last').after('<tr class="actualizar"><td Colspan="3"></td><td><label>Total</label></td><td><label class="total">{{$cotizaciones->total}}</label><input type="hidden" class="form-control total" placeholder= "Valor" value="0" name="total"  required="" readonly ></td></tr>');
+    $('.tabla tr:last').after('<tr class="actualizar"><td Colspan="3"></td><td><label>Subtotal</label></td><td><label class="subtotal">{{$cotizaciones->subtotal}}</label><input type="hidden" class="form-control subtotal" placeholder= "Valor" value="{{$cotizaciones->subtotal}}"  name="subtotal"  required="" readonly ></td></tr>');
+    $('.tabla tr:last').after('<tr class="actualizar"><td Colspan="3"></td><td><label>IVA</label></td><td><label class="iva">{{$cotizaciones->iva}}</label><input type="hidden" class="form-control iva" placeholder= "Valor"  name="iva" value="{{$cotizaciones->iva}}"  required="" readonly ></td></tr>');
+    $('.tabla tr:last').after('<tr class="actualizar"><td Colspan="3"></td><td><label>Total</label></td><td><label class="total">{{$cotizaciones->total}}</label><input type="hidden" class="form-control total" placeholder= "Valor" value="{{$cotizaciones->total}} name="total"  required="" readonly ></td></tr>');
     $('.tabla tr:last').after('<input type="hidden" class="form-control valor_multi actualizar"  value="0"  >');
     $('.tabla tr:last').after('<input type="hidden" class="form-control  valor_multi_dis actualizar"  value="0"  >');
     $('.tabla tr:last').after('<input type="hidden" class="form-control  valor_multi_pu actualizar"  value="0"  >');
