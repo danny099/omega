@@ -220,13 +220,9 @@ class CotizacionController extends Controller
       $pu_finales = Pu_final::where('pu_final.cotizacion_id', '=', $id)->get();
       $valorcot = Valorcot::where('valorcot.cotizacion_id', '=', $id)->get();
 
-      $dt1 = DB::table('valorcot')->where('cotizacion_id', '=', $id)->where('detalles', 'like', '%transformacion%')->get();
-      $dt2 = DB::table('valorcot')->where('cotizacion_id', '=', $id)->where('detalles', 'like', '%distribucion%')->get();
-       $dt3 = DB::table('valorcot')->where('cotizacion_id', '=', $id)->where('detalles', 'like', '%final%')->get();
-
-      $datos1 = json_encode($dt1);
-      $datos2 = json_encode($dt2);
-      $datos3 = json_encode($dt3);
+      $datos1 = DB::table('valorcot')->where('cotizacion_id', '=', $id)->where('detalles', 'like', '%transformacion%')->get();
+      $datos2 = DB::table('valorcot')->where('cotizacion_id', '=', $id)->where('detalles', 'like', '%distribucion%')->get();
+      $datos3 = DB::table('valorcot')->where('cotizacion_id', '=', $id)->where('detalles', 'like', '%final%')->get();
 
 
       return view('cotizaciones.edit',compact('cotizaciones','departamentos','clientes','juridicas','transformaciones','distribuciones','pu_finales','municipio','valorcot','datos1','datos2','datos3'));
@@ -243,9 +239,9 @@ class CotizacionController extends Controller
     {
         $input = $request->all();
 
-        // dd($input);
+        $cotiza = Cotizacion::findOrFail($id);
+        // dd($cotiza);
         // die();
-
         $cotizacion['dirigido'] = $request->dirigido;
         $cotizacion['codigo'] = '0001';
         $cotizacion['cliente_id'] = $request->cliente_id;
@@ -269,7 +265,6 @@ class CotizacionController extends Controller
           $datos1['capacidad'] = $input['transformacion']['capacidad'][$a];
           $datos1['cantidad'] = $input['transformacion']['cantidad'][$a];
           $datos1['tipo_refrigeracion'] = $input['transformacion']['tipo_refrigeracion'][$a];
-          $datos1['cotizacion_id'] = $lastId_cotiza;
 
           // $texto['detalles'] = $datos1['descripcion'].' '.$datos1['tipo'].' '. $datos1['cantidad'].' '.$datos1['capacidad'];
           // $texto['cantidad'] = $datos1['cantidad'];
@@ -294,7 +289,6 @@ class CotizacionController extends Controller
           $datos2['apoyos'] = $input['distribucion']['apoyos_dis'][$x];
           $datos2['cajas'] = $input['distribucion']['cajas_dis'][$x];
           $datos2['notas'] = $input['distribucion']['notas_dis'][$x];
-          $datos2['cotizacion_id'] = $lastId_cotiza;
 
           // $texto['detalles'] = $datos2['descripcion'].' '.$datos2['tipo'].' '. $datos2['cantidad'];
           // $texto['cantidad'] = $datos2['cantidad'];
@@ -310,7 +304,7 @@ class CotizacionController extends Controller
         for ($i=0; $i<count($input['pu_final']['descripcion_pu']); $i++) {
 
           $id1 = $input['pu']['id'][$i];
-          $pu = Pu_final::findOrFail($i);
+          $pu = Pu_final::findOrFail($id1);
           $datos3['descripcion'] = $input['pu_final']['descripcion_pu'][$i];
           $datos3['tipo'] = $input['pu_final']['tipo_pu'][$i];
           $datos3['estrato'] = $input['pu_final']['estrato_pu'][$i];
@@ -319,7 +313,6 @@ class CotizacionController extends Controller
           $datos3['metros'] = $input['pu_final']['metros_pu'][$i];
           $datos3['kva'] = $input['pu_final']['kva_pu'][$i];
           $datos3['acometidas'] = $input['pu_final']['acometidas_pu'][$i];
-          $datos3['cotizacion_id'] = $lastId_cotiza;
 
           // $texto['detalles'] = $datos3['descripcion'].' '.$datos3['tipo'].' '. $datos3['cantidad'];
           // $texto['cantidad'] = $datos3['cantidad'];
@@ -332,6 +325,9 @@ class CotizacionController extends Controller
           $pu->update($datos3);
 
         }
+
+        $cotiza->update($cotizacion);
+
 
 
     }
