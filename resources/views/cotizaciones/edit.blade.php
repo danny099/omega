@@ -364,6 +364,8 @@
          <th><center><label> <button type="button" class="btn btn-primary generar" style="background-color: #33579A; border-color:#33579A;" name="button">Generar</button></label></center></th>
        </tr>
        <input type="hidden"  value="{{ $datos1 }}" class="datos1">
+       <input type="hidden"  value="{{ $datos2 }}" class="datos2">
+       <input type="hidden"  value="{{ $datos3 }}" class="datos3">
 
      </table>
    </section>
@@ -421,8 +423,19 @@ $(function() {
     var valor_multi = 0;
     var valor_multi_dis = 0;
     var valor_multi_pu = 0;
-
-
+    var datos1 = ($(".datos1").val());
+    var datos = JSON.parse($(".datos1").val())
+    var datos2 = JSON.parse($(".datos2").val())
+    var datos3 = JSON.parse($(".datos3").val())
+    $.each(datos, function(i,item){
+          datos[i];
+     })
+     $.each(datos2, function(i,item){
+           datos2[i];
+      })
+      $.each(datos3, function(i,item){
+            datos3[i];
+       })
     $('.actualizar').remove();
 
 
@@ -433,13 +446,12 @@ $(function() {
           var tipo =$(this).find(".tipo").val();
           var capacidad =$(this).find(".capacidad").val();
           var nFilas = $(".tabla tr").length - 1;
-          var datos1 = ($(".datos1").val());
-          var datos = JSON.parse($(".datos1").val())
+
 
           if (cantidad != '' && desc!= '' && capacidad!='' && tipo!='') {
 
             $('.tabla tr:last').after('<tr class="actualizar"><td>'+nFilas+'</td><td>'+desc+' '+tipo+' '+capacidad+'</td><td class="cant">'+cantidad+
-            '</td><td><input type="text" class="form-control valor_uni" value="" placeholder= "Valor" onkeypress="mascara(this,cpf)" name="valores[valor_uni][]" required=""></td><td><input type="text" class="form-control valor_multi" placeholder= "Valor" value="" name="valores[valor_multi][]" required="" readonly ></td></tr>');
+            '</td><td><input type="text" class="form-control valor_uni" value="'+datos[i].valor_uni+'" placeholder= "Valor" onkeypress="mascara(this,cpf)" name="valores[valor_uni][]" required=""></td><td><input type="text" class="form-control valor_multi" placeholder= "Valor" value="'+datos[i].valor_total+'" name="valores[valor_multi][]" required="" readonly ></td></tr>');
 
               event.preventDefault();
 
@@ -473,7 +485,7 @@ $(function() {
       });
 
 
-      $(".quitar51").each(function(){
+      $(".quitar51").each(function(i){
 
             var cantidad2 =$(this).find(".cantidad2").val();
             var desc2 =$(this).find(".desc2").val();
@@ -482,7 +494,7 @@ $(function() {
             if (cantidad2 != '' && desc2!= '' && tipo2!='') {
 
               $('.tabla tr:last').after('<tr class="actualizar"><td>'+nFilas+'</td><td name="detalles2">'+desc2+' '+tipo2+'</td><td>'+cantidad2+' km'+
-              '</td><td><input type="text" class="form-control valor_uni_dis"  value="" placeholder= "Valor" onkeypress="mascara(this,cpf)" name="valores[valor_uni_dis][]" required=""></td><td><input type="text" class="form-control valor_multi_dis" placeholder= "Valor"  value="" name="valores[valor_multi_dis][]" required="" readonly ></td></tr>');
+              '</td><td><input type="text" class="form-control valor_uni_dis"  value="'+datos2[i].valor_uni+'" placeholder= "Valor" onkeypress="mascara(this,cpf)" name="valores[valor_uni_dis][]" required=""></td><td><input type="text" class="form-control valor_multi_dis" placeholder= "Valor"  value="'+datos2[i].valor_total+'" name="valores[valor_multi_dis][]" required="" readonly ></td></tr>');
                 event.preventDefault();
 
                 $('.valor_uni_dis').keyup(function(){
@@ -510,7 +522,7 @@ $(function() {
             }
         });
 
-        $(".quitar52").each(function(){
+        $(".quitar52").each(function(i){
 
               var cantidad3 =$(this).find(".cantidad3").val();
               var desc3 =$(this).find(".desc3").val();
@@ -520,7 +532,7 @@ $(function() {
               if (cantidad3 != '' && desc3!= '' && tipo3!='') {
 
                 $('.tabla tr:last').after('<tr class="actualizar"><td>'+nFilas+'</td><td>'+desc3+' '+tipo3+'</td><td class="cant3">'+cantidad3+
-                '</td><td><input type="text" class="form-control valor_uni_pu"  value="" placeholder= "Valor" onkeypress="mascara(this,cpf)" name="valores[valor_uni_pu][]" required=""></td><td><input type="text" class="form-control valor_multi_pu" placeholder= "Valor"  value="" name="valores[valor_multi_pu][]" required="" readonly ></td></tr>');
+                '</td><td><input type="text" class="form-control valor_uni_pu"  value="'+datos3[i].valor_uni+'" placeholder= "Valor" onkeypress="mascara(this,cpf)" name="valores[valor_uni_pu][]" required=""></td><td><input type="text" class="form-control valor_multi_pu" placeholder= "Valor"  value="'+datos3[i].valor_total+'" name="valores[valor_multi_pu][]" required="" readonly ></td></tr>');
                   event.preventDefault();
 
                   $('.valor_uni_pu').keyup(function(){
