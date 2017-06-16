@@ -346,6 +346,7 @@
       </div>
     </div>
 
+
 </section>
   <h3>Paso 2</h3>
     <section>
@@ -419,7 +420,10 @@ $(function() {
     var valor_multi = 0;
     var valor_multi_dis = 0;
     var valor_multi_pu = 0;
+
+
     $('.actualizar').remove();
+
 
     $(".quitar50").each(function(i){
 
@@ -428,11 +432,13 @@ $(function() {
           var tipo =$(this).find(".tipo").val();
           var capacidad =$(this).find(".capacidad").val();
           var nFilas = $(".tabla tr").length - 1;
-
+          var datos1 = {{$datos1}}.replace(/&quot;/g,'"');
+          document.write(datos1);
+          alert(datos1)
           if (cantidad != '' && desc!= '' && capacidad!='' && tipo!='') {
 
-            $('.tabla tr:last').after('@foreach($datos1 as $valor)<tr class="actualizar"><td>'+nFilas+'</td><td>'+desc+' '+tipo+' '+capacidad+'</td><td class="cant">'+cantidad+
-            '</td><td><input type="text" class="form-control valor_uni" value="{{$valor->valor_uni}}" placeholder= "Valor" onkeypress="mascara(this,cpf)" name="valores[valor_uni][]" required=""></td><td><input type="text" class="form-control valor_multi" placeholder= "Valor" value="{{$valor->valor_total}}" name="valores[valor_multi][]" required="" readonly ></td></tr>@endforeach');
+            $('.tabla tr:last').after('<tr class="actualizar"><td>'+nFilas+'</td><td>'+desc+' '+tipo+' '+capacidad+'</td><td class="cant">'+cantidad+
+            '</td><td><input type="text" class="form-control valor_uni" value="" placeholder= "Valor" onkeypress="mascara(this,cpf)" name="valores[valor_uni][]" required=""></td><td><input type="text" class="form-control valor_multi" placeholder= "Valor" value="" name="valores[valor_multi][]" required="" readonly ></td></tr>');
 
               event.preventDefault();
 
@@ -474,8 +480,8 @@ $(function() {
             var nFilas = $(".tabla tr").length - 1;
             if (cantidad2 != '' && desc2!= '' && tipo2!='') {
 
-              $('.tabla tr:last').after('@foreach($datos2 as $valor)<tr class="actualizar"><td>'+nFilas+'</td><td name="detalles2">'+desc2+' '+tipo2+'</td><td>'+cantidad2+' km'+
-              '</td><td><input type="text" class="form-control valor_uni_dis"  value="{{$valor->valor_uni}}" placeholder= "Valor" onkeypress="mascara(this,cpf)" name="valores[valor_uni_dis][]" required=""></td><td><input type="text" class="form-control valor_multi_dis" placeholder= "Valor"  value="{{$valor->valor_total}}" name="valores[valor_multi_dis][]" required="" readonly ></td></tr>@endforeach');
+              $('.tabla tr:last').after('<tr class="actualizar"><td>'+nFilas+'</td><td name="detalles2">'+desc2+' '+tipo2+'</td><td>'+cantidad2+' km'+
+              '</td><td><input type="text" class="form-control valor_uni_dis"  value="" placeholder= "Valor" onkeypress="mascara(this,cpf)" name="valores[valor_uni_dis][]" required=""></td><td><input type="text" class="form-control valor_multi_dis" placeholder= "Valor"  value="" name="valores[valor_multi_dis][]" required="" readonly ></td></tr>');
                 event.preventDefault();
 
                 $('.valor_uni_dis').keyup(function(){
@@ -512,8 +518,8 @@ $(function() {
 
               if (cantidad3 != '' && desc3!= '' && tipo3!='') {
 
-                $('.tabla tr:last').after('@foreach($datos3 as $valor)<tr class="actualizar"><td>'+nFilas+'</td><td>'+desc3+' '+tipo3+'</td><td class="cant3">'+cantidad3+
-                '</td><td><input type="text" class="form-control valor_uni_pu"  value="{{$valor->valor_uni}}" placeholder= "Valor" onkeypress="mascara(this,cpf)" name="valores[valor_uni_pu][]" required=""></td><td><input type="text" class="form-control valor_multi_pu" placeholder= "Valor"  value="{{$valor->valor_total}}" name="valores[valor_multi_pu][]" required="" readonly ></td></tr>@endforeach');
+                $('.tabla tr:last').after('<tr class="actualizar"><td>'+nFilas+'</td><td>'+desc3+' '+tipo3+'</td><td class="cant3">'+cantidad3+
+                '</td><td><input type="text" class="form-control valor_uni_pu"  value="" placeholder= "Valor" onkeypress="mascara(this,cpf)" name="valores[valor_uni_pu][]" required=""></td><td><input type="text" class="form-control valor_multi_pu" placeholder= "Valor"  value="" name="valores[valor_multi_pu][]" required="" readonly ></td></tr>');
                   event.preventDefault();
 
                   $('.valor_uni_pu').keyup(function(){
