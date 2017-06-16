@@ -240,19 +240,35 @@ class CotizacionController extends Controller
         $input = $request->all();
 
         $cotiza = Cotizacion::findOrFail($id);
-        // dd($cotiza);
+        // dd($input);
         // die();
+
         $cotizacion['dirigido'] = $request->dirigido;
         $cotizacion['codigo'] = '0001';
-        $cotizacion['cliente_id'] = $request->cliente_id;
-        $cotizacion['juridica_id'] = $request->juridica_id;
+        // $cotizacion['cliente_id'] = $request->cliente_id;
+        // $cotizacion['juridica_id'] = $request->juridica_id;
         $cotizacion['nombre'] = $request->nombre;
         $cotizacion['municipio'] = $request->municipio;
-        $cotizacion['departamento_id'] = $request->departamento;
+        $cotizacion['departamento_id'] = $request->departamento_id;
         $cotizacion['subtotal'] = str_replace(',','',$request->subtotal);
         $cotizacion['iva'] = str_replace(',','',$request->iva);
         $cotizacion['total'] = str_replace(',','',$request->total);
         $cotizacion['observaciones'] = $request->observacion;
+
+        if ($request->tipo_regimen == 1) {
+
+          $cotizacion['cliente_id'] = $request->cliente_id;
+          $cotiza->juridica_id = null;
+          $cotiza->save();
+
+        }else {
+
+          $cotizacion['juridica_id'] = $request->juridica_id;
+          $cotiza->cliente_id = null;
+          $cotiza->save();
+
+        }
+
 
         for ($a=0; $a<count($input['transformacion']['descripcion']); $a++){
 
@@ -277,58 +293,67 @@ class CotizacionController extends Controller
 
         }
 
-        for ($x=0; $x<count($input['distribucion']['descripcion_dis']); $x++) {
+        if ($request->distribucion == 'distribucion') {
 
-          $id1 = $input['distribucion']['id'][$x];
-          $distri = Distribucion::findOrFail($id1);
-          $datos2['descripcion'] = $input['distribucion']['descripcion_dis'][$x];
-          $datos2['tipo'] = $input['distribucion']['tipo_dis'][$x];
-          $datos2['nivel_tension'] = $input['distribucion']['nivel_tension_dis'][$x];
-          $datos2['unidad'] = 'km';
-          $datos2['cantidad'] = str_replace('.',',',$input['distribucion']['cantidad_dis'][$x]);
-          $datos2['apoyos'] = $input['distribucion']['apoyos_dis'][$x];
-          $datos2['cajas'] = $input['distribucion']['cajas_dis'][$x];
-          $datos2['notas'] = $input['distribucion']['notas_dis'][$x];
+        }else {
+          for ($x = 0; $x < count($input['distribucion']['descripcion_dis']); $x++) {
 
-          // $texto['detalles'] = $datos2['descripcion'].' '.$datos2['tipo'].' '. $datos2['cantidad'];
-          // $texto['cantidad'] = $datos2['cantidad'];
-          // $texto['valor_uni'] = str_replace(',','',$input['valores']['valor_uni_dis'][$x]);
-          // $texto['valor_total'] = str_replace(',','',$input['valores']['valor_multi_dis'][$x]);
-          // $texto['cotizacion_id'] = $lastId_cotiza;
+            $id1 = $input['distribucion']['id'][$x];
+            $distri = Distribucion::findOrFail($id1);
+            $datos2['descripcion'] = $input['distribucion']['descripcion_dis'][$x];
+            $datos2['tipo'] = $input['distribucion']['tipo_dis'][$x];
+            $datos2['nivel_tension'] = $input['distribucion']['nivel_tension_dis'][$x];
+            $datos2['unidad'] = 'km';
+            $datos2['cantidad'] = str_replace('.',',',$input['distribucion']['cantidad_dis'][$x]);
+            $datos2['apoyos'] = $input['distribucion']['apoyos_dis'][$x];
+            $datos2['cajas'] = $input['distribucion']['cajas_dis'][$x];
+            $datos2['notas'] = $input['distribucion']['notas_dis'][$x];
 
-          // Valorcot::create($texto);
-          $distri->update($datos2);
+            // $texto['detalles'] = $datos2['descripcion'].' '.$datos2['tipo'].' '. $datos2['cantidad'];
+            // $texto['cantidad'] = $datos2['cantidad'];
+            // $texto['valor_uni'] = str_replace(',','',$input['valores']['valor_uni_dis'][$x]);
+            // $texto['valor_total'] = str_replace(',','',$input['valores']['valor_multi_dis'][$x]);
+            // $texto['cotizacion_id'] = $lastId_cotiza;
 
+            // Valorcot::create($texto);
+            $distri->update($datos2);
+
+          }
         }
 
-        for ($i=0; $i<count($input['pu_final']['descripcion_pu']); $i++) {
+        if ($request->pu_final == 'pu_final') {
+          # code...
+        }else {
+          for ($i=0; $i<count($input['pu_final']['descripcion_pu']); $i++) {
 
-          $id1 = $input['pu']['id'][$i];
-          $pu = Pu_final::findOrFail($id1);
-          $datos3['descripcion'] = $input['pu_final']['descripcion_pu'][$i];
-          $datos3['tipo'] = $input['pu_final']['tipo_pu'][$i];
-          $datos3['estrato'] = $input['pu_final']['estrato_pu'][$i];
-          $datos3['unidad'] = 'Und';
-          $datos3['cantidad'] = $input['pu_final']['cantidad_pu'][$i];
-          $datos3['metros'] = $input['pu_final']['metros_pu'][$i];
-          $datos3['kva'] = $input['pu_final']['kva_pu'][$i];
-          $datos3['acometidas'] = $input['pu_final']['acometidas_pu'][$i];
+            $id1 = $input['pu']['id'][$i];
+            $pu = Pu_final::findOrFail($id1);
+            $datos3['descripcion'] = $input['pu_final']['descripcion_pu'][$i];
+            $datos3['tipo'] = $input['pu_final']['tipo_pu'][$i];
+            $datos3['estrato'] = $input['pu_final']['estrato_pu'][$i];
+            $datos3['unidad'] = 'Und';
+            $datos3['cantidad'] = $input['pu_final']['cantidad_pu'][$i];
+            $datos3['metros'] = $input['pu_final']['metros_pu'][$i];
+            $datos3['kva'] = $input['pu_final']['kva_pu'][$i];
+            $datos3['acometidas'] = $input['pu_final']['acometidas_pu'][$i];
 
-          // $texto['detalles'] = $datos3['descripcion'].' '.$datos3['tipo'].' '. $datos3['cantidad'];
-          // $texto['cantidad'] = $datos3['cantidad'];
-          // $texto['valor_uni'] = str_replace(',','',$input['valores']['valor_uni_pu'][$i]);
-          // $texto['valor_total'] = str_replace(',','',$input['valores']['valor_multi_pu'][$i]);
-          // $texto['cotizacion_id'] = $lastId_cotiza;
-          //
-          // Valorcot::create($texto);
+            // $texto['detalles'] = $datos3['descripcion'].' '.$datos3['tipo'].' '. $datos3['cantidad'];
+            // $texto['cantidad'] = $datos3['cantidad'];
+            // $texto['valor_uni'] = str_replace(',','',$input['valores']['valor_uni_pu'][$i]);
+            // $texto['valor_total'] = str_replace(',','',$input['valores']['valor_multi_pu'][$i]);
+            // $texto['cotizacion_id'] = $lastId_cotiza;
+            //
+            // Valorcot::create($texto);
 
-          $pu->update($datos3);
+            $pu->update($datos3);
 
+          }
         }
 
         $cotiza->update($cotizacion);
-
-
+        Session::flash('message', 'Cotización editada!!');
+        Session::flash('class', 'success');
+        return redirect()->route('administrativas.index');
 
     }
 
