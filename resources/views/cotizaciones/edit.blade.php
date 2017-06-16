@@ -43,7 +43,7 @@
     <div class="box-header with-border">
       <div class="col-md-12">
         <div class="col-md-3">
-          <input type="hidden"  name="id" value="$cotizaciones->id"  >
+          <input type="hidden"  name="id" value="{{$cotizaciones->id}}"  >
           <label>Dirigido a :</label>
           <select name="dirigido" style="width:100%" >
             <option value="{{ $cotizaciones->dirigido}}">{{ $cotizaciones->dirigido}}</option>
@@ -145,7 +145,7 @@
         <div class="row quitar50" id="quitar50">
         <div class="col-md-12">
           <div class="col-md-3">
-            <input type="hidden"  name="transformacion[id][]" value="$transfor->id"  >
+            <input type="hidden"  name="transformacion[id][]" value="{{$transfor->id}}"  >
             <div class="form-group">
               <center><label >Descripción</label></center>
               <input type="text" class="form-control desc" value="Inspección  RETIE proceso de transformación"  readonly=”readonly” name="transformacion[descripcion][]">
@@ -207,7 +207,7 @@
         <div class="col-md-12">
           <div class="col-md-3">
             <div class="form-group">
-              <input type="hidden"  name="distribucion[id][]" value="$distribucion->id"  >
+              <input type="hidden"  name="distribucion[id][]" value="{{$distribucion->id}}"  >
               <center style="margin-bottom: 25px;"><label >Descripción</label></center>
               <select class="form-control desc2" name="distribucion[descripcion_dis][]" style="top:25px important!">
                 <option value="{{ $distribucion->descripcion }}">{{ $distribucion->descripcion }}</option>
@@ -275,7 +275,7 @@
         <div class="col-md-12">
         <div class="col-md-3">
           <div class="form-group">
-            <input type="hidden"  name="pu[id][]" value="$pu->id" >
+            <input type="hidden"  name="pu[id][]" value="{{$pu->id}}" >
             <center><label >Descripción</label></center>
             <select class="form-control desc3"name="pu_final[descripcion_pu][]">
               <option value="{{ $pu->descripcion }}">{{ $pu->descripcion }}</option>
@@ -363,6 +363,7 @@
          <th><center><label> Valor</label></center></th>
          <th><center><label> <button type="button" class="btn btn-primary generar" style="background-color: #33579A; border-color:#33579A;" name="button">Generar</button></label></center></th>
        </tr>
+       <input type="hidden"  value="{{ $datos1 }}" class="datos1">
 
      </table>
    </section>
@@ -432,9 +433,10 @@ $(function() {
           var tipo =$(this).find(".tipo").val();
           var capacidad =$(this).find(".capacidad").val();
           var nFilas = $(".tabla tr").length - 1;
-          var datos1 = {{$datos1}}.replace(/&quot;/g,'"');
-          document.write(datos1);
-          alert(datos1)
+          var datos1 = ($(".datos1").val());
+          var datos = JSON.parse($(".datos1").val())
+          console.log(datos1)
+          alert(JSON.stringify(datos1));
           if (cantidad != '' && desc!= '' && capacidad!='' && tipo!='') {
 
             $('.tabla tr:last').after('<tr class="actualizar"><td>'+nFilas+'</td><td>'+desc+' '+tipo+' '+capacidad+'</td><td class="cant">'+cantidad+
@@ -550,7 +552,7 @@ $(function() {
           });
 
 
-    $('.tabla tr:last').after('<tr class="actualizar"><td Colspan="3"></td><td><label>Subtotal</label></td><td><label class="subtotal">{{$cotizaciones->subtotal}}</label><input type="hidden" class="form-control subtotal" placeholder= "Valor" value="0"  name="subtotal"  required="" readonly ></td></tr>');
+    $('.tabla tr:last').after('<tr class="actualizar"><td Colspan="3"></td><td><label>Subtotal</label></td><td><label class="subtotal"></label><input type="hidden" class="form-control subtotal" placeholder= "Valor" value="0"  name="subtotal"  required="" readonly ></td></tr>');
     $('.tabla tr:last').after('<tr class="actualizar"><td Colspan="3"></td><td><label>IVA</label></td><td><label class="iva">{{$cotizaciones->iva}}</label><input type="hidden" class="form-control iva" placeholder= "Valor"  name="iva" value="0"  required="" readonly ></td></tr>');
     $('.tabla tr:last').after('<tr class="actualizar"><td Colspan="3"></td><td><label>Total</label></td><td><label class="total">{{$cotizaciones->total}}</label><input type="hidden" class="form-control total" placeholder= "Valor" value="0" name="total"  required="" readonly ></td></tr>');
     $('.tabla tr:last').after('<input type="hidden" class="form-control valor_multi actualizar"  value="0"  >');
