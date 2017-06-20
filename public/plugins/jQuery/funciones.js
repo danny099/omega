@@ -132,7 +132,7 @@
                     '<div class="col-md-2">'+' '+
                       '<div class="form-group">'+' '+
                         '<center style="margin-bottom: 25px;"><label >Tipo</label></center>'+' '+
-                        '<select class="form-control tipo2" name="distribucion[tipo_dis][]" >'+' '+
+                        '<select class="form-control tipo2 tipo"  name="distribucion[tipo_dis][]" id="tipo">'+' '+
                           '<option value="">Seleccione...</option>'+' '+
                           '<option value="Aérea">Tipo Aérea</option>'+' '+
                           '<option value="Subterránea">Tipo subterránea</option>'+' '+
@@ -161,13 +161,13 @@
                     '<div class="col-md-1">'+' '+
                       '<div class="form-group">'+' '+
                         '<center><label >apoyos o estructuras</label></center>'+' '+
-                        '<input type="number" class="form-control" placeholder= "Cantidad" name="distribucion[apoyos_dis][]">'+' '+
+                        '<input type="number" class="form-control apoyos" placeholder= "Cantidad" name="distribucion[apoyos_dis][]" id="apoyos">'+' '+
                       '</div>'+' '+
                     '</div>'+' '+
                     '<div class="col-md-1">'+' '+
                       '<div class="form-group">'+' '+
                         '<center><label >cajas de inspección</label></center>'+' '+
-                        '<input type="number" class="form-control" placeholder= "Cantidad" name="distribucion[cajas_dis][]">'+' '+
+                        '<input type="number" class="form-control cajas" placeholder= "Cantidad" name="distribucion[cajas_dis][]" id="cajas">'+' '+
                       '</div>'+' '+
                     '</div>'+' '+
                     '<div class="col-md-2">'+' '+

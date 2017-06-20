@@ -629,19 +629,19 @@ $(document).on('change','#tipo',function(){
   var  tipo = $(this).val();
 
   if (tipo == 'Aérea') {
-    $('#cajas').attr("readonly", true);
-    $('#cajas').val(0);
-    $('#apoyos').attr("readonly", false);
+    $(this).parent().parent().parent().find('#cajas').attr("readonly", true);
+    $(this).parent().parent().parent().find('#cajas').val(0);
+    $(this).parent().parent().parent().find('#apoyos').attr("readonly", false);
 
   }
     else if (tipo == 'Subterránea') {
-      $('#cajas').attr("readonly", false);
-      $('#apoyos').attr("readonly", true);
-      $('#apoyos').val(0);
+      $(this).parent().parent().parent().find('#cajas').attr("readonly", false);
+      $(this).parent().parent().parent().find('#apoyos').attr("readonly", true);
+      $(this).parent().parent().parent().find('#apoyos').val(0);
     }
     else {
-      $('#cajas').attr("readonly", false);
-      $('#apoyos').attr("readonly", false);
+      $(this).parent().parent().parent().find('#cajas').attr("readonly", false);
+      $(this).parent().parent().parent().find('#apoyos').attr("readonly", false);
     }
 
 
