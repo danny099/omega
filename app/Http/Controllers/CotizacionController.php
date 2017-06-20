@@ -60,8 +60,7 @@ class CotizacionController extends Controller
      public function store(Request $request)
      {
          $input = $request->all();
-        //  dd($input);
-        //  die();
+
          $cotizacion['dirigido'] = $request->dirigido;
          $cotizacion['codigo'] = '0001';
          $cotizacion['cliente_id'] = $request->cliente_id;
@@ -69,6 +68,10 @@ class CotizacionController extends Controller
          $cotizacion['nombre'] = $request->nombre;
          $cotizacion['municipio'] = $request->municipio;
          $cotizacion['departamento_id'] = $request->departamento;
+         $cotizacion['formas_pago'] = $request->formas_pago;
+         $cotizacion['tiempo'] = $request->tiempo;
+         $cotizacion['entrega'] = $request->entrega;
+         $cotizacion['validez'] = $request->validez;
          $cotizacion['subtotal'] = str_replace(',','',$request->subtotal);
          $cotizacion['iva'] = str_replace(',','',$request->iva);
          $cotizacion['total'] = str_replace(',','',$request->total);
@@ -249,6 +252,10 @@ class CotizacionController extends Controller
         $cotizacion['nombre'] = $request->nombre;
         $cotizacion['municipio'] = $request->municipio;
         $cotizacion['departamento_id'] = $request->departamento_id;
+        $cotizacion['formas_pago'] = $request->formas_pago;
+        $cotizacion['tiempo'] = $request->tiempo;
+        $cotizacion['entrega'] = $request->entrega;
+        $cotizacion['validez'] = $request->validez;
         $cotizacion['subtotal'] = str_replace(',','',$request->subtotal);
         $cotizacion['iva'] = str_replace(',','',$request->iva);
         $cotizacion['total'] = str_replace(',','',$request->total);
