@@ -38,7 +38,7 @@
                     <td>
                       <a href="{{ route('cotizaciones.edit', $cotizacion->id) }}"><i class="glyphicon glyphicon-pencil"></i></a>
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      <a href="{{ url('pdf-cotizacion') }}/{{ $cotizacion->id }}" data-toggle="model" data-target=""><i class="glyphicon glyphicon-eye-open" style="color: #33579A"></i></a>
+                      <a href="{{ url('pdf-cotizacion') }}/{{ $cotizacion->id }}" target="_blank" data-toggle="model" data-target=""><i class="glyphicon glyphicon-eye-open" style="color: #33579A"></i></a>
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                       <a href="{{ url('deletecot') }}/{{ $cotizacion->id }}" onClick="javascript: return confirm('Esta seguro de eliminar registro?');"><i class="glyphicon glyphicon-minus-sign"></i></a>
                     </td>
