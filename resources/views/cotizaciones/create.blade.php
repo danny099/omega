@@ -31,7 +31,7 @@
     @endif
   <!-- /.box-header -->
   <!-- form start -->
-  <form role="form" name="" action="{{ url('cotizaciones') }}" method="post" id="form">
+  <form role="form" name="" action="{{ url('cotizaciones') }}" method="post" id="example-form">
     {{ csrf_field() }}
     <div class="">
 
@@ -654,7 +654,7 @@ form.children("div").steps({
         alert('Presione boton generar');
       }
       else {
-        $("#form").submit();
+        $("#example-form").submit();
       }
 
     }
