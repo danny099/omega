@@ -255,7 +255,7 @@
               <div class="form-group">
                 <input type="hidden"  name="distribucion[id][]" value="{{$distribucion->id}}"  >
                 <center style="margin-bottom: 25px;"><label >Descripción</label></center>
-                <select class="form-control desc2" name="distribucion[descripcion_dis][]" style="width:100%">
+                <select class="form-control desc2" name="distribucion[descripcion_dis][]" style="width:100%" >
                   <option value="{{ $distribucion->descripcion }}">{{ $distribucion->descripcion }}</option>
                   <option value="Inspección RETIE proceso de distribución en MT">Inspección RETIE proceso de distribución en MT</option>
                   <option value="Inspección RETIE proceso de distribución en BT">Inspección RETIE proceso de distribución en BT</option>
@@ -265,7 +265,7 @@
             <div class="col-md-2">
               <div class="form-group">
                 <center style="margin-bottom: 25px;"><label >Tipo</label></center>
-                <select class="form-control tipo2" name="distribucion[tipo_dis][]" style="width:100%">
+                <select class="form-control tipo2" name="distribucion[tipo_dis][]" style="width:100%" id="tipo">
                   <option value="{{ $distribucion->tipo }}">{{ $distribucion->tipo }}</option>
                   <option value="Aérea">Tipo Aérea</option>
                   <option value="Subterránea">Tipo subterránea</option>
@@ -295,13 +295,13 @@
             <div class="col-md-1">
               <div class="form-group">
                 <center><label >apoyos o estructuras</label></center>
-                <input type="number" class="form-control" placeholder= "Cantidad" value="{{ $distribucion->apoyos }}" name="distribucion[apoyos_dis][]">
+                <input type="number" id="apoyos" class="form-control" placeholder= "Cantidad" value="{{ $distribucion->apoyos }}" name="distribucion[apoyos_dis][]">
               </div>
             </div>
             <div class="col-md-1">
               <div class="form-group">
                 <center><label >cajas de inspección</label></center>
-                <input type="number" class="form-control" placeholder= "Cantidad" value="{{ $distribucion->cajas }}" name="distribucion[cajas_dis][]">
+                <input type="number" id="cajas" class="form-control" placeholder= "Cantidad" value="{{ $distribucion->cajas }}" name="distribucion[cajas_dis][]">
               </div>
             </div>
             <div class="col-md-2">
@@ -682,6 +682,29 @@ $(document).on('change','#departamento',function(){
     }
   });
 });
+});
+
+$(document).on('change','#tipo',function(){
+
+  var  tipo = $(this).val();
+
+  if (tipo == 'Aérea') {
+    $('#cajas').attr("disabled", true);
+    $('#cajas').val(0);
+    $('#apoyos').attr("disabled", false);
+
+  }
+    else if (tipo == 'Subterránea') {
+      $('#cajas').attr("disabled", false);
+      $('#apoyos').attr("disabled", true);
+      $('#apoyos').val(0);
+    }
+    else {
+      $('#cajas').attr("disabled", false);
+      $('#apoyos').attr("disabled", false);
+    }
+
+
 });
 
 var form = $("#form");
