@@ -38,7 +38,7 @@
 
     <h3>Paso 1</h3>
     <section>
-    <div class="">
+    <div class="row">
       <center> <h3>Datos</h3> </center>
 
       <div class="col-md-12">
@@ -104,6 +104,8 @@
           </select>
         </div>
       </div>
+    </div>
+      <div class="row">
 
       <center> <h3>Detalle de la cotización</h3> </center>
 
@@ -112,11 +114,11 @@
           <label>Formas de pago :</label>
           <select name="formas_pago" style="width:100%">
             <option value="">Seleccione...</option>
-            <option value="Señor">Anticipo 100%</option>
-            <option value="Señora">Anticipo 50% - 50% a la entrega de dictámenes</option>
-            <option value="Señores">Anticipo 50% - 50% en Actas parciales según avance de Obra</option>
-            <option value="Ingeniero">Anticipo del 30% - 70% en Actas parciales según avance de Obra</option>
-            <option value="Ingeniera">Anticipo 30% - 70% a la entrega de dictámenes</option>
+            <option value="Anticipo 100%">Anticipo 100%</option>
+            <option value="Anticipo 50% - 50% a la entrega de dictámenes">Anticipo 50% - 50% a la entrega de dictámenes</option>
+            <option value="Anticipo 50% - 50% en Actas parciales según avance de Obra">Anticipo 50% - 50% en Actas parciales según avance de Obra</option>
+            <option value="Anticipo del 30% - 70% en Actas parciales según avance de Obra">Anticipo del 30% - 70% en Actas parciales según avance de Obra</option>
+            <option value="Anticipo 30% - 70% a la entrega de dictámenes">Anticipo 30% - 70% a la entrega de dictámenes</option>
           </select>
         </div>
         <div class="col-md-3">
