@@ -434,6 +434,7 @@
 
 
 <script type="text/javascript">
+var validar = 0;
 function mascara(o,f){
   v_obj=o;
   v_fun=f;
@@ -467,9 +468,9 @@ function addCommas(nStr){
 $(function() {
     var count = 1;
 
-
    $(".generar").on("click",function( event ) {
     count++;
+    validar = 1;
     var x= $().val();
     var valor_multi = 0;
     var valor_multi_dis = 0;
@@ -708,7 +709,13 @@ form.children("div").steps({
     },
     onFinished: function (event, currentIndex)
     {
+      if (validar == 0) {
+        alert('Presione boton generar');
+      }
+      else {
         $("#form").submit();
+      }
+
     }
 });
 </script>

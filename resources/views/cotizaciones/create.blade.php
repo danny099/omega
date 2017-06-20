@@ -31,7 +31,7 @@
     @endif
   <!-- /.box-header -->
   <!-- form start -->
-  <form role="form" name="" action="{{ url('cotizaciones') }}" method="post" id="example-form">
+  <form role="form" name="" action="{{ url('cotizaciones') }}" method="post" id="form">
     {{ csrf_field() }}
     <div class="">
 
@@ -395,6 +395,7 @@
 
 
 <script type="text/javascript">
+var validar = 0;
 function mascara(o,f){
   v_obj=o;
   v_fun=f;
@@ -431,6 +432,7 @@ $(function() {
 
    $(".generar").on("click",function( event ) {
     count++;
+    validar = 1;
     var x= $().val();
     var valor_multi = 0;
     var valor_multi_dis = 0;
@@ -648,7 +650,13 @@ form.children("div").steps({
     },
     onFinished: function (event, currentIndex)
     {
-        $("#example-form").submit();
+      if (validar == 0) {
+        alert('Presione boton generar');
+      }
+      else {
+        $("#form").submit();
+      }
+
     }
 });
 </script>
