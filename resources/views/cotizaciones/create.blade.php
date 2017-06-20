@@ -489,7 +489,7 @@ $(function() {
             var desc2 =$(this).find(".desc2").val();
             var tipo2 =$(this).find(".tipo2").val();
             var nFilas = $(".tabla tr").length - 1;
-
+            alert(tipo2)
             if (cantidad2 != '' && desc2!= '' && tipo2!='') {
 
               $('.tabla tr:last').after('<tr class="actualizar"><td>'+nFilas+'</td><td name="detalles2">'+desc2+' '+tipo2+'</td><td>'+cantidad2+' km'+
