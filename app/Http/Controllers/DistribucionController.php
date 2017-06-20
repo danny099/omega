@@ -1,4 +1,4 @@
-<?php
+is_null<?php
 
 namespace App\Http\Controllers;
 use Session;
@@ -41,13 +41,13 @@ class DistribucionController extends Controller
 
       for ($x=0; $x<count($input['distribucion']['descripcion_dis']); $x++) {
 
-          if (!empty($input['distribucion']['descripcion_dis'][$x]) &&
-              !empty($input['distribucion']['tipo_dis'][$x]) &&
-              !empty($input['distribucion']['unidad_distribucion'][$x]) &&
-              !empty($input['distribucion']['cantidad_dis'][$x]) &&
-              !empty($input['distribucion']['apoyos_dis'][$x]) &&
-              !empty($input['distribucion']['cajas_dis'][$x]) &&
-              !empty($input['distribucion']['notas_dis'][$x])){
+          if (!is_null($input['distribucion']['descripcion_dis'][$x]) &&
+              !is_null($input['distribucion']['tipo_dis'][$x]) &&
+              !is_null($input['distribucion']['unidad_distribucion'][$x]) &&
+              !is_null($input['distribucion']['cantidad_dis'][$x]) &&
+              !is_null($input['distribucion']['apoyos_dis'][$x]) &&
+              !is_null($input['distribucion']['cajas_dis'][$x]) &&
+              !is_null($input['distribucion']['notas_dis'][$x])){
 
                 $datos2['descripcion'] = $input['distribucion']['descripcion_dis'][$x];
                 $datos2['tipo'] = $input['distribucion']['tipo_dis'][$x];

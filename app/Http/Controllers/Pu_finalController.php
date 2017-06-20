@@ -1,4 +1,4 @@
-<?php
+is_null<?php
 
 namespace App\Http\Controllers;
 use App\Pu_final;
@@ -41,12 +41,12 @@ class Pu_finalController extends Controller
     {
        $input = $request->all();
        for ($i=0; $i<count($input['pu_final']['descripcion_pu']); $i++) {
-           if (!empty($input['pu_final']['descripcion_pu'][$i]) &&
-               !empty($input['pu_final']['tipo_pu'][$i]) &&
-               !empty($input['pu_final']['unidad_pu_final'][$i]) &&
-               !empty($input['pu_final']['cantidad_pu'][$i]) &&
-               !empty($input['pu_final']['estrato_pu'][$i]) &&
-               !empty($input['pu_final']['acometidas_pu'][$i])) {
+           if (!is_null($input['pu_final']['descripcion_pu'][$i]) &&
+               !is_null($input['pu_final']['tipo_pu'][$i]) &&
+               !is_null($input['pu_final']['unidad_pu_final'][$i]) &&
+               !is_null($input['pu_final']['cantidad_pu'][$i]) &&
+               !is_null($input['pu_final']['estrato_pu'][$i]) &&
+               !is_null($input['pu_final']['acometidas_pu'][$i])) {
 
                  $datos3['descripcion'] = $input['pu_final']['descripcion_pu'][$i];
                  $datos3['tipo'] = $input['pu_final']['tipo_pu'][$i];

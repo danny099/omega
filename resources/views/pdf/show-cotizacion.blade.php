@@ -47,6 +47,12 @@
       .ttable{
         text-align: center;
       }
+      table {
+        border-collapse:collapse; border: none;
+      }
+      td {
+        padding: 0;
+      }
     </style>
   </head>
   <body>
@@ -98,9 +104,10 @@
       <br>
     <div class="alcances">
       <p><b>1. ALCANCE DE LA INSPECCIÓN</b></p>
-      <br>
+          <br>
       @if(count($transformaciones) == 0)
       @else
+
       <table class=" table table-bordered table-striped">
         <tr>
           <th colspan="7" class="ttable">ALCANCE DE TRANSFORMACIÓN</th>
@@ -130,8 +137,9 @@
           @endforeach
         </tbody>
       </table>
-      @endif
       <br>
+      @endif
+
       @if(count($distribuciones) == 0)
       @else
       <table class=" table table-bordered table-striped">
@@ -165,13 +173,14 @@
           @endforeach
         </tbody>
       </table>
-      @endif
       <br>
+      @endif
+
       @if(count($pu_finales) == 0)
       @else
       <table class=" table table-bordered table-striped">
         <tr>
-          <th colspan="8" class="ttable">ALCANCE DE TRANSFORMACIÓN</th>
+          <th colspan="8" class="ttable">ALCANCE PROCESO USO FINAL</th>
         </tr>
         <thead>
           <tr>
@@ -201,6 +210,68 @@
         </tbody>
       </table>
       @endif
+    </div>
+    <div class="asociados">
+      <!-- <div style="page-break-after:always;"></div> -->
+      <table class="table table-bordered table-striped">
+        @if(count($transformaciones) == 0)
+        @else
+          <tr>
+            <td rowspan="5"><p>Transformación asociado a Uso Final</p></td>
+            <td><p>Nivel de Tensión (KV)</p></td>
+            <td><p>Madrid</p></td>
+          </tr>
+          <tr>
+            <td><p>Numero de Transformadores</p></td>
+            <td><p>Paris</p></td>
+          </tr>
+          <tr>
+            <td><p>Potencia</p></td>
+            <td><p>Londres</p></td>
+          </tr>
+          <tr>
+            <td><p>Montaje</p></td>
+            <td><p>Londres</p></td>
+          </tr>
+          <tr>
+            <td><p>Tipo de Refrigeración</p></td>
+            <td><p>Londres</p></td>
+          </tr>
+        @endif
+
+        @if(count($distribuciones) == 0)
+        @else
+          <tr>
+            <td rowspan="7"><p>Distribución asociado a Uso Final</p></td>
+            <td><p>Descripcion</p></td>
+            <td><p>Washington</p></td>
+          </tr>
+          <tr>
+            <td><p>Tipo de Red</p></td>
+            <td><p>Toronto</p></td>
+          </tr>
+          <tr>
+            <td><p>Nivel de Tensión</p></td>
+            <td><p>Mexico</p></td>
+          </tr>
+          <tr>
+            <td><p>Longitu de Red</p></td>
+            <td><p>Mexico</p></td>
+          </tr>
+          <tr>
+            <td><p>Numero de Apoyos o Estructuras</p></td>
+            <td><p>Mexico</p></td>
+          </tr>
+          <tr>
+            <td><p>Numero de Apoyos o Estructuras</p></td>
+            <td><p>Mexico</p></td>
+          </tr>
+          <tr>
+            <td><p>Numero de Cajas de Inspección</p></td>
+            <td><p>Mexico</p></td>
+          </tr>
+        @endif
+      </table>
     </div>
   </body>
 </html>
