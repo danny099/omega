@@ -241,8 +241,7 @@ class CotizacionController extends Controller
     public function update(Request $request, $id)
     {
         $input = $request->all();
-        // dd($input);
-        // die();
+        
         $cotiza = Cotizacion::findOrFail($id);
 
         $cotizacion['dirigido'] = $request->dirigido;
@@ -276,33 +275,37 @@ class CotizacionController extends Controller
 
         }
 
+        if ($request->transformacion == 'transformacion') {
 
-        for ($a=0; $a<count($input['transformacion']['descripcion']); $a++){
+        }else {
+          for ($a=0; $a<count($input['transformacion']['descripcion']); $a++){
 
-          $id1 = $input['transformacion']['id'][$a];
-          $transfor = Transformacion::findOrFail($id1);
-          $datos1['descripcion'] = $input['transformacion']['descripcion'][$a];
-          $datos1['tipo'] = $input['transformacion']['tipo'][$a];
-          $datos1['nivel_tension'] = $input['transformacion']['nivel_tension'][$a];
-          $datos1['unidad'] = 'Und';
-          $datos1['capacidad'] = $input['transformacion']['capacidad'][$a];
-          $datos1['cantidad'] = $input['transformacion']['cantidad'][$a];
-          $datos1['tipo_refrigeracion'] = $input['transformacion']['tipo_refrigeracion'][$a];
+            $id1 = $input['transformacion']['id'][$a];
+            $transfor = Transformacion::findOrFail($id1);
+            $datos1['descripcion'] = $input['transformacion']['descripcion'][$a];
+            $datos1['tipo'] = $input['transformacion']['tipo'][$a];
+            $datos1['nivel_tension'] = $input['transformacion']['nivel_tension'][$a];
+            $datos1['unidad'] = 'Und';
+            $datos1['capacidad'] = $input['transformacion']['capacidad'][$a];
+            $datos1['cantidad'] = $input['transformacion']['cantidad'][$a];
+            $datos1['tipo_refrigeracion'] = $input['transformacion']['tipo_refrigeracion'][$a];
 
-          $id2 = $input['valores']['id'][$a];
-          $valor = Valorcot::findOrFail($id2);
-          $texto['detalles'] = $datos1['descripcion'].' '.$datos1['tipo'].' '. $datos1['cantidad'].' '.$datos1['capacidad'];
-          $texto['cantidad'] = $datos1['cantidad'];
-          $texto['valor_uni'] = str_replace(',','',$input['valores']['valor_uni'][$a]);
-          $texto['valor_total'] = str_replace(',','',$input['valores']['valor_multi'][$a]);
-          // $texto['cotizacion_id'] = $lastId_cotiza;
-          //
-          // Valorcot::create($texto);
-          $valor->update($texto);
+            $id2 = $input['valores']['id'][$a];
+            $valor = Valorcot::findOrFail($id2);
+            $texto['detalles'] = $datos1['descripcion'].' '.$datos1['tipo'].' '. $datos1['cantidad'].' '.$datos1['capacidad'];
+            $texto['cantidad'] = $datos1['cantidad'];
+            $texto['valor_uni'] = str_replace(',','',$input['valores']['valor_uni'][$a]);
+            $texto['valor_total'] = str_replace(',','',$input['valores']['valor_multi'][$a]);
+            // $texto['cotizacion_id'] = $lastId_cotiza;
+            //
+            // Valorcot::create($texto);
+            $valor->update($texto);
 
-          $transfor->update($datos1);
+            $transfor->update($datos1);
 
+          }
         }
+
 
         if ($request->distribucion == 'distribucion') {
 
