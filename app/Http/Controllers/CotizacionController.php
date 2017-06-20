@@ -61,6 +61,7 @@ class CotizacionController extends Controller
      {
          $input = $request->all();
 
+
          $cotizacion['dirigido'] = $request->dirigido;
          $cotizacion['codigo'] = '0001';
          $cotizacion['cliente_id'] = $request->cliente_id;
@@ -88,13 +89,13 @@ class CotizacionController extends Controller
 
          for ($a=0; $a<count($input['transformacion']['descripcion']); $a++){
 
-               if (!empty($input['transformacion']['descripcion'][$a]) &&
-                   !empty($input['transformacion']['tipo'][$a]) &&
-                   !empty($input['transformacion']['nivel_tension'][$a]) &&
-                   !empty($input['transformacion']['capacidad'][$a]) &&
-                   !empty($input['transformacion']['cantidad'][$a]) &&
-                   !empty($input['transformacion']['tipo_refrigeracion'][$a])) {
-
+               if (!is_null($input['transformacion']['descripcion'][$a]) &&
+                   !is_null($input['transformacion']['tipo'][$a]) &&
+                   !is_null($input['transformacion']['nivel_tension'][$a]) &&
+                   !is_null($input['transformacion']['capacidad'][$a]) &&
+                   !is_null($input['transformacion']['cantidad'][$a]) &&
+                   !is_null($input['transformacion']['tipo_refrigeracion'][$a])) {
+    
                      $datos1['descripcion'] = $input['transformacion']['descripcion'][$a];
                      $datos1['tipo'] = $input['transformacion']['tipo'][$a];
                      $datos1['nivel_tension'] = $input['transformacion']['nivel_tension'][$a];
@@ -117,13 +118,14 @@ class CotizacionController extends Controller
          }
 
          for ($x=0; $x<count($input['distribucion']['descripcion_dis']); $x++) {
-             if (!empty($input['distribucion']['descripcion_dis'][$x]) &&
-                 !empty($input['distribucion']['tipo_dis'][$x]) &&
-                 !empty($input['distribucion']['nivel_tension_dis'][$x]) &&
-                 !empty($input['distribucion']['cantidad_dis'][$x]) &&
-                 !empty($input['distribucion']['apoyos_dis'][$x])  &&
-                 !empty($input['distribucion']['cajas_dis'][$x])  &&
-                 !empty($input['distribucion']['notas_dis'][$x])){
+
+             if (!is_null($input['distribucion']['descripcion_dis'][$x]) &&
+                 !is_null($input['distribucion']['tipo_dis'][$x]) &&
+                 !is_null($input['distribucion']['nivel_tension_dis'][$x]) &&
+                 !is_null($input['distribucion']['cantidad_dis'][$x]) &&
+                 !is_null($input['distribucion']['apoyos_dis'][$x])  &&
+                 !is_null($input['distribucion']['cajas_dis'][$x])  &&
+                 !is_null($input['distribucion']['notas_dis'][$x])){
 
                    $datos2['descripcion'] = $input['distribucion']['descripcion_dis'][$x];
                    $datos2['tipo'] = $input['distribucion']['tipo_dis'][$x];
@@ -147,13 +149,13 @@ class CotizacionController extends Controller
          }
 
          for ($i=0; $i<count($input['pu_final']['descripcion_pu']); $i++) {
-             if (!empty($input['pu_final']['descripcion_pu'][$i]) &&
-                 !empty($input['pu_final']['tipo_pu'][$i]) &&
-                 !empty($input['pu_final']['estrato_pu'][$i]) &&
-                 !empty($input['pu_final']['cantidad_pu'][$i]) &&
-                 !empty($input['pu_final']['metros_pu'][$i]) &&
-                 !empty($input['pu_final']['kva_pu'][$i])  &&
-                 !empty($input['pu_final']['acometidas_pu'][$i])) {
+             if (!is_null($input['pu_final']['descripcion_pu'][$i]) &&
+                 !is_null($input['pu_final']['tipo_pu'][$i]) &&
+                 !is_null($input['pu_final']['estrato_pu'][$i]) &&
+                 !is_null($input['pu_final']['cantidad_pu'][$i]) &&
+                 !is_null($input['pu_final']['metros_pu'][$i]) &&
+                 !is_null($input['pu_final']['kva_pu'][$i])  &&
+                 !is_null($input['pu_final']['acometidas_pu'][$i])) {
 
                    $datos3['descripcion'] = $input['pu_final']['descripcion_pu'][$i];
                    $datos3['tipo'] = $input['pu_final']['tipo_pu'][$i];
@@ -241,7 +243,7 @@ class CotizacionController extends Controller
     public function update(Request $request, $id)
     {
         $input = $request->all();
-        
+
         $cotiza = Cotizacion::findOrFail($id);
 
         $cotizacion['dirigido'] = $request->dirigido;

@@ -3,6 +3,8 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <link rel="stylesheet" href="../public/css/bootstrap.css">
+
     <style media="screen">
 
       body{
@@ -42,6 +44,9 @@
         padding: 0;
         margin-top: 50px;
       }
+      .ttable{
+        text-align: center;
+      }
     </style>
   </head>
   <body>
@@ -55,7 +60,7 @@
         <p>Lunes 19 de junio de 2017</p>
       </div>
       <div class="codigo">
-        <table align="right" class="table table-condensed">
+        <table class="" align="right">
           <tr>
             <td colspan="2">Código de Cotización</td>
           </tr>
@@ -70,21 +75,22 @@
       <p class="obj1">
         Objeto:
       </p>
-      <p class="obj2">
+      <p class="obj2" align="justify">
         Este Documento Constitye la Oferta Tecnica y Economica para la prestación de servicios
         de inspectoria RETIE a las instalaciones electricas del proyecto Oasis del Este Ubicado
         en el Municipio de Pasto departamento del Nariño.
       </p>
     </div>
       <br>
-      <br>
-      <br>
+
     <div class="div3">
       <p>Cordial Saludo:</p>
       <br>
       <div class="cordial">
         <p class="tx1">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          Atendiendo su solicitud y la información descrita o enviada a nuestro departamento de administrativo o gerencial, nos permitimos presentar nuestra oferta para la realización
+          de la inspección eléctrica del Objeto en este documento, de acuerdo a las especifiaciones del reglamento Técnico de Instalaciones Eléctricas RETIE - Resolución 90708 de Agosto de 2013
+          - Resolución 90795 de Julio del 2014 - Resolución 40492 de 24 Abril del 2015 del Ministerio de Minas y Energía.
         </p>
       </div>
     </div>
@@ -92,11 +98,109 @@
       <br>
     <div class="alcances">
       <p><b>1. ALCANCE DE LA INSPECCIÓN</b></p>
+      <br>
+      @if(count($transformaciones) == 0)
+      @else
       <table class=" table table-bordered table-striped">
         <tr>
-
+          <th colspan="7" class="ttable">ALCANCE DE TRANSFORMACIÓN</th>
         </tr>
+        <thead>
+          <tr>
+            <th>Descripción</th>
+            <th>Tipo</th>
+            <th>Nivel de Tensión</th>
+            <th>Unidad</th>
+            <th>Capacidad</th>
+            <th>Cantidad</th>
+            <th>Tipo de Refrigeración</th>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach($transformaciones as $transfor)
+            <tr>
+              <td>{{ $transfor->descripcion }}</td>
+              <td>{{ $transfor->tipo }}</td>
+              <td>{{ $transfor->nivel_tension }}</td>
+              <td>{{ $transfor->unidad }}</td>
+              <td>{{ $transfor->capacidad }}</td>
+              <td>{{ $transfor->cantidad }}</td>
+              <td>{{ $transfor->tipo_refrigeracion }}</td>
+            </tr>
+          @endforeach
+        </tbody>
       </table>
+      @endif
+      <br>
+      @if(count($distribuciones) == 0)
+      @else
+      <table class=" table table-bordered table-striped">
+        <tr>
+          <th colspan="8" class="ttable">ALCANCE DE DISTRIBUCIÓN</th>
+        </tr>
+        <thead>
+          <tr>
+            <th>Descripción</th>
+            <th>Tipo</th>
+            <th>Nivel de Tensión</th>
+            <th>Unidad</th>
+            <th>Cantidad</th>
+            <th>Apoyos</th>
+            <th>CajasS</th>
+            <th>Notas</th>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach($distribuciones as $distri)
+            <tr>
+              <td>{{ $distri->descripcion }}</td>
+              <td>{{ $distri->tipo }}</td>
+              <td>{{ $distri->nivel_tension }}</td>
+              <td>{{ $distri->unidad }}</td>
+              <td>{{ $distri->cantidad }}</td>
+              <td>{{ $distri->apoyos }}</td>
+              <td>{{ $distri->cajas }}</td>
+              <td>{{ $distri->notas }}</td>
+            </tr>
+          @endforeach
+        </tbody>
+      </table>
+      @endif
+      <br>
+      @if(count($pu_finales) == 0)
+      @else
+      <table class=" table table-bordered table-striped">
+        <tr>
+          <th colspan="8" class="ttable">ALCANCE DE TRANSFORMACIÓN</th>
+        </tr>
+        <thead>
+          <tr>
+            <th>Descripción</th>
+            <th>Tipo</th>
+            <th>Estrato</th>
+            <th>Unidad</th>
+            <th>Cantidad</th>
+            <th>Metros</th>
+            <th>Kva</th>
+            <th>Acometidas</th>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach($pu_finales as $pu)
+            <tr>
+              <td>{{ $pu->descripcion }}</td>
+              <td>{{ $pu->tipo }}</td>
+              <td>{{ $pu->estrato }}</td>
+              <td>{{ $pu->unidad }}</td>
+              <td>{{ $pu->cantidad }}</td>
+              <td>{{ $pu->metros }}</td>
+              <td>{{ $pu->kva }}</td>
+              <td>{{ $pu->acometidas }}</td>
+            </tr>
+          @endforeach
+        </tbody>
+      </table>
+      @endif
     </div>
   </body>
 </html>

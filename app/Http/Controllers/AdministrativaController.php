@@ -145,57 +145,57 @@ class AdministrativaController extends Controller
        Observacion::create($obs);
       //  codigo para insertar los otrosi que vienen desde un arreglo y recorrerlo para hacer el create
 
-        for ($a=0; $a<count($input['transformacion']['descripcion']); $a++){
-
-              if (!empty($input['transformacion']['descripcion'][$a]) &&
-                  !empty($input['transformacion']['tipo'][$a]) &&
-                  !empty($input['transformacion']['capacidad'][$a]) &&
-                  !empty($input['transformacion']['unidad_transformacion'][$a]) &&
-                  !empty($input['transformacion']['cantidad'][$a])) {
-
-                    $datos1['descripcion'] = $input['transformacion']['descripcion'][$a];
-                    $datos1['tipo'] = $input['transformacion']['tipo'][$a];
-                    $datos1['capacidad'] = $input['transformacion']['capacidad'][$a];
-                    $datos1['unidad'] = $input['transformacion']['unidad_transformacion'][$a];
-                    $datos1['cantidad'] = $input['transformacion']['cantidad'][$a];
-                    $datos1['administrativa_id'] = $lastId_admin;
-
-                    Transformacion::create($datos1);
-              }
-        }
-
-        for ($x=0; $x<count($input['distribucion']['descripcion_dis']); $x++) {
-            if (!empty($input['distribucion']['descripcion_dis'][$x]) &&
-                !empty($input['distribucion']['tipo_dis'][$x]) &&
-                !empty($input['distribucion']['unidad_distribucion'][$x]) &&
-                !empty($input['distribucion']['cantidad_dis'][$x])){
-
-                  $datos2['descripcion'] = $input['distribucion']['descripcion_dis'][$x];
-                  $datos2['tipo'] = $input['distribucion']['tipo_dis'][$x];
-                  $datos2['unidad'] = $input['distribucion']['unidad_distribucion'][$x];
-                  $datos2['cantidad'] = str_replace('.',',',$input['distribucion']['cantidad_dis'][$x]);
-
-                  $datos2['administrativa_id'] = $lastId_admin;
-
-                  Distribucion::create($datos2);
-            }
-        }
-
-        for ($i=0; $i<count($input['pu_final']['descripcion_pu']); $i++) {
-            if (!empty($input['pu_final']['descripcion_pu'][$i]) &&
-                !empty($input['pu_final']['tipo_pu'][$i]) &&
-                !empty($input['pu_final']['unidad_pu_final'][$i]) &&
-                !empty($input['pu_final']['cantidad_pu'][$i])) {
-
-                  $datos3['descripcion'] = $input['pu_final']['descripcion_pu'][$i];
-                  $datos3['tipo'] = $input['pu_final']['tipo_pu'][$i];
-                  $datos3['unidad'] = $input['pu_final']['unidad_pu_final'][$i];
-                  $datos3['cantidad'] = $input['pu_final']['cantidad_pu'][$i];
-                  $datos3['administrativa_id'] = $lastId_admin;
-
-                  Pu_final::create($datos3);
-            }
-        }
+        // for ($a=0; $a<count($input['transformacion']['descripcion']); $a++){
+        //
+        //       if (!empty($input['transformacion']['descripcion'][$a]) &&
+        //           !empty($input['transformacion']['tipo'][$a]) &&
+        //           !empty($input['transformacion']['capacidad'][$a]) &&
+        //           !empty($input['transformacion']['unidad_transformacion'][$a]) &&
+        //           !empty($input['transformacion']['cantidad'][$a])) {
+        //
+        //             $datos1['descripcion'] = $input['transformacion']['descripcion'][$a];
+        //             $datos1['tipo'] = $input['transformacion']['tipo'][$a];
+        //             $datos1['capacidad'] = $input['transformacion']['capacidad'][$a];
+        //             $datos1['unidad'] = $input['transformacion']['unidad_transformacion'][$a];
+        //             $datos1['cantidad'] = $input['transformacion']['cantidad'][$a];
+        //             $datos1['administrativa_id'] = $lastId_admin;
+        //
+        //             Transformacion::create($datos1);
+        //       }
+        // }
+        //
+        // for ($x=0; $x<count($input['distribucion']['descripcion_dis']); $x++) {
+        //     if (!empty($input['distribucion']['descripcion_dis'][$x]) &&
+        //         !empty($input['distribucion']['tipo_dis'][$x]) &&
+        //         !empty($input['distribucion']['unidad_distribucion'][$x]) &&
+        //         !empty($input['distribucion']['cantidad_dis'][$x])){
+        //
+        //           $datos2['descripcion'] = $input['distribucion']['descripcion_dis'][$x];
+        //           $datos2['tipo'] = $input['distribucion']['tipo_dis'][$x];
+        //           $datos2['unidad'] = $input['distribucion']['unidad_distribucion'][$x];
+        //           $datos2['cantidad'] = str_replace('.',',',$input['distribucion']['cantidad_dis'][$x]);
+        //
+        //           $datos2['administrativa_id'] = $lastId_admin;
+        //
+        //           Distribucion::create($datos2);
+        //     }
+        // }
+        //
+        // for ($i=0; $i<count($input['pu_final']['descripcion_pu']); $i++) {
+        //     if (!empty($input['pu_final']['descripcion_pu'][$i]) &&
+        //         !empty($input['pu_final']['tipo_pu'][$i]) &&
+        //         !empty($input['pu_final']['unidad_pu_final'][$i]) &&
+        //         !empty($input['pu_final']['cantidad_pu'][$i])) {
+        //
+        //           $datos3['descripcion'] = $input['pu_final']['descripcion_pu'][$i];
+        //           $datos3['tipo'] = $input['pu_final']['tipo_pu'][$i];
+        //           $datos3['unidad'] = $input['pu_final']['unidad_pu_final'][$i];
+        //           $datos3['cantidad'] = $input['pu_final']['cantidad_pu'][$i];
+        //           $datos3['administrativa_id'] = $lastId_admin;
+        //
+        //           Pu_final::create($datos3);
+        //     }
+        // }
         // dd($datos4);
         return redirect()->route('administrativas.index');
 
