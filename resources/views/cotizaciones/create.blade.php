@@ -39,7 +39,7 @@
     <h3>Paso 1</h3>
     <section>
     <div class="">
-      <center> <h3>Alcance: proceso de transformación</h3> </center>
+      <center> <h3>Datos</h3> </center>
 
       <div class="col-md-12">
         <div class="col-md-3">
@@ -73,7 +73,7 @@
           </select>
         </div>
         <div class="col-md-3" style="Display:none" style="width: 100%" id="juridica">
-          <label >Persona juridica</label>
+          <label >Persona jurídica  </label>
           <select class="" name="juridica_id" style="width: 100%" id="juri">
             <option value="">Seleccione...</option>
             @foreach($juridicas as $juridica)
@@ -113,30 +113,30 @@
           <select name="formas_pago" style="width:100%">
             <option value="">Seleccione...</option>
             <option value="Señor">Anticipo 100%</option>
-            <option value="Señora">Anticipo 50% - 50% a la entrega de dictamenes</option>
+            <option value="Señora">Anticipo 50% - 50% a la entrega de dictámenes</option>
             <option value="Señores">Anticipo 50% - 50% en Actas parciales según avance de Obra</option>
             <option value="Ingeniero">Anticipo del 30% - 70% en Actas parciales según avance de Obra</option>
-            <option value="Ingeniera">Anticipo 30% - 70% a la entrega de dictamenes</option>
+            <option value="Ingeniera">Anticipo 30% - 70% a la entrega de dictámenes</option>
           </select>
         </div>
         <div class="col-md-3">
-          <label>Tiempo de ejecucion</label>
+          <label>Tiempo de ejecución</label>
           <input type="text"  class="form-control" name="tiempo" value="Acordado con el cliente">
         </div>
         <div class="col-md-3">
-          <label>Tiempo de entrega de dictamenes</label>
-          <input type="text"  class="form-control" name="entrega" value="4 días  abiles">
+          <label>Tiempo de entrega de dictámenes</label>
+          <input type="text"  class="form-control" name="entrega" value="4 días  hábiles">
         </div>
       </div>
 
       <div class="col-md-12" style="margin-top:20px; margin-bottom:20px">
         <div class="col-md-3">
-          <label>Numero de visitas contratadas</label>
+          <label>Número  de visitas contratadas</label>
           <input type="text"  class="form-control" name="tiempo" value="2">
         </div>
         <div class="col-md-3">
           <label>Validez de la oferta</label>
-          <input type="text" class="form-control" name="tiempo" value="30 días  ">
+          <input type="text" class="form-control" name="validez" value="30 días  ">
         </div>
       </div>
 
@@ -146,6 +146,8 @@
       <section>
     <div class="box-body">
       <div class="row quitar50" id="quitar50">
+        <center> <h3>Alcance: proceso de transformación</h3> </center>
+
       <div class="col-md-12">
         <div class="col-md-3">
           <div class="form-group">
@@ -156,7 +158,7 @@
         <div class="col-md-2">
           <div class="form-group">
             <center><label >Tipo</label></center>
-            <select class="form-control tipo" name="transformacion[tipo][]">
+            <select class="form-control tipo" name="transformacion[tipo][]" style="width:100%">
               <option value="">Seleccione...</option>
               <option value="Tipo_poste">Tipo poste</option>
               <option value="Tipo_interior">Tipo interior</option>
@@ -168,7 +170,7 @@
         <div class="col-md-2">
           <div class="form-group">
             <center><label >Nivel de tensión </label></center>
-            <select class="form-control" name="transformacion[nivel_tension][]">
+            <select class="form-control" name="transformacion[nivel_tension][]" style="width:100%">
               <option value="">Seleccione...</option>
               <option value="13,2">13,2</option>
               <option value="13,4">13,4</option>
@@ -191,7 +193,7 @@
         <div class="col-md-2">
           <div class="form-group">
             <center><label >refrigeración </label></center>
-            <select class="form-control" name="transformacion[tipo_refrigeracion][]">
+            <select class="form-control" name="transformacion[tipo_refrigeracion][]" style="width:100%">
               <option value="">Seleccione...</option>
               <option value="Seco">Seco</option>
               <option value="Aceite">Aceite</option>
@@ -214,7 +216,7 @@
         <div class="col-md-3">
           <div class="form-group">
             <center style="margin-bottom: 25px;"><label >Descripción</label></center>
-            <select class="form-control desc2" name="distribucion[descripcion_dis][]" style="top:25px important!">
+            <select class="form-control desc2" name="distribucion[descripcion_dis][]" style="width:100%">
               <option value="">Seleccione...</option>
               <option value="Inspección RETIE proceso de distribución en MT">Inspección RETIE proceso de distribución en MT</option>
               <option value="Inspección RETIE proceso de distribución en BT">Inspección RETIE proceso de distribución en BT</option>
@@ -224,7 +226,7 @@
         <div class="col-md-2">
           <div class="form-group">
             <center style="margin-bottom: 25px;"><label >Tipo</label></center>
-            <select class="form-control tipo2" name="distribucion[tipo_dis][]" >
+            <select class="form-control tipo2" name="distribucion[tipo_dis][]" style="width:100%">
               <option value="">Seleccione...</option>
               <option value="Aérea">Tipo Aérea</option>
               <option value="Subterránea">Tipo subterránea</option>
@@ -236,7 +238,7 @@
         <div class="col-md-1">
           <div class="form-group">
             <center><label >Nivel de tensión  </label></center>
-            <select class="form-control tipo2" name="distribucion[nivel_tension_dis][]" >
+            <select class="form-control tipo2" name="distribucion[nivel_tension_dis][]" style="width:100%">
               <option value="">Seleccione...</option>
               <option value="110-220">110-220</option>
               <option value="220-240">220-240</option>
@@ -285,7 +287,7 @@
       <div class="col-md-3">
         <div class="form-group">
           <center><label >Descripción</label></center>
-          <select class="form-control desc3"name="pu_final[descripcion_pu][]">
+          <select class="form-control desc3"name="pu_final[descripcion_pu][]" style="width:100%">
             <option value="">Seleccione...</option>
             <option value="Inspección RETIE proceso uso final residencial">Inspección RETIE proceso uso final residencial</option>
             <option value="Inspección RETIE proceso uso final comercial">Inspección RETIE proceso uso final comercial</option>
@@ -295,7 +297,7 @@
       <div class="col-md-2">
         <div class="form-group">
           <center><label >Tipo</label></center>
-          <select class="form-control tipo3" name="pu_final[tipo_pu][]">
+          <select class="form-control tipo3" name="pu_final[tipo_pu][]" style="width:100%">
             <option value="">Seleccione...</option>
             <option value="Casa">Casa</option>
             <option value="Apartamentos">Apartamentos</option>
@@ -308,7 +310,7 @@
       <div class="col-md-2">
         <div class="form-group">
           <center><label >Estrato</label></center>
-          <select class="form-control"name="pu_final[estrato_pu][]">
+          <select class="form-control"name="pu_final[estrato_pu][]" style="width:100%">
             <option value="">Seleccione...</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -360,7 +362,7 @@
     </div>
 
 </section>
-  <h3>Paso 2</h3>
+  <h3>Paso 3</h3>
     <section>
 
      <table class="table table-bordered tabla">
