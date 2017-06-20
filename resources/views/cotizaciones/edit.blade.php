@@ -40,7 +40,9 @@
 
     <h3>Paso 1</h3>
     <section>
-    <div class="box-header with-border">
+    <div class="">
+      <center> <h3>Alcance: proceso de transformación</h3> </center>
+      
       <div class="col-md-12">
         <div class="col-md-3">
           <input type="hidden"  name="id" value="{{$cotizaciones->id}}"  >
@@ -136,10 +138,45 @@
         </div>
       </div>
 
+      <center> <h3>Detalle de la cotización</h3> </center>
 
+      <div class="col-md-12" style="margin-top:20px; margin-bottom:20px">
+        <div class="col-md-3">
+          <label>Formas de pago :</label>
+          <select name="formas_pago" style="width:100%">
+            <option value="">Seleccione...</option>
+            <option value="Señor">Anticipo 100%</option>
+            <option value="Señora">Anticipo 50% - 50% a la entrega de dictamenes</option>
+            <option value="Señores">Anticipo 50% - 50% en Actas parciales según avance de Obra</option>
+            <option value="Ingeniero">Anticipo del 30% - 70% en Actas parciales según avance de Obra</option>
+            <option value="Ingeniera">Anticipo 30% - 70% a la entrega de dictamenes</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <label>Tiempo de ejecucion</label>
+          <input type="text"  class="form-control" name="tiempo" value="Acordado con el cliente">
+        </div>
+        <div class="col-md-3">
+          <label>Tiempo de entrega de dictamenes</label>
+          <input type="text"  class="form-control" name="entrega" value="4 días  abiles">
+        </div>
+      </div>
 
-      <center> <h3>Alcance: proceso de transformación</h3> </center>
+      <div class="col-md-12" style="margin-top:20px; margin-bottom:20px">
+        <div class="col-md-3">
+          <label>Numero de visitas contratadas</label>
+          <input type="text"  class="form-control" name="tiempo" value="2">
+        </div>
+        <div class="col-md-3">
+          <label>Validez de la oferta</label>
+          <input type="text" class="form-control" name="tiempo" value="30 días  ">
+        </div>
+      </div>
+
     </div>
+  </section>
+    <h3>Paso 2</h3>
+      <section>
     <div class="box-body">
       @if(count($transformaciones) == 0)
         <input type="hidden"  name="transformacion" value="transformacion"  >
