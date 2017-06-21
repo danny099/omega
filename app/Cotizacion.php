@@ -12,7 +12,7 @@ class Cotizacion extends Model
 
   protected $table = 'cotizacion';
 
-  protected $fillable = ['id','dirigido','codigo','cliente_id','juridica_id','nombre','municipio','formas_pago','tiempo','entrega','validez','subtotal','iva','total','observaciones','departamento_id','contador'];
+  protected $fillable = ['id','dirigido','codigo','cliente_id','juridica_id','fecha','nombre','municipio','formas_pago','tiempo','entrega','visitas','validez','subtotal','iva','total','observaciones','departamento_id','contador'];
 
   public $timestamps = false;
 

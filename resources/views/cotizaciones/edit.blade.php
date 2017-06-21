@@ -143,7 +143,7 @@
       <div class="col-md-12" style="margin-top:20px; margin-bottom:20px">
         <div class="col-md-3">
           <label>Formas de pago :</label>
-          <select name="formas_pago" style="width:100%">
+          <select name="formas_pago" style="width:100%" required>
             <option value="{{ $cotizaciones->formas_pago }}">{{ $cotizaciones->formas_pago }}</option>
             <option value="Anticipo 100%">Anticipo 100%</option>
             <option value="Anticipo 50% - 50% a la entrega de dictámenes">Anticipo 50% - 50% a la entrega de dictámenes</option>
@@ -165,7 +165,7 @@
       <div class="col-md-12" style="margin-top:20px; margin-bottom:20px">
         <div class="col-md-3">
           <label>Número  de visitas contratadas</label>
-          <input type="text"  class="form-control" name="tiempo" value="{{$cotizaciones->tiempo}}">
+          <input type="text"  class="form-control" name="visitas" value="{{$cotizaciones->visitas}}">
         </div>
         <div class="col-md-3">
           <label>Validez de la oferta</label>
@@ -689,19 +689,19 @@ $(document).on('change','#tipo',function(){
   var  tipo = $(this).val();
 
   if (tipo == 'Aérea') {
-    $('#cajas').attr("readonly", true);
-    $('#cajas').val(0);
-    $('#apoyos').attr("readonly", false);
+    $(this).parent().parent().parent().find('#cajas').attr("readonly", true);
+    $(this).parent().parent().parent().find('#cajas').val(0);
+    $(this).parent().parent().parent().find('#apoyos').attr("readonly", false);
 
   }
     else if (tipo == 'Subterránea') {
-      $('#cajas').attr("readonly", false);
-      $('#apoyos').attr("readonly", true);
-      $('#apoyos').val(0);
+      $(this).parent().parent().parent().find('#cajas').attr("readonly", false);
+      $(this).parent().parent().parent().find('#apoyos').attr("readonly", true);
+      $(this).parent().parent().parent().find('#apoyos').val(0);
     }
     else {
-      $('#cajas').attr("readonly", false);
-      $('#apoyos').attr("readonly", false);
+      $(this).parent().parent().parent().find('#cajas').attr("readonly", false);
+      $(this).parent().parent().parent().find('#apoyos').attr("readonly", false);
     }
 
 

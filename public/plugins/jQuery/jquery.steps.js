@@ -797,11 +797,11 @@ function paginationClickHandler(event)
             finishStep(wizard, state);
             break;
 
-        case "next":
+        case "Siguiente":
             goToNextStep(wizard, options, state);
             break;
 
-        case "previous":
+        case "Anterior":
             goToPreviousStep(wizard, options, state);
             break;
     }
@@ -1060,10 +1060,10 @@ function renderPagination(wizard, options, state)
 
         if (!options.forceMoveForward)
         {
-            buttons += buttonTemplate.format("previous", options.labels.previous);
+            buttons += buttonTemplate.format("Anterior", options.labels.previous);
         }
 
-        buttons += buttonTemplate.format("next", options.labels.next);
+        buttons += buttonTemplate.format("Siguiente", options.labels.next);
 
         if (options.enableFinishButton)
         {
@@ -2006,7 +2006,7 @@ var defaults = $.fn.steps.defaults = {
          * @default "Finish"
          * @for defaults
          **/
-        finish: "Finish",
+        finish: "Enviar",
 
         /**
          * Label for the next button.
@@ -2016,7 +2016,7 @@ var defaults = $.fn.steps.defaults = {
          * @default "Next"
          * @for defaults
          **/
-        next: "Next",
+        next: "Siguiente",
 
         /**
          * Label for the previous button.
@@ -2026,7 +2026,7 @@ var defaults = $.fn.steps.defaults = {
          * @default "Previous"
          * @for defaults
          **/
-        previous: "Previous",
+        previous: "Anterior",
 
         /**
          * Label for the loading animation.

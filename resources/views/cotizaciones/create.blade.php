@@ -110,7 +110,7 @@
       <div class="col-md-12" style="margin-top:20px; margin-bottom:20px">
         <div class="col-md-3">
           <label>Formas de pago :</label>
-          <select name="formas_pago" style="width:100%">
+          <select name="formas_pago" style="width:100%" required>
             <option value="">Seleccione...</option>
             <option value="Anticipo 100%">Anticipo 100%</option>
             <option value="Anticipo 50% - 50% a la entrega de dictámenes">Anticipo 50% - 50% a la entrega de dictámenes</option>
@@ -132,7 +132,7 @@
       <div class="col-md-12" style="margin-top:20px; margin-bottom:20px">
         <div class="col-md-3">
           <label>Número  de visitas contratadas</label>
-          <input type="text"  class="form-control" name="tiempo" value="2">
+          <input type="text"  class="form-control" name="visitas" value="2">
         </div>
         <div class="col-md-3">
           <label>Validez de la oferta</label>
@@ -489,7 +489,6 @@ $(function() {
             var desc2 =$(this).find(".desc2").val();
             var tipo2 =$(this).find(".tipo2").val();
             var nFilas = $(".tabla tr").length - 1;
-            alert(tipo2)
             if (cantidad2 != '' && desc2!= '' && tipo2!='') {
 
               $('.tabla tr:last').after('<tr class="actualizar"><td>'+nFilas+'</td><td name="detalles2">'+desc2+' '+tipo2+'</td><td>'+cantidad2+' km'+

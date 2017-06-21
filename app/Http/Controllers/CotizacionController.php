@@ -46,8 +46,10 @@ class CotizacionController extends Controller
          $juridicas = Juridica::all();
          $departamentos = Departamento::all();
 
+      
 
 
+//Salida: viernes 24 de febrero del 2012
          return view('cotizaciones.create',compact('clientes','juridicas','departamentos'));
      }
 
@@ -60,18 +62,22 @@ class CotizacionController extends Controller
      public function store(Request $request)
      {
          $input = $request->all();
+         $now = new \DateTime();
+         $fecha = $now->format('Y-m-d');
 
 
          $cotizacion['dirigido'] = $request->dirigido;
          $cotizacion['codigo'] = '0001';
          $cotizacion['cliente_id'] = $request->cliente_id;
          $cotizacion['juridica_id'] = $request->juridica_id;
+         $cotizacion['fecha'] = $fecha;
          $cotizacion['nombre'] = $request->nombre;
          $cotizacion['municipio'] = $request->municipio;
          $cotizacion['departamento_id'] = $request->departamento;
          $cotizacion['formas_pago'] = $request->formas_pago;
          $cotizacion['tiempo'] = $request->tiempo;
          $cotizacion['entrega'] = $request->entrega;
+         $cotizacion['visitas'] = $request->visitas;
          $cotizacion['validez'] = $request->validez;
          $cotizacion['subtotal'] = str_replace(',','',$request->subtotal);
          $cotizacion['iva'] = str_replace(',','',$request->iva);
@@ -95,7 +101,7 @@ class CotizacionController extends Controller
                    !is_null($input['transformacion']['capacidad'][$a]) &&
                    !is_null($input['transformacion']['cantidad'][$a]) &&
                    !is_null($input['transformacion']['tipo_refrigeracion'][$a])) {
-    
+
                      $datos1['descripcion'] = $input['transformacion']['descripcion'][$a];
                      $datos1['tipo'] = $input['transformacion']['tipo'][$a];
                      $datos1['nivel_tension'] = $input['transformacion']['nivel_tension'][$a];

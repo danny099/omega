@@ -78,7 +78,9 @@ class PdfController extends Controller
 
       $cotizaciones = Cotizacion::find($id);
       // $admin  = $administrativas->id;
-
+      $total = $cotizaciones->subtotal;
+      $iva = $cotizaciones->iva;
+      $valor_total = $cotizaciones->total;
 
       $departamentos = Departamento::findOrFail($cotizaciones->departamento_id);
 
@@ -99,16 +101,18 @@ class PdfController extends Controller
       $distribuciones = Distribucion::where('distribucion.cotizacion_id', '=', $id)->get();
       $pu_finales = Pu_final::where('pu_final.cotizacion_id', '=', $id)->get();
 
-
-
+      $numero1 = 5 * count($transformaciones);
+      $numero2 = 6 * count($distribuciones);
 
   		// $pdf = \PDF::loadView('pdf.show-admin',compact('administrativa','clientes','juridicas','otrosis','distribuciones','transformaciones','pu_finales','departamentos','municipio','adicionales','consignaciones','cuenta_cobros','facturas'));
   		// return $pdf->download('archivo.pdf');
 
       $pdf = App::make('dompdf.wrapper');
-      $pdf->loadView('pdf.show-cotizacion',compact('administrativa','clientes','juridicas','otrosis','distribuciones','transformaciones','pu_finales','departamentos','municipios'));
+      $pdf->loadView('pdf.show-cotizacion',compact('administrativa','clientes','juridicas','otrosis','distribuciones','transformaciones','pu_finales','departamentos','municipios','numero1','numero2','total','iva','valor_total','cotizaciones'));
       return $pdf->stream('pdf-cotizacion');
+
     }
+
 
     /**
      * Show the form for creating a new resource.

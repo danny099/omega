@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+
     <meta charset="utf-8">
     <title></title>
     <link rel="stylesheet" href="../public/css/bootstrap.css">
@@ -47,6 +48,15 @@
       .ttable{
         text-align: center;
       }
+      #td{
+        border-bottom: solid white;
+      }
+      #td2{
+        border-top: solid white;
+      }
+      #td3{
+        border-top: solid white;
+      }
       table {
         border-collapse:collapse; border: none;
       }
@@ -63,7 +73,8 @@
     <div class="div1">
       <div class="entrada">
         <p>Santiago de Cali</p>
-        <p>Lunes 19 de junio de 2017</p>
+        <p>{{ date_format(new DateTime($cotizaciones->fecha), 'd-m-y') }}</p>
+
       </div>
       <div class="codigo">
         <table class="" align="right">
@@ -154,7 +165,7 @@
             <th>Unidad</th>
             <th>Cantidad</th>
             <th>Apoyos</th>
-            <th>CajasS</th>
+            <th>Cajas</th>
             <th>Notas</th>
           </tr>
         </thead>
@@ -212,65 +223,170 @@
       @endif
     </div>
     <div class="asociados">
-      <!-- <div style="page-break-after:always;"></div> -->
-      <table class="table table-bordered table-striped">
+      <table class="table table-bordered tabla">
         @if(count($transformaciones) == 0)
         @else
           <tr>
-            <td rowspan="5"><p>Transformación asociado a Uso Final</p></td>
+            <td ><p>Transformación asociado a Uso Final</p></td>
+            <td><p><b>Descripción</b></p></td>
+            <td><p><b>Valor</b></p></td>
+          </tr>
+          @foreach($transformaciones as $transf)
+          <tr>
+            <td id="td3"></td>
             <td><p>Nivel de Tensión (KV)</p></td>
-            <td><p>Madrid</p></td>
+            <td><p>{{ $transf->nivel_tension }}</p></td>
           </tr>
           <tr>
-            <td><p>Numero de Transformadores</p></td>
-            <td><p>Paris</p></td>
+            <td id="td3"></td>
+            <td><p>Número de Transformadores</p></td>
+            <td><p>{{ $transf->cantidad }}</p></td>
           </tr>
           <tr>
+            <td id="td3"></td>
             <td><p>Potencia</p></td>
-            <td><p>Londres</p></td>
+            <td><p>{{ $transf->capacidad }}</p></td>
           </tr>
           <tr>
+            <td id="td3"></td>
             <td><p>Montaje</p></td>
-            <td><p>Londres</p></td>
+            <td><p>{{ $transf->tipo }}</p></td>
           </tr>
           <tr>
+            <td id="td3"></td>
             <td><p>Tipo de Refrigeración</p></td>
-            <td><p>Londres</p></td>
+            <td><p>{{ $transf->tipo_refrigeracion }}</p></td>
           </tr>
+          @endforeach
         @endif
 
         @if(count($distribuciones) == 0)
         @else
           <tr>
-            <td rowspan="7"><p>Distribución asociado a Uso Final</p></td>
+            <td ><p>Distribución asociado a Uso Final</p></td>
+            <td><p><b>Descripción</b></p></td>
+            <td><p><b>Valor</b></p></td>
+          </tr>
+          @foreach($distribuciones as $distris)
+          <tr>
+            <td id="td3"></td>
             <td><p>Descripcion</p></td>
-            <td><p>Washington</p></td>
+            <td><p>{{  $distris->descripcion }}</p></td>
           </tr>
           <tr>
+            <td id="td3"></td>
             <td><p>Tipo de Red</p></td>
-            <td><p>Toronto</p></td>
+            <td><p>{{ $distris->tipo }}</p></td>
           </tr>
           <tr>
+            <td id="td3"></td>
             <td><p>Nivel de Tensión</p></td>
-            <td><p>Mexico</p></td>
+            <td><p>{{ $distris->nivel_tension }}</p></td>
           </tr>
           <tr>
+            <td id="td3"></td>
             <td><p>Longitu de Red</p></td>
-            <td><p>Mexico</p></td>
+            <td><p>{{ $distris->cantidad }}</p></td>
           </tr>
           <tr>
+            <td id="td3"></td>
             <td><p>Numero de Apoyos o Estructuras</p></td>
-            <td><p>Mexico</p></td>
+            <td><p>{{ $distris->apoyos }}</p></td>
           </tr>
           <tr>
-            <td><p>Numero de Apoyos o Estructuras</p></td>
-            <td><p>Mexico</p></td>
-          </tr>
-          <tr>
+            <td id="td3"></td>
             <td><p>Numero de Cajas de Inspección</p></td>
-            <td><p>Mexico</p></td>
+            <td><p>{{ $distris->cajas }}</p></td>
           </tr>
+          @endforeach
         @endif
+      </table>
+    </div>
+    <div class="referencia">
+      <p><b>5. PROPUESTA ECONOMICA</b></p>
+
+
+      <table class="table table-bordered tabla">
+        <tr>
+          <th Colspan="4"><center><label> Cotización</label></center></th>
+        </tr>
+        <tr>
+          <th><center><label> Item </label></center></th>
+          <th><center><label> Descripcion del alcance </label></center></th>
+          <th><center><label> Cantidad </label></center></th>
+          <th><center><label> Valor </label></center></th>
+        </tr>
+        @foreach($transformaciones as $trans)
+          <tr>
+            <td>1</td>
+            <td>
+              <p>{{ $trans->descripcion }} {{ $trans->tipo }}, Capacidad: {{ $trans->capacidad}} + Sistema de Puesta a Tierra</p>
+            </td>
+            <td>{{ $trans->cantidad }} {{ $trans->unidad }}</td>
+
+            <td id="td"></td>
+          </tr>
+        @endforeach
+        @foreach($distribuciones as $distri)
+          <tr>
+            <td>1</td>
+            <td>
+              <p>{{ $distri->descripcion }} {{ $distri->tipo }}</p>
+            </td>
+            <td>{{ $distri->cantidad }} {{ $distri->unidad }}</td>
+
+            <td id="td2"></td>
+          </tr>
+        @endforeach
+        <tr>
+          <td></td>
+          <td colspan="2">Valor de la Inspección</td>
+          <td>${{ number_format($total,0) }}</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td colspan="2">IVA(19%)</td>
+          <td>${{ number_format($iva,0) }}</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td colspan="2">Valor Total del Proyecto</td>
+          <td>${{ number_format($valor_total,0) }}</td>
+        </tr>
+        <!-- <td>
+          <p> </p>
+          @foreach($pu_finales as $pu)
+          <p>{{ $pu->descripcion }} - {{ $pu->tipo }} +</p>
+          @endforeach
+          <p>Unidades de Vivienda</p>
+        </td> -->
+
+      </table>
+    </div>
+    <div class="comerciales">
+      <p><b>6. CONDICIONES COMERCIALES</b></p>
+
+      <table class="table table-bordered tabla">
+        <tr>
+          <td>Forma de pago</td>
+          <td>{{$cotizaciones->formas_pago}}</td>
+        </tr>
+        <tr>
+          <td>Tiempo de ejecución</td>
+          <td>{{$cotizaciones->tiempo}}</td>
+        </tr>
+        <tr>
+          <td>Tiempo de entrega del dictamen</td>
+          <td>{{$cotizaciones->entrega}} una vez se encuentre la documentacion completa y no se tenga NC abiertas</td>
+        </tr>
+        <tr>
+          <td>Número de visitas de inspeccion contratadas</td>
+          <td>{{$cotizaciones->visitas}} </td>
+        </tr>
+        <tr>
+          <td>Validez de la oferta</td>
+          <td>{{$cotizaciones->validez}} </td>
+        </tr>
       </table>
     </div>
   </body>
