@@ -20,7 +20,7 @@
             </div>
             <div class="col-md-6">
               <div class="form-group">
-                <input type="numbe" name="cuenta[porcentaje][]" onkeypress="mascara(this,cpf)" class="form-control" required="" value="{{$cuenta->porcentaje}}">
+                <input type="numbe" name="cuenta[porcentaje][]" onkeyup="mascara(this,cpf)" class="form-control" required="" value="{{$cuenta->porcentaje}}">
                 <!-- {!! Form::number('cuenta[porcentaje][]', null, ['class' => 'form-control' , 'required' => 'required','min'=>'0','placeholder'=>'%']) !!} -->
               </div>
             </div>
@@ -32,7 +32,7 @@
             </div>
             <div class="col-md-6">
               <div class="form-group">
-                <input type="text" min="0" class="form-control" required="" name="cuenta[valor][]" onkeypress="mascara(this,cpf)" value="{{ number_format($cuenta->valor,0) }}">
+                <input type="text" min="0" class="form-control" required="" name="cuenta[valor][]" onkeyup="mascara(this,cpf)" value="{{ number_format($cuenta->valor,0) }}">
                 <!-- {!! Form::number('cuenta[valor][]', null, ['class' => 'form-control' , 'required' => 'required','min'=>'0']) !!} -->
               </div>
             </div>

@@ -16,12 +16,15 @@ use App\Cuenta_cobro;
 use App\Factura;
 use App\Valor_adicional;
 use App\Observacion;
+use App\Documento;
 use Illuminate\Http\Request;
 use Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
 use PDF;
 use App;
+use DB;
+
 
 class PdfController extends Controller
 {
@@ -104,11 +107,23 @@ class PdfController extends Controller
       $numero1 = 5 * count($transformaciones);
       $numero2 = 6 * count($distribuciones);
 
+      $referencia = Documento::findOrFail(14);
+      $inicial = Documento::findOrFail(15);
+      $inspeccion = Documento::findOrFail(16);
+      $pago = Documento::findOrFail(17);
+      $docu = Documento::findOrFail(18);
+      $datos = Documento::findOrFail(19);
+      $saludo = Documento::findOrFail(20);
+      $objeto = Documento::findOrFail(21);
+
+
+
   		// $pdf = \PDF::loadView('pdf.show-admin',compact('administrativa','clientes','juridicas','otrosis','distribuciones','transformaciones','pu_finales','departamentos','municipio','adicionales','consignaciones','cuenta_cobros','facturas'));
   		// return $pdf->download('archivo.pdf');
 
       $pdf = App::make('dompdf.wrapper');
-      $pdf->loadView('pdf.show-cotizacion',compact('administrativa','clientes','juridicas','otrosis','distribuciones','transformaciones','pu_finales','departamentos','municipios','numero1','numero2','total','iva','valor_total','cotizaciones'));
+      $pdf->loadView('pdf.show-cotizacion',compact('administrativa','clientes','juridicas','otrosis','distribuciones','transformaciones','pu_finales','departamentos','municipios','numero1','numero2','total','iva','valor_total','cotizaciones','referencia','inicial','inspeccion','pago','docu','datos','objeto',
+                                                  'saludo'));
       return $pdf->stream('pdf-cotizacion');
 
     }

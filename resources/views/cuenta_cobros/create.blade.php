@@ -35,7 +35,7 @@
           </div>
           <div class="col-md-6">
             <div class="form-group">
-              {!! Form::text('valor', null, ['class' => 'form-control' , 'required' => 'required','min'=>'0','onkeypress'=>"mascara(this,cpf)"]) !!}
+              {!! Form::text('valor', null, ['class' => 'form-control' , 'required' => 'required','min'=>'0','onkeyup'=>"mascara(this,cpf)"]) !!}
             </div>
           </div>
 

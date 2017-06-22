@@ -134,3 +134,6 @@ Route::group(['middleware' => 'auth'],function(){
 
 	/**************************************************************/
 	/**************************************************************/
+
+	Route::resource('documentos','DocumentoController');
+	Route::get('deletedocumentos/{id}','DocumentoController@destroy');

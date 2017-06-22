@@ -46,7 +46,7 @@ class CotizacionController extends Controller
          $juridicas = Juridica::all();
          $departamentos = Departamento::all();
 
-      
+
 
 
 //Salida: viernes 24 de febrero del 2012

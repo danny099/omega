@@ -145,7 +145,7 @@ function addCommas(nStr){
           </div>
           <div class ="form-group">
             <label >Valor contrato final</label>
-            <input type="text" min="0" class="form-control" id="fin" autocomplete="off" placeholder= "Valor final" name="contrato_final"  onkeyup="calcular();"  onkeypress="mascara(this,cpf)"  onpaste="return false" required="ingrese así sea un cero" >
+            <input type="text" min="0" class="form-control" id="fin" autocomplete="off" placeholder= "Valor final" name="contrato_final"  onkeyup="calcular();"  onkeyup="mascara(this,cpf)"  onpaste="return false" required="ingrese así sea un cero" >
 
           </div>
         </div>

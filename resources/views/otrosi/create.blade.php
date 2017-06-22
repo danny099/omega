@@ -106,7 +106,7 @@
                   </div>
                   <div class="form-group ">
                     <div class="col-md-4">
-                      <input type="text" class="form-control antesiva" id="antesiva" placeholder= "Ingrese valor" name="valor"   onkeyup="calcular();"  onkeypress="mascara(this,cpf)"  onpaste="return false">
+                      <input type="text" class="form-control antesiva" id="antesiva" placeholder= "Ingrese valor" name="valor"   onkeyup="calcular();"  onkeyup="mascara(this,cpf)"  onpaste="return false">
                     </div>
                     <div class="col-md-4" >
 

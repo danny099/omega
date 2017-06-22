@@ -475,7 +475,6 @@ $(function() {
     var valor_multi = 0;
     var valor_multi_dis = 0;
     var valor_multi_pu = 0;
-    var datos1 = ($(".datos1").val());
     var datos = JSON.parse($(".datos1").val())
     var datos2 = JSON.parse($(".datos2").val())
     var datos3 = JSON.parse($(".datos3").val())
@@ -503,7 +502,7 @@ $(function() {
           if (cantidad != '' && desc!= '' && capacidad!='' && tipo!='') {
 
             $('.tabla tr:last').after('<tr class="actualizar"><td>'+nFilas+'</td><td>'+desc+' '+tipo+' '+capacidad+'</td><td class="cant">'+cantidad+
-            '</td><td><input type="text" class="form-control valor_uni" value="'+datos[i].valor_uni+'" placeholder= "Valor" onkeypress="mascara(this,cpf)" name="valores[valor_uni][]" required=""></td>'+' '+
+            '</td><td><input type="text" class="form-control valor_uni" value="'+datos[i].valor_uni+'" placeholder= "Valor" onkeyup="mascara(this,cpf)" name="valores[valor_uni][]" required=""></td>'+' '+
             '<td><input type="text" class="form-control valor_multi" placeholder= "Valor" value="'+datos[i].valor_total+'" name="valores[valor_multi][]" required="" readonly ></td></tr>'+' '+
             '<input type="hidden"  value="'+datos[i].id+'"  name="valores[id][]">');
 
@@ -513,7 +512,7 @@ $(function() {
                 var valor_uni = $(this).val().replace(/,/g,"");
                 var cantidad = $(this).parent().parent().find(".cant").text();
                 var resultado= valor_uni * cantidad;
-
+                
 
 
                 $(this).parent().parent().find('.valor_multi').val(addCommas(Math.round(resultado)));
@@ -548,7 +547,7 @@ $(function() {
             if (cantidad2 != '' && desc2!= '' && tipo2!='') {
 
               $('.tabla tr:last').after('<tr class="actualizar"><td>'+nFilas+'</td><td name="detalles2">'+desc2+' '+tipo2+'</td><td>'+cantidad2+' km'+
-              '</td><td><input type="text" class="form-control valor_uni_dis"  value="'+datos2[i].valor_uni+'" placeholder= "Valor" onkeypress="mascara(this,cpf)" name="valores[valor_uni_dis][]" required="">'+' '+
+              '</td><td><input type="text" class="form-control valor_uni_dis"  value="'+datos2[i].valor_uni+'" placeholder= "Valor" onkeyup="mascara(this,cpf)" name="valores[valor_uni_dis][]" required="">'+' '+
               '</td><td><input type="text" class="form-control valor_multi_dis" placeholder= "Valor"  value="'+datos2[i].valor_total+'" name="valores[valor_multi_dis][]" required="" readonly ></td></tr>'+' '+
               '<input type="hidden"  value="'+datos2[i].id+'"  name="valores[id_dis][]">');
 
@@ -590,7 +589,7 @@ $(function() {
               if (cantidad3 != '' && desc3!= '' && tipo3!='') {
 
                 $('.tabla tr:last').after('<tr class="actualizar"><td>'+nFilas+'</td><td>'+desc3+' '+tipo3+'</td><td class="cant3">'+cantidad3+
-                '</td><td><input type="text" class="form-control valor_uni_pu"  value="'+datos3[i].valor_uni+'" placeholder= "Valor" onkeypress="mascara(this,cpf)" name="valores[valor_uni_pu][]" required=""></td>'+' '+
+                '</td><td><input type="text" class="form-control valor_uni_pu"  value="'+datos3[i].valor_uni+'" placeholder= "Valor" onkeyup="mascara(this,cpf)" name="valores[valor_uni_pu][]" required=""></td>'+' '+
                 '<td><input type="text" class="form-control valor_multi_pu" placeholder= "Valor"  value="'+datos3[i].valor_total+'" name="valores[valor_multi_pu][]" required="" readonly ></td></tr>'+' '+
                 '<input type="hidden"  value="'+datos3[i].id+'"  name="valores[id_pu][]">');
                   event.preventDefault();
@@ -623,9 +622,9 @@ $(function() {
           });
 
 
-    $('.tabla tr:last').after('<tr class="actualizar"><td Colspan="3"></td><td><label>Subtotal</label></td><td><label class="subtotal">{{$cotizaciones->subtotal}}</label><input type="hidden" class="form-control subtotal" placeholder= "Valor" value="{{$cotizaciones->subtotal}}"  name="subtotal"  required="" readonly ></td></tr>');
-    $('.tabla tr:last').after('<tr class="actualizar"><td Colspan="3"></td><td><label>IVA</label></td><td><label class="iva">{{$cotizaciones->iva}}</label><input type="hidden" class="form-control iva" placeholder= "Valor"  name="iva" value="{{$cotizaciones->iva}}"  required="" readonly ></td></tr>');
-    $('.tabla tr:last').after('<tr class="actualizar"><td Colspan="3"></td><td><label>Total</label></td><td><label class="total">{{$cotizaciones->total}}</label><input type="hidden" class="form-control total" placeholder= "Valor" value="{{$cotizaciones->total}}" name="total"  required="" readonly></td></tr>');
+    $('.tabla tr:last').after('<tr class="actualizar"><td Colspan="3"></td><td><label>Subtotal</label></td><td><label class="subtotal">${{ number_format($cotizaciones->subtotal,0)}}</label><input type="hidden" class="form-control subtotal" placeholder= "Valor" value="{{$cotizaciones->subtotal}}"  name="subtotal"  required="" readonly ></td></tr>');
+    $('.tabla tr:last').after('<tr class="actualizar"><td Colspan="3"></td><td><label>IVA</label></td><td><label class="iva">${{ number_format($cotizaciones->iva,0)}}</label><input type="hidden" class="form-control iva" placeholder= "Valor"  name="iva" value="{{$cotizaciones->iva}}"  required="" readonly ></td></tr>');
+    $('.tabla tr:last').after('<tr class="actualizar"><td Colspan="3"></td><td><label>Total</label></td><td><label class="total">${{ number_format($cotizaciones->total,0)}}</label><input type="hidden" class="form-control total" placeholder= "Valor" value="{{$cotizaciones->total}}" name="total"  required="" readonly></td></tr>');
     $('.tabla tr:last').after('<input type="hidden" class="form-control valor_multi actualizar"  value="0"  >');
     $('.tabla tr:last').after('<input type="hidden" class="form-control  valor_multi_dis actualizar"  value="0"  >');
     $('.tabla tr:last').after('<input type="hidden" class="form-control  valor_multi_pu actualizar"  value="0"  >');

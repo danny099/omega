@@ -382,7 +382,7 @@
             </div>
             <div class="form-group">
               <label >Valor contrato final</label>
-              <input type="text" class="form-control" min="0" id="fin" autocomplete="off" onkeyup="calcular();"  onkeypress="mascara(this,cpf)"  onpaste="return false" required="ingrese así sea un cero" placeholder= "Valor final" name="contrato_final" value="{{ number_format($administrativas->valor_contrato_final,0)}}">
+              <input type="text" class="form-control" min="0" id="fin" autocomplete="off" onkeyup="calcular();"  onkeyup="mascara(this,cpf)"  onpaste="return false" required="ingrese así sea un cero" placeholder= "Valor final" name="contrato_final" value="{{ number_format($administrativas->valor_contrato_final,0)}}">
             </div>
             <div class="form-group">
               <label >Valor IVA</label>

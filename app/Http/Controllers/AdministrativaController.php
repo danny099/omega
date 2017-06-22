@@ -211,7 +211,7 @@ class AdministrativaController extends Controller
    public function show($id)
    {
       //  funcion que permite acceder al modelo y este a su ves ir a la base de datos y encontrar un registro
-       $administrativa = Administrativa::find($id);
+      $administrativa = Administrativa::find($id);
 
        $muni_Id = Municipio::select('id')->where('id',$administrativa->municipio)->get();
        $municipio = Municipio::find($muni_Id);

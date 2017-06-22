@@ -40,7 +40,7 @@
       </div>
       <div class="col-md-6">
         <div class="form-group">
-          {!! Form::text('valor_factura',  number_format($factura->valor_factura,0), ['class' => 'form-control valor_factura' ,'required' => 'required', 'min'=>'0','onkeypress'=>"mascara(this,cpf)"]) !!}
+          {!! Form::text('valor_factura',  number_format($factura->valor_factura,0), ['class' => 'form-control valor_factura' ,'required' => 'required', 'min'=>'0','onkeyup'=>"mascara(this,cpf)"]) !!}
 
         </div>
       </div>
@@ -87,7 +87,7 @@
       </div>
       <div class="col-md-6">
         <div class="form-group">
-          {!! Form::text('amortizacion', number_format($factura->amortizacion,0), ['class' => 'form-control amortizacion', 'min'=>'0','onkeypress'=>"mascara(this,cpf)"]) !!}
+          {!! Form::text('amortizacion', number_format($factura->amortizacion,0), ['class' => 'form-control amortizacion', 'min'=>'0','onkeyup'=>"mascara(this,cpf)"]) !!}
         </div>
       </div>
 
@@ -98,7 +98,7 @@
       </div>
       <div class="col-md-6">
         <div class="form-group">
-          {!! Form::text('polizas', number_format($factura->polizas,0), ['class' => 'form-control polizas','min'=>'0','onkeypress'=>"mascara(this,cpf)" ]) !!}
+          {!! Form::text('polizas', number_format($factura->polizas,0), ['class' => 'form-control polizas','min'=>'0','onkeyup'=>"mascara(this,cpf)" ]) !!}
         </div>
       </div>
 

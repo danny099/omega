@@ -35,6 +35,10 @@
       .cordial{
         border: black 1px solid;
       }
+      .inspeccionDoc{
+        border: black 1px solid;
+
+      }
       .tx1{
         margin: 5px;
       }
@@ -87,6 +91,16 @@
           </tr>
         </table>
       </div>
+      <br>
+      <br>
+      <div class="dirigido">
+        <p>{{ $cotizaciones->dirigido }}</p>
+        @if(empty($clientes))
+          <span>{{ $juridicas->razon_social }}</span>
+        @else
+          <span>{{ $clientes->nombre}}</span>
+        @endif
+      </div>
     </div>
     <div class="div2">
       <p class="obj1">
@@ -94,8 +108,8 @@
       </p>
       <p class="obj2" align="justify">
         Este Documento Constitye la Oferta Tecnica y Economica para la prestación de servicios
-        de inspectoria RETIE a las instalaciones electricas del proyecto Oasis del Este Ubicado
-        en el Municipio de Pasto departamento del Nariño.
+        de inspectoria RETIE a las instalaciones electricas del proyecto {{ $cotizaciones->nombre }} Ubicado
+        en el Municipio de {{ $municipios->nombre }} departamento del {{ $departamentos->nombre }}.
       </p>
     </div>
       <br>
@@ -104,11 +118,10 @@
       <p>Cordial Saludo:</p>
       <br>
       <div class="cordial">
-        <p class="tx1">
-          Atendiendo su solicitud y la información descrita o enviada a nuestro departamento de administrativo o gerencial, nos permitimos presentar nuestra oferta para la realización
-          de la inspección eléctrica del Objeto en este documento, de acuerdo a las especifiaciones del reglamento Técnico de Instalaciones Eléctricas RETIE - Resolución 90708 de Agosto de 2013
-          - Resolución 90795 de Julio del 2014 - Resolución 40492 de 24 Abril del 2015 del Ministerio de Minas y Energía.
-        </p>
+          <?php
+            $refer = html_entity_decode($saludo->detalles);
+            echo $refer;
+          ?>
       </div>
     </div>
       <br>
@@ -222,6 +235,7 @@
       </table>
       @endif
     </div>
+
     <div class="asociados">
       <table class="table table-bordered tabla">
         @if(count($transformaciones) == 0)
@@ -302,6 +316,37 @@
         @endif
       </table>
     </div>
+    <p><b>{{$referencia->nombre}}</b></p>
+    <br><br>
+    <div class="referencia">
+      <?php
+        $refer = html_entity_decode($referencia->detalles);
+        echo $refer;
+      ?>
+
+    </div>
+    <br>
+    <br>
+    <p><b>{{$inicial->nombre}}</b></p>
+
+    <br><br>
+    <div class="inspeccionDoc">
+      <?php
+        $refer = html_entity_decode($inicial->detalles);
+        echo $refer;
+      ?>
+    </div>
+    <br>
+    <br>
+    <p><b>{{$inspeccion->nombre}}</b></p>
+    <div class="inscricion">
+      <?php
+        $refer = html_entity_decode($inspeccion->detalles);
+        echo $refer;
+      ?>
+    </div>
+    <br>
+    <br>
     <div class="referencia">
       <p><b>5. PROPUESTA ECONOMICA</b></p>
 
@@ -388,6 +433,30 @@
           <td>{{$cotizaciones->validez}} </td>
         </tr>
       </table>
+    </div>
+    <div class="pago">
+      <p><b>{{$pago->nombre}}</b></p>
+      <?php
+        $refer = html_entity_decode($pago->detalles);
+        echo $refer;
+      ?>
+    </div>
+    <div class="docu">
+      <p><b>{{$docu->nombre}}</b></p>
+      <?php
+        $refer = html_entity_decode($docu->detalles);
+        echo $refer;
+      ?>
+    </div>
+    <div class="img">
+      <img id="img" src="firma.jpg" style="height:80px;">
+      <img id="img" src="Certicol2.png" style="margin-left:250px; height:80px">
+    </div>
+    <div class="datos">
+      <?php
+        $refer = html_entity_decode($datos->detalles);
+        echo $refer;
+      ?>
     </div>
   </body>
 </html>
