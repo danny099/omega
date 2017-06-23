@@ -45,12 +45,56 @@ class CotizacionController extends Controller
          $clientes = Cliente::all();
          $juridicas = Juridica::all();
          $departamentos = Departamento::all();
+         $datos = Cotizacion::count('codigo');
+         $num = Cotizacion::max('codigo');
+        //  dd($datos);
+        //  die();
+        //  $num = "COT-2017-A-999";
+         $numero = explode("-", $num);
+         $flag = true;
+
+         if ($datos == 0) {
+           
+           $codigo = "COT-2017-A-001";
+
+         }elseif ($numero[3] >= 1) {
+
+           $i = $numero[2];
+
+           while ($flag) {
 
 
 
+             if ($numero[3] < 9) {
+               $numero[3] = $numero[3] +1;
+               $codigo = $numero[0]."-".$numero[1]."-".$i."-00".$numero[3];
+               $flag = false;
+
+
+             }elseif ($numero[3] <= 98) {
+               $numero[3] = $numero[3] +1;
+               $codigo = $numero[0]."-".$numero[1]."-".$i."-0".$numero[3];
+
+
+               $flag = false;
+
+             }elseif ($numero[3] < 999) {
+               $numero[3] = $numero[3] +1;
+               $codigo = $numero[0]."-".$numero[1]."-".$i."-".$numero[3];
+
+               $flag = false;
+             }elseif($numero[3]>=999){
+               $numero[3]=0;
+               $i++;
+
+             }
+
+
+           }
+         }
 
 //Salida: viernes 24 de febrero del 2012
-         return view('cotizaciones.create',compact('clientes','juridicas','departamentos'));
+         return view('cotizaciones.create',compact('clientes','juridicas','departamentos','codigo'));
      }
 
      /**
@@ -67,7 +111,7 @@ class CotizacionController extends Controller
 
 
          $cotizacion['dirigido'] = $request->dirigido;
-         $cotizacion['codigo'] = '0001';
+         $cotizacion['codigo'] = $request->codigo;
          $cotizacion['cliente_id'] = $request->cliente_id;
          $cotizacion['juridica_id'] = $request->juridica_id;
          $cotizacion['fecha'] = $fecha;

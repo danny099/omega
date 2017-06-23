@@ -36,6 +36,7 @@
     <div class="">
     <h3>Paso 1</h3>
     <section>
+    <input type="hidden" name="codigo" value="{{ $codigo }}">
     <div class="row">
       <center> <h3>Datos</h3> </center>
 
