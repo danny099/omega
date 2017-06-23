@@ -85,7 +85,9 @@ Route::group(['middleware' => 'auth'],function(){
 	/**************************************************************/
   Route::resource('administrativas','AdministrativaController');
 	Route::get('pdf','AdministrativaController@viewpdf');
-  Route::get('deleteadminstrativa/{id}','AdministrativaController@destroy');
+	Route::get('deleteadminstrativa/{id}','AdministrativaController@destroy');
+  Route::get('created','AdministrativaController@create');
+
 
 	Route::get('selectmuni','AdministrativaController@getMuni');
   /**************************************************************/

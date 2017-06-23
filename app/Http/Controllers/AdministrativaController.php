@@ -15,6 +15,7 @@ use App\Cuenta_cobro;
 use App\Factura;
 use App\Valor_adicional;
 use App\Observacion;
+use App\Cotizacion;
 use Illuminate\Http\Request;
 use Session;
 use Illuminate\Support\Facades\Validator;
@@ -42,7 +43,8 @@ class AdministrativaController extends Controller
       $distribuciones = Distribucion::all();
       $transformaciones = Transformacion::all();
       $pu_finales = Pu_final::all();
-      return view('administrativas.index',compact('administrativas','otrosis'));        //
+      $cotizaciones = Cotizacion::all();
+      return view('administrativas.index',compact('administrativas','otrosis','cotizaciones'));        //
     }
 
 
@@ -54,16 +56,23 @@ class AdministrativaController extends Controller
      */
 
     //  metodo que permite capturar todos los datos de los modelos relacionados para mostrar datos en la vista a manera de "selects"
-     public function create()
+     public function create(Request $request)
      {
+       $input = $request->all();
+       $codigo_cot = $request->codigo_cot;
+
        $clientes=Cliente::all();
        $juridicas = Juridica::all();
        $otrosis=Otrosi::all();
-       $distribuciones=Distribucion::all();
-       $transformaciones=Transformacion::all();
-       $pu_finales=Pu_final::all();
        $departamentos = Departamento::all();
-       return view('administrativas.create',compact('clientes','otrosis','distribuciones','transformaciones','pu_finales','departamentos','juridicas'));
+       $cotizaciones = Cotizacion::findOrFail($codigo_cot);
+       $muni_Id = Municipio::select('id')->where('id',$cotizaciones->municipio)->get();
+       $municipio = Municipio::find($muni_Id);
+       $transformaciones = Transformacion::where('transformacion.cotizacion_id', '=', $codigo_cot)->get();
+       $distribuciones = Distribucion::where('distribucion.cotizacion_id', '=', $codigo_cot)->get();
+       $pu_finales = Pu_final::where('pu_final.cotizacion_id', '=', $codigo_cot)->get();
+
+       return view('administrativas.create',compact('clientes','otrosis','distribuciones','transformaciones','pu_finales','departamentos','juridicas','cotizaciones','municipio'));
      }
 
     //  metodo que permite capturar el Request mediante una ruta ajax para llenar un select dinamico dependiente
@@ -83,7 +92,8 @@ class AdministrativaController extends Controller
     public function store(Request $request)
     {
        $input = $request->all();
-
+      //  dd($input);
+      //  die();
        //  ********************************************************************************
        //  ********************************************************************************
       //  almacenar en un arreglo $administrativa los datos provenientes desde el formulario de datos basicos
@@ -126,6 +136,36 @@ class AdministrativaController extends Controller
 
          $registro = Administrativa::findOrFail($lastId_admin);
         //  $registro->saldo = $registro->valor_contrato_final - $registro->pagado;
+        if ($request->transformacion == "transformacion") {
+
+        }else {
+          for ($i=0; $i < count($input['transformacion']['id']) ; $i++) {
+
+            $transforma = Transformacion::findOrFail($input['transformacion']['id'][$i]);
+            $transforma->administrativa_id = $lastId_admin;
+            $transforma->save();
+          }
+        }
+        if ($request->distribucion == "distribucion") {
+
+        }else {
+          for ($i=0; $i < count($input['distribucion']['id_dis']) ; $i++) {
+
+            $distri = Distribucion::findOrFail($input['distribucion']['id_dis'][$i]);
+            $distri->administrativa_id = $lastId_admin;
+            $distri->save();
+          }
+        }
+        if ($request->pu_final == "pu_final") {
+
+        }else {
+          for ($i=0; $i < count($input['pu_final']['id_pu']) ; $i++) {
+
+            $pu= Pu_final::findOrFail($input['pu_final']['id_pu'][$i]);
+            $pu->administrativa_id = $lastId_admin;
+            $pu->save();
+          }
+        }
 
          //  mensajes de confirmacion enviados a la vista
          Session::flash('message', 'Contrato creado!');

@@ -86,44 +86,74 @@ function addCommas(nStr){
           </div>
           <div class="form-group">
             <label>Nombre del proyecto</label>
-            <input type="text" class="form-control" placeholder="Ingrese nombre" name="nombre" required="Ingrese nombre del proyecto">
+            <input type="text" class="form-control" value="{{$cotizaciones->nombre}} "placeholder="Ingrese nombre" name="nombre" required="Ingrese nombre del proyecto">
           </div>
           <div class="form-group">
             <label>Fecha del contrato:</label>
             <input type="date" class="form-control pull-right" name="fecha" id="datepicker" required="Ingrese una fecha">
           </div>
-          <div class="form-group">
-            <label>Tipo de régimen</label>
-            <select class="form-control" name="tipo_regimen" id="cliente" required="">
-              <option value="">Seleccione...</option>
-              <option value="1">Persona natural</option>
-              <option value="2">Persona jurídica</option>
-            </select>
-          </div>
-          <div class="form-group" style="Display:none" id="natural">
-            <label >Persona natural</label>
-            <select class="form-control select2" name="cliente_id" style="width: 100%" id="select-natural">
-              <option value="">Seleccione...</option>
-              @foreach($clientes as $cliente)
-              <option value="{{ $cliente->id }}">{{$cliente->nombre}}</option>
-              @endforeach
-            </select>
-          </div>
-          <div class="form-group" style="Display:none" style="width: 100%" id="juridica">
-            <label >Persona juridica</label>
-            <select class="form-control" name="juridica_id" style="width: 100%" id="juri">
-              <option value="">Seleccione...</option>
-              @foreach($juridicas as $juridica)
-              <option value="{{ $juridica->id }}">{{$juridica->razon_social}}</option>
-              @endforeach
-            </select>
-          </div>
+          @if(empty($cotizaciones->juridica->id ))
+            <div class="form-group">
+              <label>Tipo de régimen</label>
+              <select class="form-control" name="tipo_regimen" id="cliente" required="">
+                <option value="1">Persona natural</option>
+                <option value="2">Persona jurídica</option>
+              </select>
+            </div>
+            <div class="form-group" style="width: 100%" id="natural">
+              <label >Persona natural</label>
+              <select class="form-control select2" name="cliente_id" style="width: 100%" id="select-natural">
+                <option value="{{ $cotizaciones->cliente->id }}">{{ $cotizaciones->cliente->nombre }}</option>
+                @foreach($clientes as $cliente)
+                <option value="{{ $cliente->id }}">{{$cliente->nombre}}</option>
+                @endforeach
+              </select>
+            </div>
+            <div class="form-group" style="Display:none" style="width: 100%" id="juridica">
+              <label >Persona juridica</label>
+              <select class="form-control" name="juridica_id" style="width: 100%" id="juri">
+                <option value="">Seleccione...</option>
+                @foreach($juridicas as $juridica)
+                <option value="{{ $juridica->id }}">{{$juridica->razon_social}}</option>
+                @endforeach
+              </select>
+            </div>
+          @endif
+          @if(empty($cotizaciones->cliente->id ))
+            <div class="form-group">
+              <label>Tipo de régimen</label>
+              <select class="form-control" name="tipo_regimen" id="cliente" required="">
+                <option value="2">Persona jurídica</option>
+                <option value="1">Persona natural</option>
+              </select>
+            </div>
+            <div class="form-group" style="Display:none" style="width: 100%" id="natural">
+              <label >Persona natural</label>
+              <select class="form-control select2" name="cliente_id" style="width: 100%" id="select-natural">
+                <option value="">Seleccione...</option>
+                @foreach($clientes as $cliente)
+                <option value="{{ $cliente->id }}">{{$cliente->nombre}}</option>
+                @endforeach
+              </select>
+            </div>
+            <div class="form-group"  style="width: 100%" id="juridica">
+              <label >Persona juridica</label>
+              <select class="form-control" name="juridica_id" style="width: 100%" id="juri">
+
+                <option value="{{ $cotizaciones->juridica->id }}">{{ $cotizaciones->juridica->razon_social }}</option>
+                @foreach($juridicas as $juridica)
+                <option value="{{ $juridica->id }}">{{$juridica->razon_social}}</option>
+                @endforeach
+              </select>
+            </div>
+          @endif
         </div>
 
         <div class="col-md-4">
           <div class="form-group">
             <label >Departamento</label>
             <select class="form-control" name="departamento" id="departamento" required="">
+              <option value="{{ $cotizaciones->departamento->id }}">{{ $cotizaciones->departamento->nombre }}</option>
               @foreach($departamentos as $departamento)
               <option value="{{ $departamento->id }}">{{$departamento->nombre}}</option>
               @endforeach
@@ -132,6 +162,7 @@ function addCommas(nStr){
           <div class="form-group">
             <label >Municipios</label>
             <select class="form-control" name="municipio" id="municipio" required="">
+              <option value="{{ $municipio->id }}">{{ $municipio->nombre }}</option>
               <option value=""></option>
             </select>
           </div>
@@ -145,7 +176,7 @@ function addCommas(nStr){
           </div>
           <div class ="form-group">
             <label >Valor contrato final</label>
-            <input type="text" min="0" class="form-control" id="fin" autocomplete="off" placeholder= "Valor final" name="contrato_final"  onkeyup="calcular();"  onkeyup="mascara(this,cpf)"  onpaste="return false" required="ingrese así sea un cero" >
+            <input type="text" min="0" value="{{ number_format($cotizaciones->total,0) }}" class="form-control" id="fin" autocomplete="off" placeholder= "Valor final" name="contrato_final"  onkeyup="calcular();"  onkeyup="mascara(this,cpf)"  onpaste="return false" required="ingrese así sea un cero" >
 
           </div>
         </div>
@@ -153,19 +184,26 @@ function addCommas(nStr){
         <div class="col-md-4">
             <div class="form-group">
               <label >Valor IVA</label>
-              <input type="text" min="0" class="form-control" id="iva" readonly="readonly" placeholder= "valor IVA" name="iva"   >
+              <input type="text" min="0" class="form-control" id="iva" readonly="readonly" placeholder= "valor IVA" name="iva" value="{{ number_format($cotizaciones->iva,0) }}"  >
 
             </div>
             <div class="form-group">
               <label >Valor antes de IVA</label>
 
-              <input type="text" min="0" id="ini" class="form-control"  readonly="readonly" placeholder= "Valor antes IVA" name="contrato_inicial" >
+              <input type="text" min="0" id="ini" value="{{ number_format($cotizaciones->subtotal,0) }}" class="form-control"  readonly="readonly" placeholder= "Valor antes IVA" name="contrato_inicial" >
 
             </div>
 
             <div class="form-group">
               <label >Plan de pago</label>
-              <input type="text" class="form-control" placeholder= "Ingrese valor" name="plan_pago" required="">
+              <select name="formas_pago" style="width:100%" required>
+                <option value="{{ $cotizaciones->formas_pago,0 }}">{{ $cotizaciones->formas_pago,0 }}</option>
+                <option value="Anticipo 100%">Anticipo 100%</option>
+                <option value="Anticipo 50% - 50% a la entrega de dictámenes">Anticipo 50% - 50% a la entrega de dictámenes</option>
+                <option value="Anticipo 50% - 50% en Actas parciales según avance de Obra">Anticipo 50% - 50% en Actas parciales según avance de Obra</option>
+                <option value="Anticipo del 30% - 70% en Actas parciales según avance de Obra">Anticipo del 30% - 70% en Actas parciales según avance de Obra</option>
+                <option value="Anticipo 30% - 70% a la entrega de dictámenes">Anticipo 30% - 70% a la entrega de dictámenes</option>
+              </select>
             </div>
         </div>
         <hr>
@@ -177,9 +215,14 @@ function addCommas(nStr){
       <center> <h3>Alcance: proceso de transformación</h3> </center>
     </div>
     <div class="box-body">
+      @if(count($transformaciones) == 0)
+        <input type="hidden"  name="transformacion" value="transformacion"  >
+      @else
+      @foreach($transformaciones as $transfor)
       <div class="col-md-12">
         <div class="col-md-4">
           <div class="form-group">
+            <input type="hidden" name="transformacion[id][]" value="{{ $transfor->id }}">
             <center><label >Descripción</label></center>
             <input type="text" class="form-control" value="Inspección  RETIE proceso de transformación"  readonly=”readonly” name="transformacion[descripcion][]">
           </div>
@@ -188,7 +231,7 @@ function addCommas(nStr){
           <div class="form-group">
             <center><label >Tipo</label></center>
             <select class="form-control" name="transformacion[tipo][]">
-              <option value="">Seleccione...</option>
+              <option value="{{ $transfor->tipo }}">{{ $transfor->tipo }}</option>
               <option value="Tipo_poste">Tipo poste</option>
               <option value="Tipo_interior">Tipo interior</option>
               <option value="Tipo_exterior">Tipo exterior</option>
@@ -198,39 +241,42 @@ function addCommas(nStr){
         <div class="col-md-2">
           <div class="form-group">
             <center><label >Capacidad</label></center>
-              <input type="text" class="form-control" placeholder="Capacidad"   name="transformacion[capacidad][]">
+            <input type="text" class="form-control capacidad" placeholder="Capacidad"   value="{{$transfor->capacidad}}" name="transformacion[capacidad][]">
           </div>
         </div>
         <div class="col-md-1">
           <div class="form-group">
             <center><label>Unidad</label></center>
             <center>
-              <input style="text-align:center;" type="text" class="form-control" value="Und"  readonly=”readonly” name="transformacion[unidad_transformacion][]">
+              <input style="text-align:center;" type="text" value="{{$transfor->unidad}}" class="form-control" value="Und"  readonly=”readonly” name="transformacion[unidad_transformacion][]">
             </center>
           </div>
         </div>
         <div class="col-md-1">
           <div class="form-group">
             <center><label >Cantidad</label></center>
-            <input type="text" class="form-control" placeholder= "Cantidad" name="transformacion[cantidad][]">
-          </div>
-        </div>
-        <div class="col-md-1 tblprod2" >
-          <div class="form-group">
-            <br>
-            <a class="btn btn-primary" data-toggle="modal" href="#" id="btnadd2" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-plus"></i></a>
+            <input type="text" class="form-control cantidad" id="cantidad" placeholder= "Cantidad" value="{{$transfor->cantidad}}"  name="transformacion[cantidad][]">
+
           </div>
         </div>
       </div>
+      @endforeach
+      @endif
       <div class="col-md-12">
         <center> <h3>Alcance: proceso de distribución</h3> </center>
       </div>
+      @if(count($distribuciones) == 0)
+        <input type="hidden"  name="distribucion" value="distribucion"  >
+      @else
+      @foreach($distribuciones as $distribucion)
       <div class="col-md-12">
         <div class="col-md-4">
           <div class="form-group">
+            <input type="hidden" name="distribucion[id_dis][]" value="{{ $distribucion->id }}">
+
             <center><label >Descripción</label></center>
             <select class="form-control" name="distribucion[descripcion_dis][]">
-              <option value="">Seleccione...</option>
+              <option value="{{ $distribucion->descripcion }}">{{ $distribucion->descripcion }}</option>
               <option value="Inspección RETIE proceso de distribución en MT">Inspección RETIE proceso de distribución en MT</option>
               <option value="Inspección RETIE proceso de distribución en BT">Inspección RETIE proceso de distribución en BT</option>
             </select>
@@ -240,7 +286,7 @@ function addCommas(nStr){
           <div class="form-group">
             <center><label >Tipo</label></center>
             <select class="form-control" name="distribucion[tipo_dis][]" >
-              <option value="">Seleccione...</option>
+              <option value="{{ $distribucion->tipo }}">{{ $distribucion->tipo }}</option>
               <option value="Aérea">Tipo Aérea</option>
               <option value="Subterránea">Tipo subterránea</option>
               <option value="Aérea/subterránea">Aérea/subterránea</option>
@@ -251,32 +297,34 @@ function addCommas(nStr){
           <div class="form-group">
             <center><label >Unidad</label></center>
             <center>
-              <input type="text" class="form-control" value="km"  readonly=”readonly” name="distribucion[unidad_distribucion][]"style="text-align:center">
+              <input type="text" class="form-control" value="{{ $distribucion->unidad}}" value="km"  readonly=”readonly” name="distribucion[unidad_distribucion][]"style="text-align:center">
             </center>
           </div>
         </div>
         <div class="col-md-2">
           <div class="form-group">
             <center><label >Cantidad</label></center>
-            <input type="text" class="form-control" placeholder= "Cantidad" name="distribucion[cantidad_dis][]">
-          </div>
-        </div>
-        <div class="col-md-1 tblprod3" >
-          <div class="form-group">
-            <br>
-            <a class="btn btn-primary" data-toggle="modal" id="btnadd3" href="#" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-plus"></i></a>
+            <input type="text" class="form-control cantidad2" placeholder= "Cantidad" value="{{ $distribucion->cantidad }}" name="distribucion[cantidad_dis][]">
+
           </div>
         </div>
       </div>
+      @endforeach
+      @endif
       <div class="col-md-12">
         <center> <h3>Alcance: proceso de uso final</h3> </center>
       </div>
+      @if(count($pu_finales) == 0)
+        <input type="hidden"  name="pu_final" value="pu_final"  >
+      @else
+      @foreach($pu_finales as $pu)
       <div class="col-md-12">
       <div class="col-md-4">
         <div class="form-group">
+          <input type="hidden" name="pu_final[id_pu][]" value="{{ $pu->id }}">
           <center><label >Descripción</label></center>
           <select class="form-control"name="pu_final[descripcion_pu][]">
-            <option value="">Seleccione...</option>
+            <option value="{{ $pu->descripcion }}">{{ $pu->descripcion }}</option>
             <option value="Inspección RETIE proceso uso final residencial">Inspección RETIE proceso uso final residencial</option>
             <option value="Inspección RETIE proceso uso final comercial">Inspección RETIE proceso uso final comercial</option>
           </select>
@@ -286,7 +334,7 @@ function addCommas(nStr){
         <div class="form-group">
           <center><label >Tipo</label></center>
           <select class="form-control" name="pu_final[tipo_pu][]">
-            <option value="">Seleccione...</option>
+            <option value="{{ $pu->tipo }}">{{ $pu->tipo }}</option>
             <option value="Casa">Casa</option>
             <option value="Apartamentos">Apartamentos</option>
             <option value="Zona común">Zona común</option>
@@ -299,23 +347,20 @@ function addCommas(nStr){
         <div class="form-group">
           <center><label >Unidad</label></center>
           <center>
-            <input style="text-align:center;" type="text" class="form-control" value="Und"  readonly=”readonly” name="pu_final[unidad_pu_final][]">
+            <input style="text-align:center;" type="text" value="{{ $pu->unidad }}" class="form-control" value="Und"  readonly=”readonly” name="pu_final[unidad_pu_final][]">
           </center>
         </div>
       </div>
       <div class="col-md-2">
         <div class="form-group">
           <center><label >Cantidad</label></center>
-          <input type="text" class="form-control" placeholder= "Cantidad" name="pu_final[cantidad_pu][]">
-        </div>
-      </div>
-      <div class="col-md-1 tblprod4" >
-        <div class="form-group">
-          <br>
-          <a class="btn btn-primary" data-toggle="modal" href="#" id="btnadd4" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-plus"></i></a>
+          <input type="text" class="form-control cantidad3" value="{{ $pu->cantidad }}" placeholder= "Cantidad" name="pu_final[cantidad_pu][]">
+
         </div>
       </div>
     </div>
+    @endforeach
+    @endif
       <div class="col-md-12">
         <center> <h3>Observaciones de estado administrativo del proyecto</h3> </center>
       </div>

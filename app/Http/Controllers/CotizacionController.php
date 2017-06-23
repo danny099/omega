@@ -54,7 +54,7 @@ class CotizacionController extends Controller
          $flag = true;
 
          if ($datos == 0) {
-           
+
            $codigo = "COT-2017-A-001";
 
          }elseif ($numero[3] >= 1) {
@@ -106,6 +106,8 @@ class CotizacionController extends Controller
      public function store(Request $request)
      {
          $input = $request->all();
+        //  dd($input);
+        //  die();
          $now = new \DateTime();
          $fecha = $now->format('Y-m-d');
 

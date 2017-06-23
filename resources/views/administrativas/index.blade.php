@@ -223,7 +223,45 @@
     @endif
 
     <div class="col-md-12 well">
-      <a class="btn btn-primary" data-toggle="modal" href="{{ url('administrativas/create') }}" style="background-color: #33579A; border-color:#33579A;"><i class="fa fa-user-plus"></i> Crear Contrato</a>
+      <a class="btn btn-primary" data-toggle="modal" href="#myModal5" style="background-color: #33579A; border-color:#33579A;"><i class="fa fa-user-plus"></i> Crear Contrato</a>
+      <!-- inicio modal 5 -->
+      <div class="modal fade" id="myModal5" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Crear contratos</h4>
+            </div>
+            <div class="modal-body">
+              <form action="{{ url('created') }}">
+                <div class="row">
+                  <div class="col-md-12">
+
+                        <center><label >Código de la cotización</label></center>
+                        <select class="form-control" name="codigo_cot" style="width: 100%;" id="select" required="">
+                          <option value="">Seleccione...</option>
+                          @foreach($cotizaciones as $cotizacion)
+                          <option value="{{ $cotizacion->id }}">{{$cotizacion->codigo}}</option>
+                          @endforeach
+                        </select>
+                        <br>
+                        <br>
+                        <button type="submit" id="submit" class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;">
+                          Enviar
+                        </button>
+
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- fin modal -->
+
       <div class="box-body">
         <table id="example1" class="table table-bordered table-striped">
           <thead>

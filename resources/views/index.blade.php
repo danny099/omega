@@ -218,7 +218,7 @@
       <ul class="sidebar-menu">
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-dollar"></i> <span>Documentos</span>
+            <i class="fa fa-newspaper-o"></i> <span>Documentos</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
             </span>

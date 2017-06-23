@@ -512,7 +512,7 @@ $(function() {
                 var valor_uni = $(this).val().replace(/,/g,"");
                 var cantidad = $(this).parent().parent().find(".cant").text();
                 var resultado= valor_uni * cantidad;
-                
+
 
 
                 $(this).parent().parent().find('.valor_multi').val(addCommas(Math.round(resultado)));

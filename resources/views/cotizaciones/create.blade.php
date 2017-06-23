@@ -18,7 +18,7 @@
 
   <div class="box box-primary" >
     <div class="box-header with-border">
-      <center> <h3>Cotización</h3> </center>
+      <center> <h3>Cotización</h3> <h3>{{ $codigo }}</h3></center>
     </div>
     @if(Session::has('message'))
       <div id="alert">

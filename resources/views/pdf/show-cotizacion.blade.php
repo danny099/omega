@@ -32,9 +32,7 @@
         margin-left: 150px;
         margin-right: 80px;
       }
-      .cordial{
-        border: black 1px solid;
-      }
+
       .inspeccionDoc{
         border: black 1px solid;
 
