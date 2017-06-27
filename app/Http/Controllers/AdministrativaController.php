@@ -486,12 +486,19 @@ class AdministrativaController extends Controller
 
      $administrativa = Administrativa::findOrFail($id);
 
+
      $transfor = Transformacion::where('transformacion.administrativa_id', '=', $id)->get();
+
      foreach ($transfor as $key => $trans) {
 
        $registro = Transformacion::findOrFail($trans->id);
-       $registro->administrativa_id = null;
-       $registro->save();
+
+       if ($registro->cotizacion_id == null) {
+         $registro->delete();
+       }else {
+         $registro->administrativa_id = null;
+         $registro->save();
+       }
 
      }
 
@@ -499,8 +506,13 @@ class AdministrativaController extends Controller
      foreach ($distribucion as $key => $distri) {
 
        $registro = Distribucion::findOrFail($distri->id);
-       $registro->administrativa_id = null;
-       $registro->save();
+
+       if ($registro->cotizacion_id == null) {
+         $registro->delete();
+       }else {
+         $registro->administrativa_id = null;
+         $registro->save();
+       };
 
      }
 
@@ -508,8 +520,13 @@ class AdministrativaController extends Controller
      foreach ($pu_final as $key => $pu) {
 
        $registro = Pu_final::findOrFail($pu->id);
-       $registro->administrativa_id = null;
-       $registro->save();
+       
+       if ($registro->cotizacion_id == null) {
+         $registro->delete();
+       }else {
+         $registro->administrativa_id = null;
+         $registro->save();
+       };
 
      }
 

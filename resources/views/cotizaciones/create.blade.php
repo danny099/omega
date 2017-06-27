@@ -650,6 +650,7 @@ $(document).on('change','#desc',function(){
   var  desc = $(this).val();
 
   if (desc == 'Inspección RETIE proceso de distribución en MT') {
+    $(this).parent().parent().parent().find("#tension").html('');
     $(this).parent().parent().parent().find("#tension").append('<option value="13,2">13,2</option>');
     $(this).parent().parent().parent().find("#tension").append('<option value="13,4">13,4</option>');
     $(this).parent().parent().parent().find("#tension").append('<option value="13,8">13,8</option>');
@@ -657,6 +658,7 @@ $(document).on('change','#desc',function(){
 
   }
     else {
+      $(this).parent().parent().parent().find("#tension").html('');
       $(this).parent().parent().parent().find("#tension").append('<option value="110-220">110-220</option>');
       $(this).parent().parent().parent().find("#tension").append('<option value="220-240">220-240</option>');
       $(this).parent().parent().parent().find("#tension").append('<option value="No aplica">No aplica</option>');

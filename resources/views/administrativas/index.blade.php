@@ -246,17 +246,16 @@
                         </select>
                         <br>
                         <br>
-                        <button type="submit" id="submit" class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;">
-                          Enviar
-                        </button>
+                        <div class="box-footer">
+                          <button type="submit" class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;">Enviar</button>
+                          <button type="submit" data-dismiss="modal" class="btn btn-primary pull-left" style="background-color: #33579A; border-color:#33579A;">Cancelar</button>
+                        </div>
 
                   </div>
                 </div>
               </form>
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-            </div>
+
           </div>
         </div>
       </div>

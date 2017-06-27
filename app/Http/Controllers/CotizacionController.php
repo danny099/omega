@@ -446,8 +446,13 @@ class CotizacionController extends Controller
       foreach ($transfor as $key => $trans) {
 
         $registro = Transformacion::findOrFail($trans->id);
-        $registro->cotizacion_id = null;
-        $registro->save();
+
+        if ($registro->administrativa_id == null) {
+          $registro->delete();
+        }else {
+          $registro->cotizacion_id = null;
+          $registro->save();
+        }
 
       }
 
@@ -455,8 +460,15 @@ class CotizacionController extends Controller
       foreach ($distribucion as $key => $distri) {
 
         $registro = Distribucion::findOrFail($distri->id);
-        $registro->cotizacion_id = null;
-        $registro->save();
+
+        if ($registro->administrativa_id == null) {
+          $registro->delete();
+        }else {
+          $registro->cotizacion_id = null;
+          $registro->save();
+        }
+
+
 
       }
 
@@ -464,8 +476,15 @@ class CotizacionController extends Controller
       foreach ($pu_final as $key => $pu) {
 
         $registro = Pu_final::findOrFail($pu->id);
-        $registro->cotizacion_id = null;
-        $registro->save();
+
+        if ($registro->administrativa_id == null) {
+          $registro->delete();
+        }else {
+          $registro->cotizacion_id = null;
+          $registro->save();
+        }
+
+
 
       }
 

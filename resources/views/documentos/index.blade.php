@@ -27,6 +27,7 @@
                     <th>Nombre</th>
                     <th>Creado</th>
                     <th>Modificado</th>
+                    <th>Acciones</th>
 
                   </tr>
                 </thead>

@@ -29,6 +29,10 @@
                       <input type="text" name="nombre" class="form-control" value="{{ $documento->nombre }}">
                       <br>
                     </div>
+                    <div class="col-md-3">
+                      <p for="">Importante: se debe organizar el contenido tal cual como quiere que se vea en la página  web</p>
+                      <br>
+                    </div>
                     <div class="col-md-12">
                       <textarea id="editor1" name="editor1" rows="10" cols="80">
                         {{ $documento->detalles }}
