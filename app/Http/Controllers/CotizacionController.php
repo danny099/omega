@@ -442,6 +442,33 @@ class CotizacionController extends Controller
 
       $cotizacion =Cotizacion::findOrFail($id);
 
+      $transfor = Transformacion::where('transformacion.cotizacion_id', '=', $id)->get();
+      foreach ($transfor as $key => $trans) {
+
+        $registro = Transformacion::findOrFail($trans->id);
+        $registro->cotizacion_id = null;
+        $registro->save();
+
+      }
+
+      $distribucion = Distribucion::where('distribucion.cotizacion_id', '=', $id)->get();
+      foreach ($distribucion as $key => $distri) {
+
+        $registro = Distribucion::findOrFail($distri->id);
+        $registro->cotizacion_id = null;
+        $registro->save();
+
+      }
+
+      $pu_final = Pu_final::where('pu_final.cotizacion_id', '=', $id)->get();
+      foreach ($pu_final as $key => $pu) {
+
+        $registro = Pu_final::findOrFail($pu->id);
+        $registro->cotizacion_id = null;
+        $registro->save();
+
+      }
+
       $cotizacion->delete();
 
       Session::flash('message', 'Cotización eliminado');

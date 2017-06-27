@@ -486,16 +486,44 @@ class AdministrativaController extends Controller
 
      $administrativa = Administrativa::findOrFail($id);
 
+     $transfor = Transformacion::where('transformacion.administrativa_id', '=', $id)->get();
+     foreach ($transfor as $key => $trans) {
+
+       $registro = Transformacion::findOrFail($trans->id);
+       $registro->administrativa_id = null;
+       $registro->save();
+
+     }
+
+     $distribucion = Distribucion::where('distribucion.administrativa_id', '=', $id)->get();
+     foreach ($distribucion as $key => $distri) {
+
+       $registro = Distribucion::findOrFail($distri->id);
+       $registro->administrativa_id = null;
+       $registro->save();
+
+     }
+
+     $pu_final = Pu_final::where('pu_final.administrativa_id', '=', $id)->get();
+     foreach ($pu_final as $key => $pu) {
+
+       $registro = Pu_final::findOrFail($pu->id);
+       $registro->administrativa_id = null;
+       $registro->save();
+
+     }
+
      // $administrativas = Administrativa::select('id')->where('administrativa.id',$id)->get();
      $administrativa->delete();
       //  //  funcion que permite encontrar o identificar un registro y almacenarlas en una variable
 
+
       // dd($id);
       // die();
        //  redireccionamiento a una vista
-       Session::flash('message', 'Proyecto eliminado');
-       Session::flash('class', 'danger');
-       return redirect('administrativas');
+     Session::flash('message', 'Proyecto eliminado');
+     Session::flash('class', 'danger');
+     return redirect('administrativas');
 
 
    }
