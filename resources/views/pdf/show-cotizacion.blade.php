@@ -33,10 +33,7 @@
         margin-right: 80px;
       }
 
-      .inspeccionDoc{
-        border: black 1px solid;
 
-      }
       .tx1{
         margin: 5px;
       }
@@ -105,8 +102,8 @@
         Objeto:
       </p>
       <p class="obj2" align="justify">
-        Este Documento Constitye la Oferta Tecnica y Economica para la prestación de servicios
-        de inspectoria RETIE a las instalaciones electricas del proyecto {{ $cotizaciones->nombre }} Ubicado
+        Este Documento Constituye  la Oferta Técnica  y Económica  para la prestación de servicios
+        de inspectoría  RETIE a las instalaciones eléctricas del proyecto {{ $cotizaciones->nombre }} Ubicado
         en el Municipio de {{ $municipios->nombre }} departamento del {{ $departamentos->nombre }}.
       </p>
     </div>
@@ -282,7 +279,7 @@
           @foreach($distribuciones as $distris)
           <tr>
             <td id="td3"></td>
-            <td><p>Descripcion</p></td>
+            <td><p>Descripción</p></td>
             <td><p>{{  $distris->descripcion }}</p></td>
           </tr>
           <tr>
@@ -297,17 +294,17 @@
           </tr>
           <tr>
             <td id="td3"></td>
-            <td><p>Longitu de Red</p></td>
+            <td><p>Longitud de Red</p></td>
             <td><p>{{ $distris->cantidad }}</p></td>
           </tr>
           <tr>
             <td id="td3"></td>
-            <td><p>Numero de Apoyos o Estructuras</p></td>
+            <td><p>Número de Apoyos o Estructuras</p></td>
             <td><p>{{ $distris->apoyos }}</p></td>
           </tr>
           <tr>
             <td id="td3"></td>
-            <td><p>Numero de Cajas de Inspección</p></td>
+            <td><p>Número de Cajas de Inspección</p></td>
             <td><p>{{ $distris->cajas }}</p></td>
           </tr>
           @endforeach
@@ -347,15 +344,15 @@
     <br>
     <div class="referencia">
       <p><b>5. PROPUESTA ECONOMICA</b></p>
-
+      <br>
 
       <table class="table table-bordered tabla">
         <tr>
           <th Colspan="4"><center><label> Cotización</label></center></th>
         </tr>
         <tr>
-          <th><center><label> Item </label></center></th>
-          <th><center><label> Descripcion del alcance </label></center></th>
+          <th><center><label> Ítem </label></center></th>
+          <th><center><label> Descripción del alcance </label></center></th>
           <th><center><label> Cantidad </label></center></th>
           <th><center><label> Valor </label></center></th>
         </tr>
@@ -408,7 +405,7 @@
     </div>
     <div class="comerciales">
       <p><b>6. CONDICIONES COMERCIALES</b></p>
-
+      <br>
       <table class="table table-bordered tabla">
         <tr>
           <td>Forma de pago</td>
@@ -420,10 +417,10 @@
         </tr>
         <tr>
           <td>Tiempo de entrega del dictamen</td>
-          <td>{{$cotizaciones->entrega}} una vez se encuentre la documentacion completa y no se tenga NC abiertas</td>
+          <td>{{$cotizaciones->entrega}} una vez se encuentre la documentación  completa y no se tenga NC abiertas</td>
         </tr>
         <tr>
-          <td>Número de visitas de inspeccion contratadas</td>
+          <td>Número de visitas de inspección  contratadas</td>
           <td>{{$cotizaciones->visitas}} </td>
         </tr>
         <tr>
@@ -434,6 +431,7 @@
     </div>
     <div class="pago">
       <p><b>{{$pago->nombre}}</b></p>
+      <br>
       <?php
         $refer = html_entity_decode($pago->detalles);
         echo $refer;

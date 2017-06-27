@@ -1,4 +1,4 @@
-is_null<?php
+<?php
 
 namespace App\Http\Controllers;
 use App\Pu_final;
@@ -40,23 +40,36 @@ class Pu_finalController extends Controller
     public function store(Request $request)
     {
        $input = $request->all();
+
        for ($i=0; $i<count($input['pu_final']['descripcion_pu']); $i++) {
            if (!is_null($input['pu_final']['descripcion_pu'][$i]) &&
                !is_null($input['pu_final']['tipo_pu'][$i]) &&
-               !is_null($input['pu_final']['unidad_pu_final'][$i]) &&
-               !is_null($input['pu_final']['cantidad_pu'][$i]) &&
                !is_null($input['pu_final']['estrato_pu'][$i]) &&
+               !is_null($input['pu_final']['cantidad_pu'][$i]) &&
+               !is_null($input['pu_final']['metros_pu'][$i]) &&
+               !is_null($input['pu_final']['kva_pu'][$i])  &&
                !is_null($input['pu_final']['acometidas_pu'][$i])) {
 
                  $datos3['descripcion'] = $input['pu_final']['descripcion_pu'][$i];
                  $datos3['tipo'] = $input['pu_final']['tipo_pu'][$i];
-                 $datos3['unidad'] = $input['pu_final']['unidad_pu_final'][$i];
-                 $datos3['cantidad'] = $input['pu_final']['cantidad_pu'][$i];
-                 $datos3['administrativa_id'] = $input['codigo_proyecto'];
                  $datos3['estrato'] = $input['pu_final']['estrato_pu'][$i];
+                 $datos3['unidad'] = 'Und';
+                 $datos3['cantidad'] = $input['pu_final']['cantidad_pu'][$i];
+                 $datos3['metros'] = $input['pu_final']['metros_pu'][$i];
+
+                 if ($input['pu_final']['kva_pu'][$i] == 0) {
+
+                   $datos3['kva'] = 'Según Plano';
+
+                 }else {
+                   $datos3['kva'] = $input['pu_final']['kva_pu'][$i];
+                 }
+
                  $datos3['acometidas'] = $input['pu_final']['acometidas_pu'][$i];
+                 $datos3['administrativa_id'] = $request->codigo_proyecto;
 
                  Pu_final::create($datos3);
+
            }
        }
        Session::flash('message', 'Alcance proceso de uso final creado!');
@@ -102,16 +115,25 @@ class Pu_finalController extends Controller
 
        for ($i=0; $i<count($input['pu_final']['descripcion_pu']); $i++) {
 
-          $pu = Pu_final::findOrFail($request->pu_final['id'][$i]);
+         $pu = Pu_final::findOrFail($request->pu_final['id'][$i]);
+         $datos3['descripcion'] = $input['pu_final']['descripcion_pu'][$i];
+         $datos3['tipo'] = $input['pu_final']['tipo_pu'][$i];
+         $datos3['estrato'] = $input['pu_final']['estrato_pu'][$i];
+         $datos3['unidad'] = 'Und';
+         $datos3['cantidad'] = $input['pu_final']['cantidad_pu'][$i];
+         $datos3['metros'] = $input['pu_final']['metros_pu'][$i];
 
-          $datos['descripcion'] = $input['pu_final']['descripcion_pu'][$i];
-          $datos['tipo'] = $input['pu_final']['tipo_pu'][$i];
-          $datos['unidad'] = $input['pu_final']['unidad_pu_final'][$i];
-          $datos['cantidad'] = $input['pu_final']['cantidad_pu'][$i];
-          $datos['estrato'] = $input['pu_final']['estrato_pu'][$i];
-          $datos['acometidas'] = $input['pu_final']['acometidas_pu'][$i];
+         if ($input['pu_final']['kva_pu'][$i] == 0) {
 
-          $pu->update($datos);
+           $datos3['kva'] = 'Según Plano';
+
+         }else {
+           $datos3['kva'] = $input['pu_final']['kva_pu'][$i];
+         }
+
+         $datos3['acometidas'] = $input['pu_final']['acometidas_pu'][$i];
+
+         $pu->update($datos3);
 
        }
        Session::flash('message', 'Alcance de proceso de uso final editado!');

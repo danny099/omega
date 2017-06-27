@@ -297,7 +297,7 @@
         var count = 1;
        $(document).on("click","#btnadd5",function( event ) {
         count++;
-        $('#tblprod5').after('<div class="row" id="quitar15"><div class="col-md-12"><div class="col-md-3"><div class="form-group"><center><label >Valor adicional</label></center><input type="text" class="form-control" placeholder= "Valor" onkeypress="mascara(this,cpf)" name="adicional[valor][]" required=""></div></div><div class="col-md-5"><div class="form-group"><center><label >Detalle</label></center><input type="text" class="form-control" placeholder= "Detalle" name="adicional[detalle][]"required=""></div></div><div class="col-md-1" id="tblprod5" ><div class="form-group"><br><a class="btn btn-warning delete5" id="btnadd[]" data-toggle="modal" href="#" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-minus"></i></a></div></div></div>'
+        $('#tblprod5').after('<div class="row" id="quitar15"><div class="col-md-12"><div class="col-md-3"><div class="form-group"><center><label >Valor adicional</label></center><input type="text" class="form-control" placeholder= "Valor" onkeyup="mascara(this,cpf)" name="adicional[valor][]" required=""></div></div><div class="col-md-5"><div class="form-group"><center><label >Detalle</label></center><input type="text" class="form-control" placeholder= "Detalle" name="adicional[detalle][]"required=""></div></div><div class="col-md-1" id="tblprod5" ><div class="form-group"><br><a class="btn btn-warning delete5" id="btnadd[]" data-toggle="modal" href="#" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-minus"></i></a></div></div></div>'
 
 
       );

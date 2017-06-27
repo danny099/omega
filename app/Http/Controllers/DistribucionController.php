@@ -1,4 +1,4 @@
-is_null<?php
+<?php
 
 namespace App\Http\Controllers;
 use Session;
@@ -43,20 +43,37 @@ class DistribucionController extends Controller
 
           if (!is_null($input['distribucion']['descripcion_dis'][$x]) &&
               !is_null($input['distribucion']['tipo_dis'][$x]) &&
-              !is_null($input['distribucion']['unidad_distribucion'][$x]) &&
+              !is_null($input['distribucion']['nivel_tension_dis'][$x]) &&
               !is_null($input['distribucion']['cantidad_dis'][$x]) &&
-              !is_null($input['distribucion']['apoyos_dis'][$x]) &&
-              !is_null($input['distribucion']['cajas_dis'][$x]) &&
+              !is_null($input['distribucion']['apoyos_dis'][$x])  &&
+              !is_null($input['distribucion']['cajas_dis'][$x])  &&
               !is_null($input['distribucion']['notas_dis'][$x])){
 
                 $datos2['descripcion'] = $input['distribucion']['descripcion_dis'][$x];
                 $datos2['tipo'] = $input['distribucion']['tipo_dis'][$x];
-                $datos2['unidad'] = $input['distribucion']['unidad_distribucion'][$x];
+                $datos2['nivel_tension'] = $input['distribucion']['nivel_tension_dis'][$x];
+                $datos2['unidad'] = 'km';
                 $datos2['cantidad'] = str_replace('.',',',$input['distribucion']['cantidad_dis'][$x]);
-                $datos2['apoyos'] = $input['distribucion']['apoyos_dis'][$x];
-                $datos2['cajas'] = $input['distribucion']['cajas_dis'][$x];
+
+                if ($datos2['tipo'] == 'Aérea' && $input['distribucion']['apoyos_dis'][$x] == 0) {
+
+                  $datos2['apoyos'] = 'Según Plano';
+
+                }else {
+                  $datos2['apoyos'] = $input['distribucion']['apoyos_dis'][$x];
+                }
+
+
+                if ($datos2['tipo'] == 'Subterránea' && $input['distribucion']['cajas_dis'][$x] == 0) {
+
+                  $datos2['cajas'] = 'Según Plano';
+
+                }else {
+                  $datos2['cajas'] = $input['distribucion']['cajas_dis'][$x];
+                }
+
                 $datos2['notas'] = $input['distribucion']['notas_dis'][$x];
-                $datos2['administrativa_id'] =$input['codigo_proyecto'];
+                $datos2['administrativa_id'] = $request->codigo_proyecto;
 
                 Distribucion::create($datos2);
           }
@@ -103,18 +120,36 @@ class DistribucionController extends Controller
      {
 
        $input = $request->all();
-
+       
        for ($x=0; $x<count($input['distribucion']['descripcion_dis']); $x++) {
 
          $distri = Distribucion::findOrFail($request->distribucion['id'][$x]);
 
          $datos['descripcion'] = $input['distribucion']['descripcion_dis'][$x];
          $datos['tipo'] = $input['distribucion']['tipo_dis'][$x];
-         $datos['unidad'] = $input['distribucion']['unidad_distribucion'][$x];
+         $datos['tipo'] = $input['distribucion']['tipo_dis'][$x];
+         $datos['nivel_tension'] = $input['distribucion']['nivel_tension_dis'][$x];
+         $datos['unidad'] = 'km';
          $datos['cantidad'] = str_replace('.',',',$input['distribucion']['cantidad_dis'][$x]);
-         $datos['apoyos'] = $input['distribucion']['apoyos_dis'][$x];
-         $datos['cajas'] = $input['distribucion']['cajas_dis'][$x];
-         $datos['notas'] = $input['distribucion']['notas_dis'][$x];
+
+         if ($datos2['tipo'] == 'Aérea' && $input['distribucion']['apoyos_dis'][$x] == 0) {
+
+           $datos2['apoyos'] = 'Según Plano';
+
+         }else {
+           $datos2['apoyos'] = $input['distribucion']['apoyos_dis'][$x];
+         }
+
+
+         if ($datos2['tipo'] == 'Subterránea' && $input['distribucion']['cajas_dis'][$x] == 0) {
+
+           $datos2['cajas'] = 'Según Plano';
+
+         }else {
+           $datos2['cajas'] = $input['distribucion']['cajas_dis'][$x];
+         }
+
+         $datos2['notas'] = $input['distribucion']['notas_dis'][$x];
 
          $distri->update($datos);
 

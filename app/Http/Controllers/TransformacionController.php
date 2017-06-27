@@ -50,25 +50,24 @@ class TransformacionController extends Controller
 
             if (!is_null($input['transformacion']['descripcion'][$a]) &&
                 !is_null($input['transformacion']['tipo'][$a]) &&
+                !is_null($input['transformacion']['nivel_tension'][$a]) &&
                 !is_null($input['transformacion']['capacidad'][$a]) &&
-                !is_null($input['transformacion']['unidad_transformacion'][$a]) &&
                 !is_null($input['transformacion']['cantidad'][$a]) &&
-                !is_null($input['transformacion']['potencia'][$a]) &&
                 !is_null($input['transformacion']['tipo_refrigeracion'][$a])) {
 
                   $datos1['descripcion'] = $input['transformacion']['descripcion'][$a];
                   $datos1['tipo'] = $input['transformacion']['tipo'][$a];
-                  $datos1['capacidad'] = strtoupper($input['transformacion']['capacidad'][$a]);
-                  $datos1['unidad'] = $input['transformacion']['unidad_transformacion'][$a];
+                  $datos1['nivel_tension'] = $input['transformacion']['nivel_tension'][$a];
+                  $datos1['unidad'] = 'Und';
+                  $datos1['capacidad'] = $input['transformacion']['capacidad'][$a];
                   $datos1['cantidad'] = $input['transformacion']['cantidad'][$a];
-                  $datos1['administrativa_id'] = $input['codigo_proyecto'];
-                  $datos1['potencia'] = $input['transformacion']['potencia'][$a];
                   $datos1['tipo_refrigeracion'] = $input['transformacion']['tipo_refrigeracion'][$a];
-
+                  $datos1['administrativa_id'] = $request->codigo_proyecto;
 
                   Transformacion::create($datos1);
+
             }
-      }
+          }
       Session::flash('message', 'Alcance de transformación creado!');
       Session::flash('class', 'success');
       return redirect()->route('administrativas.index');
@@ -120,11 +119,12 @@ class TransformacionController extends Controller
 
         $datos1['descripcion'] = $input['transformacion']['descripcion'][$a];
         $datos1['tipo'] = $input['transformacion']['tipo'][$a];
-        $datos1['capacidad'] = strtoupper($input['transformacion']['capacidad'][$a]);
-        $datos1['unidad'] = $input['transformacion']['unidad_transformacion'][$a];
+        $datos1['nivel_tension'] = $input['transformacion']['nivel_tension'][$a];
+        $datos1['unidad'] = 'Und';
+        $datos1['capacidad'] = $input['transformacion']['capacidad'][$a];
         $datos1['cantidad'] = $input['transformacion']['cantidad'][$a];
-        $datos1['potencia'] = $input['transformacion']['potencia'][$a];
         $datos1['tipo_refrigeracion'] = $input['transformacion']['tipo_refrigeracion'][$a];
+
 
         $transfor->update($datos1);
 

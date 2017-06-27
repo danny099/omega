@@ -184,8 +184,24 @@ class CotizacionController extends Controller
                    $datos2['nivel_tension'] = $input['distribucion']['nivel_tension_dis'][$x];
                    $datos2['unidad'] = 'km';
                    $datos2['cantidad'] = str_replace('.',',',$input['distribucion']['cantidad_dis'][$x]);
-                   $datos2['apoyos'] = $input['distribucion']['apoyos_dis'][$x];
-                   $datos2['cajas'] = $input['distribucion']['cajas_dis'][$x];
+
+                   if ($datos2['tipo'] == 'Aérea' && $input['distribucion']['apoyos_dis'][$x] == 0) {
+
+                     $datos2['apoyos'] = 'Según Plano';
+
+                   }else {
+                     $datos2['apoyos'] = $input['distribucion']['apoyos_dis'][$x];
+                   }
+
+
+                   if ($datos2['tipo'] == 'Subterránea' && $input['distribucion']['cajas_dis'][$x] == 0) {
+
+                     $datos2['cajas'] = 'Según Plano';
+
+                   }else {
+                     $datos2['cajas'] = $input['distribucion']['cajas_dis'][$x];
+                   }
+
                    $datos2['notas'] = $input['distribucion']['notas_dis'][$x];
                    $datos2['cotizacion_id'] = $lastId_cotiza;
 
@@ -215,7 +231,15 @@ class CotizacionController extends Controller
                    $datos3['unidad'] = 'Und';
                    $datos3['cantidad'] = $input['pu_final']['cantidad_pu'][$i];
                    $datos3['metros'] = $input['pu_final']['metros_pu'][$i];
-                   $datos3['kva'] = $input['pu_final']['kva_pu'][$i];
+
+                   if ($input['pu_final']['kva_pu'][$i] == 0) {
+
+                     $datos3['kva'] = 'Según Plano';
+
+                   }else {
+                     $datos3['kva'] = $input['pu_final']['kva_pu'][$i];
+                   }
+
                    $datos3['acometidas'] = $input['pu_final']['acometidas_pu'][$i];
                    $datos3['cotizacion_id'] = $lastId_cotiza;
 
@@ -373,8 +397,24 @@ class CotizacionController extends Controller
             $datos2['nivel_tension'] = $input['distribucion']['nivel_tension_dis'][$x];
             $datos2['unidad'] = 'km';
             $datos2['cantidad'] = str_replace('.',',',$input['distribucion']['cantidad_dis'][$x]);
-            $datos2['apoyos'] = $input['distribucion']['apoyos_dis'][$x];
-            $datos2['cajas'] = $input['distribucion']['cajas_dis'][$x];
+
+            if ($datos2['tipo'] == 'Aérea' && $input['distribucion']['apoyos_dis'][$x] == 0) {
+
+              $datos2['apoyos'] = 'Según Plano';
+
+            }else {
+              $datos2['apoyos'] = $input['distribucion']['apoyos_dis'][$x];
+            }
+
+
+            if ($datos2['tipo'] == 'Subterránea' && $input['distribucion']['cajas_dis'][$x] == 0) {
+
+              $datos2['cajas'] = 'Según Plano';
+
+            }else {
+              $datos2['cajas'] = $input['distribucion']['cajas_dis'][$x];
+            }
+
             $datos2['notas'] = $input['distribucion']['notas_dis'][$x];
 
             $id2 = $input['valores']['id_dis'][$x];
@@ -406,7 +446,15 @@ class CotizacionController extends Controller
             $datos3['unidad'] = 'Und';
             $datos3['cantidad'] = $input['pu_final']['cantidad_pu'][$i];
             $datos3['metros'] = $input['pu_final']['metros_pu'][$i];
-            $datos3['kva'] = $input['pu_final']['kva_pu'][$i];
+            
+            if ($input['pu_final']['kva_pu'][$i] == 0) {
+
+              $datos3['kva'] = 'Según Plano';
+
+            }else {
+              $datos3['kva'] = $input['pu_final']['kva_pu'][$i];
+            }
+
             $datos3['acometidas'] = $input['pu_final']['acometidas_pu'][$i];
 
             $id2 = $input['valores']['id_pu'][$i];

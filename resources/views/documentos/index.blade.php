@@ -40,9 +40,7 @@
 
                     <td>
                       <a href="{{ route('documentos.edit', $documento->id) }}"><i class="glyphicon glyphicon-pencil"></i></a>
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      <a href="{{ url('deletedocumentos') }}/{{ $documento->id }}" onClick="javascript: return confirm('Esta seguro de eliminar registro?');"><i class="glyphicon glyphicon-minus-sign"></i></a>
-                    </td>
+                    
 
                     </tr>
                     @endforeach

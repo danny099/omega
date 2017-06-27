@@ -25,59 +25,69 @@
               </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-12">
-            <div class="col-md-3">
-              <div class="form-group">
-                <center><label >Descripción</label></center>
-                <input type="text" class="form-control" value="Inspección RETIE proceso de transformación"  readonly=”readonly” name="transformacion[descripcion][]">
-              </div>
+        <div class="row quitar50" id="quitar50">
+          <center> <h3>Alcance: proceso de transformación</h3> </center>
+
+        <div class="col-md-12">
+          <div class="col-md-3">
+            <div class="form-group">
+              <center><label >Descripción</label></center>
+              <input type="text" class="form-control desc" value="Inspección  RETIE proceso de transformación"  readonly=”readonly” name="transformacion[descripcion][]">
             </div>
-
-            <div class="col-md-3">
-              <div class="form-group">
-                <center><label >Tipo</label></center>
-                <select class="form-control" name="transformacion[tipo][]">
-                  <option value="">Seleccione...</option>
-                  <option value="Tipo_poste">Tipo poste</option>
-                  <option value="Tipo_interior">Tipo interior</option>
-                  <option value="Tipo_exterior">Tipo exterior</option>
-                </select>
-              </div>
+          </div>
+          <div class="col-md-2">
+            <div class="form-group">
+              <center><label >Tipo</label></center>
+              <select class="form-control tipo" name="transformacion[tipo][]" style="width:100%">
+                <option value="">Seleccione...</option>
+                <option value="Tipo_poste">Tipo poste</option>
+                <option value="Tipo_interior">Tipo interior</option>
+                <option value="Tipo_pedestal/jardin">Tipo pedestal/jardin</option>
+                <option value="Tipo_patio">Tipo Patio</option>
+              </select>
             </div>
-
-            <div class="col-md-3">
-              <div class="form-group">
-                <center><label >Capacidad</label></center>
-                <input type="text" class="form-control" placeholder="Capacidad"   name="transformacion[capacidad][]">
-
-              </div>
+          </div>
+          <div class="col-md-2">
+            <div class="form-group">
+              <center><label >Nivel de tensión </label></center>
+              <select class="form-control" name="transformacion[nivel_tension][]" style="width:100%">
+                <option value="">Seleccione...</option>
+                <option value="13,2">13,2</option>
+                <option value="13,4">13,4</option>
+                <option value="13,8">13,8</option>
+              </select>
             </div>
-
-            <div class="col-md-1">
-              <div class="form-group">
-                <center><label>Unidad</label></center>
-                <center>
-                  <input style="text-align:center;" type="text" class="form-control" value="Und"  readonly=”readonly” name="transformacion[unidad_transformacion][]">
-                </center>
-              </div>
+          </div>
+          <div class="col-md-1">
+            <div class="form-group">
+              <center><label >Capacidad</label></center>
+                <input type="text" class="form-control capacidad" placeholder="Capacidad"   name="transformacion[capacidad][]">
             </div>
-
-            <div class="col-md-1">
-              <div class="form-group">
-                <center><label >Cantidad</label></center>
-                <input type="text" class="form-control" placeholder= "Cantidad" name="transformacion[cantidad][]">
-              </div>
+          </div>
+          <div class="col-md-1">
+            <div class="form-group">
+              <center><label >Cantidad</label></center>
+              <input type="text" class="form-control cantidad" id="cantidad" placeholder= "Cantidad" name="transformacion[cantidad][]">
             </div>
-
-            <div class="col-md-1 tblprod2">
-              <div class="form-group">
-                <br>
-                <a class="btn btn-primary" data-toggle="modal" href="#" id="btnadd2" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-plus"></i></a>
-              </div>
+          </div>
+          <div class="col-md-2">
+            <div class="form-group">
+              <center><label >refrigeración </label></center>
+              <select class="form-control" name="transformacion[tipo_refrigeracion][]" style="width:100%">
+                <option value="">Seleccione...</option>
+                <option value="Seco">Seco</option>
+                <option value="Aceite">Aceite</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-1 " id="tblprod10">
+            <div class="form-group">
+              <br>
+              <a class="btn btn-primary" data-toggle="modal" href="#" id="btnadd10" style="background-color: #fdea08; border-color:#fdea08"><i class="glyphicon glyphicon-plus"></i></a>
             </div>
           </div>
         </div>
+      </div>
         <button type="submit" class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;">
           Guardar
         </button>
