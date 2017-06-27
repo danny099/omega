@@ -106,8 +106,7 @@ class CotizacionController extends Controller
      public function store(Request $request)
      {
          $input = $request->all();
-        //  dd($input);
-        //  die();
+        
          $now = new \DateTime();
          $fecha = $now->format('Y-m-d');
 
@@ -446,7 +445,7 @@ class CotizacionController extends Controller
             $datos3['unidad'] = 'Und';
             $datos3['cantidad'] = $input['pu_final']['cantidad_pu'][$i];
             $datos3['metros'] = $input['pu_final']['metros_pu'][$i];
-            
+
             if ($input['pu_final']['kva_pu'][$i] == 0) {
 
               $datos3['kva'] = 'Según Plano';

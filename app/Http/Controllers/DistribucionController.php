@@ -120,7 +120,7 @@ class DistribucionController extends Controller
      {
 
        $input = $request->all();
-       
+
        for ($x=0; $x<count($input['distribucion']['descripcion_dis']); $x++) {
 
          $distri = Distribucion::findOrFail($request->distribucion['id'][$x]);
@@ -132,24 +132,24 @@ class DistribucionController extends Controller
          $datos['unidad'] = 'km';
          $datos['cantidad'] = str_replace('.',',',$input['distribucion']['cantidad_dis'][$x]);
 
-         if ($datos2['tipo'] == 'Aérea' && $input['distribucion']['apoyos_dis'][$x] == 0) {
+         if ($datos['tipo'] == 'Aérea' && $input['distribucion']['apoyos_dis'][$x] == 0) {
 
-           $datos2['apoyos'] = 'Según Plano';
+           $datos['apoyos'] = 'Según Plano';
 
          }else {
-           $datos2['apoyos'] = $input['distribucion']['apoyos_dis'][$x];
+           $datos['apoyos'] = $input['distribucion']['apoyos_dis'][$x];
          }
 
 
-         if ($datos2['tipo'] == 'Subterránea' && $input['distribucion']['cajas_dis'][$x] == 0) {
+         if ($datos['tipo'] == 'Subterránea' && $input['distribucion']['cajas_dis'][$x] == 0) {
 
-           $datos2['cajas'] = 'Según Plano';
+           $datos['cajas'] = 'Según Plano';
 
          }else {
-           $datos2['cajas'] = $input['distribucion']['cajas_dis'][$x];
+           $datos['cajas'] = $input['distribucion']['cajas_dis'][$x];
          }
 
-         $datos2['notas'] = $input['distribucion']['notas_dis'][$x];
+         $datos['notas'] = $input['distribucion']['notas_dis'][$x];
 
          $distri->update($datos);
 

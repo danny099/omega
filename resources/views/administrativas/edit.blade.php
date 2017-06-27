@@ -135,6 +135,54 @@
 
 
 
+    $(document).on('change','#tipo',function(){
+
+      var  tipo = $(this).val();
+
+      if (tipo == 'Aérea') {
+        $(this).parent().parent().parent().find('#cajas').attr("readonly", true);
+        $(this).parent().parent().parent().find('#cajas').val(0);
+        $(this).parent().parent().parent().find('#apoyos').attr("readonly", false);
+
+      }
+        else if (tipo == 'Subterránea') {
+          $(this).parent().parent().parent().find('#cajas').attr("readonly", false);
+          $(this).parent().parent().parent().find('#apoyos').attr("readonly", true);
+          $(this).parent().parent().parent().find('#apoyos').val(0);
+        }
+        else {
+          $(this).parent().parent().parent().find('#cajas').attr("readonly", false);
+          $(this).parent().parent().parent().find('#apoyos').attr("readonly", false);
+        }
+
+
+    });
+
+    $(document).on('change','#desc',function(){
+
+      var  desc = $(this).val();
+
+      if (desc == 'Inspección RETIE proceso de distribución en MT') {
+        $(this).parent().parent().parent().find("#tension").html('');
+        $(this).parent().parent().parent().find("#tension").append('<option value="13,2">13,2</option>');
+        $(this).parent().parent().parent().find("#tension").append('<option value="13,4">13,4</option>');
+        $(this).parent().parent().parent().find("#tension").append('<option value="13,8">13,8</option>');
+        $(this).parent().parent().parent().find("#tension").append('<option value="No aplica">No aplica</option>');
+
+      }
+        else {
+          $(this).parent().parent().parent().find("#tension").html('');
+          $(this).parent().parent().parent().find("#tension").append('<option value="110-220">110-220</option>');
+          $(this).parent().parent().parent().find("#tension").append('<option value="220-240">220-240</option>');
+          $(this).parent().parent().parent().find("#tension").append('<option value="No aplica">No aplica</option>');
+        }
+
+
+    });
+
+
+
+
       $(document).ready(function($){
         $('#codigo_proyecto').inputmask('CPS-9999-999');
       });
@@ -382,7 +430,7 @@
             </div>
             <div class="form-group">
               <label >Valor contrato final</label>
-              <input type="text" class="form-control" min="0" id="fin" autocomplete="off" onkeyup="calcular();"  onkeyup="mascara(this,cpf)"  onpaste="return false" required="ingrese así sea un cero" placeholder= "Valor final" name="contrato_final" value="{{ number_format($administrativas->valor_contrato_final,0)}}">
+              <input type="text" class="form-control" min="0" id="fin" autocomplete="off" onkeyup="calcular(); mascara(this,cpf)"  onkeyup="mascara(this,cpf)"  onpaste="return false" required="ingrese así sea un cero" placeholder= "Valor final" name="contrato_final" value="{{ number_format($administrativas->valor_contrato_final,0)}}">
             </div>
             <div class="form-group">
               <label >Valor IVA</label>
@@ -394,7 +442,14 @@
             </div>
             <div class="form-group">
               <label >Plan de pago</label>
-              <input type="text" class="form-control" required="" placeholder= "Ingrese valor" name="plan_pago" value="{{ $administrativas->plan_pago}}">
+              <select name="formas_pago" style="width:100%" required>
+                <option value="{{ $administrativas->formas_pago }}">{{ $administrativas->formas_pago }}</option>
+                <option value="Anticipo 100%">Anticipo 100%</option>
+                <option value="Anticipo 50% - 50% a la entrega de dictámenes">Anticipo 50% - 50% a la entrega de dictámenes</option>
+                <option value="Anticipo 50% - 50% en Actas parciales según avance de Obra">Anticipo 50% - 50% en Actas parciales según avance de Obra</option>
+                <option value="Anticipo del 30% - 70% en Actas parciales según avance de Obra">Anticipo del 30% - 70% en Actas parciales según avance de Obra</option>
+                <option value="Anticipo 30% - 70% a la entrega de dictámenes">Anticipo 30% - 70% a la entrega de dictámenes</option>
+              </select>
             </div>
           </div>
           <div class="col-md-4">

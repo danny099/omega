@@ -58,7 +58,7 @@
             <div class="col-md-3">
               <div class="form-group">
                 <center><label >Valor adicional</label></center>
-                <input type="text" class="form-control" placeholder= "Valor" onkeypress="mascara(this,cpf)" name="adicional[valor][]" required="">
+                <input type="text" class="form-control" placeholder= "Valor" onkeyup="mascara(this,cpf)" name="adicional[valor][]" required="">
               </div>
             </div>
             <div class="col-md-5">

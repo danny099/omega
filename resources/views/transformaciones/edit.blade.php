@@ -10,55 +10,64 @@
 
       @foreach($transformaciones as $transfor)
       <input type="hidden" name="transformacion[id][]" value="{{ $transfor->id}}">
+      <div class="row quitar50" id="quitar50">
+        <center> <h3>Alcance: proceso de transformación</h3> </center>
+
       <div class="col-md-12">
-        <div class="col-md-4">
+        <div class="col-md-3">
+          <input type="hidden"  name="transformacion[id][]" value="{{$transfor->id}}"  >
           <div class="form-group">
-            <center><label >Descripcion</label></center>
-            <input type="text" class="form-control" value="{{ $transfor->descripcion }}"  readonly=”readonly” name="transformacion[descripcion][]">
+            <center><label >Descripción</label></center>
+            <input type="text" class="form-control desc" value="Inspección  RETIE proceso de transformación"  readonly=”readonly” name="transformacion[descripcion][]">
           </div>
         </div>
-
-        <div class="col-md-3">
+        <div class="col-md-2">
           <div class="form-group">
             <center><label >Tipo</label></center>
-            <select class="form-control" name="transformacion[tipo][]">
+            <select class="form-control tipo" name="transformacion[tipo][]" style="width:100%">
               <option value="{{ $transfor->tipo }}">{{ $transfor->tipo }}</option>
               <option value="Tipo_poste">Tipo poste</option>
               <option value="Tipo_interior">Tipo interior</option>
-              <option value="Tipo_exterior">Tipo exterior</option>
+              <option value="Tipo_pedestal/jardin">Tipo pedestal/jardin</option>
+              <option value="Tipo_patio">Tipo Patio</option>
             </select>
           </div>
         </div>
-
         <div class="col-md-2">
           <div class="form-group">
-            <center><label >Capacidad</label></center>
-            <input type="text" class="form-control" placeholder="Capacidad"  value="{{$transfor->capacidad}}" name="transformacion[capacidad][]">
-
+            <center><label >Nivel de tensión (kv)</label></center>
+            <select class="form-control" name="transformacion[nivel_tension][]" style="width:100%">
+              <option value="{{ $transfor->nivel_tension }}">{{ $transfor->nivel_tension }}</option>
+              <option value="13,2">13,2</option>
+              <option value="13,4">13,4</option>
+              <option value="13,8">13,8</option>
+            </select>
           </div>
         </div>
-
         <div class="col-md-1">
           <div class="form-group">
-            <center><label>Unidad</label></center>
-            <center>
-              <input style="text-align:center;" type="text" class="form-control" value="{{ $transfor->unidad }}"  readonly=”readonly” name="transformacion[unidad_transformacion][]">
-            </center>
+            <center><label >Capacidad</label></center>
+              <input type="text" class="form-control capacidad" placeholder="Capacidad"   value="{{$transfor->capacidad}}" name="transformacion[capacidad][]">
           </div>
         </div>
-
         <div class="col-md-1">
           <div class="form-group">
             <center><label >Cantidad</label></center>
-            <input type="text" class="form-control" placeholder= "Cantidad" name="transformacion[cantidad][]" value="{{ $transfor->cantidad }}">
+            <input type="text" class="form-control cantidad" id="cantidad" placeholder= "Cantidad" value="{{$transfor->cantidad}}"  name="transformacion[cantidad][]">
           </div>
         </div>
-
-        <div class="box-footer">
-          <a href="{{ url('deletetransfor') }}/{{ $transfor->id }}" onClick="javascript: return confirm('Esta seguro de eliminar registro?');"><i class="glyphicon glyphicon-minus-sign"></i></a>
-
+        <div class="col-md-2">
+          <div class="form-group">
+            <center><label >refrigeración </label></center>
+            <select class="form-control" name="transformacion[tipo_refrigeracion][]" style="width:100%">
+              <option value="{{ $transfor->tipo_refrigeracion }}">{{ $transfor->tipo_refrigeracion }}</option>
+              <option value="Seco">Seco</option>
+              <option value="Aceite">Aceite</option>
+            </select>
+          </div>
         </div>
-      </div>
+    </div>
+  </div>
 
       @endforeach
       <div class="box-footer">

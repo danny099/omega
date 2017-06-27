@@ -92,8 +92,7 @@ class AdministrativaController extends Controller
     public function store(Request $request)
     {
        $input = $request->all();
-      //  dd($input);
-      //  die();
+
        //  ********************************************************************************
        //  ********************************************************************************
       //  almacenar en un arreglo $administrativa los datos provenientes desde el formulario de datos basicos
@@ -108,7 +107,7 @@ class AdministrativaController extends Controller
        $administrativa['valor_contrato_inicial'] = $request->contrato_inicial;
        $administrativa['valor_iva'] = str_replace(',','',$request->iva);
        $administrativa['valor_contrato_final'] =str_replace(',','',$request->contrato_final);
-       $administrativa['plan_pago'] = ucfirst(mb_strtolower($request->plan_pago));
+       $administrativa['formas_pago'] = ucfirst(mb_strtolower($request->formas_pago));
        $administrativa['saldo'] =  $administrativa['valor_contrato_final'];
        $administrativa['valor_total_contrato'] =  $administrativa['valor_contrato_final'];
        $administrativa['recordar'] = 1;
@@ -325,7 +324,8 @@ class AdministrativaController extends Controller
    public function update(Request $request, $id)
    {
        $input = $request->all();
-
+      //  dd($input);
+      //  die();
        $depart = $request->departamento;
        $administrativas = Administrativa::findOrFail($id);
        $facturas = Factura::where('factura.administrativa_id', '=', $administrativas->id)->get();
@@ -342,7 +342,7 @@ class AdministrativaController extends Controller
        $administrativa['valor_contrato_inicial'] = $request->valor_contrato_inicial;
        $administrativa['valor_iva'] = str_replace(',','',$request->iva);
        $administrativa['valor_contrato_final'] =str_replace(',','',$request->contrato_final);
-       $administrativa['plan_pago'] = ucfirst(mb_strtolower($request->plan_pago));
+       $administrativa['formas_pago'] = ucfirst(mb_strtolower($request->formas_pago));
 
 
        if ($request->tipo_regimen == 1) {
@@ -371,7 +371,7 @@ class AdministrativaController extends Controller
          $administrativa2['tipo_zona'] = $request->zona;
          $administrativa2['valor_contrato_inicial'] = $request->valor_contrato_inicial;
          $administrativa2['valor_iva'] = str_replace(',','',$request->iva);
-         $administrativa2['plan_pago'] = ucfirst(mb_strtolower($request->plan_pago));
+         $administrativa2['formas_pago'] = ucfirst(mb_strtolower($request->formas_pago));
 
          if ($request->tipo_regimen == 1) {
 
@@ -520,7 +520,7 @@ class AdministrativaController extends Controller
      foreach ($pu_final as $key => $pu) {
 
        $registro = Pu_final::findOrFail($pu->id);
-       
+
        if ($registro->cotizacion_id == null) {
          $registro->delete();
        }else {
