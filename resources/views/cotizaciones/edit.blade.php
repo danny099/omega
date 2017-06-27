@@ -255,7 +255,7 @@
               <div class="form-group">
                 <input type="hidden"  name="distribucion[id][]" value="{{$distribucion->id}}"  >
                 <center style="margin-bottom: 25px;"><label >Descripción</label></center>
-                <select class="form-control desc2" name="distribucion[descripcion_dis][]" style="width:100%" >
+                <select class="form-control desc2" name="distribucion[descripcion_dis][]" style="width:100%" id="desc">
                   <option value="{{ $distribucion->descripcion }}">{{ $distribucion->descripcion }}</option>
                   <option value="Inspección RETIE proceso de distribución en MT">Inspección RETIE proceso de distribución en MT</option>
                   <option value="Inspección RETIE proceso de distribución en BT">Inspección RETIE proceso de distribución en BT</option>
@@ -277,11 +277,9 @@
             <div class="col-md-1">
               <div class="form-group">
                 <center><label >Nivel de tensión  </label></center>
-                <select class="form-control tipo2" name="distribucion[nivel_tension_dis][]" style="width:100%">
+                <select class="form-control tipo2" name="distribucion[nivel_tension_dis][]" style="width:100%" id="tension">
                   <option value="{{ $distribucion->nivel_tension }}">{{ $distribucion->nivel_tension }}</option>
-                  <option value="110-220">110-220</option>
-                  <option value="220-240">220-240</option>
-                  <option value="No aplica">No aplica</option>
+
                 </select>
               </div>
             </div>
@@ -701,6 +699,26 @@ $(document).on('change','#tipo',function(){
     else {
       $(this).parent().parent().parent().find('#cajas').attr("readonly", false);
       $(this).parent().parent().parent().find('#apoyos').attr("readonly", false);
+    }
+
+
+});
+
+$(document).on('change','#desc',function(){
+
+  var  desc = $(this).val();
+
+  if (desc == 'Inspección RETIE proceso de distribución en MT') {
+    $(this).parent().parent().parent().find("#tension").append('<option value="13,2">13,2</option>');
+    $(this).parent().parent().parent().find("#tension").append('<option value="13,4">13,4</option>');
+    $(this).parent().parent().parent().find("#tension").append('<option value="13,8">13,8</option>');
+    $(this).parent().parent().parent().find("#tension").append('<option value="No aplica">No aplica</option>');
+
+  }
+    else {
+      $(this).parent().parent().parent().find("#tension").append('<option value="110-220">110-220</option>');
+      $(this).parent().parent().parent().find("#tension").append('<option value="220-240">220-240</option>');
+      $(this).parent().parent().parent().find("#tension").append('<option value="No aplica">No aplica</option>');
     }
 
 
