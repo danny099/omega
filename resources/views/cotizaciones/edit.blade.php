@@ -467,30 +467,30 @@ $(function() {
     var count = 1;
 
    $(".generar").on("click",function( event ) {
-    count++;
-    validar = 1;
-    var x= $().val();
-    var valor_multi = 0;
-    var valor_multi_dis = 0;
-    var valor_multi_pu = 0;
-    var datos = JSON.parse($(".datos1").val())
-    var datos2 = JSON.parse($(".datos2").val())
-    var datos3 = JSON.parse($(".datos3").val())
-    $.each(datos, function(i,item){
-          datos[i];
-          valor_multi = valor_multi+datos[i].valor_total;
+      count++;
+      validar = 1;
+      var x= $().val();
+      var valor_multi = 0;
+      var valor_multi_dis = 0;
+      var valor_multi_pu = 0;
+      var datos = JSON.parse($(".datos1").val())
+      var datos2 = JSON.parse($(".datos2").val())
+      var datos3 = JSON.parse($(".datos3").val())
+      $.each(datos, function(i,item){
+            datos[i];
+            valor_multi = valor_multi+datos[i].valor_total;
 
 
-     })
-     $.each(datos2, function(i,item){
-           datos2[i];
-           valor_multi_dis = valor_multi_dis+datos2[i].valor_total;
-
-      })
-      $.each(datos3, function(i,item){
-            datos3[i];
-            valor_multi_pu = valor_multi_pu+datos3[i].valor_total;
        })
+       $.each(datos2, function(i,item){
+             datos2[i];
+             valor_multi_dis = valor_multi_dis+datos2[i].valor_total;
+
+        })
+        $.each(datos3, function(i,item){
+              datos3[i];
+              valor_multi_pu = valor_multi_pu+datos3[i].valor_total;
+         })
     $('.actualizar').remove();
 
 
