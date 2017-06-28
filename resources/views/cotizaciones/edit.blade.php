@@ -478,12 +478,18 @@ $(function() {
     var datos3 = JSON.parse($(".datos3").val())
     $.each(datos, function(i,item){
           datos[i];
+          valor_multi = valor_multi+datos[i].valor_total;
+
+
      })
      $.each(datos2, function(i,item){
            datos2[i];
+           valor_multi_dis = valor_multi_dis+datos2[i].valor_total;
+
       })
       $.each(datos3, function(i,item){
             datos3[i];
+            valor_multi_pu = valor_multi_pu+datos3[i].valor_total;
        })
     $('.actualizar').remove();
 
@@ -500,8 +506,8 @@ $(function() {
           if (cantidad != '' && desc!= '' && capacidad!='' && tipo!='') {
 
             $('.tabla tr:last').after('<tr class="actualizar"><td>'+nFilas+'</td><td>'+desc+' '+tipo+' '+capacidad+'</td><td class="cant">'+cantidad+
-            '</td><td><input type="text" class="form-control valor_uni" value="'+datos[i].valor_uni+'" placeholder= "Valor" onkeyup="mascara(this,cpf)" name="valores[valor_uni][]" required=""></td>'+' '+
-            '<td><input type="text" class="form-control valor_multi" placeholder= "Valor" value="'+datos[i].valor_total+'" name="valores[valor_multi][]" required="" readonly ></td></tr>'+' '+
+            '</td><td><input type="text" class="form-control valor_uni" value="'+addCommas(datos[i].valor_uni)+'" placeholder= "Valor" onkeyup="mascara(this,cpf)" name="valores[valor_uni][]" required=""></td>'+' '+
+            '<td><input type="text" class="form-control valor_multi" placeholder= "Valor" value="'+addCommas(datos[i].valor_total)+'" name="valores[valor_multi][]" required="" readonly ></td></tr>'+' '+
             '<input type="hidden"  value="'+datos[i].id+'"  name="valores[id][]">');
 
               event.preventDefault();
@@ -518,6 +524,7 @@ $(function() {
 
                 $(".valor_multi").each(function(i){
                        valor_multi = valor_multi + parseFloat($(this).val().replace(/,/g,"")) ;
+
                        var subtotal=  parseFloat(valor_multi_dis)+parseFloat(valor_multi)+parseFloat(valor_multi_pu);
                        var iva = subtotal*0.19;
                        var total = subtotal+iva;
@@ -545,8 +552,8 @@ $(function() {
             if (cantidad2 != '' && desc2!= '' && tipo2!='') {
 
               $('.tabla tr:last').after('<tr class="actualizar"><td>'+nFilas+'</td><td name="detalles2">'+desc2+' '+tipo2+'</td><td>'+cantidad2+' km'+
-              '</td><td><input type="text" class="form-control valor_uni_dis"  value="'+datos2[i].valor_uni+'" placeholder= "Valor" onkeyup="mascara(this,cpf)" name="valores[valor_uni_dis][]" required="">'+' '+
-              '</td><td><input type="text" class="form-control valor_multi_dis" placeholder= "Valor"  value="'+datos2[i].valor_total+'" name="valores[valor_multi_dis][]" required="" readonly ></td></tr>'+' '+
+              '</td><td><input type="text" class="form-control valor_uni_dis"  value="'+addCommas(datos2[i].valor_uni)+'" placeholder= "Valor" onkeyup="mascara(this,cpf)" name="valores[valor_uni_dis][]" required="">'+' '+
+              '</td><td><input type="text" class="form-control valor_multi_dis" placeholder= "Valor"  value="'+addCommas(datos2[i].valor_total)+'" name="valores[valor_multi_dis][]" required="" readonly ></td></tr>'+' '+
               '<input type="hidden"  value="'+datos2[i].id+'"  name="valores[id_dis][]">');
 
 
@@ -587,8 +594,8 @@ $(function() {
               if (cantidad3 != '' && desc3!= '' && tipo3!='') {
 
                 $('.tabla tr:last').after('<tr class="actualizar"><td>'+nFilas+'</td><td>'+desc3+' '+tipo3+'</td><td class="cant3">'+cantidad3+
-                '</td><td><input type="text" class="form-control valor_uni_pu"  value="'+datos3[i].valor_uni+'" placeholder= "Valor" onkeyup="mascara(this,cpf)" name="valores[valor_uni_pu][]" required=""></td>'+' '+
-                '<td><input type="text" class="form-control valor_multi_pu" placeholder= "Valor"  value="'+datos3[i].valor_total+'" name="valores[valor_multi_pu][]" required="" readonly ></td></tr>'+' '+
+                '</td><td><input type="text" class="form-control valor_uni_pu"  value="'+addCommas(datos3[i].valor_uni)+'" placeholder= "Valor" onkeyup="mascara(this,cpf)" name="valores[valor_uni_pu][]" required=""></td>'+' '+
+                '<td><input type="text" class="form-control valor_multi_pu" placeholder= "Valor"  value="'+addCommas(datos3[i].valor_total)+'" name="valores[valor_multi_pu][]" required="" readonly ></td></tr>'+' '+
                 '<input type="hidden"  value="'+datos3[i].id+'"  name="valores[id_pu][]">');
                   event.preventDefault();
 
