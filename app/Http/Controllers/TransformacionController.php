@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use Session;
 use App\Transformacion;
 use App\Administrativa;
+use App\Cotizacion;
+use App\Valorcot;
 use Illuminate\Http\Request;
 
 class TransformacionController extends Controller
@@ -28,12 +30,16 @@ class TransformacionController extends Controller
      */
     public function create()
     {
+
       $transformaciones = Transformacion::all();
+      $cotizaciones = Cotizacion::all();
+      // dd($cotizaciones);
+      // die();
       $codigos = Administrativa::all();
 
       // dd($codigos);
       // die();
-      return view('transformaciones.create',compact('codigos'));
+      return view('transformaciones.create',compact('codigos','cotizaciones'));
     }
 
     /**
@@ -63,7 +69,15 @@ class TransformacionController extends Controller
                   $datos1['cantidad'] = $input['transformacion']['cantidad'][$a];
                   $datos1['tipo_refrigeracion'] = $input['transformacion']['tipo_refrigeracion'][$a];
                   $datos1['administrativa_id'] = $request->codigo_proyecto;
+                  $datos1['cotizacion_id'] = $request->codigo_cotizacion;
 
+                  $texto['detalles'] = $datos1['descripcion'].' '.$datos1['tipo'].' '. $datos1['cantidad'].' '.$datos1['capacidad'];
+                  $texto['cantidad'] = $datos1['cantidad'];
+                  $texto['valor_uni'] = 0;
+                  $texto['valor_total'] = 0;
+                  $texto['cotizacion_id'] = $request->codigo_cotizacion;
+
+                  Valorcot::create($texto);
                   Transformacion::create($datos1);
 
             }

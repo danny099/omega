@@ -62,11 +62,29 @@
       td {
         padding: 0;
       }
+
+      @page { margin: 100px 50px; }
+      header { position: fixed; top: -60px; left: 0px; right: 0px; height: 50px; }
+      footer { position: fixed; bottom: -60px; left: 0px; right: 0px; height: 50px; }
+      .page-number:after { content: counter(pages) " of " counter(pages) }
+
+      /*p { page-break-after: always; }*/
+      /*p:last-child { page-break-after: never; }*/
+
     </style>
   </head>
   <body>
 
-    <img id="img" src="Certicol2.png" style="height:100px;">
+    <header>
+      <table class="table table-bordered">
+        <tr>
+          <td><center><img id="img" src="Certicol2.png" style="width:75px;"></center></td>
+          <td>COTIZACIÓN</td>
+          <td><center><span class="page-number">Pagina </span></center></td>
+        </tr>
+      </table>
+    </header>
+
     <br>
     <br>
     <div class="div1">
@@ -393,6 +411,11 @@
           <td colspan="2">Valor Total del Proyecto</td>
           <td>${{ number_format($valor_total,0) }}</td>
         </tr>
+        <tr>
+          <td></td>
+          <td colspan="2">Costo adicional de visita por dia si se requiere:</td>
+          <td>${{ $cotizaciones->adicional }}</td>
+        </tr>
         <!-- <td>
           <p> </p>
           @foreach($pu_finales as $pu)
@@ -454,5 +477,7 @@
         echo $refer;
       ?>
     </div>
+
   </body>
+
 </html>

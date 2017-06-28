@@ -15,10 +15,23 @@
           <div class="col-md-12">
               <div class="form-group">
                 <center><label >Código Proyecto</label></center>
-                <select class="form-control select2" name="codigo_proyecto" style="width: 100%" id="select" required="">
+                <select class="form-control select2" name="codigo_proyecto" style="width: 100%" id="select">
                   <option value="">Seleccione...</option>
                   @foreach($codigos as $codigo)
                   <option value="{{ $codigo->id }}">{{$codigo->codigo_proyecto}}</option>
+                  @endforeach
+                </select>
+              </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+              <div class="form-group">
+                <center><label >Código Cotización</label></center>
+                <select class="form-control select2" name="codigo_cotizacion" style="width: 100%" id="select">
+                  <option value="">Seleccione...</option>
+                  @foreach($cotizaciones as $cotizacion)
+                  <option value="{{ $cotizacion->id }}">{{$cotizacion->codigo}}</option>
                   @endforeach
                 </select>
               </div>
@@ -63,19 +76,19 @@
 
             <div class="col-md-1">
               <div class="form-group">
-                <center><label >longitud de red (km)</label></center>
+                <center><label >Longitud de red (km)</label></center>
                 <input type="text" class="form-control cantidad2" placeholder= "Cantidad" name="distribucion[cantidad_dis][]">
               </div>
             </div>
             <div class="col-md-1">
               <div class="form-group">
-                <center><label >apoyos o estructuras</label></center>
+                <center><label >Apoyos o estructuras</label></center>
                 <input type="number" id="apoyos" class="form-control" placeholder= "Cantidad" name="distribucion[apoyos_dis][]" >
               </div>
             </div>
             <div class="col-md-1">
               <div class="form-group">
-                <center><label >cajas de inspección</label></center>
+                <center><label >Cajas de inspección</label></center>
                 <input type="number" id="cajas" class="form-control" placeholder= "Cantidad" name="distribucion[cajas_dis][]">
               </div>
             </div>

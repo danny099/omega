@@ -17,10 +17,23 @@
           <div class="col-md-12">
               <div class="form-group">
                 <center><label >Código Proyecto</label></center>
-                <select class="form-control select2" name="codigo_proyecto" style="width: 100%" id="select" required="">
+                <select class="form-control select2" name="codigo_proyecto" style="width: 100%" id="select">
                   <option value="">Seleccione...</option>
                   @foreach($codigos as $codigo)
                   <option value="{{ $codigo->id }}">{{$codigo->codigo_proyecto}}</option>
+                  @endforeach
+                </select>
+              </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+              <div class="form-group">
+                <center><label >Código Cotizacion</label></center>
+                <select class="form-control select2" name="codigo_cotizacion" style="width: 100%" id="select">
+                  <option value="">Seleccione...</option>
+                  @foreach($cotizaciones as $cotizacion)
+                  <option value="{{ $cotizacion->id }}">{{ $cotizacion->codigo }}</option>
                   @endforeach
                 </select>
               </div>

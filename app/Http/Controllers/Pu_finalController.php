@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\Pu_final;
 use Session;
 use App\Administrativa;
+use App\Cotizacion;
+use App\Valorcot;
 use Illuminate\Http\Request;
 
 class Pu_finalController extends Controller
@@ -28,7 +30,9 @@ class Pu_finalController extends Controller
     public function create()
     {
         $codigos = Administrativa::all();
-        return view('pu_final.create',compact('codigos'));
+        $cotizaciones = Cotizacion::all();
+
+        return view('pu_final.create',compact('codigos','cotizaciones'));
     }
 
     /**
@@ -67,7 +71,15 @@ class Pu_finalController extends Controller
 
                  $datos3['acometidas'] = $input['pu_final']['acometidas_pu'][$i];
                  $datos3['administrativa_id'] = $request->codigo_proyecto;
+                 $datos3['cotizacion_id'] = $request->codigo_cotizacion;
 
+                 $texto['detalles'] = $datos3['descripcion'].' '.$datos3['tipo'].' '. $datos3['cantidad'];
+                 $texto['cantidad'] = $datos3['cantidad'];
+                 $texto['valor_uni'] = 0;
+                 $texto['valor_total'] = 0;
+                 $texto['cotizacion_id'] = $request->codigo_cotizacion;
+
+                 Valorcot::create($texto);
                  Pu_final::create($datos3);
 
            }

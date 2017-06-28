@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use Session;
 use App\Administrativa;
 use App\Distribucion;
+use App\Cotizacion;
+use App\Valorcot;
 use Illuminate\Http\Request;
 
 class DistribucionController extends Controller
@@ -26,7 +28,9 @@ class DistribucionController extends Controller
     public function create()
     {
         $codigos = Administrativa::all();
-        return view('distribuciones.create',compact('codigos'));
+        $cotizaciones = Cotizacion::all();
+
+        return view('distribuciones.create',compact('codigos','cotizaciones'));
     }
 
     /**
@@ -74,7 +78,15 @@ class DistribucionController extends Controller
 
                 $datos2['notas'] = $input['distribucion']['notas_dis'][$x];
                 $datos2['administrativa_id'] = $request->codigo_proyecto;
+                $datos2['cotizacion_id'] = $request->codigo_cotizacion;
 
+                $texto['detalles'] = $datos2['descripcion'].' '.$datos2['tipo'].' '. $datos2['cantidad'];
+                $texto['cantidad'] = $datos2['cantidad'];
+                $texto['valor_uni'] = 0;
+                $texto['valor_total'] = 0;
+                $texto['cotizacion_id'] = $request->codigo_cotizacion;
+
+                Valorcot::create($texto);
                 Distribucion::create($datos2);
           }
       }

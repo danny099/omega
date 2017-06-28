@@ -9,7 +9,9 @@
     width: 100%;
     overflow: hidden;
 }
-
+.sgte{
+  margin-bottom: 30px;
+}
 .wizard a,
 .tabcontrol a
 {

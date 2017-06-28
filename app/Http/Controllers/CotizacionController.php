@@ -106,7 +106,7 @@ class CotizacionController extends Controller
      public function store(Request $request)
      {
          $input = $request->all();
-        
+
          $now = new \DateTime();
          $fecha = $now->format('Y-m-d');
 
@@ -127,6 +127,7 @@ class CotizacionController extends Controller
          $cotizacion['subtotal'] = str_replace(',','',$request->subtotal);
          $cotizacion['iva'] = str_replace(',','',$request->iva);
          $cotizacion['total'] = str_replace(',','',$request->total);
+         $cotizacion['adicional'] = $request->adici;
          $cotizacion['observaciones'] = $request->observacion;
 
          Cotizacion::create($cotizacion);
@@ -241,7 +242,7 @@ class CotizacionController extends Controller
 
                    $datos3['acometidas'] = $input['pu_final']['acometidas_pu'][$i];
                    $datos3['cotizacion_id'] = $lastId_cotiza;
-
+                   
                    $texto['detalles'] = $datos3['descripcion'].' '.$datos3['tipo'].' '. $datos3['cantidad'];
                    $texto['cantidad'] = $datos3['cantidad'];
                    $texto['valor_uni'] = str_replace(',','',$input['valores']['valor_uni_pu'][$i]);
@@ -254,7 +255,8 @@ class CotizacionController extends Controller
 
              }
          }
-
+         Session::flash('message', 'Cotización Creada!!');
+         Session::flash('class', 'success');
          return redirect()->route('cotizaciones.index');
      }
 
@@ -322,7 +324,7 @@ class CotizacionController extends Controller
         $cotiza = Cotizacion::findOrFail($id);
 
         $cotizacion['dirigido'] = $request->dirigido;
-        $cotizacion['codigo'] = '0001';
+        $cotizacion['codigo'] = $request->codigo;
         // $cotizacion['cliente_id'] = $request->cliente_id;
         // $cotizacion['juridica_id'] = $request->juridica_id;
         $cotizacion['nombre'] = $request->nombre;
@@ -335,6 +337,7 @@ class CotizacionController extends Controller
         $cotizacion['subtotal'] = str_replace(',','',$request->subtotal);
         $cotizacion['iva'] = str_replace(',','',$request->iva);
         $cotizacion['total'] = str_replace(',','',$request->total);
+        $cotizacion['adicional'] = $request->adici;
         $cotizacion['observaciones'] = $request->observacion;
 
         if ($request->tipo_regimen == 1) {

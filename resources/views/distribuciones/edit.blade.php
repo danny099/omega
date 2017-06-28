@@ -48,19 +48,19 @@
 
             <div class="col-md-1">
               <div class="form-group">
-                <center><label >longitud de red (km)</label></center>
+                <center><label >Longitud de red (km)</label></center>
                 <input type="text" class="form-control cantidad2" placeholder= "Cantidad" value="{{ $distribucion->cantidad }}" name="distribucion[cantidad_dis][]">
               </div>
             </div>
             <div class="col-md-1">
               <div class="form-group">
-                <center><label >apoyos o estructuras</label></center>
+                <center><label >Apoyos o estructuras</label></center>
                 <input type="text" id="apoyos" class="form-control" placeholder= "Cantidad" value="{{ $distribucion->apoyos }}" name="distribucion[apoyos_dis][]">
               </div>
             </div>
             <div class="col-md-1">
               <div class="form-group">
-                <center><label >cajas de inspección</label></center>
+                <center><label >Cajas de inspección</label></center>
                 <input type="text" id="cajas" class="form-control" placeholder= "Cantidad" value="{{ $distribucion->cajas }}" name="distribucion[cajas_dis][]">
               </div>
             </div>

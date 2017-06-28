@@ -3,23 +3,23 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-// use OwenIt\Auditing\Auditable;
-// use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
-
-class Cotizacion extends Model
+use OwenIt\Auditing\Auditable;
+use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
+use Illuminate\Support\Arr;
+class Cotizacion extends Model implements AuditableContract
 {
-  // use Auditable;
+  use Auditable;
 
   protected $table = 'cotizacion';
 
-  protected $fillable = ['id','dirigido','codigo','cliente_id','juridica_id','fecha','nombre','municipio','formas_pago','tiempo','entrega','visitas','validez','subtotal','iva','total','observaciones','departamento_id','contador'];
+  protected $fillable = ['id','dirigido','codigo','cliente_id','juridica_id','fecha','nombre','municipio','formas_pago','tiempo','entrega','visitas','validez','subtotal','iva','total','adicional','observaciones','departamento_id','contador'];
 
   public $timestamps = false;
 
   public function transformAudit(array $data)
   {
       if (Arr::has($data, 'auditable_id')) {
-          Arr::set($data, 'auditable_id',  $this->codigo_proyecto);
+          Arr::set($data, 'auditable_id',  $this->codigo);
       }
 
       return $data;

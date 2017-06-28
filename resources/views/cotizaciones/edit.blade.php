@@ -1,7 +1,9 @@
 @extends('index')
 <style media="screen">
 
-
+  ul{
+    margin: 20px;
+  }
   textarea{
     width:100%;
     resize: none;
@@ -45,7 +47,8 @@
 
       <div class="col-md-12">
         <div class="col-md-3">
-          <input type="hidden"  name="id" value="{{$cotizaciones->id}}"  >
+          <input type="hidden" name="codigo" value="{{ $cotizaciones->codigo }}">
+          <input type="hidden"  name="id" value="{{ $cotizaciones->id }}"  >
           <label>Dirigido a :</label>
           <select name="dirigido" style="width:100%" >
             <option value="{{ $cotizaciones->dirigido}}">{{ $cotizaciones->dirigido}}</option>
@@ -181,9 +184,10 @@
       @if(count($transformaciones) == 0)
         <input type="hidden"  name="transformacion" value="transformacion"  >
       @else
+      <center> <h3>Alcance: proceso de transformación</h3> </center>
+
       @foreach($transformaciones as $transfor)
           <div class="row quitar50" id="quitar50">
-            <center> <h3>Alcance: proceso de transformación</h3> </center>
 
           <div class="col-md-12">
             <div class="col-md-3">
@@ -230,7 +234,7 @@
             </div>
             <div class="col-md-2">
               <div class="form-group">
-                <center><label >refrigeración </label></center>
+                <center><label >Refrigeración </label></center>
                 <select class="form-control" name="transformacion[tipo_refrigeracion][]" style="width:100%">
                   <option value="{{ $transfor->tipo_refrigeracion }}">{{ $transfor->tipo_refrigeracion }}</option>
                   <option value="Seco">Seco</option>
@@ -245,10 +249,11 @@
     @if(count($distribuciones) == 0)
       <input type="hidden"  name="distribucion" value="distribucion"  >
     @else
+    <center> <h3>Alcance: proceso de distribución</h3> </center>
+
       @foreach($distribuciones as $distribucion)
         <div class="row quitar51" id="quitar51">
           <div class="col-md-12"  style="margin-bottom: 10px;">
-            <center> <h3>Alcance: proceso de distribución</h3> </center>
           </div>
           <div class="col-md-12">
             <div class="col-md-3">
@@ -286,19 +291,19 @@
 
             <div class="col-md-1">
               <div class="form-group">
-                <center><label >longitud de red (km)</label></center>
+                <center><label >Longitud de red (km)</label></center>
                 <input type="text" class="form-control cantidad2" placeholder= "Cantidad" value="{{ $distribucion->cantidad }}" name="distribucion[cantidad_dis][]">
               </div>
             </div>
             <div class="col-md-1">
               <div class="form-group">
-                <center><label >apoyos o estructuras</label></center>
+                <center><label >Apoyos o estructuras</label></center>
                 <input type="text" id="apoyos" class="form-control" placeholder= "Cantidad" value="{{ $distribucion->apoyos }}" name="distribucion[apoyos_dis][]">
               </div>
             </div>
             <div class="col-md-1">
               <div class="form-group">
-                <center><label >cajas de inspección</label></center>
+                <center><label >Cajas de inspección</label></center>
                 <input type="text" id="cajas" class="form-control" placeholder= "Cantidad" value="{{ $distribucion->cajas }}" name="distribucion[cajas_dis][]">
               </div>
             </div>
@@ -315,10 +320,11 @@
     @if(count($pu_finales) == 0)
       <input type="hidden"  name="pu_final" value="pu_final"  >
     @else
+    <center> <h3>Alcance: proceso de uso final</h3> </center>
+
       @foreach($pu_finales as $pu)
         <div class="row quitar52" id="quitar52">
           <div class="col-md-12">
-            <center> <h3>Alcance: proceso de uso final</h3> </center>
           </div>
           <div class="col-md-12">
           <div class="col-md-3">
@@ -630,6 +636,7 @@ $(function() {
     $('.tabla tr:last').after('<tr class="actualizar"><td Colspan="3"></td><td><label>Subtotal</label></td><td><label class="subtotal">${{ number_format($cotizaciones->subtotal,0)}}</label><input type="hidden" class="form-control subtotal" placeholder= "Valor" value="{{$cotizaciones->subtotal}}"  name="subtotal"  required="" readonly ></td></tr>');
     $('.tabla tr:last').after('<tr class="actualizar"><td Colspan="3"></td><td><label>IVA</label></td><td><label class="iva">${{ number_format($cotizaciones->iva,0)}}</label><input type="hidden" class="form-control iva" placeholder= "Valor"  name="iva" value="{{$cotizaciones->iva}}"  required="" readonly ></td></tr>');
     $('.tabla tr:last').after('<tr class="actualizar"><td Colspan="3"></td><td><label>Total</label></td><td><label class="total">${{ number_format($cotizaciones->total,0)}}</label><input type="hidden" class="form-control total" placeholder= "Valor" value="{{$cotizaciones->total}}" name="total"  required="" readonly></td></tr>');
+    $('.tabla tr:last').after('<tr class="actualizar"><td Colspan="3"></td><td><label>Costo adicional de visita por dia si se requiere:</label></td><td><input type="text" class="form-control adici" placeholder= "Valor" onkeyup="mascara(this,cpf)" value="{{$cotizaciones->adicional}}" name="adici"  required="" ></td></tr>');
     $('.tabla tr:last').after('<input type="hidden" class="form-control valor_multi actualizar"  value="0"  >');
     $('.tabla tr:last').after('<input type="hidden" class="form-control  valor_multi_dis actualizar"  value="0"  >');
     $('.tabla tr:last').after('<input type="hidden" class="form-control  valor_multi_pu actualizar"  value="0"  >');

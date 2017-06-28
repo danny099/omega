@@ -58,7 +58,7 @@
         </div>
         <div class="col-md-2">
           <div class="form-group">
-            <center><label >refrigeración </label></center>
+            <center><label >Refrigeración </label></center>
             <select class="form-control" name="transformacion[tipo_refrigeracion][]" style="width:100%">
               <option value="{{ $transfor->tipo_refrigeracion }}">{{ $transfor->tipo_refrigeracion }}</option>
               <option value="Seco">Seco</option>

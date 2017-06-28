@@ -15,7 +15,7 @@
             </div>
           </div>
         @endif
-        <div class="row">
+        <div class="row" >
           <div class="col-md-12 well">
             <div class="box-body">
               <table id="example1" class="table table-bordered table-striped">
