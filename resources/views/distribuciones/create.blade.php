@@ -1,4 +1,9 @@
 @extends('index')
+<style media="screen">
+.separar{
+  height: 80px;
+}
+</style>
 @section('contenido')
 <ol class="breadcrumb">
   <li><a href="{{ url('inicio') }}">Inicio</a></li>
@@ -44,7 +49,7 @@
           <div class="col-md-12">
             <div class="col-md-3">
               <div class="form-group">
-                <center style="margin-bottom: 25px;"><label >Descripción</label></center>
+                <center class="separar"><label >Descripción</label></center>
                 <select class="form-control desc2" name="distribucion[descripcion_dis][]" style="width:100%" id="desc">
                   <option value="">Seleccione...</option>
                   <option value="Inspección RETIE proceso de distribución en MT">Inspección RETIE proceso de distribución en MT</option>
@@ -54,7 +59,7 @@
             </div>
             <div class="col-md-2">
               <div class="form-group">
-                <center style="margin-bottom: 25px;"><label >Tipo</label></center>
+                <center class="separar"><label >Tipo</label></center>
                 <select class="form-control tipo2" name="distribucion[tipo_dis][]" style="width:100%" id="tipo">
                   <option value="">Seleccione...</option>
                   <option value="Aérea">Tipo Aérea</option>
@@ -66,7 +71,7 @@
 
             <div class="col-md-1">
               <div class="form-group">
-                <center><label >Nivel de tensión  </label></center>
+                <center class="separar"><label >Nivel de tensión  </label></center>
                 <select class="form-control tipo2" name="distribucion[nivel_tension_dis][]" style="width:100%" id="tension">
                   <option value="">Seleccione...</option>
 
@@ -76,32 +81,32 @@
 
             <div class="col-md-1">
               <div class="form-group">
-                <center><label >Longitud de red (km)</label></center>
+                <center class="separar"><label >Longitud de red (km)</label></center>
                 <input type="text" class="form-control cantidad2" placeholder= "Cantidad" name="distribucion[cantidad_dis][]">
               </div>
             </div>
             <div class="col-md-1">
               <div class="form-group">
-                <center><label >Apoyos o estructuras</label></center>
+                <center class="separar"><label >Apoyos o estructuras</label></center>
                 <input type="number" id="apoyos" class="form-control" placeholder= "Cantidad" name="distribucion[apoyos_dis][]" >
               </div>
             </div>
             <div class="col-md-1">
               <div class="form-group">
-                <center><label >Cajas de inspección</label></center>
+                <center class="separar"><label >Cajas de inspección</label></center>
                 <input type="number" id="cajas" class="form-control" placeholder= "Cantidad" name="distribucion[cajas_dis][]">
               </div>
             </div>
             <div class="col-md-2">
               <div class="form-group">
-                <center style="margin-bottom: 25px;"><label >Notas</label></center>
+                <center class="separar"><label >Notas</label></center>
                 <input type="text" class="form-control" placeholder= "Notas" name="distribucion[notas_dis][]">
               </div>
             </div>
             <div class="col-md-1 tblprod11" id="tblprod11" >
               <div class="form-group">
-                <br>
-                <a class="btn btn-primary" data-toggle="modal" id="btnadd11" href="#" style="background-color: #fdea08; border-color:#fdea08;margin-top: 29px;"><i class="glyphicon glyphicon-plus"></i></a>
+                <center class="separar"></center>
+                <a class="btn btn-primary" data-toggle="modal" id="btnadd11" href="#" style="background-color: #fdea08; border-color:#fdea08"><i class="glyphicon glyphicon-plus"></i></a>
               </div>
             </div>
         </div>

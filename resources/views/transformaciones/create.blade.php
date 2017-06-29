@@ -1,5 +1,9 @@
 @extends('index')
-
+<style media="screen">
+.separar{
+  height: 80px;
+}
+</style>
 @section('contenido')
 <ol class="breadcrumb">
   <li><a href="{{ url('inicio') }}">Inicio</a></li>
@@ -28,7 +32,7 @@
         <div class="row">
           <div class="col-md-12">
               <div class="form-group">
-                <center><label >Código Cotizacion</label></center>
+                <center ><label >Código Cotizacion</label></center>
                 <select class="form-control select2" name="codigo_cotizacion" style="width: 100%" id="select">
                   <option value="">Seleccione...</option>
                   @foreach($cotizaciones as $cotizacion)
@@ -44,13 +48,13 @@
         <div class="col-md-12">
           <div class="col-md-3">
             <div class="form-group">
-              <center><label >Descripción</label></center>
+              <center class="separar"><label >Descripción</label></center>
               <input type="text" class="form-control desc" value="Inspección  RETIE proceso de transformación"  readonly=”readonly” name="transformacion[descripcion][]">
             </div>
           </div>
           <div class="col-md-2">
             <div class="form-group">
-              <center><label >Tipo</label></center>
+              <center class="separar"><label >Tipo</label></center>
               <select class="form-control tipo" name="transformacion[tipo][]" style="width:100%">
                 <option value="">Seleccione...</option>
                 <option value="Tipo_poste">Tipo poste</option>
@@ -62,7 +66,7 @@
           </div>
           <div class="col-md-2">
             <div class="form-group">
-              <center><label >Nivel de tensión </label></center>
+              <center class="separar"><label >Nivel de tensión </label></center>
               <select class="form-control" name="transformacion[nivel_tension][]" style="width:100%">
                 <option value="">Seleccione...</option>
                 <option value="13,2">13,2</option>
@@ -73,19 +77,19 @@
           </div>
           <div class="col-md-1">
             <div class="form-group">
-              <center><label >Capacidad</label></center>
+              <center class="separar"><label >Capacidad</label></center>
                 <input type="text" class="form-control capacidad" placeholder="Capacidad"   name="transformacion[capacidad][]">
             </div>
           </div>
           <div class="col-md-1">
             <div class="form-group">
-              <center><label >Cantidad</label></center>
+              <center class="separar"><label >Cantidad</label></center>
               <input type="text" class="form-control cantidad" id="cantidad" placeholder= "Cantidad" name="transformacion[cantidad][]">
             </div>
           </div>
           <div class="col-md-2">
             <div class="form-group">
-              <center><label >Refrigeración </label></center>
+              <center class="separar"><label >Refrigeración </label></center>
               <select class="form-control" name="transformacion[tipo_refrigeracion][]" style="width:100%">
                 <option value="">Seleccione...</option>
                 <option value="Seco">Seco</option>
@@ -95,7 +99,7 @@
           </div>
           <div class="col-md-1 " id="tblprod10">
             <div class="form-group">
-              <br>
+              <center class="separar"></center>
               <a class="btn btn-primary" data-toggle="modal" href="#" id="btnadd10" style="background-color: #fdea08; border-color:#fdea08"><i class="glyphicon glyphicon-plus"></i></a>
             </div>
           </div>

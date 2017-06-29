@@ -9,9 +9,9 @@
   }
   function sumariva(){
     var valor = document.getElementById('valor_factura').value;
-    var resultado = valor*1.16;
+    var resultado = valor*1.19;
 
-    var iva = valor*0.16;
+    var iva = valor*0.19;
 
     document.getElementsBy('iva').value = iva ;
     document.getElementById('valor_total').value = resultado ;
@@ -19,9 +19,9 @@
 
   function sumar(){
     var valor = parseInt(document.getElementById('ini').value);
-    var resultado = valor*1.16
+    var resultado = valor*1.19
 
-    var iva = valor*0.16;
+    var iva = valor*0.19;
 
     document.getElementById('iva').value = iva ;
     document.getElementById('fin').value = resultado ;
@@ -29,9 +29,9 @@
 
       function sumar3(){
         var valor = parseInt(document.getElementById('valor_contrato_inicial').value);
-        var resultado = valor*1.16;
+        var resultado = valor*1.19;
 
-        var iva = valor*0.16;
+        var iva = valor*0.19;
 
         document.getElementById('iva').value = iva ;
         document.getElementById('fin').value = resultado ;
@@ -46,13 +46,13 @@
               '<div class="col-md-12">'+' '+
                 '<div class="col-md-3">'+' '+
                   '<div class="form-group">'+' '+
-                    '<center><label >Descripción</label></center>'+' '+
+                    '<center class="separar"><label >Descripción</label></center>'+' '+
                     '<input type="text" class="form-control desc" value="Inspección  RETIE proceso de transformación"  readonly=”readonly” name="transformacion[descripcion][]">'+' '+
                   '</div>'+' '+
                 '</div>'+' '+
                 '<div class="col-md-2">'+' '+
                   '<div class="form-group">'+' '+
-                    '<center><label >Tipo</label></center>'+' '+
+                    '<center class="separar"><label >Tipo</label></center>'+' '+
                     '<select class="form-control tipo" name="transformacion[tipo][]">'+' '+
                       '<option value="">Seleccione...</option>'+' '+
                       '<option value="Tipo_poste">Tipo poste</option>'+' '+
@@ -63,7 +63,7 @@
                 '</div>'+' '+
                 '<div class="col-md-2">'+' '+
                   '<div class="form-group">'+' '+
-                    '<center><label >Nivel de tencion (kv)</label></center>'+' '+
+                    '<center class="separar"><label >Nivel de tencion (kv)</label></center>'+' '+
                     '<select class="form-control" name="transformacion[nivel_tension][]">'+' '+
                       '<option value="">Seleccione...</option>'+' '+
                       '<option value="13,2">13,2</option>'+' '+
@@ -74,19 +74,19 @@
                 '</div>'+' '+
                 '<div class="col-md-1">'+' '+
                   '<div class="form-group">'+' '+
-                    '<center><label >Capacidad</label></center>'+' '+
+                    '<center class="separar"><label >Capacidad</label></center>'+' '+
                       '<input type="text" class="form-control capacidad" placeholder="Capacidad"   name="transformacion[capacidad][]">'+' '+
                   '</div>'+' '+
                 '</div>'+' '+
                 '<div class="col-md-1">'+' '+
                   '<div class="form-group">'+' '+
-                    '<center><label >Cantidad</label></center>'+' '+
+                    '<center class="separar"><label >Cantidad</label></center>'+' '+
                     '<input type="text" class="form-control cantidad" id="cantidad" placeholder= "Cantidad" name="transformacion[cantidad][]">'+' '+
                   '</div>'+' '+
                 '</div>'+' '+
                 '<div class="col-md-2">'+' '+
                   '<div class="form-group">'+' '+
-                    '<center><label >Refrigeración </label></center>'+' '+
+                    '<center class="separar"><label >Refrigeración </label></center>'+' '+
                     '<select class="form-control" name="transformacion[tipo_refrigeracion][]">'+' '+
                       '<option value="">Seleccione...</option>'+' '+
                       '<option value="Seco">Seco</option>'+' '+
@@ -96,7 +96,7 @@
                 '</div>'+' '+
                 '<div class="col-md-1 tblprod10" >'+' '+
                   '<div class="form-group">'+' '+
-                    '<br>'+' '+
+                    '<center class="separar"></center>'+' '+
                     '<a class="btn btn-primary delete50" data-toggle="modal" href="#" id="delete50" style="background-color: #fdea08; border-color:#fdea08"><i class="glyphicon glyphicon-minus"></i></a>'+' '+
                   '</div>'+' '+
                 '</div>'+' '+
@@ -124,7 +124,7 @@
                   '<div class="col-md-12">'+' '+
                     '<div class="col-md-3">'+' '+
                       '<div class="form-group">'+' '+
-                        '<center style="margin-bottom: 25px;"><label >Descripción</label></center>'+' '+
+                        '<center class="separar"><label >Descripción</label></center>'+' '+
                         '<select class="form-control desc2" name="distribucion[descripcion_dis][]" style="top:25px important!" id="desc">'+' '+
                           '<option value="">Seleccione...</option>'+' '+
                           '<option value="Inspección RETIE proceso de distribución en MT">Inspección RETIE proceso de distribución en MT</option>'+' '+
@@ -134,7 +134,7 @@
                     '</div>'+' '+
                     '<div class="col-md-2">'+' '+
                       '<div class="form-group">'+' '+
-                        '<center style="margin-bottom: 25px;"><label >Tipo</label></center>'+' '+
+                        '<center class="separar"><label >Tipo</label></center>'+' '+
                         '<select class="form-control tipo2 tipo"  name="distribucion[tipo_dis][]" id="tipo">'+' '+
                           '<option value="">Seleccione...</option>'+' '+
                           '<option value="Aérea">Tipo Aérea</option>'+' '+
@@ -145,7 +145,7 @@
                     '</div>'+' '+
                     '<div class="col-md-1">'+' '+
                       '<div class="form-group">'+' '+
-                        '<center><label >Nivel de tensión  </label></center>'+' '+
+                        '<center class="separar"><label >Nivel de tensión  </label></center>'+' '+
                          '<select class="form-control tipo2" name="distribucion[nivel_tension_dis][]" id="tension">'+' '+
                             '<option value="">Seleccione...</option>'+' '+
                             '<option value="110-220">110-220</option>'+' '+
@@ -157,32 +157,32 @@
 
                     '<div class="col-md-1">'+' '+
                       '<div class="form-group">'+' '+
-                        '<center><label >Longitud de red (km)</label></center>'+' '+
+                        '<center class="separar"><label >Longitud de red (km)</label></center>'+' '+
                         '<input type="text" class="form-control cantidad2" placeholder= "Cantidad" name="distribucion[cantidad_dis][]">'+' '+
                       '</div>'+' '+
                     '</div>'+' '+
                     '<div class="col-md-1">'+' '+
                       '<div class="form-group">'+' '+
-                        '<center><label >Apoyos o estructuras</label></center>'+' '+
+                        '<center class="separar"><label >Apoyos o estructuras</label></center>'+' '+
                         '<input type="number" class="form-control apoyos" placeholder= "Cantidad" name="distribucion[apoyos_dis][]" id="apoyos">'+' '+
                       '</div>'+' '+
                     '</div>'+' '+
                     '<div class="col-md-1">'+' '+
                       '<div class="form-group">'+' '+
-                        '<center><label >Cajas de inspección</label></center>'+' '+
+                        '<center class="separar"><label >Cajas de inspección</label></center>'+' '+
                         '<input type="number" class="form-control cajas" placeholder= "Cantidad" name="distribucion[cajas_dis][]" id="cajas">'+' '+
                       '</div>'+' '+
                     '</div>'+' '+
                     '<div class="col-md-2">'+' '+
                       '<div class="form-group">'+' '+
-                        '<center style="margin-bottom: 25px;"><label >Notas</label></center>'+' '+
+                        '<center class="separar"><label >Notas</label></center>'+' '+
                         '<input type="text" class="form-control" placeholder= "Notas" name="distribucion[notas_dis][]">'+' '+
                       '</div>'+' '+
                     '</div>'+' '+
                     '<div class="col-md-1 tblprod11" >'+' '+
                       '<div class="form-group">'+' '+
-                        '<br>'+' '+
-                        '<a class="btn btn-primary delete51" data-toggle="modal" id="delete51" href="#" style="background-color: #fdea08; border-color:#fdea08;margin-top: 29px;"><i class="glyphicon glyphicon-minus"></i></a>'+' '+
+                        '<center class="separar"></center>'+' '+
+                        '<a class="btn btn-primary delete51" data-toggle="modal" id="delete51" href="#" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-minus"></i></a>'+' '+
                       '</div>'+' '+
                     '</div>'+' '+
                 '</div>'+' '+
@@ -270,7 +270,7 @@
                     '<div class="col-md-1 tblprod12" >'+' '+
                       '<div class="form-group">'+' '+
                         '<br>'+' '+
-                        '<a class="btn btn-primary delete52" data-toggle="modal" href="#" id="delete52" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-minus"></i></a>'+' '+
+                        '<a class="btn btn-primary delete52" data-toggle="modal" href="#" id="delete52" style="background-color: #fdea08; border-color:#fdea08"><i class="glyphicon glyphicon-minus"></i></a>'+' '+
                       '</div>'+' '+
                     '</div>'+' '+
                   '</div>'+' '+
@@ -278,7 +278,7 @@
             );
                 event.preventDefault();
                 $("select").select2();
-                
+
              });
              $(document).on("click",".delete52",function( event ) {
                $(this).closest("#quitar52").remove();
@@ -532,8 +532,8 @@
 
        $('.valor').keyup(function(){
            var valor = $(this).val().replace(/,/g,"");
-           var resultado = valor * 1.16;
-           var iva = valor*0.16;
+           var resultado = valor * 1.19;
+           var iva = valor*0.19;
            $(this).parent().parent().parent().find('.iva').val(addCommas2(Math.round(iva)));
            $(this).parent().parent().parent().find('.valor_total').val(addCommas2(Math.round(resultado)));
 
@@ -541,8 +541,8 @@
        });
           $('.valor_factura').keyup(function(){
               var valor = $(this).val().replace(/,/g,"");
-              var resultado = valor * 1.16;
-              var iva = valor*0.16;
+              var resultado = valor * 1.19;
+              var iva = valor*0.19;
               $(this).parent().parent().parent().find('.iva').val(addCommas2(Math.round(iva)));
               $(this).parent().parent().parent().find('.valor_total').val(addCommas2(Math.round(resultado)));
 

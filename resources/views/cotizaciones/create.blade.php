@@ -1,9 +1,13 @@
 @extends('index')
 <style media="screen">
-
-
+.separar{
+  height: 80px;
+}
+  select{
+    font-size: 15px;
+  }
   textarea{
-    width:100%;
+    width:95%;
     resize: none;
   }
 
@@ -145,20 +149,20 @@
   </section>
     <h3>Paso 2</h3>
       <section>
-    <div class="box-body">
+      <div class="box-body" style="width: 110%">
       <div class="row quitar50" id="quitar50">
         <center> <h3>Alcance: proceso de transformación</h3> </center>
 
       <div class="col-md-12">
         <div class="col-md-3">
           <div class="form-group">
-            <center><label >Descripción</label></center>
+            <center class="separar"><label >Descripción</label></center>
             <input type="text" class="form-control desc" value="Inspección  RETIE proceso de transformación"  readonly=”readonly” name="transformacion[descripcion][]">
           </div>
         </div>
         <div class="col-md-2">
           <div class="form-group">
-            <center><label >Tipo</label></center>
+            <center class="separar"><label >Tipo</label></center>
             <select class="form-control tipo" name="transformacion[tipo][]" style="width:100%">
               <option value="">Seleccione...</option>
               <option value="Tipo_poste">Tipo poste</option>
@@ -170,7 +174,7 @@
         </div>
         <div class="col-md-2">
           <div class="form-group">
-            <center><label >Nivel de tensión </label></center>
+            <center class="separar"><label >Nivel de tensión </label></center>
             <select class="form-control" name="transformacion[nivel_tension][]" style="width:100%">
               <option value="">Seleccione...</option>
               <option value="13,2">13,2</option>
@@ -181,19 +185,19 @@
         </div>
         <div class="col-md-1">
           <div class="form-group">
-            <center><label >Capacidad</label></center>
+            <center class="separar"><label >Capacidad</label></center>
               <input type="text" class="form-control capacidad" placeholder="Capacidad"   name="transformacion[capacidad][]">
           </div>
         </div>
         <div class="col-md-1">
           <div class="form-group">
-            <center><label >Cantidad</label></center>
+            <center class="separar"><label >Cantidad</label></center>
             <input type="text" class="form-control cantidad" id="cantidad" placeholder= "Cantidad" name="transformacion[cantidad][]">
           </div>
         </div>
         <div class="col-md-2">
           <div class="form-group">
-            <center><label >Refrigeración </label></center>
+            <center class="separar"><label >Refrigeración </label></center>
             <select class="form-control" name="transformacion[tipo_refrigeracion][]" style="width:100%">
               <option value="">Seleccione...</option>
               <option value="Seco">Seco</option>
@@ -203,7 +207,8 @@
         </div>
         <div class="col-md-1 " id="tblprod10">
           <div class="form-group">
-            <br>
+            <center class="separar"></center>
+
             <a class="btn btn-primary" data-toggle="modal" href="#" id="btnadd10" style="background-color: #fdea08; border-color:#fdea08"><i class="glyphicon glyphicon-plus"></i></a>
           </div>
         </div>
@@ -216,7 +221,7 @@
       <div class="col-md-12">
         <div class="col-md-3">
           <div class="form-group">
-            <center style="margin-bottom: 25px;"><label >Descripción</label></center>
+            <center class="separar"><label >Descripción</label></center>
             <select class="form-control desc2" name="distribucion[descripcion_dis][]" style="width:100%" id="desc">
               <option value="">Seleccione...</option>
               <option value="Inspección RETIE proceso de distribución en MT">Inspección RETIE proceso de distribución en MT</option>
@@ -226,7 +231,7 @@
         </div>
         <div class="col-md-2">
           <div class="form-group">
-            <center style="margin-bottom: 25px;"><label >Tipo</label></center>
+            <center class="separar"><label >Tipo</label></center>
             <select class="form-control tipo2" name="distribucion[tipo_dis][]" style="width:100%" id="tipo">
               <option value="">Seleccione...</option>
               <option value="Aérea">Tipo Aérea</option>
@@ -238,7 +243,7 @@
 
         <div class="col-md-1">
           <div class="form-group">
-            <center><label >Nivel de tensión  </label></center>
+            <center class="separar"><label >Nivel de tensión  </label></center>
             <select class="form-control tipo2" name="distribucion[nivel_tension_dis][]" style="width:100%" id="tension">
               <option value="">Seleccione...</option>
 
@@ -248,32 +253,33 @@
 
         <div class="col-md-1">
           <div class="form-group">
-            <center><label >Longitud de red (km)</label></center>
+            <center class="separar"><label >Longitud de red (km)</label></center>
             <input type="text" class="form-control cantidad2" placeholder= "Cantidad" name="distribucion[cantidad_dis][]">
           </div>
         </div>
         <div class="col-md-1">
           <div class="form-group">
-            <center><label >Apoyos o estructuras</label></center>
+            <center class="separar"><label >Apoyos o estructuras</label></center>
             <input type="number" id="apoyos" class="form-control" placeholder= "Cantidad" name="distribucion[apoyos_dis][]" >
           </div>
         </div>
         <div class="col-md-1">
           <div class="form-group">
-            <center><label >Cajas de inspección</label></center>
+            <center class="separar"><label >Cajas de inspección</label></center>
             <input type="number" id="cajas" class="form-control" placeholder= "Cantidad" name="distribucion[cajas_dis][]">
           </div>
         </div>
         <div class="col-md-2">
           <div class="form-group">
-            <center style="margin-bottom: 25px;"><label >Notas</label></center>
+            <center class="separar"><label >Notas</label></center>
             <input type="text" class="form-control" placeholder= "Notas" name="distribucion[notas_dis][]">
           </div>
         </div>
         <div class="col-md-1 tblprod11" id="tblprod11" >
           <div class="form-group">
-            <br>
-            <a class="btn btn-primary" data-toggle="modal" id="btnadd11" href="#" style="background-color: #fdea08; border-color:#fdea08;margin-top: 29px;"><i class="glyphicon glyphicon-plus"></i></a>
+            <center class="separar"></center>
+
+            <a class="btn btn-primary" data-toggle="modal" id="btnadd11" href="#" style="background-color: #fdea08; border-color:#fdea08"><i class="glyphicon glyphicon-plus"></i></a>
           </div>
         </div>
     </div>
@@ -346,8 +352,8 @@
       </div>
       <div class="col-md-1 tblprod12" id="tblprod12" >
         <div class="form-group">
-          <br>
-          <a class="btn btn-primary" data-toggle="modal" href="#" id="btnadd12" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-plus"></i></a>
+          <center></center>
+          <a class="btn btn-primary" data-toggle="modal" href="#" id="btnadd12" style="background-color: #fdea08; border-color:#fdea08; margin-top: 34px;"><i class="glyphicon glyphicon-plus"></i></a>
         </div>
       </div>
     </div>

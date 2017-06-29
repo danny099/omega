@@ -99,7 +99,7 @@
       varMonto = document.getElementById("fin").value;
       varMonto = varMonto.replace(/[\,]/g,'');
 
-      varIva = parseFloat(varMonto) / 1.16;
+      varIva = parseFloat(varMonto) / 1.19;
       document.getElementById("valor_contrato_inicial").value = addCommas(Math.round(varIva)) ;
 
       varSubTotal = parseFloat(varMonto) - parseFloat(varIva);
@@ -189,8 +189,8 @@
 
       $('.antesiva').on('keyup',function(){
           var valor = $(this).val().replace(/,/g,"");
-          var resultado = valor * 1.16;
-          var iva = valor*0.16;
+          var resultado = valor * 1.19;
+          var iva = valor*0.19;
           $(this).parent().parent().parent().parent().parent().find('.iva').val(addCommas2(Math.round(iva)));
           $(this).parent().parent().parent().parent().parent().find('.otrosi').val(addCommas2(Math.round(resultado)));
 
@@ -199,8 +199,8 @@
       });
       $('.valor').keyup(function(){
           var valor = $(this).val().replace(/,/g,"");
-          var resultado = valor * 1.16;
-          var iva = valor*0.16;
+          var resultado = valor * 1.19;
+          var iva = valor*0.19;
           $(this).parent().parent().parent().find('.iva').val(addCommas2(Math.round(iva)));
           $(this).parent().parent().parent().find('.valor_total').val(addCommas2(Math.round(resultado)));
 
@@ -210,8 +210,8 @@
       $('.valor_factura').on('keyup',function(){
 
           var valor = $(this).val().replace(/,/g,"");
-          var resultado = valor * 1.16;
-          var iva = valor*0.16;
+          var resultado = valor * 1.19;
+          var iva = valor*0.19;
           $(this).parent().parent().parent().find('.iva').val(addCommas2(Math.round(iva)));
           $(this).parent().parent().parent().find('.valor_total').val(addCommas2(Math.round(resultado)));
 
