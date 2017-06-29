@@ -39,6 +39,7 @@
       }
       img{
         margin: 0;
+        padding: 0;
       }
       .div2{
         padding: 0;
@@ -64,9 +65,10 @@
       }
 
       @page { margin: 100px 50px; }
-      header { position: fixed; top: -60px; left: 0px; right: 0px; height: 50px; }
+      header { position: fixed; top: -60px; left: 0px; right: 0px; height: 100px;
+            margin-top: 25px}
       footer { position: fixed; bottom: -60px; left: 0px; right: 0px; height: 50px; }
-      .page-number:after { content: counter(pages) " of " counter(pages) }
+      .page-number:after {  content: counter(page) ; }
 
       /*p { page-break-after: always; }*/
       /*p:last-child { page-break-after: never; }*/
@@ -76,14 +78,21 @@
   <body>
 
     <header>
-      <table class="table table-bordered">
+      <table class="table table-bordered " cellpadding="0" cellspacing="0">
         <tr>
-          <td><center><img id="img" src="Certicol2.png" style="width:75px;"></center></td>
-          <td>COTIZACIÓN</td>
+          <td><center><img id="img" src="Certicol2.png" style="width:60px;"></center></td>
+          <th><center>COTIZACIÓN</center></th>
           <td><center><span class="page-number">Pagina </span></center></td>
         </tr>
       </table>
     </header>
+    <footer>
+      <table class="table">
+        <tr>
+          <td id="td3"><center><span class="">Certicol_for_096 / Aprobado 09-05-2017 / Versión 01 </span></center></td>
+        </tr>
+      </table>
+    </footer>
 
     <br>
     <br>
@@ -179,43 +188,46 @@
 
       @if(count($distribuciones) == 0)
       @else
-      <table class=" table table-bordered table-striped">
-        <tr>
-          <th colspan="8" class="ttable">ALCANCE DE DISTRIBUCIÓN</th>
-        </tr>
-        <thead>
+
+        <table class=" table table-bordered table-striped" >
           <tr>
-            <th>Descripción</th>
-            <th>Tipo</th>
-            <th>Nivel de Tensión</th>
-            <th>Unidad</th>
-            <th>Cantidad</th>
-            <th>Apoyos</th>
-            <th>Cajas</th>
-            <th>Notas</th>
+            <th colspan="8" class="ttable">ALCANCE DE DISTRIBUCIÓN</th>
           </tr>
-        </thead>
-        <tbody>
-          @foreach($distribuciones as $distri)
+          <thead>
             <tr>
-              <td>{{ $distri->descripcion }}</td>
-              <td>{{ $distri->tipo }}</td>
-              <td>{{ $distri->nivel_tension }}</td>
-              <td>{{ $distri->unidad }}</td>
-              <td>{{ $distri->cantidad }}</td>
-              <td>{{ $distri->apoyos }}</td>
-              <td>{{ $distri->cajas }}</td>
-              <td>{{ $distri->notas }}</td>
+              <th>Descripción</th>
+              <th>Tipo</th>
+              <th>Nivel de Tensión</th>
+              <th>Unidad</th>
+              <th>Cantidad</th>
+              <th>Apoyos</th>
+              <th>Cajas</th>
+              <th>Notas</th>
             </tr>
-          @endforeach
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            @foreach($distribuciones as $distri)
+              <tr>
+                <td>{{ $distri->descripcion }}</td>
+                <td>{{ $distri->tipo }}</td>
+                <td>{{ $distri->nivel_tension }}</td>
+                <td>{{ $distri->unidad }}</td>
+                <td>{{ $distri->cantidad }}</td>
+                <td>{{ $distri->apoyos }}</td>
+                <td>{{ $distri->cajas }}</td>
+                <td>{{ $distri->notas }}</td>
+              </tr>
+            @endforeach
+          </tbody>
+        </table>
+
+
       <br>
       @endif
 
       @if(count($pu_finales) == 0)
       @else
-      <table class=" table table-bordered table-striped">
+      <table class=" table table-bordered table-striped" style="page-break-after: avoid;">
         <tr>
           <th colspan="8" class="ttable">ALCANCE PROCESO USO FINAL</th>
         </tr>

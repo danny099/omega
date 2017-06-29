@@ -393,7 +393,7 @@
           <div class="col-md-1">
             <div class="form-group">
               <center><label >Acometidas</label></center>
-              <input type="number" class="form-control" placeholder= "Cantidad" value="{{ $pu->acometidas }}" name="pu_final[acometidas_pu][]">
+              <input type="text" class="form-control" placeholder= "Cantidad" value="{{ $pu->acometidas }}" name="pu_final[acometidas_pu][]">
             </div>
           </div>
         </div>
