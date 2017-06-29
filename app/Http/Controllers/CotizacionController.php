@@ -240,9 +240,17 @@ class CotizacionController extends Controller
                      $datos3['kva'] = $input['pu_final']['kva_pu'][$i];
                    }
 
-                   $datos3['acometidas'] = $input['pu_final']['acometidas_pu'][$i];
+                   if ($input['pu_final']['acometidas_pu'][$i] == 0) {
+
+                     $datos3['acometidas'] = 'Según Plano';
+
+                   }else {
+                      $datos3['acometidas'] = $input['pu_final']['acometidas_pu'][$i];
+                   }
+
+
                    $datos3['cotizacion_id'] = $lastId_cotiza;
-                   
+
                    $texto['detalles'] = $datos3['descripcion'].' '.$datos3['tipo'].' '. $datos3['cantidad'];
                    $texto['cantidad'] = $datos3['cantidad'];
                    $texto['valor_uni'] = str_replace(',','',$input['valores']['valor_uni_pu'][$i]);
@@ -457,7 +465,13 @@ class CotizacionController extends Controller
               $datos3['kva'] = $input['pu_final']['kva_pu'][$i];
             }
 
-            $datos3['acometidas'] = $input['pu_final']['acometidas_pu'][$i];
+            if ($input['pu_final']['acometidas_pu'][$i] == 0) {
+
+              $datos3['acometidas'] = 'Según Plano';
+
+            }else {
+               $datos3['acometidas'] = $input['pu_final']['acometidas_pu'][$i];
+            }
 
             $id2 = $input['valores']['id_pu'][$i];
             $valor = Valorcot::findOrFail($id2);

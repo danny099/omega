@@ -69,7 +69,14 @@ class Pu_finalController extends Controller
                    $datos3['kva'] = $input['pu_final']['kva_pu'][$i];
                  }
 
-                 $datos3['acometidas'] = $input['pu_final']['acometidas_pu'][$i];
+                 if ($input['pu_final']['acometidas_pu'][$i] == 0) {
+
+                   $datos3['acometidas'] = 'Según Plano';
+
+                 }else {
+                    $datos3['acometidas'] = $input['pu_final']['acometidas_pu'][$i];
+                 }
+
                  $datos3['administrativa_id'] = $request->codigo_proyecto;
                  $datos3['cotizacion_id'] = $request->codigo_cotizacion;
 
@@ -143,7 +150,14 @@ class Pu_finalController extends Controller
            $datos3['kva'] = $input['pu_final']['kva_pu'][$i];
          }
 
-         $datos3['acometidas'] = $input['pu_final']['acometidas_pu'][$i];
+         if ($input['pu_final']['acometidas_pu'][$i] == 0) {
+
+           $datos3['acometidas'] = 'Según Plano';
+
+         }else {
+            $datos3['acometidas'] = $input['pu_final']['acometidas_pu'][$i];
+         }
+         
 
          $pu->update($datos3);
 
