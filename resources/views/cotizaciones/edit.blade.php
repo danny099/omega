@@ -208,16 +208,16 @@
                 <center class="separar"><label >Tipo</label></center>
                 <select class="form-control tipo" name="transformacion[tipo][]" style="width:100%">
                   <option value="{{ $transfor->tipo }}">{{ $transfor->tipo }}</option>
-                  <option value="Tipo_poste">Tipo poste</option>
-                  <option value="Tipo_interior">Tipo interior</option>
-                  <option value="Tipo_pedestal/jardin">Tipo pedestal/jardin</option>
-                  <option value="Tipo_patio">Tipo Patio</option>
+                  <option value="Tipo poste">Tipo poste</option>
+                  <option value="Tipo interior">Tipo interior</option>
+                  <option value="Tipo pedestal/jardin">Tipo pedestal/jardin</option>
+                  <option value="Tipo patio">Tipo Patio</option>
                 </select>
               </div>
             </div>
             <div class="col-md-2">
               <div class="form-group">
-                <center class="separar"><label >Nivel de tensión (kv)</label></center>
+                <center class="separar"><label >Nivel de tensión (KV)</label></center>
                 <select class="form-control" name="transformacion[nivel_tension][]" style="width:100%">
                   <option value="{{ $transfor->nivel_tension }}">{{ $transfor->nivel_tension }}</option>
                   <option value="13,2">13,2</option>
@@ -228,7 +228,7 @@
             </div>
             <div class="col-md-1">
               <div class="form-group">
-                <center class="separar"><label >Capacidad</label></center>
+                <center class="separar"><label >Capacidad (KVA)</label></center>
                   <input type="text" class="form-control capacidad" placeholder="Capacidad"   value="{{$transfor->capacidad}}" name="transformacion[capacidad][]">
               </div>
             </div>
@@ -280,14 +280,13 @@
                   <option value="{{ $distribucion->tipo }}">{{ $distribucion->tipo }}</option>
                   <option value="Aérea">Tipo Aérea</option>
                   <option value="Subterránea">Tipo subterránea</option>
-                  <option value="Aérea/subterránea">Aérea/subterránea</option>
                 </select>
               </div>
             </div>
 
             <div class="col-md-1">
               <div class="form-group">
-                <center class="separar"><label >Nivel de tensión  </label></center>
+                <center class="separar"><label >Nivel de tensión (KV) </label></center>
                 <select class="form-control tipo2" name="distribucion[nivel_tension_dis][]" style="width:100%" id="tension">
                   <option value="{{ $distribucion->nivel_tension }}">{{ $distribucion->nivel_tension }}</option>
 
@@ -297,7 +296,7 @@
 
             <div class="col-md-1">
               <div class="form-group">
-                <center class="separar"><label >Longitud de red (km)</label></center>
+                <center class="separar"><label >Longitud de red (mts.)</label></center>
                 <input type="text" class="form-control cantidad2" placeholder= "Cantidad" value="{{ $distribucion->cantidad }}" name="distribucion[cantidad_dis][]">
               </div>
             </div>
@@ -338,23 +337,20 @@
             <div class="form-group">
               <input type="hidden"  name="pu[id][]" value="{{$pu->id}}" >
               <center><label >Descripción</label></center>
-              <select class="form-control desc3"name="pu_final[descripcion_pu][]" style="width:100%">
+              <select class="form-control desc3"name="pu_final[descripcion_pu][]" style="width:100%" id="instalacion">
                 <option value="{{ $pu->descripcion }}">{{ $pu->descripcion }}</option>
                 <option value="Inspección RETIE proceso uso final residencial">Inspección RETIE proceso uso final residencial</option>
                 <option value="Inspección RETIE proceso uso final comercial">Inspección RETIE proceso uso final comercial</option>
+                <option value="Inspección RETIE proceso uso industrial">Inspección RETIE proceso uso industrial</option>
               </select>
             </div>
           </div>
           <div class="col-md-2">
             <div class="form-group">
               <center><label >Tipo</label></center>
-              <select class="form-control tipo3" name="pu_final[tipo_pu][]" style="width:100%">
+              <select class="form-control tipo3" name="pu_final[tipo_pu][]" style="width:100%" id="tipo3">
                 <option value="{{ $pu->tipo }}">{{ $pu->tipo }}</option>
-                <option value="Casa">Casa</option>
-                <option value="Apartamentos">Apartamentos</option>
-                <option value="Zona común">Zona común</option>
-                <option value="Local comercial">Local comercial</option>
-                <option value="Punto fijo">Punto fijo</option>
+
               </select>
             </div>
           </div>
@@ -404,7 +400,7 @@
         <center> <h3>Observaciones</h3> </center>
       </div>
       <div class="col-md-12">
-        <textarea  rows="4" cols="196" name="observacion"  required="">{{ $cotizaciones->observaciones}}</textarea>
+        <textarea  rows="4" cols="196" name="observacion" >{{ $cotizaciones->observaciones}}</textarea>
       </div>
     </div>
 
@@ -423,7 +419,7 @@
          <th><center><label> Cantidad</label></center></th>
          <th><center><label> Valor unitario</label></center></th>
          <th><center><label> Valor</label></center></th>
-         <th><center><label> <button type="button" class="btn btn-primary generar" style="background-color: #33579A; border-color:#33579A;" name="button">Generar</button></label></center></th>
+         <th><center><label> <button type="button" class="btn btn-primary generar" style="background-color: #33579A; border-color:#33579A;" name="button">Generar tabla para precios</button></label></center></th>
        </tr>
        <input type="hidden"  value="{{ $datos1 }}" class="datos1">
        <input type="hidden"  value="{{ $datos2 }}" class="datos2">
@@ -486,6 +482,12 @@ $(function() {
       var valor_multi = 0;
       var valor_multi_dis = 0;
       var valor_multi_pu = 0;
+      var operador1=0;
+      var acumu1=0;
+      var operador2=0;
+      var acumu2=0;
+      var operador3=0;
+      var acumu3=0;
       var datos = JSON.parse($(".datos1").val())
       var datos2 = JSON.parse($(".datos2").val())
       var datos3 = JSON.parse($(".datos3").val())
@@ -517,11 +519,12 @@ $(function() {
 
 
           if (cantidad != '' && desc!= '' && capacidad!='' && tipo!='') {
-
-            $('.tabla tr:last').after('<tr class="actualizar"><td>'+nFilas+'</td><td>'+desc+' '+tipo+' '+capacidad+'</td><td class="cant">'+cantidad+
+            operador1 = cantidad * datos[i].valor_uni;
+            acumu1 = acumu1+ operador1;
+            $('.tabla tr:last').after('<tr class="actualizar"><td>'+nFilas+'</td><td>'+desc+' - '+tipo+' de '+capacidad+' KVA'+'</td><td class="cant">'+cantidad+
             '</td><td><input type="text" class="form-control valor_uni" value="'+addCommas(datos[i].valor_uni)+'" placeholder= "Valor" onkeyup="mascara(this,cpf)" name="valores[valor_uni][]" required=""></td>'+' '+
-            '<td><input type="text" class="form-control valor_multi" placeholder= "Valor" value="'+addCommas(datos[i].valor_total)+'" name="valores[valor_multi][]" required="" readonly ></td></tr>'+' '+
-            '<input type="hidden"  value="'+datos[i].id+'"  name="valores[id][]">');
+            '<td><input type="text" class="form-control valor_multi" placeholder= "Valor" value="'+addCommas(operador1)+'" name="valores[valor_multi][]" required="" readonly ><input type="hidden"  value="'+datos[i].id+'"  name="valores[id][]"></td></tr>'+' '+
+            '');
 
               event.preventDefault();
 
@@ -563,11 +566,12 @@ $(function() {
             var tipo2 =$(this).find(".tipo2").val();
             var nFilas = $(".tabla tr").length - 1;
             if (cantidad2 != '' && desc2!= '' && tipo2!='') {
-
-              $('.tabla tr:last').after('<tr class="actualizar"><td>'+nFilas+'</td><td name="detalles2">'+desc2+' '+tipo2+'</td><td>'+cantidad2+' km'+
+              operador2 = datos2[i].valor_uni;
+              acumu2 = acumu2+ operador2;
+              $('.tabla tr:last').after('<tr class="actualizar"><td>'+nFilas+'</td><td name="detalles2">'+desc2+' - '+tipo2+'</td><td>'+cantidad2+' mts.'+
               '</td><td><input type="text" class="form-control valor_uni_dis"  value="'+addCommas(datos2[i].valor_uni)+'" placeholder= "Valor" onkeyup="mascara(this,cpf)" name="valores[valor_uni_dis][]" required="">'+' '+
-              '</td><td><input type="text" class="form-control valor_multi_dis" placeholder= "Valor"  value="'+addCommas(datos2[i].valor_total)+'" name="valores[valor_multi_dis][]" required="" readonly ></td></tr>'+' '+
-              '<input type="hidden"  value="'+datos2[i].id+'"  name="valores[id_dis][]">');
+              '</td><td><input type="text" class="form-control valor_multi_dis" placeholder= "Valor"  value="'+addCommas(operador2)+'" name="valores[valor_multi_dis][]" required="" readonly ><input type="hidden"  value="'+datos2[i].id+'"  name="valores[id_dis][]"></td></tr>'+' '+
+              '');
 
 
                 event.preventDefault();
@@ -605,11 +609,12 @@ $(function() {
               var nFilas = $(".tabla tr").length - 1;
 
               if (cantidad3 != '' && desc3!= '' && tipo3!='') {
-
-                $('.tabla tr:last').after('<tr class="actualizar"><td>'+nFilas+'</td><td>'+desc3+' '+tipo3+'</td><td class="cant3">'+cantidad3+
+                operador3 = cantidad3 *datos3[i].valor_uni;
+                acumu3 = acumu3+ operador3;
+                $('.tabla tr:last').after('<tr class="actualizar"><td>'+nFilas+'</td><td>'+desc3+' - '+tipo3+'</td><td class="cant3">'+cantidad3+
                 '</td><td><input type="text" class="form-control valor_uni_pu"  value="'+addCommas(datos3[i].valor_uni)+'" placeholder= "Valor" onkeyup="mascara(this,cpf)" name="valores[valor_uni_pu][]" required=""></td>'+' '+
-                '<td><input type="text" class="form-control valor_multi_pu" placeholder= "Valor"  value="'+addCommas(datos3[i].valor_total)+'" name="valores[valor_multi_pu][]" required="" readonly ></td></tr>'+' '+
-                '<input type="hidden"  value="'+datos3[i].id+'"  name="valores[id_pu][]">');
+                '<td><input type="text" class="form-control valor_multi_pu" placeholder= "Valor"  value="'+addCommas(operador3)+'" name="valores[valor_multi_pu][]" required="" readonly > <input type="hidden"  value="'+datos3[i].id+'"  name="valores[id_pu][]"></td></tr>'+' '+
+                '');
                   event.preventDefault();
 
                   $('.valor_uni_pu').keyup(function(){
@@ -641,14 +646,21 @@ $(function() {
 
 
     $('.tabla tr:last').after('<tr class="actualizar"><td Colspan="3"></td><td><label>Subtotal</label></td><td><label class="subtotal">${{ number_format($cotizaciones->subtotal,0)}}</label><input type="hidden" class="form-control subtotal" placeholder= "Valor" value="{{$cotizaciones->subtotal}}"  name="subtotal"  required="" readonly ></td></tr>');
-    $('.tabla tr:last').after('<tr class="actualizar"><td Colspan="3"></td><td><label>IVA</label></td><td><label class="iva">${{ number_format($cotizaciones->iva,0)}}</label><input type="hidden" class="form-control iva" placeholder= "Valor"  name="iva" value="{{$cotizaciones->iva}}"  required="" readonly ></td></tr>');
+    $('.tabla tr:last').after('<tr class="actualizar"><td Colspan="3"></td><td><label>IVA 19%</label></td><td><label class="iva">${{ number_format($cotizaciones->iva,0)}}</label><input type="hidden" class="form-control iva" placeholder= "Valor"  name="iva" value="{{$cotizaciones->iva}}"  required="" readonly ></td></tr>');
     $('.tabla tr:last').after('<tr class="actualizar"><td Colspan="3"></td><td><label>Total</label></td><td><label class="total">${{ number_format($cotizaciones->total,0)}}</label><input type="hidden" class="form-control total" placeholder= "Valor" value="{{$cotizaciones->total}}" name="total"  required="" readonly></td></tr>');
     $('.tabla tr:last').after('<tr class="actualizar"><td Colspan="3"></td><td><label>Costo adicional de visita por dia si se requiere:</label></td><td><input type="text" class="form-control adici" placeholder= "Valor" onkeyup="mascara(this,cpf)" value="{{$cotizaciones->adicional}}" name="adici"  required="" ></td></tr>');
     $('.tabla tr:last').after('<input type="hidden" class="form-control valor_multi actualizar"  value="0"  >');
     $('.tabla tr:last').after('<input type="hidden" class="form-control  valor_multi_dis actualizar"  value="0"  >');
     $('.tabla tr:last').after('<input type="hidden" class="form-control  valor_multi_pu actualizar"  value="0"  >');
-
-
+    var subtot= acumu1+acumu2+acumu3;
+    var iva = subtot*0.19;
+    var total = subtot+iva;
+    $('.subtotal').text(addCommas(Math.round(subtot)));
+    $('.subtotal').val(addCommas(Math.round(subtot)));
+    $('.iva').text(addCommas(Math.round(iva)));
+    $('.iva').val(addCommas(Math.round(iva)));
+    $('.total').text(addCommas(Math.round(total)));
+    $('.total').val(addCommas(Math.round(total)));
    });
 
 });
@@ -748,6 +760,29 @@ $(document).on('change','#desc',function(){
 
 });
 
+$(document).on('change','#instalacion',function(){
+
+  var  instalacion = $(this).val();
+
+  if (instalacion == 'Inspección RETIE proceso uso final residencial') {
+    $(this).parent().parent().parent().find("#tipo3").html('');
+    $(this).parent().parent().parent().find("#tipo3").append('<option value="Casa">Casa</option>');
+    $(this).parent().parent().parent().find("#tipo3").append('<option value="Apartamentos">Apartamentos</option>');
+    $(this).parent().parent().parent().find("#tipo3").append('<option value="Zona común">Zona común</option>');
+
+  }
+    else if (instalacion == 'Inspección RETIE proceso uso final comercial') {
+      $(this).parent().parent().parent().find("#tipo3").html('');
+      $(this).parent().parent().parent().find("#tipo3").append('<option value="Local comercial">Local comercial</option>');
+      $(this).parent().parent().parent().find("#tipo3").append('<option value="Bodega">Bodega</option>');
+    }
+    else {
+      $(this).parent().parent().parent().find("#tipo3").html('');
+      $(this).parent().parent().parent().find("#tipo3").append('<option value="Bodega">Bodega</option>');
+    }
+
+});
+
 var form = $("#form");
 form.validate({
     errorPlacement: function errorPlacement(error, element) { element.before(error); },
@@ -774,7 +809,7 @@ form.children("div").steps({
     onFinished: function (event, currentIndex)
     {
       if (validar == 0) {
-        alert('Presione boton generar');
+        alert('Presione el boton generar tabla para precios');
       }
       else {
         $("#form").submit();

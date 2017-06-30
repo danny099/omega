@@ -47,23 +47,20 @@
           <div class="col-md-3">
             <div class="form-group">
               <center><label >Descripción</label></center>
-              <select class="form-control desc3"name="pu_final[descripcion_pu][]" style="width:100%">
+              <select class="form-control desc3"name="pu_final[descripcion_pu][]" style="width:100%" id="instalacion">
                 <option value="">Seleccione...</option>
                 <option value="Inspección RETIE proceso uso final residencial">Inspección RETIE proceso uso final residencial</option>
                 <option value="Inspección RETIE proceso uso final comercial">Inspección RETIE proceso uso final comercial</option>
+                <option value="Inspección RETIE proceso uso industrial">Inspección RETIE proceso uso industrial</option>
+
               </select>
             </div>
           </div>
           <div class="col-md-2">
             <div class="form-group">
               <center><label >Tipo</label></center>
-              <select class="form-control tipo3" name="pu_final[tipo_pu][]" style="width:100%">
-                <option value="">Seleccione...</option>
-                <option value="Casa">Casa</option>
-                <option value="Apartamentos">Apartamentos</option>
-                <option value="Zona común">Zona común</option>
-                <option value="Local comercial">Local comercial</option>
-                <option value="Punto fijo">Punto fijo</option>
+              <select class="form-control tipo3" name="pu_final[tipo_pu][]" style="width:100%"id="tipo3">
+
               </select>
             </div>
           </div>
@@ -118,4 +115,39 @@
       </button>
     </div>
   </form>
+@endsection
+
+@section('scripts')
+
+
+<script type="text/javascript">
+$(document).on('change','#instalacion',function(){
+
+  var  instalacion = $(this).val();
+
+  if (instalacion == 'Inspección RETIE proceso uso final residencial') {
+    $(this).parent().parent().parent().find("#tipo3").html('');
+    $(this).parent().parent().parent().find("#tipo3").append('<option value="Casa">Casa</option>');
+    $(this).parent().parent().parent().find("#tipo3").append('<option value="Apartamentos">Apartamentos</option>');
+    $(this).parent().parent().parent().find("#tipo3").append('<option value="Zona común">Zona común</option>');
+
+  }
+    else if (instalacion == 'Inspección RETIE proceso uso final comercial') {
+      $(this).parent().parent().parent().find("#tipo3").html('');
+      $(this).parent().parent().parent().find("#tipo3").append('<option value="Local comercial">Local comercial</option>');
+      $(this).parent().parent().parent().find("#tipo3").append('<option value="Bodega">Bodega</option>');
+    }
+    else {
+      $(this).parent().parent().parent().find("#tipo3").html('');
+      $(this).parent().parent().parent().find("#tipo3").append('<option value="Bodega">Bodega</option>');
+    }
+
+});
+
+
+
+</script>
+
+
+
 @endsection

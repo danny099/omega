@@ -53,6 +53,7 @@ function addCommas(nStr){
   }
   return x1 + x2;
 }
+
 </script>
 @section('contenido')
 
@@ -232,9 +233,9 @@ function addCommas(nStr){
             <center><label >Tipo</label></center>
             <select class="form-control" name="transformacion[tipo][]">
               <option value="{{ $transfor->tipo }}">{{ $transfor->tipo }}</option>
-              <option value="Tipo_poste">Tipo poste</option>
-              <option value="Tipo_interior">Tipo interior</option>
-              <option value="Tipo_exterior">Tipo exterior</option>
+              <option value="Tipo poste">Tipo poste</option>
+              <option value="Tipo interior">Tipo interior</option>
+              <option value="Tipo exterior">Tipo exterior</option>
             </select>
           </div>
         </div>
@@ -289,7 +290,6 @@ function addCommas(nStr){
               <option value="{{ $distribucion->tipo }}">{{ $distribucion->tipo }}</option>
               <option value="Aérea">Tipo Aérea</option>
               <option value="Subterránea">Tipo subterránea</option>
-              <option value="Aérea/subterránea">Aérea/subterránea</option>
             </select>
           </div>
         </div>
@@ -297,7 +297,7 @@ function addCommas(nStr){
           <div class="form-group">
             <center><label >Unidad</label></center>
             <center>
-              <input type="text" class="form-control" value="{{ $distribucion->unidad}}" value="km"  readonly=”readonly” name="distribucion[unidad_distribucion][]"style="text-align:center">
+              <input type="text" class="form-control" value="{{ $distribucion->unidad}}" value="mts."  readonly=”readonly” name="distribucion[unidad_distribucion][]"style="text-align:center">
             </center>
           </div>
         </div>
@@ -323,23 +323,21 @@ function addCommas(nStr){
         <div class="form-group">
           <input type="hidden" name="pu_final[id_pu][]" value="{{ $pu->id }}">
           <center><label >Descripción</label></center>
-          <select class="form-control"name="pu_final[descripcion_pu][]">
+          <select class="form-control"name="pu_final[descripcion_pu][]" id="instalacion">
             <option value="{{ $pu->descripcion }}">{{ $pu->descripcion }}</option>
             <option value="Inspección RETIE proceso uso final residencial">Inspección RETIE proceso uso final residencial</option>
             <option value="Inspección RETIE proceso uso final comercial">Inspección RETIE proceso uso final comercial</option>
+            <option value="Inspección RETIE proceso uso industrial">Inspección RETIE proceso uso industrial</option>
+            
           </select>
         </div>
       </div>
       <div class="col-md-3">
         <div class="form-group">
           <center><label >Tipo</label></center>
-          <select class="form-control" name="pu_final[tipo_pu][]">
+          <select class="form-control" name="pu_final[tipo_pu][]" id="tipo3">
             <option value="{{ $pu->tipo }}">{{ $pu->tipo }}</option>
-            <option value="Casa">Casa</option>
-            <option value="Apartamentos">Apartamentos</option>
-            <option value="Zona común">Zona común</option>
-            <option value="Local comercial">Local comercial</option>
-            <option value="Punto fijo">Punto fijo</option>
+
           </select>
         </div>
       </div>
@@ -383,6 +381,30 @@ function addCommas(nStr){
 
 
 <script type="text/javascript">
+$(document).on('change','#instalacion',function(){
+
+  var  instalacion = $(this).val();
+
+  if (instalacion == 'Inspección RETIE proceso uso final residencial') {
+    $(this).parent().parent().parent().find("#tipo3").html('');
+    $(this).parent().parent().parent().find("#tipo3").append('<option value="Casa">Casa</option>');
+    $(this).parent().parent().parent().find("#tipo3").append('<option value="Apartamentos">Apartamentos</option>');
+    $(this).parent().parent().parent().find("#tipo3").append('<option value="Zona común">Zona común</option>');
+
+  }
+    else if (instalacion == 'Inspección RETIE proceso uso final comercial') {
+      $(this).parent().parent().parent().find("#tipo3").html('');
+      $(this).parent().parent().parent().find("#tipo3").append('<option value="Local comercial">Local comercial</option>');
+      $(this).parent().parent().parent().find("#tipo3").append('<option value="Bodega">Bodega</option>');
+    }
+    else {
+      $(this).parent().parent().parent().find("#tipo3").html('');
+      $(this).parent().parent().parent().find("#tipo3").append('<option value="Bodega">Bodega</option>');
+    }
+
+});
+
+
 $(document).ready(function(){
 $(document).on('change','#departamento',function(){
 

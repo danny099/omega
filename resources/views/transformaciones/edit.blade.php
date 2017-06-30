@@ -26,16 +26,16 @@
             <center><label >Tipo</label></center>
             <select class="form-control tipo" name="transformacion[tipo][]" style="width:100%">
               <option value="{{ $transfor->tipo }}">{{ $transfor->tipo }}</option>
-              <option value="Tipo_poste">Tipo poste</option>
-              <option value="Tipo_interior">Tipo interior</option>
-              <option value="Tipo_pedestal/jardin">Tipo pedestal/jardin</option>
-              <option value="Tipo_patio">Tipo Patio</option>
+              <option value="Tipo poste">Tipo poste</option>
+              <option value="Tipo interior">Tipo interior</option>
+              <option value="Tipo pedestal/jardin">Tipo pedestal/jardin</option>
+              <option value="Tipo patio">Tipo Patio</option>
             </select>
           </div>
         </div>
         <div class="col-md-2">
           <div class="form-group">
-            <center><label >Nivel de tensión (kv)</label></center>
+            <center><label >Nivel de tensión (KV)</label></center>
             <select class="form-control" name="transformacion[nivel_tension][]" style="width:100%">
               <option value="{{ $transfor->nivel_tension }}">{{ $transfor->nivel_tension }}</option>
               <option value="13,2">13,2</option>
@@ -46,7 +46,7 @@
         </div>
         <div class="col-md-1">
           <div class="form-group">
-            <center><label >Capacidad</label></center>
+            <center><label >Capacidad (KVA)</label></center>
               <input type="text" class="form-control capacidad" placeholder="Capacidad"   value="{{$transfor->capacidad}}" name="transformacion[capacidad][]">
           </div>
         </div>

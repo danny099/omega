@@ -165,16 +165,16 @@
             <center class="separar"><label >Tipo</label></center>
             <select class="form-control tipo" name="transformacion[tipo][]" style="width:100%">
               <option value="">Seleccione...</option>
-              <option value="Tipo_poste">Tipo poste</option>
-              <option value="Tipo_interior">Tipo interior</option>
-              <option value="Tipo_pedestal/jardin">Tipo pedestal/jardin</option>
-              <option value="Tipo_patio">Tipo Patio</option>
+              <option value="Tipo poste">Tipo poste</option>
+              <option value="Tipo interior">Tipo interior</option>
+              <option value="Tipo pedestal/jardin">Tipo pedestal/jardin</option>
+              <option value="Tipo patio">Tipo Patio</option>
             </select>
           </div>
         </div>
         <div class="col-md-2">
           <div class="form-group">
-            <center class="separar"><label >Nivel de tensión </label></center>
+            <center class="separar"><label >Nivel de tensión (KV) </label></center>
             <select class="form-control" name="transformacion[nivel_tension][]" style="width:100%">
               <option value="">Seleccione...</option>
               <option value="13,2">13,2</option>
@@ -185,7 +185,7 @@
         </div>
         <div class="col-md-1">
           <div class="form-group">
-            <center class="separar"><label >Capacidad</label></center>
+            <center class="separar"><label >Capacidad (KVA)</label></center>
               <input type="text" class="form-control capacidad" placeholder="Capacidad"   name="transformacion[capacidad][]">
           </div>
         </div>
@@ -236,14 +236,13 @@
               <option value="">Seleccione...</option>
               <option value="Aérea">Tipo Aérea</option>
               <option value="Subterránea">Tipo subterránea</option>
-              <option value="Aérea/subterránea">Aérea/subterránea</option>
             </select>
           </div>
         </div>
 
         <div class="col-md-1">
           <div class="form-group">
-            <center class="separar"><label >Nivel de tensión  </label></center>
+            <center class="separar"><label >Nivel de tensión (KV)  </label></center>
             <select class="form-control tipo2" name="distribucion[nivel_tension_dis][]" style="width:100%" id="tension">
               <option value="">Seleccione...</option>
 
@@ -253,7 +252,7 @@
 
         <div class="col-md-1">
           <div class="form-group">
-            <center class="separar"><label >Longitud de red (km)</label></center>
+            <center class="separar"><label >Longitud de red (mts.)</label></center>
             <input type="text" class="form-control cantidad2" placeholder= "Cantidad" name="distribucion[cantidad_dis][]">
           </div>
         </div>
@@ -292,23 +291,19 @@
       <div class="col-md-3">
         <div class="form-group">
           <center><label >Descripción</label></center>
-          <select class="form-control desc3"name="pu_final[descripcion_pu][]" style="width:100%">
+          <select class="form-control desc3"name="pu_final[descripcion_pu][]" style="width:100%" id="instalacion">
             <option value="">Seleccione...</option>
             <option value="Inspección RETIE proceso uso final residencial">Inspección RETIE proceso uso final residencial</option>
             <option value="Inspección RETIE proceso uso final comercial">Inspección RETIE proceso uso final comercial</option>
+            <option value="Inspección RETIE proceso uso industrial">Inspección RETIE proceso uso industrial</option>
           </select>
         </div>
       </div>
       <div class="col-md-2">
         <div class="form-group">
           <center><label >Tipo</label></center>
-          <select class="form-control tipo3" name="pu_final[tipo_pu][]" style="width:100%">
-            <option value="">Seleccione...</option>
-            <option value="Casa">Casa</option>
-            <option value="Apartamentos">Apartamentos</option>
-            <option value="Zona común">Zona común</option>
-            <option value="Local comercial">Local comercial</option>
-            <option value="Punto fijo">Punto fijo</option>
+          <select class="form-control tipo3" name="pu_final[tipo_pu][]" style="width:100%" id="tipo3">
+
           </select>
         </div>
       </div>
@@ -362,7 +357,7 @@
         <center> <h3>Observaciones</h3> </center>
       </div>
       <div class="col-md-12">
-        <textarea  rows="4" cols="196" name="observacion" required=""></textarea>
+        <textarea  rows="4" cols="196" name="observacion" ></textarea>
       </div>
     </div>
 
@@ -380,7 +375,7 @@
          <th><center><label> Cantidad</label></center></th>
          <th><center><label> Valor unitario</label></center></th>
          <th><center><label> Valor</label></center></th>
-         <th><center><label> <button type="button" class="btn btn-primary generar" style="background-color: #33579A; border-color:#33579A;" name="button">Generar</button></label></center></th>
+         <th><center><label> <button type="button" class="btn btn-primary generar" style="background-color: #33579A; border-color:#33579A;" name="button">Generar tabla para precios</button></label></center></th>
 
        </tr>
 
@@ -453,7 +448,7 @@ $(function() {
 
           if (cantidad != '' && desc!= '' && capacidad!='' && tipo!='') {
 
-            $('.tabla tr:last').after('<tr class="actualizar"><td>'+nFilas+'</td><td>'+desc+' '+tipo+' '+capacidad+'</td><td class="cant">'+cantidad+
+            $('.tabla tr:last').after('<tr class="actualizar"><td>'+nFilas+'</td><td>'+desc+' - '+tipo+' de '+capacidad+' KVA'+'</td><td class="cant">'+cantidad+
             '</td><td><input type="text" class="form-control valor_uni" placeholder= "Valor" onkeyup="mascara(this,cpf)" name="valores[valor_uni][]" required=""></td><td><input type="text" class="form-control valor_multi" placeholder= "Valor"  value="0" name="valores[valor_multi][]" required="" readonly ></td></tr>');
 
               event.preventDefault();
@@ -496,7 +491,7 @@ $(function() {
             var nFilas = $(".tabla tr").length - 1;
             if (cantidad2 != '' && desc2!= '' && tipo2!='') {
 
-              $('.tabla tr:last').after('<tr class="actualizar"><td>'+nFilas+'</td><td name="detalles2">'+desc2+' '+tipo2+'</td><td>'+cantidad2+' km'+
+              $('.tabla tr:last').after('<tr class="actualizar"><td>'+nFilas+'</td><td name="detalles2">'+desc2+' - '+tipo2+'</td><td>'+cantidad2+' mts.'+
               '</td><td><input type="text" class="form-control valor_uni_dis" placeholder= "Valor" onkeyup="mascara(this,cpf)" name="valores[valor_uni_dis][]" required=""></td><td><input type="text" class="form-control valor_multi_dis" placeholder= "Valor" value="0" name="valores[valor_multi_dis][]" required="" readonly ></td></tr>');
                 event.preventDefault();
 
@@ -535,7 +530,7 @@ $(function() {
 
               if (cantidad3 != '' && desc3!= '' && tipo3!='') {
 
-                $('.tabla tr:last').after('<tr class="actualizar"><td>'+nFilas+'</td><td>'+desc3+' '+tipo3+'</td><td class="cant3">'+cantidad3+
+                $('.tabla tr:last').after('<tr class="actualizar"><td>'+nFilas+'</td><td>'+desc3+' - '+tipo3+'</td><td class="cant3">'+cantidad3+
                 '</td><td><input type="text" class="form-control valor_uni_pu" placeholder= "Valor" onkeyup="mascara(this,cpf)" name="valores[valor_uni_pu][]" required=""></td><td><input type="text" class="form-control valor_multi_pu" placeholder= "Valor" value="0" name="valores[valor_multi_pu][]" required="" readonly ></td></tr>');
                   event.preventDefault();
 
@@ -568,7 +563,7 @@ $(function() {
 
 
     $('.tabla tr:last').after('<tr class="actualizar"><td Colspan="3"></td><td><label>Subtotal</label></td><td><label class="subtotal">0</label><input type="hidden" class="form-control subtotal" placeholder= "Valor" value="0"  name="subtotal"  required="" readonly ></td></tr>');
-    $('.tabla tr:last').after('<tr class="actualizar"><td Colspan="3"></td><td><label>IVA</label></td><td><label class="iva">0</label><input type="hidden" class="form-control iva" placeholder= "Valor"  name="iva" value="0"  required="" readonly ></td></tr>');
+    $('.tabla tr:last').after('<tr class="actualizar"><td Colspan="3"></td><td><label>IVA 19%</label></td><td><label class="iva">0</label><input type="hidden" class="form-control iva" placeholder= "Valor"  name="iva" value="0"  required="" readonly ></td></tr>');
     $('.tabla tr:last').after('<tr class="actualizar"><td Colspan="3"></td><td><label>Total</label></td><td><label class="total">0</label><input type="hidden" class="form-control total" placeholder= "Valor" value="0" name="total"  required="" readonly ></td></tr>');
     $('.tabla tr:last').after('<tr class="actualizar"><td Colspan="3"></td><td><label>Costo adicional de visita por dia si se requiere:</label></td><td><input type="text" class="form-control adici" placeholder= "Valor" onkeyup="mascara(this,cpf)" value="600,000" name="adici"  required="" ></td></tr>');
     $('.tabla tr:last').after('<input type="hidden" class="form-control valor_multi actualizar"  value="0"  >');
@@ -674,6 +669,28 @@ $(document).on('change','#desc',function(){
 
 });
 
+$(document).on('change','#instalacion',function(){
+
+  var  instalacion = $(this).val();
+
+  if (instalacion == 'Inspección RETIE proceso uso final residencial') {
+    $(this).parent().parent().parent().find("#tipo3").html('');
+    $(this).parent().parent().parent().find("#tipo3").append('<option value="Casa">Casa</option>');
+    $(this).parent().parent().parent().find("#tipo3").append('<option value="Apartamentos">Apartamentos</option>');
+    $(this).parent().parent().parent().find("#tipo3").append('<option value="Zona común">Zona común</option>');
+
+  }
+    else if (instalacion == 'Inspección RETIE proceso uso final comercial') {
+      $(this).parent().parent().parent().find("#tipo3").html('');
+      $(this).parent().parent().parent().find("#tipo3").append('<option value="Local comercial">Local comercial</option>');
+      $(this).parent().parent().parent().find("#tipo3").append('<option value="Bodega">Bodega</option>');
+    }
+    else {
+      $(this).parent().parent().parent().find("#tipo3").html('');
+      $(this).parent().parent().parent().find("#tipo3").append('<option value="Bodega">Bodega</option>');
+    }
+
+});
 var form = $("#example-form");
 form.validate({
     errorPlacement: function errorPlacement(error, element) { element.before(error); },
@@ -700,7 +717,7 @@ form.children("div").steps({
     onFinished: function (event, currentIndex)
     {
       if (validar == 0) {
-        alert('Presione boton generar');
+        alert('Presione el boton generar tabla para precios');
       }
       else {
         $("#example-form").submit();

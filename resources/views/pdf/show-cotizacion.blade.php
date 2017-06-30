@@ -9,8 +9,12 @@
     <style media="screen">
 
       body{
-        font-size: 14px;
-        text-align: justify;
+        font-family: "Arial Narrow";
+      	font-size: 12pt;
+      	font-style: normal;
+      	font-variant: normal;
+      	font-weight: 500;
+      	line-height: 15.4px;
       }
       p{
         margin: 0;
@@ -103,13 +107,13 @@
 
       </div>
       <div class="codigo">
-        <table class="" align="right">
+        <table class=" " align="right">
           <tr>
             <td colspan="2">Código de Cotización</td>
           </tr>
           <tr>
-            <td>COT-2017</td>
-            <td>A-109</td>
+            <td>{{$cotizaciones->codigo}}</td>
+
           </tr>
         </table>
       </div>
@@ -118,12 +122,16 @@
       <div class="dirigido">
         <p>{{ $cotizaciones->dirigido }}</p>
         @if(empty($clientes))
-          <span>{{ $juridicas->razon_social }}</span>
+        <span>Razon social: {{ $juridicas->razon_social }}</span><br>
+        <span>NIT: {{ $juridicas->nit }}</span><br>
+        <span>Direccion: {{ $juridicas->direccion }}</span><br>
         @else
-          <span>{{ $clientes->nombre}}</span>
+        <span>Nombre: {{ $clientes->nombre}}</span><br>
+        <span>CC: {{ $clientes->cedula}}</span>
         @endif
       </div>
     </div>
+    <br>
     <div class="div2">
       <p class="obj1">
         Objeto:
@@ -188,46 +196,43 @@
 
       @if(count($distribuciones) == 0)
       @else
-
-        <table class=" table table-bordered table-striped" >
+      <table class=" table table-bordered table-striped" style="page-break-before: avoid;">
+        <tr>
+          <th colspan="8" class="ttable">ALCANCE DE DISTRIBUCIÓN</th>
+        </tr>
+        <thead>
           <tr>
-            <th colspan="8" class="ttable">ALCANCE DE DISTRIBUCIÓN</th>
+            <th>Descripción</th>
+            <th>Tipo</th>
+            <th>Nivel de Tensión</th>
+            <th>Unidad</th>
+            <th>Cantidad</th>
+            <th>Apoyos</th>
+            <th>Cajas</th>
+            <th>Notas</th>
           </tr>
-          <thead>
+        </thead>
+        <tbody>
+          @foreach($distribuciones as $distri)
             <tr>
-              <th>Descripción</th>
-              <th>Tipo</th>
-              <th>Nivel de Tensión</th>
-              <th>Unidad</th>
-              <th>Cantidad</th>
-              <th>Apoyos</th>
-              <th>Cajas</th>
-              <th>Notas</th>
+              <td>{{ $distri->descripcion }}</td>
+              <td>{{ $distri->tipo }}</td>
+              <td>{{ $distri->nivel_tension }}</td>
+              <td>{{ $distri->unidad }}</td>
+              <td>{{ $distri->cantidad }}</td>
+              <td>{{ $distri->apoyos }}</td>
+              <td>{{ $distri->cajas }}</td>
+              <td>{{ $distri->notas }}</td>
             </tr>
-          </thead>
-          <tbody>
-            @foreach($distribuciones as $distri)
-              <tr>
-                <td>{{ $distri->descripcion }}</td>
-                <td>{{ $distri->tipo }}</td>
-                <td>{{ $distri->nivel_tension }}</td>
-                <td>{{ $distri->unidad }}</td>
-                <td>{{ $distri->cantidad }}</td>
-                <td>{{ $distri->apoyos }}</td>
-                <td>{{ $distri->cajas }}</td>
-                <td>{{ $distri->notas }}</td>
-              </tr>
-            @endforeach
-          </tbody>
-        </table>
-
-
+          @endforeach
+        </tbody>
+      </table>
       <br>
       @endif
 
       @if(count($pu_finales) == 0)
       @else
-      <table class=" table table-bordered table-striped" style="page-break-after: avoid;">
+      <table class=" table table-bordered table-striped">
         <tr>
           <th colspan="8" class="ttable">ALCANCE PROCESO USO FINAL</th>
         </tr>
@@ -238,7 +243,7 @@
             <th>Estrato</th>
             <th>Unidad</th>
             <th>Cantidad</th>
-            <th>Metros</th>
+            <th>m²</th>
             <th>Kva</th>
             <th>Acometidas</th>
           </tr>
@@ -261,86 +266,6 @@
       @endif
     </div>
 
-    <div class="asociados">
-      <table class="table table-bordered tabla">
-        @if(count($transformaciones) == 0)
-        @else
-          <tr>
-            <td ><p>Transformación asociado a Uso Final</p></td>
-            <td><p><b>Descripción</b></p></td>
-            <td><p><b>Valor</b></p></td>
-          </tr>
-          @foreach($transformaciones as $transf)
-          <tr>
-            <td id="td3"></td>
-            <td><p>Nivel de Tensión (KV)</p></td>
-            <td><p>{{ $transf->nivel_tension }}</p></td>
-          </tr>
-          <tr>
-            <td id="td3"></td>
-            <td><p>Número de Transformadores</p></td>
-            <td><p>{{ $transf->cantidad }}</p></td>
-          </tr>
-          <tr>
-            <td id="td3"></td>
-            <td><p>Potencia</p></td>
-            <td><p>{{ $transf->capacidad }}</p></td>
-          </tr>
-          <tr>
-            <td id="td3"></td>
-            <td><p>Montaje</p></td>
-            <td><p>{{ $transf->tipo }}</p></td>
-          </tr>
-          <tr>
-            <td id="td3"></td>
-            <td><p>Tipo de Refrigeración</p></td>
-            <td><p>{{ $transf->tipo_refrigeracion }}</p></td>
-          </tr>
-          @endforeach
-        @endif
-
-        @if(count($distribuciones) == 0)
-        @else
-          <tr>
-            <td ><p>Distribución asociado a Uso Final</p></td>
-            <td><p><b>Descripción</b></p></td>
-            <td><p><b>Valor</b></p></td>
-          </tr>
-          @foreach($distribuciones as $distris)
-          <tr>
-            <td id="td3"></td>
-            <td><p>Descripción</p></td>
-            <td><p>{{  $distris->descripcion }}</p></td>
-          </tr>
-          <tr>
-            <td id="td3"></td>
-            <td><p>Tipo de Red</p></td>
-            <td><p>{{ $distris->tipo }}</p></td>
-          </tr>
-          <tr>
-            <td id="td3"></td>
-            <td><p>Nivel de Tensión</p></td>
-            <td><p>{{ $distris->nivel_tension }}</p></td>
-          </tr>
-          <tr>
-            <td id="td3"></td>
-            <td><p>Longitud de Red</p></td>
-            <td><p>{{ $distris->cantidad }}</p></td>
-          </tr>
-          <tr>
-            <td id="td3"></td>
-            <td><p>Número de Apoyos o Estructuras</p></td>
-            <td><p>{{ $distris->apoyos }}</p></td>
-          </tr>
-          <tr>
-            <td id="td3"></td>
-            <td><p>Número de Cajas de Inspección</p></td>
-            <td><p>{{ $distris->cajas }}</p></td>
-          </tr>
-          @endforeach
-        @endif
-      </table>
-    </div>
     <p><b>{{$referencia->nombre}}</b></p>
     <br><br>
     <div class="referencia">
@@ -390,7 +315,7 @@
           <tr>
             <td>1</td>
             <td>
-              <p>{{ $trans->descripcion }} {{ $trans->tipo }}, Capacidad: {{ $trans->capacidad}} + Sistema de Puesta a Tierra</p>
+              <p>{{ $trans->descripcion }} {{ $trans->tipo }}, Capacidad: {{ $trans->capacidad}} </p>
             </td>
             <td>{{ $trans->cantidad }} {{ $trans->unidad }}</td>
 
@@ -410,22 +335,22 @@
         @endforeach
         <tr>
           <td></td>
-          <td colspan="2">Valor de la Inspección</td>
+          <td colspan="2"><b>Valor de la Inspección</b></td>
           <td>${{ number_format($total,0) }}</td>
         </tr>
         <tr>
           <td></td>
-          <td colspan="2">IVA(19%)</td>
+          <td colspan="2"><b>IVA(19%)</b></td>
           <td>${{ number_format($iva,0) }}</td>
         </tr>
         <tr>
           <td></td>
-          <td colspan="2">Valor Total del Proyecto</td>
+          <td colspan="2"><b>Total</b></td>
           <td>${{ number_format($valor_total,0) }}</td>
         </tr>
         <tr>
           <td></td>
-          <td colspan="2">Costo adicional de visita por dia si se requiere:</td>
+          <td colspan="2"><b>Costo adicional de visita por dia si se requiere:</b></td>
           <td>${{ $cotizaciones->adicional }}</td>
         </tr>
         <!-- <td>

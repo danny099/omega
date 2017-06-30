@@ -328,7 +328,8 @@ class CotizacionController extends Controller
     public function update(Request $request, $id)
     {
         $input = $request->all();
-
+        // dd($input['valores']['id']);
+        // die();
         $cotiza = Cotizacion::findOrFail($id);
 
         $cotizacion['dirigido'] = $request->dirigido;
@@ -387,6 +388,7 @@ class CotizacionController extends Controller
             // $texto['cotizacion_id'] = $lastId_cotiza;
             //
             // Valorcot::create($texto);
+
             $valor->update($texto);
 
             $transfor->update($datos1);

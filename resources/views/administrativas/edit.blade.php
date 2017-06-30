@@ -181,7 +181,28 @@
     });
 
 
+    $(document).on('change','#instalacion',function(){
 
+      var  instalacion = $(this).val();
+
+      if (instalacion == 'Inspección RETIE proceso uso final residencial') {
+        $(this).parent().parent().parent().find("#tipo3").html('');
+        $(this).parent().parent().parent().find("#tipo3").append('<option value="Casa">Casa</option>');
+        $(this).parent().parent().parent().find("#tipo3").append('<option value="Apartamentos">Apartamentos</option>');
+        $(this).parent().parent().parent().find("#tipo3").append('<option value="Zona común">Zona común</option>');
+
+      }
+        else if (instalacion == 'Inspección RETIE proceso uso final comercial') {
+          $(this).parent().parent().parent().find("#tipo3").html('');
+          $(this).parent().parent().parent().find("#tipo3").append('<option value="Local comercial">Local comercial</option>');
+          $(this).parent().parent().parent().find("#tipo3").append('<option value="Bodega">Bodega</option>');
+        }
+        else {
+          $(this).parent().parent().parent().find("#tipo3").html('');
+          $(this).parent().parent().parent().find("#tipo3").append('<option value="Bodega">Bodega</option>');
+        }
+
+    });
 
       $(document).ready(function($){
         $('#codigo_proyecto').inputmask('CPS-9999-999');

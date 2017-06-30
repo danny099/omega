@@ -17,23 +17,20 @@
           <div class="form-group">
             <input type="hidden"  name="pu[id][]" value="{{$pu->id}}" >
             <center><label >Descripción</label></center>
-            <select class="form-control desc3"name="pu_final[descripcion_pu][]" style="width:100%">
+            <select class="form-control desc3"name="pu_final[descripcion_pu][]" style="width:100%" id="instalacion">
               <option value="{{ $pu->descripcion }}">{{ $pu->descripcion }}</option>
               <option value="Inspección RETIE proceso uso final residencial">Inspección RETIE proceso uso final residencial</option>
               <option value="Inspección RETIE proceso uso final comercial">Inspección RETIE proceso uso final comercial</option>
+              <option value="Inspección RETIE proceso uso industrial">Inspección RETIE proceso uso industrial</option>
+
             </select>
           </div>
         </div>
         <div class="col-md-2">
           <div class="form-group">
             <center><label >Tipo</label></center>
-            <select class="form-control tipo3" name="pu_final[tipo_pu][]" style="width:100%">
+            <select class="form-control tipo3" name="pu_final[tipo_pu][]" style="width:100%" id="tipo3">
               <option value="{{ $pu->tipo }}">{{ $pu->tipo }}</option>
-              <option value="Casa">Casa</option>
-              <option value="Apartamentos">Apartamentos</option>
-              <option value="Zona común">Zona común</option>
-              <option value="Local comercial">Local comercial</option>
-              <option value="Punto fijo">Punto fijo</option>
             </select>
           </div>
         </div>

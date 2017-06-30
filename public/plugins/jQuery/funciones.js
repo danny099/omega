@@ -55,15 +55,15 @@
                     '<center class="separar"><label >Tipo</label></center>'+' '+
                     '<select class="form-control tipo" name="transformacion[tipo][]">'+' '+
                       '<option value="">Seleccione...</option>'+' '+
-                      '<option value="Tipo_poste">Tipo poste</option>'+' '+
-                      '<option value="Tipo_pedestal/jardin">Tipo pedestal/jardin</option>'+' '+
-                      '<option value="Tipo_patio">Tipo Patio</option>'+' '+
+                      '<option value="Tipo poste">Tipo poste</option>'+' '+
+                      '<option value="Tipo pedestal/jardin">Tipo pedestal/jardin</option>'+' '+
+                      '<option value="Tipo patio">Tipo Patio</option>'+' '+
                     '</select>'+' '+
                   '</div>'+' '+
                 '</div>'+' '+
                 '<div class="col-md-2">'+' '+
                   '<div class="form-group">'+' '+
-                    '<center class="separar"><label >Nivel de tencion (kv)</label></center>'+' '+
+                    '<center class="separar"><label >Nivel de tencion (KV)</label></center>'+' '+
                     '<select class="form-control" name="transformacion[nivel_tension][]">'+' '+
                       '<option value="">Seleccione...</option>'+' '+
                       '<option value="13,2">13,2</option>'+' '+
@@ -139,13 +139,12 @@
                           '<option value="">Seleccione...</option>'+' '+
                           '<option value="Aérea">Tipo Aérea</option>'+' '+
                           '<option value="Subterránea">Tipo subterránea</option>'+' '+
-                          '<option value="Aérea/subterránea">Aérea/subterránea</option>'+' '+
                         '</select>'+' '+
                       '</div>'+' '+
                     '</div>'+' '+
                     '<div class="col-md-1">'+' '+
                       '<div class="form-group">'+' '+
-                        '<center class="separar"><label >Nivel de tensión  </label></center>'+' '+
+                        '<center class="separar"><label >Nivel de tensión (KV)  </label></center>'+' '+
                          '<select class="form-control tipo2" name="distribucion[nivel_tension_dis][]" id="tension">'+' '+
                             '<option value="">Seleccione...</option>'+' '+
                             '<option value="110-220">110-220</option>'+' '+
@@ -157,7 +156,7 @@
 
                     '<div class="col-md-1">'+' '+
                       '<div class="form-group">'+' '+
-                        '<center class="separar"><label >Longitud de red (km)</label></center>'+' '+
+                        '<center class="separar"><label >Longitud de red (mts.)</label></center>'+' '+
                         '<input type="text" class="form-control cantidad2" placeholder= "Cantidad" name="distribucion[cantidad_dis][]">'+' '+
                       '</div>'+' '+
                     '</div>'+' '+
@@ -209,23 +208,18 @@
                     '<div class="col-md-3">'+' '+
                       '<div class="form-group">'+' '+
                         '<center><label >Descripción</label></center>'+' '+
-                        '<select class="form-control desc3"name="pu_final[descripcion_pu][]">'+' '+
+                        '<select class="form-control desc3"name="pu_final[descripcion_pu][]" id="instalacion">'+' '+
                           '<option value="">Seleccione...</option>'+' '+
                           '<option value="Inspección RETIE proceso uso final residencial">Inspección RETIE proceso uso final residencial</option>'+' '+
                           '<option value="Inspección RETIE proceso uso final comercial">Inspección RETIE proceso uso final comercial</option>'+' '+
+                          '<option value="Inspección RETIE proceso uso industrial">Inspección RETIE proceso uso industrial</option>'+' '+
                         '</select>'+' '+
                       '</div>'+' '+
                     '</div>'+' '+
                     '<div class="col-md-2">'+' '+
                       '<div class="form-group">'+' '+
                         '<center><label >Tipo</label></center>'+' '+
-                        '<select class="form-control tipo3" name="pu_final[tipo_pu][]">'+' '+
-                          '<option value="">Seleccione...</option>'+' '+
-                          '<option value="Casa">Casa</option>'+' '+
-                          '<option value="Apartamentos">Apartamentos</option>'+' '+
-                          '<option value="Zona común">Zona común</option>'+' '+
-                          '<option value="Local comercial">Local comercial</option>'+' '+
-                          '<option value="Punto fijo">Punto fijo</option>'+' '+
+                        '<select class="form-control tipo3" name="pu_final[tipo_pu][]" id="tipo3">'+' '+
                         '</select>'+' '+
                       '</div>'+' '+
                     '</div>'+' '+
@@ -359,7 +353,7 @@
         var count = 1;
        $(document).on("click","#btnadd2",function( event ) {
         count++;
-        $('.tblprod2').after('<div class="col-md-3" id="quitar3"><div class="form-group"><center><label >Capacidad</label></center><input type="text" class="form-control" placeholder="Capacidad"   name="transformacion[capacidad][]"></div></div>');
+        $('.tblprod2').after('<div class="col-md-3" id="quitar3"><div class="form-group"><center><label >Capacidad (KVA)</label></center><input type="text" class="form-control" placeholder="Capacidad"   name="transformacion[capacidad][]"></div></div>');
           event.preventDefault();
        });
     });
@@ -417,7 +411,7 @@
             var count = 1;
            $(document).on("click","#btnadd3",function( event ) {
             count++;
-            $('.tblprod3').after('<div class="col-md-2 " id="quitar7"><div class="form-group"><center><label >Unidad</label></center><center><input type="text" class="form-control" value="km"  readonly=”readonly” name="distribucion[unidad_distribucion][]"style="text-align:center"></center></div></div>');
+            $('.tblprod3').after('<div class="col-md-2 " id="quitar7"><div class="form-group"><center><label >Unidad</label></center><center><input type="text" class="form-control" value="m"  readonly=”readonly” name="distribucion[unidad_distribucion][]"style="text-align:center"></center></div></div>');
               event.preventDefault();
            });
         });
