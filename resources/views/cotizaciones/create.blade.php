@@ -150,9 +150,77 @@
     <h3>Paso 2</h3>
       <section>
       <div class="box-body" style="width: 110%">
+        <div class="row quitar51" id="quitar51">
+          <div class="col-md-12"  style="margin-bottom: 10px;">
+            <center> <h3>Alcance: proceso de distribución en MT</h3> </center>
+          </div>
+          <div class="col-md-12">
+            <div class="col-md-3">
+              <div class="form-group">
+                <center class="separar"><label >Descripción</label></center>
+                <input type="text" class="form-control desc2" value="Inspección RETIE proceso de distribución en MT" id="desc" readonly=”readonly” name="distribucion[descripcion_dis][]">
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="form-group">
+                <center class="separar"><label >Tipo</label></center>
+                <select class="form-control tipo2" name="distribucion[tipo_dis][]" style="width:100%" id="tipo">
+                  <option value="">Seleccione...</option>
+                  <option value="Aérea">Tipo Aérea</option>
+                  <option value="Subterránea">Tipo subterránea</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-md-1">
+              <div class="form-group">
+                <center class="separar"><label >Nivel de tensión (KV)  </label></center>
+                <select class="form-control tipo2" name="distribucion[nivel_tension_dis][]" style="width:100%" id="kv">
+                  <option value="">Seleccione...</option>
+                  <option value="13,2">13,2</option>
+                  <option value="13,4">13,4</option>
+                  <option value="13,8">13,8</option>
+                  <option value="No aplica">No aplica</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-md-1">
+              <div class="form-group">
+                <center class="separar"><label >Longitud de red (mts.)</label></center>
+                <input type="text" class="form-control cantidad2" placeholder= "Cantidad" name="distribucion[cantidad_dis][]">
+              </div>
+            </div>
+            <div class="col-md-1">
+              <div class="form-group">
+                <center class="separar"><label >Apoyos o estructuras</label></center>
+                <input type="text" id="apoyos" class="form-control" placeholder= "Cantidad" name="distribucion[apoyos_dis][]" >
+              </div>
+            </div>
+            <div class="col-md-1">
+              <div class="form-group">
+                <center class="separar"><label >Cajas de inspección</label></center>
+                <input type="text" id="cajas" class="form-control" placeholder= "Cantidad" name="distribucion[cajas_dis][]">
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="form-group">
+                <center class="separar"><label >Notas</label></center>
+                <input type="text" class="form-control" placeholder= "Notas" name="distribucion[notas_dis][]">
+              </div>
+            </div>
+            <div class="col-md-1 tblprod13" id="tblprod13" >
+              <div class="form-group">
+                <center class="separar"></center>
+
+                <a class="btn btn-primary" data-toggle="modal" id="btnadd13" href="#" style="background-color: #fdea08; border-color:#fdea08"><i class="glyphicon glyphicon-plus"></i></a>
+              </div>
+            </div>
+        </div>
+      </div>
       <div class="row quitar50" id="quitar50">
         <center> <h3>Alcance: proceso de transformación</h3> </center>
-
+        <input type="hidden" id="nivel" name="valor" value="">
       <div class="col-md-12">
         <div class="col-md-3">
           <div class="form-group">
@@ -169,17 +237,6 @@
               <option value="Tipo interior">Tipo interior</option>
               <option value="Tipo pedestal/jardin">Tipo pedestal/jardin</option>
               <option value="Tipo patio">Tipo Patio</option>
-            </select>
-          </div>
-        </div>
-        <div class="col-md-2">
-          <div class="form-group">
-            <center class="separar"><label >Nivel de tensión (KV) </label></center>
-            <select class="form-control" name="transformacion[nivel_tension][]" style="width:100%">
-              <option value="">Seleccione...</option>
-              <option value="13,2">13,2</option>
-              <option value="13,4">13,4</option>
-              <option value="13,8">13,8</option>
             </select>
           </div>
         </div>
@@ -216,17 +273,13 @@
     </div>
     <div class="row quitar51" id="quitar51">
       <div class="col-md-12"  style="margin-bottom: 10px;">
-        <center> <h3>Alcance: proceso de distribución</h3> </center>
+        <center> <h3>Alcance: proceso de distribución en BT</h3> </center>
       </div>
       <div class="col-md-12">
         <div class="col-md-3">
           <div class="form-group">
             <center class="separar"><label >Descripción</label></center>
-            <select class="form-control desc2" name="distribucion[descripcion_dis][]" style="width:100%" id="desc">
-              <option value="">Seleccione...</option>
-              <option value="Inspección RETIE proceso de distribución en MT">Inspección RETIE proceso de distribución en MT</option>
-              <option value="Inspección RETIE proceso de distribución en BT">Inspección RETIE proceso de distribución en BT</option>
-            </select>
+            <input type="text" class="form-control desc2" value="Inspección RETIE proceso de distribución en BT" id="desc" readonly=”readonly” name="distribucion[descripcion_dis][]">
           </div>
         </div>
         <div class="col-md-2">
@@ -245,7 +298,9 @@
             <center class="separar"><label >Nivel de tensión (KV)  </label></center>
             <select class="form-control tipo2" name="distribucion[nivel_tension_dis][]" style="width:100%" id="tension">
               <option value="">Seleccione...</option>
-
+              <option value="110-220">110-220</option>
+              <option value="220-240">220-240</option>
+              <option value="No aplica">No aplica</option>
             </select>
           </div>
         </div>
@@ -259,13 +314,13 @@
         <div class="col-md-1">
           <div class="form-group">
             <center class="separar"><label >Apoyos o estructuras</label></center>
-            <input type="number" id="apoyos" class="form-control" placeholder= "Cantidad" name="distribucion[apoyos_dis][]" >
+            <input type="text" id="apoyos" class="form-control" placeholder= "Cantidad" name="distribucion[apoyos_dis][]" >
           </div>
         </div>
         <div class="col-md-1">
           <div class="form-group">
             <center class="separar"><label >Cajas de inspección</label></center>
-            <input type="number" id="cajas" class="form-control" placeholder= "Cantidad" name="distribucion[cajas_dis][]">
+            <input type="text" id="cajas" class="form-control" placeholder= "Cantidad" name="distribucion[cajas_dis][]">
           </div>
         </div>
         <div class="col-md-2">
@@ -299,7 +354,7 @@
           </select>
         </div>
       </div>
-      <div class="col-md-2">
+      <div class="col-md-2 torres">
         <div class="form-group">
           <center><label >Tipo</label></center>
           <select class="form-control tipo3" name="pu_final[tipo_pu][]" style="width:100%" id="tipo3">
@@ -337,12 +392,6 @@
         <div class="form-group">
           <center><label >KVA</label></center>
           <input type="text" class="form-control" placeholder= "Cantidad" name="pu_final[kva_pu][]">
-        </div>
-      </div>
-      <div class="col-md-1">
-        <div class="form-group">
-          <center><label >Acometidas</label></center>
-          <input type="number" class="form-control" placeholder= "Cantidad" name="pu_final[acometidas_pu][]">
         </div>
       </div>
       <div class="col-md-1 tblprod12" id="tblprod12" >
@@ -448,7 +497,7 @@ $(function() {
 
           if (cantidad != '' && desc!= '' && capacidad!='' && tipo!='') {
 
-            $('.tabla tr:last').after('<tr class="actualizar"><td>'+nFilas+'</td><td>'+desc+' - '+tipo+' de '+capacidad+' KVA'+'</td><td class="cant">'+cantidad+
+            $('.tabla tr:last').after('<tr class="actualizar"><td>'+nFilas+'</td><td>'+desc+' - '+tipo+' de'+capacidad+' KVA'+'</td><td class="cant">'+cantidad+
             '</td><td><input type="text" class="form-control valor_uni" placeholder= "Valor" onkeyup="mascara(this,cpf)" name="valores[valor_uni][]" required=""></td><td><input type="text" class="form-control valor_multi" placeholder= "Valor"  value="0" name="valores[valor_multi][]" required="" readonly ></td></tr>');
 
               event.preventDefault();
@@ -526,9 +575,40 @@ $(function() {
               var cantidad3 =$(this).find(".cantidad3").val();
               var desc3 =$(this).find(".desc3").val();
               var tipo3 =$(this).find(".tipo3").val();
+              var torre =$(this).find(".torre").val();
               var nFilas = $(".tabla tr").length - 1;
 
-              if (cantidad3 != '' && desc3!= '' && tipo3!='') {
+              if (cantidad3 != '' && desc3!= '' && tipo3=='Apartamentos' ) {
+                $('.tabla tr:last').after('<tr class="actualizar"><td>'+nFilas+'</td><td>'+desc3+' - '+tipo3+'</td><td class="cant3">'+cantidad3+
+                '</td><td><input type="text" class="form-control valor_uni_pu" placeholder= "Valor" onkeyup="mascara(this,cpf)" name="valores[valor_uni_pu][]" required=""></td><td><input type="text" class="form-control valor_multi_pu" placeholder= "Valor" value="0" name="valores[valor_multi_pu][]" required="" readonly ></td></tr>');
+                $('.tabla tr:last').after('<tr class="actualizar"><td>'+nFilas+'</td><td>Inspección RETIE proceso uso final residencial - Punto fijo</td><td class="cant3">'+torre+
+                '</td><td><input type="text" class="form-control valor_uni_pu" placeholder= "Valor" onkeyup="mascara(this,cpf)" name="valores[valor_uni_pu][]" required=""></td><td><input type="text" class="form-control valor_multi_pu" placeholder= "Valor" value="0" name="valores[valor_multi_pu][]" required="" readonly ></td></tr>');
+                  event.preventDefault();
+
+                  $('.valor_uni_pu').keyup(function(){
+                    var valor_uni_pu = $(this).val().replace(/,/g,"");
+                    var cantidad3 = $(this).parent().parent().find(".cant3").text();
+                    var resultado3= valor_uni_pu * cantidad3;
+                    $(this).parent().parent().find('.valor_multi_pu').val(addCommas(Math.round(resultado3)));
+                    valor_multi_pu = 0;
+
+                     $(".valor_multi_pu").each(function(i){
+                          valor_multi_pu = valor_multi_pu + parseFloat($(this).val().replace(/,/g,""));
+                          var subtotal=  parseFloat(valor_multi_dis)+parseFloat(valor_multi)+parseFloat(valor_multi_pu);
+                           var iva = subtotal*0.19;
+                           var total = subtotal+iva;
+
+                          $(this).parent().parent().parent().parent().parent().parent().find('.subtotal').text(addCommas(Math.round(subtotal)));
+                          $(this).parent().parent().parent().parent().parent().parent().find('.subtotal').val(addCommas(Math.round(subtotal)));
+                          $(this).parent().parent().parent().parent().parent().parent().find('.iva').text(addCommas(Math.round(iva)));
+                          $(this).parent().parent().parent().parent().parent().parent().find('.iva').val(addCommas(Math.round(iva)));
+                          $(this).parent().parent().parent().parent().parent().parent().find('.total').text(addCommas(Math.round(total)));
+                          $(this).parent().parent().parent().parent().parent().parent().find('.total').val(addCommas(Math.round(total)));
+                       });
+
+                    });
+              }
+              else if (cantidad3 != '' && desc3!= '' && tipo3!='') {
 
                 $('.tabla tr:last').after('<tr class="actualizar"><td>'+nFilas+'</td><td>'+desc3+' - '+tipo3+'</td><td class="cant3">'+cantidad3+
                 '</td><td><input type="text" class="form-control valor_uni_pu" placeholder= "Valor" onkeyup="mascara(this,cpf)" name="valores[valor_uni_pu][]" required=""></td><td><input type="text" class="form-control valor_multi_pu" placeholder= "Valor" value="0" name="valores[valor_multi_pu][]" required="" readonly ></td></tr>');
@@ -577,6 +657,7 @@ $(function() {
 
 
 $(document).ready(function(){
+
 
   $('#cliente').change(function(){
       var valorCambiado =$(this).val();
@@ -630,14 +711,14 @@ $(document).on('change','#tipo',function(){
 
   if (tipo == 'Aérea') {
     $(this).parent().parent().parent().find('#cajas').attr("readonly", true);
-    $(this).parent().parent().parent().find('#cajas').val(0);
+    $(this).parent().parent().parent().find('#cajas').val('N.A');
     $(this).parent().parent().parent().find('#apoyos').attr("readonly", false);
 
   }
     else if (tipo == 'Subterránea') {
       $(this).parent().parent().parent().find('#cajas').attr("readonly", false);
       $(this).parent().parent().parent().find('#apoyos').attr("readonly", true);
-      $(this).parent().parent().parent().find('#apoyos').val(0);
+      $(this).parent().parent().parent().find('#apoyos').val('N.A');
     }
     else {
       $(this).parent().parent().parent().find('#cajas').attr("readonly", false);
@@ -647,27 +728,7 @@ $(document).on('change','#tipo',function(){
 
 });
 
-$(document).on('change','#desc',function(){
 
-  var  desc = $(this).val();
-
-  if (desc == 'Inspección RETIE proceso de distribución en MT') {
-    $(this).parent().parent().parent().find("#tension").html('');
-    $(this).parent().parent().parent().find("#tension").append('<option value="13,2">13,2</option>');
-    $(this).parent().parent().parent().find("#tension").append('<option value="13,4">13,4</option>');
-    $(this).parent().parent().parent().find("#tension").append('<option value="13,8">13,8</option>');
-    $(this).parent().parent().parent().find("#tension").append('<option value="No aplica">No aplica</option>');
-
-  }
-    else {
-      $(this).parent().parent().parent().find("#tension").html('');
-      $(this).parent().parent().parent().find("#tension").append('<option value="110-220">110-220</option>');
-      $(this).parent().parent().parent().find("#tension").append('<option value="220-240">220-240</option>');
-      $(this).parent().parent().parent().find("#tension").append('<option value="No aplica">No aplica</option>');
-    }
-
-
-});
 
 $(document).on('change','#instalacion',function(){
 
@@ -691,6 +752,44 @@ $(document).on('change','#instalacion',function(){
     }
 
 });
+
+
+$(document).on('change','#kv',function(){
+
+  var  kv = $(this).val();
+
+  if (kv == '13,2') {
+    $('#nivel').val('13,2');
+  }
+    else if (kv == '13,4') {
+      $('#nivel').val('13,4');
+    }
+    else if (kv == '13,8') {
+      $('#nivel').val('13,8');
+    }
+    else {
+      $('#nivel').val('No aplica');
+    }
+});
+
+$(document).on('change','.tipo3',function(){
+
+  var  tipo = $(this).val();
+    if (tipo == 'Apartamentos') {
+      $('.torres').after(
+        '<div class="col-md-1 borrar">'+' '+
+          '<div class="form-group">'+' '+
+            '<center><label >#Torres</label></center>'+' '+
+              '<input type="text" class="form-control torre" value="" placeholder= "Cantidad" name="pu_final[torres][]">'+' '+
+            '</div>'+' '+
+          '</div>'
+    );
+    }
+    else {
+      $('.borrar').remove();
+    }
+});
+
 var form = $("#example-form");
 form.validate({
     errorPlacement: function errorPlacement(error, element) { element.before(error); },

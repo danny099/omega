@@ -96,12 +96,6 @@
               <input type="text" class="form-control" placeholder= "Cantidad" name="pu_final[kva_pu][]">
             </div>
           </div>
-          <div class="col-md-1">
-            <div class="form-group">
-              <center><label >Acometidas</label></center>
-              <input type="number" class="form-control" placeholder= "Cantidad" name="pu_final[acometidas_pu][]">
-            </div>
-          </div>
           <div class="col-md-1 tblprod12" id="tblprod12" >
             <div class="form-group">
               <br>

@@ -51,8 +51,7 @@ class Pu_finalController extends Controller
                !is_null($input['pu_final']['estrato_pu'][$i]) &&
                !is_null($input['pu_final']['cantidad_pu'][$i]) &&
                !is_null($input['pu_final']['metros_pu'][$i]) &&
-               !is_null($input['pu_final']['kva_pu'][$i])  &&
-               !is_null($input['pu_final']['acometidas_pu'][$i])) {
+               !is_null($input['pu_final']['kva_pu'][$i])) {
 
                  $datos3['descripcion'] = $input['pu_final']['descripcion_pu'][$i];
                  $datos3['tipo'] = $input['pu_final']['tipo_pu'][$i];
@@ -69,13 +68,57 @@ class Pu_finalController extends Controller
                    $datos3['kva'] = $input['pu_final']['kva_pu'][$i];
                  }
 
-                 if ($input['pu_final']['acometidas_pu'][$i] == 0) {
+                 if ($datos3['tipo'] == 'Casa') {
 
-                   $datos3['acometidas'] = 'Según Plano';
+                   $datos3['acometidas'] = $datos3['cantidad'];
 
-                 }else {
-                    $datos3['acometidas'] = $input['pu_final']['acometidas_pu'][$i];
                  }
+
+                 if ($datos3['tipo'] == 'Local comercial') {
+
+                   $datos3['acometidas'] = $datos3['cantidad'];
+
+                 }
+
+                 if ($datos3['tipo'] == 'Zona común') {
+
+                   $datos3['acometidas'] = $datos3['cantidad'];
+
+                 }
+
+                 if ($datos3['tipo'] == 'Bodega') {
+
+                   $datos3['acometidas'] = $datos3['cantidad'];
+
+                 }
+
+                 if (isset($input['pu_final']['torres'][$i])) {
+                   if (!is_null($input['pu_final']['torres'][$i])) {
+
+                     $datos3['acometidas'] = $input['pu_final']['torres'][$i];
+                     $datos3['torres'] = $datos3['acometidas'];
+
+                     $datoss['acometidas'] = $input['pu_final']['torres'][$i];
+                     $datoss['torres'] = $datoss['acometidas'];
+
+                   }
+                 }
+
+                 if ($datos3['tipo'] == 'Apartamentos') {
+
+                   $datos['descripcion'] = $input['pu_final']['descripcion_pu'][$i];
+                   $datos['tipo'] = 'Punto Fijo';
+                   $datos['estrato'] = $input['pu_final']['estrato_pu'][$i];
+                   $datos['unidad'] = 'Und';
+                   $datos['cantidad'] = $datoss['torres'];
+                   $datos['metros'] = $input['pu_final']['metros_pu'][$i];
+                   $datos['acometidas'] = $datoss['acometidas'];
+                   $datos['torres'] = $datoss['torres'];
+                     //  $datos['metros'] = $input['pu_final']['metros_pu'][$r];
+                   $datos['cotizacion_id'] = $lastId_cotiza;
+                   Pu_final::create($datos);
+
+               }
 
                  $datos3['administrativa_id'] = $request->codigo_proyecto;
                  $datos3['cotizacion_id'] = $request->codigo_cotizacion;
@@ -150,14 +193,58 @@ class Pu_finalController extends Controller
            $datos3['kva'] = $input['pu_final']['kva_pu'][$i];
          }
 
-         if ($input['pu_final']['acometidas_pu'][$i] == 0) {
+          if ($datos3['tipo'] == 'Casa') {
 
-           $datos3['acometidas'] = 'Según Plano';
+            $datos3['acometidas'] = $datos3['cantidad'];
 
-         }else {
-            $datos3['acometidas'] = $input['pu_final']['acometidas_pu'][$i];
-         }
-         
+          }
+
+          if ($datos3['tipo'] == 'Local comercial') {
+
+            $datos3['acometidas'] = $datos3['cantidad'];
+
+          }
+
+          if ($datos3['tipo'] == 'Zona común') {
+
+            $datos3['acometidas'] = $datos3['cantidad'];
+
+          }
+
+          if ($datos3['tipo'] == 'Bodega') {
+
+            $datos3['acometidas'] = $datos3['cantidad'];
+
+          }
+
+          if (isset($input['pu_final']['torres'][$i])) {
+            if (!is_null($input['pu_final']['torres'][$i])) {
+
+              $datos3['acometidas'] = $input['pu_final']['torres'][$i];
+              $datos3['torres'] = $datos3['acometidas'];
+
+              $datoss['acometidas'] = $input['pu_final']['torres'][$i];
+              $datoss['torres'] = $datoss['acometidas'];
+
+            }
+          }
+
+          if ($datos3['tipo'] == 'Apartamentos') {
+
+            $datos['descripcion'] = $input['pu_final']['descripcion_pu'][$i];
+            $datos['tipo'] = 'Punto Fijo';
+            $datos['estrato'] = $input['pu_final']['estrato_pu'][$i];
+            $datos['unidad'] = 'Und';
+            $datos['cantidad'] = $datoss['torres'];
+            $datos['metros'] = $input['pu_final']['metros_pu'][$i];
+            $datos['acometidas'] = $datoss['acometidas'];
+            $datos['torres'] = $datoss['torres'];
+              //  $datos['metros'] = $input['pu_final']['metros_pu'][$r];
+            $datos['cotizacion_id'] = $lastId_cotiza;
+            Pu_final::create($datos);
+
+        }
+
 
          $pu->update($datos3);
 

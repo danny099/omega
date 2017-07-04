@@ -20,6 +20,7 @@ use Illuminate\Http\Request;
 use Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
+use DB;
 
 class AdministrativaController extends Controller
 {
@@ -69,10 +70,12 @@ class AdministrativaController extends Controller
        $muni_Id = Municipio::select('id')->where('id',$cotizaciones->municipio)->get();
        $municipio = Municipio::find($muni_Id);
        $transformaciones = Transformacion::where('transformacion.cotizacion_id', '=', $codigo_cot)->get();
-       $distribuciones = Distribucion::where('distribucion.cotizacion_id', '=', $codigo_cot)->get();
+      //  $distribuciones = Distribucion::where('distribucion.cotizacion_id', '=', $codigo_cot)->get();
        $pu_finales = Pu_final::where('pu_final.cotizacion_id', '=', $codigo_cot)->get();
+       $mts = DB::table('distribucion')->where('cotizacion_id', '=', $codigo_cot)->where('descripcion', 'like', '%MT%')->get();
+       $bts = DB::table('distribucion')->where('cotizacion_id', '=', $codigo_cot)->where('descripcion', 'like', '%BT%')->get();
 
-       return view('administrativas.create',compact('clientes','otrosis','distribuciones','transformaciones','pu_finales','departamentos','juridicas','cotizaciones','municipio'));
+       return view('administrativas.create',compact('clientes','otrosis','mts','bts','transformaciones','pu_finales','departamentos','juridicas','cotizaciones','municipio'));
      }
 
     //  metodo que permite capturar el Request mediante una ruta ajax para llenar un select dinamico dependiente
@@ -300,7 +303,10 @@ class AdministrativaController extends Controller
       $adicionales = Valor_adicional::where('valor_adicional.administrativa_id', '=', $id)->get();
       $otrosis = Otrosi::where('otrosi.administrativa_id', '=', $id)->get();
       $transformaciones = Transformacion::where('transformacion.administrativa_id', '=', $id)->get();
-      $distribuciones = Distribucion::where('distribucion.administrativa_id', '=', $id)->get();
+      // $distribuciones = Distribucion::where('distribucion.administrativa_id', '=', $id)->get();
+      $mts = DB::table('distribucion')->where('administrativa_id', '=', $id)->where('descripcion', 'like', '%MT%')->get();
+      $bts = DB::table('distribucion')->where('administrativa_id', '=', $id)->where('descripcion', 'like', '%BT%')->get();
+      
       $pu_finales = Pu_final::where('pu_final.administrativa_id', '=', $id)->get();
       $consignaciones = Consignacion::where('consignacion.administrativa_id', '=', $id)->get();
       $cuenta_cobros = Cuenta_cobro::where('cuenta_cobro.administrativa_id', '=', $id)->get();
@@ -309,7 +315,7 @@ class AdministrativaController extends Controller
 
 
       //  funcion que retorna una vista con todos los datos del registro ya buscado
-       return view('administrativas.edit',compact('administrativas','clientes','juridicas','otrosis','distribuciones','transformaciones','pu_finales','departamentos','municipio','adicionales','facturas','cuenta_cobros','consignaciones','observaciones'));
+       return view('administrativas.edit',compact('administrativas','clientes','juridicas','otrosis','mts','bts','transformaciones','pu_finales','departamentos','municipio','adicionales','facturas','cuenta_cobros','consignaciones','observaciones'));
    }
 
    /**

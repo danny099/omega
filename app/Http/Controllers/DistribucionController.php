@@ -50,13 +50,12 @@ class DistribucionController extends Controller
               !is_null($input['distribucion']['nivel_tension_dis'][$x]) &&
               !is_null($input['distribucion']['cantidad_dis'][$x]) &&
               !is_null($input['distribucion']['apoyos_dis'][$x])  &&
-              !is_null($input['distribucion']['cajas_dis'][$x])  &&
-              !is_null($input['distribucion']['notas_dis'][$x])){
+              !is_null($input['distribucion']['cajas_dis'][$x])){
 
                 $datos2['descripcion'] = $input['distribucion']['descripcion_dis'][$x];
                 $datos2['tipo'] = $input['distribucion']['tipo_dis'][$x];
                 $datos2['nivel_tension'] = $input['distribucion']['nivel_tension_dis'][$x];
-                $datos2['unidad'] = 'km';
+                $datos2['unidad'] = 'mts.';
                 $datos2['cantidad'] = str_replace('.',',',$input['distribucion']['cantidad_dis'][$x]);
 
                 if ($datos2['tipo'] == 'Aérea' && $input['distribucion']['apoyos_dis'][$x] == 0) {
@@ -141,7 +140,7 @@ class DistribucionController extends Controller
          $datos['tipo'] = $input['distribucion']['tipo_dis'][$x];
          $datos['tipo'] = $input['distribucion']['tipo_dis'][$x];
          $datos['nivel_tension'] = $input['distribucion']['nivel_tension_dis'][$x];
-         $datos['unidad'] = 'km';
+         $datos['unidad'] = 'mts.';
          $datos['cantidad'] = str_replace('.',',',$input['distribucion']['cantidad_dis'][$x]);
 
          if ($datos['tipo'] == 'Aérea' && $input['distribucion']['apoyos_dis'][$x] == 0) {

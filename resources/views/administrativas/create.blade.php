@@ -212,10 +212,54 @@ function addCommas(nStr){
 
 
   <div class="box box-primary">
-    <div class="box-header with-border">
-      <center> <h3>Alcance: proceso de transformación</h3> </center>
-    </div>
     <div class="box-body">
+      <div class="col-md-12">
+        <center> <h3>Alcance: proceso de distribución en MT</h3> </center>
+      </div>
+      @if(count($mts) == 0)
+        <input type="hidden"  name="distribucion" value="distribucion"  >
+      @else
+      @foreach($mts as $mt)
+      <div class="col-md-12">
+        <div class="col-md-4">
+          <div class="form-group">
+            <input type="hidden" name="distribucion[id_dis][]" value="{{ $mt->id }}">
+
+            <center><label >Descripción</label></center>
+            <input type="text" class="form-control desc2" value="Inspección RETIE proceso de distribución en MT" id="desc" readonly=”readonly” name="distribucion[descripcion_dis][]">
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+            <center><label >Tipo</label></center>
+            <select class="form-control" name="distribucion[tipo_dis][]" >
+              <option value="{{ $mt->tipo }}">{{ $mt->tipo }}</option>
+              <option value="Aérea">Tipo Aérea</option>
+              <option value="Subterránea">Tipo subterránea</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="form-group">
+            <center><label >Unidad</label></center>
+            <center>
+              <input type="text" class="form-control" value="{{ $mt->unidad}}" value="mts."  readonly=”readonly” name="distribucion[unidad_distribucion][]"style="text-align:center">
+            </center>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="form-group">
+            <center><label >Cantidad</label></center>
+            <input type="text" class="form-control cantidad2" placeholder= "Cantidad" value="{{ $mt->cantidad }}" name="distribucion[cantidad_dis][]">
+
+          </div>
+        </div>
+      </div>
+      @endforeach
+      @endif
+
+      <center> <h3>Alcance: proceso de transformación</h3> </center>
+
       @if(count($transformaciones) == 0)
         <input type="hidden"  name="transformacion" value="transformacion"  >
       @else
@@ -264,30 +308,26 @@ function addCommas(nStr){
       @endforeach
       @endif
       <div class="col-md-12">
-        <center> <h3>Alcance: proceso de distribución</h3> </center>
+        <center> <h3>Alcance: proceso de distribución en BT</h3> </center>
       </div>
-      @if(count($distribuciones) == 0)
+      @if(count($bts) == 0)
         <input type="hidden"  name="distribucion" value="distribucion"  >
       @else
-      @foreach($distribuciones as $distribucion)
+      @foreach($bts as $bt)
       <div class="col-md-12">
         <div class="col-md-4">
           <div class="form-group">
-            <input type="hidden" name="distribucion[id_dis][]" value="{{ $distribucion->id }}">
+            <input type="hidden" name="distribucion[id_dis][]" value="{{ $bt->id }}">
 
             <center><label >Descripción</label></center>
-            <select class="form-control" name="distribucion[descripcion_dis][]">
-              <option value="{{ $distribucion->descripcion }}">{{ $distribucion->descripcion }}</option>
-              <option value="Inspección RETIE proceso de distribución en MT">Inspección RETIE proceso de distribución en MT</option>
-              <option value="Inspección RETIE proceso de distribución en BT">Inspección RETIE proceso de distribución en BT</option>
-            </select>
+            <input type="text" class="form-control desc2" value="Inspección RETIE proceso de distribución en BT" id="desc" readonly=”readonly” name="distribucion[descripcion_dis][]">
           </div>
         </div>
         <div class="col-md-3">
           <div class="form-group">
             <center><label >Tipo</label></center>
             <select class="form-control" name="distribucion[tipo_dis][]" >
-              <option value="{{ $distribucion->tipo }}">{{ $distribucion->tipo }}</option>
+              <option value="{{ $bt->tipo }}">{{ $bt->tipo }}</option>
               <option value="Aérea">Tipo Aérea</option>
               <option value="Subterránea">Tipo subterránea</option>
             </select>
@@ -297,14 +337,14 @@ function addCommas(nStr){
           <div class="form-group">
             <center><label >Unidad</label></center>
             <center>
-              <input type="text" class="form-control" value="{{ $distribucion->unidad}}" value="mts."  readonly=”readonly” name="distribucion[unidad_distribucion][]"style="text-align:center">
+              <input type="text" class="form-control" value="{{ $bt->unidad}}" value="mts."  readonly=”readonly” name="distribucion[unidad_distribucion][]"style="text-align:center">
             </center>
           </div>
         </div>
         <div class="col-md-2">
           <div class="form-group">
             <center><label >Cantidad</label></center>
-            <input type="text" class="form-control cantidad2" placeholder= "Cantidad" value="{{ $distribucion->cantidad }}" name="distribucion[cantidad_dis][]">
+            <input type="text" class="form-control cantidad2" placeholder= "Cantidad" value="{{ $bt->cantidad }}" name="distribucion[cantidad_dis][]">
 
           </div>
         </div>
@@ -328,7 +368,7 @@ function addCommas(nStr){
             <option value="Inspección RETIE proceso uso final residencial">Inspección RETIE proceso uso final residencial</option>
             <option value="Inspección RETIE proceso uso final comercial">Inspección RETIE proceso uso final comercial</option>
             <option value="Inspección RETIE proceso uso industrial">Inspección RETIE proceso uso industrial</option>
-            
+
           </select>
         </div>
       </div>
