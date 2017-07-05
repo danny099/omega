@@ -15,6 +15,7 @@
       	font-variant: normal;
       	font-weight: 500;
       	line-height: 15.4px;
+        text-align: justify;
       }
       p{
         margin: 0;
@@ -172,7 +173,7 @@
             <th>Tipo</th>
             <th>Nivel de Tensión</th>
             <th>Unidad</th>
-            <th>Capacidad</th>
+            <th>Capacidad (KVA)</th>
             <th>Cantidad</th>
             <th>Tipo de Refrigeración</th>
           </tr>
@@ -329,6 +330,17 @@
               <p>{{ $distri->descripcion }} {{ $distri->tipo }}</p>
             </td>
             <td>{{ $distri->cantidad }} {{ $distri->unidad }}</td>
+
+            <td id="td2"></td>
+          </tr>
+        @endforeach
+        @foreach($pu_finales as $pu)
+          <tr>
+            <td>1</td>
+            <td>
+              <p>{{ $pu->descripcion }} {{ $pu->tipo }}</p>
+            </td>
+            <td>{{ $pu->cantidad }} {{ $pu->unidad }}</td>
 
             <td id="td2"></td>
           </tr>

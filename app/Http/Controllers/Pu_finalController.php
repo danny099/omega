@@ -98,27 +98,10 @@ class Pu_finalController extends Controller
                      $datos3['acometidas'] = $input['pu_final']['torres'][$i];
                      $datos3['torres'] = $datos3['acometidas'];
 
-                     $datoss['acometidas'] = $input['pu_final']['torres'][$i];
-                     $datoss['torres'] = $datoss['acometidas'];
 
                    }
                  }
 
-                 if ($datos3['tipo'] == 'Apartamentos') {
-
-                   $datos['descripcion'] = $input['pu_final']['descripcion_pu'][$i];
-                   $datos['tipo'] = 'Punto Fijo';
-                   $datos['estrato'] = $input['pu_final']['estrato_pu'][$i];
-                   $datos['unidad'] = 'Und';
-                   $datos['cantidad'] = $datoss['torres'];
-                   $datos['metros'] = $input['pu_final']['metros_pu'][$i];
-                   $datos['acometidas'] = $datoss['acometidas'];
-                   $datos['torres'] = $datoss['torres'];
-                     //  $datos['metros'] = $input['pu_final']['metros_pu'][$r];
-                   $datos['cotizacion_id'] = $lastId_cotiza;
-                   Pu_final::create($datos);
-
-               }
 
                  $datos3['administrativa_id'] = $request->codigo_proyecto;
                  $datos3['cotizacion_id'] = $request->codigo_cotizacion;
@@ -223,27 +206,10 @@ class Pu_finalController extends Controller
               $datos3['acometidas'] = $input['pu_final']['torres'][$i];
               $datos3['torres'] = $datos3['acometidas'];
 
-              $datoss['acometidas'] = $input['pu_final']['torres'][$i];
-              $datoss['torres'] = $datoss['acometidas'];
-
             }
           }
 
-          if ($datos3['tipo'] == 'Apartamentos') {
 
-            $datos['descripcion'] = $input['pu_final']['descripcion_pu'][$i];
-            $datos['tipo'] = 'Punto Fijo';
-            $datos['estrato'] = $input['pu_final']['estrato_pu'][$i];
-            $datos['unidad'] = 'Und';
-            $datos['cantidad'] = $datoss['torres'];
-            $datos['metros'] = $input['pu_final']['metros_pu'][$i];
-            $datos['acometidas'] = $datoss['acometidas'];
-            $datos['torres'] = $datoss['torres'];
-              //  $datos['metros'] = $input['pu_final']['metros_pu'][$r];
-            $datos['cotizacion_id'] = $lastId_cotiza;
-            Pu_final::create($datos);
-
-        }
 
 
          $pu->update($datos3);

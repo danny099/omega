@@ -106,7 +106,8 @@ class CotizacionController extends Controller
      public function store(Request $request)
      {
          $input = $request->all();
-
+        //  dd($input);
+        //  die();
          $now = new \DateTime();
          $fecha = $now->format('Y-m-d');
 
@@ -183,7 +184,7 @@ class CotizacionController extends Controller
                    $datos2['descripcion'] = $input['distribucion']['descripcion_dis'][$x];
                    $datos2['tipo'] = $input['distribucion']['tipo_dis'][$x];
                    $datos2['nivel_tension'] = $input['distribucion']['nivel_tension_dis'][$x];
-                   $datos2['unidad'] = 'km';
+                   $datos2['unidad'] = 'mts.';
                    $datos2['cantidad'] = str_replace('.',',',$input['distribucion']['cantidad_dis'][$x]);
 
                    if ($datos2['tipo'] == 'Aérea' && $input['distribucion']['apoyos_dis'][$x] == 0) {
@@ -217,7 +218,16 @@ class CotizacionController extends Controller
              }
          }
 
-         for ($i=0; $i<count($input['pu_final']['descripcion_pu']); $i++) {
+         $var = count($input['pu_final']['descripcion_pu']);
+         for ($i=0; $i < $var+1; $i++) {
+
+           if (isset($input['pu_final']['descripcion_pu'][$i]) &&
+               isset($input['pu_final']['tipo_pu'][$i]) &&
+               isset($input['pu_final']['estrato_pu'][$i]) &&
+               isset($input['pu_final']['cantidad_pu'][$i]) &&
+               isset($input['pu_final']['metros_pu'][$i]) &&
+               isset($input['pu_final']['kva_pu'][$i])) {
+
              if (!is_null($input['pu_final']['descripcion_pu'][$i]) &&
                  !is_null($input['pu_final']['tipo_pu'][$i]) &&
                  !is_null($input['pu_final']['estrato_pu'][$i]) &&
@@ -235,6 +245,7 @@ class CotizacionController extends Controller
                    if ($input['pu_final']['kva_pu'][$i] == 0) {
 
                      $datos3['kva'] = 'Según Plano';
+                     $datos3['torres'] = null;
 
                    }else {
                      $datos3['kva'] = $input['pu_final']['kva_pu'][$i];
@@ -243,65 +254,46 @@ class CotizacionController extends Controller
                    if ($datos3['tipo'] == 'Casa') {
 
                      $datos3['acometidas'] = $datos3['cantidad'];
+                     $datos3['torres'] = null;
 
                    }
 
                    if ($datos3['tipo'] == 'Local comercial') {
 
                      $datos3['acometidas'] = $datos3['cantidad'];
+                     $datos3['torres'] = null;
 
                    }
 
                    if ($datos3['tipo'] == 'Zona común') {
 
                      $datos3['acometidas'] = $datos3['cantidad'];
+                     $datos3['torres'] = null;
 
                    }
 
                    if ($datos3['tipo'] == 'Bodega') {
 
                      $datos3['acometidas'] = $datos3['cantidad'];
-
+                     $datos3['torres'] = null;
                    }
+
+                   if ($datos3['tipo'] == 'Punto fijo') {
+
+                     $datos3['acometidas'] = $datos3['cantidad'];
+                     $datos3['torres'] = null;
+                   }
+
 
                    if (isset($input['pu_final']['torres'][$i])) {
-                     if (!is_null($input['pu_final']['torres'][$i])) {
+                     if (!empty($input['pu_final']['torres'][$i])) {
 
                        $datos3['acometidas'] = $input['pu_final']['torres'][$i];
-                       $datos3['torres'] = $datos3['acometidas'];
-
-                       $datoss['acometidas'] = $input['pu_final']['torres'][$i];
-                       $datoss['torres'] = $datoss['acometidas'];
+                       $datos3['torres'] = $input['pu_final']['torres'][$i];
 
                      }
+
                    }
-
-                   if ($datos3['tipo'] == 'Apartamentos') {
-
-                     $datos['descripcion'] = $input['pu_final']['descripcion_pu'][$i];
-                     $datos['tipo'] = 'Punto Fijo';
-                     $datos['estrato'] = $input['pu_final']['estrato_pu'][$i];
-                     $datos['unidad'] = 'Und';
-                     $datos['cantidad'] = $datoss['torres'];
-                     $datos['metros'] = $input['pu_final']['metros_pu'][$i];
-                     $datos['acometidas'] = $datoss['acometidas'];
-                     $datos['torres'] = $datoss['torres'];
-                       //  $datos['metros'] = $input['pu_final']['metros_pu'][$r];
-                     $datos['cotizacion_id'] = $lastId_cotiza;
-
-                     $texto1['detalles'] = $datos['descripcion'].' '.$datos['tipo'].' '. $datos['cantidad'];
-                     $texto1['cantidad'] = $datos['cantidad'];
-                     $texto1['valor_uni'] = str_replace(',','',$input['valores']['valor_uni_pu'][$i+1]);
-                     $texto1['valor_total'] = str_replace(',','',$input['valores']['valor_multi_pu'][$i+1]);
-                     $texto1['cotizacion_id'] = $lastId_cotiza;
-
-
-
-                     Valorcot::create($texto1);
-
-                     Pu_final::create($datos);
-
-                 }
 
 
                    $datos3['cotizacion_id'] = $lastId_cotiza;
@@ -315,9 +307,12 @@ class CotizacionController extends Controller
                   //  die();
                    Valorcot::create($texto);
                    Pu_final::create($datos3);
+                 }
+
 
              }
          }
+
          Session::flash('message', 'Cotización Creada!!');
          Session::flash('class', 'success');
          return redirect()->route('cotizaciones.index');
@@ -362,7 +357,7 @@ class CotizacionController extends Controller
       $municipio = Municipio::find($muni_Id);
       $transformaciones = Transformacion::where('transformacion.cotizacion_id', '=', $id)->get();
       // $distribuciones = Distribucion::where('distribucion.cotizacion_id', '=', $id)->get();
-      // $pu_finales = Pu_final::where('pu_final.cotizacion_id', '=', $id)->get();
+      $pu_finales = Pu_final::where('pu_final.cotizacion_id', '=', $id)->get();
       $valorcot = Valorcot::where('valorcot.cotizacion_id', '=', $id)->get();
 
       $datos1 = DB::table('valorcot')->where('cotizacion_id', '=', $id)->where('detalles', 'like', '%transformacion%')->get();
@@ -370,7 +365,7 @@ class CotizacionController extends Controller
       $datos3 = DB::table('valorcot')->where('cotizacion_id', '=', $id)->where('detalles', 'like', '%final%')->get();
       $mts = DB::table('distribucion')->where('cotizacion_id', '=', $id)->where('descripcion', 'like', '%MT%')->get();
       $bts = DB::table('distribucion')->where('cotizacion_id', '=', $id)->where('descripcion', 'like', '%BT%')->get();
-      $pu_finales = DB::table('pu_final')->where('cotizacion_id', '=', $id)->where('tipo', '!=', 'Punto Fijo')->get();
+      // $pu_finales = DB::table('pu_final')->where('cotizacion_id', '=', $id)->where('tipo', '!=', 'Punto Fijo')->get();
       // dd($pu_finales);
       // die();
 
@@ -468,7 +463,7 @@ class CotizacionController extends Controller
             $datos2['descripcion'] = $input['distribucion']['descripcion_dis'][$x];
             $datos2['tipo'] = $input['distribucion']['tipo_dis'][$x];
             $datos2['nivel_tension'] = $input['distribucion']['nivel_tension_dis'][$x];
-            $datos2['unidad'] = 'km';
+            $datos2['unidad'] = 'mts.';
             $datos2['cantidad'] = str_replace('.',',',$input['distribucion']['cantidad_dis'][$x]);
 
             if ($datos2['tipo'] == 'Aérea' && $input['distribucion']['apoyos_dis'][$x] == 0) {
@@ -523,6 +518,8 @@ class CotizacionController extends Controller
             if ($input['pu_final']['kva_pu'][$i] == 0) {
 
               $datos3['kva'] = 'Según Plano';
+              $datos3['torres'] = null;
+
 
             }else {
               $datos3['kva'] = $input['pu_final']['kva_pu'][$i];
@@ -531,24 +528,32 @@ class CotizacionController extends Controller
             if ($datos3['tipo'] == 'Casa') {
 
               $datos3['acometidas'] = $datos3['cantidad'];
+              $datos3['torres'] = null;
+
 
             }
 
             if ($datos3['tipo'] == 'Local comercial') {
 
               $datos3['acometidas'] = $datos3['cantidad'];
+              $datos3['torres'] = null;
+
 
             }
 
             if ($datos3['tipo'] == 'Zona común') {
 
               $datos3['acometidas'] = $datos3['cantidad'];
+              $datos3['torres'] = null;
+
 
             }
 
             if ($datos3['tipo'] == 'Bodega') {
 
               $datos3['acometidas'] = $datos3['cantidad'];
+              $datos3['torres'] = null;
+
 
             }
 
@@ -558,28 +563,9 @@ class CotizacionController extends Controller
                 $datos3['acometidas'] = $input['pu_final']['torres'][$i];
                 $datos3['torres'] = $datos3['acometidas'];
 
-                $datoss['acometidas'] = $input['pu_final']['torres'][$i];
-                $datoss['torres'] = $datoss['acometidas'];
-
-
               }
             }
 
-            if ($datos3['tipo'] == 'Apartamentos') {
-
-              $datos['descripcion'] = $input['pu_final']['descripcion_pu'][$i];
-              $datos['tipo'] = 'Punto Fijo';
-              $datos['estrato'] = $input['pu_final']['estrato_pu'][$i];
-              $datos['unidad'] = 'Und';
-              $datos['cantidad'] = $datoss['torres'];
-              $datos['metros'] = $input['pu_final']['metros_pu'][$i];
-              $datos['acometidas'] = $datoss['acometidas'];
-              $datos['torres'] = $datoss['torres'];
-                //  $datos['metros'] = $input['pu_final']['metros_pu'][$r];
-              // $datos['cotizacion_id'] = $lastId_cotiza;
-              // Pu_final::create($datos);
-
-          }
 
             $id2 = $input['valores']['id_pu'][$i];
             $valor = Valorcot::findOrFail($id2);

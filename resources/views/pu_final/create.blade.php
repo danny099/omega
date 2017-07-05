@@ -56,7 +56,7 @@
               </select>
             </div>
           </div>
-          <div class="col-md-2">
+          <div class="col-md-2 torres">
             <div class="form-group">
               <center><label >Tipo</label></center>
               <select class="form-control tipo3" name="pu_final[tipo_pu][]" style="width:100%"id="tipo3">
@@ -138,6 +138,28 @@ $(document).on('change','#instalacion',function(){
 
 });
 
+$(document).on('change','.tipo3',function(){
+
+  var  tipo = $(this).val();
+
+    if (tipo == 'Apartamentos') {
+      $(this).parent().parent().parent().find( "#torres" ).addClass( "torres" );
+      $('.torres').after(
+        '<div class="col-md-1 " id="borrar">'+' '+
+          '<div class="form-group">'+' '+
+            '<center><label >#Torres</label></center>'+' '+
+              '<input type="text" class="form-control torre" value="" placeholder= "Cantidad" name="pu_final[torres][]">'+' '+
+            '</div>'+' '+
+          '</div>'
+    );
+    $(this).parent().parent().parent().find( "#torres" ).removeClass( "torres" );
+
+    }
+    else {
+      $(this).parent().parent().parent().parent().find( "#borrar" ).addClass( "borrar" );
+      $('.borrar').remove();
+    }
+});
 
 
 </script>

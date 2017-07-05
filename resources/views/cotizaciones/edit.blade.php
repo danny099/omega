@@ -286,13 +286,13 @@
                 </select>
               </div>
             </div>
-            <div class="col-md-1">
+            <div class="col-md-2">
               <div class="form-group">
                 <center class="separar"><label >Capacidad (KVA)</label></center>
                   <input type="text" class="form-control capacidad" placeholder="Capacidad"   value="{{$transfor->capacidad}}" name="transformacion[capacidad][]">
               </div>
             </div>
-            <div class="col-md-1">
+            <div class="col-md-2">
               <div class="form-group">
                 <center class="separar"><label >Cantidad</label></center>
                 <input type="text" class="form-control cantidad" id="cantidad" placeholder= "Cantidad" value="{{$transfor->cantidad}}"  name="transformacion[cantidad][]">
@@ -403,7 +403,7 @@
               </select>
             </div>
           </div>
-          <div class="col-md-2 torres">
+          <div class="col-md-2 " id="torres">
             <div class="form-group">
               <center><label >Tipo</label></center>
               <select class="form-control tipo3" name="pu_final[tipo_pu][]" style="width:100%" id="tipo3">
@@ -412,6 +412,15 @@
               </select>
             </div>
           </div>
+          @if( $pu->torres == null)
+          @else
+          <div class="col-md-1 ">
+            <div class="form-group">
+              <center><label >#Torres</label></center>
+              <input type="text" class="form-control torre" value="{{$pu->torres}}" placeholder= "Cantidad" name="pu_final[torres][]">
+            </div>
+          </div>
+          @endif
           <div class="col-md-2">
             <div class="form-group">
               <center><label >Estrato</label></center>
@@ -662,44 +671,7 @@ $(function() {
               var torre =$(this).find(".torre").val();
               var nFilas = $(".tabla tr").length - 1;
 
-              if (cantidad3 != '' && desc3!= '' && tipo3=='Apartamentos' ) {
-                operador3 = cantidad3 * datos3[i].valor_uni;
-
-                acumu3 = acumu3+ operador3;
-                $('.tabla tr:last').after('<tr class="actualizar"><td>'+nFilas+'</td><td>'+desc3+' - '+tipo3+'</td><td class="cant3">'+cantidad3+
-                '</td><td><input type="text" class="form-control valor_uni_pu"  value="'+addCommas(datos3[i].valor_uni)+'" placeholder= "Valor" onkeyup="mascara(this,cpf)" name="valores[valor_uni_pu][]" required=""></td>'+' '+
-                '<td><input type="text" class="form-control valor_multi_pu" placeholder= "Valor"  value="'+addCommas(operador3)+'" name="valores[valor_multi_pu][]" required="" readonly > <input type="hidden"  value="'+datos3[i].id+'"  name="valores[id_pu][]"></td></tr>'+' '+
-                '');
-                $('.tabla tr:last').after('<tr class="actualizar"><td>'+nFilas+'</td><td>Inspección RETIE proceso uso final residencial - Punto fijo</td><td class="cant3">'+torre+
-                '</td><td><input type="text" class="form-control valor_uni_pu" value="'+addCommas(datos3[i].valor_uni)+'"  placeholder= "Valor" onkeyup="mascara(this,cpf)" name="valores[valor_uni_pu][]" required=""></td>'+' '+
-                '<td><input type="text" class="form-control valor_multi_pu" placeholder= "Valor" value="'+addCommas(operador3)+'" name="valores[valor_multi_pu][]" required="" readonly ></td></tr><input type="hidden"  value="'+datos3[i].id+'"  name="valores[id_pu][]"></td></tr>'+' '+
-                '');
-                  event.preventDefault();
-
-                  $('.valor_uni_pu').keyup(function(){
-                    var valor_uni_pu = $(this).val().replace(/,/g,"");
-                    var cantidad3 = $(this).parent().parent().find(".cant3").text();
-                    var resultado3= valor_uni_pu * cantidad3;
-                    $(this).parent().parent().find('.valor_multi_pu').val(addCommas(Math.round(resultado3)));
-                    valor_multi_pu = 0;
-
-                     $(".valor_multi_pu").each(function(i){
-                          valor_multi_pu = valor_multi_pu + parseFloat($(this).val().replace(/,/g,""));
-                          var subtotal=  parseFloat(valor_multi_dis)+parseFloat(valor_multi)+parseFloat(valor_multi_pu);
-                           var iva = subtotal*0.19;
-                           var total = subtotal+iva;
-
-                          $(this).parent().parent().parent().parent().parent().parent().find('.subtotal').text(addCommas(Math.round(subtotal)));
-                          $(this).parent().parent().parent().parent().parent().parent().find('.subtotal').val(addCommas(Math.round(subtotal)));
-                          $(this).parent().parent().parent().parent().parent().parent().find('.iva').text(addCommas(Math.round(iva)));
-                          $(this).parent().parent().parent().parent().parent().parent().find('.iva').val(addCommas(Math.round(iva)));
-                          $(this).parent().parent().parent().parent().parent().parent().find('.total').text(addCommas(Math.round(total)));
-                          $(this).parent().parent().parent().parent().parent().parent().find('.total').val(addCommas(Math.round(total)));
-                       });
-
-                    });
-              }
-              else if (cantidad3 != '' && desc3!= '' && tipo3!='') {
+              if (cantidad3 != '' && desc3!= '' && tipo3!='') {
                 operador3 = cantidad3 *datos3[i].valor_uni;
                 acumu3 = acumu3+ operador3;
                 $('.tabla tr:last').after('<tr class="actualizar"><td>'+nFilas+'</td><td>'+desc3+' - '+tipo3+'</td><td class="cant3">'+cantidad3+
@@ -759,20 +731,7 @@ $(function() {
 
 
 $(document).ready(function(){
-  var  tipo = $('.tipo3').val();
-    if (tipo == 'Apartamentos') {
-      $('.torres').after(
-        '<div class="col-md-1 borrar">'+' '+
-          '<div class="form-group">'+' '+
-            '<center><label >#Torres</label></center>'+' '+
-              '<input type="text" class="form-control torre" value="{{$pu->torres}}" placeholder= "Cantidad" name="pu_final[torres][]">'+' '+
-            '</div>'+' '+
-          '</div>'
-    );
-    }
-    else {
-      $('.borrar').remove();
-    }
+
 
   $('#cliente').change(function(){
       var valorCambiado =$(this).val();
@@ -854,6 +813,7 @@ $(document).on('change','#instalacion',function(){
     $(this).parent().parent().parent().find("#tipo3").append('<option value="Casa">Casa</option>');
     $(this).parent().parent().parent().find("#tipo3").append('<option value="Apartamentos">Apartamentos</option>');
     $(this).parent().parent().parent().find("#tipo3").append('<option value="Zona común">Zona común</option>');
+    $(this).parent().parent().parent().find("#tipo3").append('<option value="Punto fijo">Punto fijo</option>');
 
   }
     else if (instalacion == 'Inspección RETIE proceso uso final comercial') {
@@ -890,6 +850,7 @@ $(document).on('change','#kv',function(){
 $(document).on('change','.tipo3',function(){
 
   var  tipo = $(this).val();
+  $(this).parent().parent().parent().find( "#torres" ).addClass( "torres" );
     if (tipo == 'Apartamentos') {
       $('.torres').after(
         '<div class="col-md-1 borrar">'+' '+

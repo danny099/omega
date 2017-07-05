@@ -105,7 +105,7 @@
             <div class="col-md-1 tblprod11" id="tblprod11" >
               <div class="form-group">
                 <center class="separar"></center>
-                <a class="btn btn-primary" data-toggle="modal" id="btnadd11" href="#" style="background-color: #fdea08; border-color:#fdea08"><i class="glyphicon glyphicon-plus"></i></a>
+                <a class="btn btn-primary" data-toggle="modal" id="btnadd100" href="#" style="background-color: #fdea08; border-color:#fdea08"><i class="glyphicon glyphicon-plus"></i></a>
               </div>
             </div>
         </div>
