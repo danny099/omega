@@ -426,14 +426,16 @@
           </div>
           @if( $pu->torres == null)
           @else
-          <div class="col-md-1 ">
+          <div class="col-md-1 " id="borrar">
             <div class="form-group">
               <center><label >#Torres</label></center>
               <input type="text" class="form-control torre" value="{{$pu->torres}}" placeholder= "Cantidad" name="pu_final[torres][]">
             </div>
           </div>
           @endif
-          <div class="col-md-2">
+          @if( $pu->estrato == null)
+          @else
+          <div class="col-md-2" id="borrar2">
             <div class="form-group">
               <center><label >Estrato</label></center>
               <select class="form-control"name="pu_final[estrato_pu][]" style="width:100%">
@@ -447,6 +449,7 @@
               </select>
             </div>
           </div>
+          @endif
           <div class="col-md-1">
             <div class="form-group">
               <center><label >Cantidad</label></center>
@@ -840,6 +843,38 @@ $(document).on('change','#instalacion',function(){
 
 });
 
+$(document).on('change','#instalacion',function(){
+
+  var  instalacion = $(this).val();
+
+    if(instalacion == 'Inspección RETIE proceso uso final residencial') {
+      $(this).parent().parent().parent().find( "#torres" ).addClass( "torres" );
+      $('.torres').after(
+          '<div class="col-md-2" id="estrato">'+' '+
+            '<div class="form-group">'+' '+
+              '<center><label >Estrato</label></center>'+' '+
+              '<select class="form-control "name="pu_final[estrato_pu][]" style="width:100%">'+' '+
+                '<option value="">Seleccione...</option>'+' '+
+                '<option value="1">1</option>'+' '+
+                '<option value="2">2</option>'+' '+
+                '<option value="3">3</option>'+' '+
+                '<option value="4">4</option>'+' '+
+                '<option value="5">5</option>'+' '+
+                '<option value="6">6</option>'+' '+
+              '</select>'+' '+
+            '</div>'+' '+
+          '</div>');
+          $("select").select2();
+          $(this).parent().parent().parent().find( "#torres" ).removeClass( "torres" );
+    }
+    else {
+      $(this).parent().parent().parent().parent().find( "#estrato" ).addClass( "borrar2" );
+      $('.borrar2').remove();
+    }
+
+
+});
+
 $(document).on('change','#kv',function(){
 
   var  kv = $(this).val();
@@ -862,18 +897,22 @@ $(document).on('change','#kv',function(){
 $(document).on('change','.tipo3',function(){
 
   var  tipo = $(this).val();
-  $(this).parent().parent().parent().find( "#torres" ).addClass( "torres" );
+
     if (tipo == 'Apartamentos') {
+      $(this).parent().parent().parent().find( "#torres" ).addClass( "torres" );
       $('.torres').after(
-        '<div class="col-md-1 borrar">'+' '+
+        '<div class="col-md-1 " id="borrar">'+' '+
           '<div class="form-group">'+' '+
             '<center><label >#Torres</label></center>'+' '+
-              '<input type="text" class="form-control" value="" placeholder= "Cantidad" name="pu_final[torres][]">'+' '+
+              '<input type="text" class="form-control torre" value="" placeholder= "Cantidad" name="pu_final[torres][]">'+' '+
             '</div>'+' '+
           '</div>'
     );
+    $(this).parent().parent().parent().find( "#torres" ).removeClass( "torres" );
+
     }
     else {
+      $(this).parent().parent().parent().parent().find( "#borrar" ).addClass( "borrar" );
       $('.borrar').remove();
     }
 });
