@@ -426,7 +426,7 @@
             </div>
           </div>
           @else
-          <div class="col-md-2 ">
+          <div class="col-md-2 " id="torre">
             <div class="form-group">
               <center><label >Tipo</label></center>
               <select class="form-control tipo3" name="pu_final[tipo_pu][]" style="width:100%" id="tipo3">
@@ -436,6 +436,7 @@
             </div>
           </div>
           @endif
+
           @if( $pu->torres == null)
           @else
           <div class="col-md-1 " id="borrar">
@@ -447,7 +448,7 @@
           @endif
           @if( $pu->estrato == null)
           @else
-          <div class="col-md-2" id="borrar2">
+          <div class="col-md-2" id="estrato">
             <div class="form-group">
               <center><label >Estrato</label></center>
               <select class="form-control"name="pu_final[estrato_pu][]" style="width:100%">
@@ -837,6 +838,8 @@ $(document).on('change','#instalacion',function(){
 
   if (instalacion == 'Inspección RETIE proceso uso final residencial') {
     $(this).parent().parent().parent().find("#tipo3").html('');
+
+    $(this).parent().parent().parent().find("#tipo3").append('<option value="">Seleccione...</option>');
     $(this).parent().parent().parent().find("#tipo3").append('<option value="Casa">Casa</option>');
     $(this).parent().parent().parent().find("#tipo3").append('<option value="Apartamentos">Apartamentos</option>');
     $(this).parent().parent().parent().find("#tipo3").append('<option value="Zona común">Zona común</option>');
@@ -845,11 +848,13 @@ $(document).on('change','#instalacion',function(){
   }
     else if (instalacion == 'Inspección RETIE proceso uso final comercial') {
       $(this).parent().parent().parent().find("#tipo3").html('');
+      $(this).parent().parent().parent().find("#tipo3").append('<option value="">Seleccione...</option>');
       $(this).parent().parent().parent().find("#tipo3").append('<option value="Local comercial">Local comercial</option>');
       $(this).parent().parent().parent().find("#tipo3").append('<option value="Bodega">Bodega</option>');
     }
     else {
       $(this).parent().parent().parent().find("#tipo3").html('');
+      $(this).parent().parent().parent().find("#tipo3").append('<option value="">Seleccione...</option>');
       $(this).parent().parent().parent().find("#tipo3").append('<option value="Bodega">Bodega</option>');
     }
 
@@ -861,6 +866,7 @@ $(document).on('change','#instalacion',function(){
 
     if(instalacion == 'Inspección RETIE proceso uso final residencial') {
       $(this).parent().parent().parent().find( "#torres" ).addClass( "torres" );
+      $(this).parent().parent().parent().find( "#torre" ).addClass( "torre" );
       $('.torres').after(
           '<div class="col-md-2" id="estrato">'+' '+
             '<div class="form-group">'+' '+
@@ -878,6 +884,7 @@ $(document).on('change','#instalacion',function(){
           '</div>');
           $("select").select2();
           $(this).parent().parent().parent().find( "#torres" ).removeClass( "torres" );
+          $(this).parent().parent().parent().find( "#torre" ).removeClass( "torre" );
     }
     else {
       $(this).parent().parent().parent().parent().find( "#estrato" ).addClass( "borrar2" );
@@ -912,6 +919,7 @@ $(document).on('change','.tipo3',function(){
 
     if (tipo == 'Apartamentos') {
       $(this).parent().parent().parent().find( "#torres" ).addClass( "torres" );
+      $(this).parent().parent().parent().find( "#torre" ).addClass( "torre" );
       $('.torres').after(
         '<div class="col-md-1 " id="borrar">'+' '+
           '<div class="form-group">'+' '+
@@ -920,7 +928,9 @@ $(document).on('change','.tipo3',function(){
             '</div>'+' '+
           '</div>'
     );
+
     $(this).parent().parent().parent().find( "#torres" ).removeClass( "torres" );
+    $(this).parent().parent().parent().find( "#torre" ).removeClass( "torre" );
 
     }
     else {
