@@ -219,26 +219,26 @@ class CotizacionController extends Controller
              }
          }
 
-         $var = count($input['pu_final']['descripcion_pu']);
-         for ($i=0; $i < $var+1; $i++) {
+        //  $var = count($input['pu_final']['descripcion_pu']);
+         for ($i=0; $i < count($input['pu_final']['descripcion_pu']); $i++) {
 
-           if (isset($input['pu_final']['descripcion_pu'][$i]) &&
-               isset($input['pu_final']['tipo_pu'][$i]) &&
-               isset($input['pu_final']['estrato_pu'][$i]) &&
-               isset($input['pu_final']['cantidad_pu'][$i]) &&
-               isset($input['pu_final']['metros_pu'][$i]) &&
-               isset($input['pu_final']['kva_pu'][$i])) {
+          //  if (isset($input['pu_final']['descripcion_pu'][$i]) &&
+          //      isset($input['pu_final']['tipo_pu'][$i]) &&
+          //      isset($input['pu_final']['estrato_pu'][$i]) &&
+          //      isset($input['pu_final']['cantidad_pu'][$i]) &&
+          //      isset($input['pu_final']['metros_pu'][$i]) &&
+          //      isset($input['pu_final']['kva_pu'][$i])) {
 
              if (!is_null($input['pu_final']['descripcion_pu'][$i]) &&
                  !is_null($input['pu_final']['tipo_pu'][$i]) &&
-                 !is_null($input['pu_final']['estrato_pu'][$i]) &&
+                //  !is_null($input['pu_final']['estrato_pu'][$i]) &&
                  !is_null($input['pu_final']['cantidad_pu'][$i]) &&
                  !is_null($input['pu_final']['metros_pu'][$i]) &&
                  !is_null($input['pu_final']['kva_pu'][$i])) {
 
                    $datos3['descripcion'] = $input['pu_final']['descripcion_pu'][$i];
                    $datos3['tipo'] = $input['pu_final']['tipo_pu'][$i];
-                   $datos3['estrato'] = $input['pu_final']['estrato_pu'][$i];
+                  //  $datos3['estrato'] = $input['pu_final']['estrato_pu'][$i];
                    $datos3['unidad'] = 'Und';
                    $datos3['cantidad'] = $input['pu_final']['cantidad_pu'][$i];
                    $datos3['metros'] = $input['pu_final']['metros_pu'][$i];
@@ -285,6 +285,14 @@ class CotizacionController extends Controller
                      $datos3['torres'] = null;
                    }
 
+                   if ($datos3['descripcion'] == 'Inspección RETIE proceso uso final comercial' || $datos3['descripcion'] == 'Inspección RETIE proceso uso industrial') {
+
+                     $datos3['estrato'] = null;
+
+                   }else {
+                     $datos3['estrato'] = $input['pu_final']['estrato_pu'][$i];
+                   }
+
 
                    if (isset($input['pu_final']['torres'][$i])) {
                      if (!empty($input['pu_final']['torres'][$i])) {
@@ -310,8 +318,6 @@ class CotizacionController extends Controller
                    Pu_final::create($datos3);
                  }
 
-
-             }
          }
 
          Session::flash('message', 'Cotización Creada!!');
@@ -511,7 +517,7 @@ class CotizacionController extends Controller
             $pu = Pu_final::findOrFail($id1);
             $datos3['descripcion'] = $input['pu_final']['descripcion_pu'][$i];
             $datos3['tipo'] = $input['pu_final']['tipo_pu'][$i];
-            $datos3['estrato'] = $input['pu_final']['estrato_pu'][$i];
+            // $datos3['estrato'] = $input['pu_final']['estrato_pu'][$i];
             $datos3['unidad'] = 'Und';
             $datos3['cantidad'] = $input['pu_final']['cantidad_pu'][$i];
             $datos3['metros'] = $input['pu_final']['metros_pu'][$i];
@@ -567,7 +573,15 @@ class CotizacionController extends Controller
               }
             }
 
+            if ($datos3['descripcion'] == 'Inspección RETIE proceso uso final comercial' || $datos3['descripcion'] == 'Inspección RETIE proceso uso industrial') {
 
+              $datos3['estrato'] = null;
+
+            }else {
+              $datos3['estrato'] = $input['pu_final']['estrato_pu'][$i];
+
+            }
+            
             $id2 = $input['valores']['id_pu'][$i];
             $valor = Valorcot::findOrFail($id2);
             $texto['detalles'] = $datos3['descripcion'].' '.$datos3['tipo'].' '. $datos3['cantidad'];

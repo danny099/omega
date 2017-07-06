@@ -55,7 +55,7 @@ class Pu_finalController extends Controller
 
                  $datos3['descripcion'] = $input['pu_final']['descripcion_pu'][$i];
                  $datos3['tipo'] = $input['pu_final']['tipo_pu'][$i];
-                 $datos3['estrato'] = $input['pu_final']['estrato_pu'][$i];
+                //  $datos3['estrato'] = $input['pu_final']['estrato_pu'][$i];
                  $datos3['unidad'] = 'Und';
                  $datos3['cantidad'] = $input['pu_final']['cantidad_pu'][$i];
                  $datos3['metros'] = $input['pu_final']['metros_pu'][$i];
@@ -102,6 +102,13 @@ class Pu_finalController extends Controller
                    }
                  }
 
+                 if ($datos3['descripcion'] == 'Inspección RETIE proceso uso final comercial' || $datos3['descripcion'] == 'Inspección RETIE proceso uso industrial') {
+
+                   $datos3['estrato'] = null;
+
+                 }else {
+                   $datos3['estrato'] = $input['pu_final']['estrato_pu'][$i];
+                 }
 
                  $datos3['administrativa_id'] = $request->codigo_proyecto;
                  $datos3['cotizacion_id'] = $request->codigo_cotizacion;
@@ -163,7 +170,7 @@ class Pu_finalController extends Controller
          $pu = Pu_final::findOrFail($request->pu_final['id'][$i]);
          $datos3['descripcion'] = $input['pu_final']['descripcion_pu'][$i];
          $datos3['tipo'] = $input['pu_final']['tipo_pu'][$i];
-         $datos3['estrato'] = $input['pu_final']['estrato_pu'][$i];
+        //  $datos3['estrato'] = $input['pu_final']['estrato_pu'][$i];
          $datos3['unidad'] = 'Und';
          $datos3['cantidad'] = $input['pu_final']['cantidad_pu'][$i];
          $datos3['metros'] = $input['pu_final']['metros_pu'][$i];
@@ -209,8 +216,13 @@ class Pu_finalController extends Controller
             }
           }
 
+          if ($datos3['descripcion'] == 'Inspección RETIE proceso uso final comercial' || $datos3['descripcion'] == 'Inspección RETIE proceso uso industrial') {
 
+            $datos3['estrato'] = null;
 
+          }else {
+            $datos3['estrato'] = $input['pu_final']['estrato_pu'][$i];
+          }
 
          $pu->update($datos3);
 
