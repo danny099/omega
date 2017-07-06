@@ -374,20 +374,7 @@
           </select>
         </div>
       </div>
-      <div class="col-md-2">
-        <div class="form-group">
-          <center><label >Estrato</label></center>
-          <select class="form-control"name="pu_final[estrato_pu][]" style="width:100%">
-            <option value="">Seleccione...</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-          </select>
-        </div>
-      </div>
+
       <div class="col-md-1">
         <div class="form-group">
           <center><label >Cantidad</label></center>
@@ -736,6 +723,38 @@ $(document).on('change','#instalacion',function(){
 
 });
 
+
+$(document).on('change','#instalacion',function(){
+
+  var  instalacion = $(this).val();
+
+    if(instalacion == 'Inspección RETIE proceso uso final residencial') {
+      $(this).parent().parent().parent().find( "#torres" ).addClass( "torres" );
+      $('.torres').after(
+          '<div class="col-md-2" id="estrato">'+' '+
+            '<div class="form-group">'+' '+
+              '<center><label >Estrato</label></center>'+' '+
+              '<select class="form-control "name="pu_final[estrato_pu][]" style="width:100%">'+' '+
+                '<option value="">Seleccione...</option>'+' '+
+                '<option value="1">1</option>'+' '+
+                '<option value="2">2</option>'+' '+
+                '<option value="3">3</option>'+' '+
+                '<option value="4">4</option>'+' '+
+                '<option value="5">5</option>'+' '+
+                '<option value="6">6</option>'+' '+
+              '</select>'+' '+
+            '</div>'+' '+
+          '</div>');
+          $("select").select2();
+          $(this).parent().parent().parent().find( "#torres" ).removeClass( "torres" );
+    }
+    else {
+      $(this).parent().parent().parent().parent().find( "#estrato" ).addClass( "borrar2" );
+      $('.borrar2').remove();
+    }
+
+
+});
 
 $(document).on('change','#kv',function(){
 

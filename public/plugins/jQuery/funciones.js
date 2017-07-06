@@ -336,20 +336,6 @@
                         '</select>'+' '+
                       '</div>'+' '+
                     '</div>'+' '+
-                    '<div class="col-md-2">'+' '+
-                      '<div class="form-group">'+' '+
-                        '<center><label >Estrato</label></center>'+' '+
-                        '<select class="form-control"name="pu_final[estrato_pu][]">'+' '+
-                          '<option value="">Seleccione...</option>'+' '+
-                          '<option value="1">1</option>'+' '+
-                          '<option value="2">2</option>'+' '+
-                          '<option value="3">3</option>'+' '+
-                          '<option value="4">4</option>'+' '+
-                          '<option value="5">5</option>'+' '+
-                          '<option value="6">6</option>'+' '+
-                        '</select>'+' '+
-                      '</div>'+' '+
-                    '</div>'+' '+
                     '<div class="col-md-1">'+' '+
                       '<div class="form-group">'+' '+
                         '<center><label >Cantidad</label></center>'+' '+
