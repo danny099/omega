@@ -102,12 +102,15 @@ class Pu_finalController extends Controller
                    }
                  }
 
-                 if ($datos3['descripcion'] == 'Inspección RETIE proceso uso final comercial' || $datos3['descripcion'] == 'Inspección RETIE proceso uso final industrial') {
+                 if (isset($input['pu_final']['estrato_pu'][$i])) {
+                   if (!empty($input['pu_final']['estrato_pu'][$i])) {
 
-                   $datos3['estrato'] = null;
+                     $datos3['estrato'] = $input['pu_final']['estrato_pu'][$i];
+
+                   }
 
                  }else {
-                   $datos3['estrato'] = $input['pu_final']['estrato_pu'][$i];
+                   $datos3['estrato'] = null;
                  }
 
                  $datos3['administrativa_id'] = $request->codigo_proyecto;
@@ -216,12 +219,15 @@ class Pu_finalController extends Controller
             }
           }
 
-          if ($datos3['descripcion'] == 'Inspección RETIE proceso uso final comercial' || $datos3['descripcion'] == 'Inspección RETIE proceso uso final industrial') {
+          if (isset($input['pu_final']['estrato_pu'][$i])) {
+            if (!empty($input['pu_final']['estrato_pu'][$i])) {
 
-            $datos3['estrato'] = null;
+              $datos3['estrato'] = $input['pu_final']['estrato_pu'][$i];
+
+            }
 
           }else {
-            $datos3['estrato'] = $input['pu_final']['estrato_pu'][$i];
+            $datos3['estrato'] = null;
           }
 
          $pu->update($datos3);

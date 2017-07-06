@@ -242,13 +242,6 @@ class CotizacionController extends Controller
                    $datos3['cantidad'] = $input['pu_final']['cantidad_pu'][$i];
                    $datos3['metros'] = $input['pu_final']['metros_pu'][$i];
 
-                   if ($datos3['descripcion'] == 'Inspección RETIE proceso uso final comercial' || $datos3['descripcion'] == 'Inspección RETIE proceso uso final industrial') {
-
-                     $datos3['estrato'] = null;
-
-                   }else {
-                     $datos3['estrato'] = $input['pu_final']['estrato_pu'][$i];
-                   }
 
                    if ($input['pu_final']['kva_pu'][$i] == 0) {
 
@@ -304,6 +297,19 @@ class CotizacionController extends Controller
                      }
 
                    }
+
+                   if (isset($input['pu_final']['estrato_pu'][$i])) {
+                     if (!empty($input['pu_final']['estrato_pu'][$i])) {
+
+                       $datos3['estrato'] = $input['pu_final']['estrato_pu'][$i];
+
+                     }
+
+                   }else {
+                     $datos3['estrato'] = null;
+                   }
+
+
 
 
                    $datos3['cotizacion_id'] = $lastId_cotiza;
@@ -576,13 +582,15 @@ class CotizacionController extends Controller
               }
             }
 
-            if ($datos3['descripcion'] == 'Inspección RETIE proceso uso final comercial' || $datos3['descripcion'] == 'Inspección RETIE proceso uso final industrial') {
+            if (isset($input['pu_final']['estrato_pu'][$i])) {
+              if (!empty($input['pu_final']['estrato_pu'][$i])) {
 
-              $datos3['estrato'] = null;
+                $datos3['estrato'] = $input['pu_final']['estrato_pu'][$i];
+
+              }
 
             }else {
-              $datos3['estrato'] = $input['pu_final']['estrato_pu'][$i];
-
+              $datos3['estrato'] = null;
             }
 
             $id2 = $input['valores']['id_pu'][$i];
