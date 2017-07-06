@@ -411,7 +411,7 @@
                 <option value="{{ $pu->descripcion }}">{{ $pu->descripcion }}</option>
                 <option value="Inspección RETIE proceso uso final residencial">Inspección RETIE proceso uso final residencial</option>
                 <option value="Inspección RETIE proceso uso final comercial">Inspección RETIE proceso uso final comercial</option>
-                <option value="Inspección RETIE proceso uso industrial">Inspección RETIE proceso uso industrial</option>
+                <option value="Inspección RETIE proceso uso final industrial">Inspección RETIE proceso uso final industrial</option>
               </select>
             </div>
           </div>
@@ -687,7 +687,10 @@ $(function() {
               var nFilas = $(".tabla tr").length - 1;
 
               if (cantidad3 != '' && desc3!= '' && tipo3!='') {
+                alert(datos3[i].valor_uni)
+
                 operador3 = cantidad3 *datos3[i].valor_uni;
+                alert(operador3)
                 acumu3 = acumu3+ operador3;
                 $('.tabla tr:last').after('<tr class="actualizar"><td>'+nFilas+'</td><td>'+desc3+' - '+tipo3+'</td><td class="cant3">'+cantidad3+
                 '</td><td><input type="text" class="form-control valor_uni_pu"  value="'+addCommas(datos3[i].valor_uni)+'" placeholder= "Valor" onkeyup="mascara(this,cpf)" name="valores[valor_uni_pu][]" required=""></td>'+' '+
