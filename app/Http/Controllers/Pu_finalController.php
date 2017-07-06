@@ -102,7 +102,7 @@ class Pu_finalController extends Controller
                    }
                  }
 
-                 if ($datos3['descripcion'] == 'Inspección RETIE proceso uso final comercial' || $datos3['descripcion'] == 'Inspección RETIE proceso uso industrial') {
+                 if ($datos3['descripcion'] == 'Inspección RETIE proceso uso final comercial' || $datos3['descripcion'] == 'Inspección RETIE proceso uso final industrial') {
 
                    $datos3['estrato'] = null;
 
@@ -216,7 +216,7 @@ class Pu_finalController extends Controller
             }
           }
 
-          if ($datos3['descripcion'] == 'Inspección RETIE proceso uso final comercial' || $datos3['descripcion'] == 'Inspección RETIE proceso uso industrial') {
+          if ($datos3['descripcion'] == 'Inspección RETIE proceso uso final comercial' || $datos3['descripcion'] == 'Inspección RETIE proceso uso final industrial') {
 
             $datos3['estrato'] = null;
 

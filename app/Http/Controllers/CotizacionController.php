@@ -238,10 +238,17 @@ class CotizacionController extends Controller
 
                    $datos3['descripcion'] = $input['pu_final']['descripcion_pu'][$i];
                    $datos3['tipo'] = $input['pu_final']['tipo_pu'][$i];
-                  //  $datos3['estrato'] = $input['pu_final']['estrato_pu'][$i];
                    $datos3['unidad'] = 'Und';
                    $datos3['cantidad'] = $input['pu_final']['cantidad_pu'][$i];
                    $datos3['metros'] = $input['pu_final']['metros_pu'][$i];
+
+                   if ($datos3['descripcion'] == 'Inspección RETIE proceso uso final comercial' || $datos3['descripcion'] == 'Inspección RETIE proceso uso final industrial') {
+
+                     $datos3['estrato'] = null;
+
+                   }else {
+                     $datos3['estrato'] = $input['pu_final']['estrato_pu'][$i];
+                   }
 
                    if ($input['pu_final']['kva_pu'][$i] == 0) {
 
@@ -285,13 +292,7 @@ class CotizacionController extends Controller
                      $datos3['torres'] = null;
                    }
 
-                   if ($datos3['descripcion'] == 'Inspección RETIE proceso uso final comercial' || $datos3['descripcion'] == 'Inspección RETIE proceso uso industrial') {
 
-                     $datos3['estrato'] = null;
-
-                   }else {
-                     $datos3['estrato'] = $input['pu_final']['estrato_pu'][$i];
-                   }
 
 
                    if (isset($input['pu_final']['torres'][$i])) {
@@ -370,6 +371,8 @@ class CotizacionController extends Controller
       $datos1 = DB::table('valorcot')->where('cotizacion_id', '=', $id)->where('detalles', 'like', '%transformacion%')->get();
       $datos2 = DB::table('valorcot')->where('cotizacion_id', '=', $id)->where('detalles', 'like', '%distribucion%')->get();
       $datos3 = DB::table('valorcot')->where('cotizacion_id', '=', $id)->where('detalles', 'like', '%final%')->get();
+      // dd($datos3);
+      // die();
       $mts = DB::table('distribucion')->where('cotizacion_id', '=', $id)->where('descripcion', 'like', '%MT%')->get();
       $bts = DB::table('distribucion')->where('cotizacion_id', '=', $id)->where('descripcion', 'like', '%BT%')->get();
       // $pu_finales = DB::table('pu_final')->where('cotizacion_id', '=', $id)->where('tipo', '!=', 'Punto Fijo')->get();
@@ -573,7 +576,7 @@ class CotizacionController extends Controller
               }
             }
 
-            if ($datos3['descripcion'] == 'Inspección RETIE proceso uso final comercial' || $datos3['descripcion'] == 'Inspección RETIE proceso uso industrial') {
+            if ($datos3['descripcion'] == 'Inspección RETIE proceso uso final comercial' || $datos3['descripcion'] == 'Inspección RETIE proceso uso final industrial') {
 
               $datos3['estrato'] = null;
 
@@ -581,7 +584,7 @@ class CotizacionController extends Controller
               $datos3['estrato'] = $input['pu_final']['estrato_pu'][$i];
 
             }
-            
+
             $id2 = $input['valores']['id_pu'][$i];
             $valor = Valorcot::findOrFail($id2);
             $texto['detalles'] = $datos3['descripcion'].' '.$datos3['tipo'].' '. $datos3['cantidad'];
