@@ -415,6 +415,7 @@
               </select>
             </div>
           </div>
+          @if( $pu->estrato == null)
           <div class="col-md-2 " id="torres">
             <div class="form-group">
               <center><label >Tipo</label></center>
@@ -424,6 +425,17 @@
               </select>
             </div>
           </div>
+          @else
+          <div class="col-md-2 ">
+            <div class="form-group">
+              <center><label >Tipo</label></center>
+              <select class="form-control tipo3" name="pu_final[tipo_pu][]" style="width:100%" id="tipo3">
+                <option value="{{ $pu->tipo }}">{{ $pu->tipo }}</option>
+
+              </select>
+            </div>
+          </div>
+          @endif
           @if( $pu->torres == null)
           @else
           <div class="col-md-1 " id="borrar">
@@ -687,10 +699,7 @@ $(function() {
               var nFilas = $(".tabla tr").length - 1;
 
               if (cantidad3 != '' && desc3!= '' && tipo3!='') {
-                alert(datos3[i].valor_uni)
-
                 operador3 = cantidad3 *datos3[i].valor_uni;
-                alert(operador3)
                 acumu3 = acumu3+ operador3;
                 $('.tabla tr:last').after('<tr class="actualizar"><td>'+nFilas+'</td><td>'+desc3+' - '+tipo3+'</td><td class="cant3">'+cantidad3+
                 '</td><td><input type="text" class="form-control valor_uni_pu"  value="'+addCommas(datos3[i].valor_uni)+'" placeholder= "Valor" onkeyup="mascara(this,cpf)" name="valores[valor_uni_pu][]" required=""></td>'+' '+

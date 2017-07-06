@@ -362,7 +362,7 @@
             <option value="">Seleccione...</option>
             <option value="Inspección RETIE proceso uso final residencial">Inspección RETIE proceso uso final residencial</option>
             <option value="Inspección RETIE proceso uso final comercial">Inspección RETIE proceso uso final comercial</option>
-            <option value="Inspección RETIE proceso uso final industrial">Inspección RETIE proceso uso industrial</option>
+            <option value="Inspección RETIE proceso uso final industrial">Inspección RETIE proceso uso final industrial</option>
           </select>
         </div>
       </div>
