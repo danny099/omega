@@ -37,6 +37,33 @@
         document.getElementById('fin').value = resultado ;
           }
 
+          var tension = 0;
+        $(document).on('change','.tension',function(){
+
+            tension = $(this).val();
+            $(".tension2").html('');
+            $(".tension2").append('<option value="'+tension+'">'+tension+'</option>');
+
+        });
+
+        var tension = 0;
+      $(document).on('change','.tension',function(){
+
+          tension = $(this).val();
+          $(".tension3").html('');
+          $(".tension3").append('<option value="'+tension+'">'+tension+'</option>');
+
+      });
+
+      var tension = 0;
+    $(document).on('change','.tension',function(){
+
+        tension = $(this).val();
+        $(".tension4").html('');
+        $(".tension4").append('<option value="'+tension+'">'+tension+'</option>');
+
+    });
+
           $(function() {
               var count = 1;
              $(document).on("click","#btnadd13",function( event ) {
@@ -64,7 +91,7 @@
                     '<div class="col-md-1">'+' '+
                       '<div class="form-group">'+' '+
                         '<center class="separar"><label >Nivel de tensión (KV)  </label></center>'+' '+
-                         '<select class="form-control tipo2" name="distribucion[nivel_tension_dis][]" id="tension">'+' '+
+                         '<select class="form-control tipo2 tension3" name="distribucion[nivel_tension_dis][]" id="tension">'+' '+
                             '<option value="">Seleccione...</option>'+' '+
                             '<option value="13,2">13,2</option>'+' '+
                             '<option value="13,4">13,4</option>'+' '+
@@ -106,6 +133,8 @@
                 '</div>'+' '+
               '</div>'
             );
+            $(".tension3").html('');
+            $(".tension3").append('<option value="'+tension+'">'+tension+'</option>');
                 event.preventDefault();
                 $("select").select2();
              });
@@ -115,6 +144,7 @@
                   return false;
              });
           });
+
 
 
           $(function() {
@@ -141,13 +171,25 @@
                     '</select>'+' '+
                   '</div>'+' '+
                 '</div>'+' '+
+                '<div class="col-md-1">'+' '+
+                  '<div class="form-group">'+' '+
+                    '<center class="separar"><label >Nivel de tensión (KV)  </label></center>'+' '+
+                    '<select class="form-control tipo tension2" name="transformacion[nivel_tension][]" style="width:100%" id="kv">'+' '+
+                      '<option value="">Seleccione...</option>'+' '+
+                      '<option value="13,2">13,2</option>'+' '+
+                      '<option value="13,4">13,4</option>'+' '+
+                      '<option value="13,8">13,8</option>'+' '+
+                      '<option value="No aplica">No aplica</option>'+' '+
+                    '</select>'+' '+
+                  '</div>'+' '+
+                '</div>'+' '+
                 '<div class="col-md-2">'+' '+
                   '<div class="form-group">'+' '+
                     '<center class="separar"><label >Capacidad (KVA)</label></center>'+' '+
                       '<input type="text" class="form-control capacidad" placeholder="Capacidad"   name="transformacion[capacidad][]">'+' '+
                   '</div>'+' '+
                 '</div>'+' '+
-                '<div class="col-md-2">'+' '+
+                '<div class="col-md-1">'+' '+
                   '<div class="form-group">'+' '+
                     '<center class="separar"><label >Cantidad</label></center>'+' '+
                     '<input type="text" class="form-control cantidad" id="cantidad" placeholder= "Cantidad" name="transformacion[cantidad][]">'+' '+
@@ -172,6 +214,8 @@
                 '</div>'+' '+
               '</div>'
             );
+            $(".tension2").html('');
+            $(".tension2").append('<option value="'+tension+'">'+tension+'</option>');
                 event.preventDefault();
                 $("select").select2();
 
@@ -181,6 +225,10 @@
                   return false;
              });
           });
+
+
+
+
 
 
           $(function() {
@@ -371,11 +419,7 @@
                     '<div class="col-md-1">'+' '+
                       '<div class="form-group">'+' '+
                         '<center class="separar"><label >Nivel de tensión (KV)  </label></center>'+' '+
-                         '<select class="form-control tipo2" name="distribucion[nivel_tension_dis][]" id="tension">'+' '+
-                            '<option value="">Seleccione...</option>'+' '+
-                            '<option value="110-220">110-220</option>'+' '+
-                            '<option value="220-240">220-240</option>'+' '+
-                            '<option value="No aplica">No aplica</option>'+' '+
+                         '<select class="form-control tipo2 tension4" name="distribucion[nivel_tension_dis][]" id="tension">'+' '+
                           '</select>'+' '+
                       '</div>'+' '+
                     '</div>'+' '+
@@ -413,6 +457,8 @@
                 '</div>'+' '+
               '</div>'
             );
+            $(".tension4").html('');
+            $(".tension4").append('<option value="'+tension+'">'+tension+'</option>');
                 event.preventDefault();
                 $("select").select2();
              });

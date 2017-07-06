@@ -218,7 +218,7 @@
               <div class="col-md-1">
                 <div class="form-group">
                   <center class="separar"><label >Nivel de tensión (KV) </label></center>
-                  <select class="form-control tipo2" name="distribucion[nivel_tension_dis][]" style="width:100%" id="kv">
+                  <select class="form-control tipo2 tension" name="distribucion[nivel_tension_dis][]" style="width:100%" id="kv">
                     <option value="{{ $mt->nivel_tension }}">{{ $mt->nivel_tension }}</option>
                     <option value="13,2">13,2</option>
                     <option value="13,4">13,4</option>
@@ -286,13 +286,25 @@
                 </select>
               </div>
             </div>
+            <div class="col-md-1">
+              <div class="form-group">
+                <center class="separar"><label >Nivel de tensión (KV)  </label></center>
+                <select class="form-control tipo tension2" name="transformacion[nivel_tension][]" style="width:100%" id="kv">
+                  <option value="{{ $transfor->nivel_tension }}">{{ $transfor->nivel_tension }}</option>
+                  <option value="13,2">13,2</option>
+                  <option value="13,4">13,4</option>
+                  <option value="13,8">13,8</option>
+                  <option value="No aplica">No aplica</option>
+                </select>
+              </div>
+            </div>
             <div class="col-md-2">
               <div class="form-group">
                 <center class="separar"><label >Capacidad (KVA)</label></center>
                   <input type="text" class="form-control capacidad" placeholder="Capacidad"   value="{{$transfor->capacidad}}" name="transformacion[capacidad][]">
               </div>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-1">
               <div class="form-group">
                 <center class="separar"><label >Cantidad</label></center>
                 <input type="text" class="form-control cantidad" id="cantidad" placeholder= "Cantidad" value="{{$transfor->cantidad}}"  name="transformacion[cantidad][]">

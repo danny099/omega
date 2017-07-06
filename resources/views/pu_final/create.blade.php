@@ -56,7 +56,7 @@
               </select>
             </div>
           </div>
-          <div class="col-md-2 torres">
+          <div class="col-md-2 " id="torres">
             <div class="form-group">
               <center><label >Tipo</label></center>
               <select class="form-control tipo3" name="pu_final[tipo_pu][]" style="width:100%"id="tipo3">

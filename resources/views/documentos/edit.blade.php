@@ -8,9 +8,9 @@
 
   <link rel="stylesheet" href="../../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
   <ol class="breadcrumb">
-    <li><a href="{{ url('inicio') }}"></a></li>
-    <li><a href="{{ url('usuarios') }}"></a></li>
-    <li class="active"></li>
+    <li><a href="{{ url('inicio') }}">Inicio</a></li>
+    <li><a href="{{ url('documentos') }}">Documentos</a></li>
+    <li class="active">Editar Documento</li>
   </ol>
         <div class="col-md-12">
           <div class="box box-info">

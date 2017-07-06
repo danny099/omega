@@ -64,10 +64,10 @@
               </select>
             </div>
           </div>
-          <div class="col-md-2">
+          <div class="col-md-1">
             <div class="form-group">
               <center class="separar"><label >Nivel de tensión (KV) </label></center>
-              <select class="form-control" name="transformacion[nivel_tension][]" style="width:100%">
+              <select class="form-control " name="transformacion[nivel_tension][]" style="width:100%">
                 <option value="">Seleccione...</option>
                 <option value="13,2">13,2</option>
                 <option value="13,4">13,4</option>
@@ -75,7 +75,7 @@
               </select>
             </div>
           </div>
-          <div class="col-md-1">
+          <div class="col-md-2">
             <div class="form-group">
               <center class="separar"><label >Capacidad (KVA)</label></center>
                 <input type="text" class="form-control capacidad" placeholder="Capacidad"   name="transformacion[capacidad][]">

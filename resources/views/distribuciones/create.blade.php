@@ -71,7 +71,7 @@
             <div class="col-md-1">
               <div class="form-group">
                 <center class="separar"><label >Nivel de tensión  </label></center>
-                <select class="form-control tipo2" name="distribucion[nivel_tension_dis][]" style="width:100%" id="tension">
+                <select class="form-control tipo2 tension" name="distribucion[nivel_tension_dis][]" style="width:100%" id="tension">
                   <option value="">Seleccione...</option>
 
                 </select>

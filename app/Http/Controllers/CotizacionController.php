@@ -130,7 +130,7 @@ class CotizacionController extends Controller
          $cotizacion['total'] = str_replace(',','',$request->total);
          $cotizacion['adicional'] = $request->adici;
          $cotizacion['observaciones'] = $request->observacion;
-         $tension = $request->valor;
+        //  $tension = $request->valor;
 
          Cotizacion::create($cotizacion);
          $cotiza = Cotizacion::all();
@@ -145,13 +145,14 @@ class CotizacionController extends Controller
 
                if (!is_null($input['transformacion']['descripcion'][$a]) &&
                    !is_null($input['transformacion']['tipo'][$a]) &&
+                   !is_null($input['transformacion']['nivel_tension'][$a]) &&
                    !is_null($input['transformacion']['capacidad'][$a]) &&
                    !is_null($input['transformacion']['cantidad'][$a]) &&
                    !is_null($input['transformacion']['tipo_refrigeracion'][$a])) {
 
                      $datos1['descripcion'] = $input['transformacion']['descripcion'][$a];
                      $datos1['tipo'] = $input['transformacion']['tipo'][$a];
-                     $datos1['nivel_tension'] = $tension;
+                     $datos1['nivel_tension'] = $input['transformacion']['nivel_tension'][$a];
                      $datos1['unidad'] = 'Und';
                      $datos1['capacidad'] = $input['transformacion']['capacidad'][$a];
                      $datos1['cantidad'] = $input['transformacion']['cantidad'][$a];
@@ -429,7 +430,7 @@ class CotizacionController extends Controller
             $transfor = Transformacion::findOrFail($id1);
             $datos1['descripcion'] = $input['transformacion']['descripcion'][$a];
             $datos1['tipo'] = $input['transformacion']['tipo'][$a];
-            $datos1['nivel_tension'] = $tension;
+            $datos1['nivel_tension'] = $input['transformacion']['nivel_tension'][$a];
             $datos1['unidad'] = 'Und';
             $datos1['capacidad'] = $input['transformacion']['capacidad'][$a];
             $datos1['cantidad'] = $input['transformacion']['cantidad'][$a];
