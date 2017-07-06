@@ -254,7 +254,11 @@
             <tr>
               <td>{{ $pu->descripcion }}</td>
               <td>{{ $pu->tipo }}</td>
-              <td>{{ $pu->estrato }}</td>
+              @if( $pu->estrato == null )
+                <td> N.A </td>
+              @else
+                <td>{{ $pu->estrato }}</td>
+              @endif
               <td>{{ $pu->unidad }}</td>
               <td>{{ $pu->cantidad }}</td>
               <td>{{ $pu->metros }}</td>
