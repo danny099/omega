@@ -172,7 +172,6 @@
             <th>Descripción</th>
             <th>Tipo</th>
             <th>Nivel de Tensión</th>
-            <th>Unidad</th>
             <th>Capacidad (KVA)</th>
             <th>Cantidad</th>
             <th>Tipo de Refrigeración</th>
@@ -184,9 +183,8 @@
               <td>{{ $transfor->descripcion }}</td>
               <td>{{ $transfor->tipo }}</td>
               <td>{{ $transfor->nivel_tension }}</td>
-              <td>{{ $transfor->unidad }}</td>
               <td>{{ $transfor->capacidad }}</td>
-              <td>{{ $transfor->cantidad }}</td>
+              <td>{{ $transfor->cantidad }} Und</td>
               <td>{{ $transfor->tipo_refrigeracion }}</td>
             </tr>
           @endforeach
@@ -206,7 +204,6 @@
             <th>Descripción</th>
             <th>Tipo</th>
             <th>Nivel de Tensión</th>
-            <th>Unidad</th>
             <th>Cantidad</th>
             <th>Apoyos</th>
             <th>Cajas</th>
@@ -219,8 +216,7 @@
               <td>{{ $distri->descripcion }}</td>
               <td>{{ $distri->tipo }}</td>
               <td>{{ $distri->nivel_tension }}</td>
-              <td>{{ $distri->unidad }}</td>
-              <td>{{ $distri->cantidad }}</td>
+              <td>{{ $distri->cantidad }} mts.</td>
               <td>{{ $distri->apoyos }}</td>
               <td>{{ $distri->cajas }}</td>
               <td>{{ $distri->notas }}</td>
@@ -242,7 +238,6 @@
             <th>Descripción</th>
             <th>Tipo</th>
             <th>Estrato</th>
-            <th>Unidad</th>
             <th>Cantidad</th>
             <th>m²</th>
             <th>Kva</th>
@@ -259,8 +254,7 @@
               @else
                 <td>{{ $pu->estrato }}</td>
               @endif
-              <td>{{ $pu->unidad }}</td>
-              <td>{{ $pu->cantidad }}</td>
+              <td>{{ $pu->cantidad }} Und</td>
               <td>{{ $pu->metros }}</td>
               <td>{{ $pu->kva }}</td>
               <td>{{ $pu->acometidas }}</td>
@@ -320,7 +314,7 @@
           <tr>
             <td>1</td>
             <td>
-              <p>{{ $trans->descripcion }} {{ $trans->tipo }}, Capacidad: {{ $trans->capacidad}} </p>
+              <p>{{ $trans->descripcion }} - {{ $trans->tipo }} - Capacidad: {{ $trans->capacidad}} KVA </p>
             </td>
             <td>{{ $trans->cantidad }} {{ $trans->unidad }}</td>
 
@@ -331,7 +325,7 @@
           <tr>
             <td>1</td>
             <td>
-              <p>{{ $distri->descripcion }} {{ $distri->tipo }}</p>
+              <p>{{ $distri->descripcion }} - {{ $distri->tipo }}</p>
             </td>
             <td>{{ $distri->cantidad }} {{ $distri->unidad }}</td>
 
@@ -342,7 +336,7 @@
           <tr>
             <td>1</td>
             <td>
-              <p>{{ $pu->descripcion }} {{ $pu->tipo }}</p>
+              <p>{{ $pu->descripcion }} - {{ $pu->tipo }}</p>
             </td>
             <td>{{ $pu->cantidad }} {{ $pu->unidad }}</td>
 

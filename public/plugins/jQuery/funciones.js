@@ -133,8 +133,13 @@
                 '</div>'+' '+
               '</div>'
             );
-            $(".tension3").html('');
-            $(".tension3").append('<option value="'+tension+'">'+tension+'</option>');
+            if (tension == 0) {
+
+            }
+            else {
+              $(".tension3").html('');
+              $(".tension3").append('<option value="'+tension+'">'+tension+'</option>');
+            }
                 event.preventDefault();
                 $("select").select2();
              });
@@ -214,8 +219,14 @@
                 '</div>'+' '+
               '</div>'
             );
-            $(".tension2").html('');
-            $(".tension2").append('<option value="'+tension+'">'+tension+'</option>');
+            if (tension == 0) {
+
+            }
+            else {
+              $(".tension2").html('');
+              $(".tension2").append('<option value="'+tension+'">'+tension+'</option>');
+            }
+
                 event.preventDefault();
                 $("select").select2();
 
@@ -443,8 +454,14 @@
                 '</div>'+' '+
               '</div>'
             );
-            $(".tension4").html('');
-            $(".tension4").append('<option value="'+tension+'">'+tension+'</option>');
+            if (tension == 0) {
+
+            }
+            else {
+              $(".tension4").html('');
+              $(".tension4").append('<option value="'+tension+'">'+tension+'</option>');
+            }
+
                 event.preventDefault();
                 $("select").select2();
              });
