@@ -504,7 +504,7 @@
                 <center><a href="{{ route('pu_final.edit', $administrativas->id) }}" class="btn btn-primary botoncito" data-toggle="modal" data-target="#myModal4" style="background-color: #33579A; border-color:#33579A;">Proceso uso final</a></center>
               </div>
             @endif
-            @if(count($distribuciones) == 0)
+            @if(count($mts) == 0 || count($bts) == 0)
               <div class="col-md-12 div2">
                 <center><a class="btn btn-primary botoncito" disabled>Alcance distribución</a></center>
               </div>

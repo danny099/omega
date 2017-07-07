@@ -130,7 +130,7 @@
         <div class="col-md-3">
           <label>Departamento</label>
 
-          <select class="form-control" required="" name="departamento_id" id="departamento">
+          <select class="form-control" required="" style="width:100%" name="departamento_id" id="departamento">
             <option value="{{ $cotizaciones->departamento->id }}">{{ $cotizaciones->departamento->nombre }}</option>
             @foreach($departamentos as $departamento)
             <option value="{{ $departamento->id }}">{{$departamento->nombre}}</option>
@@ -139,7 +139,7 @@
         </div>
         <div class="col-md-3"id="natural">
           <label >Municipio</label>
-          <select class="form-control" required="" name="municipio" id="municipio">
+          <select class="form-control" required="" style="width:100%" name="municipio" id="municipio">
             <option value="{{ $municipio->id }}">{{ $municipio->nombre }}</option>
             <option value=""></option>
           </select>
@@ -252,6 +252,7 @@
                   <input type="text" class="form-control" placeholder= "Notas" value="{{ $mt->notas }}" name="distribucion[notas_dis][]">
                 </div>
               </div>
+
           </div>
 
         </div>
@@ -320,6 +321,7 @@
                 </select>
               </div>
             </div>
+
         </div>
       </div>
       @endforeach
@@ -388,7 +390,7 @@
                 <input type="text" class="form-control" placeholder= "Notas" value="{{ $bt->notas }}" name="distribucion[notas_dis][]">
               </div>
             </div>
-        </div>
+
 
       </div>
       @endforeach
@@ -760,6 +762,25 @@ $(function() {
 
 $(document).ready(function(){
 
+  var  tipo = $('#tipo').val();
+
+
+  if (tipo == 'Aérea') {
+    $(this).parent().parent().parent().find('#cajas').attr("readonly", true);
+    $(this).parent().parent().parent().find('#cajas').val('N.A');
+    $(this).parent().parent().parent().find('#apoyos').attr("readonly", false);
+
+  }
+    else if (tipo == 'Subterránea') {
+      $(this).parent().parent().parent().find('#cajas').attr("readonly", false);
+      $(this).parent().parent().parent().find('#apoyos').attr("readonly", true);
+      $(this).parent().parent().parent().find('#apoyos').val('N.A');
+    }
+    else {
+      $(this).parent().parent().parent().find('#cajas').attr("readonly", false);
+      $(this).parent().parent().parent().find('#apoyos').attr("readonly", false);
+    }
+
 
   $('#cliente').change(function(){
       var valorCambiado =$(this).val();
@@ -882,6 +903,23 @@ $(document).on('change','#instalacion',function(){
               '</select>'+' '+
             '</div>'+' '+
           '</div>');
+          $(this).parent().parent().parent().parent().find( "#estrato" ).addClass( "borrar2" );
+          $('.borrar2').remove();
+          $('.torre').after(
+              '<div class="col-md-2" id="estrato">'+' '+
+                '<div class="form-group">'+' '+
+                  '<center><label >Estrato</label></center>'+' '+
+                  '<select class="form-control "name="pu_final[estrato_pu][]" style="width:100%">'+' '+
+                    '<option value="">Seleccione...</option>'+' '+
+                    '<option value="1">1</option>'+' '+
+                    '<option value="2">2</option>'+' '+
+                    '<option value="3">3</option>'+' '+
+                    '<option value="4">4</option>'+' '+
+                    '<option value="5">5</option>'+' '+
+                    '<option value="6">6</option>'+' '+
+                  '</select>'+' '+
+                '</div>'+' '+
+              '</div>');
           $("select").select2();
           $(this).parent().parent().parent().find( "#torres" ).removeClass( "torres" );
           $(this).parent().parent().parent().find( "#torre" ).removeClass( "torre" );
@@ -928,6 +966,16 @@ $(document).on('change','.tipo3',function(){
             '</div>'+' '+
           '</div>'
     );
+    $(this).parent().parent().parent().parent().find( "#borrar" ).addClass( "borrar" );
+    $('.borrar').remove();
+    $('.torre').after(
+      '<div class="col-md-1 " id="borrar">'+' '+
+        '<div class="form-group">'+' '+
+          '<center><label >#Torres</label></center>'+' '+
+            '<input type="text" class="form-control torre" value="" placeholder= "Cantidad" name="pu_final[torres][]">'+' '+
+          '</div>'+' '+
+        '</div>'
+  );
 
     $(this).parent().parent().parent().find( "#torres" ).removeClass( "torres" );
     $(this).parent().parent().parent().find( "#torre" ).removeClass( "torre" );

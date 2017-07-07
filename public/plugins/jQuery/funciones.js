@@ -81,7 +81,7 @@
                     '<div class="col-md-2">'+' '+
                       '<div class="form-group">'+' '+
                         '<center class="separar"><label >Tipo</label></center>'+' '+
-                        '<select class="form-control tipo2 tipo"  name="distribucion[tipo_dis][]" id="tipo">'+' '+
+                        '<select class="form-control tipo2 tipo" style="width:100%"  name="distribucion[tipo_dis][]" id="tipo">'+' '+
                           '<option value="">Seleccione...</option>'+' '+
                           '<option value="Aérea">Tipo Aérea</option>'+' '+
                           '<option value="Subterránea">Tipo subterránea</option>'+' '+
@@ -91,7 +91,7 @@
                     '<div class="col-md-1">'+' '+
                       '<div class="form-group">'+' '+
                         '<center class="separar"><label >Nivel de tensión (KV)  </label></center>'+' '+
-                         '<select class="form-control tipo2 tension3" name="distribucion[nivel_tension_dis][]" id="tension">'+' '+
+                         '<select class="form-control tipo2 tension3" style="width:100%" name="distribucion[nivel_tension_dis][]" id="tension">'+' '+
                             '<option value="">Seleccione...</option>'+' '+
                             '<option value="13,2">13,2</option>'+' '+
                             '<option value="13,4">13,4</option>'+' '+
@@ -168,7 +168,7 @@
                 '<div class="col-md-2">'+' '+
                   '<div class="form-group">'+' '+
                     '<center class="separar"><label >Tipo</label></center>'+' '+
-                    '<select class="form-control tipo" name="transformacion[tipo][]">'+' '+
+                    '<select  style="width:100%" class="form-control tipo" name="transformacion[tipo][]">'+' '+
                       '<option value="">Seleccione...</option>'+' '+
                       '<option value="Tipo poste">Tipo poste</option>'+' '+
                       '<option value="Tipo pedestal/jardin">Tipo pedestal/jardin</option>'+' '+
@@ -179,7 +179,7 @@
                 '<div class="col-md-1">'+' '+
                   '<div class="form-group">'+' '+
                     '<center class="separar"><label >Nivel de tensión (KV)  </label></center>'+' '+
-                    '<select class="form-control tipo tension2" name="transformacion[nivel_tension][]" style="width:100%" id="kv">'+' '+
+                    '<select style="width:100%" class="form-control tipo tension2" name="transformacion[nivel_tension][]" style="width:100%" id="kv">'+' '+
                       '<option value="">Seleccione...</option>'+' '+
                       '<option value="13,2">13,2</option>'+' '+
                       '<option value="13,4">13,4</option>'+' '+
@@ -203,7 +203,7 @@
                 '<div class="col-md-2">'+' '+
                   '<div class="form-group">'+' '+
                     '<center class="separar"><label >Refrigeración </label></center>'+' '+
-                    '<select class="form-control" name="transformacion[tipo_refrigeracion][]">'+' '+
+                    '<select style="width:100%" class="form-control" name="transformacion[tipo_refrigeracion][]">'+' '+
                       '<option value="">Seleccione...</option>'+' '+
                       '<option value="Seco">Seco</option>'+' '+
                       '<option value="Aceite">Aceite</option>'+' '+
@@ -259,7 +259,7 @@
                     '<div class="col-md-2">'+' '+
                       '<div class="form-group">'+' '+
                         '<center class="separar"><label >Tipo</label></center>'+' '+
-                        '<select class="form-control tipo2 tipo"  name="distribucion[tipo_dis][]" id="tipo">'+' '+
+                        '<select style="width:100%" class="form-control tipo2 tipo"  name="distribucion[tipo_dis][]" id="tipo">'+' '+
                           '<option value="">Seleccione...</option>'+' '+
                           '<option value="Aérea">Tipo Aérea</option>'+' '+
                           '<option value="Subterránea">Tipo subterránea</option>'+' '+
@@ -269,7 +269,7 @@
                     '<div class="col-md-1">'+' '+
                       '<div class="form-group">'+' '+
                         '<center class="separar"><label >Nivel de tensión (KV)  </label></center>'+' '+
-                         '<select class="form-control tipo2" name="distribucion[nivel_tension_dis][]" id="tension">'+' '+
+                         '<select style="width:100%" class="form-control tipo2" name="distribucion[nivel_tension_dis][]" id="tension">'+' '+
                             '<option value="">Seleccione...</option>'+' '+
                             '<option value="110-220">110-220</option>'+' '+
                             '<option value="220-240">220-240</option>'+' '+
@@ -332,7 +332,7 @@
                     '<div class="col-md-3">'+' '+
                       '<div class="form-group">'+' '+
                         '<center><label >Descripción</label></center>'+' '+
-                        '<select class="form-control desc3"name="pu_final[descripcion_pu][]" id="instalacion">'+' '+
+                        '<select style="width:100%" class="form-control desc3"name="pu_final[descripcion_pu][]" id="instalacion">'+' '+
                           '<option value="">Seleccione...</option>'+' '+
                           '<option value="Inspección RETIE proceso uso final residencial">Inspección RETIE proceso uso final residencial</option>'+' '+
                           '<option value="Inspección RETIE proceso uso final comercial">Inspección RETIE proceso uso final comercial</option>'+' '+
@@ -343,7 +343,7 @@
                     '<div class="col-md-2 " id="torres">'+' '+
                       '<div class="form-group">'+' '+
                         '<center><label >Tipo</label></center>'+' '+
-                        '<select class="form-control tipo3" name="pu_final[tipo_pu][]" id="tipo3">'+' '+
+                        '<select style="width:100%"  class="form-control tipo3" name="pu_final[tipo_pu][]" id="tipo3">'+' '+
                         '</select>'+' '+
                       '</div>'+' '+
                     '</div>'+' '+
@@ -396,7 +396,7 @@
                     '<div class="col-md-3">'+' '+
                       '<div class="form-group">'+' '+
                         '<center class="separar"><label >Descripción</label></center>'+' '+
-                        '<select class="form-control desc2" name="distribucion[descripcion_dis][]" style="top:25px important!" id="desc">'+' '+
+                        '<select style="width:100%" class="form-control desc2" name="distribucion[descripcion_dis][]" style="top:25px important!" id="desc">'+' '+
                           '<option value="">Seleccione...</option>'+' '+
                           '<option value="Inspección RETIE proceso de distribución en MT">Inspección RETIE proceso de distribución en MT</option>'+' '+
                           '<option value="Inspección RETIE proceso de distribución en BT">Inspección RETIE proceso de distribución en BT</option>'+' '+
@@ -406,7 +406,7 @@
                     '<div class="col-md-2">'+' '+
                       '<div class="form-group">'+' '+
                         '<center class="separar"><label >Tipo</label></center>'+' '+
-                        '<select class="form-control tipo2 tipo"  name="distribucion[tipo_dis][]" id="tipo">'+' '+
+                        '<select style="width:100%" class="form-control tipo2 tipo"  name="distribucion[tipo_dis][]" id="tipo">'+' '+
                           '<option value="">Seleccione...</option>'+' '+
                           '<option value="Aérea">Tipo Aérea</option>'+' '+
                           '<option value="Subterránea">Tipo subterránea</option>'+' '+
@@ -416,7 +416,7 @@
                     '<div class="col-md-1">'+' '+
                       '<div class="form-group">'+' '+
                         '<center class="separar"><label >Nivel de tensión (KV)  </label></center>'+' '+
-                         '<select class="form-control tipo2 tension4" name="distribucion[nivel_tension_dis][]" id="tension">'+' '+
+                         '<select style="width:100%" class="form-control tipo2 tension4" name="distribucion[nivel_tension_dis][]" id="tension">'+' '+
                           '</select>'+' '+
                       '</div>'+' '+
                     '</div>'+' '+

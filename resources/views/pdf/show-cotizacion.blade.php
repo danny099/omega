@@ -3,11 +3,16 @@
   <head>
 
     <meta charset="utf-8">
-    <title></title>
+    <title>{{ $cotizaciones->codigo }}</title>
     <link rel="stylesheet" href="../public/css/bootstrap.css">
 
     <style media="screen">
-
+      ul, img, table {
+        page-break-inside: avoid;
+      }
+      .referencia, .comerciales, .inspeccionDoc,.pago, .referencia, .ocho, .inscricion {
+        page-break-inside: avoid;
+      }
       body{
         font-family: "Arial Narrow";
       	font-size: 12pt;
@@ -264,22 +269,23 @@
       </table>
       @endif
     </div>
-
-    <p><b>{{$referencia->nombre}}</b></p>
-    <br><br>
     <div class="referencia">
-      <?php
-        $refer = html_entity_decode($referencia->detalles);
-        echo $refer;
-      ?>
+      <p><b>{{$referencia->nombre}}</b></p>
+      <br><br>
+
+        <?php
+          $refer = html_entity_decode($referencia->detalles);
+          echo $refer;
+        ?>
 
     </div>
     <br>
     <br>
+    <div class="inspeccionDoc">
     <p><b>{{$inicial->nombre}}</b></p>
 
     <br><br>
-    <div class="inspeccionDoc">
+
       <?php
         $refer = html_entity_decode($inicial->detalles);
         echo $refer;
@@ -287,8 +293,9 @@
     </div>
     <br>
     <br>
-    <p><b>{{$inspeccion->nombre}}</b></p>
     <div class="inscricion">
+    <p><b>{{$inspeccion->nombre}}</b></p>
+
       <?php
         $refer = html_entity_decode($inspeccion->detalles);
         echo $refer;
@@ -310,9 +317,11 @@
           <th><center><label> Cantidad </label></center></th>
           <th><center><label> Valor </label></center></th>
         </tr>
+        <?php $i = 0; ?>
         @foreach($transformaciones as $trans)
           <tr>
-            <td>1</td>
+            <?php $i++ ?>
+            <td>{{$i}}</td>
             <td>
               <p>{{ $trans->descripcion }} - {{ $trans->tipo }} - Capacidad: {{ $trans->capacidad}} KVA </p>
             </td>
@@ -323,7 +332,8 @@
         @endforeach
         @foreach($distribuciones as $distri)
           <tr>
-            <td>1</td>
+            <?php $i++ ?>
+            <td>{{$i}}</td>
             <td>
               <p>{{ $distri->descripcion }} - {{ $distri->tipo }}</p>
             </td>
@@ -334,7 +344,8 @@
         @endforeach
         @foreach($pu_finales as $pu)
           <tr>
-            <td>1</td>
+            <?php $i++ ?>
+            <td>{{$i}}</td>
             <td>
               <p>{{ $pu->descripcion }} - {{ $pu->tipo }}</p>
             </td>
@@ -399,31 +410,35 @@
         </tr>
       </table>
     </div>
-    <div class="pago">
-      <p><b>{{$pago->nombre}}</b></p>
-      <br>
-      <?php
-        $refer = html_entity_decode($pago->detalles);
-        echo $refer;
-      ?>
+
+      <div class="pago">
+        <p><b>{{$pago->nombre}}</b></p>
+        <br>
+        <?php
+          $refer = html_entity_decode($pago->detalles);
+          echo $refer;
+        ?>
+      </div>
+    <div class="ocho">
+      <div class="docu">
+        <p><b>{{$docu->nombre}}</b></p>
+        <?php
+          $refer = html_entity_decode($docu->detalles);
+          echo $refer;
+        ?>
+      </div>
+      <div class="img">
+        <img id="img" src="firma.jpg" style="height:80px;">
+        <img id="img" src="Certicol2.png" style="margin-left:250px; height:80px">
+      </div>
+      <div class="datos">
+        <?php
+          $refer = html_entity_decode($datos->detalles);
+          echo $refer;
+        ?>
+      </div>
     </div>
-    <div class="docu">
-      <p><b>{{$docu->nombre}}</b></p>
-      <?php
-        $refer = html_entity_decode($docu->detalles);
-        echo $refer;
-      ?>
-    </div>
-    <div class="img">
-      <img id="img" src="firma.jpg" style="height:80px;">
-      <img id="img" src="Certicol2.png" style="margin-left:250px; height:80px">
-    </div>
-    <div class="datos">
-      <?php
-        $refer = html_entity_decode($datos->detalles);
-        echo $refer;
-      ?>
-    </div>
+
 
   </body>
 

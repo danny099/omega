@@ -336,9 +336,6 @@ class CotizacionController extends Controller
                      $datos3['estrato'] = null;
                    }
 
-
-
-
                    $datos3['cotizacion_id'] = $lastId_cotiza;
 
                   //  $texto['detalles'] = $datos3['descripcion'].' '.$datos3['tipo'].' '. $datos3['cantidad'];
@@ -351,11 +348,11 @@ class CotizacionController extends Controller
                   //  Valorcot::create($texto);
                    Pu_final::create($datos3);
                  }
-
          }
 
          if (isset($input['valores']['valor_uni_pu']) && isset($input['valores']['valor_multi_pu'])) {
-           for ($j=0; $j < $input['valores']['valor_uni_pu']; $j++) {
+
+           for ($j=0; $j < count($input['valores']['valor_uni_pu']); $j++) {
 
               $texto['detalles'] = 'final';
               $texto['valor_uni'] = str_replace(',','',$input['valores']['valor_uni_pu'][$j]);
@@ -492,20 +489,34 @@ class CotizacionController extends Controller
             $datos1['cantidad'] = $input['transformacion']['cantidad'][$a];
             $datos1['tipo_refrigeracion'] = $input['transformacion']['tipo_refrigeracion'][$a];
 
-            $id2 = $input['valores']['id'][$a];
-            $valor = Valorcot::findOrFail($id2);
-            $texto['detalles'] = $datos1['descripcion'].' '.$datos1['tipo'].' '. $datos1['cantidad'].' '.$datos1['capacidad'];
-            $texto['cantidad'] = $datos1['cantidad'];
-            $texto['valor_uni'] = str_replace(',','',$input['valores']['valor_uni'][$a]);
-            $texto['valor_total'] = str_replace(',','',$input['valores']['valor_multi'][$a]);
-            // $texto['cotizacion_id'] = $lastId_cotiza;
+            // $id2 = $input['valores']['id'][$a];
+            // $valor = Valorcot::findOrFail($id2);
+            // $texto['detalles'] = $datos1['descripcion'].' '.$datos1['tipo'].' '. $datos1['cantidad'].' '.$datos1['capacidad'];
+            // $texto['cantidad'] = $datos1['cantidad'];
+            // $texto['valor_uni'] = str_replace(',','',$input['valores']['valor_uni'][$a]);
+            // $texto['valor_total'] = str_replace(',','',$input['valores']['valor_multi'][$a]);
+            // // $texto['cotizacion_id'] = $lastId_cotiza;
+            // //
+            // // Valorcot::create($texto);
             //
-            // Valorcot::create($texto);
-
-            $valor->update($texto);
+            // $valor->update($texto);
 
             $transfor->update($datos1);
 
+          }
+
+          if (isset($input['valores']['valor_uni']) && isset($input['valores']['valor_multi'])) {
+            for ($b=0; $b < count($input['valores']['valor_uni']) ; $b++) {
+
+               $id2 = $input['valores']['id'][$b];
+               $valor = Valorcot::findOrFail($id2);
+               $texto['detalles'] = 'transformacion';
+               $texto['valor_uni'] = str_replace(',','',$input['valores']['valor_uni'][$b]);
+               $texto['valor_total'] = str_replace(',','',$input['valores']['valor_multi'][$b]);
+        
+
+               $valor->update($texto);
+            }
           }
         }
 
@@ -542,20 +553,36 @@ class CotizacionController extends Controller
 
             $datos2['notas'] = $input['distribucion']['notas_dis'][$x];
 
-            $id2 = $input['valores']['id_dis'][$x];
-            $valor = Valorcot::findOrFail($id2);
-            $texto['detalles'] = $datos2['descripcion'].' '.$datos2['tipo'].' '. $datos2['cantidad'];
-            $texto['cantidad'] = $datos2['cantidad'];
-            $texto['valor_uni'] = str_replace(',','',$input['valores']['valor_uni_dis'][$x]);
-            $texto['valor_total'] = str_replace(',','',$input['valores']['valor_multi_dis'][$x]);
-            // $texto['cotizacion_id'] = $lastId_cotiza;
-
-            // Valorcot::create($texto);
-            $valor->update($texto);
+            // $id2 = $input['valores']['id_dis'][$x];
+            // $valor = Valorcot::findOrFail($id2);
+            // $texto['detalles'] = $datos2['descripcion'].' '.$datos2['tipo'].' '. $datos2['cantidad'];
+            // $texto['cantidad'] = $datos2['cantidad'];
+            // $texto['valor_uni'] = str_replace(',','',$input['valores']['valor_uni_dis'][$x]);
+            // $texto['valor_total'] = str_replace(',','',$input['valores']['valor_multi_dis'][$x]);
+            // // $texto['cotizacion_id'] = $lastId_cotiza;
+            //
+            // // Valorcot::create($texto);
+            // $valor->update($texto);
 
             $distri->update($datos2);
 
           }
+
+          if (isset($input['valores']['valor_uni_dis']) && isset($input['valores']['valor_multi_dis'])) {
+            for ($y=0; $y < count($input['valores']['valor_uni_dis']); $y++) {
+
+               $id2 = $input['valores']['id_dis'][$y];
+               $valor = Valorcot::findOrFail($id2);
+               $texto['detalles'] = 'distribucion';
+               $texto['valor_uni'] = str_replace(',','',$input['valores']['valor_uni_dis'][$y]);
+               $texto['valor_total'] = str_replace(',','',$input['valores']['valor_multi_dis'][$y]);
+
+
+               $valor->update($texto);
+
+            }
+          }
+
         }
 
         if ($request->pu_final == 'pu_final') {
@@ -647,6 +674,24 @@ class CotizacionController extends Controller
             $pu->update($datos3);
 
           }
+
+          if (isset($input['valores']['valor_uni_pu']) && isset($input['valores']['valor_multi_pu'])) {
+
+            for ($j=0; $j < count($input['valores']['valor_uni_pu']); $j++) {
+
+               $id2 = $input['valores']['id_pu'][$j];
+               $valor = Valorcot::findOrFail($id2);
+               $texto['detalles'] = 'final';
+               $texto['valor_uni'] = str_replace(',','',$input['valores']['valor_uni_pu'][$j]);
+               $texto['valor_total'] = str_replace(',','',$input['valores']['valor_multi_pu'][$j]);
+
+              //  dd($texto);
+              //  die();
+               $valor->update($texto);
+
+            }
+          }
+
         }
 
         $cotiza->update($cotizacion);
