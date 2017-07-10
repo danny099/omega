@@ -303,10 +303,10 @@ class AdministrativaController extends Controller
       $adicionales = Valor_adicional::where('valor_adicional.administrativa_id', '=', $id)->get();
       $otrosis = Otrosi::where('otrosi.administrativa_id', '=', $id)->get();
       $transformaciones = Transformacion::where('transformacion.administrativa_id', '=', $id)->get();
-      // $distribuciones = Distribucion::where('distribucion.administrativa_id', '=', $id)->get();
+      $distribuciones = Distribucion::where('distribucion.administrativa_id', '=', $id)->get();
       $mts = DB::table('distribucion')->where('administrativa_id', '=', $id)->where('descripcion', 'like', '%MT%')->get();
       $bts = DB::table('distribucion')->where('administrativa_id', '=', $id)->where('descripcion', 'like', '%BT%')->get();
-      
+
       $pu_finales = Pu_final::where('pu_final.administrativa_id', '=', $id)->get();
       $consignaciones = Consignacion::where('consignacion.administrativa_id', '=', $id)->get();
       $cuenta_cobros = Cuenta_cobro::where('cuenta_cobro.administrativa_id', '=', $id)->get();
@@ -315,7 +315,7 @@ class AdministrativaController extends Controller
 
 
       //  funcion que retorna una vista con todos los datos del registro ya buscado
-       return view('administrativas.edit',compact('administrativas','clientes','juridicas','otrosis','mts','bts','transformaciones','pu_finales','departamentos','municipio','adicionales','facturas','cuenta_cobros','consignaciones','observaciones'));
+       return view('administrativas.edit',compact('administrativas','clientes','juridicas','otrosis','mts','bts','distribuciones','transformaciones','pu_finales','departamentos','municipio','adicionales','facturas','cuenta_cobros','consignaciones','observaciones'));
    }
 
    /**

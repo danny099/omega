@@ -8,7 +8,7 @@ class Valorcot extends Model
 {
   protected $table = 'valorcot';
 
-  protected $fillable = ['id','detalles','cantidad','valor_uni','valor_total','cotizacion_id'];
+  protected $fillable = ['id','detalles','cantidad','valor_uni','valor_total','cotizacion_id','transformacion_id','distribucion_id','pufinal_id'];
 
   public $timestamps = false;
 

@@ -115,6 +115,7 @@ class DistribucionController extends Controller
     {
       $ide = Administrativa::findOrFail($id);
       $distribuciones = Distribucion::where('distribucion.administrativa_id', '=', $id)->get();
+
       return view('distribuciones.edit',compact('distribuciones','id','ide'));
 
 
@@ -180,7 +181,11 @@ class DistribucionController extends Controller
      */
     public function destroy($id)
     {
+      // dd($id);
+      // die();
       $distri = Distribucion::findOrFail($id);
+      // dd($distri);
+      // die();
       $distri->delete();
       Session::flash('message', 'Alcance distribución eliminado');
       Session::flash('class', 'danger');
