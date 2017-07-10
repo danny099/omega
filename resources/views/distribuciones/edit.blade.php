@@ -1,14 +1,12 @@
 
   <div class="box box-primary">
-    <div class="box-header with-border">
-      <center> <h3>Alcance: proceso de distribución</h3> </center>
-    </div>
+
     <div class="box-body">
       <form class="form1" action="{{ url('editard') }}" method="post">
         {{ csrf_field() }}
       @foreach($distribuciones as $distribucion)
-        <input type="hidden" name="distribucion[id][]" value="{{ $distribucion->id}}">
         <div class="row quitar51" id="quitar51">
+          <input type="hidden" name="distribucion[id][]" value="{{ $distribucion->id}}">
           <div class="col-md-12"  style="margin-bottom: 10px;">
             <center> <h3>Alcance: proceso de distribución</h3> </center>
           </div>
@@ -70,7 +68,7 @@
               </div>
             </div>
             <div class="box-footer">
-              <a href="{{ url('deletedistri') }}/{{ $distribucion->id }}" onClick="eliminar()"><i class="glyphicon glyphicon-minus-sign"></i></a>
+              <a href="{{ url('deletedistri') }}/{{ $distribucion->id }}" onClick="alert({{ $distribucion->id }});"><i class="glyphicon glyphicon-minus-sign"></i></a>
 
             </div>
         </div>

@@ -390,6 +390,7 @@
                 <input type="text" class="form-control" placeholder= "Notas" value="{{ $bt->notas }}" name="distribucion[notas_dis][]">
               </div>
             </div>
+            </div>
 
 
       </div>
