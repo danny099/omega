@@ -252,7 +252,28 @@
                   <input type="text" class="form-control" placeholder= "Notas" value="{{ $mt->notas }}" name="distribucion[notas_dis][]">
                 </div>
               </div>
+              <div class="col-md-1 tblprod11" >
+                <div class="form-group">
+                  <center class="separar"></center>
+                  <a class="btn btn-primary eliminar" id="del-{{ $mt->id }}" href="#" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-minus"></i></a>
+                  <script type="text/javascript">
+                    $('#del-'+{{$mt->id}}).click(function(e){
+                      e.preventDefault();
+                      p = confirm('¿esta seguro de eliminar?');
+                      if (p) {
+                        $.get("{{url('deletedistri')}}/{{$mt->id}}",function(data){
 
+                        });
+
+                      }
+                    });
+                    $(document).on("click",".eliminar",function( event ) {
+                      $(this).closest("#quitar51").remove();
+                         return false;
+                    });
+                  </script>
+                </div>
+              </div>
           </div>
 
         </div>
@@ -321,7 +342,28 @@
                 </select>
               </div>
             </div>
+            <div class="col-md-1 tblprod11" >
+              <div class="form-group">
+                <center class="separar"></center>
+                <a class="btn btn-primary eliminar2" id="del-{{ $transfor->id }}" href="#" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-minus"></i></a>
+                <script type="text/javascript">
+                  $('#del-'+{{$transfor->id}}).click(function(e){
+                    e.preventDefault();
+                    p = confirm('¿esta seguro de eliminar?');
+                    if (p) {
+                      $.get("{{url('deletetransfor')}}/{{$transfor->id}}",function(data){
 
+                      });
+
+                    }
+                  });
+                  $(document).on("click",".eliminar2",function( event ) {
+                    $(this).closest("#quitar50").remove();
+                       return false;
+                  });
+                </script>
+              </div>
+            </div>
         </div>
       </div>
       @endforeach
@@ -390,8 +432,28 @@
                 <input type="text" class="form-control" placeholder= "Notas" value="{{ $bt->notas }}" name="distribucion[notas_dis][]">
               </div>
             </div>
-            </div>
+            <div class="col-md-1 tblprod11" >
+              <div class="form-group">
+                <center class="separar"></center>
+                <a class="btn btn-primary eliminar3" id="del-{{ $bt->id }}" href="#" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-minus"></i></a>
+                <script type="text/javascript">
+                  $('#del-'+{{$bt->id}}).click(function(e){
+                    e.preventDefault();
+                    p = confirm('¿esta seguro de eliminar?');
+                    if (p) {
+                      $.get("{{url('deletedistri')}}/{{$bt->id}}",function(data){
 
+                      });
+
+                    }
+                  });
+                  $(document).on("click",".eliminar3",function( event ) {
+                    $(this).closest("#quitar51").remove();
+                       return false;
+                  });
+                </script>
+              </div>
+            </div>
 
       </div>
       @endforeach
@@ -482,6 +544,28 @@
             <div class="form-group">
               <center><label >KVA</label></center>
               <input type="text" class="form-control" placeholder= "Cantidad" value="{{ $pu->kva }}" name="pu_final[kva_pu][]">
+            </div>
+          </div>
+          <div class="col-md-1 tblprod11" >
+            <div class="form-group">
+              <br>
+              <a class="btn btn-primary eliminar4" id="del-{{ $pu->id }}" href="#" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-minus"></i></a>
+              <script type="text/javascript">
+                $('#del-'+{{$pu->id}}).click(function(e){
+                  e.preventDefault();
+                  p = confirm('¿esta seguro de eliminar?');
+                  if (p) {
+                    $.get("{{url('deletepu')}}/{{$pu->id}}",function(data){
+
+                    });
+
+                  }
+                });
+                $(document).on("click",".eliminar4",function( event ) {
+                  $(this).closest("#quitar52").remove();
+                     return false;
+                });
+              </script>
             </div>
           </div>
 
