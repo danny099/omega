@@ -69,6 +69,10 @@
                 <input type="text" class="form-control" placeholder= "Notas" value="{{ $distribucion->notas }}" name="distribucion[notas_dis][]">
               </div>
             </div>
+            <div class="box-footer">
+              <a href="{{ url('deletedistri') }}/{{ $distribucion->id }}" onClick="eliminar()"><i class="glyphicon glyphicon-minus-sign"></i></a>
+
+            </div>
         </div>
       </div>
       @endforeach

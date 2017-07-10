@@ -66,6 +66,10 @@
             <input type="text" class="form-control" placeholder= "Cantidad" value="{{ $pu->kva }}" name="pu_final[kva_pu][]">
           </div>
         </div>
+        <div class="box-footer">
+          <a href="{{ url('deletepu') }}/{{ $pu->id }}" onClick="javascript: return confirm('Esta seguro de eliminar registro?');"><i class="glyphicon glyphicon-minus-sign"></i></a>
+
+        </div>
       </div>
       </div>
     @endforeach

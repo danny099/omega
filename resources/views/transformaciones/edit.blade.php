@@ -66,6 +66,10 @@
             </select>
           </div>
         </div>
+        <div class="box-footer">
+          <a href="{{ url('deletetransfor') }}/{{ $transfor->id }}" onClick="javascript: return confirm('Esta seguro de eliminar registro?');"><i class="glyphicon glyphicon-minus-sign"></i></a>
+
+        </div>
     </div>
   </div>
 
