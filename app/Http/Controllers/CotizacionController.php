@@ -158,7 +158,7 @@ class CotizacionController extends Controller
                      $datos1['cantidad'] = $input['transformacion']['cantidad'][$a];
                      $datos1['tipo_refrigeracion'] = $input['transformacion']['tipo_refrigeracion'][$a];
                      $datos1['cotizacion_id'] = $lastId_cotiza;
-
+                     
                     //  $texto['detalles'] = $datos1['descripcion'].' '.$datos1['tipo'].' '. $datos1['cantidad'].' '.$datos1['capacidad'];
                     //  $texto['cantidad'] = $datos1['cantidad'];
                     //  $texto['valor_uni'] = str_replace(',','',$input['valores']['valor_uni'][$a]);
@@ -477,32 +477,34 @@ class CotizacionController extends Controller
         if ($request->transformacion == 'transformacion') {
 
         }else {
-          for ($a=0; $a<count($input['transformacion']['descripcion']); $a++){
+          if (isset($input['transformacion']['descripcion'])) {
+            for ($a=0; $a<count($input['transformacion']['descripcion']); $a++){
 
-            $id1 = $input['transformacion']['id'][$a];
-            $transfor = Transformacion::findOrFail($id1);
-            $datos1['descripcion'] = $input['transformacion']['descripcion'][$a];
-            $datos1['tipo'] = $input['transformacion']['tipo'][$a];
-            $datos1['nivel_tension'] = $input['transformacion']['nivel_tension'][$a];
-            $datos1['unidad'] = 'Und';
-            $datos1['capacidad'] = $input['transformacion']['capacidad'][$a];
-            $datos1['cantidad'] = $input['transformacion']['cantidad'][$a];
-            $datos1['tipo_refrigeracion'] = $input['transformacion']['tipo_refrigeracion'][$a];
+              $id1 = $input['transformacion']['id'][$a];
+              $transfor = Transformacion::findOrFail($id1);
+              $datos1['descripcion'] = $input['transformacion']['descripcion'][$a];
+              $datos1['tipo'] = $input['transformacion']['tipo'][$a];
+              $datos1['nivel_tension'] = $input['transformacion']['nivel_tension'][$a];
+              $datos1['unidad'] = 'Und';
+              $datos1['capacidad'] = $input['transformacion']['capacidad'][$a];
+              $datos1['cantidad'] = $input['transformacion']['cantidad'][$a];
+              $datos1['tipo_refrigeracion'] = $input['transformacion']['tipo_refrigeracion'][$a];
 
-            // $id2 = $input['valores']['id'][$a];
-            // $valor = Valorcot::findOrFail($id2);
-            // $texto['detalles'] = $datos1['descripcion'].' '.$datos1['tipo'].' '. $datos1['cantidad'].' '.$datos1['capacidad'];
-            // $texto['cantidad'] = $datos1['cantidad'];
-            // $texto['valor_uni'] = str_replace(',','',$input['valores']['valor_uni'][$a]);
-            // $texto['valor_total'] = str_replace(',','',$input['valores']['valor_multi'][$a]);
-            // // $texto['cotizacion_id'] = $lastId_cotiza;
-            // //
-            // // Valorcot::create($texto);
-            //
-            // $valor->update($texto);
+              // $id2 = $input['valores']['id'][$a];
+              // $valor = Valorcot::findOrFail($id2);
+              // $texto['detalles'] = $datos1['descripcion'].' '.$datos1['tipo'].' '. $datos1['cantidad'].' '.$datos1['capacidad'];
+              // $texto['cantidad'] = $datos1['cantidad'];
+              // $texto['valor_uni'] = str_replace(',','',$input['valores']['valor_uni'][$a]);
+              // $texto['valor_total'] = str_replace(',','',$input['valores']['valor_multi'][$a]);
+              // // $texto['cotizacion_id'] = $lastId_cotiza;
+              // //
+              // // Valorcot::create($texto);
+              //
+              // $valor->update($texto);
 
-            $transfor->update($datos1);
+              $transfor->update($datos1);
 
+            }
           }
 
           if (isset($input['valores']['valor_uni']) && isset($input['valores']['valor_multi'])) {
@@ -513,7 +515,7 @@ class CotizacionController extends Controller
                $texto['detalles'] = 'transformacion';
                $texto['valor_uni'] = str_replace(',','',$input['valores']['valor_uni'][$b]);
                $texto['valor_total'] = str_replace(',','',$input['valores']['valor_multi'][$b]);
-        
+
 
                $valor->update($texto);
             }
@@ -524,48 +526,50 @@ class CotizacionController extends Controller
         if ($request->distribucion == 'distribucion') {
 
         }else {
-          for ($x = 0; $x < count($input['distribucion']['descripcion_dis']); $x++) {
+          if (isset($input['distribucion']['descripcion_dis'])) {
+            for ($x = 0; $x < count($input['distribucion']['descripcion_dis']); $x++) {
 
-            $id1 = $input['distribucion']['id'][$x];
-            $distri = Distribucion::findOrFail($id1);
-            $datos2['descripcion'] = $input['distribucion']['descripcion_dis'][$x];
-            $datos2['tipo'] = $input['distribucion']['tipo_dis'][$x];
-            $datos2['nivel_tension'] = $input['distribucion']['nivel_tension_dis'][$x];
-            $datos2['unidad'] = 'mts.';
-            $datos2['cantidad'] = str_replace('.',',',$input['distribucion']['cantidad_dis'][$x]);
+              $id1 = $input['distribucion']['id'][$x];
+              $distri = Distribucion::findOrFail($id1);
+              $datos2['descripcion'] = $input['distribucion']['descripcion_dis'][$x];
+              $datos2['tipo'] = $input['distribucion']['tipo_dis'][$x];
+              $datos2['nivel_tension'] = $input['distribucion']['nivel_tension_dis'][$x];
+              $datos2['unidad'] = 'mts.';
+              $datos2['cantidad'] = str_replace('.',',',$input['distribucion']['cantidad_dis'][$x]);
 
-            if ($datos2['tipo'] == 'Aérea' && $input['distribucion']['apoyos_dis'][$x] == 0) {
+              if ($datos2['tipo'] == 'Aérea' && $input['distribucion']['apoyos_dis'][$x] == 0) {
 
-              $datos2['apoyos'] = 'Según Plano';
+                $datos2['apoyos'] = 'Según Plano';
 
-            }else {
-              $datos2['apoyos'] = $input['distribucion']['apoyos_dis'][$x];
+              }else {
+                $datos2['apoyos'] = $input['distribucion']['apoyos_dis'][$x];
+              }
+
+
+              if ($datos2['tipo'] == 'Subterránea' && $input['distribucion']['cajas_dis'][$x] == 0) {
+
+                $datos2['cajas'] = 'Según Plano';
+
+              }else {
+                $datos2['cajas'] = $input['distribucion']['cajas_dis'][$x];
+              }
+
+              $datos2['notas'] = $input['distribucion']['notas_dis'][$x];
+
+              // $id2 = $input['valores']['id_dis'][$x];
+              // $valor = Valorcot::findOrFail($id2);
+              // $texto['detalles'] = $datos2['descripcion'].' '.$datos2['tipo'].' '. $datos2['cantidad'];
+              // $texto['cantidad'] = $datos2['cantidad'];
+              // $texto['valor_uni'] = str_replace(',','',$input['valores']['valor_uni_dis'][$x]);
+              // $texto['valor_total'] = str_replace(',','',$input['valores']['valor_multi_dis'][$x]);
+              // // $texto['cotizacion_id'] = $lastId_cotiza;
+              //
+              // // Valorcot::create($texto);
+              // $valor->update($texto);
+
+              $distri->update($datos2);
+
             }
-
-
-            if ($datos2['tipo'] == 'Subterránea' && $input['distribucion']['cajas_dis'][$x] == 0) {
-
-              $datos2['cajas'] = 'Según Plano';
-
-            }else {
-              $datos2['cajas'] = $input['distribucion']['cajas_dis'][$x];
-            }
-
-            $datos2['notas'] = $input['distribucion']['notas_dis'][$x];
-
-            // $id2 = $input['valores']['id_dis'][$x];
-            // $valor = Valorcot::findOrFail($id2);
-            // $texto['detalles'] = $datos2['descripcion'].' '.$datos2['tipo'].' '. $datos2['cantidad'];
-            // $texto['cantidad'] = $datos2['cantidad'];
-            // $texto['valor_uni'] = str_replace(',','',$input['valores']['valor_uni_dis'][$x]);
-            // $texto['valor_total'] = str_replace(',','',$input['valores']['valor_multi_dis'][$x]);
-            // // $texto['cotizacion_id'] = $lastId_cotiza;
-            //
-            // // Valorcot::create($texto);
-            // $valor->update($texto);
-
-            $distri->update($datos2);
-
           }
 
           if (isset($input['valores']['valor_uni_dis']) && isset($input['valores']['valor_multi_dis'])) {
@@ -588,93 +592,95 @@ class CotizacionController extends Controller
         if ($request->pu_final == 'pu_final') {
           # code...
         }else {
-          for ($i=0; $i<count($input['pu_final']['descripcion_pu']); $i++) {
+          if (isset($input['pu_final']['descripcion_pu'])) {
+            for ($i=0; $i<count($input['pu_final']['descripcion_pu']); $i++) {
 
-            $id1 = $input['pu']['id'][$i];
-            $pu = Pu_final::findOrFail($id1);
-            $datos3['descripcion'] = $input['pu_final']['descripcion_pu'][$i];
-            $datos3['tipo'] = $input['pu_final']['tipo_pu'][$i];
-            // $datos3['estrato'] = $input['pu_final']['estrato_pu'][$i];
-            $datos3['unidad'] = 'Und';
-            $datos3['cantidad'] = $input['pu_final']['cantidad_pu'][$i];
-            $datos3['metros'] = $input['pu_final']['metros_pu'][$i];
+              $id1 = $input['pu']['id'][$i];
+              $pu = Pu_final::findOrFail($id1);
+              $datos3['descripcion'] = $input['pu_final']['descripcion_pu'][$i];
+              $datos3['tipo'] = $input['pu_final']['tipo_pu'][$i];
+              // $datos3['estrato'] = $input['pu_final']['estrato_pu'][$i];
+              $datos3['unidad'] = 'Und';
+              $datos3['cantidad'] = $input['pu_final']['cantidad_pu'][$i];
+              $datos3['metros'] = $input['pu_final']['metros_pu'][$i];
 
-            if ($input['pu_final']['kva_pu'][$i] == 0) {
+              if ($input['pu_final']['kva_pu'][$i] == 0) {
 
-              $datos3['kva'] = 'Según Plano';
-              $datos3['torres'] = null;
-
-
-            }else {
-              $datos3['kva'] = $input['pu_final']['kva_pu'][$i];
-            }
-
-            if ($datos3['tipo'] == 'Casa') {
-
-              $datos3['acometidas'] = $datos3['cantidad'];
-              $datos3['torres'] = null;
+                $datos3['kva'] = 'Según Plano';
+                $datos3['torres'] = null;
 
 
-            }
-
-            if ($datos3['tipo'] == 'Local comercial') {
-
-              $datos3['acometidas'] = $datos3['cantidad'];
-              $datos3['torres'] = null;
-
-
-            }
-
-            if ($datos3['tipo'] == 'Zona común') {
-
-              $datos3['acometidas'] = $datos3['cantidad'];
-              $datos3['torres'] = null;
-
-
-            }
-
-            if ($datos3['tipo'] == 'Bodega') {
-
-              $datos3['acometidas'] = $datos3['cantidad'];
-              $datos3['torres'] = null;
-
-
-            }
-
-            if (isset($input['pu_final']['torres'][$i])) {
-              if (!is_null($input['pu_final']['torres'][$i])) {
-
-                $datos3['acometidas'] = $input['pu_final']['torres'][$i];
-                $datos3['torres'] = $datos3['acometidas'];
-
+              }else {
+                $datos3['kva'] = $input['pu_final']['kva_pu'][$i];
               }
-            }
 
-            if (isset($input['pu_final']['estrato_pu'][$i])) {
-              if (!empty($input['pu_final']['estrato_pu'][$i])) {
+              if ($datos3['tipo'] == 'Casa') {
 
-                $datos3['estrato'] = $input['pu_final']['estrato_pu'][$i];
+                $datos3['acometidas'] = $datos3['cantidad'];
+                $datos3['torres'] = null;
+
 
               }
 
-            }else {
-              $datos3['estrato'] = null;
-            }
+              if ($datos3['tipo'] == 'Local comercial') {
 
-            $id2 = $input['valores']['id_pu'][$i];
-            $valor = Valorcot::findOrFail($id2);
-            $texto['detalles'] = $datos3['descripcion'].' '.$datos3['tipo'].' '. $datos3['cantidad'];
-            $texto['cantidad'] = $datos3['cantidad'];
-            $texto['valor_uni'] = str_replace(',','',$input['valores']['valor_uni_pu'][$i]);
-            $texto['valor_total'] = str_replace(',','',$input['valores']['valor_multi_pu'][$i]);
-            // $texto['cotizacion_id'] = $lastId_cotiza;
-            //
-            // Valorcot::create($texto);
-            $valor->update($texto);
-            $pu->update($datos3);
+                $datos3['acometidas'] = $datos3['cantidad'];
+                $datos3['torres'] = null;
+
+
+              }
+
+              if ($datos3['tipo'] == 'Zona común') {
+
+                $datos3['acometidas'] = $datos3['cantidad'];
+                $datos3['torres'] = null;
+
+
+              }
+
+              if ($datos3['tipo'] == 'Bodega') {
+
+                $datos3['acometidas'] = $datos3['cantidad'];
+                $datos3['torres'] = null;
+
+
+              }
+
+              if (isset($input['pu_final']['torres'][$i])) {
+                if (!is_null($input['pu_final']['torres'][$i])) {
+
+                  $datos3['acometidas'] = $input['pu_final']['torres'][$i];
+                  $datos3['torres'] = $datos3['acometidas'];
+
+                }
+              }
+
+              if (isset($input['pu_final']['estrato_pu'][$i])) {
+                if (!empty($input['pu_final']['estrato_pu'][$i])) {
+
+                  $datos3['estrato'] = $input['pu_final']['estrato_pu'][$i];
+
+                }
+
+              }else {
+                $datos3['estrato'] = null;
+              }
+
+              $id2 = $input['valores']['id_pu'][$i];
+              $valor = Valorcot::findOrFail($id2);
+              $texto['detalles'] = $datos3['descripcion'].' '.$datos3['tipo'].' '. $datos3['cantidad'];
+              $texto['cantidad'] = $datos3['cantidad'];
+              $texto['valor_uni'] = str_replace(',','',$input['valores']['valor_uni_pu'][$i]);
+              $texto['valor_total'] = str_replace(',','',$input['valores']['valor_multi_pu'][$i]);
+              // $texto['cotizacion_id'] = $lastId_cotiza;
+              //
+              // Valorcot::create($texto);
+              $valor->update($texto);
+              $pu->update($datos3);
+
+            }
 
           }
-
           if (isset($input['valores']['valor_uni_pu']) && isset($input['valores']['valor_multi_pu'])) {
 
             for ($j=0; $j < count($input['valores']['valor_uni_pu']); $j++) {
