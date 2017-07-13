@@ -26,7 +26,7 @@ class UsuarioController extends Controller
     public function index()
     {
         $usuarios = Usuario::all();
-        
+
         return view('usuarios.index',compact('usuarios'));
     }
 
@@ -113,14 +113,15 @@ class UsuarioController extends Controller
      */
     public function update(Request $request, $id)
     {
-
+      $input = $request->all();
+      
         $usuario = Usuario::findOrFail($id);
         $usuarios['cedula'] = $request->cedula;
         $usuarios['nombres'] = ucwords(mb_strtolower($request->nombres));
         $usuarios['apellidos'] = ucwords(mb_strtolower($request->apellidos));
         $usuarios['email'] = $request->email;
         $usuarios['password'] = Hash::make($request->password);
-
+        $usuarios['rol_id'] = $request->rol_id;
         $usuario->update($usuarios);
         Session::flash('message', 'Usuario editado!');
         Session::flash('class', 'success');
