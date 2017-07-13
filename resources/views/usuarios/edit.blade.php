@@ -68,7 +68,7 @@
 
           <div class="form-group">
             {!! Form::label('rol_id', 'Rol') !!}<br>
-            {!! Form::select('rol_id',$roles,['class' => 'form-control','required' => 'required']) !!}
+            {!! Form::select('rol_id',$roles,null,['class' => 'form-control','required' => 'required']) !!}
           </div>
 
 
