@@ -17,7 +17,7 @@ class Usuario extends Authenticatable implements AuditableContract
   use Auditable;
   protected $table = 'usuarios';
 
-  protected $fillable = ['id','cedula','nombres','apellidos','email','password','rol_id'];
+  protected $fillable = ['id','cedula','nombres','foto','apellidos','email','password','rol_id'];
 
   public $timestamps = false;
 

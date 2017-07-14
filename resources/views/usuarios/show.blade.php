@@ -31,7 +31,7 @@
       <div class="row">
         <div class="col-md-12 espacio">
           <div class="col-md-6">
-            <center><img src="{{url('photos')}}/$perfil->foto" class="perfil" alt="User Image"><center>
+            <center><img src="{{url('photos')}}/{{$perfil->foto}}" class="perfil" alt="User Image"><center>
           </div>
 
           <div class="col-md-6">
