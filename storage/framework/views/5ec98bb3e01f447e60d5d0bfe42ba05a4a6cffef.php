@@ -1,7 +1,10 @@
 <style media="screen">
-  #password, #rol_id{
+  #password{
     width: 90%;
   }
+  #rol_id{
+     width: 100%;
+   }
 </style>
 <?php $__env->startSection('contenido'); ?>
   <ol class="breadcrumb">
@@ -80,7 +83,6 @@
             </div>
           </div>
           <div class="col-md-6">
-            <br>
             <div class="form-group">
 
               <?php echo Form::label('rol_id', 'Rol'); ?>

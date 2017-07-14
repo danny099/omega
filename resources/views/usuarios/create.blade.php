@@ -3,6 +3,9 @@
   #password, #rol_id{
     width: 90%;
   }
+ #rol_id{
+    width: 100%;
+  }
 </style>
 @section('contenido')
   <ol class="breadcrumb">
@@ -26,7 +29,7 @@
       @endif
       <!-- /.box-header -->
       <!-- form start -->
-        {!! Form::open(['url' => 'usuarios']) !!}
+        {!! Form::open(['url' => 'usuarios','enctype'=>'multipart/form-data']) !!}
         {{ csrf_field() }}
         <div class="row">
         <div class="box-body col-md-12">
@@ -68,7 +71,6 @@
             </div>
           </div>
           <div class="col-md-6">
-            <br>
             <div class="form-group">
 
               {!! Form::label('rol_id', 'Rol') !!}

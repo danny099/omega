@@ -1,8 +1,11 @@
 @extends('index')
 <style media="screen">
-  #password, #rol_id{
+  #password{
     width: 90%;
   }
+  #rol_id{
+     width: 100%;
+   }
 </style>
 @section('contenido')
   <ol class="breadcrumb">
@@ -68,7 +71,6 @@
             </div>
           </div>
           <div class="col-md-6">
-            <br>
             <div class="form-group">
 
               {!! Form::label('rol_id', 'Rol') !!}
