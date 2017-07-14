@@ -51,9 +51,11 @@ class UsuarioController extends Controller
     {
 
         $usuarios = $request->all();
+        $file = Input::file('foto');
 
         $usuarios['cedula'] = $request->cedula;
         $usuarios['nombres'] = ucwords(mb_strtolower($request->nombres));
+        $usuarios['foto'] = Input::file("foto")->getClientOriginalName();
         $usuarios['apellidos'] = ucwords(mb_strtolower($request->apellidos));
         $usuarios['email'] = $request->email;
         $usuarios['password'] = Hash::make($request->password);
@@ -73,6 +75,8 @@ class UsuarioController extends Controller
         }
         else {
           Usuario::create($usuarios);
+
+          $file->move('photos',$file->getClientOriginalName());
           Session::flash('message', 'Usuario creado correctamente!');
           Session::flash('class', 'success');
           return redirect()->route('usuarios.index');
