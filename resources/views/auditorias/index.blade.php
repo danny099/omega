@@ -113,12 +113,6 @@
   } );
     });
 
-    $(document).ready(function($){
-      var prueba= $('.prueba').val();
-      var obj = JSON.parse(prueba);
 
-      $('.td').after(obj[0])
-
-    });
   </script>
 @endsection
