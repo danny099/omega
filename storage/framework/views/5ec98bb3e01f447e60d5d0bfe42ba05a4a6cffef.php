@@ -30,60 +30,76 @@
 
         <?php echo e(csrf_field()); ?>
 
-        <div class="box-body col-md-6">
+        <div class="row">
+        <div class="box-body col-md-12">
           <br>
+          <div class="col-md-6">
+            <div class="form-group">
+              <?php echo Form::label('cedula', 'Cédula'); ?>
 
+              <?php echo Form::number('cedula', null, ['class' => 'form-control' , 'required' => 'required', 'min'=>'0']); ?>
 
-          <div class="form-group">
-            <?php echo Form::label('cedula', 'Cédula'); ?>
-
-            <?php echo Form::number('cedula', null, ['class' => 'form-control' , 'required' => 'required']); ?>
-
+            </div>
           </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <?php echo Form::label('password', 'Contraseña'); ?>
 
-          <div class="form-group">
-            <?php echo Form::label('nombres', 'Nombres'); ?>
+              <?php echo Form::password('password', null, ['class' => 'form-control' , 'required' => 'required']); ?>
 
-            <?php echo Form::text('nombres', null, ['class' => 'form-control' , 'required' => 'required']); ?>
-
+              <span id="show-pass" class="glyphicon glyphicon-eye-open"></span>
+            </div>
           </div>
-
-          <div class="form-group">
-            <?php echo Form::label('apellidos', 'Apellidos'); ?>
-
-            <?php echo Form::text('apellidos', null, ['class' => 'form-control' , 'required' => 'required']); ?>
-
-          </div>
-
-
         </div>
-        <div class="box-body col-md-6">
-          <br>
+        <div class="box-body col-md-12">
+          <div class="col-md-6">
+            <div class="form-group">
+              <?php echo Form::label('nombres', 'Nombres'); ?>
 
-          <div class="form-group">
-            <?php echo Form::label('email', 'Email'); ?>
+              <?php echo Form::text('nombres', null, ['class' => 'form-control' , 'required' => 'required']); ?>
 
-            <?php echo Form::text('email', null, ['class' => 'form-control' , 'required' => 'required']); ?>
-
+            </div>
           </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <?php echo Form::label('foto', 'Foto'); ?>
 
-          <div class="form-group">
-            <?php echo Form::label('password', 'Contraseña'); ?>
+              <?php echo Form::file('foto', null, ['class' => 'form-control' , 'required' => 'required']); ?>
 
-            <?php echo Form::password('password', null, ['class' => 'form-control' , 'required' => 'required']); ?>
 
-            <span id="show-pass" class="glyphicon glyphicon-eye-open"></span>
-
+            </div>
           </div>
+        </div>
+        <div class="box-body col-md-12">
+          <div class="col-md-6">
+            <div class="form-group">
+              <?php echo Form::label('apellidos', 'Apellidos'); ?>
 
+              <?php echo Form::text('apellidos', null, ['class' => 'form-control' , 'required' => 'required']); ?>
 
-
-          <div class="form-group">
-            <?php echo Form::label('rol_id', 'Rol'); ?><br>
-            <?php echo Form::select('rol_id',$roles,['class' => 'form-control','required' => 'required']); ?>
-
+            </div>
           </div>
+          <div class="col-md-6">
+            <br>
+            <div class="form-group">
 
+              <?php echo Form::label('rol_id', 'Rol'); ?>
+
+              <?php echo Form::select('rol_id',$roles,['class' => 'form-control','required' => 'required','style'=>'width=100%']); ?>
+
+            </div>
+          </div>
+        </div>
+        <div class="box-body col-md-12">
+          <div class="col-md-6">
+            <div class="form-group">
+              <?php echo Form::label('email', 'Email'); ?>
+
+              <?php echo Form::text('email', null, ['class' => 'form-control' , 'required' => 'required']); ?>
+
+            </div>
+          </div>
+        </div>
 
         </div>
         <!-- /.box-body -->

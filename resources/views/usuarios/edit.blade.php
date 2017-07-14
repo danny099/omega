@@ -28,49 +28,62 @@
       <!-- form start -->
         {!! Form::model($usuarios, ['method' => 'PATCH', 'action' => ['UsuarioController@update',$usuarios->id]]) !!}
         {{ csrf_field() }}
-        <div class="box-body col-md-6">
+        <div class="row">
+        <div class="box-body col-md-12">
           <br>
-
-
-          <div class="form-group">
-            {!! Form::label('cedula', 'Cédula') !!}
-            {!! Form::number('cedula', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+          <div class="col-md-6">
+            <div class="form-group">
+              {!! Form::label('cedula', 'Cédula') !!}
+              {!! Form::number('cedula', null, ['class' => 'form-control' , 'required' => 'required', 'min'=>'0']) !!}
+            </div>
           </div>
-
-          <div class="form-group">
-            {!! Form::label('nombres', 'Nombres') !!}
-            {!! Form::text('nombres', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+          <div class="col-md-6">
+            <div class="form-group">
+              {!! Form::label('password', 'Contraseña') !!}
+              {!! Form::password('password', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+              <span id="show-pass" class="glyphicon glyphicon-eye-open"></span>
+            </div>
           </div>
-
-          <div class="form-group">
-            {!! Form::label('apellidos', 'Apellidos') !!}
-            {!! Form::text('apellidos', null, ['class' => 'form-control' , 'required' => 'required']) !!}
-          </div>
-
-
         </div>
-        <div class="box-body col-md-6">
-          <br>
-
-          <div class="form-group">
-            {!! Form::label('email', 'Email') !!}
-            {!! Form::text('email', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+        <div class="box-body col-md-12">
+          <div class="col-md-6">
+            <div class="form-group">
+              {!! Form::label('nombres', 'Nombres') !!}
+              {!! Form::text('nombres', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+            </div>
           </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              {!! Form::label('foto', 'Foto') !!}
+              {!! Form::file('foto', null, ['class' => 'form-control' , 'required' => 'required']) !!}
 
-          <div class="form-group">
-            {!! Form::label('password', 'Contraseña') !!}
-            {!! Form::password('password', null, ['class' => 'form-control' , 'required' => 'required']) !!}
-            <span id="show-pass" class="glyphicon glyphicon-eye-open"></span>
-
+            </div>
           </div>
-
-
-
-          <div class="form-group">
-            {!! Form::label('rol_id', 'Rol') !!}<br>
-            {!! Form::select('rol_id',$roles,null,['class' => 'form-control','required' => 'required']) !!}
+        </div>
+        <div class="box-body col-md-12">
+          <div class="col-md-6">
+            <div class="form-group">
+              {!! Form::label('apellidos', 'Apellidos') !!}
+              {!! Form::text('apellidos', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+            </div>
           </div>
+          <div class="col-md-6">
+            <br>
+            <div class="form-group">
 
+              {!! Form::label('rol_id', 'Rol') !!}
+              {!! Form::select('rol_id',$roles,['class' => 'form-control','required' => 'required','style'=>'width=100%']) !!}
+            </div>
+          </div>
+        </div>
+        <div class="box-body col-md-12">
+          <div class="col-md-6">
+            <div class="form-group">
+              {!! Form::label('email', 'Email') !!}
+              {!! Form::text('email', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+            </div>
+          </div>
+        </div>
 
         </div>
         <!-- /.box-body -->
