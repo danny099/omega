@@ -88,7 +88,8 @@ class UsuarioController extends Controller
      */
     public function show($id)
     {
-        //
+        $perfil = Usuario::findOrFail($id);
+        return view('usuarios.show', compact('perfil'));
     }
 
     /**
@@ -114,7 +115,7 @@ class UsuarioController extends Controller
     public function update(Request $request, $id)
     {
       $input = $request->all();
-      
+
         $usuario = Usuario::findOrFail($id);
         $usuarios['cedula'] = $request->cedula;
         $usuarios['nombres'] = ucwords(mb_strtolower($request->nombres));

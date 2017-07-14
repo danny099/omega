@@ -100,7 +100,7 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="{{ url('perfiles') }}" class="btn btn-default btn-flat">Perfil</a>
+                  <a href="{{ url('usuarios') }}/{{ Auth::User()->id }}" class="btn btn-default btn-flat">Perfil</a>
                 </div>
                 <div class="pull-right">
                   <a href="{{ url('logout') }}" class="btn btn-default btn-flat">Cerrar Sesion</a>
