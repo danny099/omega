@@ -112,7 +112,10 @@
   } );
     });
 
+    $(document).ready(function($){
 
+
+    });
   </script>
 <?php $__env->stopSection(); ?>
 
