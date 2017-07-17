@@ -31,8 +31,8 @@ class DirectivaController extends Controller
         $usuarios = count($usuar);
         $auditorias = count($audti);
         $var = Auth::user()->id;
-        $user = Usuario::findOrFail($var);
-        return view('inicio',compact('contratos','clientes','usuarios','auditorias','user'));
+        $perfil = Usuario::findOrFail($var);
+        return view('inicio',compact('contratos','clientes','usuarios','auditorias','perfil'));
     }
 
     /**
