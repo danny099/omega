@@ -15,7 +15,7 @@
             <div class="col-md-4">
               <center><label >Otro sí antes IVA</label></center>
             </div>
-            <div class="form-group ">
+            <div class="form-group">
               <div class="col-md-4">
                 <input type="text" class="form-control antesiva" id="antesiva"    onkeyup="mascara(this,cpf)"  onpaste="return false" placeholder= "Ingrese valor" name="valor"   value="{{ number_format($otro->valor,0) }}">
               </div>
@@ -45,7 +45,7 @@
             <div class="row">
               <div class="col-md-12">
                 <div class="col-md-4">
-                  <center><label >Valor total otro sí</label></center>
+                  <center><label >Valor total otro sí </label></center>
                 </div>
                 <div class="form-group ">
                   <div class="col-md-4">
