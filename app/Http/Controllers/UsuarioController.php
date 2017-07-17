@@ -119,18 +119,31 @@ class UsuarioController extends Controller
     public function update(Request $request, $id)
     {
       $input = $request->all();
+      // dd($input);
+      // die();
+      $file1 = Input::file('foto');
+      $file = $request->foto;
 
-        $usuario = Usuario::findOrFail($id);
-        $usuarios['cedula'] = $request->cedula;
-        $usuarios['nombres'] = ucwords(mb_strtolower($request->nombres));
-        $usuarios['apellidos'] = ucwords(mb_strtolower($request->apellidos));
-        $usuarios['email'] = $request->email;
-        $usuarios['password'] = Hash::make($request->password);
-        $usuarios['rol_id'] = $request->rol_id;
-        $usuario->update($usuarios);
-        Session::flash('message', 'Usuario editado!');
-        Session::flash('class', 'success');
-        return redirect()->route('usuarios.index');
+      $usuario = Usuario::findOrFail($id);
+      $usuarios['cedula'] = $request->cedula;
+      $usuarios['nombres'] = ucwords(mb_strtolower($request->nombres));
+
+      if (isset($input)) {
+        $usuarios['foto'] = $file;
+      }else {
+        $usuarios['foto'] = 'default-user.png';
+      }
+
+      $usuarios['apellidos'] = ucwords(mb_strtolower($request->apellidos));
+      $usuarios['email'] = $request->email;
+      $usuarios['password'] = Hash::make($request->password);
+      $usuarios['rol_id'] = $request->rol_id;
+      $file1->move('photos',$file1->getClientOriginalName());
+
+      $usuario->update($usuarios);
+      Session::flash('message', 'Usuario editado!');
+      Session::flash('class', 'success');
+      return redirect()->route('usuarios.index');
 
 
     }

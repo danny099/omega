@@ -8,6 +8,7 @@ use App\Cliente;
 use App\Juridica;
 use App\Usuario;
 use App\Auditoria;
+use Auth;
 
 class DirectivaController extends Controller
 {
@@ -29,8 +30,9 @@ class DirectivaController extends Controller
         $clientes = count($clien) + count($juri);
         $usuarios = count($usuar);
         $auditorias = count($audti);
-
-        return view('inicio',compact('contratos','clientes','usuarios','auditorias'));
+        $var = Auth::user()->id;
+        $user = Usuario::findOrFail($var);
+        return view('inicio',compact('contratos','clientes','usuarios','auditorias','user'));
     }
 
     /**
