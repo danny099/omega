@@ -33,7 +33,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                    @foreach($usuarios as $usuario)
+                  @foreach($usuarios as $usuario)
                     <tr>
                     <td>{{ $usuario->cedula }}</td>
                     <td>{{ $usuario->nombres }}</td>
@@ -49,7 +49,7 @@
 
                     </tr>
 
-                    @endforeach
+                  @endforeach
                 </tbody>
               </table>
             </div>

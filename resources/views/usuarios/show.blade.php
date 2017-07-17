@@ -13,6 +13,7 @@
       -moz-box-shadow: 10px 10px 33px 0px rgba(0,0,0,0.75);
       box-shadow: 10px 10px 33px 0px rgba(0,0,0,0.75);
       background: white;
+      padding: 20px
     }
     .row{
       padding-right: 400px;
@@ -30,26 +31,43 @@
 
       <div class="row">
         <div class="col-md-12 espacio">
-          <div class="col-md-6">
+          <div class="col-md-3">
             <center><img src="{{url('photos')}}/{{$perfil->foto}}" class="perfil" alt="User Image"><center>
           </div>
 
-          <div class="col-md-6">
+          <div class="col-md-9" style="padding-top:20px;">
             <div class="col-md-12">
-              <label >Nombres:</label>
-              <label>{{$perfil->foto}}</label>
+              <div class="col-md-6">
+                <label >Nombres:</label>
+              </div>
+              <div class="col-md-6">
+                <label>{{$perfil->nombres}}</label>
+              </div>
             </div>
             <div class="col-md-12">
-              <label >Apellidos:</label>
-              <label>{{$perfil->apellidos}}</label>
+              <div class="col-md-6">
+                <label >Apellidos:</label>
+              </div>
+              <div class="col-md-6">
+                <label>{{$perfil->apellidos}}</label>
+              </div>
+
             </div>
             <div class="col-md-12">
-              <label >Email:</label>
-              <label>{{$perfil->email}}</label>
+              <div class="col-md-6">
+                <label >Email:</label>
+              </div>
+              <div class="col-md-6">
+                <label>{{$perfil->email}}</label>
+              </div>
             </div>
             <div class="col-md-12">
-              <label >rol:</label>
-              <label>{{$perfil->roles->rol}}</label>
+              <div class="col-md-6">
+                <label >rol:</label>
+              </div>
+              <div class="col-md-6">
+                <label>{{$perfil->roles->rol}}</label>
+              </div>
             </div>
 
           </div>

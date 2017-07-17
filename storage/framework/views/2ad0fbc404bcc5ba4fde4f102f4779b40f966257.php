@@ -29,7 +29,7 @@
       <?php endif; ?>
       <!-- /.box-header -->
       <!-- form start -->
-        <?php echo Form::open(['url' => 'usuarios']); ?>
+        <?php echo Form::open(['url' => 'usuarios','enctype'=>'multipart/form-data']); ?>
 
         <?php echo e(csrf_field()); ?>
 
