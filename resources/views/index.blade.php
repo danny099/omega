@@ -25,6 +25,7 @@
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
   <link rel="stylesheet" href=" {{ url('bootstrap/css/bootstrap.css')}}">
+  <link rel="stylesheet" href="{{ url('css/prettyPhoto.css')}}" type="text/css" media="screen" title="prettyPhoto main stylesheet" charset="utf-8" />
   <!-- Font Awesome -->
   <link rel="stylesheet" href=" {{ url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css')}}">
   <!-- Ionicons -->
@@ -70,13 +71,15 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="{{url('dist/img/user2-160x160.jpg')}}" class="user-image" alt="User Image">
+              <img src="{{url('photos')}}/{{Auth::User()->foto}}" class="user-image" alt="User Image">
               <span class="hidden-xs">{{Auth::User()->nombres}} {{Auth::User()->apellidos}}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="{{url('dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
+
+              <img src="{{url('photos')}}/{{Auth::User()->foto}}" class="img-circle" alt="User Image">
+
 
                 <p>
                   {{Auth::User()->nombres}} {{Auth::User()->apellidos}}
@@ -297,7 +300,6 @@
 <script src="{{url('plugins/jQuery/jquery.steps.js')}}"></script>
 <script src="{{url('plugins/jQuery/jquery.validate.js')}}"></script>
 <script src="{{url('plugins/input-mask/jquery.inputmask.js')}}"></script>
-
 @yield('scripts')
 
 </body>
