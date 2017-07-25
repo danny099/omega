@@ -244,9 +244,7 @@
         border-bottom: 0;
       }
     }
-      ul, img, table {
-        page-break-inside: avoid;
-      }
+
       .referencia, .comerciales, .inspeccionDoc,.pago, .referencia, .ocho, .inscricion {
         page-break-inside: avoid;
       }
@@ -437,7 +435,7 @@
 
       @if(count($distribuciones) == 0)
       @else
-      <table class=" table table-bordered table-striped" style="page-break-before: avoid;">
+      <table class=" table table-bordered table-striped">
         <tr>
           <th colspan="7" class="ttable">ALCANCE DE DISTRIBUCIÓN</th>
         </tr>
@@ -486,7 +484,7 @@
             <th>Estrato</th>
             <th>Cantidad</th>
             <th>m²</th>
-            <th>KVA</th>            
+            <th>KVA</th>
 
             <th>Acometidas</th>
           </tr>
