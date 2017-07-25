@@ -129,14 +129,23 @@ class UsuarioController extends Controller
       if (isset($file)) {
         $usuarios['foto'] = Input::file("foto")->getClientOriginalName();
       }else {
-        $usuarios['foto'] = 'default-user.png';
+        
       }
 
       $usuarios['apellidos'] = ucwords(mb_strtolower($request->apellidos));
       $usuarios['email'] = $request->email;
-      $usuarios['password'] = Hash::make($request->password);
+
+      if (!empty($request->password)) {
+        $usuarios['password'] = Hash::make($request->password);
+      }else {
+        // $usuarios['password'] = $usuario->password;
+      }
+
       $usuarios['rol_id'] = $request->rol_id;
-      $file1->move('photos',$file1->getClientOriginalName());
+
+      if (isset($file1)) {
+        $file1->move('photos',$file1->getClientOriginalName());
+      }
 
       $usuario->update($usuarios);
       Session::flash('message', 'Usuario editado!');
