@@ -119,17 +119,15 @@ class UsuarioController extends Controller
     public function update(Request $request, $id)
     {
       $input = $request->all();
-      // dd($input);
-      // die();
+
       $file1 = Input::file('foto');
       $file = $request->foto;
-
       $usuario = Usuario::findOrFail($id);
       $usuarios['cedula'] = $request->cedula;
       $usuarios['nombres'] = ucwords(mb_strtolower($request->nombres));
 
-      if (isset($input)) {
-        $usuarios['foto'] = $file;
+      if (isset($file)) {
+        $usuarios['foto'] = Input::file("foto")->getClientOriginalName();
       }else {
         $usuarios['foto'] = 'default-user.png';
       }
