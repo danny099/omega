@@ -29,7 +29,7 @@
       @endif
       <!-- /.box-header -->
       <!-- form start -->
-        {!! Form::model($usuarios, ['method' => 'PATCH', 'action' => ['UsuarioController@update',$usuarios->id]]) !!}
+        {!! Form::model($usuarios, ['method' => 'PATCH', 'action' => ['UsuarioController@update',$usuarios->id],'enctype'=>'multipart/form-data']) !!}
         {{ csrf_field() }}
         <div class="row">
         <div class="box-body col-md-12">
