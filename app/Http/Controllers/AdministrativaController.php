@@ -75,7 +75,51 @@ class AdministrativaController extends Controller
        $mts = DB::table('distribucion')->where('cotizacion_id', '=', $codigo_cot)->where('descripcion', 'like', '%MT%')->get();
        $bts = DB::table('distribucion')->where('cotizacion_id', '=', $codigo_cot)->where('descripcion', 'like', '%BT%')->get();
 
-       return view('administrativas.create',compact('clientes','otrosis','mts','bts','transformaciones','pu_finales','departamentos','juridicas','cotizaciones','municipio'));
+       $datos = Administrativa::count('codigo_proyecto');
+       $num = Administrativa::max('codigo_proyecto');
+
+      //  $num = "COT-2017-A-999";
+       $numero = explode("-", $num);
+
+       $flag = true;
+       $fecha = date("Y");
+
+       if ($datos == 0) {
+
+         $codigo = "CPS-".$fecha."-001";
+
+       }elseif ($numero[2] >= 1) {
+
+         while ($flag) {
+
+           if ($numero[2] < 9) {
+             $numero[2] = $numero[2] +1;
+             $codigo = $numero[0]."-".$numero[1]."-00".$numero[2];
+             $flag = false;
+
+           }elseif ($numero[3] <= 98) {
+             $numero[2] = $numero[2] +1;
+             $codigo = $numero[0]."-".$numero[1]."-0".$numero[2];
+
+             $flag = false;
+
+           }elseif ($numero[3] < 999) {
+             $numero[2] = $numero[2] +1;
+             $codigo = $numero[0]."-".$numero[1]."-".$numero[2];
+
+             $flag = false;
+           }elseif($numero[2]>=999){
+             $numero[2]=0;
+             $i++;
+
+           }
+
+
+         }
+       }
+
+
+       return view('administrativas.create',compact('clientes','otrosis','mts','bts','transformaciones','pu_finales','departamentos','juridicas','cotizaciones','municipio','codigo'));
      }
 
     //  metodo que permite capturar el Request mediante una ruta ajax para llenar un select dinamico dependiente
