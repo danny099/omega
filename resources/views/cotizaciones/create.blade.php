@@ -47,7 +47,7 @@
       <div class="col-md-12">
         <div class="col-md-3">
           <label>Dirigido a :</label>
-          <select name="dirigido" style="width:100%">
+          <select name="dirigido" id="dirigido" style="width:100%">
             <option value="">Seleccione...</option>
             <option value="Señor">Señor</option>
             <option value="Señora">Señora</option>
@@ -640,6 +640,30 @@ $(document).ready(function(){
        {
          $('#juridica').css('display','block');
           $('#natural').css('display','none');
+          $("#juri").prop('required',true);
+          $("#select-natural").prop('required',false);
+
+       }
+  });
+
+  $('#dirigido').change(function(){
+      var valorCambiado =$(this).val();
+      if((valorCambiado == "Señor" || valorCambiado == "Señora")){
+        $('#natural').css('display','block');
+        $('#juridica').css('display','none');
+         $('#cliente').html('');
+         $('#cliente').append('<option value="1">Persona natural</option>');
+         $('#cliente').append('<option value="2">Persona juridica</option>');
+         $("#select-natural").prop('required',true);
+         $("#juri").prop('required',false);
+       }
+       else
+       {
+         $('#juridica').css('display','block');
+          $('#natural').css('display','none');
+          $('#cliente').html('');
+          $('#cliente').append('<option value="2">Persona juridica</option>');
+          $('#cliente').append('<option value="1">Persona natural</option>');
           $("#juri").prop('required',true);
           $("#select-natural").prop('required',false);
 
