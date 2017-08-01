@@ -35,6 +35,8 @@ Route::group(['middleware' => 'auth'],function(){
 	}));
 
   Route::get('/index', function () {
+
+
       return view('index');
   });
 
@@ -139,6 +141,8 @@ Route::group(['middleware' => 'auth'],function(){
 
 	Route::resource('documentos','DocumentoController');
 	Route::get('deletedocumentos/{id}','DocumentoController@destroy');
+
+	Route::get('doc','DocumentoController@doc');
 
 Auth::routes();
 
