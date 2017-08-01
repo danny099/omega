@@ -72,13 +72,18 @@ class DocumentoController extends Controller
                   </tr>
                   <tr>';
                   foreach ($transformaciones as $key => $transfor) {
-                    echo "olaaa";
-                  }
+                    "<tr>".
+                      "<td>" .$transfor->descripcion. "</td>".
+                      "<td>" .$transfor->tipo. "</td>".
+                      "<td>" .$transfor->nivel_tension. "</td>".
+                      "<td>" .$transfor->capacidad. " KVA</td>".
+                      "<td>" .$transfor->cantidad. " Und</td>".
+                      "<td>" .$transfor->tipo_refrigeracion. "</td>".
+                    "</tr>".
+                  }.
                   $tabla1.='</tr>
                 </table>';
       echo $tabla1;
-
-
       die();
       $datos = str_replace('#dirigido#',$cotizacion->dirigido,$datos);
       $datos = str_replace('#codigo#',$cotizacion->codigo,$datos);
