@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Documento;
+use App\Cotizacion;
+use App\Transformacion;
 use Session;
 
 class DocumentoController extends Controller
@@ -50,6 +52,58 @@ class DocumentoController extends Controller
 
     }
 
+    public function doc(){ // tiene que mandar el id para poder encontrar al que se deba generar
+
+      $cotizacion = Cotizacion::findOrFail(204);
+      $archivo = public_path().'/documentos'.'/dirigido.docx';
+      $datos = file_get_contents($archivo);
+      $transformaciones = Transformacion::all();
+      $tabla1 = '<table class="table table-bordered table-striped" border="1">
+                  <tr>
+                    <th colspan="6" class="ttable">ALCANCE DE TRANSFORMACIÓN</th>
+                  </tr>
+                  <tr>
+                    <th>Descripción</th>
+                    <th>Tipo</th>
+                    <th>Nivel de Tensión (KV)</th>
+                    <th>Capacidad (KVA)</th>
+                    <th>Cantidad</th>
+                    <th>Tipo de Refrigeración</th>
+                  </tr>
+                  <tr>'
+                  foreach ($transformaciones as $key => $transfor) {
+                    echo "olaaa";
+                  }.'
+                  </tr>
+                </table>';
+      echo $tabla1;
+      die();
+      $datos = str_replace('#dirigido#',$cotizacion->dirigido,$datos);
+      $datos = str_replace('#codigo#',$cotizacion->codigo,$datos);
+      $datos = str_replace('#cliente_id#',$cotizacion->cliente_id,$datos);
+      $datos = str_replace('#juridica_id#',$cotizacion->juridica_id,$datos);
+      $datos = str_replace('#fecha#',$cotizacion->fecha,$datos);
+      $datos = str_replace('#nombre#',$cotizacion->nombre,$datos);
+      $datos = str_replace('#municipio#',$cotizacion->municipio,$datos);
+      $datos = str_replace('#departamento_id#',$cotizacion->departamento_id,$datos);
+      $datos = str_replace('#formas_pago#',$cotizacion->formas_pago,$datos);
+      $datos = str_replace('#tiempo#',$cotizacion->tiempo,$datos);
+      $datos = str_replace('#entrega#',$cotizacion->entrega,$datos);
+      $datos = str_replace('#visitas#',$cotizacion->visitas,$datos);
+      $datos = str_replace('#validez#',$cotizacion->validez,$datos);
+      $datos = str_replace('#subtotal#',$cotizacion->subtotal,$datos);
+      $datos = str_replace('#iva#',$cotizacion->iva,$datos);
+      $datos = str_replace('#total#',$cotizacion->total,$datos);
+      $datos = str_replace('#adicional#',$cotizacion->adicional,$datos);
+      $datos = str_replace('#observaciones#',$cotizacion->observaciones,$datos);
+
+
+
+      $file = fopen($archivo,'w');
+      fputs($file,$datos);
+      fclose($file);
+      // echo fputs($file,$cadena);
+    }
     /**
      * Display the specified resource.
      *
@@ -60,6 +114,8 @@ class DocumentoController extends Controller
     {
 
     }
+
+
 
     /**
      * Show the form for editing the specified resource.
@@ -85,7 +141,7 @@ class DocumentoController extends Controller
         $input = $request->all();
         $datos['nombre'] = $request->nombre;
         $datos['detalles'] = $request->editor1;
-        
+
         $documento = Documento::findOrFail($id);
 
         $documento->update($datos);
