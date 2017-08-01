@@ -54,37 +54,39 @@ class DocumentoController extends Controller
 
     public function doc(){ // tiene que mandar el id para poder encontrar al que se deba generar
 
-      $cotizacion = Cotizacion::findOrFail(240);
+      $cotizacion = Cotizacion::findOrFail(204);
       $archivo = public_path().'/documentos'.'/dirigido.docx';
       $datos = file_get_contents($archivo);
       $transformaciones = Transformacion::all();
-      $tabla1 = '<table class="table table-bordered table-striped" border="1">
-                  <tr>
-                    <th colspan="6" class="ttable">ALCANCE DE TRANSFORMACIÓN</th>
-                  </tr>
-                  <tr>
-                    <th>Descripción</th>
-                    <th>Tipo</th>
-                    <th>Nivel de Tensión (KV)</th>
-                    <th>Capacidad (KVA)</th>
-                    <th>Cantidad</th>
-                    <th>Tipo de Refrigeración</th>
-                  </tr>
-                  <tr>';
-                  foreach ($transformaciones as $key => $transfor) {
-                    "<tr>".
-                      "<td>" .$transfor->descripcion. "</td>".
-                      "<td>" .$transfor->tipo. "</td>".
-                      "<td>" .$transfor->nivel_tension. "</td>".
-                      "<td>" .$transfor->capacidad. " KVA</td>".
-                      "<td>" .$transfor->cantidad. " Und</td>".
-                      "<td>" .$transfor->tipo_refrigeracion. "</td>".
-                    "</tr>".
-                  }.
-                  $tabla1.='</tr>
-                </table>';
-      echo $tabla1;
-      die();
+      $tabla1 = "<table class='table table-bordered table-striped'>".
+                 "<tr>".
+                   "<th colspan='6' class='ttable'>ALCANCE DE TRANSFORMACIÓN</th>".
+                 "</tr>".
+                 "<thead>".
+                   "<tr>".
+                     "<th>Descripción</th>".
+                     "<th>Tipo</th>".
+                     "<th>Nivel de Tensión (KV)</th>".
+                     "<th>Capacidad (KVA)</th>".
+                     "<th>Cantidad</th>".
+                     "<th>Tipo de Refrigeración</th>".
+                   "</tr>".
+                 "</thead>".
+                 "<tbody>";
+                 foreach ($transformaciones as $key => $transfor){
+          $tabla1.= "<tr>".
+                     "<td>" .$transfor->descripcion. "</td>".
+                     "<td>" .$transfor->tipo. "</td>".
+                     "<td>" .$transfor->nivel_tension. "</td>".
+                     "<td>" .$transfor->capacidad. " KVA</td>".
+                     "<td>" .$transfor->cantidad. " Und</td>".
+                     "<td>" .$transfor->tipo_refrigeracion. "</td>".
+                   "</tr>";
+                 }
+                 $tabla1.="</tbody>".
+               "</table>";
+     echo $tabla1;
+     die();
       $datos = str_replace('#dirigido#',$cotizacion->dirigido,$datos);
       $datos = str_replace('#codigo#',$cotizacion->codigo,$datos);
       $datos = str_replace('#cliente_id#',$cotizacion->cliente_id,$datos);
