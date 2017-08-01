@@ -54,7 +54,7 @@ class DocumentoController extends Controller
 
     public function doc(){ // tiene que mandar el id para poder encontrar al que se deba generar
 
-      $cotizacion = Cotizacion::findOrFail(204);
+      $cotizacion = Cotizacion::findOrFail(240);
       $archivo = public_path().'/documentos'.'/dirigido.docx';
       $datos = file_get_contents($archivo);
       $transformaciones = Transformacion::all();
@@ -70,13 +70,15 @@ class DocumentoController extends Controller
                     <th>Cantidad</th>
                     <th>Tipo de Refrigeración</th>
                   </tr>
-                  <tr>'
+                  <tr>';
                   foreach ($transformaciones as $key => $transfor) {
                     echo "olaaa";
-                  }.'
-                  </tr>
+                  }
+                  $tabla1.='</tr>
                 </table>';
       echo $tabla1;
+
+
       die();
       $datos = str_replace('#dirigido#',$cotizacion->dirigido,$datos);
       $datos = str_replace('#codigo#',$cotizacion->codigo,$datos);
