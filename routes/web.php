@@ -142,7 +142,8 @@ Route::group(['middleware' => 'auth'],function(){
 	Route::resource('documentos','DocumentoController');
 	Route::get('deletedocumentos/{id}','DocumentoController@destroy');
 
-	Route::get('doc','DocumentoController@doc');
+	Route::get('cotizacion','DocumentoController@cotizacion');
+	Route::get('contrato','DocumentoController@contrato');
 
 Auth::routes();
 
