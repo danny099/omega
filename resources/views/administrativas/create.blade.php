@@ -406,6 +406,7 @@ function addCommas(nStr){
         <textarea  rows="4" cols="196" name="observacion" required=""></textarea>
       </div>
     </div>
+    <input type="hidden"  name="id_cotizacion" value="{{$cotizaciones->id}}"  >
     <div class="box-footer">
       <button type="submit" data-target="" data-toggle="  " class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;">Agregar</button>
     </div>
