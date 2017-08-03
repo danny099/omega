@@ -7,6 +7,8 @@ use App\Documento;
 use App\Cotizacion;
 use App\Transformacion;
 use Session;
+use PDF;
+use App;
 
 class DocumentoController extends Controller
 {
@@ -52,27 +54,22 @@ class DocumentoController extends Controller
 
     }
 
-    public function doc(){ // tiene que mandar el id para poder encontrar al que se deba generar
+    public function cotizacion(){ // tiene que mandar el id para poder encontrar al que se deba generar
 
       $cotizacion = Cotizacion::findOrFail(204);
-      $archivo = public_path().'/documentos'.'/dirigido.html';
+
+      if (file_exists(public_path().'/documento'.'/temp.html')) {
+        unlink(public_path().'/documento'.'/temp.html');
+      }
+
+      $main = public_path().'/documento'.'/cotizacion_main.html';
+      copy(public_path().'/documento'.'/cotizacion_main.html', public_path().'/documento'.'/temp.html');
+      $archivo = public_path().'/documento'.'/temp.html';
       $datos = file_get_contents($archivo);
+
       $transformaciones = Transformacion::all();
-      $tabla1 = "<table border='1' 
-   font-family: arial, sans-serif;
-   border-collapse: collapse;
-   width: 100%;
-}
 
-td, th {
-   border: 1px solid #dddddd;
-   text-align: left;
-   padding: 8px;
-}
-
-tr:nth-child(even) {
-   background-color: #dddddd;
-}>".
+      $tabla1 = "<table>".
                  "<tr>".
                    "<th colspan='6' class='ttable'>ALCANCE DE TRANSFORMACIÓN</th>".
                  "</tr>".
@@ -126,7 +123,87 @@ tr:nth-child(even) {
 
       fputs($file, utf8_decode($datos));
       fclose($file);
-      // echo fputs($file,$cadena);
+
+      $pdf = App::make('dompdf.wrapper');
+      $pdf->loadHTML($datos);
+      return $pdf->download();
+
+    }
+
+    public function contrato(){ // tiene que mandar el id para poder encontrar al que se deba generar
+
+      $cotizacion = Cotizacion::findOrFail(204);
+
+      if (file_exists(public_path().'/documento'.'/temp1.html')) {
+        unlink(public_path().'/documento'.'/temp1.html');
+      }
+
+      $main = public_path().'/documento'.'/contrato_main.html';
+      copy(public_path().'/documento'.'/contrato_main.html', public_path().'/documento'.'/temp1.html');
+      $archivo = public_path().'/documento'.'/temp1.html';
+      $datos = file_get_contents($archivo);
+
+      $transformaciones = Transformacion::all();
+
+      $tabla1 = "<table>".
+                 "<tr>".
+                   "<th colspan='6' class='ttable'>ALCANCE DE TRANSFORMACIÓN</th>".
+                 "</tr>".
+                 "<thead>".
+                   "<tr>".
+                     "<th>Descripción</th>".
+                     "<th>Tipo</th>".
+                     "<th>Nivel de Tensión (KV)</th>".
+                     "<th>Capacidad (KVA)</th>".
+                     "<th>Cantidad</th>".
+                     "<th>Tipo de Refrigeración</th>".
+                   "</tr>".
+                 "</thead>".
+                 "<tbody>";
+                 foreach ($transformaciones as $key => $transfor){
+          $tabla1.= "<tr>".
+                     "<td>" .$transfor->descripcion. "</td>".
+                     "<td>" .$transfor->tipo. "</td>".
+                     "<td>" .$transfor->nivel_tension. "</td>".
+                     "<td>" .$transfor->capacidad. " KVA</td>".
+                     "<td>" .$transfor->cantidad. " Und</td>".
+                     "<td>" .$transfor->tipo_refrigeracion. "</td>".
+                   "</tr>";
+                 }
+                 $tabla1.="</tbody>".
+               "</table>";
+
+      $datos = str_replace('Ã±','ñ',str_replace('#dirigido#',$cotizacion->dirigido,$datos));
+      $datos = str_replace('#codigo#',$cotizacion->codigo,$datos);
+      $datos = str_replace('#cliente_id#',$cotizacion->cliente_id,$datos);
+      $datos = str_replace('#juridica_id#',$cotizacion->juridica_id,$datos);
+      $datos = str_replace('#fecha#',$cotizacion->fecha,$datos);
+      $datos = str_replace('#nombre#',$cotizacion->nombre,$datos);
+      $datos = str_replace('#municipio#',$cotizacion->municipio,$datos);
+      $datos = str_replace('#departamento_id#',$cotizacion->departamento_id,$datos);
+      $datos = str_replace('#formas_pago#',$cotizacion->formas_pago,$datos);
+      $datos = str_replace('#tiempo#',$cotizacion->tiempo,$datos);
+      $datos = str_replace('#entrega#',$cotizacion->entrega,$datos);
+      $datos = str_replace('#visitas#',$cotizacion->visitas,$datos);
+      $datos = str_replace('#validez#',$cotizacion->validez,$datos);
+      $datos = str_replace('#subtotal#',$cotizacion->subtotal,$datos);
+      $datos = str_replace('#iva#',$cotizacion->iva,$datos);
+      $datos = str_replace('#total#',$cotizacion->total,$datos);
+      $datos = str_replace('#adicional#',$cotizacion->adicional,$datos);
+      $datos = str_replace('#observaciones#',$cotizacion->observaciones,$datos);
+      $datos = str_replace('#tabla1#',$tabla1,$datos);
+
+
+
+      $file = fopen($archivo,'w');
+
+      fputs($file, utf8_decode($datos));
+      fclose($file);
+
+      $pdf = App::make('dompdf.wrapper');
+      $pdf->loadHTML($datos);
+      return $pdf->download();
+
     }
     /**
      * Display the specified resource.
