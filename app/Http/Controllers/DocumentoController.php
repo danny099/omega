@@ -55,10 +55,24 @@ class DocumentoController extends Controller
     public function doc(){ // tiene que mandar el id para poder encontrar al que se deba generar
 
       $cotizacion = Cotizacion::findOrFail(204);
-      $archivo = public_path().'/documentos'.'/dirigido.docx';
+      $archivo = public_path().'/documentos'.'/dirigido.html';
       $datos = file_get_contents($archivo);
       $transformaciones = Transformacion::all();
-      $tabla1 = "<table class='table table-bordered table-striped'>".
+      $tabla1 = "<table border='1' 
+   font-family: arial, sans-serif;
+   border-collapse: collapse;
+   width: 100%;
+}
+
+td, th {
+   border: 1px solid #dddddd;
+   text-align: left;
+   padding: 8px;
+}
+
+tr:nth-child(even) {
+   background-color: #dddddd;
+}>".
                  "<tr>".
                    "<th colspan='6' class='ttable'>ALCANCE DE TRANSFORMACIÓN</th>".
                  "</tr>".
@@ -85,9 +99,8 @@ class DocumentoController extends Controller
                  }
                  $tabla1.="</tbody>".
                "</table>";
-     echo $tabla1;
-     die();
-      $datos = str_replace('#dirigido#',$cotizacion->dirigido,$datos);
+
+      $datos = str_replace('Ã±','ñ',str_replace('#dirigido#',$cotizacion->dirigido,$datos));
       $datos = str_replace('#codigo#',$cotizacion->codigo,$datos);
       $datos = str_replace('#cliente_id#',$cotizacion->cliente_id,$datos);
       $datos = str_replace('#juridica_id#',$cotizacion->juridica_id,$datos);
@@ -105,11 +118,13 @@ class DocumentoController extends Controller
       $datos = str_replace('#total#',$cotizacion->total,$datos);
       $datos = str_replace('#adicional#',$cotizacion->adicional,$datos);
       $datos = str_replace('#observaciones#',$cotizacion->observaciones,$datos);
+      $datos = str_replace('#tabla1#',$tabla1,$datos);
 
 
 
       $file = fopen($archivo,'w');
-      fputs($file,$datos);
+
+      fputs($file, utf8_decode($datos));
       fclose($file);
       // echo fputs($file,$cadena);
     }
