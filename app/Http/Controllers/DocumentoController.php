@@ -5,11 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Documento;
 use App\Cotizacion;
+use App\Cliente;
+use App\Administrativa;
 use App\Transformacion;
+use App\Distribucion;
+use App\Pu_final;
+use App\Municipio;
+use App\Departamento;
 use Session;
 use PDF;
 use App;
-
+use PhpOfice\PhpWord\TemplateProcessor;
 class DocumentoController extends Controller
 {
     /**
@@ -132,77 +138,111 @@ class DocumentoController extends Controller
 
     public function contrato(){ // tiene que mandar el id para poder encontrar al que se deba generar
 
-      $cotizacion = Cotizacion::findOrFail(204);
 
-      if (file_exists(public_path().'/documento'.'/temp1.html')) {
-        unlink(public_path().'/documento'.'/temp1.html');
-      }
-
-      $main = public_path().'/documento'.'/contrato_main.html';
-      copy(public_path().'/documento'.'/contrato_main.html', public_path().'/documento'.'/temp1.html');
-      $archivo = public_path().'/documento'.'/temp1.html';
-      $datos = file_get_contents($archivo);
-
-      $transformaciones = Transformacion::all();
-
-      $tabla1 = "<table>".
-                 "<tr>".
-                   "<th colspan='6' class='ttable'>ALCANCE DE TRANSFORMACIÓN</th>".
-                 "</tr>".
-                 "<thead>".
-                   "<tr>".
-                     "<th>Descripción</th>".
-                     "<th>Tipo</th>".
-                     "<th>Nivel de Tensión (KV)</th>".
-                     "<th>Capacidad (KVA)</th>".
-                     "<th>Cantidad</th>".
-                     "<th>Tipo de Refrigeración</th>".
-                   "</tr>".
-                 "</thead>".
-                 "<tbody>";
-                 foreach ($transformaciones as $key => $transfor){
-          $tabla1.= "<tr>".
-                     "<td>" .$transfor->descripcion. "</td>".
-                     "<td>" .$transfor->tipo. "</td>".
-                     "<td>" .$transfor->nivel_tension. "</td>".
-                     "<td>" .$transfor->capacidad. " KVA</td>".
-                     "<td>" .$transfor->cantidad. " Und</td>".
-                     "<td>" .$transfor->tipo_refrigeracion. "</td>".
-                   "</tr>";
-                 }
-                 $tabla1.="</tbody>".
-               "</table>";
-
-      $datos = str_replace('Ã±','ñ',str_replace('#dirigido#',$cotizacion->dirigido,$datos));
-      $datos = str_replace('#codigo#',$cotizacion->codigo,$datos);
-      $datos = str_replace('#cliente_id#',$cotizacion->cliente_id,$datos);
-      $datos = str_replace('#juridica_id#',$cotizacion->juridica_id,$datos);
-      $datos = str_replace('#fecha#',$cotizacion->fecha,$datos);
-      $datos = str_replace('#nombre#',$cotizacion->nombre,$datos);
-      $datos = str_replace('#municipio#',$cotizacion->municipio,$datos);
-      $datos = str_replace('#departamento_id#',$cotizacion->departamento_id,$datos);
-      $datos = str_replace('#formas_pago#',$cotizacion->formas_pago,$datos);
-      $datos = str_replace('#tiempo#',$cotizacion->tiempo,$datos);
-      $datos = str_replace('#entrega#',$cotizacion->entrega,$datos);
-      $datos = str_replace('#visitas#',$cotizacion->visitas,$datos);
-      $datos = str_replace('#validez#',$cotizacion->validez,$datos);
-      $datos = str_replace('#subtotal#',$cotizacion->subtotal,$datos);
-      $datos = str_replace('#iva#',$cotizacion->iva,$datos);
-      $datos = str_replace('#total#',$cotizacion->total,$datos);
-      $datos = str_replace('#adicional#',$cotizacion->adicional,$datos);
-      $datos = str_replace('#observaciones#',$cotizacion->observaciones,$datos);
-      $datos = str_replace('#tabla1#',$tabla1,$datos);
+      $main = public_path().'/documento'.'/contrato_main.docx';
+      $PHPWord = new \PhpOffice\PhpWord\PhpWord();
+      $document = $PHPWord->loadTemplate($main);
 
 
+      $contrato = Administrativa::findOrFail(207);
 
-      $file = fopen($archivo,'w');
+      $cliente = Cliente::findOrFail($contrato->cliente_id);
 
-      fputs($file, utf8_decode($datos));
-      fclose($file);
+      $cotizacion = Cotizacion::where('cotizacion.cliente_id', '=', $contrato->id_cotizacion)->get();
 
-      $pdf = App::make('dompdf.wrapper');
-      $pdf->loadHTML($datos);
-      return $pdf->download();
+      $transformaciones = Transformacion::where('transformacion.administrativa_id', '=', $contrato->id)->get();
+      $distribuciones = Distribucion::where('distribucion.administrativa_id', '=', $contrato->id)->get();
+      $pu_finales = Pu_final::where('pu_final.administrativa_id', '=', $contrato->id)->get();
+      $municipio = Municipio::find($contrato->municipio);
+      $departamento = Departamento::find($contrato->departamento_id);
+
+      $document->setValue('codigo',$contrato->codigo_proyecto);
+      $document->setValue('cliente',$cliente->nombre);
+      $document->setValue('nit',$cliente->nit);
+
+      // dd($document);
+      // die();
+      // $templateWord->setValue('#nombre_proyecto#',$contrato->nombre_proyecto);
+      // $templateWord->setValue('#municipio#',$municipio->nombre);
+      // $templateWord->setValue('#departamento#',$departamento->nombre);
+      // $templateWord->setValue('#cedula#',$cliente->cedula);
+      // $templateWord->setValue('#adicional#',$cotizacion->adicional);
+
+      $document->saveAs('documentoeditado.docx');
+      header("Content-Disposition: attachment; filename=documentoeditado.docx; charset=iso-8859-1");
+      echo file_get_contents('documentoeditado.docx');
+      // $contrato = Administrativa::findOrFail(207);
+      //
+      // $cliente = Cliente::findOrFail($contrato->cliente_id);
+      //
+      // $cotizacion = Cotizacion::where('cotizacion.cliente_id', '=', $contrato->id_cotizacion)->get();
+      //
+      // $transformaciones = Transformacion::where('transformacion.administrativa_id', '=', $contrato->id)->get();
+      // $distribuciones = Distribucion::where('distribucion.administrativa_id', '=', $contrato->id)->get();
+      // $pu_finales = Pu_final::where('pu_final.administrativa_id', '=', $contrato->id)->get();
+      // $municipio = Municipio::find($contrato->municipio);
+      // $departamento = Departamento::find($contrato->departamento_id);
+      //
+      // if (file_exists(public_path().'/documento'.'/temp1.html')) {
+      //   unlink(public_path().'/documento'.'/temp1.html');
+      // }
+      //
+      // $main = public_path().'/documento'.'/contrato_main.html';
+      // copy(public_path().'/documento'.'/contrato_main.html', public_path().'/documento'.'/temp1.html');
+      // $archivo = public_path().'/documento'.'/temp1.html';
+      // $datos = file_get_contents($archivo);
+      //
+      // $transformaciones = Transformacion::all();
+      //
+      // // $tabla1 = "<table>".
+      // //            "<tr>".
+      // //              "<th colspan='6' class='ttable'>ALCANCE DE TRANSFORMACIÓN</th>".
+      // //            "</tr>".
+      // //            "<thead>".
+      // //              "<tr>".
+      // //                "<th>Descripción</th>".
+      // //                "<th>Tipo</th>".
+      // //                "<th>Nivel de Tensión (KV)</th>".
+      // //                "<th>Capacidad (KVA)</th>".
+      // //                "<th>Cantidad</th>".
+      // //                "<th>Tipo de Refrigeración</th>".
+      // //              "</tr>".
+      // //            "</thead>".
+      // //            "<tbody>";
+      // //            foreach ($transformaciones as $key => $transfor){
+      // //     $tabla1.= "<tr>".
+      // //                "<td>" .$transfor->descripcion. "</td>".
+      // //                "<td>" .$transfor->tipo. "</td>".
+      // //                "<td>" .$transfor->nivel_tension. "</td>".
+      // //                "<td>" .$transfor->capacidad. " KVA</td>".
+      // //                "<td>" .$transfor->cantidad. " Und</td>".
+      // //                "<td>" .$transfor->tipo_refrigeracion. "</td>".
+      // //              "</tr>";
+      // //            }
+      // //            $tabla1.="</tbody>".
+      // //          "</table>";
+      //
+      // // $datos = str_replace('Ã±','ñ',str_replace('#dirigido#',$cotizacion->dirigido,$datos));
+      // $datos = str_replace('#codigo#',$contrato->codigo_proyecto,$datos);
+      // $datos = str_replace('#cliente#',$cliente->nombre,$datos);
+      // $datos = str_replace('#nit#',$cliente->nit,$datos);
+      // $datos = str_replace('#nombre_proyecto#',$contrato->nombre_proyecto,$datos);
+      // $datos = str_replace('#municipio#',$municipio->nombre,$datos);
+      // $datos = str_replace('#departamento#',$departamento->nombre,$datos);
+      // $datos = str_replace('#cedula#',$cliente->cedula,$datos);
+      // // $datos = str_replace('#adicional#',$cotizacion->adicional,$datos);
+      //
+      //
+      //
+      //
+      // $file = fopen($archivo,'w');
+      //
+      // fputs($file,$datos);
+      // fclose($file);
+      //
+      // $pdf = App::make('dompdf.wrapper');
+      // $pdf->loadHTML($datos);
+      // return $pdf->download();
 
     }
     /**

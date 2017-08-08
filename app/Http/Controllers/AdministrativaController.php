@@ -67,6 +67,7 @@ class AdministrativaController extends Controller
        $otrosis=Otrosi::all();
        $departamentos = Departamento::all();
        $cotizaciones = Cotizacion::findOrFail($codigo_cot);
+
        $muni_Id = Municipio::select('id')->where('id',$cotizaciones->municipio)->get();
        $municipio = Municipio::find($muni_Id);
        $transformaciones = Transformacion::where('transformacion.cotizacion_id', '=', $codigo_cot)->get();
@@ -138,7 +139,7 @@ class AdministrativaController extends Controller
     // metodo que rescata todos los datos en los inputs del formulario para asignarlos arreglos y con el metodo create acceder al modelo y crear un registro
     public function store(Request $request)
     {
-       $input = $request->all();
+
 
        //  ********************************************************************************
        //  ********************************************************************************
@@ -161,6 +162,7 @@ class AdministrativaController extends Controller
        $administrativa['recor_fac'] = 1;
        $administrativa['contador_otro'] = 0;
        $administrativa['contador_fac'] = 0;
+       $administrativa['id_cotizacion'] = $request->id_cotizacion;
 
 
 
