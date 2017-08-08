@@ -140,7 +140,7 @@ class AdministrativaController extends Controller
     public function store(Request $request)
     {
 
-
+      $input = $request->all();
        //  ********************************************************************************
        //  ********************************************************************************
       //  almacenar en un arreglo $administrativa los datos provenientes desde el formulario de datos basicos
