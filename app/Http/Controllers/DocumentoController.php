@@ -188,11 +188,63 @@ class DocumentoController extends Controller
                  }
                  $tabla1.="</tbody>".
                "</table>";
+      $table = '';
+      $table .= '<w:tbl>';
+
+      // $table .= '<w:tblPr><w:tblW w:w = "5000" w:type="pct"/></w:tblPr>';
+
+      // $table .= '<w:tblPr>';
+      // $table .=   '<w:tblStyle w:val="TableGrid"/>';
+      // $table .=   '<w:tblW w:w="5000" w:type="pct"/>';
+      // $table .= '</w:tblPr>';
+      // $table .= '<w:tblGrid>';
+      // $table .=   '<w:gridCol w:w="1000"/>';
+      // $table .=   '<w:gridCol w:w="1000"/>';
+      // $table .=   '<w:gridCol w:w="1000"/>';
+      // $table .=  '</w:tblGrid>';
+        foreach ($transformaciones as $key => $transfor) {
+          $table .= '<w:tr>';
+          // $table .= '<w:tblPr><w:tblW w:w = "5000" w:type="pct"/></w:tblPr>';//new xml table row
+          $table .= '<w:tc><w:p><w:r><w:t>'; //start cell
+          $table .= $transfor->detalle; //cell contents
+          $table .= '</w:t></w:r></w:p></w:tc>'; //close cell
+          $table .= '<w:tc><w:p><w:r><w:t>'; //start cell
+          $table .= $transfor->tipo; //cell contents
+          $table .= '</w:t></w:r></w:p></w:tc>'; //close cell
+          $table .= '<w:tc><w:p><w:r><w:t>'; //start cell
+          $table .= $transfor->nivel_tension; //cell contents
+          $table .= '</w:t></w:r></w:p></w:tc>'; //close cell
+          $table .= '</w:tr>';
+        }
+      $table .= '</w:tbl>';
+      // $table = '';
+      // $table .= '<w:tbl>';
+      // $table .=   '<w:tblPr>';
+      // $table .=     '<w:tblW w:w="5000" w:type="pct"/>';
+      // $table .=       '<w:tblBorders>';
+      // $table .=         '<w:top w:val="single" w:sz="4" w:space="0" w:color="auto"/>';
+      // $table .=         '<w:left w:val="single" w:sz="4 w:space="0" w:color="auto"/>';
+      // $table .=         '<w:bottom w:val="single" w:sz="4" w:space="0" w:color="auto"/>';
+      // $table .=         '<w:right w:val="single" w:sz="4" w:space="0" w:color="auto"/>';
+      // $table .=       '</w:tblBorders>';
+      // $table .=   '</w:tblPr>';
+      // $table .=   '<w:tblGrid>';
+      // $table .=    '<w:gridCol w:w="10296"/>';
+      // $table .=     '</w:tblGrid>';
+      // $table .=      '<w:tr>';
+      // $table .=       '<w:tc>';
+      // $table .=        '<w:tcPr>';
+      // $table .=         '<w:tcW w:w="0" w:type="auto"/>';
+      // $table .=        '</w:tcPr>';
+      // $table .=        '<w:p/>';
+      // $table .=       '</w:tc>';
+      // $table .=      '</w:tr>';
+      // $table .= '</w:tbl>';
 
       $document->setValue('codigo',$nombre);
       $document->setValue('cliente',$direccion);
       $document->setValue('nit',$municipio);
-      $document->setValue('tabla1',$tabla1);
+      $document->setValue('table',$table);
 
 
 
