@@ -190,6 +190,13 @@ class DocumentoController extends Controller
                "</table>";
       $table = '';
       $table .= '<w:tbl>';
+      $table .=   '<w:tblPr>';
+      $table .=     '<w:tblW w:w="0" w:type="auto" />';
+      $table .=   '</w:tblPr>';
+      $table .=   '<w:tblGrid>';
+      $table .=     '<w:gridCol w:w="1614" />';
+      $table .=     '<w:gridCol w:w="1330" />';
+      $table .=   '</w:tblGrid>';
 
       // $table .= '<w:tblPr><w:tblW w:w = "5000" w:type="pct"/></w:tblPr>';
 
@@ -202,20 +209,65 @@ class DocumentoController extends Controller
       // $table .=   '<w:gridCol w:w="1000"/>';
       // $table .=   '<w:gridCol w:w="1000"/>';
       // $table .=  '</w:tblGrid>';
-        foreach ($transformaciones as $key => $transfor) {
-          $table .= '<w:tr>';
-          // $table .= '<w:tblPr><w:tblW w:w = "5000" w:type="pct"/></w:tblPr>';//new xml table row
-          $table .= '<w:tc><w:p><w:r><w:t>'; //start cell
-          $table .= $transfor->detalle; //cell contents
-          $table .= '</w:t></w:r></w:p></w:tc>'; //close cell
-          $table .= '<w:tc><w:p><w:r><w:t>'; //start cell
-          $table .= $transfor->tipo; //cell contents
-          $table .= '</w:t></w:r></w:p></w:tc>'; //close cell
-          $table .= '<w:tc><w:p><w:r><w:t>'; //start cell
-          $table .= $transfor->nivel_tension; //cell contents
-          $table .= '</w:t></w:r></w:p></w:tc>'; //close cell
-          $table .= '</w:tr>';
-        }
+        // foreach ($transformaciones as $key => $transfor) {
+
+          // $table .= '<w:tr>';
+          // // $table .= '<w:tblPr><w:tblW w:w = "5000" w:type="pct"/></w:tblPr>';//new xml table row
+          // $table .= '<w:tc><w:p><w:r><w:t>'; //start cell
+          // $table .= $transfor->descripcion; //cell contents
+          // $table .= '</w:t></w:r></w:p></w:tc>'; //close cell
+          // $table .= '<w:tc><w:p><w:r><w:t>'; //start cell
+          // $table .= $transfor->tipo; //cell contents
+          // $table .= '</w:t></w:r></w:p></w:tc>'; //close cell
+          // $table .= '<w:tc><w:p><w:r><w:t>'; //start cell
+          // $table .= $transfor->nivel_tension; //cell contents
+          // $table .= '</w:t></w:r></w:p></w:tc>'; //close cell
+          // $table .= '</w:tr>';
+
+        // }
+        $table .= '<w:tblPr>';
+        $table .=   '<w:tblBorders>';
+        $table .=     '<w:top w:val="single" w:sz="8" w:space="0" w:color="000000" />';
+        $table .=     '<w:start w:val="single" w:sz="24" w:space="0" w:color="00FF00" />';
+        $table .=     '<w:bottom w:val="single" w:sz="8" w:space="0" w:color="4BACC6" />';
+        $table .=     '<w:end w:val="single" w:sz="24" w:space="0" w:color="000000" />';
+        $table .=     '<w:insideH w:val="single" w:sz="24" w:space="0" w:color="000000" />';
+        $table .=     '<w:insideH w:val="single" w:sz="24" w:space="0" w:color="000000" />';
+        $table .=   '</w:tblBorders>';
+        $table .=  '</w:tblPr>';
+
+        $table .=  '<w:tr>';
+        $table .=    '<w:tc>';
+        $table .=      '<w:tcPr>';
+        $table .=        '<w:tcW w:w="2880" w:type="dxa"/>';
+        $table .=      '</w:tcPr>';
+        $table .=      '<w:p>';
+        $table .=        '<w:r>';
+        $table .=          '<w:t>AAA</w:t>';
+        $table .=        '</w:r>';
+        $table .=     '</w:p>';
+        $table .=    '</w:tc>';
+        $table .=    '<w:tc>';
+        $table .=      '<w:tcPr>';
+        $table .=        '<w:tcW w:w="2880" w:type="dxa"/>';
+        $table .=      '</w:tcPr>';
+        $table .=      '<w:p>';
+        $table .=        '<w:r>';
+        $table .=          '<w:t>BBB</w:t>';
+        $table .=        '</w:r>';
+        $table .=      '</w:p>';
+        $table .=    '</w:tc>';
+        // $table .=    '<w:tc>';
+        // $table .=      '<w:tcPr>';
+        // $table .=        '<w:tcW w:w="2880" w:type="dxa"/>';
+        // $table .=      '</w:tcPr>';
+        // $table .=      '<w:p>';
+        // $table .=        '<w:r>';
+        // $table .=          '<w:t>CCC</w:t>';
+        // $table .=        '</w:r>';
+        // $table .=      '</w:p>';
+        // $table .=    '</w:tc>';
+        $table .=  '</w:tr>';
       $table .= '</w:tbl>';
       // $table = '';
       // $table .= '<w:tbl>';
