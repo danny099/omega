@@ -141,11 +141,11 @@ class DocumentoController extends Controller
 
 
       $main = public_path().'/documento'.'/contrato_main.docx';
-      $PHPWord = new \PhpOffice\PhpWord\PhpWord();
+      // $PHPWord = new \PhpOffice\PhpWord\PhpWord();
       $document = new TemplateProcessor($main);
 
 
-      $contrato = Administrativa::findOrFail(208);
+      $contrato = Administrativa::findOrFail(207);
 
       $cliente = Cliente::findOrFail($contrato->cliente_id);
 
@@ -160,9 +160,39 @@ class DocumentoController extends Controller
       $direccion = "Mi direcci�n";
       $municipio = "Mrd";
 
+
+      $tabla1 = "<table>".
+                 "<tr>".
+                   "<th colspan='6' class='ttable'>ALCANCE DE TRANSFORMACIÓN</th>".
+                 "</tr>".
+                 "<thead>".
+                   "<tr>".
+                     "<th>Descripción</th>".
+                     "<th>Tipo</th>".
+                     "<th>Nivel de Tensión (KV)</th>".
+                     "<th>Capacidad (KVA)</th>".
+                     "<th>Cantidad</th>".
+                     "<th>Tipo de Refrigeración</th>".
+                   "</tr>".
+                 "</thead>".
+                 "<tbody>";
+                 foreach ($transformaciones as $key => $transfor){
+          $tabla1.= "<tr>".
+                     "<td>" .$transfor->descripcion. "</td>".
+                     "<td>" .$transfor->tipo. "</td>".
+                     "<td>" .$transfor->nivel_tension. "</td>".
+                     "<td>" .$transfor->capacidad. " KVA</td>".
+                     "<td>" .$transfor->cantidad. " Und</td>".
+                     "<td>" .$transfor->tipo_refrigeracion. "</td>".
+                   "</tr>";
+                 }
+                 $tabla1.="</tbody>".
+               "</table>";
+
       $document->setValue('codigo',$nombre);
       $document->setValue('cliente',$direccion);
       $document->setValue('nit',$municipio);
+      $document->setValue('tabla1',$tabla1);
 
 
 
