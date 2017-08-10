@@ -245,9 +245,9 @@
       }
     }
 
-      .referencia, .comerciales, .inspeccionDoc,.pago, .referencia, .ocho, .inscricion {
+      /*.referencia, .comerciales, .inspeccionDoc,.pago, .referencia, .ocho, .inscricion {
         page-break-inside: avoid;
-      }
+      }*/
       body{
         font-family: "Arial Narrow";
       	font-size: 12pt;
