@@ -205,16 +205,10 @@ class DocumentoController extends Controller
 
           $table .=   '<w:tblPr>';
           $table .=     '<w:tblStyle w:val="TableGrid"/>';
-          $table .=     '<w:tblW w:w="5000" w:type="pct"/>';
+          $table .=     '<w:tblW w:w="0" w:type="auto"/>';
           $table .=   '</w:tblPr>';
-          $table .=   '<w:tblGrid>';
-          $table .=     '<w:gridCol w:w="1" />';
-          $table .=     '<w:gridCol w:w="9000" />';
-
-          $table .=   '</w:tblGrid>';
           $table .=  '<w:tr>';
           $table .=    '<w:tc>';
-
           $table .=      '<w:p>';
           $table .=        '<w:r>';
           $table .=          '<w:t><w:jc w:val="center" />'.$key.'</w:t>';
