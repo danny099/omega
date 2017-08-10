@@ -161,137 +161,112 @@ class DocumentoController extends Controller
       $municipio = "Mrd";
 
 
-      $tabla1 = "<table>".
-                 "<tr>".
-                   "<th colspan='6' class='ttable'>ALCANCE DE TRANSFORMACIÓN</th>".
-                 "</tr>".
-                 "<thead>".
-                   "<tr>".
-                     "<th>Descripción</th>".
-                     "<th>Tipo</th>".
-                     "<th>Nivel de Tensión (KV)</th>".
-                     "<th>Capacidad (KVA)</th>".
-                     "<th>Cantidad</th>".
-                     "<th>Tipo de Refrigeración</th>".
-                   "</tr>".
-                 "</thead>".
-                 "<tbody>";
-                 foreach ($transformaciones as $key => $transfor){
-          $tabla1.= "<tr>".
-                     "<td>" .$transfor->descripcion. "</td>".
-                     "<td>" .$transfor->tipo. "</td>".
-                     "<td>" .$transfor->nivel_tension. "</td>".
-                     "<td>" .$transfor->capacidad. " KVA</td>".
-                     "<td>" .$transfor->cantidad. " Und</td>".
-                     "<td>" .$transfor->tipo_refrigeracion. "</td>".
-                   "</tr>";
-                 }
-                 $tabla1.="</tbody>".
-               "</table>";
+      // $tabla1 = "<table>".
+      //            "<tr>".
+      //              "<th colspan='6' class='ttable'>ALCANCE DE TRANSFORMACIÓN</th>".
+      //            "</tr>".
+      //            "<thead>".
+      //              "<tr>".
+      //                "<th>Descripción</th>".
+      //                "<th>Tipo</th>".
+      //                "<th>Nivel de Tensión (KV)</th>".
+      //                "<th>Capacidad (KVA)</th>".
+      //                "<th>Cantidad</th>".
+      //                "<th>Tipo de Refrigeración</th>".
+      //              "</tr>".
+      //            "</thead>".
+      //            "<tbody>";
+      //            foreach ($transformaciones as $key => $transfor){
+      //     $tabla1.= "<tr>".
+      //                "<td>" .$transfor->descripcion. "</td>".
+      //                "<td>" .$transfor->tipo. "</td>".
+      //                "<td>" .$transfor->nivel_tension. "</td>".
+      //                "<td>" .$transfor->capacidad. " KVA</td>".
+      //                "<td>" .$transfor->cantidad. " Und</td>".
+      //                "<td>" .$transfor->tipo_refrigeracion. "</td>".
+      //              "</tr>";
+      //            }
+      //            $tabla1.="</tbody>".
+      //          "</table>";
       $table = '';
       $table .= '<w:tbl>';
-      $table .=   '<w:tblPr>';
-      $table .=     '<w:tblW w:w="0" w:type="auto" />';
-      $table .=   '</w:tblPr>';
-      $table .=   '<w:tblGrid>';
-      $table .=     '<w:gridCol w:w="1614" />';
-      $table .=     '<w:gridCol w:w="1330" />';
-      $table .=   '</w:tblGrid>';
-
-      // $table .= '<w:tblPr><w:tblW w:w = "5000" w:type="pct"/></w:tblPr>';
-
-      // $table .= '<w:tblPr>';
-      // $table .=   '<w:tblStyle w:val="TableGrid"/>';
-      // $table .=   '<w:tblW w:w="5000" w:type="pct"/>';
-      // $table .= '</w:tblPr>';
-      // $table .= '<w:tblGrid>';
-      // $table .=   '<w:gridCol w:w="1000"/>';
-      // $table .=   '<w:gridCol w:w="1000"/>';
-      // $table .=   '<w:gridCol w:w="1000"/>';
-      // $table .=  '</w:tblGrid>';
-        // foreach ($transformaciones as $key => $transfor) {
-
-          // $table .= '<w:tr>';
-          // // $table .= '<w:tblPr><w:tblW w:w = "5000" w:type="pct"/></w:tblPr>';//new xml table row
-          // $table .= '<w:tc><w:p><w:r><w:t>'; //start cell
-          // $table .= $transfor->descripcion; //cell contents
-          // $table .= '</w:t></w:r></w:p></w:tc>'; //close cell
-          // $table .= '<w:tc><w:p><w:r><w:t>'; //start cell
-          // $table .= $transfor->tipo; //cell contents
-          // $table .= '</w:t></w:r></w:p></w:tc>'; //close cell
-          // $table .= '<w:tc><w:p><w:r><w:t>'; //start cell
-          // $table .= $transfor->nivel_tension; //cell contents
-          // $table .= '</w:t></w:r></w:p></w:tc>'; //close cell
-          // $table .= '</w:tr>';
-
-        // }
         $table .= '<w:tblPr>';
         $table .=   '<w:tblBorders>';
         $table .=     '<w:top w:val="single" w:sz="8" w:space="0" w:color="000000" />';
-        $table .=     '<w:start w:val="single" w:sz="24" w:space="0" w:color="00FF00" />';
-        $table .=     '<w:bottom w:val="single" w:sz="8" w:space="0" w:color="4BACC6" />';
-        $table .=     '<w:end w:val="single" w:sz="24" w:space="0" w:color="000000" />';
-        $table .=     '<w:insideH w:val="single" w:sz="24" w:space="0" w:color="000000" />';
-        $table .=     '<w:insideH w:val="single" w:sz="24" w:space="0" w:color="000000" />';
+        $table .=     '<w:start w:val="single" w:sz="8" w:space="0" w:color="000000" />';
+        $table .=     '<w:bottom w:val="single" w:sz="8" w:space="0" w:color="000000" />';
+        $table .=     '<w:end w:val="single" w:sz="8" w:space="0" w:color="000000" />';
+        $table .=     '<w:insideH w:val="single" w:sz="8" w:space="0" w:color="000000" />';
+        $table .=     '<w:insideV w:val="single" w:sz="8" w:space="0" w:color="000000" />';
         $table .=   '</w:tblBorders>';
         $table .=  '</w:tblPr>';
 
-        $table .=  '<w:tr>';
-        $table .=    '<w:tc>';
-        $table .=      '<w:tcPr>';
-        $table .=        '<w:tcW w:w="2880" w:type="dxa"/>';
-        $table .=      '</w:tcPr>';
-        $table .=      '<w:p>';
-        $table .=        '<w:r>';
-        $table .=          '<w:t>AAA</w:t>';
-        $table .=        '</w:r>';
-        $table .=     '</w:p>';
-        $table .=    '</w:tc>';
-        $table .=    '<w:tc>';
-        $table .=      '<w:tcPr>';
-        $table .=        '<w:tcW w:w="2880" w:type="dxa"/>';
-        $table .=      '</w:tcPr>';
-        $table .=      '<w:p>';
-        $table .=        '<w:r>';
-        $table .=          '<w:t>BBB</w:t>';
-        $table .=        '</w:r>';
-        $table .=      '</w:p>';
-        $table .=    '</w:tc>';
-        // $table .=    '<w:tc>';
-        // $table .=      '<w:tcPr>';
-        // $table .=        '<w:tcW w:w="2880" w:type="dxa"/>';
-        // $table .=      '</w:tcPr>';
-        // $table .=      '<w:p>';
-        // $table .=        '<w:r>';
-        // $table .=          '<w:t>CCC</w:t>';
-        // $table .=        '</w:r>';
-        // $table .=      '</w:p>';
-        // $table .=    '</w:tc>';
-        $table .=  '</w:tr>';
+        foreach ($transformaciones as $key => $transfor) {
+
+          $table .=   '<w:tblPr>';
+          $table .=     '<w:tblStyle w:val="TableGrid"/>';
+          $table .=     '<w:tblW w:w="5000" w:type="pct"/>';
+          $table .=   '</w:tblPr>';
+          $table .=   '<w:tblGrid>';
+          $table .=     '<w:gridCol w:w="1" />';
+          $table .=     '<w:gridCol w:w="9000" />';
+
+          $table .=   '</w:tblGrid>';
+          $table .=  '<w:tr>';
+          $table .=    '<w:tc>';
+
+          $table .=      '<w:p>';
+          $table .=        '<w:r>';
+          $table .=          '<w:t><w:jc w:val="center" />'.$key.'</w:t>';
+          $table .=        '</w:r>';
+          $table .=     '</w:p>';
+          $table .=    '</w:tc>';
+          $table .=    '<w:tc>';
+          $table .=      '<w:p>';
+          $table .=        '<w:r>';
+          $table .=          '<w:t><w:jc w:val="center" />'.$transfor->descripcion.'</w:t>';
+          $table .=        '</w:r>';
+          $table .=     '</w:p>';
+          $table .=    '</w:tc>';
+          $table .=    '<w:tc>';
+          $table .=      '<w:p>';
+          $table .=        '<w:r>';
+          $table .=          '<w:t><w:jc w:val="center" />'.$transfor->tipo.'</w:t>';
+          $table .=        '</w:r>';
+          $table .=      '</w:p>';
+          $table .=    '</w:tc>';
+          $table .=    '<w:tc>';
+          $table .=      '<w:p>';
+          $table .=        '<w:r>';
+          $table .=          '<w:t><w:jc w:val="center" />'.$transfor->nivel_tension.'</w:t>';
+          $table .=        '</w:r>';
+          $table .=      '</w:p>';
+          $table .=    '</w:tc>';
+          $table .=    '<w:tc>';
+          $table .=      '<w:p>';
+          $table .=        '<w:r>';
+          $table .=          '<w:t><w:jc w:val="center" />'.$transfor->unidad.'</w:t>';
+          $table .=        '</w:r>';
+          $table .=      '</w:p>';
+          $table .=    '</w:tc>';
+          $table .=    '<w:tc>';
+          $table .=      '<w:p>';
+          $table .=        '<w:r>';
+          $table .=          '<w:t><w:jc w:val="center" />'.$transfor->capacidad.'</w:t>';
+          $table .=        '</w:r>';
+          $table .=      '</w:p>';
+          $table .=    '</w:tc>';
+          $table .=    '<w:tc>';
+          $table .=      '<w:p>';
+          $table .=        '<w:r>';
+          $table .=          '<w:t><w:jc w:val="center" />'.$transfor->tipo_refrigeracion.'</w:t>';
+          $table .=        '</w:r>';
+          $table .=      '</w:p>';
+          $table .=    '</w:tc>';
+          $table .=  '</w:tr>';
+        }
       $table .= '</w:tbl>';
-      // $table = '';
-      // $table .= '<w:tbl>';
-      // $table .=   '<w:tblPr>';
-      // $table .=     '<w:tblW w:w="5000" w:type="pct"/>';
-      // $table .=       '<w:tblBorders>';
-      // $table .=         '<w:top w:val="single" w:sz="4" w:space="0" w:color="auto"/>';
-      // $table .=         '<w:left w:val="single" w:sz="4 w:space="0" w:color="auto"/>';
-      // $table .=         '<w:bottom w:val="single" w:sz="4" w:space="0" w:color="auto"/>';
-      // $table .=         '<w:right w:val="single" w:sz="4" w:space="0" w:color="auto"/>';
-      // $table .=       '</w:tblBorders>';
-      // $table .=   '</w:tblPr>';
-      // $table .=   '<w:tblGrid>';
-      // $table .=    '<w:gridCol w:w="10296"/>';
-      // $table .=     '</w:tblGrid>';
-      // $table .=      '<w:tr>';
-      // $table .=       '<w:tc>';
-      // $table .=        '<w:tcPr>';
-      // $table .=         '<w:tcW w:w="0" w:type="auto"/>';
-      // $table .=        '</w:tcPr>';
-      // $table .=        '<w:p/>';
-      // $table .=       '</w:tc>';
-      // $table .=      '</w:tr>';
-      // $table .= '</w:tbl>';
+
 
       $document->setValue('codigo',$nombre);
       $document->setValue('cliente',$direccion);
