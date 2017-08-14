@@ -265,8 +265,9 @@ class DocumentoController extends Controller
 
       $main = public_path().'/documento'.'/contrato_main.docx';
       // $PHPWord = new \PhpOffice\PhpWord\PhpWord();
-      $document = new TemplateProcessor($main);
 
+      $document = new TemplateProcessor($main);
+      $firma = public_path().'/firma.jpg';
 
       $contrato = Administrativa::findOrFail(208);
 
@@ -297,34 +298,35 @@ class DocumentoController extends Controller
         $table .=     '<w:end w:val="single" w:sz="8" w:space="0" w:color="000000" />';
         $table .=     '<w:insideH w:val="single" w:sz="8" w:space="0" w:color="000000" />';
         $table .=     '<w:insideV w:val="single" w:sz="8" w:space="0" w:color="000000" />';
+        $table .=   '<w:tblW w:w="5000" w:type="pct"/>';
         $table .=   '</w:tblBorders>';
         $table .=  '</w:tblPr>';
         $table .=  '<w:tr>';
         $table .=    '<w:tc>';
         $table .=      '<w:p>';
         $table .=        '<w:r>';
-        $table .=          '<w:t>Indice</w:t>';
+        $table .=          '<w:t>INDICE</w:t>';
         $table .=        '</w:r>';
         $table .=     '</w:p>';
         $table .=    '</w:tc>';
         $table .=    '<w:tc>';
         $table .=      '<w:p>';
         $table .=        '<w:r>';
-        $table .=          '<w:t>Descripcion</w:t>';
+        $table .=          '<w:t>DESCRIPCION</w:t>';
         $table .=        '</w:r>';
         $table .=     '</w:p>';
         $table .=    '</w:tc>';
         $table .=    '<w:tc>';
         $table .=      '<w:p>';
         $table .=        '<w:r>';
-        $table .=          '<w:t>Capacidad</w:t>';
+        $table .=          '<w:t>CAPACIDAD</w:t>';
         $table .=        '</w:r>';
         $table .=      '</w:p>';
         $table .=    '</w:tc>';
         $table .=    '<w:tc>';
         $table .=      '<w:p>';
         $table .=        '<w:r>';
-        $table .=          '<w:t>Cantidad</w:t>';
+        $table .=          '<w:t>CANTIDAD</w:t>';
         $table .=        '</w:r>';
         $table .=      '</w:p>';
         $table .=    '</w:tc>';
@@ -335,7 +337,6 @@ class DocumentoController extends Controller
 
           $table .=   '<w:tblPr>';
           $table .=     '<w:tblStyle w:val="TableGrid"/>';
-          $table .=     '<w:tblW w:w="0" w:type="auto"/>';
           $table .=   '</w:tblPr>';
           $table .=  '<w:tr>';
           $table .=    '<w:tc>';
@@ -490,7 +491,9 @@ class DocumentoController extends Controller
       $letras = NumeroALetras::convertir($contrato->valor_total_contrato, 'pesos', 'centavos');
 
       $document->setValue('letras',$letras);
-      $document->setValue('valor_total_contrato',$contrato->valor_total_contrato);
+      $valor_total = number_format($contrato->valor_total_contrato,0);
+      $document->setValue('valor_total_contrato',$valor_total);
+
 
 
 
