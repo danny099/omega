@@ -10,6 +10,7 @@ use App\Administrativa;
 use App\Transformacion;
 use App\Distribucion;
 use App\Pu_final;
+use App\Juridica;
 use App\Municipio;
 use App\Departamento;
 use Session;
@@ -145,49 +146,25 @@ class DocumentoController extends Controller
       $document = new TemplateProcessor($main);
 
 
-      $contrato = Administrativa::findOrFail(207);
+      $contrato = Administrativa::findOrFail(208);
 
-      $cliente = Cliente::findOrFail($contrato->cliente_id);
+      if (!is_null($contrato->cliente_id)) {
+        $cliente = Cliente::findOrFail($contrato->cliente_id);
+      }
+      if (!is_null($contrato->juridica_id)) {
+        $juridica = Juridica::findOrFail($contrato->juridica_id);
+      }
 
-      $cotizacion = Cotizacion::where('cotizacion.cliente_id', '=', $contrato->id_cotizacion)->get();
+
+      // $cotizacion = Cotizacion::where('cotizacion.cliente_id', '=', $contrato->id_cotizacion)->get();
+      $cotizacion = Cotizacion::findOrFail($contrato->id_cotizacion);
 
       $transformaciones = Transformacion::where('transformacion.administrativa_id', '=', $contrato->id)->get();
       $distribuciones = Distribucion::where('distribucion.administrativa_id', '=', $contrato->id)->get();
       $pu_finales = Pu_final::where('pu_final.administrativa_id', '=', $contrato->id)->get();
       $municipio = Municipio::find($contrato->municipio);
       $departamento = Departamento::find($contrato->departamento_id);
-      $nombre = "you";
-      $direccion = "Mi direcci�n";
-      $municipio = "Mrd";
 
-
-      // $tabla1 = "<table>".
-      //            "<tr>".
-      //              "<th colspan='6' class='ttable'>ALCANCE DE TRANSFORMACIÓN</th>".
-      //            "</tr>".
-      //            "<thead>".
-      //              "<tr>".
-      //                "<th>Descripción</th>".
-      //                "<th>Tipo</th>".
-      //                "<th>Nivel de Tensión (KV)</th>".
-      //                "<th>Capacidad (KVA)</th>".
-      //                "<th>Cantidad</th>".
-      //                "<th>Tipo de Refrigeración</th>".
-      //              "</tr>".
-      //            "</thead>".
-      //            "<tbody>";
-      //            foreach ($transformaciones as $key => $transfor){
-      //     $tabla1.= "<tr>".
-      //                "<td>" .$transfor->descripcion. "</td>".
-      //                "<td>" .$transfor->tipo. "</td>".
-      //                "<td>" .$transfor->nivel_tension. "</td>".
-      //                "<td>" .$transfor->capacidad. " KVA</td>".
-      //                "<td>" .$transfor->cantidad. " Und</td>".
-      //                "<td>" .$transfor->tipo_refrigeracion. "</td>".
-      //              "</tr>";
-      //            }
-      //            $tabla1.="</tbody>".
-      //          "</table>";
       $table = '';
       $table .= '<w:tbl>';
         $table .= '<w:tblPr>';
@@ -200,7 +177,38 @@ class DocumentoController extends Controller
         $table .=     '<w:insideV w:val="single" w:sz="8" w:space="0" w:color="000000" />';
         $table .=   '</w:tblBorders>';
         $table .=  '</w:tblPr>';
+        $table .=  '<w:tr>';
+        $table .=    '<w:tc>';
+        $table .=      '<w:p>';
+        $table .=        '<w:r>';
+        $table .=          '<w:t>Indice</w:t>';
+        $table .=        '</w:r>';
+        $table .=     '</w:p>';
+        $table .=    '</w:tc>';
+        $table .=    '<w:tc>';
+        $table .=      '<w:p>';
+        $table .=        '<w:r>';
+        $table .=          '<w:t>Descripcion</w:t>';
+        $table .=        '</w:r>';
+        $table .=     '</w:p>';
+        $table .=    '</w:tc>';
+        $table .=    '<w:tc>';
+        $table .=      '<w:p>';
+        $table .=        '<w:r>';
+        $table .=          '<w:t>Capacidad</w:t>';
+        $table .=        '</w:r>';
+        $table .=      '</w:p>';
+        $table .=    '</w:tc>';
+        $table .=    '<w:tc>';
+        $table .=      '<w:p>';
+        $table .=        '<w:r>';
+        $table .=          '<w:t>Cantidad</w:t>';
+        $table .=        '</w:r>';
+        $table .=      '</w:p>';
+        $table .=    '</w:tc>';
+        $table .=  '</w:tr>';
 
+        $i = 0;
         foreach ($transformaciones as $key => $transfor) {
 
           $table .=   '<w:tblPr>';
@@ -211,49 +219,102 @@ class DocumentoController extends Controller
           $table .=    '<w:tc>';
           $table .=      '<w:p>';
           $table .=        '<w:r>';
-          $table .=          '<w:t><w:jc w:val="center" />'.$key.'</w:t>';
+          $table .=          '<w:t>'.$i++.'</w:t>';
           $table .=        '</w:r>';
           $table .=     '</w:p>';
           $table .=    '</w:tc>';
           $table .=    '<w:tc>';
           $table .=      '<w:p>';
           $table .=        '<w:r>';
-          $table .=          '<w:t><w:jc w:val="center" />'.$transfor->descripcion.'</w:t>';
+          $table .=          '<w:t>'.$transfor->descripcion.' '.$transfor->tipo.'</w:t>';
           $table .=        '</w:r>';
           $table .=     '</w:p>';
           $table .=    '</w:tc>';
           $table .=    '<w:tc>';
           $table .=      '<w:p>';
           $table .=        '<w:r>';
-          $table .=          '<w:t><w:jc w:val="center" />'.$transfor->tipo.'</w:t>';
+          $table .=          '<w:t>'.$transfor->unidad.'</w:t>';
           $table .=        '</w:r>';
           $table .=      '</w:p>';
           $table .=    '</w:tc>';
           $table .=    '<w:tc>';
           $table .=      '<w:p>';
           $table .=        '<w:r>';
-          $table .=          '<w:t><w:jc w:val="center" />'.$transfor->nivel_tension.'</w:t>';
+          $table .=          '<w:t>'.$transfor->cantidad.'</w:t>';
+          $table .=        '</w:r>';
+          $table .=      '</w:p>';
+          $table .=    '</w:tc>';
+          $table .=  '</w:tr>';
+        }
+        foreach ($distribuciones as $key => $distri) {
+
+          $table .=   '<w:tblPr>';
+          $table .=     '<w:tblStyle w:val="TableGrid"/>';
+          $table .=     '<w:tblW w:w="0" w:type="auto"/>';
+          $table .=   '</w:tblPr>';
+          $table .=  '<w:tr>';
+          $table .=    '<w:tc>';
+          $table .=      '<w:p>';
+          $table .=        '<w:r>';
+          $table .=          '<w:t>'.$i++.'</w:t>';
+          $table .=        '</w:r>';
+          $table .=     '</w:p>';
+          $table .=    '</w:tc>';
+          $table .=    '<w:tc>';
+          $table .=      '<w:p>';
+          $table .=        '<w:r>';
+          $table .=          '<w:t>'.$distri->descripcion.' '.$distri->tipo.'</w:t>';
+          $table .=        '</w:r>';
+          $table .=     '</w:p>';
+          $table .=    '</w:tc>';
+          $table .=    '<w:tc>';
+          $table .=      '<w:p>';
+          $table .=        '<w:r>';
+          $table .=          '<w:t>'.$distri->unidad.'</w:t>';
           $table .=        '</w:r>';
           $table .=      '</w:p>';
           $table .=    '</w:tc>';
           $table .=    '<w:tc>';
           $table .=      '<w:p>';
           $table .=        '<w:r>';
-          $table .=          '<w:t><w:jc w:val="center" />'.$transfor->unidad.'</w:t>';
+          $table .=          '<w:t>'.$distri->cantidad.'</w:t>';
+          $table .=        '</w:r>';
+          $table .=      '</w:p>';
+          $table .=    '</w:tc>';
+          $table .=  '</w:tr>';
+        }
+        foreach ($pu_finales as $key => $pu) {
+
+          $table .=   '<w:tblPr>';
+          $table .=     '<w:tblStyle w:val="TableGrid"/>';
+          $table .=     '<w:tblW w:w="0" w:type="auto"/>';
+          $table .=   '</w:tblPr>';
+          $table .=  '<w:tr>';
+          $table .=    '<w:tc>';
+          $table .=      '<w:p>';
+          $table .=        '<w:r>';
+          $table .=          '<w:t>'.$i++.'</w:t>';
+          $table .=        '</w:r>';
+          $table .=     '</w:p>';
+          $table .=    '</w:tc>';
+          $table .=    '<w:tc>';
+          $table .=      '<w:p>';
+          $table .=        '<w:r>';
+          $table .=          '<w:t>'.$pu->descripcion.' '.$pu->tipo.'</w:t>';
+          $table .=        '</w:r>';
+          $table .=     '</w:p>';
+          $table .=    '</w:tc>';
+          $table .=    '<w:tc>';
+          $table .=      '<w:p>';
+          $table .=        '<w:r>';
+          $table .=          '<w:t>'.$pu->unidad.'</w:t>';
           $table .=        '</w:r>';
           $table .=      '</w:p>';
           $table .=    '</w:tc>';
           $table .=    '<w:tc>';
           $table .=      '<w:p>';
           $table .=        '<w:r>';
-          $table .=          '<w:t><w:jc w:val="center" />'.$transfor->capacidad.'</w:t>';
-          $table .=        '</w:r>';
-          $table .=      '</w:p>';
-          $table .=    '</w:tc>';
-          $table .=    '<w:tc>';
-          $table .=      '<w:p>';
-          $table .=        '<w:r>';
-          $table .=          '<w:t><w:jc w:val="center" />'.$transfor->tipo_refrigeracion.'</w:t>';
+          $table .=          '<w:t>'.$pu->cantidad.'</w:t>';
           $table .=        '</w:r>';
           $table .=      '</w:p>';
           $table .=    '</w:tc>';
@@ -262,10 +323,44 @@ class DocumentoController extends Controller
       $table .= '</w:tbl>';
 
 
-      $document->setValue('codigo',$nombre);
-      $document->setValue('cliente',$direccion);
-      $document->setValue('nit',$municipio);
+      $document->setValue('codigo',$contrato->codigo_proyecto);
+
+      if (!is_null($contrato->cliente_id)) {
+        $document->setValue('cliente',$cliente->nombre);
+      }else {
+        $document->setValue('cliente',$juridica->nombre_representante);
+      }
+
+      if (!is_null($contrato->cliente_id)) {
+        if (!is_null($cliente->cedula)) {
+          $document->setValue('marca','C.C:');
+          $document->setValue('nit',$cliente->cedula);
+        }else {
+          $document->setValue('marca','NIT:');
+          $document->setValue('nit',$cliente->nit);
+        }
+      }else {
+        $document->setValue('marca','NIT:');
+        $document->setValue('nit',$juridica->nit);
+      }
+
       $document->setValue('table',$table);
+      $document->setValue('nombre_proyecto',$contrato->nombre_proyecto);
+      $document->setValue('municipio',$municipio->nombre);
+
+      if (!is_null($contrato->cliente_id)) {
+        $document->setValue('nombres',$cliente->nombre);
+      }else {
+        $document->setValue('nombres',$juridica->nombre_representante);
+      }
+      if (!is_null($contrato->cliente_id)) {
+        $document->setValue('cedula',$cliente->cedula);
+      }else {
+        $document->setValue('cedula',$juridica->cedula);
+      }
+
+      $document->setValue('departamento',$departamento->nombre);
+      $document->setValue('adicional',$cotizacion->adicional);
 
 
 
