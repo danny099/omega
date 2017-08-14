@@ -422,6 +422,27 @@ function addCommas(nStr){
 
 
 <script type="text/javascript">
+
+$('#cliente').change(function(){
+    var valorCambiado =$(this).val();
+    if((valorCambiado == "1")){
+      $('#natural').css('display','block');
+       $('#juridica').css('display','none');
+       $("#select-natural").prop('required',true);
+       $("#juri").prop('required',false);
+       $("#juri").html('');
+     }
+     else if(valorCambiado == "2")
+     {
+       $('#juridica').css('display','block');
+        $('#natural').css('display','none');
+        $("#juri").prop('required',true);
+        $("#select-natural").prop('required',false);
+        $("#select-natural").html('');
+
+     }
+});
+
 $(document).on('change','#instalacion',function(){
 
   var  instalacion = $(this).val();
