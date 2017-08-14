@@ -330,7 +330,7 @@ class DocumentoController extends Controller
         $table .=    '</w:tc>';
         $table .=  '</w:tr>';
 
-        $i = 0;
+        $i = 1;
         foreach ($transformaciones as $key => $transfor) {
 
           $table .=   '<w:tblPr>';
@@ -472,14 +472,18 @@ class DocumentoController extends Controller
 
       if (!is_null($contrato->cliente_id)) {
         $document->setValue('nombres',$cliente->nombre);
+        $document->setValue('cedula',$cliente->cedula);
+        $document->setValue('empresa','');
+        $document->setValue('empresa','');
+
       }else {
         $document->setValue('nombres',$juridica->nombre_representante);
-      }
-      if (!is_null($contrato->cliente_id)) {
-        $document->setValue('cedula',$cliente->cedula);
-      }else {
         $document->setValue('cedula',$juridica->cedula);
+        $document->setValue('representa','Representante Legal');
+        $document->setValue('empresa',$juridica->razon_social);
+        $document->setValue('nit_empresa',$juridica->nit);
       }
+
 
       $document->setValue('departamento',$departamento->nombre);
       $document->setValue('adicional',$cotizacion->adicional);
