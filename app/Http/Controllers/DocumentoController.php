@@ -265,11 +265,14 @@ class DocumentoController extends Controller
 
       $main = public_path().'/documento'.'/contrato_main.docx';
       // $PHPWord = new \PhpOffice\PhpWord\PhpWord();
+      if (file_exists(public_path().'/documento'.'/temp_contrato.html')) {
+        unlink(public_path().'/documento'.'/temp_contrato.html');
+      }
 
       $document = new TemplateProcessor($main);
       $firma = public_path().'/firma.jpg';
 
-      $contrato = Administrativa::findOrFail(208);
+      $contrato = Administrativa::findOrFail(209);
 
       if (!is_null($contrato->cliente_id)) {
         $cliente = Cliente::findOrFail($contrato->cliente_id);
@@ -305,6 +308,9 @@ class DocumentoController extends Controller
         $table .=    '<w:tc>';
         $table .=      '<w:p>';
         $table .=        '<w:r>';
+        $table .=          '<w:rPr>';
+        $table .=            '<w:b />';
+        $table .=          '</w:rPr>';
         $table .=          '<w:t>INDICE</w:t>';
         $table .=        '</w:r>';
         $table .=     '</w:p>';
@@ -312,6 +318,9 @@ class DocumentoController extends Controller
         $table .=    '<w:tc>';
         $table .=      '<w:p>';
         $table .=        '<w:r>';
+        $table .=          '<w:rPr>';
+        $table .=            '<w:b />';
+        $table .=          '</w:rPr>';
         $table .=          '<w:t>DESCRIPCION</w:t>';
         $table .=        '</w:r>';
         $table .=     '</w:p>';
@@ -319,6 +328,9 @@ class DocumentoController extends Controller
         $table .=    '<w:tc>';
         $table .=      '<w:p>';
         $table .=        '<w:r>';
+        $table .=          '<w:rPr>';
+        $table .=            '<w:b />';
+        $table .=          '</w:rPr>';
         $table .=          '<w:t>CAPACIDAD</w:t>';
         $table .=        '</w:r>';
         $table .=      '</w:p>';
@@ -326,6 +338,9 @@ class DocumentoController extends Controller
         $table .=    '<w:tc>';
         $table .=      '<w:p>';
         $table .=        '<w:r>';
+        $table .=          '<w:rPr>';
+        $table .=            '<w:b />';
+        $table .=          '</w:rPr>';
         $table .=          '<w:t>CANTIDAD</w:t>';
         $table .=        '</w:r>';
         $table .=      '</w:p>';
@@ -474,8 +489,9 @@ class DocumentoController extends Controller
       if (!is_null($contrato->cliente_id)) {
         $document->setValue('nombres',$cliente->nombre);
         $document->setValue('cedula',$cliente->cedula);
+        $document->setValue('representa','Representante Legal');
         $document->setValue('empresa','');
-        $document->setValue('empresa','');
+        $document->setValue('nit_empresa','');
 
       }else {
         $document->setValue('nombres',$juridica->nombre_representante);
@@ -495,12 +511,16 @@ class DocumentoController extends Controller
       $document->setValue('valor_total_contrato',$valor_total);
 
 
+      $document->saveAs('documento/temp_contrato.html');
+      $fil = public_path().'/documento'.'/temp_contrato.html';
+      $datos = file_get_contents($fil);
+      
+      $pdf = App::make('dompdf.wrapper');
+      $pdf->loadHTML($datos);
+      return $pdf->stream();
+      // header("Content-Disposition: attachment; filename=documentoeditado.html; charset=iso-8859-1");
+      // echo file_get_contents('documentoeditado.html');
 
-
-
-      $document->saveAs('documentoeditado.docx');
-      header("Content-Disposition: attachment; filename=documentoeditado.docx; charset=iso-8859-1");
-      echo file_get_contents('documentoeditado.docx');
 
     }
     /**
