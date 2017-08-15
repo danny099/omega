@@ -126,8 +126,6 @@ Route::group(['middleware' => 'auth'],function(){
 	// /**
 
 	Route::get('admin','adminController@index');
-	});
-
 	/**************************************************************/
 	/**************************************************************/
 	Route::resource('auditorias','AuditoriaController');
@@ -136,14 +134,19 @@ Route::group(['middleware' => 'auth'],function(){
 	Route::resource('cotizaciones','CotizacionController');
 	Route::get('deletecot/{id}','CotizacionController@destroy');
 
-	/**************************************************************/
-	/**************************************************************/
-
 	Route::resource('documentos','DocumentoController');
 	Route::get('deletedocumentos/{id}','DocumentoController@destroy');
 
-	Route::get('cotizacion','DocumentoController@cotizacion');
-	Route::get('contrato','DocumentoController@contrato');
+	Route::get('cotizacion/{id}','DocumentoController@cotizacion');
+	Route::get('contrato/{id}','DocumentoController@contrato');
+	});
+
+
+
+	/**************************************************************/
+	/**************************************************************/
+
+
 
 Auth::routes();
 
