@@ -282,7 +282,7 @@
               <td>${{number_format($administrativa->valor_contrato_final,0)}}</td>
               <td>
                 <a href="{{ route('administrativas.edit', $administrativa->id) }}"><i class="glyphicon glyphicon-pencil" style="color: #33579A"></i></a>
-                <a href="{{ route('administrativas.show', $administrativa->id) }}" data-toggle="model" data-target="show-{{ $key }}"><i class="glyphicon glyphicon-eye-open" style="color: #33579A"></i></a>
+                <a href="{{ route('contrato', $administrativa->id) }}" data-toggle="model" data-target="show-{{ $key }}"><i class="glyphicon glyphicon-eye-open" style="color: #33579A"></i></a>
                 <a href="#myModal-{{ $key }}" data-toggle="modal" data-target=""><i class="fa fa-money" style="color: #33579A"></i></a>
                 <a href="{{ url('deleteadminstrativa') }}/{{ $administrativa->id }}" onClick="javascript: return confirm('Esta seguro de eliminar registro?');"><i class="glyphicon glyphicon-minus-sign" style="color: #33579A"></i></a>
                 <!-- inicio modal 1 -->
