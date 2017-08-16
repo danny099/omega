@@ -184,95 +184,825 @@ class DocumentoController extends Controller
 
     }
 
-    public function cotizacion(){ // tiene que mandar el id para poder encontrar al que se deba generar
+    public function cotizacion($id){ // tiene que mandar el id para poder encontrar al que se deba generar
 
-      $cotizacion = Cotizacion::findOrFail(204);
-
-      if (file_exists(public_path().'/documento'.'/temp.html')) {
-        unlink(public_path().'/documento'.'/temp.html');
-      }
-
-      $main = public_path().'/documento'.'/cotizacion_main.html';
-      copy(public_path().'/documento'.'/cotizacion_main.html', public_path().'/documento'.'/temp.html');
-      $archivo = public_path().'/documento'.'/temp.html';
-      $datos = file_get_contents($archivo);
-
-      $transformaciones = Transformacion::all();
-
-      $tabla1 = "<table>".
-                 "<tr>".
-                   "<th colspan='6' class='ttable'>ALCANCE DE TRANSFORMACIÓN</th>".
-                 "</tr>".
-                 "<thead>".
-                   "<tr>".
-                     "<th>Descripción</th>".
-                     "<th>Tipo</th>".
-                     "<th>Nivel de Tensión (KV)</th>".
-                     "<th>Capacidad (KVA)</th>".
-                     "<th>Cantidad</th>".
-                     "<th>Tipo de Refrigeración</th>".
-                   "</tr>".
-                 "</thead>".
-                 "<tbody>";
-                 foreach ($transformaciones as $key => $transfor){
-          $tabla1.= "<tr>".
-                     "<td>" .$transfor->descripcion. "</td>".
-                     "<td>" .$transfor->tipo. "</td>".
-                     "<td>" .$transfor->nivel_tension. "</td>".
-                     "<td>" .$transfor->capacidad. " KVA</td>".
-                     "<td>" .$transfor->cantidad. " Und</td>".
-                     "<td>" .$transfor->tipo_refrigeracion. "</td>".
-                   "</tr>";
-                 }
-                 $tabla1.="</tbody>".
-               "</table>";
-
-      $datos = str_replace('Ã±','ñ',str_replace('#dirigido#',$cotizacion->dirigido,$datos));
-      $datos = str_replace('#codigo#',$cotizacion->codigo,$datos);
-      $datos = str_replace('#cliente_id#',$cotizacion->cliente_id,$datos);
-      $datos = str_replace('#juridica_id#',$cotizacion->juridica_id,$datos);
-      $datos = str_replace('#fecha#',$cotizacion->fecha,$datos);
-      $datos = str_replace('#nombre#',$cotizacion->nombre,$datos);
-      $datos = str_replace('#municipio#',$cotizacion->municipio,$datos);
-      $datos = str_replace('#departamento_id#',$cotizacion->departamento_id,$datos);
-      $datos = str_replace('#formas_pago#',$cotizacion->formas_pago,$datos);
-      $datos = str_replace('#tiempo#',$cotizacion->tiempo,$datos);
-      $datos = str_replace('#entrega#',$cotizacion->entrega,$datos);
-      $datos = str_replace('#visitas#',$cotizacion->visitas,$datos);
-      $datos = str_replace('#validez#',$cotizacion->validez,$datos);
-      $datos = str_replace('#subtotal#',$cotizacion->subtotal,$datos);
-      $datos = str_replace('#iva#',$cotizacion->iva,$datos);
-      $datos = str_replace('#total#',$cotizacion->total,$datos);
-      $datos = str_replace('#adicional#',$cotizacion->adicional,$datos);
-      $datos = str_replace('#observaciones#',$cotizacion->observaciones,$datos);
-      $datos = str_replace('#tabla1#',$tabla1,$datos);
-
-
-
-      $file = fopen($archivo,'w');
-
-      fputs($file, utf8_decode($datos));
-      fclose($file);
-
-      $pdf = App::make('dompdf.wrapper');
-      $pdf->loadHTML($datos);
-      return $pdf->download();
-
-    }
-
-    public function contrato(){ // tiene que mandar el id para poder encontrar al que se deba generar
-
-
-      $main = public_path().'/documento'.'/contrato_main.docx';
-      // $PHPWord = new \PhpOffice\PhpWord\PhpWord();
-      if (file_exists(public_path().'/documento'.'/temp_contrato.html')) {
-        unlink(public_path().'/documento'.'/temp_contrato.html');
-      }
+      $main = public_path().'/documento'.'/cotizacion_main.docx';
 
       $document = new TemplateProcessor($main);
       $firma = public_path().'/firma.jpg';
 
-      $contrato = Administrativa::findOrFail(209);
+      $cotizacion = Cotizacion::findOrFail($id);
+      $total = $cotizacion->subtotal;
+      $iva = $cotizacion->iva;
+      $valor_total = $cotizacion->total;
+
+      if (!is_null($cotizacion->cliente_id)) {
+        $cliente = Cliente::findOrFail($cotizacion->cliente_id);
+      }
+      if (!is_null($cotizacion->juridica_id)) {
+        $juridica = Juridica::findOrFail($cotizacion->juridica_id);
+      }
+
+      $transformaciones = Transformacion::where('transformacion.cotizacion_id', '=', $cotizacion->id)->get();
+      $distribuciones = Distribucion::where('distribucion.cotizacion_id', '=', $cotizacion->id)->get();
+      $pu_finales = Pu_final::where('pu_final.cotizacion_id', '=', $cotizacion->id)->get();
+      $municipio = Municipio::find($cotizacion->municipio);
+      $departamento = Departamento::find($cotizacion->departamento_id);
+
+      $table = '';
+      $table .= '<w:tbl>';
+        $table .= '<w:tblPr>';
+        $table .=   '<w:tblBorders>';
+        $table .=     '<w:top w:val="single" w:sz="1" w:space="0" w:color="000000" />';
+        $table .=     '<w:start w:val="single" w:sz="1" w:space="0" w:color="000000" />';
+        $table .=     '<w:bottom w:val="single" w:sz="1" w:space="0" w:color="000000" />';
+        $table .=     '<w:end w:val="single" w:sz="1" w:space="0" w:color="000000" />';
+        $table .=     '<w:insideH w:val="single" w:sz="1" w:space="0" w:color="000000" />';
+        $table .=     '<w:insideV w:val="single" w:sz="1" w:space="0" w:color="000000" />';
+        $table .=   '<w:tblW w:w="0" w:type="pct"/>';
+        $table .=   '</w:tblBorders>';
+        $table .=  '</w:tblPr>';
+        $table .=        '<w:rPr>';
+        $table .=          '<w:rFonts w:ascii="Courier New"/>';
+        $table .=        '</w:rPr>';
+        $table .=  '<w:tr>';
+        $table .=    '<w:tc>';
+        $table .=      '<w:p>';
+        $table .=        '<w:r>';
+        $table .=          '<w:rPr>';
+        $table .=            '<w:b />';
+        $table .=          '</w:rPr>';
+        $table .=          '<w:t>DESCRIPCION</w:t>';
+        $table .=        '</w:r>';
+        $table .=     '</w:p>';
+        $table .=    '</w:tc>';
+        $table .=    '<w:tc>';
+        $table .=      '<w:p>';
+        $table .=        '<w:r>';
+        $table .=          '<w:rPr>';
+        $table .=            '<w:b />';
+        $table .=          '</w:rPr>';
+        $table .=          '<w:t>TIPO</w:t>';
+        $table .=        '</w:r>';
+        $table .=      '</w:p>';
+        $table .=    '</w:tc>';
+        $table .=    '<w:tc>';
+        $table .=      '<w:p>';
+        $table .=        '<w:r>';
+        $table .=          '<w:rPr>';
+        $table .=            '<w:b />';
+        $table .=          '</w:rPr>';
+        $table .=          '<w:t>NIVEL DE TENSION</w:t>';
+        $table .=        '</w:r>';
+        $table .=      '</w:p>';
+        $table .=    '</w:tc>';
+        $table .=    '<w:tc>';
+        $table .=      '<w:p>';
+        $table .=        '<w:r>';
+        $table .=          '<w:rPr>';
+        $table .=            '<w:b />';
+        $table .=          '</w:rPr>';
+        $table .=          '<w:t>CAPACIDAD</w:t>';
+        $table .=        '</w:r>';
+        $table .=      '</w:p>';
+        $table .=    '</w:tc>';
+        $table .=    '<w:tc>';
+        $table .=      '<w:p>';
+        $table .=        '<w:r>';
+        $table .=          '<w:rPr>';
+        $table .=            '<w:b />';
+        $table .=          '</w:rPr>';
+        $table .=          '<w:t>CANTIDAD</w:t>';
+        $table .=        '</w:r>';
+        $table .=      '</w:p>';
+        $table .=    '</w:tc>';
+        $table .=    '<w:tc>';
+        $table .=       '<w:tcPr>';
+        $table .=         '<w:tcW w:w="4000" w:type="dxa"/>';
+        $table .=       '</w:tcPr>';
+        $table .=        '<w:rPr>';
+        $table .=          '<w:rFonts w:ascii="Courier New"/>';
+        $table .=        '</w:rPr>';
+        $table .=      '<w:p>';
+        $table .=        '<w:r>';
+        $table .=          '<w:rPr>';
+        $table .=            '<w:b />';
+        $table .=          '</w:rPr>';
+        $table .=          '<w:t>REFRIGERACIÓN</w:t>';
+        $table .=        '</w:r>';
+        $table .=      '</w:p>';
+        $table .=    '</w:tc>';
+        $table .=  '</w:tr>';
+
+        $i = 1;
+        foreach ($transformaciones as $key => $transfor) {
+
+          $table .=   '<w:tblPr>';
+          $table .=     '<w:tblStyle w:val="TableGrid"/>';
+          $table .=   '</w:tblPr>';
+          $table .=  '<w:tr>';
+          $table .=    '<w:tc>';
+          $table .=      '<w:p>';
+          $table .=        '<w:r>';
+          $table .=          '<w:t>'.$transfor->descripcion.'</w:t>';
+          $table .=        '</w:r>';
+          $table .=     '</w:p>';
+          $table .=    '</w:tc>';
+          $table .=    '<w:tc>';
+          $table .=      '<w:p>';
+          $table .=        '<w:r>';
+          $table .=          '<w:t>'.$transfor->tipo.'</w:t>';
+          $table .=        '</w:r>';
+          $table .=      '</w:p>';
+          $table .=    '</w:tc>';
+          $table .=    '<w:tc>';
+          $table .=      '<w:p>';
+          $table .=        '<w:r>';
+          $table .=          '<w:t>'.$transfor->nivel_tension.'</w:t>';
+          $table .=        '</w:r>';
+          $table .=      '</w:p>';
+          $table .=    '</w:tc>';
+          $table .=    '<w:tc>';
+          $table .=      '<w:p>';
+          $table .=        '<w:r>';
+          $table .=          '<w:t>'.$transfor->capacidad.'</w:t>';
+          $table .=        '</w:r>';
+          $table .=      '</w:p>';
+          $table .=    '</w:tc>';
+          $table .=    '<w:tc>';
+          $table .=      '<w:p>';
+          $table .=        '<w:r>';
+          $table .=          '<w:t>'.$transfor->cantidad.'</w:t>';
+          $table .=        '</w:r>';
+          $table .=      '</w:p>';
+          $table .=    '</w:tc>';
+          $table .=    '<w:tc>';
+          $table .=       '<w:tcPr>';
+          $table .=         '<w:tcW w:w="4000" w:type="dxa"/>';
+          $table .=       '</w:tcPr>';
+          $table .=      '<w:p>';
+          $table .=        '<w:r>';
+          $table .=          '<w:t>'.$transfor->tipo_refrigeracion.'</w:t>';
+          $table .=        '</w:r>';
+          $table .=      '</w:p>';
+          $table .=    '</w:tc>';
+          $table .=  '</w:tr>';
+        }
+      $table .= '</w:tbl>';
+
+      $table2 = '';
+      $table2 .= '<w:tbl>';
+        $table2 .= '<w:tblPr>';
+        $table2 .=   '<w:tblBorders>';
+        $table2 .=     '<w:top w:val="single" w:sz="1" w:space="0" w:color="000000" />';
+        $table2 .=     '<w:start w:val="single" w:sz="1" w:space="0" w:color="000000" />';
+        $table2 .=     '<w:bottom w:val="single" w:sz="1" w:space="0" w:color="000000" />';
+        $table2 .=     '<w:end w:val="single" w:sz="1" w:space="0" w:color="000000" />';
+        $table2 .=     '<w:insideH w:val="single" w:sz="1" w:space="0" w:color="000000" />';
+        $table2 .=     '<w:insideV w:val="single" w:sz="1" w:space="0" w:color="000000" />';
+        $table2 .=   '<w:tblW w:w="5000" w:type="pct"/>';
+        $table2 .=   '</w:tblBorders>';
+        $table2 .=  '</w:tblPr>';
+        $table2 .=  '<w:tr>';
+        $table2 .=    '<w:tc>';
+        $table2 .=      '<w:p>';
+        $table2 .=        '<w:r>';
+        $table2 .=          '<w:rPr>';
+        $table2 .=            '<w:b />';
+        $table2 .=          '</w:rPr>';
+        $table2 .=          '<w:t>DESCRIPCION</w:t>';
+        $table2 .=        '</w:r>';
+        $table2 .=     '</w:p>';
+        $table2 .=    '</w:tc>';
+        $table2 .=    '<w:tc>';
+        $table2 .=      '<w:p>';
+        $table2 .=        '<w:r>';
+        $table2 .=          '<w:rPr>';
+        $table2 .=            '<w:b />';
+        $table2 .=          '</w:rPr>';
+        $table2 .=          '<w:t>TIPO</w:t>';
+        $table2 .=        '</w:r>';
+        $table2 .=      '</w:p>';
+        $table2 .=    '</w:tc>';
+        $table2 .=    '<w:tc>';
+        $table2 .=      '<w:p>';
+        $table2 .=        '<w:r>';
+        $table2 .=          '<w:rPr>';
+        $table2 .=            '<w:b />';
+        $table2 .=          '</w:rPr>';
+        $table2 .=          '<w:t>NIVEL DE TENSION</w:t>';
+        $table2 .=        '</w:r>';
+        $table2 .=      '</w:p>';
+        $table2 .=    '</w:tc>';
+        $table2 .=    '<w:tc>';
+        $table2 .=      '<w:p>';
+        $table2 .=        '<w:r>';
+        $table2 .=          '<w:rPr>';
+        $table2 .=            '<w:b />';
+        $table2 .=          '</w:rPr>';
+        $table2 .=          '<w:t>CANTIDAD</w:t>';
+        $table2 .=        '</w:r>';
+        $table2 .=      '</w:p>';
+        $table2 .=    '</w:tc>';
+        $table2 .=    '<w:tc>';
+        $table2 .=      '<w:p>';
+        $table2 .=        '<w:r>';
+        $table2 .=          '<w:rPr>';
+        $table2 .=            '<w:b />';
+        $table2 .=          '</w:rPr>';
+        $table2 .=          '<w:t>APOYOS</w:t>';
+        $table2 .=        '</w:r>';
+        $table2 .=      '</w:p>';
+        $table2 .=    '</w:tc>';
+        $table2 .=    '<w:tc>';
+        $table2 .=      '<w:p>';
+        $table2 .=        '<w:r>';
+        $table2 .=          '<w:rPr>';
+        $table2 .=            '<w:b />';
+        $table2 .=          '</w:rPr>';
+        $table2 .=          '<w:t>CAJAS</w:t>';
+        $table2 .=        '</w:r>';
+        $table2 .=      '</w:p>';
+        $table2 .=    '</w:tc>';
+        $table2 .=    '<w:tc>';
+        $table2 .=      '<w:p>';
+        $table2 .=        '<w:r>';
+        $table2 .=          '<w:rPr>';
+        $table2 .=            '<w:b />';
+        $table2 .=          '</w:rPr>';
+        $table2 .=          '<w:t>NOTAS</w:t>';
+        $table2 .=        '</w:r>';
+        $table2 .=      '</w:p>';
+        $table2 .=    '</w:tc>';
+        $table2 .=  '</w:tr>';
+
+        $i = 1;
+        foreach ($distribuciones as $key => $distri) {
+
+          $table2 .=   '<w:tblPr>';
+          $table2 .=     '<w:tblStyle w:val="TableGrid"/>';
+          $table2 .=     '<w:tblW w:w="0" w:type="auto"/>';
+          $table2 .=   '</w:tblPr>';
+          $table2 .=  '<w:tr>';
+          $table2 .=    '<w:tc>';
+          $table2 .=      '<w:p>';
+          $table2 .=        '<w:r>';
+          $table2 .=          '<w:t>'.$distri->descripcion.'</w:t>';
+          $table2 .=        '</w:r>';
+          $table2 .=     '</w:p>';
+          $table2 .=    '</w:tc>';
+          $table2 .=    '<w:tc>';
+          $table2 .=      '<w:p>';
+          $table2 .=        '<w:r>';
+          $table2 .=          '<w:t>'.$distri->tipo.'</w:t>';
+          $table2 .=        '</w:r>';
+          $table2 .=      '</w:p>';
+          $table2 .=    '</w:tc>';
+          $table2 .=    '<w:tc>';
+          $table2 .=      '<w:p>';
+          $table2 .=        '<w:r>';
+          $table2 .=          '<w:t>'.$distri->nivel_tension.'</w:t>';
+          $table2 .=        '</w:r>';
+          $table2 .=      '</w:p>';
+          $table2 .=    '</w:tc>';
+          $table2 .=    '<w:tc>';
+          $table2 .=      '<w:p>';
+          $table2 .=        '<w:r>';
+          $table2 .=          '<w:t>'.$distri->cantidad.' mts</w:t>';
+          $table2 .=        '</w:r>';
+          $table2 .=      '</w:p>';
+          $table2 .=    '</w:tc>';
+          $table2 .=    '<w:tc>';
+          $table2 .=      '<w:p>';
+          $table2 .=        '<w:r>';
+          $table2 .=          '<w:t>'.$distri->apoyos.'</w:t>';
+          $table2 .=        '</w:r>';
+          $table2 .=      '</w:p>';
+          $table2 .=    '</w:tc>';
+          $table2 .=    '<w:tc>';
+          $table2 .=      '<w:p>';
+          $table2 .=        '<w:r>';
+          $table2 .=          '<w:t>'.$distri->cajas.'</w:t>';
+          $table2 .=        '</w:r>';
+          $table2 .=      '</w:p>';
+          $table2 .=    '</w:tc>';
+          if ($distri->notas == null) {
+            $table2 .=    '<w:tc>';
+            $table2 .=      '<w:p>';
+            $table2 .=        '<w:r>';
+            $table2 .=          '<w:t>N.A</w:t>';
+            $table2 .=        '</w:r>';
+            $table2 .=      '</w:p>';
+            $table2 .=    '</w:tc>';
+          }else {
+            $table2 .=    '<w:tc>';
+            $table2 .=      '<w:p>';
+            $table2 .=        '<w:r>';
+            $table2 .=          '<w:t>'.$distri->notas.'</w:t>';
+            $table2 .=        '</w:r>';
+            $table2 .=      '</w:p>';
+            $table2 .=    '</w:tc>';
+          }
+          $table2 .=  '</w:tr>';
+        }
+
+      $table2 .= '</w:tbl>';
+
+      $table3 = '';
+      $table3 .= '<w:tbl>';
+        $table3 .= '<w:tblPr>';
+        $table3 .=   '<w:tblBorders>';
+        $table3 .=     '<w:top w:val="single" w:sz="1" w:space="0" w:color="000000" />';
+        $table3 .=     '<w:start w:val="single" w:sz="1" w:space="0" w:color="000000" />';
+        $table3 .=     '<w:bottom w:val="single" w:sz="1" w:space="0" w:color="000000" />';
+        $table3 .=     '<w:end w:val="single" w:sz="1" w:space="0" w:color="000000" />';
+        $table3 .=     '<w:insideH w:val="single" w:sz="1" w:space="0" w:color="000000" />';
+        $table3 .=     '<w:insideV w:val="single" w:sz="1" w:space="0" w:color="000000" />';
+        $table3 .=   '<w:tblW w:w="5000" w:type="pct"/>';
+        $table3 .=   '</w:tblBorders>';
+        $table3 .=  '</w:tblPr>';
+        $table3 .=  '<w:tr>';
+        $table3 .=    '<w:tc>';
+        $table3 .=      '<w:p>';
+        $table3 .=        '<w:r>';
+        $table3 .=          '<w:rPr>';
+        $table3 .=            '<w:b />';
+        $table3 .=          '</w:rPr>';
+        $table3 .=          '<w:t>DESCRIPCION</w:t>';
+        $table3 .=        '</w:r>';
+        $table3 .=     '</w:p>';
+        $table3 .=    '</w:tc>';
+        $table3 .=    '<w:tc>';
+        $table3 .=      '<w:p>';
+        $table3 .=        '<w:r>';
+        $table3.=          '<w:rPr>';
+        $table3 .=            '<w:b />';
+        $table3 .=          '</w:rPr>';
+        $table3 .=          '<w:t>TIPO</w:t>';
+        $table3 .=        '</w:r>';
+        $table3 .=      '</w:p>';
+        $table3 .=    '</w:tc>';
+        $table3 .=    '<w:tc>';
+        $table3 .=      '<w:p>';
+        $table3 .=        '<w:r>';
+        $table3.=          '<w:rPr>';
+        $table3 .=            '<w:b />';
+        $table3 .=          '</w:rPr>';
+        $table3 .=          '<w:t>ESTRATO</w:t>';
+        $table3 .=        '</w:r>';
+        $table3 .=      '</w:p>';
+        $table3 .=    '</w:tc>';
+        $table3 .=    '<w:tc>';
+        $table3 .=      '<w:p>';
+        $table3 .=        '<w:r>';
+        $table3 .=          '<w:rPr>';
+        $table3 .=            '<w:b />';
+        $table3 .=          '</w:rPr>';
+        $table3 .=          '<w:t>NIVEL DE TENSION</w:t>';
+        $table3 .=        '</w:r>';
+        $table3 .=      '</w:p>';
+        $table3 .=    '</w:tc>';
+        $table3 .=    '<w:tc>';
+        $table3 .=      '<w:p>';
+        $table3 .=        '<w:r>';
+        $table3 .=          '<w:rPr>';
+        $table3 .=            '<w:b />';
+        $table3 .=          '</w:rPr>';
+        $table3 .=          '<w:t>CAPACIDAD</w:t>';
+        $table3 .=        '</w:r>';
+        $table3 .=      '</w:p>';
+        $table3 .=    '</w:tc>';
+        $table3 .=    '<w:tc>';
+        $table3 .=      '<w:p>';
+        $table3 .=        '<w:r>';
+        $table3 .=          '<w:rPr>';
+        $table3 .=            '<w:b />';
+        $table3 .=          '</w:rPr>';
+        $table3 .=          '<w:t>CANTIDAD</w:t>';
+        $table3 .=        '</w:r>';
+        $table3 .=      '</w:p>';
+        $table3 .=    '</w:tc>';
+        $table3 .=    '<w:tc>';
+        $table3 .=      '<w:p>';
+        $table3 .=        '<w:r>';
+        $table3 .=          '<w:rPr>';
+        $table3 .=            '<w:b />';
+        $table3 .=          '</w:rPr>';
+        $table3 .=          '<w:t>TIPO REFRIGERACIÓN</w:t>';
+        $table3 .=        '</w:r>';
+        $table3 .=      '</w:p>';
+        $table3 .=    '</w:tc>';
+        $table3 .=  '</w:tr>';
+
+        $i = 1;
+        foreach ($pu_finales as $key => $pu) {
+
+          $table3 .=   '<w:tblPr>';
+          $table3 .=     '<w:tblStyle w:val="TableGrid"/>';
+          $table3 .=     '<w:tblW w:w="0" w:type="auto"/>';
+          $table3 .=   '</w:tblPr>';
+          $table3 .=  '<w:tr>';
+          $table3 .=    '<w:tc>';
+          $table3 .=      '<w:p>';
+          $table3 .=        '<w:r>';
+          $table3 .=          '<w:t>'.$pu->descripcion.'</w:t>';
+          $table3 .=        '</w:r>';
+          $table3 .=     '</w:p>';
+          $table3 .=    '</w:tc>';
+          $table3 .=    '<w:tc>';
+          $table3 .=      '<w:p>';
+          $table3 .=        '<w:r>';
+          $table3 .=          '<w:t>'.$pu->tipo.'</w:t>';
+          $table3 .=        '</w:r>';
+          $table3 .=      '</w:p>';
+          $table3 .=    '</w:tc>';
+          if ($pu->estrato == null) {
+            $table3 .=    '<w:tc>';
+            $table3 .=      '<w:p>';
+            $table3 .=        '<w:r>';
+            $table3 .=          '<w:t>N.A</w:t>';
+            $table3 .=        '</w:r>';
+            $table3 .=      '</w:p>';
+            $table3 .=    '</w:tc>';
+          }else {
+            $table3 .=    '<w:tc>';
+            $table3 .=      '<w:p>';
+            $table3 .=        '<w:r>';
+            $table3 .=          '<w:t>'.$pu->estrato.'</w:t>';
+            $table3 .=        '</w:r>';
+            $table3 .=      '</w:p>';
+            $table3 .=    '</w:tc>';
+          }
+          $table3 .=    '<w:tc>';
+          $table3 .=      '<w:p>';
+          $table3 .=        '<w:r>';
+          $table3 .=          '<w:t>'.$pu->cantidad.' Und</w:t>';
+          $table3 .=        '</w:r>';
+          $table3 .=      '</w:p>';
+          $table3 .=    '</w:tc>';
+          $table3 .=    '<w:tc>';
+          $table3 .=      '<w:p>';
+          $table3 .=        '<w:r>';
+          $table3 .=          '<w:t>'.$pu->metros.'</w:t>';
+          $table3 .=        '</w:r>';
+          $table3 .=      '</w:p>';
+          $table3 .=    '</w:tc>';
+          $table3 .=    '<w:tc>';
+          $table3 .=      '<w:p>';
+          $table3 .=        '<w:r>';
+          $table3 .=          '<w:t>'.$pu->kva.' KVA</w:t>';
+          $table3 .=        '</w:r>';
+          $table3 .=      '</w:p>';
+          $table3 .=    '</w:tc>';
+          $table3 .=    '<w:tc>';
+          $table3 .=      '<w:p>';
+          $table3 .=        '<w:r>';
+          $table3 .=          '<w:t>'.$pu->acometidas.'</w:t>';
+          $table3 .=        '</w:r>';
+          $table3 .=      '</w:p>';
+          $table3 .=    '</w:tc>';
+
+          $table3 .=  '</w:tr>';
+        }
+
+      $table3 .= '</w:tbl>';
+
+
+      $table4 = '';
+      $table4 .= '<w:tbl>';
+        $table4 .= '<w:tblPr>';
+        $table4 .=   '<w:tblBorders>';
+        $table4 .=     '<w:top w:val="single" w:sz="1" w:space="0" w:color="000000" />';
+        $table4 .=     '<w:start w:val="single" w:sz="1" w:space="0" w:color="000000" />';
+        $table4 .=     '<w:bottom w:val="single" w:sz="1" w:space="0" w:color="000000" />';
+        $table4 .=     '<w:end w:val="single" w:sz="1" w:space="0" w:color="000000" />';
+        $table4 .=     '<w:insideH w:val="single" w:sz="1" w:space="0" w:color="000000" />';
+        $table4 .=     '<w:insideV w:val="single" w:sz="1" w:space="0" w:color="000000" />';
+        $table4 .=   '<w:tblW w:w="9000" w:type="pct"/>';
+        $table4 .=   '</w:tblBorders>';
+        $table4 .=  '</w:tblPr>';
+        $table4 .=  '<w:tr>';
+        $table4 .=    '<w:tc>';
+        $table4 .=      '<w:p>';
+        $table4 .=        '<w:r>';
+        $table4 .=          '<w:rPr>';
+        $table4 .=            '<w:b />';
+        $table4 .=          '</w:rPr>';
+        $table4 .=          '<w:t>DESCRIPCION DEL ALCANCE</w:t>';
+        $table4 .=        '</w:r>';
+        $table4 .=     '</w:p>';
+        $table4 .=    '</w:tc>';
+        $table4 .=    '<w:tc>';
+        $table4 .=      '<w:p>';
+        $table4 .=        '<w:r>';
+        $table4.=          '<w:rPr>';
+        $table4 .=            '<w:b />';
+        $table4 .=          '</w:rPr>';
+        $table4 .=          '<w:t>CANTIDAD</w:t>';
+        $table4 .=        '</w:r>';
+        $table4 .=      '</w:p>';
+        $table4 .=    '</w:tc>';
+        $table4 .=    '<w:tc>';
+        $table4 .=      '<w:p>';
+        $table4 .=        '<w:r>';
+        $table4 .=          '<w:rPr>';
+        $table4 .=            '<w:b />';
+        $table4 .=          '</w:rPr>';
+        $table4 .=          '<w:t>VALOR</w:t>';
+        $table4 .=        '</w:r>';
+        $table4 .=      '</w:p>';
+        $table4 .=    '</w:tc>';
+        $table4 .=  '</w:tr>';
+
+        $i = 1;
+        foreach ($transformaciones as $key => $trans) {
+
+          $table4 .=   '<w:tblPr>';
+          $table4 .=     '<w:tblStyle w:val="TableGrid"/>';
+          $table4 .=     '<w:tblW w:w="0" w:type="auto"/>';
+          $table4 .=   '</w:tblPr>';
+          $table4 .=  '<w:tr>';
+          $table4 .=    '<w:tc>';
+          $table4 .=      '<w:p>';
+          $table4 .=        '<w:r>';
+          $table4 .=          '<w:t>'.$trans->descripcion.' - '.$trans->tipo.' - Capacidad: '.$trans->capacidad.' KVA</w:t>';
+          $table4 .=        '</w:r>';
+          $table4 .=     '</w:p>';
+          $table4 .=    '</w:tc>';
+          $table4 .=    '<w:tc>';
+          $table4 .=      '<w:p>';
+          $table4 .=        '<w:r>';
+          $table4 .=          '<w:t>'.$trans->cantidad.' '.$trans->unidad.'</w:t>';
+          $table4 .=        '</w:r>';
+          $table4 .=      '</w:p>';
+          $table4 .=    '</w:tc>';
+          $table4 .=    '<w:tc>';
+          $table4 .=      '<w:p>';
+          $table4 .=        '<w:r>';
+          $table4 .=          '<w:t></w:t>';
+          $table4 .=        '</w:r>';
+          $table4 .=      '</w:p>';
+          $table4 .=    '</w:tc>';
+          $table4 .=  '</w:tr>';
+        }
+        foreach ($distribuciones as $key => $distri) {
+
+          $table4 .=   '<w:tblPr>';
+          $table4 .=     '<w:tblStyle w:val="TableGrid"/>';
+          $table4 .=     '<w:tblW w:w="0" w:type="auto"/>';
+          $table4 .=   '</w:tblPr>';
+          $table4 .=  '<w:tr>';
+          $table4 .=    '<w:tc>';
+          $table4 .=      '<w:p>';
+          $table4 .=        '<w:r>';
+          $table4 .=          '<w:t>'.$distri->descripcion.' - '.$distri->tipo.'</w:t>';
+          $table4 .=        '</w:r>';
+          $table4 .=     '</w:p>';
+          $table4 .=    '</w:tc>';
+          $table4 .=    '<w:tc>';
+          $table4 .=      '<w:p>';
+          $table4 .=        '<w:r>';
+          $table4 .=          '<w:t>'.$distri->cantidad.' '.$distri->unidad.'</w:t>';
+          $table4 .=        '</w:r>';
+          $table4 .=      '</w:p>';
+          $table4 .=    '</w:tc>';
+          $table4 .=    '<w:tc>';
+          $table4 .=      '<w:p>';
+          $table4 .=        '<w:r>';
+          $table4 .=          '<w:t></w:t>';
+          $table4 .=        '</w:r>';
+          $table4 .=      '</w:p>';
+          $table4 .=    '</w:tc>';
+          $table4 .=  '</w:tr>';
+        }
+        foreach ($pu_finales as $key => $pu) {
+
+          $table4 .=   '<w:tblPr>';
+          $table4 .=     '<w:tblStyle w:val="TableGrid"/>';
+          $table4 .=     '<w:tblW w:w="0" w:type="auto"/>';
+          $table4 .=   '</w:tblPr>';
+          $table4 .=  '<w:tr>';
+          $table4 .=    '<w:tc>';
+          $table4 .=      '<w:p>';
+          $table4 .=        '<w:r>';
+          $table4 .=          '<w:t>'.$pu->descripcion.' - '.$pu->tipo.'</w:t>';
+          $table4 .=        '</w:r>';
+          $table4 .=     '</w:p>';
+          $table4 .=    '</w:tc>';
+          $table4 .=    '<w:tc>';
+          $table4 .=      '<w:p>';
+          $table4 .=        '<w:r>';
+          $table4 .=          '<w:t>'.$pu->cantidad.' '.$pu->unidad.'</w:t>';
+          $table4 .=        '</w:r>';
+          $table4 .=      '</w:p>';
+          $table4 .=    '</w:tc>';
+          $table4 .=    '<w:tc>';
+          $table4 .=      '<w:p>';
+          $table4 .=        '<w:r>';
+          $table4 .=          '<w:t></w:t>';
+          $table4 .=        '</w:r>';
+          $table4 .=      '</w:p>';
+          $table4 .=    '</w:tc>';
+          $table4 .=  '</w:tr>';
+        }
+        $table4 .=  '<w:tr>';
+        $table4 .=    '<w:tc>';
+        $table4 .=      '<w:p>';
+        $table4 .=        '<w:r>';
+        $table4 .=          '<w:t></w:t>';
+        $table4 .=        '</w:r>';
+        $table4 .=     '</w:p>';
+        $table4 .=    '</w:tc>';
+        $table4 .=    '<w:tc>';
+        $table4 .=      '<w:p>';
+        $table4 .=        '<w:r>';
+        $table4 .=          '<w:t></w:t>';
+        $table4 .=        '</w:r>';
+        $table4 .=      '</w:p>';
+        $table4 .=    '</w:tc>';
+        $table4 .=    '<w:tc>';
+        $table4 .=      '<w:p>';
+        $table4 .=        '<w:r>';
+        $table4 .=          '<w:t>Valor de la inspección</w:t>';
+        $table4 .=        '</w:r>';
+        $table4 .=     '</w:p>';
+        $table4 .=    '</w:tc>';
+        $table4 .=    '<w:tc>';
+        $table4 .=      '<w:p>';
+        $table4 .=        '<w:r>';
+        $table4 .=          '<w:t>'.number_format($total,0).'</w:t>';
+        $table4 .=        '</w:r>';
+        $table4 .=      '</w:p>';
+        $table4 .=    '</w:tc>';
+        $table4 .=  '</w:tr>';
+        $table4 .=  '<w:tr>';
+        $table4 .=    '<w:tc>';
+        $table4 .=      '<w:p>';
+        $table4 .=        '<w:r>';
+        $table4 .=          '<w:t></w:t>';
+        $table4 .=        '</w:r>';
+        $table4 .=     '</w:p>';
+        $table4 .=    '</w:tc>';
+        $table4 .=    '<w:tc>';
+        $table4 .=      '<w:p>';
+        $table4 .=        '<w:r>';
+        $table4 .=          '<w:t></w:t>';
+        $table4 .=        '</w:r>';
+        $table4 .=      '</w:p>';
+        $table4 .=    '</w:tc>';
+        $table4 .=    '<w:tc>';
+        $table4 .=      '<w:p>';
+        $table4 .=        '<w:r>';
+        $table4 .=          '<w:t>IVA</w:t>';
+        $table4 .=        '</w:r>';
+        $table4 .=     '</w:p>';
+        $table4 .=    '</w:tc>';
+        $table4 .=    '<w:tc>';
+        $table4 .=      '<w:p>';
+        $table4 .=        '<w:r>';
+        $table4 .=          '<w:t>'.number_format($iva,0).'</w:t>';
+        $table4 .=        '</w:r>';
+        $table4 .=      '</w:p>';
+        $table4 .=    '</w:tc>';
+        $table4 .=  '</w:tr>';
+        $table4 .=  '<w:tr>';
+        $table4 .=    '<w:tc>';
+        $table4 .=      '<w:p>';
+        $table4 .=        '<w:r>';
+        $table4 .=          '<w:t></w:t>';
+        $table4 .=        '</w:r>';
+        $table4 .=     '</w:p>';
+        $table4 .=    '</w:tc>';
+        $table4 .=    '<w:tc>';
+        $table4 .=      '<w:p>';
+        $table4 .=        '<w:r>';
+        $table4 .=          '<w:t></w:t>';
+        $table4 .=        '</w:r>';
+        $table4 .=      '</w:p>';
+        $table4 .=    '</w:tc>';
+        $table4 .=    '<w:tc>';
+        $table4 .=      '<w:p>';
+        $table4 .=        '<w:r>';
+        $table4 .=          '<w:t>TOTAL</w:t>';
+        $table4 .=        '</w:r>';
+        $table4 .=     '</w:p>';
+        $table4 .=    '</w:tc>';
+        $table4 .=    '<w:tc>';
+        $table4 .=      '<w:p>';
+        $table4 .=        '<w:r>';
+        $table4 .=          '<w:t>'.number_format($valor_total,0).'</w:t>';
+        $table4 .=        '</w:r>';
+        $table4 .=      '</w:p>';
+        $table4 .=    '</w:tc>';
+        $table4 .=  '</w:tr>';
+        $table4 .=  '<w:tr>';
+        $table4 .=    '<w:tc>';
+        $table4 .=      '<w:p>';
+        $table4 .=        '<w:r>';
+        $table4 .=          '<w:t></w:t>';
+        $table4 .=        '</w:r>';
+        $table4 .=     '</w:p>';
+        $table4 .=    '</w:tc>';
+        $table4 .=    '<w:tc>';
+        $table4 .=      '<w:p>';
+        $table4 .=        '<w:r>';
+        $table4 .=          '<w:t></w:t>';
+        $table4 .=        '</w:r>';
+        $table4 .=      '</w:p>';
+        $table4 .=    '</w:tc>';
+        $table4 .=    '<w:tc>';
+        $table4 .=      '<w:p>';
+        $table4 .=        '<w:r>';
+        $table4 .=          '<w:t>Costo adicional de visita por dia si se requiere:</w:t>';
+        $table4 .=        '</w:r>';
+        $table4 .=     '</w:p>';
+        $table4 .=    '</w:tc>';
+        $table4 .=    '<w:tc>';
+        $table4 .=      '<w:p>';
+        $table4 .=        '<w:r>';
+        $table4 .=          '<w:t>'.number_format($cotizacion->adiciona,0).'</w:t>';
+        $table4 .=        '</w:r>';
+        $table4 .=      '</w:p>';
+        $table4 .=    '</w:tc>';
+        $table4 .=  '</w:tr>';
+      $table4 .= '</w:tbl>';
+
+      $document->setValue('codigo',$cotizacion->codigo);
+      $document->setValue('fecha',$cotizacion->fecha);
+      $document->setValue('direccion',$cotizacion->direccion);
+
+      if (!is_null($cotizacion->cliente_id)) {
+        $document->setValue('cliente',$cliente->nombre);
+        $document->setValue('cliente',$cliente->cedula);
+      }else {
+        $document->setValue('cliente',$juridica->nombre_representante);
+        $document->setValue('cliente',$juridica->nit);
+        $document->setValue('cliente',$juridica->direccion);
+      }
+
+      if (!is_null($cotizacion->cliente_id)) {
+        if (!is_null($cliente->cedula)) {
+          $document->setValue('marca','C.C:');
+          $document->setValue('nit',$cliente->cedula);
+        }else {
+          $document->setValue('marca','NIT:');
+          $document->setValue('nit',$cliente->nit);
+        }
+      }else {
+        $document->setValue('marca','NIT:');
+        $document->setValue('nit',$juridica->nit);
+      }
+      $document->setValue('dirigido',$cotizacion->dirigido);
+      $document->setValue('transformación',$table);
+      $document->setValue('distribucion',$table2);
+      $document->setValue('pu_final',$table3);
+
+      $document->setValue('nombre_proyecto',$cotizacion->nombre_proyecto);
+      $document->setValue('municipio',$municipio->nombre);
+
+      if (!is_null($cotizacion->cliente_id)) {
+        $document->setValue('nombres',$cliente->nombre);
+        $document->setValue('cedula',$cliente->cedula);
+        $document->setValue('representa','Representante Legal');
+        $document->setValue('empresa','');
+        $document->setValue('nit_empresa','');
+
+      }else {
+        $document->setValue('nombres',$juridica->nombre_representante);
+        $document->setValue('cedula',$juridica->cedula);
+        $document->setValue('representa','Representante Legal');
+        $document->setValue('empresa',$juridica->razon_social);
+        $document->setValue('nit_empresa',$juridica->nit);
+      }
+
+      $document->setValue('departamento',$departamento->nombre);
+
+      $valor_total = number_format($cotizacion->valor_total_contrato,0);
+      $document->setValue('valor_total_contrato',$valor_total);
+
+
+      $document->saveAs('documento/temp_cotizacion.docx');
+
+
+      header("Content-Disposition: attachment; filename=documento/temp_cotizacion.docx; charset=iso-8859-1");
+      echo file_get_contents('documento/temp_cotizacion.docx');
+
+
+    }
+
+    public function contrato($id){ // tiene que mandar el id para poder encontrar al que se deba generar
+
+
+      $main = public_path().'/documento'.'/contrato_main.docx';
+      // $PHPWord = new \PhpOffice\PhpWord\PhpWord();
+      // if (file_exists(public_path().'/documento'.'/temp_contrato.html')) {
+      //   unlink(public_path().'/documento'.'/temp_contrato.html');
+      // }
+
+      $document = new TemplateProcessor($main);
+      $firma = public_path().'/firma.jpg';
+
+      $contrato = Administrativa::findOrFail($id);
 
       if (!is_null($contrato->cliente_id)) {
         $cliente = Cliente::findOrFail($contrato->cliente_id);
@@ -511,15 +1241,11 @@ class DocumentoController extends Controller
       $document->setValue('valor_total_contrato',$valor_total);
 
 
-      $document->saveAs('documento/temp_contrato.html');
-      $fil = public_path().'/documento'.'/temp_contrato.html';
-      $datos = file_get_contents($fil);
-      
-      $pdf = App::make('dompdf.wrapper');
-      $pdf->loadHTML($datos);
-      return $pdf->stream();
-      // header("Content-Disposition: attachment; filename=documentoeditado.html; charset=iso-8859-1");
-      // echo file_get_contents('documentoeditado.html');
+      $document->saveAs('documento/temp_contrato.docx');
+
+
+      header("Content-Disposition: attachment; filename=documentoeditado.docx; charset=iso-8859-1");
+      echo file_get_contents('documentoeditado.docx');
 
 
     }
