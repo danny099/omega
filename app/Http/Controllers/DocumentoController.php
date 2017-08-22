@@ -1048,14 +1048,6 @@ class DocumentoController extends Controller
         $table5 .=      '</w:p>';
         $table5 .=    '</w:tc>';
         $table5 .=  '</w:tr>';
-
-
-
-
-
-
-
-
       $table5 .= '</w:tbl>';
 
 
