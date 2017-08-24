@@ -39,6 +39,7 @@ return array(
     'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',
     'App\\Http\\Controllers\\JuridicaController' => $baseDir . '/app/Http/Controllers/JuridicaController.php',
     'App\\Http\\Controllers\\LoginController' => $baseDir . '/app/Http/Controllers/LoginController.php',
+    'App\\Http\\Controllers\\NumeroALetras' => $baseDir . '/app/Http/Controllers/DocumentoController.php',
     'App\\Http\\Controllers\\ObservacionController' => $baseDir . '/app/Http/Controllers/ObservacionController.php',
     'App\\Http\\Controllers\\OperadorController' => $baseDir . '/app/Http/Controllers/OperadorController.php',
     'App\\Http\\Controllers\\OtrosiController' => $baseDir . '/app/Http/Controllers/OtrosiController.php',

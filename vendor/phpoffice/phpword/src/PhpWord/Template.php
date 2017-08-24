@@ -24,4 +24,5 @@ namespace PhpOffice\PhpWord;
  */
 class Template extends TemplateProcessor
 {
+  
 }

@@ -98,8 +98,6 @@ class PdfController extends Controller
 
       $municipios = Municipio::find($cotizaciones->municipio);
 
-
-
       $transformaciones = Transformacion::where('transformacion.cotizacion_id', '=', $id)->get();
       $distribuciones = Distribucion::where('distribucion.cotizacion_id', '=', $id)->get();
       $pu_finales = Pu_final::where('pu_final.cotizacion_id', '=', $id)->get();

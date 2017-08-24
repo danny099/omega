@@ -167,4 +167,14 @@ class XMLWriter extends \XMLWriter
             $this->writeAttribute($attribute, $value);
         }
     }
+
+    public function setIndent($indent) {
+    $this->_xmlWriter->setIndent((bool)$indent);
+    }
+    public function setIndentString($indentString) {
+        $this->_xmlWriter->setIndentString((string)$indentString);
+    }
+    public function getWriter() {
+        return $this->_xmlWriter;
+    }
 }

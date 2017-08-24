@@ -376,6 +376,7 @@ class ComposerStaticInit323501846788cfcd06ccfa37a577de17
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\JuridicaController' => __DIR__ . '/../..' . '/app/Http/Controllers/JuridicaController.php',
         'App\\Http\\Controllers\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/LoginController.php',
+        'App\\Http\\Controllers\\NumeroALetras' => __DIR__ . '/../..' . '/app/Http/Controllers/DocumentoController.php',
         'App\\Http\\Controllers\\ObservacionController' => __DIR__ . '/../..' . '/app/Http/Controllers/ObservacionController.php',
         'App\\Http\\Controllers\\OperadorController' => __DIR__ . '/../..' . '/app/Http/Controllers/OperadorController.php',
         'App\\Http\\Controllers\\OtrosiController' => __DIR__ . '/../..' . '/app/Http/Controllers/OtrosiController.php',

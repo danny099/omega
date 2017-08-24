@@ -1109,11 +1109,6 @@ class DocumentoController extends Controller
 
       $document->saveAs('documento/temp_cotizacion.docx');
 
-
-      header("Content-Disposition: attachment; filename=documento/temp_cotizacion.docx; charset=iso-8859-1");
-      echo file_get_contents('documento/temp_cotizacion.docx');
-
-
     }
 
     public function contrato($id){ // tiene que mandar el id para poder encontrar al que se deba generar
@@ -1369,9 +1364,6 @@ class DocumentoController extends Controller
 
       $document->saveAs('documento/temp_contrato.docx');
 
-
-      header("Content-Disposition: attachment; filename=documentoeditado.docx; charset=iso-8859-1");
-      echo file_get_contents('documentoeditado.docx');
 
 
     }

@@ -141,6 +141,8 @@ class AdministrativaController extends Controller
     {
 
       $input = $request->all();
+      dd($input);
+      die();
        //  ********************************************************************************
        //  ********************************************************************************
       //  almacenar en un arreglo $administrativa los datos provenientes desde el formulario de datos basicos
