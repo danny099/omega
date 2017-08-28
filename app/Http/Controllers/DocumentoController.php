@@ -184,14 +184,14 @@ class DocumentoController extends Controller
 
     }
 
-    public function cotizacion($id){ // tiene que mandar el id para poder encontrar al que se deba generar
+    public function cotizacion(){ // tiene que mandar el id para poder encontrar al que se deba generar
 
-      $main = public_path().'/documento'.'/cotizacion_main.docx';
+      $main = public_path().'/documento'.'/cotizacion.docx';
 
       $document = new TemplateProcessor($main);
       $firma = public_path().'/firma.jpg';
 
-      $cotizacion = Cotizacion::findOrFail($id);
+      $cotizacion = Cotizacion::findOrFail(200);
       $total = $cotizacion->subtotal;
       $iva = $cotizacion->iva;
       $valor_total = $cotizacion->total;
@@ -692,15 +692,38 @@ class DocumentoController extends Controller
       $table4 .= '<w:tbl>';
         $table4 .= '<w:tblPr>';
         $table4 .=   '<w:tblBorders>';
-        $table4 .=     '<w:top w:val="single" w:sz="1" w:space="0" w:color="000000" />';
-        $table4 .=     '<w:start w:val="single" w:sz="1" w:space="0" w:color="000000" />';
+        $table4 .=     '<w:top w:val="single" w:sz="0" w:space="0" w:color="000000" />';
+        $table4 .=     '<w:start w:val="single" w:sz="0" w:space="0" w:color="000000" />';
         $table4 .=     '<w:bottom w:val="single" w:sz="0" w:space="0" w:color="000000" />';
-        $table4 .=     '<w:end w:val="single" w:sz="1" w:space="0" w:color="000000" />';
+        $table4 .=     '<w:end w:val="single" w:sz="0" w:space="0" w:color="000000" />';
         $table4 .=     '<w:insideH w:val="single" w:sz="1" w:space="0" w:color="000000" />';
-        $table4 .=     '<w:insideV w:val="single" w:sz="1" w:space="0" w:color="000000" />';
+        $table4 .=     '<w:insideV w:val="single" w:sz="0" w:space="0" w:color="000000" />';
         $table4 .=   '<w:tblW w:w="5000" w:type="pct"/>';
         $table4 .=   '</w:tblBorders>';
+        $table4 .=    '<w:rPr>';
+        $table4 .=      '<w:rFonts w:ascii="Courier New" w:hAnsi="Times New Roman" w:cs="Times New Roman"/>';
+        $table4 .=    '</w:rPr>';
         $table4 .=  '</w:tblPr>';
+        $table4 .=  '<w:tr>';
+        $table4 .=    '<w:tc>';
+        $table4 .=      '<w:tcPr>';
+        $table4 .=        '<w:tcW w:w="4122" w:type="dxa"/>';
+        $table4 .=        '<w:gridSpan w:val="3"/>';
+        $table4 .=        '<w:shd w:val="clear" w:color="auto" w:fill="D6E3BC" w:themeFill="accent3" w:themeFillTint="66"/>';
+        $table4 .=      '</w:tcPr>';
+        $table4 .=      '<w:p>';
+        $table4 .=        '<w:pPr>';
+        $table4 .=           '<w:jc w:val="center"/>';
+        $table4 .=        '</w:pPr>';
+        $table4 .=        '<w:r>';
+        $table4 .=          '<w:rPr>';
+        $table4 .=            '<w:b />';
+        $table4 .=          '</w:rPr>';
+        $table4 .=          '<w:t>Descripción del alcance</w:t>';
+        $table4 .=        '</w:r>';
+        $table4 .=     '</w:p>';
+        $table4 .=    '</w:tc>';
+        $table4 .=  '</w:tr>';
         $table4 .=  '<w:tr>';
         $table4 .=    '<w:tc>';
         $table4 .=      '<w:p>';
@@ -757,9 +780,16 @@ class DocumentoController extends Controller
           $table4 .=      '</w:p>';
           $table4 .=    '</w:tc>';
           $table4 .=    '<w:tc>';
+          $table4 .=      '<w:tcPr>';
+          $table4 .=        '<w:tcW w:w="1800" w:type="dxa"/>';
+          $table4 .=        '<w:vMerge/>';
+          $table4 .=      '</w:tcPr>';
           $table4 .=      '<w:p>';
+          $table4 .=        '<w:pPr>';
+          $table4 .=           '<w:jc w:val="center"/>';
+          $table4 .=        '</w:pPr>';
           $table4 .=        '<w:r>';
-          $table4 .=          '<w:t></w:t>';
+          $table4 .=          '<w:t>'.number_format($total,0).'</w:t>';
           $table4 .=        '</w:r>';
           $table4 .=      '</w:p>';
           $table4 .=    '</w:tc>';
@@ -787,9 +817,13 @@ class DocumentoController extends Controller
           $table4 .=      '</w:p>';
           $table4 .=    '</w:tc>';
           $table4 .=    '<w:tc>';
+          $table4 .=      '<w:tcPr>';
+          $table4 .=        '<w:tcW w:w="1800" w:type="dxa"/>';
+          $table4 .=        '<w:vMerge/>';
+          $table4 .=      '</w:tcPr>';
           $table4 .=      '<w:p>';
           $table4 .=        '<w:r>';
-          $table4 .=          '<w:t></w:t>';
+          $table4 .=          '<w:t>valor total</w:t>';
           $table4 .=        '</w:r>';
           $table4 .=      '</w:p>';
           $table4 .=    '</w:tc>';
@@ -817,9 +851,13 @@ class DocumentoController extends Controller
           $table4 .=      '</w:p>';
           $table4 .=    '</w:tc>';
           $table4 .=    '<w:tc>';
+          $table4 .=      '<w:tcPr>';
+          $table4 .=        '<w:tcW w:w="1800" w:type="dxa"/>';
+          $table4 .=        '<w:vMerge/>';
+          $table4 .=      '</w:tcPr>';
           $table4 .=      '<w:p>';
           $table4 .=        '<w:r>';
-          $table4 .=          '<w:t></w:t>';
+          $table4 .=          '<w:t>valor</w:t>';
           $table4 .=        '</w:r>';
           $table4 .=      '</w:p>';
           $table4 .=    '</w:tc>';
@@ -827,6 +865,10 @@ class DocumentoController extends Controller
         }
         $table4 .=  '<w:tr>';
         $table4 .=    '<w:tc>';
+        $table4 .=      '<w:tcPr>';
+        $table4 .=        '<w:tcW w:w="1800" w:type="dxa"/>';
+        $table4 .=        '<w:vMerge/>';
+        $table4 .=      '</w:tcPr>';
         $table4 .=      '<w:p>';
         $table4 .=        '<w:r>';
         $table4 .=          '<w:t></w:t>';
@@ -838,9 +880,9 @@ class DocumentoController extends Controller
         $table4 .=        '<w:r>';
         $table4 .=          '<w:rPr>';
         $table4 .=            '<w:b />';
-        $table4 .=            '<w:sz w:val="25"/>';
+        $table4 .=            '<w:sz w:val="20"/>';
         $table4 .=          '</w:rPr>';
-        $table4 .=          '<w:t>Valor de la inspección</w:t>';
+        $table4 .=          '<w:t>Costo directo inspección Eléctrica:</w:t>';
         $table4 .=        '</w:r>';
         $table4 .=     '</w:p>';
         $table4 .=    '</w:tc>';
@@ -854,6 +896,10 @@ class DocumentoController extends Controller
         $table4 .=  '</w:tr>';
         $table4 .=  '<w:tr>';
         $table4 .=    '<w:tc>';
+        $table4 .=      '<w:tcPr>';
+        $table4 .=        '<w:tcW w:w="1800" w:type="dxa"/>';
+        $table4 .=        '<w:vMerge/>';
+        $table4 .=      '</w:tcPr>';
         $table4 .=      '<w:p>';
         $table4 .=        '<w:r>';
         $table4 .=          '<w:t></w:t>';
@@ -865,9 +911,9 @@ class DocumentoController extends Controller
         $table4 .=        '<w:r>';
         $table4 .=          '<w:rPr>';
         $table4 .=            '<w:b />';
-        $table4 .=            '<w:sz w:val="25"/>';
+        $table4 .=            '<w:sz w:val="20"/>';
         $table4 .=          '</w:rPr>';
-        $table4 .=          '<w:t>IVA</w:t>';
+        $table4 .=          '<w:t>IVA (19%):</w:t>';
         $table4 .=        '</w:r>';
         $table4 .=     '</w:p>';
         $table4 .=    '</w:tc>';
@@ -881,6 +927,10 @@ class DocumentoController extends Controller
         $table4 .=  '</w:tr>';
         $table4 .=  '<w:tr>';
         $table4 .=    '<w:tc>';
+        $table4 .=      '<w:tcPr>';
+        $table4 .=        '<w:tcW w:w="1800" w:type="dxa"/>';
+        $table4 .=        '<w:vMerge/>';
+        $table4 .=      '</w:tcPr>';
         $table4 .=      '<w:p>';
         $table4 .=        '<w:r>';
         $table4 .=          '<w:t></w:t>';
@@ -892,9 +942,9 @@ class DocumentoController extends Controller
         $table4 .=        '<w:r>';
         $table4 .=          '<w:rPr>';
         $table4 .=            '<w:b />';
-        $table4 .=            '<w:sz w:val="25"/>';
+        $table4 .=            '<w:sz w:val="20"/>';
         $table4 .=          '</w:rPr>';
-        $table4 .=          '<w:t>TOTAL</w:t>';
+        $table4 .=          '<w:t>Valor Total del Proyecto:</w:t>';
         $table4 .=        '</w:r>';
         $table4 .=     '</w:p>';
         $table4 .=    '</w:tc>';
@@ -908,6 +958,10 @@ class DocumentoController extends Controller
         $table4 .=  '</w:tr>';
         $table4 .=  '<w:tr>';
         $table4 .=    '<w:tc>';
+        $table4 .=      '<w:tcPr>';
+        $table4 .=        '<w:tcW w:w="1800" w:type="dxa"/>';
+        $table4 .=        '<w:vMerge/>';
+        $table4 .=      '</w:tcPr>';
         $table4 .=      '<w:p>';
         $table4 .=        '<w:r>';
         $table4 .=          '<w:t></w:t>';
@@ -919,9 +973,9 @@ class DocumentoController extends Controller
         $table4 .=        '<w:r>';
         $table4 .=          '<w:rPr>';
         $table4 .=            '<w:b />';
-        $table4 .=            '<w:sz w:val="25"/>';
+        $table4 .=            '<w:sz w:val="20"/>';
         $table4 .=          '</w:rPr>';
-        $table4 .=          '<w:t>Costo adicional de visita por dia si se requiere:</w:t>';
+        $table4 .=          '<w:t>Costo Adicional de Visita por día si se requiere:</w:t>';
         $table4 .=        '</w:r>';
         $table4 .=     '</w:p>';
         $table4 .=    '</w:tc>';
@@ -1053,53 +1107,41 @@ class DocumentoController extends Controller
 
       $document->setValue('codigo',$cotizacion->codigo);
       $document->setValue('fecha',$cotizacion->fecha);
-      $document->setValue('direccion',$cotizacion->direccion);
 
       if (!is_null($cotizacion->cliente_id)) {
         $document->setValue('cliente',$cliente->nombre);
-        $document->setValue('cliente',$cliente->cedula);
+        $document->setValue('nit',$cliente->cedula);
       }else {
         $document->setValue('cliente',$juridica->nombre_representante);
-        $document->setValue('cliente',$juridica->nit);
-        $document->setValue('cliente',$juridica->direccion);
-      }
-
-      if (!is_null($cotizacion->cliente_id)) {
-        if (!is_null($cliente->cedula)) {
-          $document->setValue('marca','C.C:');
-          $document->setValue('nit',$cliente->cedula);
-        }else {
-          $document->setValue('marca','NIT:');
-          $document->setValue('nit',$cliente->nit);
-        }
-      }else {
-        $document->setValue('marca','NIT:');
         $document->setValue('nit',$juridica->nit);
       }
+
+      // if (!is_null($cotizacion->cliente_id)) {
+      //   if (!is_null($cliente->cedula)) {
+      //     $document->setValue('marca','C.C:');
+      //     $document->setValue('nit',$cliente->cedula);
+      //   }else {
+      //     $document->setValue('marca','NIT:');
+      //     $document->setValue('nit',$cliente->nit);
+      //   }
+      // }else {
+      //   $document->setValue('marca','NIT:');
+      //   $document->setValue('nit',$juridica->nit);
+      // }
       $document->setValue('dirigido',$cotizacion->dirigido);
       $document->setValue('transformación',$table);
       $document->setValue('distribucion',$table2);
       $document->setValue('pu_final',$table3);
       $document->setValue('propuesta',$table4);
-      $document->setValue('condiciones',$table5);
+      // $document->setValue('condiciones',$table5);
 
       $document->setValue('nombre_proyecto',$cotizacion->nombre_proyecto);
       $document->setValue('municipio',$municipio->nombre);
-
-      if (!is_null($cotizacion->cliente_id)) {
-        $document->setValue('nombres',$cliente->nombre);
-        $document->setValue('cedula',$cliente->cedula);
-        $document->setValue('representa','Representante Legal');
-        $document->setValue('empresa','');
-        $document->setValue('nit_empresa','');
-
-      }else {
-        $document->setValue('nombres',$juridica->nombre_representante);
-        $document->setValue('cedula',$juridica->cedula);
-        $document->setValue('representa','Representante Legal');
-        $document->setValue('empresa',$juridica->razon_social);
-        $document->setValue('nit_empresa',$juridica->nit);
-      }
+      $document->setValue('formas_pago',$cotizacion->formas_pago);
+      $document->setValue('tiempo',$cotizacion->tiempo);
+      $document->setValue('entrega',$cotizacion->entrega);
+      $document->setValue('visitas',$cotizacion->visitas);
+      $document->setValue('validez',$cotizacion->validez);
 
       $document->setValue('departamento',$departamento->nombre);
 
@@ -1108,6 +1150,8 @@ class DocumentoController extends Controller
 
 
       $document->saveAs('documento/temp_cotizacion.docx');
+      header("Content-Disposition: attachment; documento/temp_cotizacion.docx; charset=iso-8859-1");
+      echo file_get_contents('documento/temp_cotizacion.docx');
 
     }
 
