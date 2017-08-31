@@ -691,15 +691,17 @@ class DocumentoController extends Controller
       $table4 = '';
       $table4 .= '<w:tbl>';
         $table4 .= '<w:tblPr>';
+        $table4 .=   '<w:jc w:val="center"/>';
         $table4 .=   '<w:tblBorders>';
-        $table4 .=     '<w:top w:val="single" w:sz="0" w:space="0" w:color="000000" />';
-        $table4 .=     '<w:start w:val="single" w:sz="0" w:space="0" w:color="000000" />';
-        $table4 .=     '<w:bottom w:val="single" w:sz="0" w:space="0" w:color="000000" />';
-        $table4 .=     '<w:end w:val="single" w:sz="0" w:space="0" w:color="000000" />';
-        $table4 .=     '<w:insideH w:val="single" w:sz="0" w:space="0" w:color="000000" />';
-        $table4 .=     '<w:insideV w:val="single" w:sz="0" w:space="0" w:color="000000" />';
-        $table4 .=   '<w:tblW w:w="5000" w:type="pct"/>';
+        $table4 .=     '<w:top w:val="single" w:sz="1" w:space="0" w:color="000000" />';
+        $table4 .=     '<w:start w:val="single" w:sz="1" w:space="0" w:color="000000" />';
+        $table4 .=     '<w:bottom w:val="single" w:sz="1" w:space="0" w:color="000000" />';
+        $table4 .=     '<w:end w:val="single" w:sz="1" w:space="0" w:color="000000" />';
+        $table4 .=     '<w:insideH w:val="single" w:sz="1" w:space="0" w:color="000000" />';
+        $table4 .=     '<w:insideV w:val="single" w:sz="1" w:space="0" w:color="000000" />';
+        $table4 .=   '<w:tblW w:w="4300" w:type="pct"/>';
         $table4 .=   '</w:tblBorders>';
+
         $table4 .=  '</w:tblPr>';
         $table4 .=  '<w:tr>';
         $table4 .=    '<w:tc>';
@@ -1146,11 +1148,14 @@ class DocumentoController extends Controller
       $document->setValue('valor_total_contrato',$valor_total);
 
 
-      $document->saveAs('documento/temp_cotizacion.docx');
-      header('Content-Description: File Transfer');
-header("Content-type: application/msword; charset=utf-8");
-header("Content-Disposition: attachment;Filename=test.docx");
-     echo file_get_contents('documento/temp_cotizacion.docx');
+      $document->saveAs('documento/'.$cotizacion->codigo.'.docx');
+
+      $fichero = 'documento/'.$cotizacion->codigo.'.docx';
+      $nuevo_fichero = 'C:\Users\Ingeniero4.CT\Downloads/'.$cotizacion->codigo.'.docx';
+
+      if (!copy($fichero, $nuevo_fichero)) {
+        echo "Error al copiar $fichero...\n";
+      }
 
     }
 
