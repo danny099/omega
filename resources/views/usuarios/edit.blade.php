@@ -80,7 +80,8 @@
           <div class="col-md-6">
             <div class="form-group">
               {!! Form::label('foto', 'Foto') !!}
-              <input type="file" id="files" name="files[]" />
+              {!! Form::file('files[]', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+
             </div>
           </div>
         </div>
