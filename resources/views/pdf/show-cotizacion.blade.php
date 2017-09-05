@@ -249,8 +249,8 @@
         page-break-inside: avoid;
       }*/
       body{
-        font-family: "Arial Narrow";
-      	font-size: 12pt;
+        font-family: "Arial Narrow",sans-serif;
+      	font-size: 10pt;
       	font-style: normal;
       	font-variant: normal;
       	font-weight: 500;
@@ -325,9 +325,9 @@
     <header>
       <table class="table table-bordered " cellpadding="0" cellspacing="0">
         <tr>
-          <td><center><img id="img" src="Certicol2.png" style="width:60px;"></center></td>
-          <th><center>COTIZACIÓN</center></th>
-          <td><center><span class="page-number">Pagina </span></center></td>
+          <td width="100" heigth="100"><center><img id="img" src="logo.jpg" style="width:100px;"></center></td>
+          <th style="font-size:15pt; color:#808080;" width="300"><center>COTIZACIÓN</center></th>
+          <td style="font-size:10pt; color:#808080; margin-top:50px;" valign="middle"><center><p class="page-number">Pagina </p></center></td>
         </tr>
       </table>
     </header>
