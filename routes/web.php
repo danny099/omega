@@ -134,10 +134,10 @@ Route::group(['middleware' => 'auth'],function(){
 	Route::resource('cotizaciones','CotizacionController');
 	Route::get('deletecot/{id}','CotizacionController@destroy');
 
-	Route::resource('documentos','DocumentoController');
-	Route::get('deletedocumentos/{id}','DocumentoController@destroy');
+	// Route::resource('documentos','DocumentoController');
+	// Route::get('deletedocumentos/{id}','DocumentoController@destroy');
 
-	Route::get('cotizacion/{id}','DocumentoController@cotizacion');
+	Route::get('cotizacion/{id}','PdfController@cotizacionPdf');
 	Route::get('contrato/{id}','DocumentoController@contrato');
 	});
 
