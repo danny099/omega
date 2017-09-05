@@ -85,6 +85,10 @@
             </div>
 
           </div>
+          <br>
+          <br>
+          <br>
+          <a href="{{ route('usuarios.edit', $perfil->id) }}" class="btn btn-primary pull-right" data-toggle="modal" ><i class="fa fa-user-plus"></i> Editar Perfil</a>
         </div>
       </div>
   </div>

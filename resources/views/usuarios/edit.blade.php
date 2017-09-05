@@ -50,6 +50,7 @@
         </div>
         <div class="box-body col-md-12">
           <div class="col-md-6">
+            
             <div class="form-group">
               {!! Form::label('nombres', 'Nombres') !!}
               {!! Form::text('nombres', null, ['class' => 'form-control' , 'required' => 'required']) !!}
