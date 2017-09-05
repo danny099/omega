@@ -134,6 +134,7 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
         <li class="header">Modulos</li>
+        @if ( Auth::user()->rol_id == 1)
         <li>
           <a href="{{ url('inicio') }}">
             <i class="glyphicon glyphicon-home"></i> <span>Inicio</span>
@@ -152,6 +153,7 @@
             <li class="active"><a href="{{ url('adicionales/create') }}"><i class="fa fa-circle-o"></i>Valor adicional</a></li>
           </ul>
         </li>
+        @endif
       </ul>
       @if ( Auth::user()->rol_id == 1)
       <ul class="sidebar-menu">
@@ -170,7 +172,7 @@
         </li>
       </ul>
       @endif
-      @if ( Auth::user()->rol_id == 1)
+      @if ( Auth::user()->rol_id == 1 )
       <ul class="sidebar-menu">
         <li class="treeview">
           <a href="#">
@@ -182,6 +184,21 @@
           <ul class="treeview-menu">
 
             <li><a href="{{ url('usuarios') }}"><i class="fa fa-circle-o"></i>Usuarios</a></li>
+            <li><a href="{{ url('clientes') }}"><i class="fa fa-circle-o"></i>Clientes</a></li>
+          </ul>
+        </li>
+      </ul>
+      @endif
+      @if (  Auth::user()->rol_id == 3)
+      <ul class="sidebar-menu">
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-users"></i> <span>Clientes</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
             <li><a href="{{ url('clientes') }}"><i class="fa fa-circle-o"></i>Clientes</a></li>
           </ul>
         </li>
@@ -202,7 +219,7 @@
         </li>
       </ul>
       @endif
-      @if ( Auth::user()->rol_id == 1)
+      @if ( Auth::user()->rol_id == 1 || Auth::user()->rol_id == 3)
       <ul class="sidebar-menu">
         <li class="treeview">
           <a href="#">

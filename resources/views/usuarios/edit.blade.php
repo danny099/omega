@@ -6,6 +6,13 @@
   #rol_id{
      width: 100%;
    }
+   .thumb {
+   height: 130px;
+   border: 1px solid #000;
+   margin: 10px 5px 0 0;
+   position: absolute;
+     top: -40;
+   }
 </style>
 @section('contenido')
   <ol class="breadcrumb">
@@ -50,7 +57,7 @@
         </div>
         <div class="box-body col-md-12">
           <div class="col-md-6">
-            
+
             <div class="form-group">
               {!! Form::label('nombres', 'Nombres') !!}
               {!! Form::text('nombres', null, ['class' => 'form-control' , 'required' => 'required']) !!}
@@ -58,9 +65,8 @@
           </div>
           <div class="col-md-6">
             <div class="form-group">
-              {!! Form::label('foto', 'Foto') !!}
-              {!! Form::file('foto', null, ['class' => 'form-control' , 'required' => 'required']) !!}
-
+              {!! Form::label('rol_id', 'Rol') !!}
+              {!! Form::select('rol_id',$roles,['class' => 'form-control','required' => 'required','style'=>'width=100%']) !!}
             </div>
           </div>
         </div>
@@ -73,9 +79,8 @@
           </div>
           <div class="col-md-6">
             <div class="form-group">
-
-              {!! Form::label('rol_id', 'Rol') !!}
-              {!! Form::select('rol_id',$roles,['class' => 'form-control','required' => 'required','style'=>'width=100%']) !!}
+              {!! Form::label('foto', 'Foto') !!}
+              <input type="file" id="files" name="files[]" />
             </div>
           </div>
         </div>
@@ -84,6 +89,11 @@
             <div class="form-group">
               {!! Form::label('email', 'Email') !!}
               {!! Form::text('email', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <output id="list"></output>
             </div>
           </div>
         </div>
@@ -102,7 +112,31 @@
 
 @section('scripts')
 
-  <script type="text/javascript">
+<script type="text/javascript">
+  function archivo(evt) {
+  var files = evt.target.files; // FileList object
+
+  // Obtenemos la imagen del campo "file".
+  for (var i = 0, f; f = files[i]; i++) {
+    //Solo admitimos imágenes.
+    if (!f.type.match('image.*')) {
+    continue;
+    }
+
+    var reader = new FileReader();
+
+    reader.onload = (function(theFile) {
+    return function(e) {
+      // Insertamos la imagen
+     document.getElementById("list").innerHTML = ['<img class="thumb" src="', e.target.result,'" title="', escape(theFile.name), '"/>'].join('');
+    };
+    })(f);
+
+    reader.readAsDataURL(f);
+  }
+  }
+
+  document.getElementById('files').addEventListener('change', archivo, false);
   $(document).ready(function () {
      $('#show-pass').click(function () {
       if ($('#password').attr('type') === 'text') {
