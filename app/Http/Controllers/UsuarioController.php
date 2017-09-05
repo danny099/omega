@@ -129,7 +129,7 @@ class UsuarioController extends Controller
       if (isset($file)) {
         $usuarios['foto'] = Input::file("foto")->getClientOriginalName();
       }else {
-        
+
       }
 
       $usuarios['apellidos'] = ucwords(mb_strtolower($request->apellidos));
