@@ -325,7 +325,7 @@
     <header>
       <table class="table table-bordered " cellpadding="0" cellspacing="0">
         <tr>
-          <td width="100" heigth="100"><center><img id="img" src="logo.jpg" style="width:100px;"></center></td>
+          <td width="100" heigth="100"><center><img id="img" src="logo.jpg" style="width:100px; opacity: 0.5;"></center></td>
           <th style="font-size:15pt; color:#808080;" width="300"><center>COTIZACIÓN</center></th>
           <td style="font-size:10pt; color:#808080; margin-top:50px;" valign="middle"><center><p class="page-number">Pagina </p></center></td>
         </tr>
@@ -409,23 +409,23 @@
         </tr>
         <thead>
           <tr>
-            <th>Descripción</th>
-            <th>Tipo</th>
-            <th>Nivel de Tensión (KV)</th>
-            <th>Capacidad (KVA)</th>
-            <th>Cantidad</th>
-            <th>Tipo de Refrigeración</th>
+            <th >Descripción</th>
+            <th width="50">Tipo</th>
+            <th width="60">Tensión(KV)</th>
+            <th width="50">Capacidad(KVA)</th>
+            <th width="50">Cantidad</th>
+            <th width="50">Refrigeración</th>
           </tr>
         </thead>
         <tbody>
           @foreach($transformaciones as $transfor)
             <tr>
               <td>{{ $transfor->descripcion }}</td>
-              <td>{{ $transfor->tipo }}</td>
-              <td>{{ $transfor->nivel_tension }}</td>
-              <td>{{ $transfor->capacidad }} KVA</td>
-              <td>{{ $transfor->cantidad }} Und</td>
-              <td>{{ $transfor->tipo_refrigeracion }}</td>
+              <td width="50">{{ $transfor->tipo }}</td>
+              <td width="60">{{ $transfor->nivel_tension }}</td>
+              <td width="50">{{ $transfor->capacidad }} KVA</td>
+              <td width="50">{{ $transfor->cantidad }} Und</td>
+              <td width="50">{{ $transfor->tipo_refrigeracion }}</td>
             </tr>
           @endforeach
         </tbody>
@@ -442,27 +442,27 @@
         <thead>
           <tr>
             <th>Descripción</th>
-            <th>Tipo</th>
-            <th>Nivel de Tensión (KV)</th>
-            <th>Cantidad</th>
-            <th>Apoyos</th>
-            <th>Cajas</th>
-            <th>Notas</th>
+            <th width="50">Tipo</th>
+            <th width="60">Tensión(KV)</th>
+            <th width="50">Cantidad</th>
+            <th width="50">Apoyos</th>
+            <th width="50">Cajas</th>
+            <th width="50">Notas</th>
           </tr>
         </thead>
         <tbody>
           @foreach($distribuciones as $distri)
             <tr>
               <td>{{ $distri->descripcion }}</td>
-              <td>{{ $distri->tipo }}</td>
-              <td>{{ $distri->nivel_tension }}</td>
-              <td>{{ $distri->cantidad }} mts.</td>
-              <td>{{ $distri->apoyos }}</td>
-              <td>{{ $distri->cajas }}</td>
+              <td width="50">{{ $distri->tipo }}</td>
+              <td width="60">{{ $distri->nivel_tension }}</td>
+              <td width="50">{{ $distri->cantidad }} mts.</td>
+              <td width="50">{{ $distri->apoyos }}</td>
+              <td width="50">{{ $distri->cajas }}</td>
               @if($distri->notas == null)
-                <td>N.A</td>
+                <td width="50">N.A</td>
               @else
-                <td>{{ $distri->notas }}</td>
+                <td width="50">{{ $distri->notas }}</td>
               @endif
             </tr>
           @endforeach
@@ -480,29 +480,29 @@
         <thead>
           <tr>
             <th>Descripción</th>
-            <th>Tipo</th>
-            <th>Estrato</th>
-            <th>Cantidad</th>
-            <th>m²</th>
-            <th>KVA</th>
+            <th width="50">Tipo</th>
+            <th width="50">Estrato</th>
+            <th width="50">Cantidad</th>
+            <th width="50">m²</th>
+            <th width="50">KVA</th>
 
-            <th>Acometidas</th>
+            <th width="50">Acometidas</th>
           </tr>
         </thead>
         <tbody>
-          @foreach($pu_finales as $pu)
+          @foreach($pu_finales as $pu) 
             <tr>
               <td>{{ $pu->descripcion }}</td>
-              <td>{{ $pu->tipo }}</td>
+              <td width="50">{{ $pu->tipo }}</td>
               @if( $pu->estrato == null )
-                <td> N.A </td>
+                <td width="50"> N.A </td>
               @else
-                <td>{{ $pu->estrato }}</td>
+                <td width="50">{{ $pu->estrato }}</td>
               @endif
-              <td>{{ $pu->cantidad }} Und</td>
-              <td>{{ $pu->metros }}</td>
-              <td>{{ $pu->kva }} KVA</td>
-              <td>{{ $pu->acometidas }}</td>
+              <td width="50">{{ $pu->cantidad }} Und</td>
+              <td width="50">{{ $pu->metros }}</td>
+              <td width="50">{{ $pu->kva }} KVA</td>
+              <td width="50">{{ $pu->acometidas }}</td>
             </tr>
           @endforeach
         </tbody>
