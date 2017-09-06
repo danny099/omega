@@ -80,7 +80,7 @@
           <div class="col-md-6">
             <div class="form-group">
               {!! Form::label('foto', 'Foto') !!}
-              {!! Form::file('files[]', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+              <input type="file" id="files" name="files[]"/>
 
             </div>
           </div>
@@ -94,7 +94,7 @@
           </div>
           <div class="col-md-6">
             <div class="form-group">
-              <output id="list"></output>
+              <output id="list"><img src="{{url('photos')}}/{{Auth::User()->foto}}" class="thumb"></output>
             </div>
           </div>
         </div>
