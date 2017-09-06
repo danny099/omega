@@ -234,6 +234,21 @@
         </li>
       </ul>
       @endif
+      @if ( Auth::user()->rol_id == 1 || Auth::user()->rol_id == 3)
+      <ul class="sidebar-menu">
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-dollar"></i> <span>Documentos</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{ url('documento') }}"><i class="fa fa-circle-o"></i>Documentos</a></li>
+          </ul>
+        </li>
+      </ul>
+      @endif
       <!-- @if ( Auth::user()->rol_id == 1)
       <ul class="sidebar-menu">
         <li class="treeview">
