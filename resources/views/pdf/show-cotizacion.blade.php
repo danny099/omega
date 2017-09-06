@@ -288,7 +288,7 @@
       }
       .div2{
         padding: 0;
-        margin-top: 50px;
+        margin-top: 20px;
       }
       .ttable{
         text-align: center;
@@ -307,6 +307,9 @@
       }
       td {
         padding: 0;
+      }
+      .salte {
+	        page-break-before: always;
       }
 
       @page { margin: 100px 50px; }
@@ -365,7 +368,6 @@
         @if(empty($clientes))
         <span>Razon social: {{ $juridicas->razon_social }}</span><br>
         <span>NIT: {{ $juridicas->nit }}</span><br>
-        <span>Direccion: {{ $juridicas->direccion }}</span><br>
         @else
         <span>Nombre: {{ $clientes->nombre}}</span><br>
         <span>CC: {{ $clientes->cedula}}</span>
@@ -473,7 +475,7 @@
 
       @if(count($pu_finales) == 0)
       @else
-      <table class=" table table-bordered table-striped">
+      <table class=" table table-bordered table-striped salte">
         <tr>
           <th colspan="7" class="ttable">ALCANCE PROCESO USO FINAL</th>
         </tr>
