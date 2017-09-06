@@ -82,8 +82,8 @@ Route::group(['middleware' => 'auth'],function(){
 
   /**************************************************************/
   /**************************************************************/
-  // Route::resource('clientes','ClienteController');
-  // Route::get('deleteclientes/{id}','ClienteController@destroy');
+  Route::resource('clientes','ClienteController');
+  Route::get('deleteclientes/{id}','ClienteController@destroy');
 
   /**************************************************************/
   /**************************************************************/
@@ -101,7 +101,7 @@ Route::group(['middleware' => 'auth'],function(){
 	Route::get('selectmuni','AdministrativaController@getMuni');
   /**************************************************************/
   /**************************************************************/
-  // Route::resource('usuarios','UsuarioController');
+  Route::resource('usuarios','UsuarioController');
   Route::get('deleteusuarios/{id}','UsuarioController@destroy');
   /**************************************************************/
   /**************************************************************/
@@ -135,10 +135,10 @@ Route::group(['middleware' => 'auth'],function(){
 	Route::get('admin','adminController@index');
 	/**************************************************************/
 	/**************************************************************/
-	// Route::resource('auditorias','AuditoriaController');
+	Route::resource('auditorias','AuditoriaController');
 	/**************************************************************/
 	/**************************************************************/
-	// Route::resource('cotizaciones','CotizacionController');
+	Route::resource('cotizaciones','CotizacionController');
 	Route::get('deletecot/{id}','CotizacionController@destroy');
 
 	Route::resource('documentos','DocumentoController');
