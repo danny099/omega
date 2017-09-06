@@ -2,6 +2,7 @@
 
 @section('contenido')
 <!-- Main content -->
+@if(Auth::user()->id == 1)
 <div class="row">
   <div class="col-md-12">
     <section class="content">
@@ -68,4 +69,5 @@
         </div>
         <!-- ./col -->
       </div>
+@endif
 @endsection
