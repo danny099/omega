@@ -27,7 +27,7 @@
     .table > thead > tr > td,
     .table > tbody > tr > td,
     .table > tfoot > tr > td {
-      padding: 8px;
+      padding: 3px;
       line-height: 1.42857143;
       vertical-align: top;
       border-top: 1px solid #ddd;
@@ -277,12 +277,7 @@
         margin-left: 150px;
         margin-right: 80px;
       }
-      .ocho{
-        page-break-before:always;
-      }
-      .comerciales{
-        page-break-before:always;
-      }
+
 
       .tx1{
         margin: 5px;
@@ -377,7 +372,7 @@
         @endif
       </div>
     </div>
-    <br>
+
     <div class="div2">
       <p class="obj1">
         Objeto:
@@ -516,7 +511,7 @@
     </div>
     <div class="referencia">
       <p><b>{{$referencia->nombre}}</b></p>
-      <br><br>
+
 
         <?php
           $refer = html_entity_decode($referencia->detalles);
@@ -529,7 +524,6 @@
     <div class="inspeccionDoc">
     <p><b>{{$inicial->nombre}}</b></p>
 
-    <br><br>
 
       <?php
         $refer = html_entity_decode($inicial->detalles);
@@ -550,11 +544,11 @@
     <br>
     <div class="referencia">
       <p><b>5. PROPUESTA ECONOMICA</b></p>
-      <br>
+
 
       <table class="table table-bordered tabla">
         <tr>
-          <th Colspan="4"><center><label> Cotización</label></center></th>
+          <th Colspan="4" ><center><label> Cotización</label></center></th>
         </tr>
         <tr>
           <th><center><label> Ítem </label></center></th>
@@ -564,7 +558,7 @@
         </tr>
         <?php $i = 0; ?>
         @foreach($transformaciones as $trans)
-          <tr>
+          <tr >
             <?php $i++ ?>
             <td>{{$i}}</td>
             <td>
