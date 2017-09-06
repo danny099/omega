@@ -53,11 +53,12 @@ class UsuarioController extends Controller
     {
 
         $usuarios = $request->all();
-        $file = Input::file('file');
+        $file = Input::file('files');
+
 
         $usuarios['cedula'] = $request->cedula;
         $usuarios['nombres'] = ucwords(mb_strtolower($request->nombres));
-        $usuarios['foto'] = Input::file("file")->getClientOriginalName();
+        $usuarios['foto'] = Input::file("files")->getClientOriginalName();
         $usuarios['apellidos'] = ucwords(mb_strtolower($request->apellidos));
         $usuarios['email'] = $request->email;
         $usuarios['password'] = Hash::make($request->password);
