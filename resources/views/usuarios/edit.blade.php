@@ -63,12 +63,21 @@
               {!! Form::text('nombres', null, ['class' => 'form-control' , 'required' => 'required']) !!}
             </div>
           </div>
+          @if(Auth::user()->id == 1)
           <div class="col-md-6">
             <div class="form-group">
               {!! Form::label('rol_id', 'Rol') !!}
               {!! Form::select('rol_id',$roles,['class' => 'form-control','required' => 'required','style'=>'width=100%']) !!}
             </div>
           </div>
+          @else
+            <div class="col-md-6">
+              {!! Form::label('rol_id', 'Rol') !!}
+              <select disabled style="width:100%;">
+                <option value="{{$usuarios->rol_id}}">{{$usuarios->roles->rol}}</option>
+              </select>
+            </div>
+          @endif
         </div>
         <div class="box-body col-md-12">
           <div class="col-md-6">
