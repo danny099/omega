@@ -250,7 +250,7 @@
       }*/
       body{
         font-family: "Arial Narrow",sans-serif;
-      	font-size: 10pt;
+      	font-size: 9pt;
       	font-style: normal;
       	font-variant: normal;
       	font-weight: 500;
@@ -274,8 +274,8 @@
         }
       .obj2{
         display: inline-block;
-        margin-left: 150px;
-        margin-right: 80px;
+        margin-left: 10px;
+        margin-right: 30px;
       }
 
 
@@ -308,8 +308,12 @@
       td {
         padding: 0;
       }
-      .salte {
-	        page-break-before: always;
+
+      .referencia {
+          page-break-after: always;
+      }
+      .comerciales {
+          page-break-after: avoid;
       }
 
       @page { margin: 100px 50px; }
@@ -342,8 +346,6 @@
       </table>
     </footer>
 
-    <br>
-    <br>
     <div class="div1">
       <div class="entrada">
         <p>Santiago de Cali</p>
@@ -361,8 +363,7 @@
           </tr>
         </table>
       </div>
-      <br>
-      <br>
+
       <div class="dirigido">
         <p>{{ $cotizaciones->dirigido }}</p>
         @if(empty($clientes))
@@ -385,11 +386,11 @@
         en el Municipio de {{ $municipios->nombre }} departamento del {{ $departamentos->nombre }}.
       </p>
     </div>
-      <br>
 
+    <br>
     <div class="div3">
       <p>Cordial Saludo:</p>
-      <br>
+
       <div class="cordial">
           <?php
             $refer = html_entity_decode($saludo->detalles);
@@ -397,11 +398,10 @@
           ?>
       </div>
     </div>
-      <br>
-      <br>
+    <br>
     <div class="alcances">
       <p><b>1. ALCANCE DE LA INSPECCIÓN</b></p>
-          <br>
+
       @if(count($transformaciones) == 0)
       @else
 
@@ -432,7 +432,7 @@
           @endforeach
         </tbody>
       </table>
-      <br>
+
       @endif
 
       @if(count($distribuciones) == 0)
@@ -470,7 +470,7 @@
           @endforeach
         </tbody>
       </table>
-      <br>
+
       @endif
 
       @if(count($pu_finales) == 0)
@@ -511,7 +511,7 @@
       </table>
       @endif
     </div>
-    <div class="referencia">
+    <div class="referencia2">
       <p><b>{{$referencia->nombre}}</b></p>
 
 
