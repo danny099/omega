@@ -277,7 +277,12 @@
         margin-left: 150px;
         margin-right: 80px;
       }
-
+      .ocho{
+        page-break-before:always;
+      }
+      .comerciales{
+        page-break-before:always;
+      }
 
       .tx1{
         margin: 5px;
@@ -313,7 +318,7 @@
       header { position: fixed; top: -60px; left: 0px; right: 0px; height: 100px;
             margin-top: 25px}
       footer { position: fixed; bottom: -60px; left: 0px; right: 0px; height: 50px; }
-      .page-number:after {  content: counter(page) ; }
+      .page-number:after {content: counter(page); }
 
       /*p { page-break-after: always; }*/
       /*p:last-child { page-break-after: never; }*/
@@ -490,7 +495,7 @@
           </tr>
         </thead>
         <tbody>
-          @foreach($pu_finales as $pu) 
+          @foreach($pu_finales as $pu)
             <tr>
               <td>{{ $pu->descripcion }}</td>
               <td width="50">{{ $pu->tipo }}</td>
