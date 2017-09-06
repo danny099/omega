@@ -22,6 +22,8 @@ class UsuarioController extends Controller
      public function __construct()
      {
          $this->middleware('admin');
+
+         $this->middleware('gerente', ['only' => ['show']]);
      }
     public function index()
     {
@@ -96,6 +98,19 @@ class UsuarioController extends Controller
         return view('usuarios.show', compact('perfil'));
     }
 
+    public function verPerfil()
+    {
+        $perfil = Usuario::findOrFail(Auth::user()->id);
+        return view('usuarios.show',compact('perfil'));
+    }
+
+    public function editarPerfil()
+    {
+      $usuarios = Usuario::findOrFail(Auth::user()->id);
+      $roles = Rol::pluck('rol','id');
+      return view('usuarios.edit',compact('usuarios','roles'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -119,7 +134,6 @@ class UsuarioController extends Controller
     public function update(Request $request, $id)
     {
       $input = $request->all();
-
       $file1 = Input::file('foto');
       $file = $request->foto;
       $usuario = Usuario::findOrFail($id);

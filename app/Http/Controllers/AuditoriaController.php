@@ -12,6 +12,13 @@ class AuditoriaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     public function __construct()
+     {
+         $this->middleware('admin');
+
+        //  $this->middleware('gerente', ['only' => ['index', 'edit']]);
+     }
     public function index()
     {
         $auditorias = Auditoria::all();
