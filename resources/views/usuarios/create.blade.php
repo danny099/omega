@@ -79,7 +79,7 @@
           <div class="col-md-6">
             <div class="form-group">
               {!! Form::label('foto', 'Foto') !!}
-              <input type="file" id="files" name="files[]" />
+              <input type="file" id="files" name="files" />
             </div>
           </div>
         </div>

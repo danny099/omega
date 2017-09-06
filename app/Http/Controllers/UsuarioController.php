@@ -53,11 +53,11 @@ class UsuarioController extends Controller
     {
 
         $usuarios = $request->all();
-        $file = Input::file('foto');
+        $file = Input::file('file');
 
         $usuarios['cedula'] = $request->cedula;
         $usuarios['nombres'] = ucwords(mb_strtolower($request->nombres));
-        $usuarios['foto'] = Input::file("foto")->getClientOriginalName();
+        $usuarios['foto'] = Input::file("file")->getClientOriginalName();
         $usuarios['apellidos'] = ucwords(mb_strtolower($request->apellidos));
         $usuarios['email'] = $request->email;
         $usuarios['password'] = Hash::make($request->password);
@@ -134,14 +134,16 @@ class UsuarioController extends Controller
     public function update(Request $request, $id)
     {
       $input = $request->all();
-      $file1 = Input::file('foto');
-      $file = $request->foto;
+
+      $file1 = Input::file('files');
+
+      // $file = $request->foto;
       $usuario = Usuario::findOrFail($id);
       $usuarios['cedula'] = $request->cedula;
       $usuarios['nombres'] = ucwords(mb_strtolower($request->nombres));
 
-      if (isset($file)) {
-        $usuarios['foto'] = Input::file("foto")->getClientOriginalName();
+      if (isset($file1)) {
+        $usuarios['foto'] = Input::file("files")->getClientOriginalName();
       }else {
 
       }
