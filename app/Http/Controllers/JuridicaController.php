@@ -5,7 +5,7 @@ use App\Juridica;
 use App\Cliente;
 use App\Departamento;
 use App\Municipio;
-use App\Cotizacion; 
+use App\Cotizacion;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
@@ -165,17 +165,21 @@ class JuridicaController extends Controller
     {
 
       $cot2 = Cotizacion::where('cotizacion.juridica_id', '=', $id)->get();
+      $var = count($cot2);
+      
+      if ($var == 0) {
+        $juridica = Juridica::findOrFail($id);
+        Session::flash('message', 'Persona juridica eliminada');
+        Session::flash('class', 'danger');
+        $juridica->delete();
+        return redirect('clientes');
 
-      if (!empty($cot2)) {
+      }else {
         Session::flash('message', 'No se puede eliminar el cliente si tiene creadas cotizaciones');
         Session::flash('class', 'danger');
         return redirect('clientes');
       }
-      $juridica = Juridica::findOrFail($id);
-      Session::flash('message', 'Persona juridica eliminada');
-      Session::flash('class', 'danger');
-      $juridica->delete();
-      return redirect('clientes');
+
 
     }
 }

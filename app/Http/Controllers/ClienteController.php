@@ -5,7 +5,7 @@ use App\Cliente;
 use App\Juridica;
 use App\Departamento;
 use App\Municipio;
-use App\Cotizacion; 
+use App\Cotizacion;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
@@ -172,17 +172,21 @@ class ClienteController extends Controller
 
       $cot1 = Cotizacion::where('cotizacion.cliente_id', '=', $id)->get();
 
-      if (!empty($cot1)) {
+      $var = count($cot1);
+
+      if ($var == 0) {
+        $cliente = Cliente::findOrFail($id);
+        Session::flash('message', 'Cliente eliminado');
+        Session::flash('class', 'danger');
+        $cliente->delete();
+        return redirect('clientes');
+      }else {
         Session::flash('message', 'No se puede eliminar el cliente si tiene creadas cotizaciones');
         Session::flash('class', 'danger');
         return redirect('clientes');
       }
 
-      $cliente = Cliente::findOrFail($id);
-      Session::flash('message', 'Cliente eliminado');
-      Session::flash('class', 'danger');
-      $cliente->delete();
-      return redirect('clientes');
+
 
     }
 }
