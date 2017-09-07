@@ -168,6 +168,15 @@ class ClienteController extends Controller
      */
     public function destroy($id)
     {
+
+      $cot1 = Cotizacion::where('cotizacion.cliente_id', '=', $id)->get();
+
+      if (!empty($cot1)) {
+        Session::flash('message', 'No se puede eliminar el cliente si tiene creadas cotizaciones');
+        Session::flash('class', 'danger');
+        return redirect('clientes');
+      }
+
       $cliente = Cliente::findOrFail($id);
       Session::flash('message', 'Cliente eliminado');
       Session::flash('class', 'danger');
