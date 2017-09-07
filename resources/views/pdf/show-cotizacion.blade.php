@@ -330,11 +330,17 @@
   <body>
 
     <header>
+
       <table class="table table-bordered " cellpadding="0" cellspacing="0">
         <tr>
           <td width="100" heigth="100"><center><img id="img" src="logo.jpg" style="width:100px; opacity: 0.5;"></center></td>
           <th style="font-size:15pt; color:#808080;" width="300"><center>COTIZACIÓN</center></th>
-          <td style="font-size:10pt; color:#808080; margin-top:50px;" valign="middle"><center><p class="page-number">Pagina </p></center></td>
+          <td style="font-size:10pt; color:#808080; margin-top:50px;" valign="middle"><center><p class="page-number"><script type="text/php">
+            if ( isset($pdf) ) {
+              // $font = Font_Metrics::get_font("helvetica", "bold");
+              $pdf->page_text(72, 18, "Header: {PAGE_NUM} of {PAGE_COUNT}","helvetica", 6, array(0,0,0));
+            }
+        </script> </p></center></td>
         </tr>
       </table>
     </header>
