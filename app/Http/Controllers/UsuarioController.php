@@ -135,7 +135,8 @@ class UsuarioController extends Controller
     public function update(Request $request, $id)
     {
       $input = $request->all();
-
+      // dd($input);
+      // die();
       $file1 = Input::file('files');
 
       // $file = $request->foto;
@@ -158,7 +159,12 @@ class UsuarioController extends Controller
         // $usuarios['password'] = $usuario->password;
       }
 
-      $usuarios['rol_id'] = $request->rol_id;
+      if (isset($request->rol_id)) {
+        $usuarios['rol_id'] = $request->rol_id;
+      }else {
+        $usuarios['rol_id'] = Auth::user()->rol_id;
+      }
+
 
       if (isset($file1)) {
         $file1->move('photos',$file1->getClientOriginalName());
