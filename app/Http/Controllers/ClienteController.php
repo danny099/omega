@@ -5,6 +5,7 @@ use App\Cliente;
 use App\Juridica;
 use App\Departamento;
 use App\Municipio;
+use App\Cotizacion; 
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
