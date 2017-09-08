@@ -337,8 +337,8 @@
           <th style="font-size:15pt; color:#808080;" width="300"><center>COTIZACIÓN</center></th>
           <td style="font-size:10pt; color:#808080; margin-top:50px;" valign="middle"><center><p class=""><script type="text/php">
             if ( isset($pdf) ) {
-              // $font = Font_Metrics::get_font("helvetica", "bold");
-              $pdf->page_text(490, 45, "Página: {PAGE_NUM} de {PAGE_COUNT}","Arial Narrow", 8, array(0,0,0));
+              $font = $fontMetrics->getFont('Arial Narrow');
+              $pdf->page_text(490, 45, "Página: {PAGE_NUM} de {PAGE_COUNT}",$font, 8, array(0,0,0));
             }
         </script> </p></center></td>
         </tr>
