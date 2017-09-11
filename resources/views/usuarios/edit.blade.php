@@ -102,7 +102,7 @@
           </div>
           <div class="col-md-6">
             <div class="form-group">
-              <output id="list"><img src="{{url('photos')}}/{{Auth::User()->foto}}" class="thumb"></output>
+              <output id="list"><img src="{{url('photos')}}/{{$usuarios->foto}}" class="thumb"></output>
             </div>
           </div>
         </div>
