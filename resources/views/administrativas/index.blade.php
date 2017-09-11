@@ -241,7 +241,7 @@
                         <select class="form-control" name="codigo_cot" style="width: 100%;" id="select" required="">
                           <option value="">Seleccione...</option>
                           @foreach($cotizaciones as $cotizacion)
-                          <option value="{{ $cotizacion->id }}">{{$cotizacion->codigo}}</option>
+                          <option value="{{ $cotizacion->id }}">{{$cotizacion->codigo}} - {{$cotizacion->nombre}}</option>
                           @endforeach
                         </select>
                         <br>
