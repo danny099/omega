@@ -149,6 +149,11 @@ Route::group(['middleware' => 'auth'],function(){
 
 	Route::get('perfil','UsuarioController@verPerfil');
 	Route::get('editarPerfil','UsuarioController@editarPerfil');
+
+	Route::get('pagenotfound',['as' => 'notfound', 'uses' => 'HomeController@pagenotfound']);
+	Route::get('wrong',['as' => 'error', 'uses' => 'HomeController@wrong']);
+
+
 	});
 
 
