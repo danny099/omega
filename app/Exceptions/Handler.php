@@ -51,7 +51,7 @@ class Handler extends ExceptionHandler
           switch ($exception->getStatusCode()) {
 
             // no found
-            case 404:
+            case '404':
               return redirect()->route('notfound');
             break;
 
@@ -59,9 +59,6 @@ class Handler extends ExceptionHandler
             //   return redirect()->route('notfound');
             // break;
 
-            case 'value':
-              # code...
-            break;
             default:
               return $this->renderHttException();
             break;
@@ -86,10 +83,10 @@ class Handler extends ExceptionHandler
         return redirect()->guest(route('login'));
     }
 
-    // Mostrar los valores de el error 500 
-    protected function convertExceptionToResponse(Exception $e)
-    {
-    	$e = FlattenException::create($e);
-    	return response()->view('errors.500', ['exception' => $e], $e->getStatusCode(), $e->getHeaders());
-    }
+    // Mostrar los valores de el error 500
+    // protected function convertExceptionToResponse(Exception $e)
+    // {
+    // 	$e = FlattenException::create($e);
+    // 	return response()->view('errors.500', ['exception' => $e], $e->getStatusCode(), $e->getHeaders());
+    // }
 }

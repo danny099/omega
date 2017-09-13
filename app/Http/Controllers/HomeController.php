@@ -26,7 +26,7 @@ class HomeController extends Controller
         return view('home');
     }
 
-    public function pagenofound()
+    public function pagenotfound()
     {
       return view('errors.404');
     }
