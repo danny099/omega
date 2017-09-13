@@ -84,9 +84,9 @@ class Handler extends ExceptionHandler
     }
 
     // Mostrar los valores de el error 500
-    // protected function convertExceptionToResponse(Exception $e)
-    // {
-    // 	$e = FlattenException::create($e);
-    // 	return response()->view('errors.500', ['exception' => $e], $e->getStatusCode(), $e->getHeaders());
-    // }
+    protected function convertExceptionToResponse(Exception $e)
+    {
+    	$e = FlattenException::create($e);
+    	return response()->view('errors.500', ['exception' => $e], $e->getStatusCode(), $e->getHeaders());
+    }
 }
