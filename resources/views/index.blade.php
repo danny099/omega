@@ -125,7 +125,9 @@
       <!-- Sidebar user panel -->
       <div class="user-panel" >
         <div >
-          <img src="{{url('Certicol.png')}}" >
+          <a href="{{ url('inicio') }}">
+            <img src="{{url('Certicol.png')}}" >
+          </a>
         </div>
 
       </div>
