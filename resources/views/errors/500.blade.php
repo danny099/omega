@@ -12,7 +12,7 @@
          Mientras tanto, usted puede <a href="javascript:history.go(-1)">regresar</a> o intente consultar a su administrador.
       </p>
 
-      <form class="search-form">
+      <!-- <form class="search-form">
         <div class="input-group">
           <input type="text" name="search" class="form-control" placeholder="Search">
 
@@ -21,8 +21,7 @@
             </button>
           </div>
         </div>
-        <!-- /.input-group -->
-      </form>
+      </form> -->
     </div>
   </div>
 

@@ -2,7 +2,7 @@
 
 @section('contenido')
 <!-- Main content -->
-@if(Auth::user()->id == 1)
+@if(Auth::user()->rol_id == 1)
 <div class="row">
   <div class="col-md-12">
     <section class="content">
