@@ -39,7 +39,7 @@
                     <td>{{date_format(new DateTime($documento->updated_at ),'d-m-y H:i:s')}}</td>
 
                     <td>
-                      <a href="{{ route('documentoscon.edit', $documento->id) }}"><i class="glyphicon glyphicon-pencil"></i></a>
+                      <a href="{{ url('documentoscon') }}/{{$documento->id}}/edit"><i class="glyphicon glyphicon-pencil"></i></a>
 
 
                     </tr>
