@@ -171,6 +171,11 @@ class DocumentoController extends Controller
         return view('documentos.create');
     }
 
+    public function crearcontrato()
+    {
+      return view('documentos.create');
+    }
+
     /**
      * Store a newly created resource in storage.
      *
