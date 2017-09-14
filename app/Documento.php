@@ -9,6 +9,6 @@ class Documento extends Model implements AuditableContract
 {
   use Auditable;
   protected $table = 'documentos';
-  protected $fillable = ['id','nombre','detalles','created_at','updated_at'];
+  protected $fillable = ['id','nombre','detalles','tipo','created_at','updated_at'];
 
 }

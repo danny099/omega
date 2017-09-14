@@ -185,16 +185,31 @@ class DocumentoController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-        $documetos['detalles'] = $request->editor1;
-        $documetos['nombre'] = $request->nombre;
+        if ($reques->tipo == '1') {
+          $documetos['detalles'] = $request->editor1;
+          $documetos['nombre'] = $request->nombre;
+          $documetos['tipo'] = 'contrato';
 
-        Documento::create($documetos);
+          Documento::create($documetos);
 
-        Session::flash('message', 'Contrato editado!');
-        Session::flash('class', 'success');
-        return redirect()->route('documentos.index');
+          Session::flash('message', 'texto creado!');
+          Session::flash('class', 'success');
+          return redirect('documentoscon')
+        }else {
+          $documetos['detalles'] = $request->editor1;
+          $documetos['nombre'] = $request->nombre;
+          $documetos['tipo'] = 'cotizacion';
 
+          Documento::create($documetos);
+
+          Session::flash('message', 'texto creado!');
+          Session::flash('class', 'success');
+          return redirect()->route('documentos.index');
+
+        }
     }
+
+
 
     public function cotizacion($id){ // tiene que mandar el id para poder encontrar al que se deba generar
 
