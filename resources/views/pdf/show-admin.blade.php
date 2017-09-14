@@ -2,322 +2,357 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
-    <link rel="stylesheet" href="../public/css/bootstrap.css">
+    <title>{{ $administrativa->codigo_proyecto }}</title>
+    <style media="screen">
+    table {
+      background-color: transparent;
+    }
+    caption {
+      padding-top: 8px;
+      padding-bottom: 8px;
+      color: #777;
+      text-align: left;
+    }
+    th {
+      text-align: left;
+    }
+    .table {
+      width: 100%;
+      max-width: 100%;
+      margin-bottom: 20px;
+    }
+    .table > thead > tr > th,
+    .table > tbody > tr > th,
+    .table > tfoot > tr > th,
+    .table > thead > tr > td,
+    .table > tbody > tr > td,
+    .table > tfoot > tr > td {
+      padding: 3px;
+      line-height: 1.42857143;
+      vertical-align: top;
+      border-top: 1px solid #ddd;
+    }
+    .table > thead > tr > th {
+      vertical-align: bottom;
+      border-bottom: 2px solid #ddd;
+    }
+    .table > caption + thead > tr:first-child > th,
+    .table > colgroup + thead > tr:first-child > th,
+    .table > thead:first-child > tr:first-child > th,
+    .table > caption + thead > tr:first-child > td,
+    .table > colgroup + thead > tr:first-child > td,
+    .table > thead:first-child > tr:first-child > td {
+      border-top: 0;
+    }
+    .table > tbody + tbody {
+      border-top: 2px solid #ddd;
+    }
+    .table .table {
+      background-color: #fff;
+    }
+    .table-condensed > thead > tr > th,
+    .table-condensed > tbody > tr > th,
+    .table-condensed > tfoot > tr > th,
+    .table-condensed > thead > tr > td,
+    .table-condensed > tbody > tr > td,
+    .table-condensed > tfoot > tr > td {
+      padding: 5px;
+    }
+    .table-bordered {
+      border: 1px solid #ddd;
+    }
+    .table-bordered > thead > tr > th,
+    .table-bordered > tbody > tr > th,
+    .table-bordered > tfoot > tr > th,
+    .table-bordered > thead > tr > td,
+    .table-bordered > tbody > tr > td,
+    .table-bordered > tfoot > tr > td {
+      border: 1px solid #ddd;
+    }
+    .table-bordered > thead > tr > th,
+    .table-bordered > thead > tr > td {
+      border-bottom-width: 2px;
+    }
+    .table-striped > tbody > tr:nth-of-type(odd) {
+      background-color: #f9f9f9;
+    }
+    .table-hover > tbody > tr:hover {
+      background-color: #f5f5f5;
+    }
+    table col[class*="col-"] {
+      position: static;
+      display: table-column;
+      float: none;
+    }
+    table td[class*="col-"],
+    table th[class*="col-"] {
+      position: static;
+      display: table-cell;
+      float: none;
+    }
+    .table > thead > tr > td.active,
+    .table > tbody > tr > td.active,
+    .table > tfoot > tr > td.active,
+    .table > thead > tr > th.active,
+    .table > tbody > tr > th.active,
+    .table > tfoot > tr > th.active,
+    .table > thead > tr.active > td,
+    .table > tbody > tr.active > td,
+    .table > tfoot > tr.active > td,
+    .table > thead > tr.active > th,
+    .table > tbody > tr.active > th,
+    .table > tfoot > tr.active > th {
+      background-color: #f5f5f5;
+    }
+    .table-hover > tbody > tr > td.active:hover,
+    .table-hover > tbody > tr > th.active:hover,
+    .table-hover > tbody > tr.active:hover > td,
+    .table-hover > tbody > tr:hover > .active,
+    .table-hover > tbody > tr.active:hover > th {
+      background-color: #e8e8e8;
+    }
+    .table > thead > tr > td.success,
+    .table > tbody > tr > td.success,
+    .table > tfoot > tr > td.success,
+    .table > thead > tr > th.success,
+    .table > tbody > tr > th.success,
+    .table > tfoot > tr > th.success,
+    .table > thead > tr.success > td,
+    .table > tbody > tr.success > td,
+    .table > tfoot > tr.success > td,
+    .table > thead > tr.success > th,
+    .table > tbody > tr.success > th,
+    .table > tfoot > tr.success > th {
+      background-color: #dff0d8;
+    }
+    .table-hover > tbody > tr > td.success:hover,
+    .table-hover > tbody > tr > th.success:hover,
+    .table-hover > tbody > tr.success:hover > td,
+    .table-hover > tbody > tr:hover > .success,
+    .table-hover > tbody > tr.success:hover > th {
+      background-color: #d0e9c6;
+    }
+    .table > thead > tr > td.info,
+    .table > tbody > tr > td.info,
+    .table > tfoot > tr > td.info,
+    .table > thead > tr > th.info,
+    .table > tbody > tr > th.info,
+    .table > tfoot > tr > th.info,
+    .table > thead > tr.info > td,
+    .table > tbody > tr.info > td,
+    .table > tfoot > tr.info > td,
+    .table > thead > tr.info > th,
+    .table > tbody > tr.info > th,
+    .table > tfoot > tr.info > th {
+      background-color: #d9edf7;
+    }
+    .table-hover > tbody > tr > td.info:hover,
+    .table-hover > tbody > tr > th.info:hover,
+    .table-hover > tbody > tr.info:hover > td,
+    .table-hover > tbody > tr:hover > .info,
+    .table-hover > tbody > tr.info:hover > th {
+      background-color: #c4e3f3;
+    }
+    .table > thead > tr > td.warning,
+    .table > tbody > tr > td.warning,
+    .table > tfoot > tr > td.warning,
+    .table > thead > tr > th.warning,
+    .table > tbody > tr > th.warning,
+    .table > tfoot > tr > th.warning,
+    .table > thead > tr.warning > td,
+    .table > tbody > tr.warning > td,
+    .table > tfoot > tr.warning > td,
+    .table > thead > tr.warning > th,
+    .table > tbody > tr.warning > th,
+    .table > tfoot > tr.warning > th {
+      background-color: #fcf8e3;
+    }
+    .table-hover > tbody > tr > td.warning:hover,
+    .table-hover > tbody > tr > th.warning:hover,
+    .table-hover > tbody > tr.warning:hover > td,
+    .table-hover > tbody > tr:hover > .warning,
+    .table-hover > tbody > tr.warning:hover > th {
+      background-color: #faf2cc;
+    }
+    .table > thead > tr > td.danger,
+    .table > tbody > tr > td.danger,
+    .table > tfoot > tr > td.danger,
+    .table > thead > tr > th.danger,
+    .table > tbody > tr > th.danger,
+    .table > tfoot > tr > th.danger,
+    .table > thead > tr.danger > td,
+    .table > tbody > tr.danger > td,
+    .table > tfoot > tr.danger > td,
+    .table > thead > tr.danger > th,
+    .table > tbody > tr.danger > th,
+    .table > tfoot > tr.danger > th {
+      background-color: #f2dede;
+    }
+    .table-hover > tbody > tr > td.danger:hover,
+    .table-hover > tbody > tr > th.danger:hover,
+    .table-hover > tbody > tr.danger:hover > td,
+    .table-hover > tbody > tr:hover > .danger,
+    .table-hover > tbody > tr.danger:hover > th {
+      background-color: #ebcccc;
+    }
+    .table-responsive {
+      min-height: .01%;
+      overflow-x: auto;
+    }
+    @media screen and (max-width: 767px) {
+      .table-responsive {
+        width: 100%;
+        margin-bottom: 15px;
+        overflow-y: hidden;
+        -ms-overflow-style: -ms-autohiding-scrollbar;
+        border: 1px solid #ddd;
+      }
+      .table-responsive > .table {
+        margin-bottom: 0;
+      }
+      .table-responsive > .table > thead > tr > th,
+      .table-responsive > .table > tbody > tr > th,
+      .table-responsive > .table > tfoot > tr > th,
+      .table-responsive > .table > thead > tr > td,
+      .table-responsive > .table > tbody > tr > td,
+      .table-responsive > .table > tfoot > tr > td {
+        white-space: nowrap;
+      }
+      .table-responsive > .table-bordered {
+        border: 0;
+      }
+      .table-responsive > .table-bordered > thead > tr > th:first-child,
+      .table-responsive > .table-bordered > tbody > tr > th:first-child,
+      .table-responsive > .table-bordered > tfoot > tr > th:first-child,
+      .table-responsive > .table-bordered > thead > tr > td:first-child,
+      .table-responsive > .table-bordered > tbody > tr > td:first-child,
+      .table-responsive > .table-bordered > tfoot > tr > td:first-child {
+        border-left: 0;
+      }
+      .table-responsive > .table-bordered > thead > tr > th:last-child,
+      .table-responsive > .table-bordered > tbody > tr > th:last-child,
+      .table-responsive > .table-bordered > tfoot > tr > th:last-child,
+      .table-responsive > .table-bordered > thead > tr > td:last-child,
+      .table-responsive > .table-bordered > tbody > tr > td:last-child,
+      .table-responsive > .table-bordered > tfoot > tr > td:last-child {
+        border-right: 0;
+      }
+      .table-responsive > .table-bordered > tbody > tr:last-child > th,
+      .table-responsive > .table-bordered > tfoot > tr:last-child > th,
+      .table-responsive > .table-bordered > tbody > tr:last-child > td,
+      .table-responsive > .table-bordered > tfoot > tr:last-child > td {
+        border-bottom: 0;
+      }
+    }
+
+      /*.referencia, .comerciales, .inspeccionDoc,.pago, .referencia, .ocho, .inscricion {
+        page-break-inside: avoid;
+      }*/
+      body{
+        font-family: "Arial Narrow",sans-serif;
+      	font-size: 9pt;
+      	font-style: normal;
+      	font-variant: normal;
+      	font-weight: 500;
+      	line-height: 15.4px;
+        text-align: justify;
+      }
+      p{
+        margin: 0;
+        padding: 0;
+      }
+      .codigo{
+        display: inline-block;
+        float: left;
+        text-align: center;
+      }
+      .entrada{
+        display: inline-block;
+      }
+      .obj1{
+        display: inline-block;
+        }
+      .obj2{
+        display: inline-block;
+        margin-left: 10px;
+        margin-right: 30px;
+      }
+
+
+      .tx1{
+        margin: 5px;
+      }
+      img{
+        margin: 0;
+        padding: 0;
+      }
+      .div2{
+        padding: 0;
+        margin-top: 20px;
+      }
+      .ttable{
+        text-align: center;
+      }
+      #td{
+        border-bottom: solid white;
+      }
+      #td2{
+        border-top: solid white;
+      }
+      #td3{
+        border-top: solid white;
+      }
+      table {
+        border-collapse:collapse; border: none;
+      }
+      td {
+        padding: 0;
+      }
+
+      .referencia {
+          page-break-after: always;
+      }
+      .comerciales {
+          page-break-after: avoid;
+      }
+
+      @page { margin: 100px 50px; }
+      header { position: fixed; top: -60px; left: 0px; right: 0px; height: 100px;
+            margin-top: 25px}
+      footer { position: fixed; bottom: -60px; left: 0px; right: 0px; height: 50px; }
+      .page-number:after {content: counter(page); }
+
+      /*p { page-break-after: always; }*/
+      /*p:last-child { page-break-after: never; }*/
+
+    </style>
+  </head>
   <body>
-    <center><img id="img" src="Certicol2.png" style="height:100px;"></center><br><br><br>
-    <center><h1>Datos del Proyecto</h1></center>
-    <table class="table table-bordered">
-      <thead>
 
-      </thead>
-      <tbody>
-        <tr>
-          <td>Código del Proyecto</td>
-          <td>{{ $administrativa->codigo_proyecto}}</td>
-          <td>Valor antes de IVA</td>
-          <td>${{  $administrativa->valor_contrato_inicial }}</td>
-        </tr>
-        <tr>
-          <td>Nombre del proyecto</td>
-          <td>{{ $administrativa->nombre_proyecto}}</td>
-          <td>Valor IVA</td>
-          <td>${{  number_format($administrativa->valor_iva,0) }}</td>
-        </tr>
-        <tr>
-          <td>Fecha del contrato</td>
-          <td>{{  date_format(new DateTime($administrativa->fecha_contrato), 'd-m-y')}}</td>
-          <td>Valor adicional</td>
-          <td>
-            @foreach($adicionales as $adici)
-              {{ $adici->detalle }}
-              ${{ number_format($adici->valor,0) }}
-              <br>
-            @endforeach
-          </td>
-        </tr>
-        <tr>
-          <td>Cliente</td>
-          <td>
-            @if(empty($clientes))
-              <span>{{ $juridicas->razon_social }}</span>
-            @else
-              <span>{{ $clientes->nombre}}</span>
-            @endif
-          </td>
-          <td>Otro si</td>
-          <td>
-            @foreach($otrosis as $otro)
-              ${{ number_format($otro->valor,0) }}
-              {{ $otro->detalles }}
-              <br>
-            @endforeach
-          </td>
+    <header>
 
-        </tr>
+      <table class="table table-bordered " cellpadding="0" cellspacing="0">
         <tr>
-          <td>Municipio</td>
-          <td>{{ $municipios->nombre }}</td>
-          <td>Valor contrato final</td>
-          <td>${{ number_format($administrativa->valor_contrato_final,0)}}</td>
-
+          <td width="100" heigth="100"><center><img id="img" src="logo.jpg" style="width:100px; opacity: 0.5;"></center></td>
+          <th style="font-size:15pt; color:#808080;" width="300"><center>COTIZACIÓN</center></th>
+          <td style="font-size:10pt; color:#808080; margin-top:50px;" valign="middle"><center><p class=""><script type="text/php">
+            if ( isset($pdf) ) {
+              $font = $fontMetrics->getFont('Arial Narrow');
+              $pdf->page_text(490, 45, "Página: {PAGE_NUM} de {PAGE_COUNT}",$font, 8, array(0,0,0));
+            }
+        </script> </p></center></td>
         </tr>
-        <tr>
-          <td>Departamento</td>
-          <td>{{ $departamentos->nombre }}</td>
-          <td>Plan de pago</td>
-          <td>{{ $administrativa->plan_pago}}</td>
-
-        </tr>
-        <tr>
-          <td>Tipo zona</td>
-          <td>{{ $administrativa->tipo_zona }}</td>
-          <td>Valor total</td>
-          <td>${{ number_format($administrativa->Valor_total_contrato,0)}}</td>
-        </tr>
-      </tbody>
-    </table>
-    <center><h2>Saldo</h2></center>
-    <center><span>${{ number_format($administrativa->saldo,0) }}</span></center>
-
-    <br>
-    <div class="col-md-12">
-     <h4 class="box-title">Observaciones de estado administrativo del proyecto:</h4>
-    </div>
-
-    <div class="col-md-12">
-      <table border="1" class="table table-bordered" >
-        <thead>
-          <tr>
-            <th>N°</th>
-            <th>Observación</th>
-          </tr>
-        </thead>
-        <tbody>
-          @foreach($observaciones as $key => $obs)
-            <tr>
-              <td>{{ $key+1 }}</td>
-              <td>{{ $obs->observacion }}</td>
-            </tr>
-          @endforeach
-        </tbody>
       </table>
-    <center><h2>Alcances</h2></center>
-    @if(count($transformaciones) == 0)
-    @else
-    <table class="table table-bordered">
-      <thead>
+    </header>
+    <footer>
+      <table class="table">
         <tr>
-          <th>Descripción</th>
-          <th>Tipo</th>
-          <th>Capacidad</th>
-          <th>Unidad</th>
-          <th>Cantidad</th>
+          <td id="td3"><center><span class="">Certicol_for_096 / Aprobado 09-05-2017 / Versión 01 </span></center></td>
         </tr>
-      </thead>
-      <tbody>
+      </table>
+    </footer>
 
-        @foreach($transformaciones as $transfor)
-
-          <tr>
-            <td>{{ $transfor->descripcion }}</td>
-            <td>{{ $transfor->tipo }}</td>
-            <td>{{ $transfor->capacidad }}</td>
-            <td>{{ $transfor->unidad }}</td>
-            <td>{{ $transfor->cantidad }}</td>
-          </tr>
-        @endforeach
-      </tbody>
-    </table>
-    @endif
-
-
-    @if(count($distribuciones) == 0)
-
-    @else
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th>Descripción</th>
-          <th>Tipo</th>
-          <th>Unidad</th>
-          <th>Cantidad</th>
-        </tr>
-      </thead>
-      <tbody>
-        @foreach($distribuciones as $distri)
-          <tr>
-            <td>{{ $distri->descripcion }}</td>
-            <td>{{ $distri->tipo }}</td>
-            <td>{{ $distri->unidad }}</td>
-            <td>{{ $distri->cantidad }}</td>
-          </tr>
-        @endforeach
-      </tbody>
-    </table>
-    @endif
-
-    @if(count($pu_finales) == 0)
-    @else
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th>Descripción</th>
-          <th>Tipo</th>
-          <th>Unidad</th>
-          <th>Cantidad</th>
-        </tr>
-      </thead>
-      <tbody>
-        @foreach($pu_finales as $pu)
-          <tr>
-            <td>{{ $pu->descripcion }}</td>
-            <td>{{ $pu->tipo }}</td>
-            <td>{{ $pu->unidad }}</td>
-            <td>{{ $pu->cantidad }}</td>
-          </tr>
-        @endforeach
-      </tbody>
-    </table>
-    @endif
-
-    @if(count($cuenta_cobros) == 0)
-    @else
-    <center><h2>Cuenta cobro</h2></center>
-      @foreach($cuenta_cobros as $cuenta)
-          <table class="table table-bordered">
-            <tr>
-              <th>Porcentaje</th>
-              <td>{{ $cuenta->porcentaje }}</td>
-            </tr>
-            <tr>
-              <th>Valor</th>
-              <td>${{ number_format($cuenta->valor,0) }}</td>
-            </tr>
-            <tr>
-              <th>Fecha cuenta cobro</th>
-              <td>{{date_format(new DateTime($cuenta->fecha_cuenta_cobro), 'd-m-y') }}</td>
-            </tr>
-            <tr>
-              <th>Fecha pago</th>
-              <td>{{date_format(new DateTime($cuenta->fecha_pago), 'd-m-y') }}</td>
-            </tr>
-            <tr>
-              <th>Número cuenta cobro</th>
-              <td>{{ $cuenta->numero_cuenta_cobro }}</td>
-            </tr>
-            <tr>
-              <th>Observaciones</th>
-              <td>{{ $cuenta->observaciones }}</td>
-            </tr>
-
-          </table>
-          <br>
-        @endforeach
-    @endif
-
-
-
-    @if(count($consignaciones) == 0)
-    @else
-    <center><h2>Consignaciones</h2></center>
-      @foreach($consignaciones as $consig)
-          <table class="table table-bordered">
-            <tr>
-              <th>Fecha Pago</th>
-              <td>{{date_format(new DateTime($consig->fecha_pago), 'd-m-y')}}</td>
-            </tr>
-            <tr>
-              <th>Valor</th>
-              <td>${{ number_format($consig->valor,0) }}</td>
-            </tr>
-            <tr>
-              <th>Valor IVA</th>
-              <td>${{ number_format($consig->valor_iva,0)}}</td>
-            </tr>
-            <tr>
-              <th>Valor total</th>
-              <td>${{ number_format($consig->valor_total,0)}}</td>
-            </tr>
-            <tr>
-              <th>Observaciones</th>
-              <td>${{ $consig->observaciones }}</td>
-            </tr>
-          </table>
-          <br>
-        @endforeach
-    @endif
-
-    <br>
-    <br>
-
-
-    @if(count($facturas) == 0)
-
-    @else
-    <center><h2>Facturas</h2></center>
-      @foreach($facturas as $fac)
-          <table class="table table-bordered">
-            <tr>
-              <th>Número de la factura</th>
-              <td>{{ $fac->num_factura }}</td>
-            </tr>
-            <tr>
-              <th>Fecha de la factura</th>
-              <td>{{date_format(new DateTime($fac->fecha_factura), 'd-m-y') }}</td>
-            </tr>
-            <tr>
-              <th>Valor antes de IVA</th>
-              <td>${{ number_format($fac->valor_factura,0)}}</td>
-            </tr>
-            <tr>
-              <th>IVA</th>
-              <td>${{ number_format($fac->iva,0)}}</td>
-            </tr>
-            <tr>
-              <th>Valor total de la factura</th>
-              <td>${{ number_format($fac->valor_total,0)}}</td>
-            </tr>
-            <tr>
-              <th>Retenciones %</th>
-              <td>{{ $fac->rete_porcen }} %</td>
-            </tr>
-            <tr>
-              <th>Retenciones valor</th>
-              <td>${{ number_format($fac->retenciones,0)}}</td>
-            </tr>
-            <tr>
-              <th>Amortización</th>
-              <td>${{ number_format($fac->amortizacion,0)}}</td>
-            </tr>
-            <tr>
-              <th>Pólizas valor</th>
-              <td>${{ number_format($fac->polizas,0)}}</td>
-            </tr>
-            <tr>
-              <th>Retegarantía %</th>
-              <td>{{ $fac->retegaran_porcen }} %</td>
-            </tr>
-            <tr>
-              <th>Retegarantía valor</th>
-              <td>${{ number_format($fac->retegarantia,0)}}</td>
-            </tr>
-            <tr>
-              <th>Valor pagado</th>
-              <td>${{ number_format($fac->valor_pagado,0)}}</td>
-            </tr>
-            <tr>
-              <th>Fecha pago</th>
-              <td>{{  date_format(new DateTime($fac->fecha_pago), 'd-m-y')}}</td>
-            </tr>
-            <tr>
-              <th>Observaciones</th>
-              <td>{{ $fac->observaciones }}</td>
-            </tr>
-          </table>
-          <br>
-        @endforeach
-    @endif
 
   </body>
+
 </html>

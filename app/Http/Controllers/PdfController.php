@@ -73,6 +73,11 @@ class PdfController extends Controller
       return $pdf->stream($administrativa->codigo_proyecto);
     }
 
+    public function viewcontrato()
+    {
+      
+    }
+
 
 
     public function cotizacionPdf($id)

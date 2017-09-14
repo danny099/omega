@@ -149,9 +149,16 @@ class DocumentoController extends Controller
      */
     public function index()
     {
-        $documentos = Documento::all();
+      $documentos = Documento::where('documentos.tipo', '=', 'cotizacion')->get();
+
 
         return view('documentos.index',compact('documentos'));
+    }
+
+    public function indexContrato()
+    {
+      $documentos = Documento::where('documentos.tipo', '=', 'contrato')->get();
+      return view('documentos.index',compact('documentos'));
     }
 
     /**
