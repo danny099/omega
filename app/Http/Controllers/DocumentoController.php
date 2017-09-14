@@ -158,7 +158,8 @@ class DocumentoController extends Controller
     public function indexContrato()
     {
       $documentos = Documento::where('documentos.tipo', '=', 'contrato')->get();
-      return view('documentos.index',compact('documentos'));
+
+      return view('documentoscon.index',compact('documentos'));
     }
 
     /**
@@ -173,7 +174,7 @@ class DocumentoController extends Controller
 
     public function crearcontrato()
     {
-      return view('documentos.create');
+      return view('documentoscon.create');
     }
 
     /**
@@ -185,16 +186,17 @@ class DocumentoController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-        if ($reques->tipo == '1') {
+
+        if (!empty($request->tipo)) {
           $documetos['detalles'] = $request->editor1;
           $documetos['nombre'] = $request->nombre;
           $documetos['tipo'] = 'contrato';
 
           Documento::create($documetos);
 
-          Session::flash('message', 'texto creado!');
+          Session::flash('message', 'Contrato editado!');
           Session::flash('class', 'success');
-          return redirect('documentoscon')
+          return redirect('documentoscon');
         }else {
           $documetos['detalles'] = $request->editor1;
           $documetos['nombre'] = $request->nombre;
@@ -202,11 +204,11 @@ class DocumentoController extends Controller
 
           Documento::create($documetos);
 
-          Session::flash('message', 'texto creado!');
+          Session::flash('message', 'Contrato editado!');
           Session::flash('class', 'success');
           return redirect()->route('documentos.index');
-
         }
+
     }
 
 
@@ -1768,6 +1770,11 @@ class DocumentoController extends Controller
         return view('documentos.edit',compact('documento'));
     }
 
+    public function editar($id)
+    {
+      $documento = Documento::find($id);
+      return view('documentoscon.edit',compact('documento'));
+    }
     /**
      * Update the specified resource in storage.
      *

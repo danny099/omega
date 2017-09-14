@@ -139,16 +139,22 @@ Route::group(['middleware' => 'auth'],function(){
 	/**************************************************************/
 	Route::resource('cotizaciones','CotizacionController');
 	Route::get('deletecot/{id}','CotizacionController@destroy');
-
+	/**************************************************************/
+	/**************************************************************/
 	Route::resource('documentos','DocumentoController');
 	Route::get('deletedocumentos/{id}','DocumentoController@destroy');
-
+	/**************************************************************/
+	/**************************************************************/
 	Route::get('documentoscon', 'DocumentoController@indexContrato');
+	Route::post('documentoscon', 'DocumentoController@store');
+	Route::get('documentoscon/{id}/edit', 'DocumentoController@editar');
 	Route::get('documentoscon/create', 'DocumentoController@crearcontrato');
-
+	/**************************************************************/
+	/**************************************************************/
 	Route::get('cotizacion/{id}','PdfController@cotizacionPdf');
 	Route::get('contrato/{id}','DocumentoController@contrato');
-
+	/**************************************************************/
+	/**************************************************************/
 	Route::get('perfil','UsuarioController@verPerfil');
 	Route::get('editarPerfil','UsuarioController@editarPerfil');
 
