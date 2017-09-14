@@ -246,7 +246,10 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{ url('documentos') }}"><i class="fa fa-circle-o"></i>Documentos</a></li>
+            <li><a href="{{ url('documentos') }}"><i class="fa fa-circle-o"></i>Documentos de cotización</a></li>
+          </ul>
+          <ul class="treeview-menu">
+            <li><a href="{{ url('documentoscon') }}"><i class="fa fa-circle-o"></i>Documentos de contrato</a></li>
           </ul>
         </li>
       </ul>
