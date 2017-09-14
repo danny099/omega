@@ -25,6 +25,7 @@
                     <div class="col-md-3">
                       <label for="">Nombre:</label>
                       <input type="text" name="nombre" class="form-control" value="">
+                      <input type="hidden" name="tipo" class="form-control" value="1">
                       <br>
                     </div>
                     <div class="col-md-3">
