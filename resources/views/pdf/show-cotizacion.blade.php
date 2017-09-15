@@ -270,7 +270,10 @@
         display: inline-block;
       }
       .obj1{
-        display: inline-block;
+        display: block;
+        float: left;
+        margin-right: 5px;
+
         }
       .obj2{
         display: inline-block;
@@ -373,11 +376,12 @@
       <div class="dirigido">
         <p>{{ $cotizaciones->dirigido }}</p>
         @if(empty($clientes))
-        <span>Razon social: {{ $juridicas->razon_social }}</span><br>
+        <span>{{ $juridicas->nombre_representante }}</span><br>
+        <span>{{ $juridicas->razon_social }}</span><br>
         <span>NIT: {{ $juridicas->nit }}</span><br>
         @else
-        <span>Nombre: {{ $clientes->nombre}}</span><br>
-        <span>CC: {{ $clientes->cedula}}</span>
+        <span>{{ $clientes->nombre }}</span><br>
+        <span>CC: {{ $clientes->cedula }}</span>
         @endif
       </div>
     </div>
@@ -413,27 +417,27 @@
 
       <table class=" table table-bordered table-striped">
         <tr>
-          <th colspan="6" class="ttable">ALCANCE DE TRANSFORMACIÓN</th>
+          <th colspan="6" class="ttable">TRANSFORMACIÓN</th>
         </tr>
         <thead>
           <tr>
-            <th >Descripción</th>
-            <th width="50">Tipo</th>
-            <th width="60">Tensión(KV)</th>
-            <th width="50">Capacidad(KVA)</th>
-            <th width="50">Cantidad</th>
-            <th width="50">Refrigeración</th>
+            <th><center>Descripción</center></th>
+            <th width="50"><center>Tipo</center></th>
+            <th width="60"><center>Tensión (KV)</center></th>
+            <th width="50"><center>Capacidad(KVA)</center></th>
+            <th width="50"><center>Cantidad</center></th>
+            <th width="50"><center>Refrigeración</center></th>
           </tr>
         </thead>
         <tbody>
           @foreach($transformaciones as $transfor)
             <tr>
               <td>{{ $transfor->descripcion }}</td>
-              <td width="50">{{ $transfor->tipo }}</td>
-              <td width="60">{{ $transfor->nivel_tension }}</td>
-              <td width="50">{{ $transfor->capacidad }} KVA</td>
-              <td width="50">{{ $transfor->cantidad }} Und</td>
-              <td width="50">{{ $transfor->tipo_refrigeracion }}</td>
+              <td width="50"><center>{{ $transfor->tipo }}</center></td>
+              <td width="60"><center>{{ $transfor->nivel_tension }} </center></td>
+              <td width="50"><center>{{ $transfor->capacidad }} </center></td>
+              <td width="50"><center>{{ $transfor->cantidad }} Und</center></td>
+              <td width="50"><center>{{ $transfor->tipo_refrigeracion }}</center></td>
             </tr>
           @endforeach
         </tbody>
@@ -445,32 +449,32 @@
       @else
       <table class=" table table-bordered table-striped">
         <tr>
-          <th colspan="7" class="ttable">ALCANCE DE DISTRIBUCIÓN</th>
+          <th colspan="7" class="ttable">DISTRIBUCIÓN</th>
         </tr>
         <thead>
           <tr>
-            <th>Descripción</th>
-            <th width="50">Tipo</th>
-            <th width="60">Tensión(KV)</th>
-            <th width="50">Cantidad</th>
-            <th width="50">Apoyos</th>
-            <th width="50">Cajas</th>
-            <th width="50">Notas</th>
+            <th><center>Descripción</center></th>
+            <th width="50"><center>Tipo</center></th>
+            <th width="50"><center>Tensión</center></th>
+            <th width="50"><center>Cantidad</center></th>
+            <th width="50"><center>Apoyos</center></th>
+            <th width="50"><center>Cajas</center></th>
+            <th width="50"><center>Notas</center></th>
           </tr>
         </thead>
         <tbody>
           @foreach($distribuciones as $distri)
             <tr>
               <td>{{ $distri->descripcion }}</td>
-              <td width="50">{{ $distri->tipo }}</td>
-              <td width="60">{{ $distri->nivel_tension }}</td>
-              <td width="50">{{ $distri->cantidad }} mts.</td>
-              <td width="50">{{ $distri->apoyos }}</td>
-              <td width="50">{{ $distri->cajas }}</td>
+              <td width="50"><center>{{ $distri->tipo }}</center></td>
+              <td width="50"><center>{{ $distri->nivel_tension }}</center></td>
+              <td width="50"><center>{{ $distri->cantidad }} mts.</center></td>
+              <td width="50"><center>{{ $distri->apoyos }}</center></td>
+              <td width="50"><center>{{ $distri->cajas }}</center></td>
               @if($distri->notas == null)
-                <td width="50">N.A</td>
+                <td width="50"><center>N.A</center></td>
               @else
-                <td width="50">{{ $distri->notas }}</td>
+                <td width="50"><center>{{ $distri->notas }}</center></td>
               @endif
             </tr>
           @endforeach
@@ -483,34 +487,39 @@
       @else
       <table class=" table table-bordered table-striped salte">
         <tr>
-          <th colspan="7" class="ttable">ALCANCE PROCESO USO FINAL</th>
+          <th colspan="7" class="ttable">USO FINAL RESIDENCIAL, COMERCIAL O INDUSTRIAL</th>
         </tr>
         <thead>
           <tr>
-            <th>Descripción</th>
-            <th width="50">Tipo</th>
-            <th width="50">Estrato</th>
-            <th width="50">Cantidad</th>
-            <th width="50">m²</th>
-            <th width="50">KVA</th>
+            <th width="190"><center>Descripción</center></th>
+            <th width="50"><center>Tipo</center></th>
+            <th width="40"><center>Estrato</center></th>
+            <th width="50"><center>Cantidad</center></th>
+            <th width="30"><center>m²</center></th>
+            <th width="50"><center>KVA</center></th>
 
-            <th width="50">Acometidas</th>
+            <th width="50"><center>Acometidas</center></th>
           </tr>
         </thead>
         <tbody>
           @foreach($pu_finales as $pu)
             <tr>
-              <td>{{ $pu->descripcion }}</td>
-              <td width="50">{{ $pu->tipo }}</td>
+              <td><center>{{ $pu->descripcion }}</center></td>
+              <td width="50"><center>{{ $pu->tipo }}</center></td>
               @if( $pu->estrato == null )
-                <td width="50"> N.A </td>
+                <td width="40"> <center>N.A</center> </td>
               @else
-                <td width="50">{{ $pu->estrato }}</td>
+                <td width="40"><center>{{ $pu->estrato }}</center></td>
               @endif
-              <td width="50">{{ $pu->cantidad }} Und</td>
-              <td width="50">{{ $pu->metros }}</td>
-              <td width="50">{{ $pu->kva }} KVA</td>
-              <td width="50">{{ $pu->acometidas }}</td>
+              <td width="50"><center>{{ $pu->cantidad }} Und</center></td>
+              <td width="30"><center>{{ $pu->metros }}</center></td>
+              @if($pu->kva == 'Según Plano')
+                <td width="50"><center>{{ $pu->kva }}</center></td>
+              @else
+                <td width="50"><center>{{ $pu->kva }} KVA</center></td>
+              @endif
+
+              <td width="50"><center>{{ $pu->acometidas }}</center></td>
             </tr>
           @endforeach
         </tbody>
@@ -556,23 +565,23 @@
 
       <table class="table table-bordered tabla">
         <tr>
-          <th Colspan="4" ><center><label> Cotización</label></center></th>
+          <th Colspan="4" ><center><label>COTIZACIÓN</label></center></th>
         </tr>
         <tr>
-          <th><center><label> Ítem </label></center></th>
-          <th><center><label> Descripción del alcance </label></center></th>
-          <th><center><label> Cantidad </label></center></th>
-          <th><center><label> Valor </label></center></th>
+          <th><center><label> ÍTEM </label></center></th>
+          <th><center><label> DESCRIPCIÓN DEL ALCANCE </label></center></th>
+          <th><center><label> CANTIDAD </label></center></th>
+          <th><center><label> VALOR </label></center></th>
         </tr>
         <?php $i = 0; ?>
         @foreach($transformaciones as $trans)
           <tr >
             <?php $i++ ?>
-            <td>{{$i}}</td>
+            <td><center>{{$i}}</center></td>
             <td>
-              <p>{{ $trans->descripcion }} - {{ $trans->tipo }} - Capacidad: {{ $trans->capacidad}} KVA </p>
+              <p>{{ $trans->descripcion }} - {{ $trans->tipo }} - Capacidad: {{ $trans->capacidad}} KVA</p>
             </td>
-            <td>{{ $trans->cantidad }} {{ $trans->unidad }}</td>
+            <td><center>{{ $trans->cantidad }} {{ $trans->unidad }}</center></td>
 
             <td id="td"></td>
           </tr>
@@ -580,11 +589,11 @@
         @foreach($distribuciones as $distri)
           <tr>
             <?php $i++ ?>
-            <td>{{$i}}</td>
+            <td><center>{{$i}}</center></td>
             <td>
               <p>{{ $distri->descripcion }} - {{ $distri->tipo }}</p>
             </td>
-            <td>{{ $distri->cantidad }} {{ $distri->unidad }}</td>
+            <td><center>{{ $distri->cantidad }} {{ $distri->unidad }}</center></td>
 
             <td id="td2"></td>
           </tr>
@@ -592,32 +601,32 @@
         @foreach($pu_finales as $pu)
           <tr>
             <?php $i++ ?>
-            <td>{{$i}}</td>
+            <td><center>{{$i}}</center></td>
             <td>
               <p>{{ $pu->descripcion }} - {{ $pu->tipo }}</p>
             </td>
-            <td>{{ $pu->cantidad }} {{ $pu->unidad }}</td>
+            <td><center>{{ $pu->cantidad }} {{ $pu->unidad }}</center></td>
 
             <td id="td2"></td>
           </tr>
         @endforeach
         <tr>
-          <td></td>
+          <td rowspan="4"></td>
           <td colspan="2"><b>Valor de la Inspección</b></td>
           <td>${{ number_format($total,0) }}</td>
         </tr>
         <tr>
-          <td></td>
+
           <td colspan="2"><b>IVA(19%)</b></td>
           <td>${{ number_format($iva,0) }}</td>
         </tr>
         <tr>
-          <td></td>
+
           <td colspan="2"><b>Total</b></td>
           <td>${{ number_format($valor_total,0) }}</td>
         </tr>
         <tr>
-          <td></td>
+
           <td colspan="2"><b>Costo adicional de visita por dia si se requiere:</b></td>
           <td>${{ $cotizaciones->adicional }}</td>
         </tr>
@@ -676,7 +685,7 @@
       </div>
       <div class="img">
         <img id="img" src="firma.jpg" style="height:80px;">
-        <img id="img" src="Certicol2.png" style="margin-left:250px; height:80px">
+        <img id="img" src="Certicol2.png" style="margin-left:300px; height:80px">
       </div>
       <div class="datos">
         <?php
