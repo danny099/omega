@@ -594,10 +594,7 @@
               <p>{{ $trans->descripcion }} - {{ $trans->tipo }} - Capacidad: {{ $trans->capacidad}} KVA</p>
             </td>
             <td><center>{{ $trans->cantidad }} {{ $trans->unidad }}</center></td>
-
               <td id="td" rowspan=<?php echo $contador; ?> style="vertical-align:middle; text-align:center;" >${{ number_format($total,0) }}</td>
-
-
           </tr>
         @endforeach
         @foreach($distribuciones as $distri)
