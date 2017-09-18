@@ -595,7 +595,9 @@
             </td>
             <td><center>{{ $trans->cantidad }} {{ $trans->unidad }}</center></td>
 
-            <td id="td" rowspan=<?php echo $contador; ?> style="vertical-align:middle; text-align:center;" >${{ number_format($total,0) }}</td>
+              <td id="td" rowspan=<?php echo $contador; ?> style="vertical-align:middle; text-align:center;" >${{ number_format($total,0) }}</td>
+
+
           </tr>
         @endforeach
         @foreach($distribuciones as $distri)
@@ -606,6 +608,7 @@
               <p>{{ $distri->descripcion }} - {{ $distri->tipo }}</p>
             </td>
             <td><center>{{ $distri->cantidad }} {{ $distri->unidad }}</center></td>
+
           </tr>
         @endforeach
         @foreach($pu_finales as $pu)
@@ -636,7 +639,7 @@
         <tr>
 
           <td colspan="2"><b>Costo adicional de visita por dia si se requiere:</b></td>
-          <td>${{ $cotizaciones->adicional }}</td>
+          <td><center>${{ $cotizaciones->adicional }}</center></td>
         </tr>
         <!-- <td>
           <p> </p>
