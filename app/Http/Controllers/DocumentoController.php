@@ -1741,8 +1741,7 @@ class DocumentoController extends Controller
 
       $document->saveAs('documento/temp_contrato.docx');
       $ficher = 'documento/temp_contrato.docx';
-      header("Content-Disposition: attachment; filename='documento/temp_contrato.docx'");
-      echo file_get_contents($ficher);
+
 
       return redirect()->route('administrativas.index');
 
