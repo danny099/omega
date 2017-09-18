@@ -64,7 +64,7 @@ class JuridicaController extends Controller
         $emailrepe = Juridica::where('email',$request->email)->get();
 
         if (empty($cliente['email']) ) {
-          Cliente::create($cliente);
+          Juridica::create($cliente);
           Session::flash('message', 'Cliente creado correctamente!');
           Session::flash('class', 'success');
           return redirect()->route('clientes.index');
@@ -166,7 +166,7 @@ class JuridicaController extends Controller
 
       $cot2 = Cotizacion::where('cotizacion.juridica_id', '=', $id)->get();
       $var = count($cot2);
-      
+
       if ($var == 0) {
         $juridica = Juridica::findOrFail($id);
         Session::flash('message', 'Persona juridica eliminada');
