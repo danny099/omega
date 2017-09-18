@@ -586,6 +586,12 @@
 
 
         ?>
+        <tr style="padding:0px; margin:0px">
+          <td></td>
+          <td></td>
+          <td></td>
+          <td id="td" rowspan=<?php echo $contador+1; ?> style="vertical-align:middle; text-align:center;" >${{ number_format($total,0) }}</td>
+        </tr>
         @foreach($transformaciones as $trans)
           <tr >
             <?php $i++ ?>
@@ -594,7 +600,7 @@
               <p>{{ $trans->descripcion }} - {{ $trans->tipo }} - Capacidad: {{ $trans->capacidad}} KVA</p>
             </td>
             <td><center>{{ $trans->cantidad }} {{ $trans->unidad }}</center></td>
-              <td id="td" rowspan=<?php echo $contador; ?> style="vertical-align:middle; text-align:center;" >${{ number_format($total,0) }}</td>
+
           </tr>
         @endforeach
         @foreach($distribuciones as $distri)
@@ -607,6 +613,7 @@
             <td><center>{{ $distri->cantidad }} {{ $distri->unidad }}</center></td>
 
           </tr>
+
         @endforeach
         @foreach($pu_finales as $pu)
           <tr>
@@ -618,8 +625,9 @@
             <td><center>{{ $pu->cantidad }} {{ $pu->unidad }}</center></td>
           </tr>
         @endforeach
+
         <tr>
-          <td rowspan="4"></td>
+          <td rowspan="4" style="border-left: solid white; border-bottom: solid white"></td>
           <td colspan="2"><b>Valor de la Inspección</b></td>
           <td><center>${{ number_format($total,0) }}</center></td>
         </tr>
