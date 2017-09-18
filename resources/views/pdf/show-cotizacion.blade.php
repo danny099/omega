@@ -296,9 +296,9 @@
       .ttable{
         text-align: center;
       }
-      /*.inspeccionDoc{
+      .inspeccionDoc{
       page-break-before: always;
-      }*/
+      }
       /*#td{
         border-bottom: solid black;
       }
