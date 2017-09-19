@@ -5,10 +5,6 @@
 }
 </style>
 @section('contenido')
-<ol class="breadcrumb">
-  <li><a href="{{ url('inicio') }}">Inicio</a></li>
-  <li class="active">Crear transformaciones</li>
-</ol>
 @if(Session::has('message'))
   <div id="alert">
     <div class="col-sm-12 hr hr-18 hr-double dotted"></div>
@@ -18,6 +14,11 @@
     </div>
   </div>
 @endif
+<ol class="breadcrumb">
+  <li><a href="{{ url('inicio') }}">Inicio</a></li>
+  <li class="active">Crear transformaciones</li>
+</ol>
+
   <form class="" action="{{ url('transformaciones') }}" method="post">
     {{ csrf_field() }}
     <div class="box box-primary">

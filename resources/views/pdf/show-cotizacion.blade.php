@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>{{ $cotizaciones->codigo }}</title>
+    <title>{{ $cotizaciones->codigo }} - {{ $cotizaciones->nombre }}</title>
     <style media="screen">
     table {
       background-color: transparent;
