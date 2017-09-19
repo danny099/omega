@@ -20,7 +20,7 @@
           <div class="col-sm-12 hr hr-18 hr-double dotted"></div>
           <div class="col-sm-4 col-xs-12 col-sm-offset-4 alert alert-{{Session::get('class')}}">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-              <center>{{Session::get('message')}}</center> 
+              <center>{{Session::get('message')}}</center>
           </div>
         </div><br><br>
       @endif

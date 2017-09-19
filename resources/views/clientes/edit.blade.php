@@ -44,7 +44,7 @@
 
           <div class="form-group">
             <label >Departamento</label>
-            <select class="form-control" required="" name="departamento_id" id="departamento">
+            <select class="form-control"  name="departamento_id" id="departamento">
               <option value="{{ $clientes->departamento->id }}">{{ $clientes->departamento->nombre }}</option>
               @foreach($departamentos as $departamento)
               <option value="{{ $departamento->id }}">{{$departamento->nombre}}</option>
@@ -53,7 +53,7 @@
           </div>
           <div class="form-group">
             <label >Municipios</label>
-            <select class="form-control" required="" name="municipio" id="municipio">
+            <select class="form-control"  name="municipio" id="municipio">
               <option value="{{ $municipios->id }}">{{ $municipios->nombre }}</option>
               <option value=""></option>
             </select>
