@@ -46,7 +46,7 @@ class Pu_finalController extends Controller
        $input = $request->all();
        if (empty($request->codigo_proyecto) && empty($request->codigo_cotizacion)) {
          Session::flash('message', 'Seleccione al menos un codigo!');
-         Session::flash('class', 'success');
+         Session::flash('class', 'danger');
          return redirect()->route('pu_finales.create');
        }else {
          for ($i=0; $i<count($input['pu_final']['descripcion_pu']); $i++) {

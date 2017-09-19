@@ -44,7 +44,7 @@ class DistribucionController extends Controller
       $input = $request->all();
       if (empty($request->codigo_proyecto) && empty($request->codigo_cotizacion)) {
         Session::flash('message', 'Seleccione al menos un codigo!');
-        Session::flash('class', 'success');
+        Session::flash('class', 'danger');
         return redirect()->route('distribuciones.create');
       }else {
         for ($x=0; $x<count($input['distribucion']['descripcion_dis']); $x++) {
