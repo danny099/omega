@@ -39,12 +39,12 @@
 
           <div class="form-group">
             {!! Form::label('nombre_representante', 'Nombre representante') !!}
-            {!! Form::text('nombre_representante', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+            {!! Form::text('nombre_representante', null, ['class' => 'form-control']) !!}
           </div>
 
           <div class="form-group">
             {!! Form::label('cedula', 'Cédula') !!}
-            {!! Form::text('cedula', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+            {!! Form::text('cedula', null, ['class' => 'form-control' ]) !!}
           </div>
 
           <div class="form-group">
