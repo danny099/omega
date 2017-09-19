@@ -51,40 +51,46 @@ class TransformacionController extends Controller
     public function store(Request $request)
     {
       $input = $request->all();
+      if (empty($request->codigo_proyecto) && empty($request->codigo_cotizacion)) {
+        Session::flash('message', 'Alcance de transformación creado!');
+        Session::flash('class', 'success');
+        return redirect()->route('transformaciones.create');
+      }else {
+        for ($a=0; $a<count($input['transformacion']['descripcion']); $a++){
 
-      for ($a=0; $a<count($input['transformacion']['descripcion']); $a++){
+              if (!is_null($input['transformacion']['descripcion'][$a]) &&
+                  !is_null($input['transformacion']['tipo'][$a]) &&
+                  !is_null($input['transformacion']['nivel_tension'][$a]) &&
+                  !is_null($input['transformacion']['capacidad'][$a]) &&
+                  !is_null($input['transformacion']['cantidad'][$a]) &&
+                  !is_null($input['transformacion']['tipo_refrigeracion'][$a])) {
 
-            if (!is_null($input['transformacion']['descripcion'][$a]) &&
-                !is_null($input['transformacion']['tipo'][$a]) &&
-                !is_null($input['transformacion']['nivel_tension'][$a]) &&
-                !is_null($input['transformacion']['capacidad'][$a]) &&
-                !is_null($input['transformacion']['cantidad'][$a]) &&
-                !is_null($input['transformacion']['tipo_refrigeracion'][$a])) {
+                    $datos1['descripcion'] = $input['transformacion']['descripcion'][$a];
+                    $datos1['tipo'] = $input['transformacion']['tipo'][$a];
+                    $datos1['nivel_tension'] = $input['transformacion']['nivel_tension'][$a];
+                    $datos1['unidad'] = 'Und';
+                    $datos1['capacidad'] = $input['transformacion']['capacidad'][$a];
+                    $datos1['cantidad'] = $input['transformacion']['cantidad'][$a];
+                    $datos1['tipo_refrigeracion'] = $input['transformacion']['tipo_refrigeracion'][$a];
+                    $datos1['administrativa_id'] = $request->codigo_proyecto;
+                    $datos1['cotizacion_id'] = $request->codigo_cotizacion;
 
-                  $datos1['descripcion'] = $input['transformacion']['descripcion'][$a];
-                  $datos1['tipo'] = $input['transformacion']['tipo'][$a];
-                  $datos1['nivel_tension'] = $input['transformacion']['nivel_tension'][$a];
-                  $datos1['unidad'] = 'Und';
-                  $datos1['capacidad'] = $input['transformacion']['capacidad'][$a];
-                  $datos1['cantidad'] = $input['transformacion']['cantidad'][$a];
-                  $datos1['tipo_refrigeracion'] = $input['transformacion']['tipo_refrigeracion'][$a];
-                  $datos1['administrativa_id'] = $request->codigo_proyecto;
-                  $datos1['cotizacion_id'] = $request->codigo_cotizacion;
+                    $texto['detalles'] = $datos1['descripcion'].' '.$datos1['tipo'].' '. $datos1['cantidad'].' '.$datos1['capacidad'];
+                    $texto['cantidad'] = $datos1['cantidad'];
+                    $texto['valor_uni'] = 0;
+                    $texto['valor_total'] = 0;
+                    $texto['cotizacion_id'] = $request->codigo_cotizacion;
 
-                  $texto['detalles'] = $datos1['descripcion'].' '.$datos1['tipo'].' '. $datos1['cantidad'].' '.$datos1['capacidad'];
-                  $texto['cantidad'] = $datos1['cantidad'];
-                  $texto['valor_uni'] = 0;
-                  $texto['valor_total'] = 0;
-                  $texto['cotizacion_id'] = $request->codigo_cotizacion;
+                    Valorcot::create($texto);
+                    Transformacion::create($datos1);
 
-                  Valorcot::create($texto);
-                  Transformacion::create($datos1);
-
+              }
             }
-          }
-      Session::flash('message', 'Alcance de transformación creado!');
-      Session::flash('class', 'success');
-      return redirect()->route('administrativas.index');
+        Session::flash('message', 'Alcance de transformación creado!');
+        Session::flash('class', 'success');
+        return redirect()->route('transformaciones.create');  
+      }
+
 
     }
 
