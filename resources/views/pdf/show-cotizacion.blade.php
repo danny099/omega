@@ -379,7 +379,10 @@
       <div class="dirigido">
         <p>{{ $cotizaciones->dirigido }}</p>
         @if(empty($clientes))
-        <span>{{ $juridicas->nombre_representante }}</span><br>
+        @if($juridicas->nombre_representante == "")
+        @else
+          <span>{{ $juridicas->nombre_representante }}</span><br>
+        @endif
         <span>{{ $juridicas->razon_social }}</span><br>
         <span>NIT: {{ $juridicas->nit }}</span><br>
         @else
