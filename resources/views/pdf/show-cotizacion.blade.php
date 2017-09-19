@@ -470,7 +470,7 @@
             <tr>
               <td>{{ $distri->descripcion }}</td>
               <td width="50"><center>{{ $distri->tipo }}</center></td>
-              <td width="50"><center>{{ $distri->nivel_tension }}</center></td>
+              <td width="50"><center>{{ $distri->nivel_tension }} V</center></td>
               <td width="50"><center>{{ $distri->cantidad }} mts.</center></td>
               <td width="50"><center>{{ $distri->apoyos }}</center></td>
               <td width="50"><center>{{ $distri->cajas }}</center></td>
