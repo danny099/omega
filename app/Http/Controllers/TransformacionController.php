@@ -52,7 +52,7 @@ class TransformacionController extends Controller
     {
       $input = $request->all();
       if (empty($request->codigo_proyecto) && empty($request->codigo_cotizacion)) {
-        Session::flash('message', 'Alcance de transformación creado!');
+        Session::flash('message', 'Seleccione al menos un codigo!');
         Session::flash('class', 'success');
         return redirect()->route('transformaciones.create');
       }else {
@@ -88,7 +88,7 @@ class TransformacionController extends Controller
             }
         Session::flash('message', 'Alcance de transformación creado!');
         Session::flash('class', 'success');
-        return redirect()->route('transformaciones.create');  
+        return redirect()->route('transformaciones.create');
       }
 
 

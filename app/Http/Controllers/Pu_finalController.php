@@ -44,92 +44,100 @@ class Pu_finalController extends Controller
     public function store(Request $request)
     {
        $input = $request->all();
+       if (empty($request->codigo_proyecto) && empty($request->codigo_cotizacion)) {
+         Session::flash('message', 'Seleccione al menos un codigo!');
+         Session::flash('class', 'success');
+         return redirect()->route('pu_finales.create');
+       }else {
+         for ($i=0; $i<count($input['pu_final']['descripcion_pu']); $i++) {
+             if (!is_null($input['pu_final']['descripcion_pu'][$i]) &&
+                 !is_null($input['pu_final']['tipo_pu'][$i]) &&
+                 !is_null($input['pu_final']['estrato_pu'][$i]) &&
+                 !is_null($input['pu_final']['cantidad_pu'][$i]) &&
+                 !is_null($input['pu_final']['metros_pu'][$i]) &&
+                 !is_null($input['pu_final']['kva_pu'][$i])) {
 
-       for ($i=0; $i<count($input['pu_final']['descripcion_pu']); $i++) {
-           if (!is_null($input['pu_final']['descripcion_pu'][$i]) &&
-               !is_null($input['pu_final']['tipo_pu'][$i]) &&
-               !is_null($input['pu_final']['estrato_pu'][$i]) &&
-               !is_null($input['pu_final']['cantidad_pu'][$i]) &&
-               !is_null($input['pu_final']['metros_pu'][$i]) &&
-               !is_null($input['pu_final']['kva_pu'][$i])) {
+                   $datos3['descripcion'] = $input['pu_final']['descripcion_pu'][$i];
+                   $datos3['tipo'] = $input['pu_final']['tipo_pu'][$i];
+                  //  $datos3['estrato'] = $input['pu_final']['estrato_pu'][$i];
+                   $datos3['unidad'] = 'Und';
+                   $datos3['cantidad'] = $input['pu_final']['cantidad_pu'][$i];
+                   $datos3['metros'] = $input['pu_final']['metros_pu'][$i];
 
-                 $datos3['descripcion'] = $input['pu_final']['descripcion_pu'][$i];
-                 $datos3['tipo'] = $input['pu_final']['tipo_pu'][$i];
-                //  $datos3['estrato'] = $input['pu_final']['estrato_pu'][$i];
-                 $datos3['unidad'] = 'Und';
-                 $datos3['cantidad'] = $input['pu_final']['cantidad_pu'][$i];
-                 $datos3['metros'] = $input['pu_final']['metros_pu'][$i];
+                   if ($input['pu_final']['kva_pu'][$i] == 0) {
 
-                 if ($input['pu_final']['kva_pu'][$i] == 0) {
+                     $datos3['kva'] = 'Según Plano';
 
-                   $datos3['kva'] = 'Según Plano';
-
-                 }else {
-                   $datos3['kva'] = $input['pu_final']['kva_pu'][$i];
-                 }
-
-                 if ($datos3['tipo'] == 'Casa') {
-
-                   $datos3['acometidas'] = $datos3['cantidad'];
-
-                 }
-
-                 if ($datos3['tipo'] == 'Local comercial') {
-
-                   $datos3['acometidas'] = $datos3['cantidad'];
-
-                 }
-
-                 if ($datos3['tipo'] == 'Zona común') {
-
-                   $datos3['acometidas'] = $datos3['cantidad'];
-
-                 }
-
-                 if ($datos3['tipo'] == 'Bodega') {
-
-                   $datos3['acometidas'] = $datos3['cantidad'];
-
-                 }
-
-                 if (isset($input['pu_final']['torres'][$i])) {
-                   if (!is_null($input['pu_final']['torres'][$i])) {
-
-                     $datos3['acometidas'] = $input['pu_final']['torres'][$i];
-                     $datos3['torres'] = $datos3['acometidas'];
-
-
+                   }else {
+                     $datos3['kva'] = $input['pu_final']['kva_pu'][$i];
                    }
-                 }
 
-                 if (isset($input['pu_final']['estrato_pu'][$i])) {
-                   if (!empty($input['pu_final']['estrato_pu'][$i])) {
+                   if ($datos3['tipo'] == 'Casa') {
 
-                     $datos3['estrato'] = $input['pu_final']['estrato_pu'][$i];
+                     $datos3['acometidas'] = $datos3['cantidad'];
 
                    }
 
-                 }else {
-                   $datos3['estrato'] = null;
-                 }
+                   if ($datos3['tipo'] == 'Local comercial') {
 
-                 $datos3['administrativa_id'] = $request->codigo_proyecto;
-                 $datos3['cotizacion_id'] = $request->codigo_cotizacion;
+                     $datos3['acometidas'] = $datos3['cantidad'];
 
-                 $texto['detalles'] = $datos3['descripcion'].' '.$datos3['tipo'].' '. $datos3['cantidad'];
-                 $texto['cantidad'] = $datos3['cantidad'];
-                 $texto['valor_uni'] = 0;
-                 $texto['valor_total'] = 0;
-                 $texto['cotizacion_id'] = $request->codigo_cotizacion;
+                   }
 
-                 Valorcot::create($texto);
-                 Pu_final::create($datos3);
+                   if ($datos3['tipo'] == 'Zona común') {
 
-           }
+                     $datos3['acometidas'] = $datos3['cantidad'];
+
+                   }
+
+                   if ($datos3['tipo'] == 'Bodega') {
+
+                     $datos3['acometidas'] = $datos3['cantidad'];
+
+                   }
+
+                   if (isset($input['pu_final']['torres'][$i])) {
+                     if (!is_null($input['pu_final']['torres'][$i])) {
+
+                       $datos3['acometidas'] = $input['pu_final']['torres'][$i];
+                       $datos3['torres'] = $datos3['acometidas'];
+
+
+                     }
+                   }
+
+                   if (isset($input['pu_final']['estrato_pu'][$i])) {
+                     if (!empty($input['pu_final']['estrato_pu'][$i])) {
+
+                       $datos3['estrato'] = $input['pu_final']['estrato_pu'][$i];
+
+                     }
+
+                   }else {
+                     $datos3['estrato'] = null;
+                   }
+
+                   $datos3['administrativa_id'] = $request->codigo_proyecto;
+                   $datos3['cotizacion_id'] = $request->codigo_cotizacion;
+
+                   $texto['detalles'] = $datos3['descripcion'].' '.$datos3['tipo'].' '. $datos3['cantidad'];
+                   $texto['cantidad'] = $datos3['cantidad'];
+                   $texto['valor_uni'] = 0;
+                   $texto['valor_total'] = 0;
+                   $texto['cotizacion_id'] = $request->codigo_cotizacion;
+
+                   Valorcot::create($texto);
+                   Pu_final::create($datos3);
+
+             }
+         }
+         Session::flash('message', 'Alcance proceso de uso final creado!');
+         Session::flash('class', 'success');
+         return redirect()->route('pu_finales.create');
+
        }
-       Session::flash('message', 'Alcance proceso de uso final creado!');
-       Session::flash('class', 'success');
-       return redirect()->route('administrativas.index');
+
+
 
     }
 

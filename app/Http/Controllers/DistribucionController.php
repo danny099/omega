@@ -42,55 +42,64 @@ class DistribucionController extends Controller
     public function store(Request $request)
     {
       $input = $request->all();
+      if (empty($request->codigo_proyecto) && empty($request->codigo_cotizacion)) {
+        Session::flash('message', 'Seleccione al menos un codigo!');
+        Session::flash('class', 'success');
+        return redirect()->route('distribuciones.create');
+      }else {
+        for ($x=0; $x<count($input['distribucion']['descripcion_dis']); $x++) {
 
-      for ($x=0; $x<count($input['distribucion']['descripcion_dis']); $x++) {
+            if (!is_null($input['distribucion']['descripcion_dis'][$x]) &&
+                !is_null($input['distribucion']['tipo_dis'][$x]) &&
+                !is_null($input['distribucion']['nivel_tension_dis'][$x]) &&
+                !is_null($input['distribucion']['cantidad_dis'][$x]) &&
+                !is_null($input['distribucion']['apoyos_dis'][$x])  &&
+                !is_null($input['distribucion']['cajas_dis'][$x])){
 
-          if (!is_null($input['distribucion']['descripcion_dis'][$x]) &&
-              !is_null($input['distribucion']['tipo_dis'][$x]) &&
-              !is_null($input['distribucion']['nivel_tension_dis'][$x]) &&
-              !is_null($input['distribucion']['cantidad_dis'][$x]) &&
-              !is_null($input['distribucion']['apoyos_dis'][$x])  &&
-              !is_null($input['distribucion']['cajas_dis'][$x])){
+                  $datos2['descripcion'] = $input['distribucion']['descripcion_dis'][$x];
+                  $datos2['tipo'] = $input['distribucion']['tipo_dis'][$x];
+                  $datos2['nivel_tension'] = $input['distribucion']['nivel_tension_dis'][$x];
+                  $datos2['unidad'] = 'mts.';
+                  $datos2['cantidad'] = str_replace('.',',',$input['distribucion']['cantidad_dis'][$x]);
 
-                $datos2['descripcion'] = $input['distribucion']['descripcion_dis'][$x];
-                $datos2['tipo'] = $input['distribucion']['tipo_dis'][$x];
-                $datos2['nivel_tension'] = $input['distribucion']['nivel_tension_dis'][$x];
-                $datos2['unidad'] = 'mts.';
-                $datos2['cantidad'] = str_replace('.',',',$input['distribucion']['cantidad_dis'][$x]);
+                  if ($datos2['tipo'] == 'Aérea' && $input['distribucion']['apoyos_dis'][$x] == 0) {
 
-                if ($datos2['tipo'] == 'Aérea' && $input['distribucion']['apoyos_dis'][$x] == 0) {
+                    $datos2['apoyos'] = 'Según Plano';
 
-                  $datos2['apoyos'] = 'Según Plano';
-
-                }else {
-                  $datos2['apoyos'] = $input['distribucion']['apoyos_dis'][$x];
-                }
+                  }else {
+                    $datos2['apoyos'] = $input['distribucion']['apoyos_dis'][$x];
+                  }
 
 
-                if ($datos2['tipo'] == 'Subterránea' && $input['distribucion']['cajas_dis'][$x] == 0) {
+                  if ($datos2['tipo'] == 'Subterránea' && $input['distribucion']['cajas_dis'][$x] == 0) {
 
-                  $datos2['cajas'] = 'Según Plano';
+                    $datos2['cajas'] = 'Según Plano';
 
-                }else {
-                  $datos2['cajas'] = $input['distribucion']['cajas_dis'][$x];
-                }
+                  }else {
+                    $datos2['cajas'] = $input['distribucion']['cajas_dis'][$x];
+                  }
 
-                $datos2['notas'] = $input['distribucion']['notas_dis'][$x];
-                $datos2['administrativa_id'] = $request->codigo_proyecto;
-                $datos2['cotizacion_id'] = $request->codigo_cotizacion;
+                  $datos2['notas'] = $input['distribucion']['notas_dis'][$x];
+                  $datos2['administrativa_id'] = $request->codigo_proyecto;
+                  $datos2['cotizacion_id'] = $request->codigo_cotizacion;
 
-                $texto['detalles'] = $datos2['descripcion'].' '.$datos2['tipo'].' '. $datos2['cantidad'];
-                $texto['cantidad'] = $datos2['cantidad'];
-                $texto['valor_uni'] = 0;
-                $texto['valor_total'] = 0;
-                $texto['cotizacion_id'] = $request->codigo_cotizacion;
+                  $texto['detalles'] = $datos2['descripcion'].' '.$datos2['tipo'].' '. $datos2['cantidad'];
+                  $texto['cantidad'] = $datos2['cantidad'];
+                  $texto['valor_uni'] = 0;
+                  $texto['valor_total'] = 0;
+                  $texto['cotizacion_id'] = $request->codigo_cotizacion;
 
-                Valorcot::create($texto);
-                Distribucion::create($datos2);
-          }
+                  Valorcot::create($texto);
+                  Distribucion::create($datos2);
+            }
+        }
+        Session::flash('message', 'Alcance proceso de distribución creado!');
+        Session::flash('class', 'success');
+        return redirect()->route('distribuciones.create');
+
       }
 
-      return redirect()->route('administrativas.index');
+
 
     }
 
