@@ -470,7 +470,14 @@
             <tr>
               <td>{{ $distri->descripcion }}</td>
               <td width="50"><center>{{ $distri->tipo }}</center></td>
-              <td width="50"><center>{{ $distri->nivel_tension }} V</center></td>
+              @if($distri->nivel_tension == '13,2' || $distri->nivel_tension == '13,4'|| $distri->nivel_tension == '13,8')
+                <td width="50"><center>{{ $distri->nivel_tension }} KV</center></td>
+              @elseif($distri->nivel_tension == 'No aplica')
+                <td width="50"><center>{{ $distri->nivel_tension }} </center></td>
+              @else
+                <td width="50"><center>{{ $distri->nivel_tension }} V</center></td>
+              @endif
+
               <td width="50"><center>{{ $distri->cantidad }} mts.</center></td>
               <td width="50"><center>{{ $distri->apoyos }}</center></td>
               <td width="50"><center>{{ $distri->cajas }}</center></td>
