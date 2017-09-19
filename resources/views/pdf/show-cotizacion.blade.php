@@ -325,7 +325,7 @@
       @page { margin: 100px 50px; }
       header { position: fixed; top: -60px; left: 0px; right: 0px; height: 100px;
             margin-top: 25px}
-      footer { position: fixed; bottom: -60px; left: 0px; right: 0px; height: 50px; }
+      footer { position: fixed; bottom: -60px; left: -50px; right: -50px; height: 50px; }
       .page-number:after {content: counter(page); }
 
       /*p { page-break-after: always; }*/
@@ -351,11 +351,7 @@
       </table>
     </header>
     <footer>
-      <table class="table">
-        <tr>
-          <td id="td3"><center><span class="">Certicol_for_096 / Aprobado 09-05-2017 / Versión 01 </span></center></td>
-        </tr>
-      </table>
+      <img id="img" src="footer.png" style="width:100%; opacity: 0.5; height: 90px">
     </footer>
 
     <div class="div1">
@@ -377,7 +373,7 @@
       </div>
 
       <div class="dirigido">
-        <p>{{ $cotizaciones->dirigido }}</p>
+        <p>{{ $cotizaciones->dirigido }}:</p>
         @if(empty($clientes))
         @if($juridicas->nombre_representante == "")
         @else
@@ -396,7 +392,7 @@
       <table>
        <tr>
          <td valign="top"> Objeto:</td>
-         <td text-align="justify">Este Documento Constituye  la Oferta Técnica  y Económica  para la prestación de servicios
+         <td valign="top" align="justify">Este Documento Constituye  la Oferta Técnica  y Económica  para la prestación de servicios
          de inspectoría  RETIE a las instalaciones eléctricas del proyecto {{ $cotizaciones->nombre }} Ubicado
          en el Municipio de {{ $municipios->nombre }} departamento del {{ $departamentos->nombre }}.</td>
        </tr>
@@ -406,7 +402,7 @@
     <br>
     <div class="div3">
       <p>Cordial Saludo:</p>
-
+      <br>
       <div class="cordial">
           <?php
             $refer = html_entity_decode($saludo->detalles);
@@ -541,7 +537,7 @@
     </div>
     <div class="referencia2">
       <p><b>{{$referencia->nombre}}</b></p>
-
+      <br>
 
         <?php
           $refer = html_entity_decode($referencia->detalles);
@@ -553,7 +549,7 @@
     <br>
     <div class="inspeccionDoc">
     <p><b>{{$inicial->nombre}}</b></p>
-
+    <br>
 
       <?php
         $refer = html_entity_decode($inicial->detalles);
@@ -571,11 +567,9 @@
       ?>
     </div>
 
-    <br>
     <div class="referencia">
       <p><b>5. PROPUESTA ECONOMICA</b></p>
-
-
+      <br>
       <table class="table table-bordered tabla">
         <tr>
           <th Colspan="4" ><center><label>COTIZACIÓN</label></center></th>
@@ -704,6 +698,7 @@
     <div class="ocho">
       <div class="docu">
         <p><b>{{$docu->nombre}}</b></p>
+        <br>
         <?php
           $refer = html_entity_decode($docu->detalles);
           echo $refer;
@@ -711,7 +706,7 @@
       </div>
       <div class="img">
         <img id="img" src="firma.jpg" style="height:80px;">
-        <img id="img" src="Certicol2.png" style="margin-left:300px; height:80px">
+
       </div>
       <div class="datos">
         <?php
