@@ -35,7 +35,7 @@
     @endif
   <!-- /.box-header -->
   <!-- form start -->
-  <form role="form" name="" action="{{ url('cotizaciones') }}" method="post" id="example-form">
+  <form role="form" name="" action="{{ url('cotizaciones') }}" method="post" id="example-form" autocomplete="off">
     {{csrf_field()}}
     <div class="">
     <h3>Paso 1</h3>

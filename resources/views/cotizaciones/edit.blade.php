@@ -39,7 +39,7 @@
   <!-- /.box-header -->
   <!-- form start -->
 
-    {!! Form::model($cotizaciones, ['id'=>'form','method' => 'PATCH', 'action' => ['CotizacionController@update',$cotizaciones->id]]) !!}
+    {!! Form::model($cotizaciones, ['id'=>'form','method' => 'PATCH', 'autocomplete'=>"off", 'action' => ['CotizacionController@update',$cotizaciones->id]]) !!}
     {{ csrf_field() }}
 
     <div class="">
