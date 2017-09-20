@@ -5,7 +5,7 @@
     </div>
     <div class="box-body">
 
-      <form class="form1" action="{{ url('editart') }}" method="post">
+      <form class="form1" action="{{ url('editart') }}" method="post" autocomplete="off">
       {{ csrf_field() }}
 
       @foreach($transformaciones as $transfor)

@@ -6,7 +6,7 @@
   <li class="active">Crear uso final</li>
 </ol>
 
-  <form class="" action="{{ url('pu_final') }}" method="post">
+  <form class="" action="{{ url('pu_final') }}" method="post" autocomplete="off">
     {{ csrf_field() }}
     <div class="box box-primary">
       @if(Session::has('message'))

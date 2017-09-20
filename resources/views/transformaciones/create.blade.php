@@ -11,7 +11,7 @@
   <li class="active">Crear transformaciones</li>
 </ol>
 
-  <form class="" action="{{ url('transformaciones') }}" method="post">
+  <form class="" action="{{ url('transformaciones') }}" method="post" autocomplete="off">
     {{ csrf_field() }}
     <div class="box box-primary">
       @if(Session::has('message'))

@@ -2,7 +2,7 @@
   <div class="box box-primary">
 
     <div class="box-body">
-      <form class="form1" action="{{ url('editard') }}" method="post">
+      <form class="form1" action="{{ url('editard') }}" method="post" autocomplete="off">
         {{ csrf_field() }}
       @foreach($distribuciones as $distribucion)
         <div class="row quitar51" id="quitar51">

@@ -3,7 +3,7 @@
     <center> <h3>Alcance: proceso de uso final</h3> </center>
   </div>
   <div class="box-body">
-    <form class="form1" action="{{ url('editarpu') }}" method="post">
+    <form class="form1" action="{{ url('editarpu') }}" method="post" autocomplete="off">
       {{ csrf_field() }}
 
     @foreach($pu_finales as $pu)

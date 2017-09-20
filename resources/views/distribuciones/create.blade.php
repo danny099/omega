@@ -10,7 +10,7 @@
   <li class="active">Crear distribuciones</li>
 </ol>
 
-  <form class="form" action="{{ url('distribuciones') }}" method="post">
+  <form class="form" action="{{ url('distribuciones') }}" method="post" autocomplete="off">
     {{ csrf_field() }}
     <div class="box box-primary">
       @if(Session::has('message'))
