@@ -506,7 +506,6 @@
             <th width="50"><center>Cantidad</center></th>
             <th width="30"><center>m²</center></th>
             <th width="50"><center>KVA</center></th>
-
             <th width="50"><center>Acometidas</center></th>
           </tr>
         </thead>
@@ -665,23 +664,23 @@
       <br>
       <table class="table table-bordered tabla">
         <tr>
-          <td>Forma de pago</td>
+          <td>Forma de pago:</td>
           <td>{{$cotizaciones->formas_pago}}</td>
         </tr>
         <tr>
-          <td>Tiempo de ejecución</td>
+          <td>Tiempo de ejecución:</td>
           <td>{{$cotizaciones->tiempo}}</td>
         </tr>
         <tr>
-          <td>Tiempo de entrega del dictamen</td>
+          <td>Tiempo de entrega del dictamen:</td>
           <td>{{$cotizaciones->entrega}} una vez se encuentre la documentación  completa y no se tenga NC abiertas</td>
         </tr>
         <tr>
-          <td>Número de visitas de inspección  contratadas</td>
+          <td>Número de visitas de inspección  contratadas:</td>
           <td>{{$cotizaciones->visitas}} </td>
         </tr>
         <tr>
-          <td>Validez de la oferta</td>
+          <td>Validez de la oferta:</td>
           <td>{{$cotizaciones->validez}} </td>
         </tr>
       </table>
