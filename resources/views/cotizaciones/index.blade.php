@@ -19,6 +19,27 @@
           <div class="col-md-12 well">
             <div class="box-body">
               <a href="{{ url('cotizaciones/create') }}" class="btn btn-primary" data-toggle="modal" ><i class="fa fa-user-plus"></i> Crear cotización</a>
+              <a href="#myModal" data-toggle="modal" class="btn btn-primary"  ><i class="fa fa-user-plus"></i> Cargar archivo</a>
+              <!-- inicio modal 1 -->
+              <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <h4 class="modal-title">Cargar archivo</h4>
+                    </div>
+                    <div class="modal-body">
+                      <center><input type="file" name="" value=""></center>
+
+                    </div>
+                    <div class="modal-footer">
+                      <button type="submit" class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;">Enviar</button>
+                      <button type="submit" data-dismiss="modal" class="btn btn-primary pull-left" style="background-color: #33579A; border-color:#33579A;">Cancelar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- fin modal -->
               <br>
               <br>
               <table id="example1" class="table table-bordered table-striped">
