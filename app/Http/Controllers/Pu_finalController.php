@@ -44,15 +44,16 @@ class Pu_finalController extends Controller
     public function store(Request $request)
     {
        $input = $request->all();
+
        if (empty($request->codigo_proyecto) && empty($request->codigo_cotizacion)) {
          Session::flash('message', 'Seleccione al menos un codigo!');
          Session::flash('class', 'danger');
-         return redirect()->route('pu_finales.create');
+         return redirect()->route('pu_final.create');
        }else {
          for ($i=0; $i<count($input['pu_final']['descripcion_pu']); $i++) {
              if (!is_null($input['pu_final']['descripcion_pu'][$i]) &&
                  !is_null($input['pu_final']['tipo_pu'][$i]) &&
-                 !is_null($input['pu_final']['estrato_pu'][$i]) &&
+                //  !is_null($input['pu_final']['estrato_pu'][$i]) &&
                  !is_null($input['pu_final']['cantidad_pu'][$i]) &&
                  !is_null($input['pu_final']['metros_pu'][$i]) &&
                  !is_null($input['pu_final']['kva_pu'][$i])) {
@@ -133,7 +134,7 @@ class Pu_finalController extends Controller
          }
          Session::flash('message', 'Alcance proceso de uso final creado!');
          Session::flash('class', 'success');
-         return redirect()->route('pu_finales.create');
+         return redirect()->route('pu_final.create');
 
        }
 
