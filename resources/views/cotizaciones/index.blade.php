@@ -29,8 +29,9 @@
                       <h4 class="modal-title">Cargar archivo</h4>
                     </div>
                     <form class="" action="{{ url('importExcel') }}" enctype="multipart/form-data" method="post">
+                      {{ csrf_field() }}
                       <div class="modal-body">
-                        <center><input type="file" name="" value=""></center>
+                        <center><input type="file" name="import_file" value=""></center>
 
                       </div>
                       <div class="modal-footer">
