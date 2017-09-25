@@ -696,7 +696,7 @@
         </div>
       @else
         <div class="pago">
-          <p><b>{{$pago->nombre}}</b></p>
+          <p><b>7. METODOS DE PAGO</b></p>
           <br>
           <?php
             $refer = html_entity_decode($pago2->detalles);
