@@ -12,7 +12,7 @@ class Cotizacion extends Model implements AuditableContract
 
   protected $table = 'cotizacion';
 
-  protected $fillable = ['id','dirigido','codigo','cliente_id','juridica_id','fecha','nombre','municipio','formas_pago','tiempo','entrega','visitas','validez','subtotal','iva','total','adicional','observaciones','departamento_id','contador'];
+  protected $fillable = ['id','dirigido','codigo','cliente_id','juridica_id','fecha','nombre','municipio','formas_pago','tiempo','entrega','visitas','validez','subtotal','iva','total','adicional','observaciones','departamento_id','contador','metodo'];
 
   public $timestamps = false;
 

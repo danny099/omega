@@ -130,6 +130,7 @@ class CotizacionController extends Controller
          $cotizacion['total'] = str_replace(',','',$request->total);
          $cotizacion['adicional'] = $request->adici;
          $cotizacion['observaciones'] = $request->observacion;
+         $cotizacion['metodo'] = $request->pago;
         //  $tension = $request->valor;
 
          Cotizacion::create($cotizacion);
@@ -158,7 +159,7 @@ class CotizacionController extends Controller
                      $datos1['cantidad'] = $input['transformacion']['cantidad'][$a];
                      $datos1['tipo_refrigeracion'] = $input['transformacion']['tipo_refrigeracion'][$a];
                      $datos1['cotizacion_id'] = $lastId_cotiza;
-                     
+
                     //  $texto['detalles'] = $datos1['descripcion'].' '.$datos1['tipo'].' '. $datos1['cantidad'].' '.$datos1['capacidad'];
                     //  $texto['cantidad'] = $datos1['cantidad'];
                     //  $texto['valor_uni'] = str_replace(',','',$input['valores']['valor_uni'][$a]);

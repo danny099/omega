@@ -114,6 +114,7 @@ class PdfController extends Controller
       $inicial = Documento::findOrFail(15);
       $inspeccion = Documento::findOrFail(16);
       $pago = Documento::findOrFail(17);
+      $pago2 = Documento::findOrFail(29);
       $docu = Documento::findOrFail(18);
       $datos = Documento::findOrFail(19);
       $saludo = Documento::findOrFail(20);
@@ -126,7 +127,7 @@ class PdfController extends Controller
 
       $pdf = App::make('dompdf.wrapper');
       $pdf->loadView('pdf.show-cotizacion',compact('administrativa','clientes','juridicas','otrosis','distribuciones','transformaciones','pu_finales','departamentos','municipios','numero1','numero2','total','iva','valor_total','cotizaciones','referencia','inicial','inspeccion','pago','docu','datos','objeto',
-                                                  'saludo'));
+                                                  'saludo','pago2'));
       return $pdf->stream($cotizaciones->codigo.' - '.$cotizaciones->nombre.'.pdf');
 
     }
