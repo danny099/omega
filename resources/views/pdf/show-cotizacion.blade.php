@@ -685,15 +685,25 @@
         </tr>
       </table>
     </div>
-
-      <div class="pago">
-        <p><b>{{$pago->nombre}}</b></p>
-        <br>
-        <?php
-          $refer = html_entity_decode($pago->detalles);
-          echo $refer;
-        ?>
-      </div>
+      @if($cotizaciones->metodo == "0")
+        <div class="pago">
+          <p><b>7. METODOS DE PAGO</b></p>
+          <br>
+          <?php
+            $refer = html_entity_decode($pago->detalles);
+            echo $refer;
+          ?>
+        </div>
+      @else
+        <div class="pago">
+          <p><b>{{$pago->nombre}}</b></p>
+          <br>
+          <?php
+            $refer = html_entity_decode($pago2->detalles);
+            echo $refer;
+          ?>
+        </div>
+      @endif
     <div class="ocho">
       <div class="docu">
         <p><b>{{$docu->nombre}}</b></p>

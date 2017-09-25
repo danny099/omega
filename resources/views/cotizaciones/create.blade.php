@@ -381,13 +381,13 @@
           <input type="text" class="form-control cantidad3" placeholder= "Cantidad" name="pu_final[cantidad_pu][]">
         </div>
       </div>
-      <div class="col-md-1">
+      <div class="col-md-1 m2">
         <div class="form-group">
           <center><label >m²</label></center>
           <input type="text" class="form-control" placeholder= "Cantidad" name="pu_final[metros_pu][]">
         </div>
       </div>
-      <div class="col-md-1">
+      <div class="col-md-1 kva">
         <div class="form-group">
           <center><label >KVA</label></center>
           <input type="text" class="form-control" placeholder= "Cantidad" name="pu_final[kva_pu][]">
@@ -428,6 +428,8 @@
        </tr>
 
      </table>
+     <br>
+
    </section>
    </div>
   </form>
@@ -615,6 +617,7 @@ $(function() {
     $('.tabla tr:last').after('<tr class="actualizar"><td Colspan="3"></td><td><label>IVA 19%</label></td><td><label class="iva">0</label><input type="hidden" class="form-control iva" placeholder= "Valor"  name="iva" value="0"  required="" readonly ></td></tr>');
     $('.tabla tr:last').after('<tr class="actualizar"><td Colspan="3"></td><td><label>Total</label></td><td><label class="total">0</label><input type="hidden" class="form-control total" placeholder= "Valor" value="0" name="total"  required="" readonly ></td></tr>');
     $('.tabla tr:last').after('<tr class="actualizar"><td Colspan="3"></td><td><label>Costo adicional de visita por día si se requiere:</label></td><td><input type="text" class="form-control adici" placeholder= "Valor" onkeyup="mascara(this,cpf)" value="600,000" name="adici"  required="" ></td></tr>');
+    $('.tabla tr:last').after('<tr class="actualizar"><td Colspan="3"></td><td><label>Metodo de pago:</label></td><td><div class="radio" style="margin-left: 20px;"><input type="radio" name="pago" value="0" checked required="required"> Banco de bogota </div><div class="radio" style="margin-left: 20px;"><input type="radio" name="pago" value="1" required="required"> Bancolombia</div></td></tr>');
     $('.tabla tr:last').after('<input type="hidden" class="form-control valor_multi actualizar"  value="0"  >');
     $('.tabla tr:last').after('<input type="hidden" class="form-control  valor_multi_dis actualizar"  value="0"  >');
     $('.tabla tr:last').after('<input type="hidden" class="form-control  valor_multi_pu actualizar"  value="0"  >');
@@ -733,6 +736,8 @@ $(document).on('change','#instalacion',function(){
     $(this).parent().parent().parent().find("#tipo3").append('<option value="Apartamentos">Apartamentos</option>');
     $(this).parent().parent().parent().find("#tipo3").append('<option value="Zona común">Zona común</option>');
     $(this).parent().parent().parent().find("#tipo3").append('<option value="Punto fijo">Punto fijo</option>');
+    $(this).parent().parent().parent().find("#tipo3").append('<option value="Acometidas">Acometidas</option>');
+
 
   }
     else if (instalacion == 'Inspección RETIE proceso uso final comercial') {
@@ -818,6 +823,15 @@ $(document).on('change','.tipo3',function(){
     else {
       $(this).parent().parent().parent().parent().find( "#borrar" ).addClass( "borrar" );
       $('.borrar').remove();
+    }
+
+    if (tipo == 'Acometidas') {
+      $('.m2').remove();
+      $('.kva').remove();
+      $('#estrato').remove();
+      $('.quitar52').after('<input type="hidden" class="form-control" placeholder= "Cantidad" name="pu_final[metros_pu][]" value="N.A">');
+      $('.quitar52').after('<input type="hidden" class="form-control" placeholder= "Cantidad" name="pu_final[kva_pu][]" value="N.A">');
+
     }
 });
 

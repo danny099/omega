@@ -452,6 +452,10 @@ $(document).on('change','#instalacion',function(){
     $(this).parent().parent().parent().find("#tipo3").append('<option value="Casa">Casa</option>');
     $(this).parent().parent().parent().find("#tipo3").append('<option value="Apartamentos">Apartamentos</option>');
     $(this).parent().parent().parent().find("#tipo3").append('<option value="Zona común">Zona común</option>');
+    $(this).parent().parent().parent().find("#tipo3").append('<option value="Punto fijo">Punto fijo</option>');
+    $(this).parent().parent().parent().find("#tipo3").append('<option value="Acometidas">Acometidas</option>');
+    
+
 
   }
     else if (instalacion == 'Inspección RETIE proceso uso final comercial') {
