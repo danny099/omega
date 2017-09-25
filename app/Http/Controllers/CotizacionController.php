@@ -458,6 +458,7 @@ class CotizacionController extends Controller
         $cotizacion['total'] = str_replace(',','',$request->total);
         $cotizacion['adicional'] = $request->adici;
         $cotizacion['observaciones'] = $request->observacion;
+        $cotizacion['metodo'] = $request->pago;
         $tension = $request->valor;
 
         if ($request->tipo_regimen == 1) {
