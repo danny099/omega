@@ -12,25 +12,298 @@ class ExcelController extends Controller
 {
   public function importExcel(Request $request)
   {
-    $file = Input::file('import_file');
-    dd($file);
-    die();
-    // return Excel::load($file, function($reader) {
-    //   // Getting all results
-    //   // $results = $reader->get();
-    //   // dd($results);
-    //   // $results = $reader->get()->toArray();
-    //   //   dd($results);
-    //   //   die();
-    //   $var = Excel::selectSheets('Hoja1')->load();
-    //
-    //   dd($var->toArray());
-    //   die();
-    //   // echo '<pre>';print_r($arreglo );
-    //   // echo '</pre>';
-    //
-    // });
+     $file = Input::file('import_file');
 
-      // return $result = Excel::selectSheetsByIndex(0)->load($file, function($reader) { $reader->noHeading(); })->get();
+     $result = Excel::selectSheetsByIndex(0)->load($file, function($reader) { $reader->noHeading(); })->get();
+     $result = $result->toArray();
+
+     $fecha_cot = $result[2][2];
+     $dirigido = $result[6][2];
+     $representante = $result[7][2];
+     $nombre_empresa = $result[8][2];
+     $cedula_nit = $result[9][2];
+     $direccion = $result[10][2];
+     $nombre_proyecto = $result[15][2];
+     $direccion_proyecto = $result[16][2];
+     $departamento = $result[16][4];
+     $municipio = $result[17][2];
+     $fecha_terminacion  = $result[18][2];
+     $estado_obra = $result[19][2];
+     $formas_pago = $result[24][2];
+     $tiempo_ejecucion = $result[25][2];
+     $valides_oferta = $result[25][4];
+     $tiempo_entreda_dictamenes = $result[26][2];
+     $visitas = $result[27][2];
+     $t_nivle_tension = $result[34][2];
+     $t_transformadores = $result[35][2];
+     $t_potencia = $result[36][2];
+     $t_montaje = $result[37][2];
+     $t_refrigeracion = $result[38][2];
+     $dm_longitud = $result[43][2];
+     $dm_tension = $result[44][2];
+     $dm_tipo = $result[45][2];
+     $dm_apoyos = $result[46][2];
+     $dm_notas = $result[47][2];
+     $db_longitu = $result[51][2];
+     $db_tension = $result[52][2];
+     $db_tipo = $result[53][2];
+     $db_apoyos = $result[54][2];
+     $db_cajas = $result[55][2];
+     $pu_tipo = $result[59][2];
+     $pu_estrato = $result[60][2];
+     $pu_numero_viviendas = $result[61][2];
+     $pu_numero_locales = $result[62][2];
+     $pu_zonas_comunes = $result[63][2];
+     $pu_metros = $result[64][2];
+     $pu_capacidad = $result[65][2];
+     $pu_acometidas = $result[66][2];
+
+     if (!empty($nombre_empresa)) {
+        $juridica['razon_social'] = $nombre_empresa;
+        $juridica['nit'] = $cedula_nit;
+        $juridica['nombre_representante'] = $representante;
+        $juridica['cedula'] = null;
+        $juridica['direccion'] = null; //pendiente
+        $juridica['telefono'] = null;
+        $juridica['email'] = null;
+        $juridica['departamento'] = null;
+        $juridica['municipio'] = null;
+
+        Juridica::create($juridica);
+
+     }else {
+
+       $cliente['nit'] = null;
+       $cliente['cedula'] = $cedula_nit;
+       $cliente['nombre'] = $representante;
+       $cliente['telefono'] = null;
+       $cliente['direccion'] = null;
+       $cliente['email'] = null;
+       $cliente['departament'] = null;
+       $cliente['municipio']  = null;
+
+       Cliente::create($cliente);
+
+     }
+
+     if (!empty($nombre_empresa)) {
+       $juridica = Juridica::all();
+       $lastId_juridica = $juridica->last()->id;
+
+       $datos = Cotizacion::count('codigo');
+       $num = Cotizacion::max('codigo');
+      //  dd($datos);
+      //  die();
+      //  $num = "COT-2017-A-999";
+       $numero = explode("-", $num);
+       $flag = true;
+
+       if ($datos == 0) {
+
+         $codigo = "COT-2017-A-001";
+
+       }elseif ($numero[3] >= 1) {
+
+         $i = $numero[2];
+
+         while ($flag) {
+
+
+
+           if ($numero[3] < 9) {
+             $numero[3] = $numero[3] +1;
+             $codigo = $numero[0]."-".$numero[1]."-".$i."-00".$numero[3];
+             $flag = false;
+
+
+           }elseif ($numero[3] <= 98) {
+             $numero[3] = $numero[3] +1;
+             $codigo = $numero[0]."-".$numero[1]."-".$i."-0".$numero[3];
+
+
+             $flag = false;
+
+           }elseif ($numero[3] < 999) {
+             $numero[3] = $numero[3] +1;
+             $codigo = $numero[0]."-".$numero[1]."-".$i."-".$numero[3];
+
+             $flag = false;
+           }elseif($numero[3]>=999){
+             $numero[3]=0;
+             $i++;
+
+           }
+
+
+        }
+
+       $now = new \DateTime();
+       $fecha = $now->format('Y-m-d');
+
+       $cliente['dirigido'] = $dirigido;
+       $cliente['codigo'] = $codigo;
+       $cliente['cliente_id'] = null;
+       $cliente['juridica_id'] = $lastId_juridica;
+       $cliente['fecha'] = $fecha;
+       $cliente['nombre'] = $nombre_proyecto;
+       $cliente['municipio'] = $municipio;
+       $cliente['formas_pago'] =$formas_pago;
+       $cliente['tiempo'] = $tiempo_ejecucion;
+       $cliente['entrega'] = $tiempo_entreda_dictamenes;
+       $cliente['visitas'] = $visitas;
+       $cliente['validez'] = $valides_oferta;
+       $cliente['departamento_id'] = $departamento;
+     }else {
+       $cliente = Cliente::all();
+       $lastId_cliente = $cliente->last()->id;
+
+       $datos = Cotizacion::count('codigo');
+       $num = Cotizacion::max('codigo');
+      //  dd($datos);
+      //  die();
+      //  $num = "COT-2017-A-999";
+       $numero = explode("-", $num);
+       $flag = true;
+
+       if ($datos == 0) {
+
+         $codigo = "COT-2017-A-001";
+
+       }elseif ($numero[3] >= 1) {
+
+         $i = $numero[2];
+
+         while ($flag) {
+
+
+
+           if ($numero[3] < 9) {
+             $numero[3] = $numero[3] +1;
+             $codigo = $numero[0]."-".$numero[1]."-".$i."-00".$numero[3];
+             $flag = false;
+
+
+           }elseif ($numero[3] <= 98) {
+             $numero[3] = $numero[3] +1;
+             $codigo = $numero[0]."-".$numero[1]."-".$i."-0".$numero[3];
+
+
+             $flag = false;
+
+           }elseif ($numero[3] < 999) {
+             $numero[3] = $numero[3] +1;
+             $codigo = $numero[0]."-".$numero[1]."-".$i."-".$numero[3];
+
+             $flag = false;
+           }elseif($numero[3]>=999){
+             $numero[3]=0;
+             $i++;
+
+           }
+
+
+        }
+
+       $now = new \DateTime();
+       $fecha = $now->format('Y-m-d');
+
+       $cliente['dirigido'] = $dirigido;
+       $cliente['codigo'] = $codigo;
+       $cliente['cliente_id'] = $lastId_cliente;
+       $cliente['juridica_id'] = null;
+       $cliente['fecha'] = $fecha;
+       $cliente['nombre'] = $nombre_proyecto;
+       $cliente['municipio'] = $municipio;
+       $cliente['formas_pago'] =$formas_pago;
+       $cliente['tiempo'] = $tiempo_ejecucion;
+       $cliente['entrega'] = $tiempo_entreda_dictamenes;
+       $cliente['visitas'] = $visitas;
+       $cliente['validez'] = $valides_oferta;
+       $cliente['departamento_id'] = $departamento;
+     }
+
+
+     if ($t_nivle_tension != 'N.A' && $t_transformadores != 'N.A' && $t_potencia != 'N.A' && $t_montaje != 'N.A') {
+
+       $cotizacion = Cotizacion::all();
+       $lastId_cotiza = $cotizacion->last()->id;
+
+      //  $datos = Cotizacion::count('codigo');
+      //  $num = Cotizacion::max('codigo');
+
+       $transformacion['descripcion'] = 'Inspección  RETIE proceso de transformación';
+       $transformacion['tipo'] = $t_montaje;
+       $transformaciones['nivel_tension'] = $t_nivle_tension;
+       $transformacion['unidad'] = 'Und';
+       $transformacion['capacidad'] = $t_potencia;
+       $transformacion['cantidad'] = $t_transformadores;
+       $transformacion['tipo_refrigeracion'] = $t_refrigeracion;
+       $transformacion['cotizacion_id'] = $lastId_cotiza;
+
+       Transformacion::create($transformacion);
+
+     }else {
+
+     }
+
+     if ($dm_tension != '' && $dm_longitud != '' && $dm_tipo != '' && $dm_apoyos != '' &&  $dm_notas != '') {
+
+       $cotizacion = Cotizacion::all();
+       $lastId_cotiza = $cotizacion->last()->id;
+
+       $distrisbucion['descripcion'] = 'Inspección RETIE proceso de distribución en MT';
+       $distribucion['tipo'] = $dm_tipo;
+       $distribucion['nivel_tension'] = $dm_tension;
+       $distribucion['unidad'] = 'Und';
+       $distribucion['cantidad'] = $dm_longitud;
+       $distribuscion['apoyos'] = $dm_apoyos;
+       $distribuscion['apoyos'] = 'N.A';
+       $distribucion['cotizacion_id'] = $lastId_cotiza;
+
+       Distribucion::create($distribucion);
+     }else {
+
+     }
+
+
+     if ($db_tension != '' && $db_longitu != '' && $db_tipo != '' && $db_apoyos != '' && $db_cajas != '' ) {
+
+       $cotizacion = Cotizacion::all();
+       $lastId_cotiza = $cotizacion->last()->id;
+
+       $distrisbucion['descripcion'] = 'Inspección RETIE proceso de distribución en BT';
+       $distribucion['tipo'] = $dm_tipo;
+       $distribucion['nivel_tension'] = $dm_tension;
+       $distribucion['unidad'] = 'Und';
+       $distribucion['cantidad'] = $dm_longitud;
+       $distribuscion['apoyos'] = $dm_apoyos;
+       $distribuscion['cajas'] = $db_cajas;
+       $distribucion['cotizacion_id'] = $lastId_cotiza;
+
+       Distribucion::create($distribucion);
+
+
+     }else {
+
+     }
+
+     $pu_estrato = $result[60][2];
+     $pu_numero_viviendas = $result[61][2];
+     $pu_numero_locales = $result[62][2];
+     $pu_zonas_comunes = $result[63][2];
+     $pu_metros = $result[64][2];
+     $pu_capacidad = $result[65][2];
+     $pu_acometidas = $result[66][2];
+     $pu_tipo = $result[59][2];
+
+     if ($pu_tipo != '' && $pu_estrato != '' && $pu_numero_viviendas != '' && $pu_numero_locales != '' && $pu_zonas_comunes != '' && $pu_metros != '' && $pu_capacidad != '' && $pu_acometidas != '' && $pu_tipo  != '') {
+       if () {
+         # code...
+       }
+     }
+
+
+
+
   }
 }
