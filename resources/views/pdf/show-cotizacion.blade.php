@@ -323,8 +323,8 @@
       }
 
       @page { margin: 100px 50px; }
-      header { position: fixed; top: -60px; left: 0px; right: 0px; height: 100px;
-            margin-top: 25px}
+      header { position: fixed; top: -80px; left: 0px; right: 0px; height: 100px;
+            margin-top: 0px}
       footer { position: fixed; bottom: -60px; left: -50px; right: -50px; height: 50px; }
       .page-number:after {content: counter(page); }
 
@@ -344,7 +344,7 @@
           <td style="font-size:10pt; color:#808080; margin-top:50px;" valign="middle"><center><p class=""><script type="text/php">
             if ( isset($pdf) ) {
               $font = $fontMetrics->getFont('Arial Narrow');
-              $pdf->page_text(490, 45, "Página: {PAGE_NUM} de {PAGE_COUNT}",$font, 8, array(0,0,0));
+              $pdf->page_text(485, 28, "Página: {PAGE_NUM} de {PAGE_COUNT}",$font, 8, array(0,0,0));
             }
         </script> </p></center></td>
         </tr>
@@ -459,8 +459,8 @@
             <th width="50"><center>Tipo</center></th>
             <th width="50"><center>Tensión</center></th>
             <th width="50"><center>Cantidad</center></th>
-            <th width="50"><center>Apoyos</center></th>
-            <th width="50"><center>Cajas</center></th>
+            <th width="53"><center>Apoyos</center></th>
+            <th width="30"><center>Cajas</center></th>
             <th width="50"><center>Notas</center></th>
           </tr>
         </thead>
@@ -500,8 +500,8 @@
         </tr>
         <thead>
           <tr>
-            <th width="190"><center>Descripción</center></th>
-            <th width="50"><center>Tipo</center></th>
+            <th width="165"><center>Descripción</center></th>
+            <th width="55"><center>Tipo</center></th>
             <th width="40"><center>Estrato</center></th>
             <th width="50"><center>Cantidad</center></th>
             <th width="30"><center>m²</center></th>
@@ -574,10 +574,10 @@
           <th Colspan="4" ><center><label>COTIZACIÓN</label></center></th>
         </tr>
         <tr>
-          <th><center><label> ÍTEM </label></center></th>
+          <th  width="30"><center><label> ÍTEM </label></center></th>
           <th><center><label> DESCRIPCIÓN DEL ALCANCE </label></center></th>
-          <th><center><label> CANTIDAD </label></center></th>
-          <th><center><label> VALOR </label></center></th>
+          <th  width="50"><center><label> CANTIDAD </label></center></th>
+          <th  width="50"><center><label> VALOR </label></center></th>
         </tr>
         <?php
         $i = 0;
@@ -593,7 +593,7 @@
           <td></td>
           <td></td>
           <td></td>
-          <td id="td" rowspan=<?php echo $contador+1; ?> style="vertical-align:middle; text-align:center;" >${{ number_format($total,0) }}</td>
+          <td id="td" rowspan=<?php echo $contador+2; ?> style="vertical-align:middle; text-align:center;" >${{ number_format($total,0) }}</td>
         </tr>
         @foreach($transformaciones as $trans)
           <tr >
@@ -628,7 +628,11 @@
             <td><center>{{ $pu->cantidad }} {{ $pu->unidad }}</center></td>
           </tr>
         @endforeach
+        <tr>
+          <td><center>{{$i+1}}</center></td>
+          <td colspan="2"  align="justify"><b>Detalle: </b>{{ $cotizaciones->observaciones }}</td>
 
+        </tr>
         <tr>
           <td rowspan="4" style="border-left: solid white; border-bottom: solid white"></td>
           <td colspan="2"><b>Valor de la Inspección</b></td>
