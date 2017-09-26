@@ -171,6 +171,6 @@ Route::group(['middleware' => 'auth'],function(){
 
 
 
-// Auth::routes();
+Auth::routes();
 
 Route::get('/home', 'HomeController@index');
