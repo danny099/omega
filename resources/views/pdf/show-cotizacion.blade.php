@@ -593,7 +593,13 @@
           <td></td>
           <td></td>
           <td></td>
-          <td id="td" rowspan=<?php echo $contador+2; ?> style="vertical-align:middle; text-align:center;" >${{ number_format($total,0) }}</td>
+          <td id="td" rowspan=<?php  if (empty($cotizaciones->observaciones)) {
+                                              echo $contador+1;
+                                            }else {
+                                              echo $contador+2;
+                                            } ?> style="vertical-align:middle; text-align:center;" >
+          ${{ number_format($total,0) }}
+        </td>
         </tr>
         @foreach($transformaciones as $trans)
           <tr >
@@ -628,11 +634,13 @@
             <td><center>{{ $pu->cantidad }} {{ $pu->unidad }}</center></td>
           </tr>
         @endforeach
+        @if(!empty($cotizaciones->observaciones))
         <tr>
           <td><center>{{$i+1}}</center></td>
           <td colspan="2"  align="justify"><b>Detalle: </b>{{ $cotizaciones->observaciones }}</td>
 
         </tr>
+        @endif
         <tr>
           <td rowspan="4" style="border-left: solid white; border-bottom: solid white"></td>
           <td colspan="2"><b>Valor de la Inspección</b></td>
