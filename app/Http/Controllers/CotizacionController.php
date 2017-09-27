@@ -403,6 +403,8 @@ class CotizacionController extends Controller
     public function edit($id)
     {
       $cotizaciones = Cotizacion::findOrFail($id);
+      dd($cotizaciones);
+      die();
       $clientes = Cliente::all();
       $juridicas = Juridica::all();
       $departamentos = Departamento::all();

@@ -7,12 +7,13 @@
     "require": {
         "php": ">=5.6.4",
         "barryvdh/laravel-dompdf": "^0.8.0",
+        "eboost/unoconv": "dev-master",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.3.0",
+        "maatwebsite/excel": "~2.1.0",
         "owen-it/laravel-auditing": "^4.0",
-        "phpoffice/phpword": "^0.13.0",
-        "eboost/unoconv": "dev-master"
+        "phpoffice/phpword": "^0.13.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
