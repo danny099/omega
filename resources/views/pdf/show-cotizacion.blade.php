@@ -640,6 +640,8 @@
           <td colspan="2"  align="justify"><b>Detalle: </b>{{ $cotizaciones->observaciones }}</td>
 
         </tr>
+        @else
+        
         @endif
         <tr>
           <td rowspan="4" style="border-left: solid white; border-bottom: solid white"></td>

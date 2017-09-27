@@ -826,12 +826,17 @@ $(document).on('change','.tipo3',function(){
     }
 
     if (tipo == 'Acometidas') {
-      $('.m2').remove();
-      $('.kva').remove();
-      $('#estrato').remove();
-      $('.quitar52').after('<input type="hidden" class="form-control" placeholder= "Cantidad" name="pu_final[metros_pu][]" value="N.A">');
-      $('.quitar52').after('<input type="hidden" class="form-control" placeholder= "Cantidad" name="pu_final[kva_pu][]" value="N.A">');
+      $(this).parent().parent().parent().parent().find('.m2').hide();
+      $(this).parent().parent().parent().parent().find('.kva').hide();
+      $(this).parent().parent().parent().parent().find('#estrato').hide();
+      $(this).parent().parent().parent().parent().find('.quitar52').after('<input type="hidden" class="form-control" placeholder= "Cantidad" name="pu_final[metros_pu][]" value="N.A">');
+      $(this).parent().parent().parent().parent().find('.quitar52').after('<input type="hidden" class="form-control" placeholder= "Cantidad" name="pu_final[kva_pu][]" value="N.A">');
 
+    }
+    else {
+      $(this).parent().parent().parent().parent().find('.m2').show();
+      $(this).parent().parent().parent().parent().find('.kva').show();
+      $(this).parent().parent().parent().parent().find('#estrato').show();
     }
 });
 
