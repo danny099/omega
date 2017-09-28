@@ -159,7 +159,7 @@
             <option value="Anticipo 50% - 50% en Actas parciales según avance de Obra">Anticipo 50% - 50% en Actas parciales según avance de Obra</option>
             <option value="Anticipo del 30% - 70% en Actas parciales según avance de Obra">Anticipo del 30% - 70% en Actas parciales según avance de Obra</option>
             <option value="Anticipo 30% - 70% a la entrega de dictámenes">Anticipo 30% - 70% a la entrega de dictámenes</option>
-            <option value="Segun acuerdo">Segun acuerdo</option>
+            <option value="Segun acuerdo">Según acuerdo</option>
           </select>
         </div>
         <div class="col-md-3">
