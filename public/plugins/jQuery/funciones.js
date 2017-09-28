@@ -353,13 +353,13 @@
                         '<input type="text" class="form-control cantidad3" placeholder= "Cantidad" name="pu_final[cantidad_pu][]">'+' '+
                       '</div>'+' '+
                     '</div>'+' '+
-                    '<div class="col-md-1">'+' '+
+                    '<div class="col-md-1 m2">'+' '+
                       '<div class="form-group">'+' '+
                         '<center><label >m²</label></center>'+' '+
                         '<input type="text" class="form-control" placeholder= "Cantidad" name="pu_final[metros_pu][]">'+' '+
                       '</div>'+' '+
                     '</div>'+' '+
-                    '<div class="col-md-1">'+' '+
+                    '<div class="col-md-1 kva">'+' '+
                       '<div class="form-group">'+' '+
                         '<center><label >KVA</label></center>'+' '+
                         '<input type="text" class="form-control" placeholder= "Cantidad" name="pu_final[kva_pu][]">'+' '+
