@@ -440,6 +440,9 @@ class CotizacionController extends Controller
         $input = $request->all();
         // dd($input);
         // die();
+        $now = new \DateTime();
+        $fecha = $now->format('Y-m-d');
+
         $cotiza = Cotizacion::findOrFail($id);
 
         $cotizacion['dirigido'] = $request->dirigido;
@@ -448,6 +451,7 @@ class CotizacionController extends Controller
         // $cotizacion['juridica_id'] = $request->juridica_id;
         $cotizacion['nombre'] = $request->nombre;
         $cotizacion['municipio'] = $request->municipio;
+        $cotizacion['fecha'] = $fecha;
         $cotizacion['departamento_id'] = $request->departamento_id;
         $cotizacion['formas_pago'] = $request->formas_pago;
         $cotizacion['tiempo'] = $request->tiempo;
