@@ -4,7 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
-// use App\Item;
+use App\Cliente;
+use App\Juridica;
+use App\Transformacion;
+use App\Distribucion;
+use App\Pu_final;
+use App\Cotizacion;
+
+
+
 use DB;
 use Excel;
 
@@ -16,47 +24,48 @@ class ExcelController extends Controller
 
      $result = Excel::selectSheetsByIndex(0)->load($file, function($reader) { $reader->noHeading(); })->get();
      $result = $result->toArray();
-
-     $fecha_cot = $result[2][2];
-     $dirigido = $result[6][2];
-     $representante = $result[7][2];
-     $nombre_empresa = $result[8][2];
-     $cedula_nit = $result[9][2];
-     $direccion = $result[10][2];
-     $nombre_proyecto = $result[15][2];
-     $direccion_proyecto = $result[16][2];
-     $departamento = $result[16][4];
-     $municipio = $result[17][2];
-     $fecha_terminacion  = $result[18][2];
-     $estado_obra = $result[19][2];
-     $formas_pago = $result[24][2];
-     $tiempo_ejecucion = $result[25][2];
-     $valides_oferta = $result[25][4];
-     $tiempo_entreda_dictamenes = $result[26][2];
-     $visitas = $result[27][2];
-     $t_nivle_tension = $result[34][2];
-     $t_transformadores = $result[35][2];
-     $t_potencia = $result[36][2];
-     $t_montaje = $result[37][2];
-     $t_refrigeracion = $result[38][2];
-     $dm_longitud = $result[43][2];
-     $dm_tension = $result[44][2];
-     $dm_tipo = $result[45][2];
-     $dm_apoyos = $result[46][2];
-     $dm_notas = $result[47][2];
-     $db_longitu = $result[51][2];
-     $db_tension = $result[52][2];
-     $db_tipo = $result[53][2];
-     $db_apoyos = $result[54][2];
-     $db_cajas = $result[55][2];
-     $pu_tipo = $result[59][2];
-     $pu_estrato = $result[60][2];
-     $pu_numero_viviendas = $result[61][2];
-     $pu_numero_locales = $result[62][2];
-     $pu_zonas_comunes = $result[63][2];
-     $pu_metros = $result[64][2];
-     $pu_capacidad = $result[65][2];
-     $pu_acometidas = $result[66][2];
+     dd($result);
+     die();
+     $fecha_cot = $result[2][1];
+     $dirigido = $result[6][1];
+     $representante = $result[7][1];
+     $nombre_empresa = $result[8][1];
+     $cedula_nit = $result[9][1];
+     $direccion = $result[10][1];
+     $nombre_proyecto = $result[15][1];
+     $direccion_proyecto = $result[16][1];
+     $departamento = $result[16][3];
+     $municipio = $result[17][1];
+     $fecha_terminacion  = $result[18][1];
+     $estado_obra = $result[19][1];
+     $formas_pago = $result[24][1];
+     $tiempo_ejecucion = $result[25][1];
+     $valides_oferta = $result[25][3];
+     $tiempo_entreda_dictamenes = $result[26][1];
+     $visitas = $result[27][1];
+     $t_nivle_tension = $result[34][1];
+     $t_transformadores = $result[35][1];
+     $t_potencia = $result[36][1];
+     $t_montaje = $result[37][1];
+     $t_refrigeracion = $result[38][1];
+     $dm_longitud = $result[43][1];
+     $dm_tension = $result[44][1];
+     $dm_tipo = $result[45][1];
+     $dm_apoyos = $result[46][1];
+     $dm_notas = $result[47][1];
+     $db_longitu = $result[51][1];
+     $db_tension = $result[52][1];
+     $db_tipo = $result[53][1];
+     $db_apoyos = $result[54][1];
+     $db_cajas = $result[55][1];
+     $pu_tipo = $result[59][1];
+     $pu_estrato = $result[60][1];
+     $pu_numero_viviendas = $result[61][1];
+     $pu_numero_locales = $result[62][1];
+     $pu_zonas_comunes = $result[63][1];
+     $pu_metros = $result[64][1];
+     $pu_capacidad = $result[65][1];
+     $pu_acometidas = $result[66][1];
 
      if (!empty($nombre_empresa)) {
         $juridica['razon_social'] = $nombre_empresa;
@@ -140,20 +149,22 @@ class ExcelController extends Controller
        $now = new \DateTime();
        $fecha = $now->format('Y-m-d');
 
-       $cliente['dirigido'] = $dirigido;
-       $cliente['codigo'] = $codigo;
-       $cliente['cliente_id'] = null;
-       $cliente['juridica_id'] = $lastId_juridica;
-       $cliente['fecha'] = $fecha;
-       $cliente['nombre'] = $nombre_proyecto;
-       $cliente['municipio'] = $municipio;
-       $cliente['formas_pago'] =$formas_pago;
-       $cliente['tiempo'] = $tiempo_ejecucion;
-       $cliente['entrega'] = $tiempo_entreda_dictamenes;
-       $cliente['visitas'] = $visitas;
-       $cliente['validez'] = $valides_oferta;
-       $cliente['departamento_id'] = $departamento;
-     }else {
+       $cotiza['dirigido'] = $dirigido;
+       $cotiza['codigo'] = $codigo;
+       $cotiza['cliente_id'] = null;
+       $cotiza['juridica_id'] = $lastId_juridica;
+       $cotiza['fecha'] = $fecha;
+       $cotiza['nombre'] = $nombre_proyecto;
+       $cotiza['municipio'] = $municipio;
+       $cotiza['formas_pago'] =$formas_pago;
+       $cotiza['tiempo'] = $tiempo_ejecucion;
+       $cotiza['entrega'] = $tiempo_entreda_dictamenes;
+       $cotiza['visitas'] = $visitas;
+       $cotiza['validez'] = $valides_oferta;
+       $cotiza['departamento_id'] = $departamento;
+       Cotizacion::create($cotiza);
+     }
+    }else {
        $cliente = Cliente::all();
        $lastId_cliente = $cliente->last()->id;
 
@@ -202,24 +213,27 @@ class ExcelController extends Controller
            }
 
 
+          }
         }
 
        $now = new \DateTime();
        $fecha = $now->format('Y-m-d');
 
-       $cliente['dirigido'] = $dirigido;
-       $cliente['codigo'] = $codigo;
-       $cliente['cliente_id'] = $lastId_cliente;
-       $cliente['juridica_id'] = null;
-       $cliente['fecha'] = $fecha;
-       $cliente['nombre'] = $nombre_proyecto;
-       $cliente['municipio'] = $municipio;
-       $cliente['formas_pago'] =$formas_pago;
-       $cliente['tiempo'] = $tiempo_ejecucion;
-       $cliente['entrega'] = $tiempo_entreda_dictamenes;
-       $cliente['visitas'] = $visitas;
-       $cliente['validez'] = $valides_oferta;
-       $cliente['departamento_id'] = $departamento;
+       $cotiza['dirigido'] = $dirigido;
+       $cotiza['codigo'] = $codigo;
+       $cotiza['cliente_id'] = $lastId_cliente;
+       $cotiza['juridica_id'] = null;
+       $cotiza['fecha'] = $fecha;
+       $cotiza['nombre'] = $nombre_proyecto;
+       $cotiza['municipio'] = $municipio;
+       $cotiza['formas_pago'] =$formas_pago;
+       $cotiza['tiempo'] = $tiempo_ejecucion;
+       $cotiza['entrega'] = $tiempo_entreda_dictamenes;
+       $cotiza['visitas'] = $visitas;
+       $cotiza['validez'] = $valides_oferta;
+       $cotiza['departamento_id'] = $departamento;
+
+       Cotizacion::create($cotiza);
      }
 
 
@@ -287,23 +301,83 @@ class ExcelController extends Controller
 
      }
 
-     $pu_estrato = $result[60][2];
-     $pu_numero_viviendas = $result[61][2];
-     $pu_numero_locales = $result[62][2];
-     $pu_zonas_comunes = $result[63][2];
-     $pu_metros = $result[64][2];
-     $pu_capacidad = $result[65][2];
-     $pu_acometidas = $result[66][2];
-     $pu_tipo = $result[59][2];
+    //  $pu_estrato = $result[60][2];
+    //  $pu_numero_viviendas = $result[61][2];
+    //  $pu_numero_locales = $result[62][2];
+    //  $pu_zonas_comunes = $result[63][2];
+    //  $pu_metros = $result[64][2];
+    //  $pu_capacidad = $result[65][2];
+    //  $pu_acometidas = $result[66][2];Inspección RETIE proceso uso final
+    //  $pu_tipo = $result[59][2];
 
-     if ($pu_tipo != '' && $pu_estrato != '' && $pu_numero_viviendas != '' && $pu_numero_locales != '' && $pu_zonas_comunes != '' && $pu_metros != '' && $pu_capacidad != '' && $pu_acometidas != '' && $pu_tipo  != '') {
-       if () {
-         # code...
+     if ($pu_tipo != '' && $pu_estrato != '' && $pu_numero_viviendas != '' && $pu_numero_locales != '' && $pu_zonas_comunes != '' && $pu_metros != '' && $pu_capacidad != '' && $pu_acometidas != '') {
+
+       if ($pu_numero_viviendas != 'N.A') {
+
+         $pu_final['descripcion'] = 'Inspección RETIE proceso uso final '.$pu_tipo;
+         $pu_final['tipo'] = null;
+         $pu_final['estrato'] = $pu_estrato;
+         $pu_final['unidad'] = 'Und';
+         $pu_final['cantidad'] = $pu_numero_viviendas;
+         $pu_final['metros'] = $pu_metros;
+
+         if ($pu_capacidad == 0) {
+           $pu_final['kva'] = 'Según Plano';
+         }else {
+           $pu_final['kva'] = $pu_capacidad;
+         }
+
+         $pu_final['acometidas'] = $pu_acometidas;
+
+         Pu_final::create($pu_final);
+
+       }
+
+       if ($pu_numero_locales != 'N.A') {
+
+         $pu_final['descripcion'] = 'Inspección RETIE proceso uso final '.$pu_tipo;
+         $pu_final['tipo'] = null;
+         $pu_final['estrato'] = $pu_estrato;
+         $pu_final['unidad'] = 'Und';
+         $pu_final['cantidad'] = $pu_numero_viviendas;
+         $pu_final['metros'] = $pu_metros;
+
+         if ($pu_capacidad == 0) {
+           $pu_final['kva'] = 'Según Plano';
+         }else {
+           $pu_final['kva'] = $pu_capacidad;
+         }
+
+         $pu_final['acometidas'] = $pu_acometidas;
+         Pu_final::create($pu_final);
+
+
+       }
+
+       if ($pu_zonas_comunes != 'N.A') {
+
+         $pu_final['descripcion'] = 'Inspección RETIE proceso uso final '.$pu_tipo;
+         $pu_final['tipo'] = null;
+         $pu_final['estrato'] = $pu_estrato;
+         $pu_final['unidad'] = 'Und';
+         $pu_final['cantidad'] = $pu_numero_viviendas;
+         $pu_final['metros'] = $pu_metros;
+
+         if ($pu_capacidad == 0) {
+           $pu_final['kva'] = 'Según Plano';
+         }else {
+           $pu_final['kva'] = $pu_capacidad;
+         }
+
+         $pu_final['acometidas'] = $pu_acometidas;
+         Pu_final::create($pu_final);
+
+
        }
      }
-
+       return redirect()->route('cotizaciones.index');
+   }
 
 
 
   }
-}
