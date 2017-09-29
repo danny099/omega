@@ -139,9 +139,8 @@
         </div>
         <div class="col-md-3"id="natural">
           <label >Municipio</label>
-          <select class="form-control" required="" style="width:100%" name="municipio" id="municipio">
+          <select class="form-control" data-placeholder="Seleccione" multiple="multiple" name="municipio[]" style="width:100%" id="municipio" required="">
             <option value="{{ $municipio->id }}">{{ $municipio->nombre }}</option>
-            <option value=""></option>
           </select>
         </div>
       </div>
