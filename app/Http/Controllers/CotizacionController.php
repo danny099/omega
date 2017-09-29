@@ -404,10 +404,12 @@ class CotizacionController extends Controller
     public function edit($id)
     {
       $cotizaciones = Cotizacion::findOrFail($id);
+
       $clientes = Cliente::all();
       $juridicas = Juridica::all();
       $departamentos = Departamento::all();
-      $municipio = $cotizaciones->municipio;
+      $municipios = explode(',',$cotizaciones->municipio);
+
       // $muni_Id = Municipio::select('id')->where('id',$cotizaciones->municipio)->get();
       // $municipio = Municipio::find($muni_Id);
       $transformaciones = Transformacion::where('transformacion.cotizacion_id', '=', $id)->get();
@@ -427,7 +429,7 @@ class CotizacionController extends Controller
       // die();
 
 
-      return view('cotizaciones.edit',compact('cotizaciones','departamentos','clientes','juridicas','transformaciones','mts','bts','pu_finales','municipio','valorcot','datos1','datos2','datos3'));
+      return view('cotizaciones.edit',compact('cotizaciones','departamentos','clientes','juridicas','transformaciones','mts','bts','pu_finales','municipios','valorcot','datos1','datos2','datos3'));
     }
 
     /**
