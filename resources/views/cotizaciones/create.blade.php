@@ -102,7 +102,7 @@
         </div>
         <div class="col-md-3"id="natural">
           <label >Municipio</label>
-          <select class="form-control js-example-basic-multiple" data-placeholder="Seleccione" multiple="multiple" name="municipio[]" style="width:100%" id="municipio" required="">
+          <select class="form-control" data-placeholder="Seleccione" multiple="multiple" name="municipio[]" style="width:100%" id="municipio" required="">
             <option value=""></option>
           </select>
         </div>
@@ -687,7 +687,7 @@ $(document).on('change','#departamento',function(){
     data:{'id':dep_id},
     success:function(data){
     console.log(data);
-    op+='<option value="0" selected disabled>Seleccione</option>';
+    
 
     for (var i = 0; i < data.length; i++) {
       op+='<option value="' +data[i].id+ '">' +data[i].nombre+ '</option>'
