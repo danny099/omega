@@ -409,6 +409,11 @@ class CotizacionController extends Controller
       $juridicas = Juridica::all();
       $departamentos = Departamento::all();
       $municipios = explode(',',$cotizaciones->municipio);
+      $count = count($municipios);
+      for ($i=0; $i < $count; $i++) {
+
+        $array_muni[] =  Municipio::where('municipio.id', '=', $municipios[$i])->get();
+      }
 
       // $muni_Id = Municipio::select('id')->where('id',$cotizaciones->municipio)->get();
       // $municipio = Municipio::find($muni_Id);
@@ -429,7 +434,7 @@ class CotizacionController extends Controller
       // die();
 
 
-      return view('cotizaciones.edit',compact('cotizaciones','departamentos','clientes','juridicas','transformaciones','mts','bts','pu_finales','municipios','valorcot','datos1','datos2','datos3'));
+      return view('cotizaciones.edit',compact('cotizaciones','departamentos','clientes','juridicas','transformaciones','mts','bts','pu_finales','array_muni','valorcot','datos1','datos2','datos3'));
     }
 
     /**
