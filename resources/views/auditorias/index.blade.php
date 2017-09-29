@@ -69,6 +69,7 @@
                      ?>
                     <td><?php echo $modulo5 ?></td>
                     <td>{{date_format(new DateTime($auditoria->created_at ),'d-m-y H:i:s')}}</td>
+                    
                   </tr>
 
                   @endforeach

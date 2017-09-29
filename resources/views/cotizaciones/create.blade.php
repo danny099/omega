@@ -102,7 +102,7 @@
         </div>
         <div class="col-md-3"id="natural">
           <label >Municipio</label>
-          <select class="form-control" name="municipio" style="width:100%" id="municipio" required="">
+          <select class="form-control js-example-basic-multiple" data-placeholder="Seleccione" multiple="multiple" name="municipio[]" style="width:100%" id="municipio" required="">
             <option value=""></option>
           </select>
         </div>
@@ -630,6 +630,8 @@ $(function() {
 
 
 $(document).ready(function(){
+
+
 
 
   $('#cliente').change(function(){
