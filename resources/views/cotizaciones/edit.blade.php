@@ -140,7 +140,13 @@
         <div class="col-md-3"id="natural">
           <label >Municipio</label>
           <select class="form-control" data-placeholder="Seleccione" multiple="multiple" name="municipio[]" style="width:100%" id="municipio" required="">
-            <option value="{{ $municipio->id }}">{{ $municipio->nombre }}</option>
+
+             @for ($i = 0; $i <  count($array_muni); $i++)
+                <?php $municipios= $array_muni[$i];?>
+               @foreach($municipios as $muni)
+                 <option value="{{ $muni->id}}" selected>{{ $muni->nombre}}</option>
+               @endforeach
+             @endfor
           </select>
         </div>
       </div>
