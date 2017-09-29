@@ -106,8 +106,8 @@ class CotizacionController extends Controller
      public function store(Request $request)
      {
          $input = $request->all();
-        //  dd($input);
-        //  die();
+         $municipio = implode(',',$request->municipio);
+
          $now = new \DateTime();
          $fecha = $now->format('Y-m-d');
 
@@ -118,7 +118,7 @@ class CotizacionController extends Controller
          $cotizacion['juridica_id'] = $request->juridica_id;
          $cotizacion['fecha'] = $fecha;
          $cotizacion['nombre'] = $request->nombre;
-         $cotizacion['municipio'] = $request->municipio;
+         $cotizacion['municipio'] = $municipio;
          $cotizacion['departamento_id'] = $request->departamento;
          $cotizacion['formas_pago'] = $request->formas_pago;
          $cotizacion['tiempo'] = $request->tiempo;
@@ -381,8 +381,9 @@ class CotizacionController extends Controller
     {
       $cotizacion = Cotizacion::find($id);
 
-      $muni_Id = Municipio::select('id')->where('id',$cotizacion->municipio)->get();
-      $municipio = Municipio::find($muni_Id);
+      // $muni_Id = Municipio::select('id')->where('id',$cotizacion->municipio)->get();
+      // $municipio = Municipio::find($muni_Id);
+      $municipio = $cotizacion->municipio;
 
       $observaciones = Observacion::where('observacion.cotizacion_id', '=', $id)->get();
       $transformaciones = Transformacion::where('transformacion.cotizacion_id', '=', $id)->get();
@@ -406,8 +407,9 @@ class CotizacionController extends Controller
       $clientes = Cliente::all();
       $juridicas = Juridica::all();
       $departamentos = Departamento::all();
-      $muni_Id = Municipio::select('id')->where('id',$cotizaciones->municipio)->get();
-      $municipio = Municipio::find($muni_Id);
+      $municipio = $cotizaciones->municipio;
+      // $muni_Id = Municipio::select('id')->where('id',$cotizaciones->municipio)->get();
+      // $municipio = Municipio::find($muni_Id);
       $transformaciones = Transformacion::where('transformacion.cotizacion_id', '=', $id)->get();
       // $distribuciones = Distribucion::where('distribucion.cotizacion_id', '=', $id)->get();
       $pu_finales = Pu_final::where('pu_final.cotizacion_id', '=', $id)->get();
@@ -440,6 +442,8 @@ class CotizacionController extends Controller
         $input = $request->all();
         // dd($input);
         // die();
+
+        $municipio = implode($request->municipio);
         $now = new \DateTime();
         $fecha = $now->format('Y-m-d');
 
@@ -450,7 +454,7 @@ class CotizacionController extends Controller
         // $cotizacion['cliente_id'] = $request->cliente_id;
         // $cotizacion['juridica_id'] = $request->juridica_id;
         $cotizacion['nombre'] = $request->nombre;
-        $cotizacion['municipio'] = $request->municipio;
+        $cotizacion['municipio'] = $municipio;
         $cotizacion['fecha'] = $fecha;
         $cotizacion['departamento_id'] = $request->departamento_id;
         $cotizacion['formas_pago'] = $request->formas_pago;
