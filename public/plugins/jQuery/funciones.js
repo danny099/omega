@@ -1,6 +1,7 @@
 
 
 
+  $('.js-example-basic-multiple').select2();
 
   function pregunta(){
     if (confirm('¿Estas seguro de enviar este formulario?')){
