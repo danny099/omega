@@ -178,11 +178,11 @@
                 <center class="separar"><label >Nivel de tensión (KV)  </label></center>
                 <select class="form-control tipo2 tension" name="distribucion[nivel_tension_dis][]" style="width:100%" id="kv">
                   <option value="">Seleccione...</option>
-                  <option value="13,2">7,6</option>
-                  <option value="13,2">11,4</option>
+                  <option value="7,6">7,6</option>
+                  <option value="11,4">11,4</option>
                   <option value="13,2">13,2</option>
                   <option value="13,8">13,8</option>
-                  <option value="13,8">34,5</option>
+                  <option value="34,5">34,5</option>
                   <option value="No aplica">No aplica</option>
                 </select>
               </div>
@@ -248,9 +248,10 @@
             <center class="separar"><label >Nivel de tensión (KV)  </label></center>
             <select class="form-control tipo tension2" name="transformacion[nivel_tension][]" style="width:100%" id="kv">
               <option value="">Seleccione...</option>
+              <option value="11,4">11,4</option>
               <option value="13,2">13,2</option>
-              <option value="13,4">13,4</option>
               <option value="13,8">13,8</option>
+              <option value="34,5">34,5</option>
               <option value="No aplica">No aplica</option>
             </select>
           </div>
