@@ -79,7 +79,7 @@ class DistribucionController extends Controller
                     $datos2['cajas'] = $input['distribucion']['cajas_dis'][$x];
                   }
 
-                  $datos2['notas'] = $input['distribucion']['notas_dis'][$x];
+                  // $datos2['notas'] = $input['distribucion']['notas_dis'][$x];
                   $datos2['administrativa_id'] = $request->codigo_proyecto;
                   $datos2['cotizacion_id'] = $request->codigo_cotizacion;
 
@@ -170,7 +170,7 @@ class DistribucionController extends Controller
            $datos['cajas'] = $input['distribucion']['cajas_dis'][$x];
          }
 
-         $datos['notas'] = $input['distribucion']['notas_dis'][$x];
+        //  $datos['notas'] = $input['distribucion']['notas_dis'][$x];
 
          $distri->update($datos);
 
