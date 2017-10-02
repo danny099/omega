@@ -447,10 +447,11 @@ class CotizacionController extends Controller
     public function update(Request $request, $id)
     {
         $input = $request->all();
-        // dd($input);
-        // die();
 
-        $municipio = implode($request->municipio);
+
+        $municipio = implode(',',$request->municipio);
+        // dd($municipio);
+        // die();
         $now = new \DateTime();
         $fecha = $now->format('Y-m-d');
 
