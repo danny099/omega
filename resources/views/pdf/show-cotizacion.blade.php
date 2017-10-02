@@ -400,7 +400,14 @@
           en el
          @endif
 
-         Municipio de
+         @if(count($array_muni)>1)
+          Municipios
+         @else
+          Municipio
+         @endif
+
+
+          de
          @if(count($array_muni)>1)
            @for ($i = 0; $i <  count($array_muni); $i++)
               <?php $municipios = $array_muni[$i];?>
