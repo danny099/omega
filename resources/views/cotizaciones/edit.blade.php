@@ -194,7 +194,7 @@
       <section>
     <div class="box-body" style="width: 110%">
       @if(count($mts) == 0)
-        <input type="hidden"  name="distribucion" value="distribucion"  >
+        <input type="hidden"  name="distribucion[]" value="distribucion"  >
       @else
       <center> <h3>Alcance: proceso de distribución en MT</h3> </center>
 
