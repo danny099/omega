@@ -394,22 +394,46 @@
          <td valign="top"> Objeto:</td>
          <td valign="top" align="justify">Este Documento Constituye  la Oferta Técnica  y Económica  para la prestación de servicios
          de inspectoría  RETIE a las instalaciones eléctricas del proyecto {{ $cotizaciones->nombre }} Ubicado
-         en el Municipio de
+         @if(count($array_muni)>1)
+          en los
+         @else
+          en el
+         @endif
+
+         Municipio de
+         @if(count($array_muni)>1)
+           @for ($i = 0; $i <  count($array_muni); $i++)
+              <?php $municipios = $array_muni[$i];?>
+
+             @foreach($municipios as  $muni)
+              <?php $conta = count($array_muni)-1; ?>
+              @if($i == $conta)
+                y {{ $muni->nombre }}
+              @elseif($i == $conta-1)
+
+                {{ $muni->nombre }}
+
+              @else
+              {{ $muni->nombre }},
+
+              @endif
+
+
+             @endforeach
+
+           @endfor
+         @else
          @for ($i = 0; $i <  count($array_muni); $i++)
             <?php $municipios = $array_muni[$i];?>
 
            @foreach($municipios as  $muni)
 
-            @if($i == count($array_muni)-1)
-              y {{ $muni->nombre }}
-            @else
-              {{ $muni->nombre }},
-            @endif
-
+              {{ $muni->nombre }}
 
            @endforeach
 
          @endfor
+         @endif
          departamento del {{ $departamentos->nombre }}.</td>
        </tr>
      </table>
