@@ -463,7 +463,7 @@
         </tr>
         <thead>
           <tr>
-            <th><center>Descripción</center></th>
+            <th width="180"><center>Descripción</center></th>
             <th width="50"><center>Tipo</center></th>
             <th width="60"><center>Tensión (KV)</center></th>
             <th width="50"><center>Capacidad(KVA)</center></th>
@@ -474,7 +474,7 @@
         <tbody>
           @foreach($transformaciones as $transfor)
             <tr>
-              <td>{{ $transfor->descripcion }}</td>
+              <td> <center>{{ $transfor->descripcion }}</center></td>
               <td width="50"><center>{{ $transfor->tipo }}</center></td>
               <td width="60"><center>{{ $transfor->nivel_tension }} </center></td>
               <td width="50"><center>{{ $transfor->capacidad }} </center></td>
@@ -491,23 +491,22 @@
       @else
       <table class=" table table-bordered table-striped">
         <tr>
-          <th colspan="7" class="ttable">DISTRIBUCIÓN</th>
+          <th colspan="6" class="ttable">DISTRIBUCIÓN</th>
         </tr>
         <thead>
           <tr>
-            <th><center>Descripción</center></th>
+            <th width="162"><center>Descripción</center></th>
             <th width="50"><center>Tipo</center></th>
             <th width="50"><center>Tensión</center></th>
             <th width="50"><center>Cantidad</center></th>
             <th width="53"><center>Apoyos</center></th>
             <th width="30"><center>Cajas</center></th>
-            <th width="50"><center>Notas</center></th>
           </tr>
         </thead>
         <tbody>
           @foreach($distribuciones as $distri)
             <tr>
-              <td>{{ $distri->descripcion }}</td>
+              <td><center>{{ $distri->descripcion }}</center></td>
               <td width="50"><center>{{ $distri->tipo }}</center></td>
               @if($distri->nivel_tension == '13,2' || $distri->nivel_tension == '13,4'|| $distri->nivel_tension == '13,8')
                 <td width="50"><center>{{ $distri->nivel_tension }} KV</center></td>
@@ -520,11 +519,7 @@
               <td width="50"><center>{{ $distri->cantidad }} mts.</center></td>
               <td width="50"><center>{{ $distri->apoyos }}</center></td>
               <td width="50"><center>{{ $distri->cajas }}</center></td>
-              @if($distri->notas == null)
-                <td width="50"><center>N.A</center></td>
-              @else
-                <td width="50"><center>{{ $distri->notas }}</center></td>
-              @endif
+
             </tr>
           @endforeach
         </tbody>
@@ -540,9 +535,9 @@
         </tr>
         <thead>
           <tr>
-            <th width="165"><center>Descripción</center></th>
+            <th width="180"><center>Descripción</center></th>
             <th width="55"><center>Tipo</center></th>
-            <th width="40"><center>Estrato</center></th>
+            <th width="25"><center>Estrato</center></th>
             <th width="50"><center>Cantidad</center></th>
             <th width="30"><center>m²</center></th>
             <th width="50"><center>KVA</center></th>
