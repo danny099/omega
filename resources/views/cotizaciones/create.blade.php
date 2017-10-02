@@ -173,7 +173,7 @@
               </div>
             </div>
 
-            <div class="col-md-1">
+            <div class="col-md-2">
               <div class="form-group">
                 <center class="separar"><label >Nivel de tensión (KV)  </label></center>
                 <select class="form-control tipo2 tension" name="distribucion[nivel_tension_dis][]" style="width:100%" id="kv">
@@ -188,7 +188,7 @@
               </div>
             </div>
 
-            <div class="col-md-1">
+            <div class="col-md-2">
               <div class="form-group">
                 <center class="separar"><label >Longitud de red (mts.)</label></center>
                 <input type="text" class="form-control cantidad2" placeholder= "Cantidad" onkeyup="mascara(this,cpf)" name="distribucion[cantidad_dis][]">
@@ -206,12 +206,7 @@
                 <input type="text" id="cajas" class="form-control" placeholder= "Cantidad" name="distribucion[cajas_dis][]">
               </div>
             </div>
-            <div class="col-md-2">
-              <div class="form-group">
-                <center class="separar"><label >Notas</label></center>
-                <input type="text" class="form-control" placeholder= "Notas" name="distribucion[notas_dis][]">
-              </div>
-            </div>
+
             <div class="col-md-1 tblprod13" id="tblprod13" >
               <div class="form-group">
                 <center class="separar"></center>
@@ -309,7 +304,7 @@
           </div>
         </div>
 
-        <div class="col-md-1">
+        <div class="col-md-2">
           <div class="form-group">
             <center class="separar"><label >Nivel de tensión (KV)  </label></center>
             <select class="form-control tipo2" name="distribucion[nivel_tension_dis][]" style="width:100%" id="tension">
@@ -321,7 +316,7 @@
           </div>
         </div>
 
-        <div class="col-md-1">
+        <div class="col-md-2">
           <div class="form-group">
             <center class="separar"><label >Longitud de red (mts.)</label></center>
             <input type="text" class="form-control cantidad2" placeholder= "Cantidad" onkeyup="mascara(this,cpf)" name="distribucion[cantidad_dis][]">
@@ -339,12 +334,7 @@
             <input type="text" id="cajas" class="form-control" placeholder= "Cantidad" name="distribucion[cajas_dis][]">
           </div>
         </div>
-        <div class="col-md-2">
-          <div class="form-group">
-            <center class="separar"><label >Notas</label></center>
-            <input type="text" class="form-control" placeholder= "Notas" name="distribucion[notas_dis][]">
-          </div>
-        </div>
+
         <div class="col-md-1 tblprod11" id="tblprod11" >
           <div class="form-group">
             <center class="separar"></center>

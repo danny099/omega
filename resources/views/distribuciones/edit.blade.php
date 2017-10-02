@@ -33,7 +33,7 @@
               </div>
             </div>
 
-            <div class="col-md-1">
+            <div class="col-md-2">
               <div class="form-group">
                 <center><label >Nivel de tensión  </label></center>
                 <select class="form-control tipo2" name="distribucion[nivel_tension_dis][]" style="width:100%" id="tension">
@@ -43,7 +43,7 @@
               </div>
             </div>
 
-            <div class="col-md-1">
+            <div class="col-md-2">
               <div class="form-group">
                 <center><label >Longitud de red (km)</label></center>
                 <input type="text" class="form-control cantidad2" placeholder= "Cantidad" value="{{ $distribucion->cantidad }}" name="distribucion[cantidad_dis][]">
@@ -61,12 +61,7 @@
                 <input type="text" id="cajas" class="form-control" placeholder= "Cantidad" value="{{ $distribucion->cajas }}" name="distribucion[cajas_dis][]">
               </div>
             </div>
-            <div class="col-md-2">
-              <div class="form-group">
-                <center style="margin-bottom: 25px;"><label >Notas</label></center>
-                <input type="text" class="form-control" placeholder= "Notas" value="{{ $distribucion->notas }}" name="distribucion[notas_dis][]">
-              </div>
-            </div>
+
             <div class="box-footer">
               <a href="{{ url('deletedistri') }}/{{ $distribucion->id }}" onClick="alert({{ $distribucion->id }});"><i class="glyphicon glyphicon-minus-sign"></i></a>
 

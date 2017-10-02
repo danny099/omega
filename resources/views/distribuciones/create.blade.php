@@ -79,7 +79,7 @@
               </div>
             </div>
 
-            <div class="col-md-1">
+            <div class="col-md-2">
               <div class="form-group">
                 <center class="separar"><label >Nivel de tensión  </label></center>
                 <select class="form-control tipo2 tension" name="distribucion[nivel_tension_dis][]" style="width:100%" id="tension">
@@ -89,7 +89,7 @@
               </div>
             </div>
 
-            <div class="col-md-1">
+            <div class="col-md-2">
               <div class="form-group">
                 <center class="separar"><label >Longitud de red (km)</label></center>
                 <input type="text" class="form-control cantidad2" placeholder= "Cantidad" name="distribucion[cantidad_dis][]">
@@ -105,12 +105,6 @@
               <div class="form-group">
                 <center class="separar"><label >Cajas de inspección</label></center>
                 <input type="number" id="cajas" class="form-control" placeholder= "Cantidad" name="distribucion[cajas_dis][]">
-              </div>
-            </div>
-            <div class="col-md-2">
-              <div class="form-group">
-                <center class="separar"><label >Notas</label></center>
-                <input type="text" class="form-control" placeholder= "Notas" name="distribucion[notas_dis][]">
               </div>
             </div>
             <div class="col-md-1 tblprod11" id="tblprod11" >

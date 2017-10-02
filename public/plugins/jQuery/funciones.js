@@ -86,7 +86,7 @@
                         '</select>'+' '+
                       '</div>'+' '+
                     '</div>'+' '+
-                    '<div class="col-md-1">'+' '+
+                    '<div class="col-md-2">'+' '+
                       '<div class="form-group">'+' '+
                         '<center class="separar"><label >Nivel de tensión (KV)  </label></center>'+' '+
                          '<select class="form-control tipo2 tension3" style="width:100%" name="distribucion[nivel_tension_dis][]" id="tension">'+' '+
@@ -98,7 +98,7 @@
                       '</div>'+' '+
                     '</div>'+' '+
 
-                    '<div class="col-md-1">'+' '+
+                    '<div class="col-md-2">'+' '+
                       '<div class="form-group">'+' '+
                         '<center class="separar"><label >Longitud de red (mts.)</label></center>'+' '+
                         '<input type="text" class="form-control cantidad2" placeholder= "Cantidad" name="distribucion[cantidad_dis][]">'+' '+
@@ -114,12 +114,6 @@
                       '<div class="form-group">'+' '+
                         '<center class="separar"><label >Cajas de inspección</label></center>'+' '+
                         '<input type="text" class="form-control cajas" placeholder= "Cantidad" name="distribucion[cajas_dis][]" id="cajas">'+' '+
-                      '</div>'+' '+
-                    '</div>'+' '+
-                    '<div class="col-md-2">'+' '+
-                      '<div class="form-group">'+' '+
-                        '<center class="separar"><label >Notas</label></center>'+' '+
-                        '<input type="text" class="form-control" placeholder= "Notas" name="distribucion[notas_dis][]">'+' '+
                       '</div>'+' '+
                     '</div>'+' '+
                     '<div class="col-md-1 tblprod13" >'+' '+
@@ -264,7 +258,7 @@
                         '</select>'+' '+
                       '</div>'+' '+
                     '</div>'+' '+
-                    '<div class="col-md-1">'+' '+
+                    '<div class="col-md-2">'+' '+
                       '<div class="form-group">'+' '+
                         '<center class="separar"><label >Nivel de tensión (KV)  </label></center>'+' '+
                          '<select style="width:100%" class="form-control tipo2" name="distribucion[nivel_tension_dis][]" id="tension">'+' '+
@@ -276,7 +270,7 @@
                       '</div>'+' '+
                     '</div>'+' '+
 
-                    '<div class="col-md-1">'+' '+
+                    '<div class="col-md-2">'+' '+
                       '<div class="form-group">'+' '+
                         '<center class="separar"><label >Longitud de red (mts.)</label></center>'+' '+
                         '<input type="text" class="form-control cantidad2" placeholder= "Cantidad" name="distribucion[cantidad_dis][]">'+' '+
@@ -292,12 +286,6 @@
                       '<div class="form-group">'+' '+
                         '<center class="separar"><label >Cajas de inspección</label></center>'+' '+
                         '<input type="text" class="form-control cajas" placeholder= "Cantidad" name="distribucion[cajas_dis][]" id="cajas">'+' '+
-                      '</div>'+' '+
-                    '</div>'+' '+
-                    '<div class="col-md-2">'+' '+
-                      '<div class="form-group">'+' '+
-                        '<center class="separar"><label >Notas</label></center>'+' '+
-                        '<input type="text" class="form-control" placeholder= "Notas" name="distribucion[notas_dis][]">'+' '+
                       '</div>'+' '+
                     '</div>'+' '+
                     '<div class="col-md-1 tblprod11" >'+' '+
@@ -411,7 +399,7 @@
                         '</select>'+' '+
                       '</div>'+' '+
                     '</div>'+' '+
-                    '<div class="col-md-1">'+' '+
+                    '<div class="col-md-2">'+' '+
                       '<div class="form-group">'+' '+
                         '<center class="separar"><label >Nivel de tensión (KV)  </label></center>'+' '+
                          '<select style="width:100%" class="form-control tipo2 tension4" name="distribucion[nivel_tension_dis][]" id="tension">'+' '+
@@ -419,7 +407,7 @@
                       '</div>'+' '+
                     '</div>'+' '+
 
-                    '<div class="col-md-1">'+' '+
+                    '<div class="col-md-2">'+' '+
                       '<div class="form-group">'+' '+
                         '<center class="separar"><label >Longitud de red (mts.)</label></center>'+' '+
                         '<input type="text" class="form-control cantidad2" placeholder= "Cantidad" name="distribucion[cantidad_dis][]">'+' '+
@@ -435,12 +423,6 @@
                       '<div class="form-group">'+' '+
                         '<center class="separar"><label >Cajas de inspección</label></center>'+' '+
                         '<input type="number" class="form-control cajas" placeholder= "Cantidad" name="distribucion[cajas_dis][]" id="cajas">'+' '+
-                      '</div>'+' '+
-                    '</div>'+' '+
-                    '<div class="col-md-2">'+' '+
-                      '<div class="form-group">'+' '+
-                        '<center class="separar"><label >Notas</label></center>'+' '+
-                        '<input type="text" class="form-control" placeholder= "Notas" name="distribucion[notas_dis][]">'+' '+
                       '</div>'+' '+
                     '</div>'+' '+
                     '<div class="col-md-1 tblprod11" >'+' '+
