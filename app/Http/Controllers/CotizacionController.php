@@ -219,7 +219,7 @@ class CotizacionController extends Controller
                      $datos2['cajas'] = $input['distribucion']['cajas_dis'][$x];
                    }
 
-                   $datos2['notas'] = $input['distribucion']['notas_dis'][$x];
+                  //  $datos2['notas'] = $input['distribucion']['notas_dis'][$x];
                    $datos2['cotizacion_id'] = $lastId_cotiza;
 
                   //  $texto['detalles'] = $datos2['descripcion'].' '.$datos2['tipo'].' '. $datos2['cantidad'];
@@ -577,7 +577,7 @@ class CotizacionController extends Controller
                 $datos2['cajas'] = $input['distribucion']['cajas_dis'][$x];
               }
 
-              $datos2['notas'] = $input['distribucion']['notas_dis'][$x];
+              // $datos2['notas'] = $input['distribucion']['notas_dis'][$x];
 
               // $id2 = $input['valores']['id_dis'][$x];
               // $valor = Valorcot::findOrFail($id2);
