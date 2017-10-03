@@ -162,9 +162,10 @@
                     '<center class="separar"><label >Tipo</label></center>'+' '+
                     '<select  style="width:100%" class="form-control tipo" name="transformacion[tipo][]">'+' '+
                       '<option value="">Seleccione...</option>'+' '+
-                      '<option value="Tipo poste">Tipo poste</option>'+' '+
-                      '<option value="Tipo pedestal/jardin">Tipo pedestal/jardin</option>'+' '+
-                      '<option value="Tipo patio">Tipo Patio</option>'+' '+
+                      '<option value="Poste">Tipo poste</option>'+' '+
+                      '<option value="Interior">Tipo interior</option>'+' '+
+                      '<option value="Pedestal/jardin">Tipo pedestal/jardin</option>'+' '+
+                      '<option value="Patio">Tipo Patio</option>'+' '+    
                     '</select>'+' '+
                   '</div>'+' '+
                 '</div>'+' '+

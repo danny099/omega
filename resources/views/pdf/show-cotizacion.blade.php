@@ -296,9 +296,7 @@
       .ttable{
         text-align: center;
       }
-      .inspeccionDoc{
-      page-break-before: always;
-      }
+
       /*#td{
         border-bottom: solid black;
       }
@@ -315,16 +313,24 @@
         padding: 0;
       }
 
-      .referencia {
-          page-break-after: always;
-      }
+
       .comerciales {
           page-break-after: avoid;
       }
 
+      .alcances {
+          page-break-before: always;
+      }
+      .inscripcion {
+          page-break-before: always;
+      }
+      .pago {
+          page-break-before: always;
+      }
+
       @page { margin: 100px 50px; }
-      header { position: fixed; top: -80px; left: 0px; right: 0px; height: 100px;
-            margin-top: 0px}
+      header { position: fixed; top: -60px; left: 0px; right: 0px; height: 100px;
+                    margin-top: 25px}
       footer { position: fixed; bottom: -60px; left: -50px; right: -50px; height: 50px; }
       .page-number:after {content: counter(page); }
 
@@ -344,7 +350,7 @@
           <td style="font-size:10pt; color:#808080; margin-top:50px;" valign="middle"><center><p class=""><script type="text/php">
             if ( isset($pdf) ) {
               $font = $fontMetrics->getFont('Arial Narrow');
-              $pdf->page_text(485, 28, "Página: {PAGE_NUM} de {PAGE_COUNT}",$font, 8, array(0,0,0));
+               $pdf->page_text(490, 45, "Página: {PAGE_NUM} de {PAGE_COUNT}",$font, 8, array(0,0,0));
             }
         </script> </p></center></td>
         </tr>
@@ -355,6 +361,8 @@
     </footer>
 
     <div class="div1">
+      <br>
+      <br>
       <div class="entrada">
         <p>Santiago de Cali</p>
         <p>{{ date_format(new DateTime($cotizaciones->fecha), 'd-m-y') }}</p>
@@ -371,7 +379,9 @@
           </tr>
         </table>
       </div>
-
+      <br>
+      <br>
+      <br>
       <div class="dirigido">
         <p>{{ $cotizaciones->dirigido }}:</p>
         @if(empty($clientes))
@@ -387,6 +397,7 @@
         @endif
       </div>
     </div>
+    <br>
 
     <div class="div2">
       <table>
@@ -400,14 +411,7 @@
           en el
          @endif
 
-         @if(count($array_muni)>1)
-          Municipios
-         @else
-          Municipio
-         @endif
-
-
-          de
+         Municipio de
          @if(count($array_muni)>1)
            @for ($i = 0; $i <  count($array_muni); $i++)
               <?php $municipios = $array_muni[$i];?>
@@ -445,7 +449,7 @@
        </tr>
      </table>
     </div>
-
+    <br>
     <br>
     <div class="div3">
       <p>Cordial Saludo:</p>
@@ -458,10 +462,54 @@
       </div>
     </div>
     <br>
+    <br>
+    <br>
+
+    <div class="referencia2">
+      <p><b>1. DOCUMENTOS DE REFERENCIA</b></p>
+      <br>
+
+        <?php
+          $refer = html_entity_decode($referencia->detalles);
+          echo $refer;
+        ?>
+
+    </div>
+    <br>
+    <br>
+
+
     <div class="alcances">
-      <p><b>1. ALCANCE DE LA INSPECCIÓN</b></p>
+
+      <p><b>2. ALCANCE DE LA INSPECCIÓN</b></p>
+      <br>
 
       @if(count($transformaciones) == 0)
+      <table class=" table table-bordered table-striped">
+        <tr>
+          <th colspan="6" class="ttable">TRANSFORMACIÓN</th>
+        </tr>
+        <thead>
+          <tr>
+            <th width="180"><center>Descripción</center></th>
+            <th width="50"><center>Tipo</center></th>
+            <th width="60"><center>Tensión (KV)</center></th>
+            <th width="50"><center>Capacidad(KVA)</center></th>
+            <th width="50"><center>Cantidad</center></th>
+            <th width="50"><center>Refrigeración</center></th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr>
+              <td> <center>N.A</center></td>
+              <td width="50"><center>N.A</center></td>
+              <td width="60"><center>N.A </center></td>
+              <td width="50"><center>N.A </center></td>
+              <td width="50"><center>N.A</center></td>
+              <td width="50"><center>N.A</center></td>
+            </tr>
+        </tbody>
+      </table>
       @else
 
       <table class=" table table-bordered table-striped">
@@ -495,6 +543,32 @@
       @endif
 
       @if(count($distribuciones) == 0)
+      <table class=" table table-bordered table-striped">
+        <tr>
+          <th colspan="6" class="ttable">DISTRIBUCIÓN</th>
+        </tr>
+        <thead>
+          <tr>
+            <th width="162"><center>Descripción</center></th>
+            <th width="50"><center>Tipo</center></th>
+            <th width="50"><center>Tensión</center></th>
+            <th width="50"><center>Cantidad</center></th>
+            <th width="53"><center>Apoyos</center></th>
+            <th width="30"><center>Cajas</center></th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr>
+              <td><center>N.A</center></td>
+              <td width="50"><center>N.A</center></td>
+              <td width="50"><center>N.A</center></td>
+              <td width="50"><center>N.A</center></td>
+              <td width="50"><center>N.A</center></td>
+              <td width="50"><center>N.A</center></td>
+
+            </tr>
+        </tbody>
+      </table>
       @else
       <table class=" table table-bordered table-striped">
         <tr>
@@ -535,6 +609,34 @@
       @endif
 
       @if(count($pu_finales) == 0)
+      <table class=" table table-bordered table-striped salte">
+        <tr>
+          <th colspan="7" class="ttable">USO FINAL RESIDENCIAL, COMERCIAL O INDUSTRIAL</th>
+        </tr>
+        <thead>
+          <tr>
+            <th width="180"><center>Descripción</center></th>
+            <th width="55"><center>Tipo</center></th>
+            <th width="25"><center>Estrato</center></th>
+            <th width="50"><center>Cantidad</center></th>
+            <th width="30"><center>m²</center></th>
+            <th width="50"><center>KVA</center></th>
+            <th width="50"><center>Acometidas</center></th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr>
+              <td><center>N.A</center></td>
+              <td width="50"><center>N.A</center></td>
+              <td width="40"> <center>N.A</center> </td>
+              <td width="40"><center>N.A</center></td>
+              <td width="50"><center>N.A</center></td>
+              <td width="30"><center>N.A</center></td>
+              <td width="50"><center>N.A</center></td>
+            </tr>
+
+        </tbody>
+      </table>
       @else
       <table class=" table table-bordered table-striped salte">
         <tr>
@@ -576,18 +678,9 @@
       </table>
       @endif
     </div>
-    <div class="referencia2">
-      <p><b>{{$referencia->nombre}}</b></p>
-      <br>
-
-        <?php
-          $refer = html_entity_decode($referencia->detalles);
-          echo $refer;
-        ?>
-
-    </div>
     <br>
     <br>
+
     <div class="inspeccionDoc">
     <p><b>{{$inicial->nombre}}</b></p>
     <br>
@@ -599,7 +692,7 @@
     </div>
 
     <br>
-    <div class="inscricion">
+    <div class="inscripcion">
     <p><b>{{$inspeccion->nombre}}</b></p>
 
       <?php

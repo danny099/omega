@@ -69,10 +69,10 @@
               <center class="separar"><label >Tipo</label></center>
               <select class="form-control tipo" name="transformacion[tipo][]" style="width:100%">
                 <option value="">Seleccione...</option>
-                <option value="Tipo poste">Tipo poste</option>
-                <option value="Tipo interior">Tipo interior</option>
-                <option value="Tipo pedestal/jardin">Tipo pedestal/jardin</option>
-                <option value="Tipo patio">Tipo Patio</option>
+                <option value="Poste">Tipo poste</option>
+                <option value="Interior">Tipo interior</option>
+                <option value="Pedestal/jardin">Tipo pedestal/jardin</option>
+                <option value="Patio">Tipo Patio</option>
               </select>
             </div>
           </div>
