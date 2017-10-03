@@ -473,6 +473,7 @@ class CotizacionController extends Controller
         $cotizacion['formas_pago'] = $request->formas_pago;
         $cotizacion['tiempo'] = $request->tiempo;
         $cotizacion['entrega'] = $request->entrega;
+        $cotizacion['visitas'] = $request->visitas;
         $cotizacion['validez'] = $request->validez;
         $cotizacion['subtotal'] = str_replace(',','',$request->subtotal);
         $cotizacion['iva'] = str_replace(',','',$request->iva);
