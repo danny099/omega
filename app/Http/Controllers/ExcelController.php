@@ -24,8 +24,7 @@ class ExcelController extends Controller
 
      $result = Excel::selectSheetsByIndex(0)->load($file, function($reader) { $reader->noHeading(); })->get();
      $result = $result->toArray();
-     dd($result);
-     die();
+
      $fecha_cot = $result[2][1];
      $dirigido = $result[6][1];
      $representante = $result[7][1];
