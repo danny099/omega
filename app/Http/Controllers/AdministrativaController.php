@@ -142,6 +142,9 @@ class AdministrativaController extends Controller
 
       $input = $request->all($request->id_cotizacion);
       $adicional = Cotizacion::findOrFail();
+
+      $municipio =  implode(',',$request->municipio);
+
        //  ********************************************************************************
        //  ********************************************************************************
       //  almacenar en un arreglo $administrativa los datos provenientes desde el formulario de datos basicos
@@ -151,7 +154,7 @@ class AdministrativaController extends Controller
        $administrativa['cliente_id'] = $request->cliente_id;
        $administrativa['juridica_id'] = $request->juridica_id;
        $administrativa['departamento_id'] = $request->departamento;
-       $administrativa['municipio'] = $request->municipio;
+       $administrativa['municipio'] = $municipio;
        $administrativa['tipo_zona'] = $request->zona;
        $administrativa['valor_contrato_inicial'] = $request->contrato_inicial;
        $administrativa['valor_iva'] = str_replace(',','',$request->iva);
@@ -345,8 +348,12 @@ class AdministrativaController extends Controller
       $clientes =Cliente::all();
       $juridicas = Juridica::all();
 
-      $muni_Id = Municipio::select('id')->where('id',$administrativas->municipio)->get();
-      $municipio = Municipio::find($muni_Id);
+      $municipios = explode(',',$administrativas->municipio);
+      $count = count($municipios);
+      for ($i=0; $i < $count; $i++) {
+
+        $array_muni[] =  Municipio::where('municipio.id', '=', $municipios[$i])->get();
+      }
 
       $adicionales = Valor_adicional::where('valor_adicional.administrativa_id', '=', $id)->get();
       $otrosis = Otrosi::where('otrosi.administrativa_id', '=', $id)->get();
@@ -363,7 +370,7 @@ class AdministrativaController extends Controller
 
 
       //  funcion que retorna una vista con todos los datos del registro ya buscado
-       return view('administrativas.edit',compact('administrativas','clientes','juridicas','otrosis','mts','bts','distribuciones','transformaciones','pu_finales','departamentos','municipio','adicionales','facturas','cuenta_cobros','consignaciones','observaciones'));
+       return view('administrativas.edit',compact('administrativas','clientes','juridicas','otrosis','mts','bts','distribuciones','transformaciones','pu_finales','departamentos','array_muni','adicionales','facturas','cuenta_cobros','consignaciones','observaciones'));
    }
 
    /**
