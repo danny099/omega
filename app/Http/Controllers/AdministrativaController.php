@@ -398,6 +398,8 @@ class AdministrativaController extends Controller
        $administrativas = Administrativa::findOrFail($id);
        $facturas = Factura::where('factura.administrativa_id', '=', $administrativas->id)->get();
 
+       $municipio = implode(',',$request->municipio);
+
 
        $administrativa['codigo_proyecto'] = $request->codigo_proyecto;
        $administrativa['nombre_proyecto'] = ucfirst(mb_strtolower($request->nombre_proyecto));
@@ -435,7 +437,7 @@ class AdministrativaController extends Controller
         //  $administrativa['cliente_id'] = $request->cliente_id;
         //  $administrativa['juridica_id'] = $request->juridica_id;
          $administrativa2['departamento_id'] = $request->departamento_id;
-         $administrativa2['municipio'] = $request->municipio;
+         $administrativa2['municipio'] = $municipio;
          $administrativa2['tipo_zona'] = $request->zona;
          $administrativa2['valor_contrato_inicial'] = $request->valor_contrato_inicial;
          $administrativa2['valor_iva'] = str_replace(',','',$request->iva);
