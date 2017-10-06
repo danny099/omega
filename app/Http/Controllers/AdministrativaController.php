@@ -62,20 +62,18 @@ class AdministrativaController extends Controller
        $input = $request->all();
        $codigo_cot = $request->codigo_cot;
 
-       $municipios = explode(',',$cotizaciones->municipio);
-       $count = count($municipios);
-       for ($i=0; $i < $count; $i++) {
-
-         $array_muni[] =  Municipio::where('municipio.id', '=', $municipios[$i])->get();
-       }
-
-
        $clientes=Cliente::all();
        $juridicas = Juridica::all();
        $otrosis=Otrosi::all();
        $departamentos = Departamento::all();
        $cotizaciones = Cotizacion::findOrFail($codigo_cot);
 
+       $municipios = explode(',',$cotizaciones->municipio);
+       $count = count($municipios);
+       for ($i=0; $i < $count; $i++) {
+
+         $array_muni[] =  Municipio::where('municipio.id', '=', $municipios[$i])->get();
+       }
 
        $transformaciones = Transformacion::where('transformacion.cotizacion_id', '=', $codigo_cot)->get();
       //  $distribuciones = Distribucion::where('distribucion.cotizacion_id', '=', $codigo_cot)->get();
