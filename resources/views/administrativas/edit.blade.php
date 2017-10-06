@@ -18,7 +18,6 @@
 @section('scripts')
   <script type="text/javascript">
   $(document).ready(function(){
-    $(document).ready(function(){
       var dep_id = $('#departamento').val();
       var div = $('#departamento').parents();
       var op=" ";

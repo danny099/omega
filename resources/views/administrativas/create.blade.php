@@ -163,7 +163,13 @@ function addCommas(nStr){
           <div class="form-group">
             <label >Municipios</label>
             <select class="form-control" data-placeholder="Seleccione" multiple="multiple" name="municipio[]" style="width:100%" id="municipio" required="">
-              <option value=""></option>
+
+               @for ($i = 0; $i <  count($array_muni); $i++)
+                  <?php $municipios= $array_muni[$i];?>
+                 @foreach($municipios as $muni)
+                   <option value="{{ $muni->id}}" selected>{{ $muni->nombre}}</option>
+                 @endforeach
+               @endfor
             </select>
           </div>
           <div class="form-group">
@@ -471,32 +477,62 @@ $(document).on('change','#instalacion',function(){
 
 
 $(document).ready(function(){
-  $(document).on('change','#departamento',function(){
+  var dep_id = $('#departamento').val();
+  var div = $('#departamento').parents();
+  var op=" ";
+  $.ajax({
+    type:'get',
+    url:'{{ url('selectmuni')}}',
+    data:{'id':dep_id},
+    success:function(data){
+    console.log(data);
+    op+='@for ($i = 0; $i <  count($array_muni); $i++)';
+    op+='<?php $municipios= $array_muni[$i];?>';
+    op+='@foreach($municipios as $muni)';
+    op+='<option value="{{ $muni->id}}" selected>{{ $muni->nombre}}</option>';
+    op+='@endforeach';
+    op+='@endfor';
 
-    var dep_id = $(this).val();
-    var div = $(this).parents();
-    var op=" ";
-    $.ajax({
-      type:'get',
-      url:'{{ url('selectmuni')}}',
-      data:{'id':dep_id},
-      success:function(data){
-      console.log(data);
+    for (var i = 0; i < data.length; i++) {
+      op+='<option value="' +data[i].id+ '">' +data[i].nombre+ '</option>'
+    }
 
+      div.find('#municipio').html(" ");
+      div.find('#municipio').append(op);
 
-      for (var i = 0; i < data.length; i++) {
-        op+='<option value="' +data[i].id+ '">' +data[i].nombre+ '</option>'
-      }
+    },
+      error:function(){
 
-        div.find('#municipio').html(" ");
-        div.find('#municipio').append(op);
-
-      },
-        error:function(){
-
-      }
-    });
+    }
   });
+});
+
+$(document).on('change','#departamento',function(){
+
+  var dep_id = $(this).val();
+  var div = $(this).parents();
+  var op=" ";
+  $.ajax({
+    type:'get',
+    url:'{{ url('selectmuni')}}',
+    data:{'id':dep_id},
+    success:function(data){
+    console.log(data);
+    op+='<option value="0" selected disabled>Seleccione</option>';
+
+    for (var i = 0; i < data.length; i++) {
+      op+='<option value="' +data[i].id+ '">' +data[i].nombre+ '</option>'
+    }
+
+      div.find('#municipio').html(" ");
+      div.find('#municipio').append(op);
+
+    },
+      error:function(){
+
+    }
+  });
+});
 });
 
 $(document).ready(function($){
