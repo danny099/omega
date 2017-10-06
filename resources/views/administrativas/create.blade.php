@@ -505,7 +505,7 @@ $(document).ready(function(){
 
     }
   });
-});
+
 
 $(document).on('change','#departamento',function(){
 
