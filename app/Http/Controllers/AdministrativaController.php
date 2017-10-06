@@ -145,8 +145,9 @@ class AdministrativaController extends Controller
     public function store(Request $request)
     {
 
+
       $input = $request->all($request->id_cotizacion);
-      $adicional = Cotizacion::findOrFail();
+      $adicional = Cotizacion::findOrFail($request->id_cotizacion);
 
       $municipio =  implode(',',$request->municipio);
 
@@ -171,7 +172,8 @@ class AdministrativaController extends Controller
        $administrativa['recor_fac'] = 1;
        $administrativa['contador_otro'] = 0;
        $administrativa['contador_fac'] = 0;
-       $administrativa['adicional'] = $adicional;
+       $administrativa['adicional'] = $adicional->adicional;
+
        $administrativa['id_cotizacion'] = $request->id_cotizacion;
 
 
