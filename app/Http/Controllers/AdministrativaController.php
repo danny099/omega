@@ -62,12 +62,13 @@ class AdministrativaController extends Controller
        $input = $request->all();
        $codigo_cot = $request->codigo_cot;
 
-       $municipios = explode(',',$administrativas->municipio);
+       $municipios = explode(',',$cotizaciones->municipio);
        $count = count($municipios);
        for ($i=0; $i < $count; $i++) {
 
          $array_muni[] =  Municipio::where('municipio.id', '=', $municipios[$i])->get();
        }
+
 
        $clientes=Cliente::all();
        $juridicas = Juridica::all();
