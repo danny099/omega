@@ -74,7 +74,7 @@
         }
       });
     });
-    });
+
 
   $(function () {
     $("table").DataTable({
