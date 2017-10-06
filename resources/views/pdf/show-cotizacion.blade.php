@@ -411,7 +411,6 @@
           en el
          @endif
 
-         Municipio de
          @if(count($array_muni)>1)
            @for ($i = 0; $i <  count($array_muni); $i++)
               <?php $municipios = $array_muni[$i];?>
@@ -434,17 +433,17 @@
 
            @endfor
          @else
-         @for ($i = 0; $i <  count($array_muni); $i++)
-            <?php $municipios = $array_muni[$i];?>
+           @for ($i = 0; $i <  count($array_muni); $i++)
+              <?php $municipios = $array_muni[$i];?>
 
-           @foreach($municipios as  $muni)
+             @foreach($municipios as  $muni)
 
-              {{ $muni->nombre }}
+                {{ $muni->nombre }}
 
-           @endforeach
+             @endforeach
 
-         @endfor
-         @endif
+           @endfor
+           @endif
          departamento del {{ $departamentos->nombre }}.</td>
        </tr>
      </table>

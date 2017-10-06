@@ -1508,8 +1508,52 @@ class DocumentoController extends Controller
 
       $contrato = Administrativa::findOrFail($id);
 
-      $municipio =  explode(',',$contrato->municipio);
+      $muni =  explode(',',$contrato->municipio);
+      $count = count($muni);
+      $cadena = '';
+      for ($x=0; $x < $count ; $x++) {
+        $array_muni[] =  Municipio::where('municipio.id', '=', $muni[$x])->get();
+      }
+      // dd($array_muni);
+      // die();
+      if (count($muni) > 1) {
+        for ($i=0; $i < $count; $i++) {
 
+
+          foreach ($array_muni[$i] as $key => $value) {
+            $conta = $count- 1;
+
+
+            if ($i == $conta) {
+
+              $cadena .= 'y '.$value->nombre;
+
+            }else {
+              $cadena .= $value->nombre.', ';
+            }
+
+          }
+        }
+      }else {
+        for ($i=0; $i < $count; $i++) {
+
+          $array_muni[] =  Municipio::where('municipio.id', '=', $muni[$i])->get();
+          $cadena = '';
+          foreach ($array_muni[$i] as $key => $value) {
+
+            $cadena = $value->nombre;
+
+          }
+        }
+      }
+
+      if ($count > 1) {
+        $texto = 'LOS MUNICIPIOS DE '.$cadena;
+      }else {
+        $texto = 'EL MUNICIPIO DE '.$cadena;
+      }
+
+      $municipio = implode(',',$array_muni);
 
       if (!is_null($contrato->cliente_id)) {
         $cliente = Cliente::findOrFail($contrato->cliente_id);
@@ -1721,7 +1765,7 @@ class DocumentoController extends Controller
 
       $document->setValue('table',$table);
       $document->setValue('nombre_proyecto',$contrato->nombre_proyecto);
-      $document->setValue('municipio',$municipio);
+      $document->setValue('municipio',$texto);
 
       if (!is_null($contrato->cliente_id)) {
         $document->setValue('nombres',$cliente->nombre);
