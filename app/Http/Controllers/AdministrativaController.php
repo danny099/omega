@@ -103,13 +103,13 @@ class AdministrativaController extends Controller
              $codigo = $numero[0]."-".$numero[1]."-00".$numero[2];
              $flag = false;
 
-           }elseif ($numero[3] <= 98) {
+           }elseif ($numero[2] <= 98) {
              $numero[2] = $numero[2] +1;
              $codigo = $numero[0]."-".$numero[1]."-0".$numero[2];
 
              $flag = false;
 
-           }elseif ($numero[3] < 999) {
+           }elseif ($numero[2] < 999) {
              $numero[2] = $numero[2] +1;
              $codigo = $numero[0]."-".$numero[1]."-".$numero[2];
 
