@@ -162,8 +162,7 @@ function addCommas(nStr){
           </div>
           <div class="form-group">
             <label >Municipios</label>
-            <select class="form-control" name="municipio" id="municipio" required="">
-              <option value="{{ $municipio->id }}">{{ $municipio->nombre }}</option>
+            <select class="form-control" data-placeholder="Seleccione" multiple="multiple" name="municipio[]" style="width:100%" id="municipio" required="">
               <option value=""></option>
             </select>
           </div>
@@ -454,7 +453,7 @@ $(document).on('change','#instalacion',function(){
     $(this).parent().parent().parent().find("#tipo3").append('<option value="Zona común">Zona común</option>');
     $(this).parent().parent().parent().find("#tipo3").append('<option value="Punto fijo">Punto fijo</option>');
     $(this).parent().parent().parent().find("#tipo3").append('<option value="Acometidas">Acometidas</option>');
-    
+
 
 
   }
@@ -472,32 +471,32 @@ $(document).on('change','#instalacion',function(){
 
 
 $(document).ready(function(){
-$(document).on('change','#departamento',function(){
+  $(document).on('change','#departamento',function(){
 
-  var dep_id = $(this).val();
-  var div = $(this).parents();
-  var op=" ";
-  $.ajax({
-    type:'get',
-    url:'{{ url('selectmuni')}}',
-    data:{'id':dep_id},
-    success:function(data){
-    console.log(data);
-    op+='<option value="0" selected disabled>Seleccione</option>';
+    var dep_id = $(this).val();
+    var div = $(this).parents();
+    var op=" ";
+    $.ajax({
+      type:'get',
+      url:'{{ url('selectmuni')}}',
+      data:{'id':dep_id},
+      success:function(data){
+      console.log(data);
 
-    for (var i = 0; i < data.length; i++) {
-      op+='<option value="' +data[i].id+ '">' +data[i].nombre+ '</option>'
-    }
 
-      div.find('#municipio').html(" ");
-      div.find('#municipio').append(op);
+      for (var i = 0; i < data.length; i++) {
+        op+='<option value="' +data[i].id+ '">' +data[i].nombre+ '</option>'
+      }
 
-    },
-      error:function(){
+        div.find('#municipio').html(" ");
+        div.find('#municipio').append(op);
 
-    }
+      },
+        error:function(){
+
+      }
+    });
   });
-});
 });
 
 $(document).ready(function($){
