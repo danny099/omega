@@ -62,14 +62,20 @@ class AdministrativaController extends Controller
        $input = $request->all();
        $codigo_cot = $request->codigo_cot;
 
+       $municipios = explode(',',$administrativas->municipio);
+       $count = count($municipios);
+       for ($i=0; $i < $count; $i++) {
+
+         $array_muni[] =  Municipio::where('municipio.id', '=', $municipios[$i])->get();
+       }
+
        $clientes=Cliente::all();
        $juridicas = Juridica::all();
        $otrosis=Otrosi::all();
        $departamentos = Departamento::all();
        $cotizaciones = Cotizacion::findOrFail($codigo_cot);
 
-       $muni_Id = Municipio::select('id')->where('id',$cotizaciones->municipio)->get();
-       $municipio = Municipio::find($muni_Id);
+
        $transformaciones = Transformacion::where('transformacion.cotizacion_id', '=', $codigo_cot)->get();
       //  $distribuciones = Distribucion::where('distribucion.cotizacion_id', '=', $codigo_cot)->get();
        $pu_finales = Pu_final::where('pu_final.cotizacion_id', '=', $codigo_cot)->get();
@@ -120,7 +126,7 @@ class AdministrativaController extends Controller
        }
 
 
-       return view('administrativas.create',compact('clientes','otrosis','mts','bts','transformaciones','pu_finales','departamentos','juridicas','cotizaciones','municipio','codigo'));
+       return view('administrativas.create',compact('clientes','otrosis','mts','bts','transformaciones','pu_finales','departamentos','juridicas','cotizaciones','array_muni','codigo'));
      }
 
     //  metodo que permite capturar el Request mediante una ruta ajax para llenar un select dinamico dependiente
