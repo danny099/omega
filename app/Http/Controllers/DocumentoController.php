@@ -1507,7 +1507,8 @@ class DocumentoController extends Controller
       $firma = public_path().'/firma.jpg';
 
       $contrato = Administrativa::findOrFail($id);
-      $municipio =  implode(',',$contrato->municipio);
+
+      $municipio =  explode(',',$contrato->municipio);
 
 
       if (!is_null($contrato->cliente_id)) {
