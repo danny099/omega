@@ -784,8 +784,6 @@ class CotizacionController extends Controller
           $registro->save();
         }
 
-
-
       }
 
       $cotizacion->delete();

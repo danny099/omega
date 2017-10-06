@@ -998,6 +998,7 @@ class DocumentoController extends Controller
         $table4 .=    '</w:tc>';
         $table4 .=  '</w:tr>';
 
+
         $i = 1;
         foreach ($transformaciones as $key => $trans) {
 
@@ -1489,7 +1490,11 @@ class DocumentoController extends Controller
 
     }
 
-    public function contrato($id){ // tiene que mandar el id para poder encontrar al que se deba generar
+    // public function doc($id){
+    //   dd($id);
+    //   die();
+    // }
+    public function doc($id){ // tiene que mandar el id para poder encontrar al que se deba generar
 
       $main = public_path().'/documento'.'/contrato_main.docx';
       // $PHPWord = new \PhpOffice\PhpWord\PhpWord();
@@ -1511,7 +1516,7 @@ class DocumentoController extends Controller
 
 
       // $cotizacion = Cotizacion::where('cotizacion.cliente_id', '=', $contrato->id_cotizacion)->get();
-      $cotizacion = Cotizacion::findOrFail($contrato->id_cotizacion);
+      // $cotizacion = Cotizacion::findOrFail($contrato->id_cotizacion);
 
       $transformaciones = Transformacion::where('transformacion.administrativa_id', '=', $contrato->id)->get();
       $distribuciones = Distribucion::where('distribucion.administrativa_id', '=', $contrato->id)->get();
@@ -1731,7 +1736,7 @@ class DocumentoController extends Controller
 
 
       $document->setValue('departamento',$departamento->nombre);
-      $document->setValue('adicional',$cotizacion->adicional);
+      $document->setValue('adicional',$contrato->adicional);
       $letras = NumeroALetras::convertir($contrato->valor_total_contrato, 'pesos', 'centavos');
 
       $document->setValue('letras',$letras);
@@ -1743,7 +1748,7 @@ class DocumentoController extends Controller
       $ficher = 'documento/temp_contrato.docx';
 
 
-      return redirect()->route('administrativas.index');
+      // return redirect()->route('administrativas.index');
 
     }
     /**

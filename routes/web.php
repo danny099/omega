@@ -152,7 +152,8 @@ Route::group(['middleware' => 'auth'],function(){
 	/**************************************************************/
 	/**************************************************************/
 	Route::get('cotizacion/{id}','PdfController@cotizacionPdf');
-	Route::get('contrato/{id}','DocumentoController@contrato');
+	Route::get('doc/{id}','DocumentoController@doc');
+	// Route::get('doc/{id}','DocumentoController@doc');
 	/**************************************************************/
 	/**************************************************************/
 	Route::get('perfil','UsuarioController@verPerfil');
@@ -163,8 +164,8 @@ Route::group(['middleware' => 'auth'],function(){
 	// Route::get('wrong',['as' => 'error', 'uses' => 'HomeController@wrong']);
 	});
 
-	Route::get('pagenotfound',['as' => 'notfound', 'uses' => 'HomeController@pagenotfound']);
-	Route::get('wrong',['as' => 'error', 'uses' => 'HomeController@wrong']);
+	// Route::get('pagenotfound',['as' => 'notfound', 'uses' => 'HomeController@pagenotfound']);
+	// Route::get('wrong',['as' => 'error', 'uses' => 'HomeController@wrong']);
 
 	/**************************************************************/
 	/**************************************************************/

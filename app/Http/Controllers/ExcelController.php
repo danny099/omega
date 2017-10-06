@@ -10,6 +10,7 @@ use App\Transformacion;
 use App\Distribucion;
 use App\Pu_final;
 use App\Cotizacion;
+use App\Valorcot;
 
 
 
@@ -160,6 +161,7 @@ class ExcelController extends Controller
        $cotiza['entrega'] = $tiempo_entreda_dictamenes;
        $cotiza['visitas'] = $visitas;
        $cotiza['validez'] = $valides_oferta;
+       $cotiza['adicional'] = '600,000';
        $cotiza['departamento_id'] = $departamento;
        Cotizacion::create($cotiza);
      }
@@ -230,6 +232,7 @@ class ExcelController extends Controller
        $cotiza['entrega'] = $tiempo_entreda_dictamenes;
        $cotiza['visitas'] = $visitas;
        $cotiza['validez'] = $valides_oferta;
+       $cotiza['adicional'] = '600,000';
        $cotiza['departamento_id'] = $departamento;
 
        Cotizacion::create($cotiza);
@@ -255,6 +258,13 @@ class ExcelController extends Controller
 
        Transformacion::create($transformacion);
 
+        $texto['detalles'] = 'transformación';
+        $texto['valor_uni'] = 0;
+        $texto['valor_total'] = 0;
+        $texto['cotizacion_id'] = $lastId_cotiza;
+
+        Valorcot::create($texto);
+
      }else {
 
      }
@@ -274,6 +284,13 @@ class ExcelController extends Controller
        $distribucion['cotizacion_id'] = $lastId_cotiza;
 
        Distribucion::create($distribucion);
+
+       $texto['detalles'] = 'distribución';
+       $texto['valor_uni'] = 0;
+       $texto['valor_total'] = 0;
+       $texto['cotizacion_id'] = $lastId_cotiza;
+
+       Valorcot::create($texto);
      }else {
 
      }
@@ -294,6 +311,13 @@ class ExcelController extends Controller
        $distribucion['cotizacion_id'] = $lastId_cotiza;
 
        Distribucion::create($distribucion);
+
+       $texto['detalles'] = 'distribución';
+       $texto['valor_uni'] = 0;
+       $texto['valor_total'] = 0;
+       $texto['cotizacion_id'] = $lastId_cotiza;
+
+       Valorcot::create($texto);
 
 
      }else {
@@ -330,6 +354,13 @@ class ExcelController extends Controller
 
          Pu_final::create($pu_final);
 
+         $texto['detalles'] = 'Proceso de uso final';
+         $texto['valor_uni'] = 0;
+         $texto['valor_total'] = 0;
+         $texto['cotizacion_id'] = $lastId_cotiza;
+
+         Valorcot::create($texto);
+
        }
 
        if ($pu_numero_locales != 'N.A') {
@@ -350,7 +381,12 @@ class ExcelController extends Controller
          $pu_final['acometidas'] = $pu_acometidas;
          Pu_final::create($pu_final);
 
+         $texto['detalles'] = 'Proceso de uso final';
+         $texto['valor_uni'] = 0;
+         $texto['valor_total'] = 0;
+         $texto['cotizacion_id'] = $lastId_cotiza;
 
+         Valorcot::create($texto);
        }
 
        if ($pu_zonas_comunes != 'N.A') {
@@ -370,6 +406,14 @@ class ExcelController extends Controller
 
          $pu_final['acometidas'] = $pu_acometidas;
          Pu_final::create($pu_final);
+
+         $texto['detalles'] = 'Proceso de uso final';
+         $texto['valor_uni'] = 0;
+         $texto['valor_total'] = 0;
+         $texto['cotizacion_id'] = $lastId_cotiza;
+
+         Valorcot::create($texto);
+
 
 
        }
