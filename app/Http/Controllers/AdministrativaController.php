@@ -329,8 +329,7 @@ class AdministrativaController extends Controller
        $facturas = Factura::where('factura.administrativa_id', '=', $id)->get();
        $juridicas = Juridica::select('razon_social')->where('id',$administrativa->juridica_id)->get();
 
-      //  dd($transformaciones);
-      //  die();
+
       //  funcion que permite retornar una vista con los datos ya buscados
        return view('administrativas.show',compact('administrativa','municipio','otrosis','transformaciones','distribuciones','pu_finales','consignaciones','cuenta_cobros','facturas','adicionales','juridicas','observaciones'));
    }
