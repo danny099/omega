@@ -222,7 +222,7 @@ function addCommas(nStr){
         <center> <h3>Alcance: proceso de distribución en MT</h3> </center>
       </div>
       @if(count($mts) == 0)
-        <input type="hidden"  name="distribucion" value="distribucion"  >
+        <input type="hidden"  name="distribucion[]" value="distribucion"  >
       @else
       @foreach($mts as $mt)
       <div class="col-md-12">
@@ -266,7 +266,7 @@ function addCommas(nStr){
       <center> <h3>Alcance: proceso de transformación</h3> </center>
 
       @if(count($transformaciones) == 0)
-        <input type="hidden"  name="transformacion" value="transformacion"  >
+        <input type="hidden"  name="transformacion[]" value="transformacion"  >
       @else
       @foreach($transformaciones as $transfor)
       <div class="col-md-12">
@@ -316,7 +316,7 @@ function addCommas(nStr){
         <center> <h3>Alcance: proceso de distribución en BT</h3> </center>
       </div>
       @if(count($bts) == 0)
-        <input type="hidden"  name="distribucion" value="distribucion"  >
+        <input type="hidden"  name="distribucion[]" value="distribucion"  >
       @else
       @foreach($bts as $bt)
       <div class="col-md-12">
@@ -360,7 +360,7 @@ function addCommas(nStr){
         <center> <h3>Alcance: proceso de uso final</h3> </center>
       </div>
       @if(count($pu_finales) == 0)
-        <input type="hidden"  name="pu_final" value="pu_final"  >
+        <input type="hidden"  name="pu_final[]" value="pu_final"  >
       @else
       @foreach($pu_finales as $pu)
       <div class="col-md-12">
