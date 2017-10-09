@@ -34,9 +34,7 @@
       </div>
     @endif
   <!-- /.box-header -->
-  <?php if (condition) {;?>
-  <h1></h1>
-<?php }  ?>
+
   <!-- form start -->
   <form role="form" name="" action="{{ url('cotizaciones') }}" method="post" id="example-form" autocomplete="off">
     {{csrf_field()}}
