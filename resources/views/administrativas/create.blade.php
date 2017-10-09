@@ -1,13 +1,11 @@
 @extends('index')
 <style media="screen">
-
   textarea{
     width:100%;
     resize: none;
   }
 </style>
 <script type="text/javascript">
-
 function mascara(o,f){
   v_obj=o;
   v_fun=f;
@@ -30,18 +28,13 @@ function calcular(){
   var varMonto;
   var varIva;
   var varSubTotal;
-
   varMonto = document.getElementById("fin").value;
   varMonto = varMonto.replace(/[\,]/g,'');
-
   varIva = parseFloat(varMonto) /1.19;
   document.getElementById("ini").value = addCommas(Math.round(varIva)) ;
-
   varSubTotal = parseFloat(varMonto) - parseFloat(varIva);
   document.getElementById("iva").value = addCommas(Math.round(varSubTotal)) ;
-
 }
-
 function addCommas(nStr){
   nStr += '';
   x = nStr.split(',');
@@ -53,7 +46,6 @@ function addCommas(nStr){
   }
   return x1 + x2;
 }
-
 </script>
 @section('contenido')
 
@@ -162,9 +154,14 @@ function addCommas(nStr){
           </div>
           <div class="form-group">
             <label >Municipios</label>
-            <select class="form-control" name="municipio" id="municipio" required="">
-              <option value="{{ $municipio->id }}">{{ $municipio->nombre }}</option>
-              <option value=""></option>
+            <select class="form-control" data-placeholder="Seleccione" multiple="multiple" name="municipio[]" style="width:100%" id="municipio" required="">
+
+               @for ($i = 0; $i <  count($array_muni); $i++)
+                  <?php $municipios= $array_muni[$i];?>
+                 @foreach($municipios as $muni)
+                   <option value="{{ $muni->id}}" selected>{{ $muni->nombre}}</option>
+                 @endforeach
+               @endfor
             </select>
           </div>
           <div class="form-group">
@@ -414,6 +411,105 @@ function addCommas(nStr){
   </form>
 </div>
 </div>
+
+
+@endsection
+
+@section('scripts')
+
+
+<script type="text/javascript">
+$('#cliente').change(function(){
+    var valorCambiado =$(this).val();
+    if((valorCambiado == "1")){
+      $('#natural').css('display','block');
+       $('#juridica').css('display','none');
+       $("#select-natural").prop('required',true);
+       $("#juri").prop('required',false);
+       $("#juri").html('');
+     }
+     else if(valorCambiado == "2")
+     {
+       $('#juridica').css('display','block');
+        $('#natural').css('display','none');
+        $("#juri").prop('required',true);
+        $("#select-natural").prop('required',false);
+        $("#select-natural").html('');
+     }
+});
+$(document).on('change','#instalacion',function(){
+  var  instalacion = $(this).val();
+  if (instalacion == 'Inspección RETIE proceso uso final residencial') {
+    $(this).parent().parent().parent().find("#tipo3").html('');
+    $(this).parent().parent().parent().find("#tipo3").append('<option value="Casa">Casa</option>');
+    $(this).parent().parent().parent().find("#tipo3").append('<option value="Apartamentos">Apartamentos</option>');
+    $(this).parent().parent().parent().find("#tipo3").append('<option value="Zona común">Zona común</option>');
+    $(this).parent().parent().parent().find("#tipo3").append('<option value="Punto fijo">Punto fijo</option>');
+    $(this).parent().parent().parent().find("#tipo3").append('<option value="Acometidas">Acometidas</option>');
+  }
+    else if (instalacion == 'Inspección RETIE proceso uso final comercial') {
+      $(this).parent().parent().parent().find("#tipo3").html('');
+      $(this).parent().parent().parent().find("#tipo3").append('<option value="Local comercial">Local comercial</option>');
+      $(this).parent().parent().parent().find("#tipo3").append('<option value="Bodega">Bodega</option>');
+    }
+    else {
+      $(this).parent().parent().parent().find("#tipo3").html('');
+      $(this).parent().parent().parent().find("#tipo3").append('<option value="Bodega">Bodega</option>');
+    }
+});
+$(document).ready(function(){
+  var dep_id = $('#departamento').val();
+  var div = $('#departamento').parents();
+  var op=" ";
+  $.ajax({
+    type:'get',
+    url:'{{ url('selectmuni')}}',
+    data:{'id':dep_id},
+    success:function(data){
+    console.log(data);
+    op+='@for ($i = 0; $i <  count($array_muni); $i++)';
+    op+='<?php $municipios= $array_muni[$i];?>';
+    op+='@foreach($municipios as $muni)';
+    op+='<option value="{{ $muni->id}}" selected>{{ $muni->nombre}}</option>';
+    op+='@endforeach';
+    op+='@endfor';
+    for (var i = 0; i < data.length; i++) {
+      op+='<option value="' +data[i].id+ '">' +data[i].nombre+ '</option>'
+    }
+      div.find('#municipio').html(" ");
+      div.find('#municipio').append(op);
+    },
+      error:function(){
+    }
+  });
+$(document).on('change','#departamento',function(){
+  var dep_id = $(this).val();
+  var div = $(this).parents();
+  var op=" ";
+  $.ajax({
+    type:'get',
+    url:'{{ url('selectmuni')}}',
+    data:{'id':dep_id},
+    success:function(data){
+    console.log(data);
+    op+='<option value="0" selected disabled>Seleccione</option>';
+    for (var i = 0; i < data.length; i++) {
+      op+='<option value="' +data[i].id+ '">' +data[i].nombre+ '</option>'
+    }
+      div.find('#municipio').html(" ");
+      div.find('#municipio').append(op);
+    },
+      error:function(){
+    }
+  });
+});
+});
+$(document).ready(function($){
+  $('#codigo').inputmask('CPS-9999-999');
+});
+</script>
+<script src="../../plugins/input-mask/jquery.inputmask.js"></script>
+
 
 
 @endsection
