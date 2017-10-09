@@ -162,14 +162,9 @@ function addCommas(nStr){
           </div>
           <div class="form-group">
             <label >Municipios</label>
-            <select class="form-control" data-placeholder="Seleccione" multiple="multiple" name="municipio[]" style="width:100%" id="municipio" required="">
-
-               @for ($i = 0; $i <  count($array_muni); $i++)
-                  <?php $municipios= $array_muni[$i];?>
-                 @foreach($municipios as $muni)
-                   <option value="{{ $muni->id}}" selected>{{ $muni->nombre}}</option>
-                 @endforeach
-               @endfor
+            <select class="form-control" name="municipio" id="municipio" required="">
+              <option value="{{ $municipio->id }}">{{ $municipio->nombre }}</option>
+              <option value=""></option>
             </select>
           </div>
           <div class="form-group">
@@ -222,7 +217,7 @@ function addCommas(nStr){
         <center> <h3>Alcance: proceso de distribución en MT</h3> </center>
       </div>
       @if(count($mts) == 0)
-        <input type="hidden"  name="distribucion[]" value="distribucion"  >
+        <input type="hidden"  name="distribucion" value="distribucion"  >
       @else
       @foreach($mts as $mt)
       <div class="col-md-12">
@@ -266,7 +261,7 @@ function addCommas(nStr){
       <center> <h3>Alcance: proceso de transformación</h3> </center>
 
       @if(count($transformaciones) == 0)
-        <input type="hidden"  name="transformacion[]" value="transformacion"  >
+        <input type="hidden"  name="transformacion" value="transformacion"  >
       @else
       @foreach($transformaciones as $transfor)
       <div class="col-md-12">
@@ -316,7 +311,7 @@ function addCommas(nStr){
         <center> <h3>Alcance: proceso de distribución en BT</h3> </center>
       </div>
       @if(count($bts) == 0)
-        <input type="hidden"  name="distribucion[]" value="distribucion"  >
+        <input type="hidden"  name="distribucion" value="distribucion"  >
       @else
       @foreach($bts as $bt)
       <div class="col-md-12">
@@ -360,7 +355,7 @@ function addCommas(nStr){
         <center> <h3>Alcance: proceso de uso final</h3> </center>
       </div>
       @if(count($pu_finales) == 0)
-        <input type="hidden"  name="pu_final[]" value="pu_final"  >
+        <input type="hidden"  name="pu_final" value="pu_final"  >
       @else
       @foreach($pu_finales as $pu)
       <div class="col-md-12">
@@ -477,36 +472,6 @@ $(document).on('change','#instalacion',function(){
 
 
 $(document).ready(function(){
-  var dep_id = $('#departamento').val();
-  var div = $('#departamento').parents();
-  var op=" ";
-  $.ajax({
-    type:'get',
-    url:'{{ url('selectmuni')}}',
-    data:{'id':dep_id},
-    success:function(data){
-    console.log(data);
-    op+='@for ($i = 0; $i <  count($array_muni); $i++)';
-    op+='<?php $municipios= $array_muni[$i];?>';
-    op+='@foreach($municipios as $muni)';
-    op+='<option value="{{ $muni->id}}" selected>{{ $muni->nombre}}</option>';
-    op+='@endforeach';
-    op+='@endfor';
-
-    for (var i = 0; i < data.length; i++) {
-      op+='<option value="' +data[i].id+ '">' +data[i].nombre+ '</option>'
-    }
-
-      div.find('#municipio').html(" ");
-      div.find('#municipio').append(op);
-
-    },
-      error:function(){
-
-    }
-  });
-
-
 $(document).on('change','#departamento',function(){
 
   var dep_id = $(this).val();
