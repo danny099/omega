@@ -145,8 +145,10 @@ class AdministrativaController extends Controller
     public function store(Request $request)
     {
 
+      // $data = $request->all();
 
       $input = $request->all($request->id_cotizacion);
+
       $adicional = Cotizacion::findOrFail($request->id_cotizacion);
 
       $municipio =  implode(',',$request->municipio);
@@ -199,32 +201,43 @@ class AdministrativaController extends Controller
         if ($request->transformacion == "transformacion") {
 
         }else {
-          for ($i=0; $i < count($input['transformacion']['id']) ; $i++) {
+          if (isset($input['transformacion']['descripcion'])) {
+            for ($i=0; $i < count($input['transformacion']['id']) ; $i++) {
 
-            $transforma = Transformacion::findOrFail($input['transformacion']['id'][$i]);
-            $transforma->administrativa_id = $lastId_admin;
-            $transforma->save();
+              $transforma = Transformacion::findOrFail($input['transformacion']['id'][$i]);
+              $transforma->administrativa_id = $lastId_admin;
+              $transforma->save();
+            }
           }
+
         }
         if ($request->distribucion == "distribucion") {
 
         }else {
-          for ($i=0; $i < count($input['distribucion']['id_dis']) ; $i++) {
+          if (isset($input['distribucion']['descripcion_dis'])) {
+            for ($i=0; $i < count($input['distribucion']['id_dis']) ; $i++) {
 
-            $distri = Distribucion::findOrFail($input['distribucion']['id_dis'][$i]);
-            $distri->administrativa_id = $lastId_admin;
-            $distri->save();
+              $distri = Distribucion::findOrFail($input['distribucion']['id_dis'][$i]);
+              $distri->administrativa_id = $lastId_admin;
+              $distri->save();
+            }
+          }else {
+            # code...
           }
+
         }
         if ($request->pu_final == "pu_final") {
 
         }else {
-          for ($i=0; $i < count($input['pu_final']['id_pu']) ; $i++) {
+          if (isset($input['pu_final']['descripcion_pu'])) {
+            for ($i=0; $i < count($input['pu_final']['id_pu']) ; $i++) {
 
-            $pu= Pu_final::findOrFail($input['pu_final']['id_pu'][$i]);
-            $pu->administrativa_id = $lastId_admin;
-            $pu->save();
+              $pu= Pu_final::findOrFail($input['pu_final']['id_pu'][$i]);
+              $pu->administrativa_id = $lastId_admin;
+              $pu->save();
+            }
           }
+
         }
 
          //  mensajes de confirmacion enviados a la vista
@@ -328,7 +341,6 @@ class AdministrativaController extends Controller
        $cuenta_cobros = Cuenta_cobro::where('cuenta_cobro.administrativa_id', '=', $id)->get();
        $facturas = Factura::where('factura.administrativa_id', '=', $id)->get();
        $juridicas = Juridica::select('razon_social')->where('id',$administrativa->juridica_id)->get();
-
 
       //  funcion que permite retornar una vista con los datos ya buscados
        return view('administrativas.show',compact('administrativa','municipio','otrosis','transformaciones','distribuciones','pu_finales','consignaciones','cuenta_cobros','facturas','adicionales','juridicas','observaciones'));
