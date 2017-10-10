@@ -1793,8 +1793,8 @@ class DocumentoController extends Controller
 
 
       $document->saveAs('documento/temp_contrato.docx');
-      $ficher = 'documento/temp_contrato.docx';
-
+      $ficher = 'documento/'.$codigo_proyecto - $contrato->nombre_proyecto.'.docx';
+      
 
       // return redirect()->route('administrativas.index');
 
