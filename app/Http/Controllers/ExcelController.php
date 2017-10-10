@@ -414,13 +414,9 @@ class ExcelController extends Controller
 
          Valorcot::create($texto);
 
-
-
        }
      }
        return redirect()->route('cotizaciones.index');
    }
-
-
 
   }
