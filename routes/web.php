@@ -94,7 +94,8 @@ Route::group(['middleware' => 'auth'],function(){
   Route::resource('administrativas','AdministrativaController');
 	Route::get('pdf','AdministrativaController@viewpdf');
 	Route::get('deleteadminstrativa/{id}','AdministrativaController@destroy');
-  Route::get('created','AdministrativaController@create');
+	Route::get('created','AdministrativaController@create');
+  // Route::get('doc/{id}','AdministrativaController@doc');
 
 
 	Route::get('selectmuni','AdministrativaController@getMuni');
@@ -152,7 +153,7 @@ Route::group(['middleware' => 'auth'],function(){
 	/**************************************************************/
 	/**************************************************************/
 	Route::get('cotizacion/{id}','PdfController@cotizacionPdf');
-	Route::get('doc/{id}','DocumentoController@doc');
+	// Route::get('doc/{id}','DocumentoController@doc');
 	// Route::get('doc/{id}','DocumentoController@doc');
 	/**************************************************************/
 	/**************************************************************/
