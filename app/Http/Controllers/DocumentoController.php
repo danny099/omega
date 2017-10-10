@@ -1792,9 +1792,9 @@ class DocumentoController extends Controller
       $document->setValue('valor_total_contrato',$valor_total);
 
 
-      $document->saveAs('documento/temp_contrato.docx');
-      $ficher = 'documento/'.$codigo_proyecto - $contrato->nombre_proyecto.'.docx';
-      
+      $document->saveAs('documento/'.$contrato->codigo_proyecto.'-'.$contrato->nombre_proyecto.'.docx');
+      $ficher = 'documento/temp_contrato.docx';
+
 
       // return redirect()->route('administrativas.index');
 
