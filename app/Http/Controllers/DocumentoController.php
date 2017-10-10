@@ -15,6 +15,7 @@ use App\Municipio;
 use App\Departamento;
 use Session;
 use PDF;
+use Response;
 use App;
 use PhpOffice\PhpWord\TemplateProcessor;
 
@@ -1494,311 +1495,312 @@ class DocumentoController extends Controller
     //   dd($id);
     //   die();
     // }
-    public function doc($id){ // tiene que mandar el id para poder encontrar al que se deba generar
+    // public function doc($id){ // tiene que mandar el id para poder encontrar al que se deba generar
+    //
+    //   $main = public_path().'/documento'.'/contrato_main.docx';
+    //   // $PHPWord = new \PhpOffice\PhpWord\PhpWord();
+    //   // if (file_exists(public_path().'/documento'.'/temp_contrato.html')) {
+    //   //   unlink(public_path().'/documento'.'/temp_contrato.html');
+    //   // }
+    //
+    //
+    //   $document = new TemplateProcessor($main);
+    //   $firma = public_path().'/firma.jpg';
+    //
+    //   $contrato = Administrativa::findOrFail($id);
+    //
+    //   $muni =  explode(',',$contrato->municipio);
+    //   $count = count($muni);
+    //   $cadena = '';
+    //   for ($x=0; $x < $count ; $x++) {
+    //     $array_muni[] =  Municipio::where('municipio.id', '=', $muni[$x])->get();
+    //   }
+    //   // dd($array_muni);
+    //   // die();
+    //   if (count($muni) > 1) {
+    //     for ($i=0; $i < $count; $i++) {
+    //
+    //
+    //       foreach ($array_muni[$i] as $key => $value) {
+    //         $conta = $count- 1;
+    //
+    //
+    //         if ($i == $conta) {
+    //
+    //           $cadena .= 'y '.$value->nombre;
+    //
+    //         }else {
+    //           $cadena .= $value->nombre.', ';
+    //         }
+    //
+    //       }
+    //     }
+    //   }else {
+    //     for ($i=0; $i < $count; $i++) {
+    //
+    //       $array_muni[] =  Municipio::where('municipio.id', '=', $muni[$i])->get();
+    //       $cadena = '';
+    //       foreach ($array_muni[$i] as $key => $value) {
+    //
+    //         $cadena = $value->nombre;
+    //
+    //       }
+    //     }
+    //   }
+    //
+    //   if ($count > 1) {
+    //     $texto = 'LOS MUNICIPIOS DE '.$cadena;
+    //   }else {
+    //     $texto = 'EL MUNICIPIO DE '.$cadena;
+    //   }
+    //
+    //   $municipio = implode(',',$array_muni);
+    //
+    //   if (!is_null($contrato->cliente_id)) {
+    //     $cliente = Cliente::findOrFail($contrato->cliente_id);
+    //   }
+    //   if (!is_null($contrato->juridica_id)) {
+    //     $juridica = Juridica::findOrFail($contrato->juridica_id);
+    //   }
+    //
+    //
+    //   // $cotizacion = Cotizacion::where('cotizacion.cliente_id', '=', $contrato->id_cotizacion)->get();
+    //   // $cotizacion = Cotizacion::findOrFail($contrato->id_cotizacion);
+    //
+    //   $transformaciones = Transformacion::where('transformacion.administrativa_id', '=', $contrato->id)->get();
+    //   $distribuciones = Distribucion::where('distribucion.administrativa_id', '=', $contrato->id)->get();
+    //   $pu_finales = Pu_final::where('pu_final.administrativa_id', '=', $contrato->id)->get();
+    //   $municipio = Municipio::find($contrato->municipio);
+    //   $departamento = Departamento::find($contrato->departamento_id);
+    //
+    //   $table = '';
+    //   $table .= '<w:tbl>';
+    //     $table .= '<w:tblPr>';
+    //     $table .=   '<w:tblBorders>';
+    //     $table .=     '<w:top w:val="single" w:sz="8" w:space="0" w:color="000000" />';
+    //     $table .=     '<w:start w:val="single" w:sz="8" w:space="0" w:color="000000" />';
+    //     $table .=     '<w:bottom w:val="single" w:sz="8" w:space="0" w:color="000000" />';
+    //     $table .=     '<w:end w:val="single" w:sz="8" w:space="0" w:color="000000" />';
+    //     $table .=     '<w:insideH w:val="single" w:sz="8" w:space="0" w:color="000000" />';
+    //     $table .=     '<w:insideV w:val="single" w:sz="8" w:space="0" w:color="000000" />';
+    //     $table .=   '<w:tblW w:w="5000" w:type="pct"/>';
+    //     $table .=   '</w:tblBorders>';
+    //     $table .=  '</w:tblPr>';
+    //     $table .=  '<w:tr>';
+    //     $table .=    '<w:tc>';
+    //     $table .=      '<w:p>';
+    //     $table .=        '<w:r>';
+    //     $table .=          '<w:rPr>';
+    //     $table .=            '<w:b />';
+    //     $table .=          '</w:rPr>';
+    //     $table .=          '<w:t>INDICE</w:t>';
+    //     $table .=        '</w:r>';
+    //     $table .=     '</w:p>';
+    //     $table .=    '</w:tc>';
+    //     $table .=    '<w:tc>';
+    //     $table .=      '<w:p>';
+    //     $table .=        '<w:r>';
+    //     $table .=          '<w:rPr>';
+    //     $table .=            '<w:b />';
+    //     $table .=          '</w:rPr>';
+    //     $table .=          '<w:t>DESCRIPCION</w:t>';
+    //     $table .=        '</w:r>';
+    //     $table .=     '</w:p>';
+    //     $table .=    '</w:tc>';
+    //     $table .=    '<w:tc>';
+    //     $table .=      '<w:p>';
+    //     $table .=        '<w:r>';
+    //     $table .=          '<w:rPr>';
+    //     $table .=            '<w:b />';
+    //     $table .=          '</w:rPr>';
+    //     $table .=          '<w:t>CAPACIDAD</w:t>';
+    //     $table .=        '</w:r>';
+    //     $table .=      '</w:p>';
+    //     $table .=    '</w:tc>';
+    //     $table .=    '<w:tc>';
+    //     $table .=      '<w:p>';
+    //     $table .=        '<w:r>';
+    //     $table .=          '<w:rPr>';
+    //     $table .=            '<w:b />';
+    //     $table .=          '</w:rPr>';
+    //     $table .=          '<w:t>CANTIDAD</w:t>';
+    //     $table .=        '</w:r>';
+    //     $table .=      '</w:p>';
+    //     $table .=    '</w:tc>';
+    //     $table .=  '</w:tr>';
+    //
+    //     $i = 1;
+    //     foreach ($transformaciones as $key => $transfor) {
+    //
+    //       $table .=   '<w:tblPr>';
+    //       $table .=     '<w:tblStyle w:val="TableGrid"/>';
+    //       $table .=   '</w:tblPr>';
+    //       $table .=  '<w:tr>';
+    //       $table .=    '<w:tc>';
+    //       $table .=      '<w:p>';
+    //       $table .=        '<w:r>';
+    //       $table .=          '<w:t>'.$i++.'</w:t>';
+    //       $table .=        '</w:r>';
+    //       $table .=     '</w:p>';
+    //       $table .=    '</w:tc>';
+    //       $table .=    '<w:tc>';
+    //       $table .=      '<w:p>';
+    //       $table .=        '<w:r>';
+    //       $table .=          '<w:t>'.$transfor->descripcion.' '.$transfor->tipo.'</w:t>';
+    //       $table .=        '</w:r>';
+    //       $table .=     '</w:p>';
+    //       $table .=    '</w:tc>';
+    //       $table .=    '<w:tc>';
+    //       $table .=      '<w:p>';
+    //       $table .=        '<w:r>';
+    //       $table .=          '<w:t>'.$transfor->unidad.'</w:t>';
+    //       $table .=        '</w:r>';
+    //       $table .=      '</w:p>';
+    //       $table .=    '</w:tc>';
+    //       $table .=    '<w:tc>';
+    //       $table .=      '<w:p>';
+    //       $table .=        '<w:r>';
+    //       $table .=          '<w:t>'.$transfor->cantidad.'</w:t>';
+    //       $table .=        '</w:r>';
+    //       $table .=      '</w:p>';
+    //       $table .=    '</w:tc>';
+    //       $table .=  '</w:tr>';
+    //     }
+    //     foreach ($distribuciones as $key => $distri) {
+    //
+    //       $table .=   '<w:tblPr>';
+    //       $table .=     '<w:tblStyle w:val="TableGrid"/>';
+    //       $table .=     '<w:tblW w:w="0" w:type="auto"/>';
+    //       $table .=   '</w:tblPr>';
+    //       $table .=  '<w:tr>';
+    //       $table .=    '<w:tc>';
+    //       $table .=      '<w:p>';
+    //       $table .=        '<w:r>';
+    //       $table .=          '<w:t>'.$i++.'</w:t>';
+    //       $table .=        '</w:r>';
+    //       $table .=     '</w:p>';
+    //       $table .=    '</w:tc>';
+    //       $table .=    '<w:tc>';
+    //       $table .=      '<w:p>';
+    //       $table .=        '<w:r>';
+    //       $table .=          '<w:t>'.$distri->descripcion.' '.$distri->tipo.'</w:t>';
+    //       $table .=        '</w:r>';
+    //       $table .=     '</w:p>';
+    //       $table .=    '</w:tc>';
+    //       $table .=    '<w:tc>';
+    //       $table .=      '<w:p>';
+    //       $table .=        '<w:r>';
+    //       $table .=          '<w:t>'.$distri->unidad.'</w:t>';
+    //       $table .=        '</w:r>';
+    //       $table .=      '</w:p>';
+    //       $table .=    '</w:tc>';
+    //       $table .=    '<w:tc>';
+    //       $table .=      '<w:p>';
+    //       $table .=        '<w:r>';
+    //       $table .=          '<w:t>'.$distri->cantidad.'</w:t>';
+    //       $table .=        '</w:r>';
+    //       $table .=      '</w:p>';
+    //       $table .=    '</w:tc>';
+    //       $table .=  '</w:tr>';
+    //     }
+    //     foreach ($pu_finales as $key => $pu) {
+    //
+    //       $table .=   '<w:tblPr>';
+    //       $table .=     '<w:tblStyle w:val="TableGrid"/>';
+    //       $table .=     '<w:tblW w:w="0" w:type="auto"/>';
+    //       $table .=   '</w:tblPr>';
+    //       $table .=  '<w:tr>';
+    //       $table .=    '<w:tc>';
+    //       $table .=      '<w:p>';
+    //       $table .=        '<w:r>';
+    //       $table .=          '<w:t>'.$i++.'</w:t>';
+    //       $table .=        '</w:r>';
+    //       $table .=     '</w:p>';
+    //       $table .=    '</w:tc>';
+    //       $table .=    '<w:tc>';
+    //       $table .=      '<w:p>';
+    //       $table .=        '<w:r>';
+    //       $table .=          '<w:t>'.$pu->descripcion.' '.$pu->tipo.'</w:t>';
+    //       $table .=        '</w:r>';
+    //       $table .=     '</w:p>';
+    //       $table .=    '</w:tc>';
+    //       $table .=    '<w:tc>';
+    //       $table .=      '<w:p>';
+    //       $table .=        '<w:r>';
+    //       $table .=          '<w:t>'.$pu->unidad.'</w:t>';
+    //       $table .=        '</w:r>';
+    //       $table .=      '</w:p>';
+    //       $table .=    '</w:tc>';
+    //       $table .=    '<w:tc>';
+    //       $table .=      '<w:p>';
+    //       $table .=        '<w:r>';
+    //       $table .=          '<w:t>'.$pu->cantidad.'</w:t>';
+    //       $table .=        '</w:r>';
+    //       $table .=      '</w:p>';
+    //       $table .=    '</w:tc>';
+    //       $table .=  '</w:tr>';
+    //     }
+    //   $table .= '</w:tbl>';
+    //
+    //
+    //   $document->setValue('codigo',$contrato->codigo_proyecto);
+    //
+    //   if (!is_null($contrato->cliente_id)) {
+    //     $document->setValue('cliente',$cliente->nombre);
+    //   }else {
+    //     $document->setValue('cliente',$juridica->nombre_representante);
+    //   }
+    //
+    //   if (!is_null($contrato->cliente_id)) {
+    //     if (!is_null($cliente->cedula)) {
+    //       $document->setValue('marca','C.C:');
+    //       $document->setValue('nit',$cliente->cedula);
+    //     }else {
+    //       $document->setValue('marca','NIT:');
+    //       $document->setValue('nit',$cliente->nit);
+    //     }
+    //   }else {
+    //     $document->setValue('marca','NIT:');
+    //     $document->setValue('nit',$juridica->nit);
+    //   }
+    //
+    //   $document->setValue('table',$table);
+    //   $document->setValue('nombre_proyecto',$contrato->nombre_proyecto);
+    //   $document->setValue('municipio',$texto);
+    //
+    //   if (!is_null($contrato->cliente_id)) {
+    //     $document->setValue('nombres',$cliente->nombre);
+    //     $document->setValue('cedula',$cliente->cedula);
+    //     $document->setValue('representa','Representante Legal');
+    //     $document->setValue('empresa','');
+    //     $document->setValue('nit_empresa','');
+    //
+    //   }else {
+    //     $document->setValue('nombres',$juridica->nombre_representante);
+    //     $document->setValue('cedula',$juridica->cedula);
+    //     $document->setValue('representa','Representante Legal');
+    //     $document->setValue('empresa',$juridica->razon_social);
+    //     $document->setValue('nit_empresa',$juridica->nit);
+    //   }
+    //
+    //
+    //   $document->setValue('departamento',$departamento->nombre);
+    //   $document->setValue('adicional',$contrato->adicional);
+    //   $letras = NumeroALetras::convertir($contrato->valor_total_contrato, 'pesos', 'centavos');
+    //
+    //   $document->setValue('letras',$letras);
+    //   $valor_total = number_format($contrato->valor_total_contrato,0);
+    //   $document->setValue('valor_total_contrato',$valor_total);
+    //
+    //   $document->saveAs('documento/'.$contrato->codigo_proyecto.'-'.$contrato->nombre_proyecto.'.docx');
+    //
+    //   // $ficher = 'documento/temp_contrato.docx';
+    //   //
+    //   // return Response::download('documento/'.$contrato->codigo_proyecto.'-'.$contrato->nombre_proyecto.'.docx');
+    //
+    //
+    // }
 
-      $main = public_path().'/documento'.'/contrato_main.docx';
-      // $PHPWord = new \PhpOffice\PhpWord\PhpWord();
-      // if (file_exists(public_path().'/documento'.'/temp_contrato.html')) {
-      //   unlink(public_path().'/documento'.'/temp_contrato.html');
-      // }
-
-
-      $document = new TemplateProcessor($main);
-      $firma = public_path().'/firma.jpg';
-
-      $contrato = Administrativa::findOrFail($id);
-
-      $muni =  explode(',',$contrato->municipio);
-      $count = count($muni);
-      $cadena = '';
-      for ($x=0; $x < $count ; $x++) {
-        $array_muni[] =  Municipio::where('municipio.id', '=', $muni[$x])->get();
-      }
-      // dd($array_muni);
-      // die();
-      if (count($muni) > 1) {
-        for ($i=0; $i < $count; $i++) {
-
-
-          foreach ($array_muni[$i] as $key => $value) {
-            $conta = $count- 1;
-
-
-            if ($i == $conta) {
-
-              $cadena .= 'y '.$value->nombre;
-
-            }else {
-              $cadena .= $value->nombre.', ';
-            }
-
-          }
-        }
-      }else {
-        for ($i=0; $i < $count; $i++) {
-
-          $array_muni[] =  Municipio::where('municipio.id', '=', $muni[$i])->get();
-          $cadena = '';
-          foreach ($array_muni[$i] as $key => $value) {
-
-            $cadena = $value->nombre;
-
-          }
-        }
-      }
-
-      if ($count > 1) {
-        $texto = 'LOS MUNICIPIOS DE '.$cadena;
-      }else {
-        $texto = 'EL MUNICIPIO DE '.$cadena;
-      }
-
-      $municipio = implode(',',$array_muni);
-
-      if (!is_null($contrato->cliente_id)) {
-        $cliente = Cliente::findOrFail($contrato->cliente_id);
-      }
-      if (!is_null($contrato->juridica_id)) {
-        $juridica = Juridica::findOrFail($contrato->juridica_id);
-      }
-
-
-      // $cotizacion = Cotizacion::where('cotizacion.cliente_id', '=', $contrato->id_cotizacion)->get();
-      // $cotizacion = Cotizacion::findOrFail($contrato->id_cotizacion);
-
-      $transformaciones = Transformacion::where('transformacion.administrativa_id', '=', $contrato->id)->get();
-      $distribuciones = Distribucion::where('distribucion.administrativa_id', '=', $contrato->id)->get();
-      $pu_finales = Pu_final::where('pu_final.administrativa_id', '=', $contrato->id)->get();
-      $municipio = Municipio::find($contrato->municipio);
-      $departamento = Departamento::find($contrato->departamento_id);
-
-      $table = '';
-      $table .= '<w:tbl>';
-        $table .= '<w:tblPr>';
-        $table .=   '<w:tblBorders>';
-        $table .=     '<w:top w:val="single" w:sz="8" w:space="0" w:color="000000" />';
-        $table .=     '<w:start w:val="single" w:sz="8" w:space="0" w:color="000000" />';
-        $table .=     '<w:bottom w:val="single" w:sz="8" w:space="0" w:color="000000" />';
-        $table .=     '<w:end w:val="single" w:sz="8" w:space="0" w:color="000000" />';
-        $table .=     '<w:insideH w:val="single" w:sz="8" w:space="0" w:color="000000" />';
-        $table .=     '<w:insideV w:val="single" w:sz="8" w:space="0" w:color="000000" />';
-        $table .=   '<w:tblW w:w="5000" w:type="pct"/>';
-        $table .=   '</w:tblBorders>';
-        $table .=  '</w:tblPr>';
-        $table .=  '<w:tr>';
-        $table .=    '<w:tc>';
-        $table .=      '<w:p>';
-        $table .=        '<w:r>';
-        $table .=          '<w:rPr>';
-        $table .=            '<w:b />';
-        $table .=          '</w:rPr>';
-        $table .=          '<w:t>INDICE</w:t>';
-        $table .=        '</w:r>';
-        $table .=     '</w:p>';
-        $table .=    '</w:tc>';
-        $table .=    '<w:tc>';
-        $table .=      '<w:p>';
-        $table .=        '<w:r>';
-        $table .=          '<w:rPr>';
-        $table .=            '<w:b />';
-        $table .=          '</w:rPr>';
-        $table .=          '<w:t>DESCRIPCION</w:t>';
-        $table .=        '</w:r>';
-        $table .=     '</w:p>';
-        $table .=    '</w:tc>';
-        $table .=    '<w:tc>';
-        $table .=      '<w:p>';
-        $table .=        '<w:r>';
-        $table .=          '<w:rPr>';
-        $table .=            '<w:b />';
-        $table .=          '</w:rPr>';
-        $table .=          '<w:t>CAPACIDAD</w:t>';
-        $table .=        '</w:r>';
-        $table .=      '</w:p>';
-        $table .=    '</w:tc>';
-        $table .=    '<w:tc>';
-        $table .=      '<w:p>';
-        $table .=        '<w:r>';
-        $table .=          '<w:rPr>';
-        $table .=            '<w:b />';
-        $table .=          '</w:rPr>';
-        $table .=          '<w:t>CANTIDAD</w:t>';
-        $table .=        '</w:r>';
-        $table .=      '</w:p>';
-        $table .=    '</w:tc>';
-        $table .=  '</w:tr>';
-
-        $i = 1;
-        foreach ($transformaciones as $key => $transfor) {
-
-          $table .=   '<w:tblPr>';
-          $table .=     '<w:tblStyle w:val="TableGrid"/>';
-          $table .=   '</w:tblPr>';
-          $table .=  '<w:tr>';
-          $table .=    '<w:tc>';
-          $table .=      '<w:p>';
-          $table .=        '<w:r>';
-          $table .=          '<w:t>'.$i++.'</w:t>';
-          $table .=        '</w:r>';
-          $table .=     '</w:p>';
-          $table .=    '</w:tc>';
-          $table .=    '<w:tc>';
-          $table .=      '<w:p>';
-          $table .=        '<w:r>';
-          $table .=          '<w:t>'.$transfor->descripcion.' '.$transfor->tipo.'</w:t>';
-          $table .=        '</w:r>';
-          $table .=     '</w:p>';
-          $table .=    '</w:tc>';
-          $table .=    '<w:tc>';
-          $table .=      '<w:p>';
-          $table .=        '<w:r>';
-          $table .=          '<w:t>'.$transfor->unidad.'</w:t>';
-          $table .=        '</w:r>';
-          $table .=      '</w:p>';
-          $table .=    '</w:tc>';
-          $table .=    '<w:tc>';
-          $table .=      '<w:p>';
-          $table .=        '<w:r>';
-          $table .=          '<w:t>'.$transfor->cantidad.'</w:t>';
-          $table .=        '</w:r>';
-          $table .=      '</w:p>';
-          $table .=    '</w:tc>';
-          $table .=  '</w:tr>';
-        }
-        foreach ($distribuciones as $key => $distri) {
-
-          $table .=   '<w:tblPr>';
-          $table .=     '<w:tblStyle w:val="TableGrid"/>';
-          $table .=     '<w:tblW w:w="0" w:type="auto"/>';
-          $table .=   '</w:tblPr>';
-          $table .=  '<w:tr>';
-          $table .=    '<w:tc>';
-          $table .=      '<w:p>';
-          $table .=        '<w:r>';
-          $table .=          '<w:t>'.$i++.'</w:t>';
-          $table .=        '</w:r>';
-          $table .=     '</w:p>';
-          $table .=    '</w:tc>';
-          $table .=    '<w:tc>';
-          $table .=      '<w:p>';
-          $table .=        '<w:r>';
-          $table .=          '<w:t>'.$distri->descripcion.' '.$distri->tipo.'</w:t>';
-          $table .=        '</w:r>';
-          $table .=     '</w:p>';
-          $table .=    '</w:tc>';
-          $table .=    '<w:tc>';
-          $table .=      '<w:p>';
-          $table .=        '<w:r>';
-          $table .=          '<w:t>'.$distri->unidad.'</w:t>';
-          $table .=        '</w:r>';
-          $table .=      '</w:p>';
-          $table .=    '</w:tc>';
-          $table .=    '<w:tc>';
-          $table .=      '<w:p>';
-          $table .=        '<w:r>';
-          $table .=          '<w:t>'.$distri->cantidad.'</w:t>';
-          $table .=        '</w:r>';
-          $table .=      '</w:p>';
-          $table .=    '</w:tc>';
-          $table .=  '</w:tr>';
-        }
-        foreach ($pu_finales as $key => $pu) {
-
-          $table .=   '<w:tblPr>';
-          $table .=     '<w:tblStyle w:val="TableGrid"/>';
-          $table .=     '<w:tblW w:w="0" w:type="auto"/>';
-          $table .=   '</w:tblPr>';
-          $table .=  '<w:tr>';
-          $table .=    '<w:tc>';
-          $table .=      '<w:p>';
-          $table .=        '<w:r>';
-          $table .=          '<w:t>'.$i++.'</w:t>';
-          $table .=        '</w:r>';
-          $table .=     '</w:p>';
-          $table .=    '</w:tc>';
-          $table .=    '<w:tc>';
-          $table .=      '<w:p>';
-          $table .=        '<w:r>';
-          $table .=          '<w:t>'.$pu->descripcion.' '.$pu->tipo.'</w:t>';
-          $table .=        '</w:r>';
-          $table .=     '</w:p>';
-          $table .=    '</w:tc>';
-          $table .=    '<w:tc>';
-          $table .=      '<w:p>';
-          $table .=        '<w:r>';
-          $table .=          '<w:t>'.$pu->unidad.'</w:t>';
-          $table .=        '</w:r>';
-          $table .=      '</w:p>';
-          $table .=    '</w:tc>';
-          $table .=    '<w:tc>';
-          $table .=      '<w:p>';
-          $table .=        '<w:r>';
-          $table .=          '<w:t>'.$pu->cantidad.'</w:t>';
-          $table .=        '</w:r>';
-          $table .=      '</w:p>';
-          $table .=    '</w:tc>';
-          $table .=  '</w:tr>';
-        }
-      $table .= '</w:tbl>';
-
-
-      $document->setValue('codigo',$contrato->codigo_proyecto);
-
-      if (!is_null($contrato->cliente_id)) {
-        $document->setValue('cliente',$cliente->nombre);
-      }else {
-        $document->setValue('cliente',$juridica->nombre_representante);
-      }
-
-      if (!is_null($contrato->cliente_id)) {
-        if (!is_null($cliente->cedula)) {
-          $document->setValue('marca','C.C:');
-          $document->setValue('nit',$cliente->cedula);
-        }else {
-          $document->setValue('marca','NIT:');
-          $document->setValue('nit',$cliente->nit);
-        }
-      }else {
-        $document->setValue('marca','NIT:');
-        $document->setValue('nit',$juridica->nit);
-      }
-
-      $document->setValue('table',$table);
-      $document->setValue('nombre_proyecto',$contrato->nombre_proyecto);
-      $document->setValue('municipio',$texto);
-
-      if (!is_null($contrato->cliente_id)) {
-        $document->setValue('nombres',$cliente->nombre);
-        $document->setValue('cedula',$cliente->cedula);
-        $document->setValue('representa','Representante Legal');
-        $document->setValue('empresa','');
-        $document->setValue('nit_empresa','');
-
-      }else {
-        $document->setValue('nombres',$juridica->nombre_representante);
-        $document->setValue('cedula',$juridica->cedula);
-        $document->setValue('representa','Representante Legal');
-        $document->setValue('empresa',$juridica->razon_social);
-        $document->setValue('nit_empresa',$juridica->nit);
-      }
-
-
-      $document->setValue('departamento',$departamento->nombre);
-      $document->setValue('adicional',$contrato->adicional);
-      $letras = NumeroALetras::convertir($contrato->valor_total_contrato, 'pesos', 'centavos');
-
-      $document->setValue('letras',$letras);
-      $valor_total = number_format($contrato->valor_total_contrato,0);
-      $document->setValue('valor_total_contrato',$valor_total);
-
-
-      $document->saveAs('documento/'.$contrato->codigo_proyecto.'-'.$contrato->nombre_proyecto.'.docx');
-      $ficher = 'documento/temp_contrato.docx';
-
-
-      // return redirect()->route('administrativas.index');
-
-    }
     /**
      * Display the specified resource.
      *
