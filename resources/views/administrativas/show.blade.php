@@ -32,9 +32,7 @@
         <div class="box box-primary">
           <div class="">
            <center><h2>Datos del Proyecto</h2></center>
-           <a  target="_blank" href="{{ url('pdf') }}/{{ $administrativa->id }}">
-             <i class="glyphicon glyphicon-print"  title="Imprimir" style=" font-size:40px; color:#33579A ; position:absolute; right:2%; padding:10px;"></i>
-           </a>
+           <a class="btn btn-primary" href="<?php echo '/documento'.'/'.$administrativa->codigo_proyecto .'-'. $administrativa->nombre_proyecto.'.docx'; ?>" style="background-color: #33579A; border-color:#33579A;position: relative; left: 950; top: -40;" >Descargar contrato</a>
 
           </div>
 
