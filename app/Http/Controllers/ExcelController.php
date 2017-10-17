@@ -113,7 +113,7 @@ class ExcelController extends Controller
      }
 
      if (!empty($nombre_empresa)) {
-       $juridicas = Juridica::where('clientes.razon_social', '=', $nombre_empresa)->get();
+       $juridicas = Juridica::where('juridica.razon_social', '=', $nombre_empresa)->get();
 
        $datos = Cotizacion::count('codigo');
        $num = Cotizacion::max('codigo');
