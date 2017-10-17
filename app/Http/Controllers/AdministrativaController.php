@@ -489,9 +489,9 @@ class AdministrativaController extends Controller
 
     //  $total_archivos = count(glob('carpeta/{*.docx}',GLOB_BRACE));
      // $PHPWord = new \PhpOffice\PhpWord\PhpWord();
-    //  if (file_exists(public_path().'/documento'.$contrato->codigo_proyecto.'-'.$contrato->nombre_proyecto.'.docx')) { //funcion que nos permite borrar un archivo si ya esta creado anteriormente
-    //    unlink(public_path().'/documento'.$contrato->codigo_proyecto.'-'.$contrato->nombre_proyecto.'.docx');
-    //  }
+     if (file_exists(public_path().'/documento'.$contrato->codigo_proyecto.'-'.$contrato->nombre_proyecto.'.docx')) { //funcion que nos permite borrar un archivo si ya esta creado anteriormente
+       unlink(public_path().'/documento'.$contrato->codigo_proyecto.'-'.$contrato->nombre_proyecto.'.docx');
+     }
 
 
 

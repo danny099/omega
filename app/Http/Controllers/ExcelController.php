@@ -67,37 +67,53 @@ class ExcelController extends Controller
      $pu_capacidad = $result[65][1];
      $pu_acometidas = $result[66][1];
 
-     if (!empty($nombre_empresa)) {
-        $juridica['razon_social'] = $nombre_empresa;
-        $juridica['nit'] = $cedula_nit;
-        $juridica['nombre_representante'] = $representante;
-        $juridica['cedula'] = null;
-        $juridica['direccion'] = null; //pendiente
-        $juridica['telefono'] = null;
-        $juridica['email'] = null;
-        $juridica['departamento'] = null;
-        $juridica['municipio'] = null;
 
-        Juridica::create($juridica);
+
+     if (!empty($nombre_empresa)) {
+
+        $juridi = Juridica::where('clientes.razon_social', '=', $nombre_empresa)->get();
+
+        if ($juridi == 1) {
+
+       }else {
+         $juridica['razon_social'] = $nombre_empresa;
+         $juridica['nit'] = $cedula_nit;
+         $juridica['nombre_representante'] = $representante;
+         $juridica['cedula'] = null;
+         $juridica['direccion'] = null; //pendiente
+         $juridica['telefono'] = null;
+         $juridica['email'] = null;
+         $juridica['departamento'] = null;
+         $juridica['municipio'] = null;
+
+         Juridica::create($juridica);
+       }
+
 
      }else {
 
-       $cliente['nit'] = null;
-       $cliente['cedula'] = $cedula_nit;
-       $cliente['nombre'] = $representante;
-       $cliente['telefono'] = null;
-       $cliente['direccion'] = null;
-       $cliente['email'] = null;
-       $cliente['departament'] = null;
-       $cliente['municipio']  = null;
+       $client = Cliente::where('clientes.cedula', '=', $cedula_nit)->get();
 
-       Cliente::create($cliente);
+       if ($client == 1) {
+
+      }else {
+        $cliente['nit'] = null;
+        $cliente['cedula'] = $cedula_nit;
+        $cliente['nombre'] = $representante;
+        $cliente['telefono'] = null;
+        $cliente['direccion'] = null;
+        $cliente['email'] = null;
+        $cliente['departament'] = null;
+        $cliente['municipio']  = null;
+
+        Cliente::create($cliente);
+      }
+
 
      }
 
      if (!empty($nombre_empresa)) {
-       $juridica = Juridica::all();
-       $lastId_juridica = $juridica->last()->id;
+       $juridicas = Juridica::where('clientes.razon_social', '=', $nombre_empresa)->get();
 
        $datos = Cotizacion::count('codigo');
        $num = Cotizacion::max('codigo');
@@ -152,7 +168,7 @@ class ExcelController extends Controller
        $cotiza['dirigido'] = $dirigido;
        $cotiza['codigo'] = $codigo;
        $cotiza['cliente_id'] = null;
-       $cotiza['juridica_id'] = $lastId_juridica;
+       $cotiza['juridica_id'] = $juridicas->id;
        $cotiza['fecha'] = $fecha;
        $cotiza['nombre'] = $nombre_proyecto;
        $cotiza['municipio'] = $municipio;
@@ -166,8 +182,8 @@ class ExcelController extends Controller
        Cotizacion::create($cotiza);
      }
     }else {
-       $cliente = Cliente::all();
-       $lastId_cliente = $cliente->last()->id;
+      $clientes = Cliente::where('clientes.cedula', '=', $cedula_nit)->get();
+
 
        $datos = Cotizacion::count('codigo');
        $num = Cotizacion::max('codigo');
