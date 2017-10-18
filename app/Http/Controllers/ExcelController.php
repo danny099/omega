@@ -58,8 +58,6 @@ class ExcelController extends Controller
      $db_tipo = $result[53][1];
      $db_apoyos = $result[54][1];
      $db_cajas = $result[55][1];
-     dd($dm_tension);
-     die();
      $pu_tipo = $result[59][1];
      $pu_estrato = $result[60][1];
      $pu_numero_viviendas = $result[61][1];
@@ -256,7 +254,7 @@ class ExcelController extends Controller
      }
 
 
-     if ($t_nivle_tension != 'N.A' && $t_transformadores != 'N.A' && $t_potencia != 'N.A' && $t_montaje != 'N.A') {
+     if ($t_nivle_tension != '' && $t_transformadores != '' && $t_potencia != '' && $t_montaje != '') {
 
        $cotizacion = Cotizacion::all();
 
@@ -267,7 +265,7 @@ class ExcelController extends Controller
 
        $transformacion['descripcion'] = 'Inspección  RETIE proceso de transformación';
        $transformacion['tipo'] = $t_montaje;
-       $transformaciones['nivel_tension'] = $t_nivle_tension;
+       $transformacion['nivel_tension'] = $t_nivle_tension;
        $transformacion['unidad'] = 'Und';
        $transformacion['capacidad'] = $t_potencia;
        $transformacion['cantidad'] = $t_transformadores;
@@ -292,13 +290,13 @@ class ExcelController extends Controller
        $cotizacion = Cotizacion::all();
        $lastId_cotiza = $cotizacion->last()->id;
 
-       $distrisbucion['descripcion'] = 'Inspección RETIE proceso de distribución en MT';
+       $distribucion['descripcion'] = 'Inspección RETIE proceso de distribución en MT';
        $distribucion['tipo'] = $dm_tipo;
        $distribucion['nivel_tension'] = $dm_tension;
        $distribucion['unidad'] = 'Und';
        $distribucion['cantidad'] = $dm_longitud;
-       $distribuscion['apoyos'] = $dm_apoyos;
-       $distribuscion['apoyos'] = 'N.A';
+       $distribucion['apoyos'] = $dm_apoyos;
+       $distribucion['cajas'] = 'N.A';
        $distribucion['cotizacion_id'] = $lastId_cotiza;
 
        Distribucion::create($distribucion);
@@ -319,13 +317,13 @@ class ExcelController extends Controller
        $cotizacion = Cotizacion::all();
        $lastId_cotiza = $cotizacion->last()->id;
 
-       $distrisbucion['descripcion'] = 'Inspección RETIE proceso de distribución en BT';
+       $distribucion['descripcion'] = 'Inspección RETIE proceso de distribución en BT';
        $distribucion['tipo'] = $dm_tipo;
        $distribucion['nivel_tension'] = $dm_tension;
        $distribucion['unidad'] = 'Und';
        $distribucion['cantidad'] = $dm_longitud;
-       $distribuscion['apoyos'] = $dm_apoyos;
-       $distribuscion['cajas'] = $db_cajas;
+       $distribucion['apoyos'] = $dm_apoyos;
+       $distribucion['cajas'] = $db_cajas;
        $distribucion['cotizacion_id'] = $lastId_cotiza;
 
        Distribucion::create($distribucion);
