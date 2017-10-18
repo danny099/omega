@@ -25,8 +25,7 @@ class ExcelController extends Controller
 
      $result = Excel::selectSheetsByIndex(0)->load($file, function($reader) { $reader->noHeading(); })->get();
      $result = $result->toArray();
-     dd();
-     die();
+
      $fecha_cot = $result[2][1];
      $dirigido = $result[6][1];
      $representante = $result[7][1];
@@ -59,6 +58,8 @@ class ExcelController extends Controller
      $db_tipo = $result[53][1];
      $db_apoyos = $result[54][1];
      $db_cajas = $result[55][1];
+     dd($dm_tension);
+     die();
      $pu_tipo = $result[59][1];
      $pu_estrato = $result[60][1];
      $pu_numero_viviendas = $result[61][1];
