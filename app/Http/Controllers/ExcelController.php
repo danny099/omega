@@ -71,11 +71,11 @@ class ExcelController extends Controller
 
      if (!empty($nombre_empresa)) {
 
-        $juridi = Juridica::where('clientes.razon_social', '=', $nombre_empresa)->get();
+        $juridi = Juridica::where('juridica.razon_social', '=', $nombre_empresa)->get();
 
-        if ($juridi == 1) {
+        if (count($juridi) == 1) {
 
-       }else {
+        }else {
          $juridica['razon_social'] = $nombre_empresa;
          $juridica['nit'] = $cedula_nit;
          $juridica['nombre_representante'] = $representante;
@@ -90,29 +90,6 @@ class ExcelController extends Controller
        }
 
 
-     }else {
-
-       $client = Cliente::where('clientes.cedula', '=', $cedula_nit)->get();
-
-       if ($client == 1) {
-
-      }else {
-        $cliente['nit'] = null;
-        $cliente['cedula'] = $cedula_nit;
-        $cliente['nombre'] = $representante;
-        $cliente['telefono'] = null;
-        $cliente['direccion'] = null;
-        $cliente['email'] = null;
-        $cliente['departament'] = null;
-        $cliente['municipio']  = null;
-
-        Cliente::create($cliente);
-      }
-
-
-     }
-
-     if (!empty($nombre_empresa)) {
        $juridicas = Juridica::where('juridica.razon_social', '=', $nombre_empresa)->get();
 
        $datos = Cotizacion::count('codigo');
@@ -132,8 +109,6 @@ class ExcelController extends Controller
          $i = $numero[2];
 
          while ($flag) {
-
-
 
            if ($numero[3] < 9) {
              $numero[3] = $numero[3] +1;
@@ -158,9 +133,8 @@ class ExcelController extends Controller
              $i++;
 
            }
-
-
         }
+      }
 
        $now = new \DateTime();
        $fecha = $now->format('Y-m-d');
@@ -168,7 +142,6 @@ class ExcelController extends Controller
        $cotiza['dirigido'] = $dirigido;
        $cotiza['codigo'] = $codigo;
        $cotiza['cliente_id'] = null;
-       $cotiza['juridica_id'] = $juridicas->id;
        $cotiza['fecha'] = $fecha;
        $cotiza['nombre'] = $nombre_proyecto;
        $cotiza['municipio'] = $municipio;
@@ -179,9 +152,33 @@ class ExcelController extends Controller
        $cotiza['validez'] = $valides_oferta;
        $cotiza['adicional'] = '600,000';
        $cotiza['departamento_id'] = $departamento;
+       foreach ($juridicas as $key => $dato) {
+         $cotiza['juridica_id'] = $dato->id;
+       }
+
        Cotizacion::create($cotiza);
-     }
-    }else {
+
+
+     }else {
+
+       $client = Cliente::where('clientes.cedula', '=', $cedula_nit)->get();
+
+       if (count($client) == 1) {
+
+      }else {
+        $cliente['nit'] = null;
+        $cliente['cedula'] = $cedula_nit;
+        $cliente['nombre'] = $representante;
+        $cliente['telefono'] = null;
+        $cliente['direccion'] = null;
+        $cliente['email'] = null;
+        $cliente['departament'] = null;
+        $cliente['municipio']  = null;
+
+        Cliente::create($cliente);
+      }
+
+
       $clientes = Cliente::where('clientes.cedula', '=', $cedula_nit)->get();
 
 
@@ -238,7 +235,6 @@ class ExcelController extends Controller
 
        $cotiza['dirigido'] = $dirigido;
        $cotiza['codigo'] = $codigo;
-       $cotiza['cliente_id'] = $lastId_cliente;
        $cotiza['juridica_id'] = null;
        $cotiza['fecha'] = $fecha;
        $cotiza['nombre'] = $nombre_proyecto;
@@ -250,6 +246,9 @@ class ExcelController extends Controller
        $cotiza['validez'] = $valides_oferta;
        $cotiza['adicional'] = '600,000';
        $cotiza['departamento_id'] = $departamento;
+       foreach ($clientes as $key => $dato2) {
+         $cotiza['cliente_id'] = $dato2->id;
+       }
 
        Cotizacion::create($cotiza);
      }
@@ -258,6 +257,7 @@ class ExcelController extends Controller
      if ($t_nivle_tension != 'N.A' && $t_transformadores != 'N.A' && $t_potencia != 'N.A' && $t_montaje != 'N.A') {
 
        $cotizacion = Cotizacion::all();
+
        $lastId_cotiza = $cotizacion->last()->id;
 
       //  $datos = Cotizacion::count('codigo');
