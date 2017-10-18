@@ -120,7 +120,7 @@ class Pu_finalController extends Controller
                      }
 
                    }else {
-                     $datos3['metros'] = null;
+                     $datos3['metros'] = 'N.A';
                    }
 
                    if (isset($input['pu_final']['kva_pu'][$i])) {
@@ -137,7 +137,7 @@ class Pu_finalController extends Controller
                      }
 
                    }else {
-                     $datos3['kva'] = null;
+                     $datos3['kva'] = 'Según Plano';
                    }
 
                    $datos3['administrativa_id'] = $request->codigo_proyecto;

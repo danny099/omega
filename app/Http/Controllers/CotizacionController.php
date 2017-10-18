@@ -260,9 +260,10 @@ class CotizacionController extends Controller
              if (!is_null($input['pu_final']['descripcion_pu'][$i]) &&
                  !is_null($input['pu_final']['tipo_pu'][$i]) &&
                 //  !is_null($input['pu_final']['estrato_pu'][$i]) &&
-                 !is_null($input['pu_final']['cantidad_pu'][$i]) &&
-                 !is_null($input['pu_final']['metros_pu'][$i]) &&
-                 !is_null($input['pu_final']['kva_pu'][$i])) {
+                 !is_null($input['pu_final']['cantidad_pu'][$i]))
+                //  !is_null($input['pu_final']['metros_pu'][$i]) &&
+                //  !is_null($input['pu_final']['kva_pu'][$i]))
+                {
 
                    $datos3['descripcion'] = $input['pu_final']['descripcion_pu'][$i];
                    $datos3['tipo'] = $input['pu_final']['tipo_pu'][$i];
@@ -270,6 +271,33 @@ class CotizacionController extends Controller
                    $datos3['cantidad'] = $input['pu_final']['cantidad_pu'][$i];
                    $datos3['metros'] = $input['pu_final']['metros_pu'][$i];
 
+                   if (isset($input['pu_final']['metros_pu'][$i])) {
+                     if (!empty($input['pu_final']['metros_pu'][$i])) {
+
+                       $datos3['metros'] = $input['pu_final']['metros_pu'][$i];
+
+                     }
+
+                   }else {
+                     $datos3['metros'] = 'N.A';
+                   }
+
+                   if (isset($input['pu_final']['kva_pu'][$i])) {
+                     if (!empty($input['pu_final']['kva_pu'][$i])) {
+
+                       if ($input['pu_final']['kva_pu'][$i] == 0) {
+
+                         $datos3['kva'] = 'Según Plano';
+
+                       }else {
+                         $datos3['kva'] = $input['pu_final']['kva_pu'][$i];
+                       }
+
+                     }
+
+                   }else {
+                     $datos3['kva'] = 'Según Plano';
+                   }
 
                    if ($input['pu_final']['kva_pu'][$i] == 0) {
 
