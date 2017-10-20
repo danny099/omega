@@ -5,7 +5,6 @@ namespace App\Exceptions;
 use Exception;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-use Symfony\Component\Debug\Exception\FlattenException;
 
 class Handler extends ExceptionHandler
 {
@@ -45,25 +44,6 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-
-        if ($this->isHttpException($exception))
-        {
-          switch ($exception->getStatusCode()) {
-
-            // no found
-            case '404':
-              return redirect()->route('notfound');
-            break;
-
-            // case 500:
-            //   return redirect()->route('notfound');
-            // break;
-
-            default:
-              return $this->renderHttException();
-            break;
-          }
-        }
         return parent::render($request, $exception);
     }
 
@@ -82,11 +62,4 @@ class Handler extends ExceptionHandler
 
         return redirect()->guest(route('login'));
     }
-
-    // Mostrar los valores de el error 500
-    // protected function convertExceptionToResponse(Exception $e)
-    // {
-    // 	$e = FlattenException::create($e);
-    // 	return response()->view('errors.500', ['exception' => $e], $e->getStatusCode(), $e->getHeaders());
-    // }
 }

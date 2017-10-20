@@ -1008,9 +1008,7 @@ class AdministrativaController extends Controller
    public function destroy($id)
    {
 
-
      $administrativa = Administrativa::findOrFail($id);
-
 
      $transfor = Transformacion::where('transformacion.administrativa_id', '=', $id)->get();
 
@@ -1037,7 +1035,7 @@ class AdministrativaController extends Controller
        }else {
          $registro->administrativa_id = null;
          $registro->save();
-       };
+       }
 
      }
 
@@ -1051,7 +1049,7 @@ class AdministrativaController extends Controller
        }else {
          $registro->administrativa_id = null;
          $registro->save();
-       };
+       }
 
      }
 

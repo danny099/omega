@@ -50,18 +50,24 @@
           <div class="form-group">
             <label >Departamento</label>
             <select class="form-control"  name="departamento_id" id="departamento">
-              <option value="{{ $juridica->departamento->id }}">{{ $juridica->departamento->nombre }}</option>
               @foreach($departamentos as $departamento)
               <option value="{{ $departamento->id }}">{{$departamento->nombre}}</option>
               @endforeach
             </select>
           </div>
           <div class="form-group">
-            <label >Municipios</label>
-            <select class="form-control"  name="municipio" id="municipio">
-              <option value="{{ $municipio->id }}">{{ $municipio->nombre }}</option>
-              <option value=""></option>
-            </select>
+            @if($municipio == '')
+              <label >Municipios</label>
+              <select class="form-control"  name="municipio" id="municipio">
+                <option value=""></option>
+              </select>
+            @else
+              <label >Municipios</label>
+              <select class="form-control"  name="municipio" id="municipio">
+                <option value="{{ $municipio->id }}">{{ $municipio->nombre }}</option>
+                <option value=""></option>
+              </select>
+            @endif
           </div>
 
 

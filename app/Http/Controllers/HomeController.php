@@ -26,13 +26,13 @@ class HomeController extends Controller
         return view('home');
     }
 
-    public function pagenotfound()
-    {
-      return view('errors.404');
-    }
-
-    public function wrong()
-    {
-      return view('errors.500');
-    }
+    // public function pagenotfound()
+    // // {
+    // //   return view('errors.404');
+    // // }
+    //
+    // public function wrong()
+    // {
+    //   return view('errors.500');
+    // }
 }

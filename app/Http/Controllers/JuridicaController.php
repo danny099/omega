@@ -115,9 +115,14 @@ class JuridicaController extends Controller
     public function edit($id)
     {
       $juridica = Juridica::findOrFail($id);
-
       $departamentos = Departamento::all();
-      $municipio = Municipio::findOrFail($juridica->municipio);
+
+      if (is_null($juridica->municipio)) {
+        $municipio ='';
+      }else {
+        $municipio = Municipio::findOrFail($juridica->municipio);
+      }
+
 
       return view('juridica.edit',compact('juridica','roles','departamentos','municipio'));
     }
