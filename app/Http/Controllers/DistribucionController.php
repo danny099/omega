@@ -10,15 +10,7 @@ use Illuminate\Http\Request;
 
 class DistribucionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -79,7 +71,6 @@ class DistribucionController extends Controller
                     $datos2['cajas'] = $input['distribucion']['cajas_dis'][$x];
                   }
 
-                  // $datos2['notas'] = $input['distribucion']['notas_dis'][$x];
                   $datos2['administrativa_id'] = $request->codigo_proyecto;
                   $datos2['cotizacion_id'] = $request->codigo_cotizacion;
 
@@ -99,20 +90,8 @@ class DistribucionController extends Controller
 
       }
 
-
-
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -126,7 +105,6 @@ class DistribucionController extends Controller
       $distribuciones = Distribucion::where('distribucion.administrativa_id', '=', $id)->get();
 
       return view('distribuciones.edit',compact('distribuciones','id','ide'));
-
 
     }
 
@@ -170,8 +148,6 @@ class DistribucionController extends Controller
            $datos['cajas'] = $input['distribucion']['cajas_dis'][$x];
          }
 
-        //  $datos['notas'] = $input['distribucion']['notas_dis'][$x];
-
          $distri->update($datos);
 
        }
@@ -190,11 +166,9 @@ class DistribucionController extends Controller
      */
     public function destroy($id)
     {
-      // dd($id);
-      // die();
+
       $distri = Distribucion::findOrFail($id);
-      // dd($distri);
-      // die();
+
       $distri->delete();
       Session::flash('message', 'Alcance distribución eliminado');
       Session::flash('class', 'danger');

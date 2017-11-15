@@ -29,6 +29,7 @@ class CotizacionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+     // funcion que me permite ver todos los registros en la tabla cotizaciones
      public function index()
      {
          $cotizaciones = Cotizacion::all();
@@ -40,6 +41,7 @@ class CotizacionController extends Controller
       *
       * @return \Illuminate\Http\Response
       */
+     // funcion que me permite abrir una vista con los datos referentes a la cotizacion y asi poder crearla
      public function create()
      {
          $clientes = Cliente::all();
@@ -47,9 +49,9 @@ class CotizacionController extends Controller
          $departamentos = Departamento::all();
          $datos = Cotizacion::count('codigo');
          $num = Cotizacion::max('codigo');
-        //  dd($datos);
-        //  die();
-        //  $num = "COT-2017-A-999";
+
+
+         // en esta parte se genera el codigo autoincrementable
          $numero = explode("-", $num);
          $flag = true;
 
@@ -63,19 +65,14 @@ class CotizacionController extends Controller
 
            while ($flag) {
 
-
-
              if ($numero[3] < 9) {
                $numero[3] = $numero[3] +1;
                $codigo = $numero[0]."-".$numero[1]."-".$i."-00".$numero[3];
                $flag = false;
 
-
              }elseif ($numero[3] <= 98) {
                $numero[3] = $numero[3] +1;
                $codigo = $numero[0]."-".$numero[1]."-".$i."-0".$numero[3];
-
-
                $flag = false;
 
              }elseif ($numero[3] < 999) {
@@ -88,7 +85,6 @@ class CotizacionController extends Controller
                $i++;
 
              }
-
 
            }
          }
@@ -103,6 +99,7 @@ class CotizacionController extends Controller
       * @param  \Illuminate\Http\Request  $request
       * @return \Illuminate\Http\Response
       */
+    // funcion que me permite guardar los datos de la cotizacion cuando se vaya a crear
      public function store(Request $request)
      {
          $input = $request->all();
@@ -387,8 +384,6 @@ class CotizacionController extends Controller
               $texto['valor_uni'] = str_replace(',','',$input['valores']['valor_uni_pu'][$j]);
               $texto['valor_total'] = str_replace(',','',$input['valores']['valor_multi_pu'][$j]);
               $texto['cotizacion_id'] = $lastId_cotiza;
-             //  dd($texto);
-             //  die();
               Valorcot::create($texto);
            }
          }
@@ -408,9 +403,6 @@ class CotizacionController extends Controller
     public function show($id)
     {
       $cotizacion = Cotizacion::find($id);
-
-      // $muni_Id = Municipio::select('id')->where('id',$cotizacion->municipio)->get();
-      // $municipio = Municipio::find($muni_Id);
       $municipios = explode(',',$cotizaciones->municipio);
       $count = count($municipios);
       for ($i=0; $i < $count; $i++) {
@@ -447,25 +439,14 @@ class CotizacionController extends Controller
 
         $array_muni[] =  Municipio::where('municipio.id', '=', $municipios[$i])->get();
       }
-
-      // $muni_Id = Municipio::select('id')->where('id',$cotizaciones->municipio)->get();
-      // $municipio = Municipio::find($muni_Id);
       $transformaciones = Transformacion::where('transformacion.cotizacion_id', '=', $id)->get();
-      // $distribuciones = Distribucion::where('distribucion.cotizacion_id', '=', $id)->get();
       $pu_finales = Pu_final::where('pu_final.cotizacion_id', '=', $id)->get();
       $valorcot = Valorcot::where('valorcot.cotizacion_id', '=', $id)->get();
-
       $datos1 = DB::table('valorcot')->where('cotizacion_id', '=', $id)->where('detalles', 'like', '%transformacion%')->get();
       $datos2 = DB::table('valorcot')->where('cotizacion_id', '=', $id)->where('detalles', 'like', '%distribucion%')->get();
       $datos3 = DB::table('valorcot')->where('cotizacion_id', '=', $id)->where('detalles', 'like', '%final%')->get();
-      // dd($datos3);
-      // die();
       $mts = DB::table('distribucion')->where('cotizacion_id', '=', $id)->where('descripcion', 'like', '%MT%')->get();
       $bts = DB::table('distribucion')->where('cotizacion_id', '=', $id)->where('descripcion', 'like', '%BT%')->get();
-      // $pu_finales = DB::table('pu_final')->where('cotizacion_id', '=', $id)->where('tipo', '!=', 'Punto Fijo')->get();
-      // dd($pu_finales);
-      // die();
-
 
       return view('cotizaciones.edit',compact('cotizaciones','departamentos','clientes','juridicas','transformaciones','mts','bts','pu_finales','array_muni','valorcot','datos1','datos2','datos3'));
     }
@@ -483,8 +464,6 @@ class CotizacionController extends Controller
 
 
         $municipio = implode(',',$request->municipio);
-        // dd($municipio);
-        // die();
         $now = new \DateTime();
         $fecha = $now->format('Y-m-d');
 
@@ -492,8 +471,6 @@ class CotizacionController extends Controller
 
         $cotizacion['dirigido'] = $request->dirigido;
         $cotizacion['codigo'] = $request->codigo;
-        // $cotizacion['cliente_id'] = $request->cliente_id;
-        // $cotizacion['juridica_id'] = $request->juridica_id;
         $cotizacion['nombre'] = $request->nombre;
         $cotizacion['municipio'] = $municipio;
         $cotizacion['fecha'] = $fecha;
@@ -515,14 +492,11 @@ class CotizacionController extends Controller
 
           $cotizacion['cliente_id'] = $request->cliente_id;
           $cotizacion['juridica_id'] = null;
-          // $cotiza->juridica_id = null;
-          // $cotiza->save();
 
         }else {
 
           $cotizacion['juridica_id'] = $request->juridica_id;
           $cotizacion['cliente_id']= null;
-          // $cotiza->save();
 
         }
 
@@ -541,18 +515,6 @@ class CotizacionController extends Controller
               $datos1['capacidad'] = $input['transformacion']['capacidad'][$a];
               $datos1['cantidad'] = $input['transformacion']['cantidad'][$a];
               $datos1['tipo_refrigeracion'] = $input['transformacion']['tipo_refrigeracion'][$a];
-
-              // $id2 = $input['valores']['id'][$a];
-              // $valor = Valorcot::findOrFail($id2);
-              // $texto['detalles'] = $datos1['descripcion'].' '.$datos1['tipo'].' '. $datos1['cantidad'].' '.$datos1['capacidad'];
-              // $texto['cantidad'] = $datos1['cantidad'];
-              // $texto['valor_uni'] = str_replace(',','',$input['valores']['valor_uni'][$a]);
-              // $texto['valor_total'] = str_replace(',','',$input['valores']['valor_multi'][$a]);
-              // // $texto['cotizacion_id'] = $lastId_cotiza;
-              // //
-              // // Valorcot::create($texto);
-              //
-              // $valor->update($texto);
 
               $transfor->update($datos1);
 
@@ -606,19 +568,6 @@ class CotizacionController extends Controller
                 $datos2['cajas'] = $input['distribucion']['cajas_dis'][$x];
               }
 
-              // $datos2['notas'] = $input['distribucion']['notas_dis'][$x];
-
-              // $id2 = $input['valores']['id_dis'][$x];
-              // $valor = Valorcot::findOrFail($id2);
-              // $texto['detalles'] = $datos2['descripcion'].' '.$datos2['tipo'].' '. $datos2['cantidad'];
-              // $texto['cantidad'] = $datos2['cantidad'];
-              // $texto['valor_uni'] = str_replace(',','',$input['valores']['valor_uni_dis'][$x]);
-              // $texto['valor_total'] = str_replace(',','',$input['valores']['valor_multi_dis'][$x]);
-              // // $texto['cotizacion_id'] = $lastId_cotiza;
-              //
-              // // Valorcot::create($texto);
-              // $valor->update($texto);
-
               $distri->update($datos2);
 
             }
@@ -632,7 +581,6 @@ class CotizacionController extends Controller
                $texto['detalles'] = 'distribucion';
                $texto['valor_uni'] = str_replace(',','',$input['valores']['valor_uni_dis'][$y]);
                $texto['valor_total'] = str_replace(',','',$input['valores']['valor_multi_dis'][$y]);
-
 
                $valor->update($texto);
 
@@ -661,7 +609,6 @@ class CotizacionController extends Controller
                 $datos3['kva'] = 'Según Plano';
                 $datos3['torres'] = null;
 
-
               }else {
                 $datos3['kva'] = $input['pu_final']['kva_pu'][$i];
               }
@@ -671,14 +618,12 @@ class CotizacionController extends Controller
                 $datos3['acometidas'] = $datos3['cantidad'];
                 $datos3['torres'] = null;
 
-
               }
 
               if ($datos3['tipo'] == 'Local comercial') {
 
                 $datos3['acometidas'] = $datos3['cantidad'];
                 $datos3['torres'] = null;
-
 
               }
 
@@ -687,14 +632,12 @@ class CotizacionController extends Controller
                 $datos3['acometidas'] = $datos3['cantidad'];
                 $datos3['torres'] = null;
 
-
               }
 
               if ($datos3['tipo'] == 'Bodega') {
 
                 $datos3['acometidas'] = $datos3['cantidad'];
                 $datos3['torres'] = null;
-
 
               }
 
@@ -724,9 +667,7 @@ class CotizacionController extends Controller
               $texto['cantidad'] = $datos3['cantidad'];
               $texto['valor_uni'] = str_replace(',','',$input['valores']['valor_uni_pu'][$i]);
               $texto['valor_total'] = str_replace(',','',$input['valores']['valor_multi_pu'][$i]);
-              // $texto['cotizacion_id'] = $lastId_cotiza;
-              //
-              // Valorcot::create($texto);
+
               $valor->update($texto);
               $pu->update($datos3);
 
@@ -743,8 +684,6 @@ class CotizacionController extends Controller
                $texto['valor_uni'] = str_replace(',','',$input['valores']['valor_uni_pu'][$j]);
                $texto['valor_total'] = str_replace(',','',$input['valores']['valor_multi_pu'][$j]);
 
-              //  dd($texto);
-              //  die();
                $valor->update($texto);
 
             }
@@ -765,6 +704,7 @@ class CotizacionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+     // funcion que nos sirve para eliminar un registro de la base de datos
     public function destroy($id)
     {
 
@@ -795,9 +735,6 @@ class CotizacionController extends Controller
           $registro->cotizacion_id = null;
           $registro->save();
         }
-
-
-
       }
 
       $pu_final = Pu_final::where('pu_final.cotizacion_id', '=', $id)->get();
@@ -819,7 +756,6 @@ class CotizacionController extends Controller
       Session::flash('message', 'Cotización eliminado');
       Session::flash('class', 'danger');
       return redirect('cotizaciones');Cotizacion::findOrFail($id);
-
 
     }
 }

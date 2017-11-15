@@ -33,12 +33,8 @@ class TransformacionController extends Controller
 
       $transformaciones = Transformacion::all();
       $cotizaciones = Cotizacion::all();
-      // dd($cotizaciones);
-      // die();
       $codigos = Administrativa::all();
 
-      // dd($codigos);
-      // die();
       return view('transformaciones.create',compact('codigos','cotizaciones'));
     }
 
@@ -94,16 +90,6 @@ class TransformacionController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -116,8 +102,6 @@ class TransformacionController extends Controller
       $ide = Administrativa::find($id);
       $transformaciones = Transformacion::where('transformacion.administrativa_id', '=', $id)->get();
 
-      // dd($transformaciones);
-      // die();
       return view('transformaciones.edit',compact('transformaciones','id','ide'));
 
     }
@@ -144,7 +128,6 @@ class TransformacionController extends Controller
         $datos1['capacidad'] = $input['transformacion']['capacidad'][$a];
         $datos1['cantidad'] = $input['transformacion']['cantidad'][$a];
         $datos1['tipo_refrigeracion'] = $input['transformacion']['tipo_refrigeracion'][$a];
-
 
         $transfor->update($datos1);
 

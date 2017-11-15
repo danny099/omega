@@ -24,8 +24,10 @@ use Illuminate\Support\Facades\Input;
 use DB;
 use PhpOffice\PhpWord\TemplateProcessor;
 
+//clase para dar ejecucion a la conversion de cifras numericas a letras
 class NumeroALetras
 {
+
     private static $UNIDADES = [
         '',
         'UN ',
@@ -146,6 +148,8 @@ class NumeroALetras
     }
 }
 
+//clase controlador donde se encuentran los metodos del crud y derivados de acuerdo a los procedimientos de este modulo administrativa o contratos
+
 class AdministrativaController extends Controller
 {
     /**
@@ -153,13 +157,16 @@ class AdministrativaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function viewpdf()
-    {
-      $pdf = PDF::loadView('administrativas.show');
-      return $pdf->download('archivo.pdf');
+    //metodo para el llamdo de un pdf de contratos (no es usado actualmente)
+    // public function viewpdf()
+    // {
+    //   $pdf = PDF::loadView('administrativas.show');
+    //   return $pdf->download('archivo.pdf');
+    //
+    // }
 
-    }
-    //  metodo que permite retornar una vista con todos los datos de los registros
+    //  metodo que permite retornar los datos relacionados con la tabla contratos para mostrar todos los registros de este mismo
+
     public function index()
     {
       $administrativas = Administrativa::all();
@@ -172,15 +179,13 @@ class AdministrativaController extends Controller
       return view('administrativas.index',compact('administrativas','otrosis','cotizaciones'));        //
     }
 
-
-
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-
-    //  metodo que permite capturar todos los datos de los modelos relacionados para mostrar datos en la vista a manera de "selects"
+    //  metodo que me permite consultar los datos existentes para crear un contrato y retornarlos en
+    // la vista administrativa.create para que el usuario pueda crear un contrato
      public function create(Request $request)
      {
        $input = $request->all();
@@ -194,6 +199,7 @@ class AdministrativaController extends Controller
 
        $municipios = explode(',',$cotizaciones->municipio);
        $count = count($municipios);
+       //el siguiente for nos permite almacenar n contidad de municipios seleccionados o cargados por la cotizacion
        for ($i=0; $i < $count; $i++) {
 
          $array_muni[] =  Municipio::where('municipio.id', '=', $municipios[$i])->get();
@@ -209,6 +215,7 @@ class AdministrativaController extends Controller
        $num = Administrativa::max('codigo_proyecto');
 
       //  $num = "COT-2017-A-999";
+      // aqui se podra consultar y manejar codigo del contrato volviendolo generico y autoincrmentable
        $numero = explode("-", $num);
 
        $flag = true;
@@ -252,7 +259,7 @@ class AdministrativaController extends Controller
        return view('administrativas.create',compact('clientes','otrosis','mts','bts','transformaciones','pu_finales','departamentos','juridicas','cotizaciones','array_muni','codigo'));
      }
 
-    //  metodo que permite capturar el Request mediante una ruta ajax para llenar un select dinamico dependiente
+    //  metodo que permite capturar el Request mediante una ruta ajax para llenar un select dinamico dependiente y poder seleccionar los municipios
      public function getMuni(Request $request){
 
        $data = Municipio::select('nombre','id')->where('departamento_id',$request->id)->get();
@@ -265,17 +272,13 @@ class AdministrativaController extends Controller
     * @param  \Illuminate\Http\Request  $request
     * @return \Illuminate\Http\Response
     */
-    // metodo que rescata todos los datos en los inputs del formulario para asignarlos arreglos y con el metodo create acceder al modelo y crear un registro
+    // metodo que obtiene todos los datos en los inputs del formulario para asignarlos arreglos y con el metodo create acceder al modelo y crear un registro
     public function store(Request $request)
     {
 
-      // $data = $request->all();
-
-      $input = $request->all($request->id_cotizacion);
-
-      $adicional = Cotizacion::findOrFail($request->id_cotizacion);
-
-      $municipio =  implode(',',$request->municipio);
+       $input = $request->all($request->id_cotizacion);
+       $adicional = Cotizacion::findOrFail($request->id_cotizacion);
+       $municipio =  implode(',',$request->municipio);
 
        //  ********************************************************************************
        //  ********************************************************************************
@@ -325,6 +328,7 @@ class AdministrativaController extends Controller
         if ($request->transformacion == "transformacion") {
 
         }else {
+          // de esta forma se recorren arreglos bidimensionales
           if (isset($input['transformacion']['descripcion'])) {
             for ($i=0; $i < count($input['transformacion']['id']) ; $i++) {
 
@@ -380,60 +384,7 @@ class AdministrativaController extends Controller
 
 
        Observacion::create($obs);
-      //  codigo para insertar los otrosi que vienen desde un arreglo y recorrerlo para hacer el create
 
-        // for ($a=0; $a<count($input['transformacion']['descripcion']); $a++){
-        //
-        //       if (!empty($input['transformacion']['descripcion'][$a]) &&
-        //           !empty($input['transformacion']['tipo'][$a]) &&
-        //           !empty($input['transformacion']['capacidad'][$a]) &&
-        //           !empty($input['transformacion']['unidad_transformacion'][$a]) &&
-        //           !empty($input['transformacion']['cantidad'][$a])) {
-        //
-        //             $datos1['descripcion'] = $input['transformacion']['descripcion'][$a];
-        //             $datos1['tipo'] = $input['transformacion']['tipo'][$a];
-        //             $datos1['capacidad'] = $input['transformacion']['capacidad'][$a];
-        //             $datos1['unidad'] = $input['transformacion']['unidad_transformacion'][$a];
-        //             $datos1['cantidad'] = $input['transformacion']['cantidad'][$a];
-        //             $datos1['administrativa_id'] = $lastId_admin;
-        //
-        //             Transformacion::create($datos1);
-        //       }
-        // }
-        //
-        // for ($x=0; $x<count($input['distribucion']['descripcion_dis']); $x++) {
-        //     if (!empty($input['distribucion']['descripcion_dis'][$x]) &&
-        //         !empty($input['distribucion']['tipo_dis'][$x]) &&
-        //         !empty($input['distribucion']['unidad_distribucion'][$x]) &&
-        //         !empty($input['distribucion']['cantidad_dis'][$x])){
-        //
-        //           $datos2['descripcion'] = $input['distribucion']['descripcion_dis'][$x];
-        //           $datos2['tipo'] = $input['distribucion']['tipo_dis'][$x];
-        //           $datos2['unidad'] = $input['distribucion']['unidad_distribucion'][$x];
-        //           $datos2['cantidad'] = str_replace('.',',',$input['distribucion']['cantidad_dis'][$x]);
-        //
-        //           $datos2['administrativa_id'] = $lastId_admin;
-        //
-        //           Distribucion::create($datos2);
-        //     }
-        // }
-        //
-        // for ($i=0; $i<count($input['pu_final']['descripcion_pu']); $i++) {
-        //     if (!empty($input['pu_final']['descripcion_pu'][$i]) &&
-        //         !empty($input['pu_final']['tipo_pu'][$i]) &&
-        //         !empty($input['pu_final']['unidad_pu_final'][$i]) &&
-        //         !empty($input['pu_final']['cantidad_pu'][$i])) {
-        //
-        //           $datos3['descripcion'] = $input['pu_final']['descripcion_pu'][$i];
-        //           $datos3['tipo'] = $input['pu_final']['tipo_pu'][$i];
-        //           $datos3['unidad'] = $input['pu_final']['unidad_pu_final'][$i];
-        //           $datos3['cantidad'] = $input['pu_final']['cantidad_pu'][$i];
-        //           $datos3['administrativa_id'] = $lastId_admin;
-        //
-        //           Pu_final::create($datos3);
-        //     }
-        // }
-        // dd($datos4);
         return redirect()->route('administrativas.index');
 
    }
@@ -447,27 +398,25 @@ class AdministrativaController extends Controller
     // metodo que permite hacer una busqueda de acuerdo a un id en la base de dato retornando un registro
    public function show($id)
    {
-     $dir = opendir('documento/');
+     //de esta manero borramos un documento apenas se crea otro en determinado tiempo para no llenar el servidor con tantos registros de contratos
+      $dir = opendir('documento/');
 
-       while($f = readdir($dir))
-       {
+        while($f = readdir($dir))
+         {
 
-         if((time()-filemtime('documento/'.$f) > 3600*24*7) and !(is_dir('documento/'.$f)))
-         unlink('documento/'.$f);
-       }
-     closedir($dir);
-      $this->doc($id);
+          if((time()-filemtime('documento/'.$f) > 3600*24*7) and !(is_dir('documento/'.$f)))
+          unlink('documento/'.$f);
+         }
+       closedir($dir);
+       $this->doc($id);
+
       //  funcion que permite acceder al modelo y este a su ves ir a la base de datos y encontrar un registro
-      $administrativa = Administrativa::find($id);
-
+       $administrativa = Administrativa::find($id);
        $muni_Id = Municipio::select('id')->where('id',$administrativa->municipio)->get();
        $municipio = Municipio::find($muni_Id);
-
        $otrosis = Otrosi::where('otrosi.administrativa_id', '=', $id)->get();
        $adicionales = Valor_adicional::where('valor_adicional.administrativa_id', '=', $id)->get();
        $observaciones = Observacion::where('observacion.administrativa_id', '=', $id)->get();
-      //  dd($observaciones);
-      //  die();
        $transformaciones = Transformacion::where('transformacion.administrativa_id', '=', $id)->get();
        $distribuciones = Distribucion::where('distribucion.administrativa_id', '=', $id)->get();
        $pu_finales = Pu_final::where('pu_final.administrativa_id', '=', $id)->get();
@@ -482,19 +431,15 @@ class AdministrativaController extends Controller
        return view('administrativas.show',compact('administrativa','municipio','otrosis','transformaciones','distribuciones','pu_finales','consignaciones','cuenta_cobros','facturas','adicionales','juridicas','observaciones'));
    }
 
-   public function doc($id){ // tiene que mandar el id para poder encontrar al que se deba generar
+   // funcion que me permite generar un contrato con copia al servidor  y pode descargarlo con los datos ingresados por el usuario en formato .docx
+   public function doc($id){
 
      $main = public_path().'/plantillas/contrato_main.docx';
      $contrato = Administrativa::findOrFail($id);
 
-    //  $total_archivos = count(glob('carpeta/{*.docx}',GLOB_BRACE));
-     // $PHPWord = new \PhpOffice\PhpWord\PhpWord();
      if (file_exists(public_path().'/documento'.$contrato->codigo_proyecto.'-'.$contrato->nombre_proyecto.'.docx')) { //funcion que nos permite borrar un archivo si ya esta creado anteriormente
        unlink(public_path().'/documento'.$contrato->codigo_proyecto.'-'.$contrato->nombre_proyecto.'.docx');
      }
-
-
-
 
      $document = new TemplateProcessor($main);
      $firma = public_path().'/firma.jpg';
@@ -554,185 +499,11 @@ class AdministrativaController extends Controller
        $juridica = Juridica::findOrFail($contrato->juridica_id);
      }
 
-
-     // $cotizacion = Cotizacion::where('cotizacion.cliente_id', '=', $contrato->id_cotizacion)->get();
-     // $cotizacion = Cotizacion::findOrFail($contrato->id_cotizacion);
-
      $transformaciones = Transformacion::where('transformacion.administrativa_id', '=', $contrato->id)->get();
      $distribuciones = Distribucion::where('distribucion.administrativa_id', '=', $contrato->id)->get();
      $pu_finales = Pu_final::where('pu_final.administrativa_id', '=', $contrato->id)->get();
      $municipio = Municipio::find($contrato->municipio);
      $departamento = Departamento::find($contrato->departamento_id);
-
-    //  $table = '';
-    //  $table .= '<w:tbl>';
-    //    $table .= '<w:tblPr>';
-    //    $table .=   '<w:tblBorders>';
-    //    $table .=     '<w:top w:val="single" w:sz="8" w:space="0" w:color="000000" />';
-    //    $table .=     '<w:start w:val="single" w:sz="8" w:space="0" w:color="000000" />';
-    //    $table .=     '<w:bottom w:val="single" w:sz="8" w:space="0" w:color="000000" />';
-    //    $table .=     '<w:end w:val="single" w:sz="8" w:space="0" w:color="000000" />';
-    //    $table .=     '<w:insideH w:val="single" w:sz="8" w:space="0" w:color="000000" />';
-    //    $table .=     '<w:insideV w:val="single" w:sz="8" w:space="0" w:color="000000" />';
-    //    $table .=   '<w:tblW w:w="5000" w:type="pct"/>';
-    //    $table .=   '</w:tblBorders>';
-    //    $table .=  '</w:tblPr>';
-    //    $table .=  '<w:tr>';
-    //    $table .=    '<w:tc>';
-    //    $table .=      '<w:p>';
-    //    $table .=        '<w:r>';
-    //    $table .=          '<w:rPr>';
-    //    $table .=            '<w:b />';
-    //    $table .=          '</w:rPr>';
-    //    $table .=          '<w:t>INDICE</w:t>';
-    //    $table .=        '</w:r>';
-    //    $table .=     '</w:p>';
-    //    $table .=    '</w:tc>';
-    //    $table .=    '<w:tc>';
-    //    $table .=      '<w:p>';
-    //    $table .=        '<w:r>';
-    //    $table .=          '<w:rPr>';
-    //    $table .=            '<w:b />';
-    //    $table .=          '</w:rPr>';
-    //    $table .=          '<w:t>DESCRIPCION</w:t>';
-    //    $table .=        '</w:r>';
-    //    $table .=     '</w:p>';
-    //    $table .=    '</w:tc>';
-    //    $table .=    '<w:tc>';
-    //    $table .=      '<w:p>';
-    //    $table .=        '<w:r>';
-    //    $table .=          '<w:rPr>';
-    //    $table .=            '<w:b />';
-    //    $table .=          '</w:rPr>';
-    //    $table .=          '<w:t>CAPACIDAD</w:t>';
-    //    $table .=        '</w:r>';
-    //    $table .=      '</w:p>';
-    //    $table .=    '</w:tc>';
-    //    $table .=    '<w:tc>';
-    //    $table .=      '<w:p>';
-    //    $table .=        '<w:r>';
-    //    $table .=          '<w:rPr>';
-    //    $table .=            '<w:b />';
-    //    $table .=          '</w:rPr>';
-    //    $table .=          '<w:t>CANTIDAD</w:t>';
-    //    $table .=        '</w:r>';
-    //    $table .=      '</w:p>';
-    //    $table .=    '</w:tc>';
-    //    $table .=  '</w:tr>';
-     //
-    //    $i = 1;
-    //    foreach ($transformaciones as $key => $transfor) {
-     //
-    //      $table .=   '<w:tblPr>';
-    //      $table .=     '<w:tblStyle w:val="TableGrid"/>';
-    //      $table .=   '</w:tblPr>';
-    //      $table .=  '<w:tr>';
-    //      $table .=    '<w:tc>';
-    //      $table .=      '<w:p>';
-    //      $table .=        '<w:r>';
-    //      $table .=          '<w:t>'.$i++.'</w:t>';
-    //      $table .=        '</w:r>';
-    //      $table .=     '</w:p>';
-    //      $table .=    '</w:tc>';
-    //      $table .=    '<w:tc>';
-    //      $table .=      '<w:p>';
-    //      $table .=        '<w:r>';
-    //      $table .=          '<w:t>'.$transfor->descripcion.' '.$transfor->tipo.'</w:t>';
-    //      $table .=        '</w:r>';
-    //      $table .=     '</w:p>';
-    //      $table .=    '</w:tc>';
-    //      $table .=    '<w:tc>';
-    //      $table .=      '<w:p>';
-    //      $table .=        '<w:r>';
-    //      $table .=          '<w:t>'.$transfor->unidad.'</w:t>';
-    //      $table .=        '</w:r>';
-    //      $table .=      '</w:p>';
-    //      $table .=    '</w:tc>';
-    //      $table .=    '<w:tc>';
-    //      $table .=      '<w:p>';
-    //      $table .=        '<w:r>';
-    //      $table .=          '<w:t>'.$transfor->cantidad.'</w:t>';
-    //      $table .=        '</w:r>';
-    //      $table .=      '</w:p>';
-    //      $table .=    '</w:tc>';
-    //      $table .=  '</w:tr>';
-    //    }
-    //    foreach ($distribuciones as $key => $distri) {
-     //
-    //      $table .=   '<w:tblPr>';
-    //      $table .=     '<w:tblStyle w:val="TableGrid"/>';
-    //      $table .=     '<w:tblW w:w="0" w:type="auto"/>';
-    //      $table .=   '</w:tblPr>';
-    //      $table .=  '<w:tr>';
-    //      $table .=    '<w:tc>';
-    //      $table .=      '<w:p>';
-    //      $table .=        '<w:r>';
-    //      $table .=          '<w:t>'.$i++.'</w:t>';
-    //      $table .=        '</w:r>';
-    //      $table .=     '</w:p>';
-    //      $table .=    '</w:tc>';
-    //      $table .=    '<w:tc>';
-    //      $table .=      '<w:p>';
-    //      $table .=        '<w:r>';
-    //      $table .=          '<w:t>'.$distri->descripcion.' '.$distri->tipo.'</w:t>';
-    //      $table .=        '</w:r>';
-    //      $table .=     '</w:p>';
-    //      $table .=    '</w:tc>';
-    //      $table .=    '<w:tc>';
-    //      $table .=      '<w:p>';
-    //      $table .=        '<w:r>';
-    //      $table .=          '<w:t>'.$distri->unidad.'</w:t>';
-    //      $table .=        '</w:r>';
-    //      $table .=      '</w:p>';
-    //      $table .=    '</w:tc>';
-    //      $table .=    '<w:tc>';
-    //      $table .=      '<w:p>';
-    //      $table .=        '<w:r>';
-    //      $table .=          '<w:t>'.$distri->cantidad.'</w:t>';
-    //      $table .=        '</w:r>';
-    //      $table .=      '</w:p>';
-    //      $table .=    '</w:tc>';
-    //      $table .=  '</w:tr>';
-    //    }
-    //    foreach ($pu_finales as $key => $pu) {
-     //
-    //      $table .=   '<w:tblPr>';
-    //      $table .=     '<w:tblStyle w:val="TableGrid"/>';
-    //      $table .=     '<w:tblW w:w="0" w:type="auto"/>';
-    //      $table .=   '</w:tblPr>';
-    //      $table .=  '<w:tr>';
-    //      $table .=    '<w:tc>';
-    //      $table .=      '<w:p>';
-    //      $table .=        '<w:r>';
-    //      $table .=          '<w:t>'.$i++.'</w:t>';
-    //      $table .=        '</w:r>';
-    //      $table .=     '</w:p>';
-    //      $table .=    '</w:tc>';
-    //      $table .=    '<w:tc>';
-    //      $table .=      '<w:p>';
-    //      $table .=        '<w:r>';
-    //      $table .=          '<w:t>'.$pu->descripcion.' '.$pu->tipo.'</w:t>';
-    //      $table .=        '</w:r>';
-    //      $table .=     '</w:p>';
-    //      $table .=    '</w:tc>';
-    //      $table .=    '<w:tc>';
-    //      $table .=      '<w:p>';
-    //      $table .=        '<w:r>';
-    //      $table .=          '<w:t>'.$pu->unidad.'</w:t>';
-    //      $table .=        '</w:r>';
-    //      $table .=      '</w:p>';
-    //      $table .=    '</w:tc>';
-    //      $table .=    '<w:tc>';
-    //      $table .=      '<w:p>';
-    //      $table .=        '<w:r>';
-    //      $table .=          '<w:t>'.$pu->cantidad.'</w:t>';
-    //      $table .=        '</w:r>';
-    //      $table .=      '</w:p>';
-    //      $table .=    '</w:tc>';
-    //      $table .=  '</w:tr>';
-    //    }
-    //  $table .= '</w:tbl>';
-
 
      $document->setValue('codigo',$contrato->codigo_proyecto);
 
@@ -755,7 +526,7 @@ class AdministrativaController extends Controller
        $document->setValue('nit',$juridica->nit);
      }
 
-    //  $document->setValue('table',$table);
+     //  $document->setValue('table',$table);
      $document->setValue('nombre_proyecto',$contrato->nombre_proyecto);
      $document->setValue('municipio',$texto);
 
@@ -785,10 +556,6 @@ class AdministrativaController extends Controller
 
      $document->saveAs('documento/'.$contrato->codigo_proyecto.'-'.$contrato->nombre_proyecto.'.docx');
 
-     // $ficher = 'documento/temp_contrato.docx';
-     //
-     // return Response::download('documento/'.$contrato->codigo_proyecto.'-'.$contrato->nombre_proyecto.'.docx');
-
    }
    /**
     * Show the form for editing the specified resource.
@@ -802,8 +569,6 @@ class AdministrativaController extends Controller
    {
       //  funcion que con el codigo capturado busca en la base de datos el registro a editar
       $administrativas = Administrativa::find($id);
-
-
 
       // $admin  = $administrativas->id;
       $departamentos = Departamento::all();
@@ -847,20 +612,16 @@ class AdministrativaController extends Controller
    public function update(Request $request, $id)
    {
        $input = $request->all();
-      //  dd($input);
-      //  die();
+
        $depart = $request->departamento;
        $administrativas = Administrativa::findOrFail($id);
        $facturas = Factura::where('factura.administrativa_id', '=', $administrativas->id)->get();
 
        $municipio = implode(',',$request->municipio);
 
-
        $administrativa['codigo_proyecto'] = $request->codigo_proyecto;
        $administrativa['nombre_proyecto'] = ucfirst(mb_strtolower($request->nombre_proyecto));
        $administrativa['fecha_contrato'] = $request->fecha_contrato;
-      //  $administrativa['cliente_id'] = $request->cliente_id;
-      //  $administrativa['juridica_id'] = $request->juridica_id;
        $administrativa['departamento_id'] = $request->departamento_id;
        $administrativa['municipio'] = $request->municipio;
        $administrativa['tipo_zona'] = $request->zona;
@@ -967,9 +728,6 @@ class AdministrativaController extends Controller
          $administrativa['valor_total_contrato'] = $suma;
 
        }
-
-
-
 
        //  condicional que permite saber si el codigo de proyecto que se envio es igual a uno ya exitente cumpla con la condicion de no permitir actualizar el codigo por uno ya existent
        $codigorepe = Administrativa::where('codigo_proyecto',$request->codigo)->get();

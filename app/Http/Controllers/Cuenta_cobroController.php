@@ -35,6 +35,7 @@ class Cuenta_cobroController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    // funcion que nos permite guardar los datos de la cuenta de cobro
     public function store(Request $request)
     {
       $input = $request->all();
@@ -64,33 +65,6 @@ class Cuenta_cobroController extends Controller
         return redirect()->route('administrativas.index');
       }
 
-
-        // $cobros = Cuenta_cobro::all();//funcion para recuperar todos los registros en la base de datos
-        //
-        // $lastId_cobro = $cobros->last()->id;//funcion que consigue capturar el ultimo registro y sacar el id de este mismo
-        //
-        // $cobro = Cuenta_cobro::find($lastId_cobro);//funcion que permite encontrar un registro mediante un id
-        //
-        // $administra = Administrativa::find($cobro->administrativa_id);//funcion que hace una consulta a una tabla relacionada en la base de datos y saca un registro mediante un id
-        //
-        // $nuevo = $administra->pagado + $cobro->valor;//linea donde se restan los valores almacenados en variables
-        //
-        // $administra->pagado = $nuevo;//asignacion de una variable a actualizar
-        // $administra->save();
-        //
-        // $saldo = $administra->saldo - $cobro->valor;
-        // $administra->saldo = $saldo;
-        // $administra->save();
-
-        // return redirect()->route('administrativas.index');
-
-      // }else {
-
-
-
-
-      // }
-
     }
 
     /**
@@ -110,6 +84,7 @@ class Cuenta_cobroController extends Controller
      * @param  \App\Cuentacobroco  $cuentacobroco
      * @return \Illuminate\Http\Response
      */
+     // funcion que permite buscar un registro para ser editado
      public function edit($id)
      {
        $ide = Administrativa::find($id);
@@ -124,12 +99,10 @@ class Cuenta_cobroController extends Controller
       * @param  int  $id
       * @return \Illuminate\Http\Response
       */
+      // funcion que nos permite editar un registro seleccionado
       public function editar(Request $request)
       {
         $input = $request->all();
-
-
-        // $adicional = Valor_adicional::findOrFail($id);
         $ide = Administrativa::select('id')->where('id',$input['cuenta']['administrativa_id'])->get();
 
         $administrativa = Administrativa::findOrFail($ide);
@@ -139,15 +112,6 @@ class Cuenta_cobroController extends Controller
           if ($administrativa->saldo > str_replace(',','',$input['cuenta']['valor'][$a])) {
             $cuenta = Cuenta_cobro::findOrFail($request->cuenta['id'][$a]);
             $administrativa = Administrativa::findOrFail($cuenta->administrativa_id);
-
-            // if ($administrativa->saldo > 0) {
-            //
-            //   $resta = $administrativa->saldo - $cuenta->valor;
-            //   $nuevo_saldo = $resta + $request->cuenta['valor'][$a];
-            //   $administrativa->saldo = $nuevo_saldo;
-            //   $administrativa->save();
-            //
-            // }
             $datos['porcentaje'] = $input['cuenta']['porcentaje'][$a];
             $datos['valor'] =  str_replace(',','',$input['cuenta']['valor'][$a]);
             $datos['fecha_cuenta_cobro'] = $input['cuenta']['fecha_cuenta_cobro'][$a];
@@ -163,14 +127,10 @@ class Cuenta_cobroController extends Controller
             return redirect()->route('administrativas.index');
           }
 
-
-
-
         }
         Session::flash('message', 'Cuenta de cobro editada!');
         Session::flash('class', 'success');
         return redirect()->route('administrativas.index');
-
      }
      public function update(Request $request, $id)
      {
@@ -210,6 +170,7 @@ class Cuenta_cobroController extends Controller
       * @param  int  $id
       * @return \Illuminate\Http\Response
       */
+      // funcion que nos permite eliminar un registro seleccionado por el usuario
      public function destroy($id)
      {
        $cuentas = Cuenta_cobro::findOrFail($id);
@@ -218,10 +179,6 @@ class Cuenta_cobroController extends Controller
        $nuevo_saldo = $administrativas->saldo + $cuentas->valor;
        $administrativas->saldo = $nuevo_saldo;
        $administrativas->save();
-
-      //  $pagado = $administrativas->pagado - $cuentas->valor;
-      //  $administrativas->pagado = $pagado;
-      //  $administrativas->save();
 
        $cuentas->delete();
 

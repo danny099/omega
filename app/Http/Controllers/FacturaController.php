@@ -9,16 +9,6 @@ use Illuminate\Http\Request;
 class FacturaController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -37,14 +27,13 @@ class FacturaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+     // funcion que permite guardar los datos o nuevos registros en la base de datos
     public function store(Request $request)
     {
       $input = $request->all();
 
-
        //funcion para sacar todos los valores almacenados en los input
       $administrativa = Administrativa::find($request->administrativa_id);
-
 
       $administrativa->save();
 
@@ -65,7 +54,6 @@ class FacturaController extends Controller
       $datos['administrativa_id'] = $request->administrativa_id;
 
       $numrepe = Factura::where('num_factura',$request->num_factura)->get();
-
 
       if ($request->recuerdame == 1) {
         $datos['recuerdame'] = 1;
@@ -90,28 +78,18 @@ class FacturaController extends Controller
 
           $administrativa = Administrativa::find($factura->administrativa_id);//funcion que hace una consulta a una tabla relacionada en la base de datos y saca un registro mediante un id
           $administrativa->contador_fac = $administrativa->contador_fac + $request->recuerdame;
-          // dd($administrativa->contador_fac);
-          // die();
+
           $administrativa->save();
 
           $saldo = $administrativa->saldo - $factura->valor_total;
           $administrativa->saldo =$saldo;
           $administrativa->save();
 
-          // $nuevo = $administrativa->pagado + $factura->valor_total;  //
-          //
-          // $administrativa->pagado = $nuevo;//asignacion de una variable a actualizar
-          // $administrativa->save();
-
           Session::flash('message', 'Factura creada');
           Session::flash('class', 'success');
 
           return redirect()->route('administrativas.index');
         }
-
-
-
-
 
       }else {
         Session::flash('message', 'El valor de la Factura es mayor al saldo!');
@@ -123,29 +101,17 @@ class FacturaController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+     // funcion que permite abrir la vista para editar la factura recuperando los datos del registro a editar y poniendolo en un fomulario
     public function edit($id)
     {
       $ide = Administrativa::find($id);
       $facturas = Factura::where('factura.administrativa_id', '=', $id)->get();
 
-      // dd($transformaciones);
-      // die();
       return view('facturas.index',compact('facturas','id','ide'));
     }
 
@@ -156,6 +122,7 @@ class FacturaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    // funcion que permite editar las facturas
     public function update(Request $request, $id)
     {
         $input = $request->all();
@@ -176,14 +143,13 @@ class FacturaController extends Controller
         $datos['observaciones'] = ucfirst(mb_strtolower($request->observaciones));
         $datos['recuerdame'] = $request->recuerdame;
 
-
         $factura = Factura::findOrFail($id);
         $administrativa = Administrativa::findOrFail($factura->administrativa_id);
 
+        // condicionales para poner valores por defecto
         if ($factura->valor_total == $datos['valor_total']) {
 
           if ($datos['recuerdame'] == 0) {
-
 
             if ($factura->recuerdame == 1) {
 
@@ -207,8 +173,6 @@ class FacturaController extends Controller
               $administrativa->contador_fac = $administrativa->contador_fac + $datos['recuerdame'];
               $administrativa->save();
 
-              // $administrativa->contador_fac = $administrativa->contador_fac + $datos['recuerdame'];
-              // $administrativa->save();
             }
             if ($factura->recuerdame == 0) {
 
@@ -225,7 +189,6 @@ class FacturaController extends Controller
           Session::flash('class', 'success');
           return redirect()->route('administrativas.index');
         }
-
 
         if($administrativa->saldo >= $datos['valor_total']){
 
@@ -236,8 +199,6 @@ class FacturaController extends Controller
 
           if ($datos['recuerdame'] == 0) {
 
-
-
             if ($factura->recuerdame == 1) {
 
               $administrativa->contador_fac = $administrativa->contador_fac - 1;
@@ -260,15 +221,10 @@ class FacturaController extends Controller
               $administrativa->contador_fac = $administrativa->contador_fac + $datos['recuerdame'];
               $administrativa->save();
 
-              // $administrativa->contador_fac = $administrativa->contador_fac + $datos['recuerdame'];
-              // $administrativa->save();
             }
             if ($factura->recuerdame == 0) {
-              dd('hola');
-              die();
               $administrativa->contador_fac = $administrativa->contador_fac + $datos['recuerdame'];
               $administrativa->save();
-
             }
 
           }
@@ -279,16 +235,9 @@ class FacturaController extends Controller
           Session::flash('class', 'success');
           return redirect()->route('administrativas.index');
 
-
         }
 
         if($administrativa->saldo < $datos['valor_total']){
-          // $suma = $factura->valor_total + $administrativa->saldo;
-          // $resta = $datos['valor_total'] - $suma;
-          // $administrativa->saldo = $resta;
-          // // dd('dos');
-          // // die();
-          // $administrativa->save();
           Session::flash('message', 'El valor de la factura es mayor al saldo!');
           Session::flash('class', 'danger');
           return redirect()->route('administrativas.index');
@@ -315,10 +264,6 @@ class FacturaController extends Controller
       $nuevo_saldo = $administrativas->saldo + $factu->valor_total;
       $administrativas->saldo = $nuevo_saldo;
       $administrativas->save();
-
-      // $pagado = $administrativas->pagado - $factu->valor_total;
-      // $administrativas->pagado = $pagado;
-      // $administrativas->save();
 
       $factu->delete();
 

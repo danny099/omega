@@ -55,14 +55,12 @@ class UsuarioController extends Controller
         $usuarios = $request->all();
         $file = Input::file('files');
 
-
         $usuarios['cedula'] = $request->cedula;
         $usuarios['nombres'] = ucwords(mb_strtolower($request->nombres));
         $usuarios['foto'] = Input::file("files")->getClientOriginalName();
         $usuarios['apellidos'] = ucwords(mb_strtolower($request->apellidos));
         $usuarios['email'] = $request->email;
         $usuarios['password'] = Hash::make($request->password);
-
 
         $cedularepe = Usuario::where('cedula',$request->cedula);
         $emailrepe = Usuario::where('email',$request->email);
@@ -135,11 +133,8 @@ class UsuarioController extends Controller
     public function update(Request $request, $id)
     {
       $input = $request->all();
-      // dd($input);
-      // die();
       $file1 = Input::file('files');
 
-      // $file = $request->foto;
       $usuario = Usuario::findOrFail($id);
       $usuarios['cedula'] = $request->cedula;
       $usuarios['nombres'] = ucwords(mb_strtolower($request->nombres));
@@ -156,7 +151,6 @@ class UsuarioController extends Controller
       if (!empty($request->password)) {
         $usuarios['password'] = Hash::make($request->password);
       }else {
-        // $usuarios['password'] = $usuario->password;
       }
 
       if (isset($request->rol_id)) {
@@ -164,7 +158,6 @@ class UsuarioController extends Controller
       }else {
         $usuarios['rol_id'] = Auth::user()->rol_id;
       }
-
 
       if (isset($file1)) {
         $file1->move('photos',$file1->getClientOriginalName());
@@ -174,7 +167,6 @@ class UsuarioController extends Controller
       Session::flash('message', 'Usuario editado!');
       Session::flash('class', 'success');
       return redirect()->route('usuarios.index');
-
 
     }
 

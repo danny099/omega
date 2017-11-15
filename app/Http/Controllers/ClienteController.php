@@ -18,11 +18,12 @@ class ClienteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+     // funcion que me permite restringir el ingreso a los metodos si no es admin
      public function __construct()
      {
          $this->middleware('admin');
      }
-
+    // funcion que me permite listar en una vista todos los registros de los clientes sean naturales o juridicos
     public function index()
     {
       $clientes=Cliente::all();
@@ -36,6 +37,7 @@ class ClienteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    // funcion que me permite retornar a la vista los datos necesarios para crear los clientes
     public function create()
     {
       $clientes=Cliente::all();
@@ -49,6 +51,7 @@ class ClienteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    // funcion que me permite guardar la informacion recibida por el formulario de la vista create y los guarda en la base de datos mediante los modelos "Model::method();"
     public function store(Request $request)
     {
 
@@ -117,6 +120,7 @@ class ClienteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    // funcion que me permite consultar un registro que quiera editar y lo retorna en una vista editable
     public function edit($id)
     {
       $clientes = Cliente::findOrFail($id);
@@ -136,6 +140,7 @@ class ClienteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+     // funcion que me permite actulizar los datos del registro a editar guardando la infomacion atraves de los modelos
     public function update(Request $request, $id)
     {
       $cliente = Cliente::findOrFail($id);
@@ -167,6 +172,7 @@ class ClienteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+     // funcion que me permite eliminar el registro que sea seleccionado
     public function destroy($id)
     {
 

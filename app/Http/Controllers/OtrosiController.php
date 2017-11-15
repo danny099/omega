@@ -8,22 +8,13 @@ use Illuminate\Http\Request;
 
 class OtrosiController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-      // $otrosis=Otrosi::all();
-      //
-      // return view('otrosi.index',compact('otrosis'));
-    }
+
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
+     // funcion que me permite crear un nuevo valor OTROSÍ
     public function create()
     {
       $otrosi = Otrosi::all();
@@ -38,6 +29,7 @@ class OtrosiController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+     // funcion que me permite guardar un nuevo OTROSÍ
     public function store(Request $request)
     {
 
@@ -82,16 +74,6 @@ class OtrosiController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -99,6 +81,7 @@ class OtrosiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+     // funcion que me permite consultar un registro de la tabla otrosi y poder mostrar sus datos para editar
     public function edit($id)
     {
       $ide = Administrativa::find($id);
@@ -113,6 +96,7 @@ class OtrosiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+     // funcion que me permite guardar los datos editados del OTROSÍ
     public function update(Request $request, $id)
     {
       $input = $request->all();
@@ -282,6 +266,7 @@ class OtrosiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+     // funcion que me permite eliminar un OTROSÍ
     public function destroy($id)
     {
       $otrosi = Otrosi::findOrFail($id);

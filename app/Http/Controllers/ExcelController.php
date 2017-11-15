@@ -11,9 +11,6 @@ use App\Distribucion;
 use App\Pu_final;
 use App\Cotizacion;
 use App\Valorcot;
-
-
-
 use DB;
 use Excel;
 
@@ -339,15 +336,6 @@ class ExcelController extends Controller
      }else {
 
      }
-
-    //  $pu_estrato = $result[60][2];
-    //  $pu_numero_viviendas = $result[61][2];
-    //  $pu_numero_locales = $result[62][2];
-    //  $pu_zonas_comunes = $result[63][2];
-    //  $pu_metros = $result[64][2];
-    //  $pu_capacidad = $result[65][2];
-    //  $pu_acometidas = $result[66][2];Inspección RETIE proceso uso final
-    //  $pu_tipo = $result[59][2];
 
      if ($pu_tipo != '' && $pu_estrato != '' && $pu_numero_viviendas != '' && $pu_numero_locales != '' && $pu_zonas_comunes != '' && $pu_metros != '' && $pu_capacidad != '' && $pu_acometidas != '') {
 

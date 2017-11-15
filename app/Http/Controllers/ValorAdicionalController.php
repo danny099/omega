@@ -8,15 +8,6 @@ use Illuminate\Http\Request;
 
 class ValorAdicionalController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
 
     /**
      * Show the form for creating a new resource.
@@ -27,9 +18,6 @@ class ValorAdicionalController extends Controller
     {
       $adicionales = Valor_adicional::all();
       $codigos = Administrativa::all();
-
-      // dd($codigos);
-      // die();
 
       return view('adicionales.create',compact('codigos'));
     }
@@ -77,16 +65,6 @@ class ValorAdicionalController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Valor_adicional  $valor_adicional
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -100,19 +78,6 @@ class ValorAdicionalController extends Controller
       $ide = Administrativa::findOrFail($id);
       $adicionales = Valor_adicional::where('valor_adicional.administrativa_id', '=', $id)->get();
       return view('adicionales.edit',compact('adicionales','id','ide'));
-
-      // $input = $request->all();
-      //
-      // for ($a=0; $a<count($input['adicional']['valor']); $a++){
-      //
-      //   $adicional = Valor_adicional::findOrFail($request->adicional['id'][$a]);
-      //
-      //   $datos['valor'] = $input['adicional']['valor'][$a];
-      //   $datos['detalle'] = $input['adicional']['detalle'][$a];
-      //
-      //   $adicional->update($datos);
-      //
-      // }
 
       Session::flash('message', 'Valor adicional editado!');
       Session::flash('class', 'success');
@@ -133,9 +98,6 @@ class ValorAdicionalController extends Controller
 
       $datos['valor'] = str_replace(',','',$input['adicional']['valor']);
 
-      // $adicional = Valor_adicional::findOrFail($id);
-      // $administrativa = Administrativa::findOrFail($adicional->administrativa_id);
-
       for ($a=0; $a<count($input['adicional']['valor']); $a++){
 
         $datos['valor'] = str_replace(',','',$input['adicional']['valor'][$a]);
@@ -155,8 +117,6 @@ class ValorAdicionalController extends Controller
           $valor2 = $valor1 + $datos['valor'];
           $administrativa->valor_total_contrato = $valor2;
           $administrativa->save();
-          // $adicional->update($datos);
-
 
         }else {
 
@@ -164,8 +124,6 @@ class ValorAdicionalController extends Controller
           $valor2 = $valor1 + $datos['valor'];
           $administrativa->valor_total_contrato = $valor2;
           $administrativa->save();
-          // $adicional->update($datos);
-
         }
 
 
@@ -176,7 +134,6 @@ class ValorAdicionalController extends Controller
             $nuevo_saldo = $resta + $datos['valor'];
             $administrativa->saldo = $nuevo_saldo;
             $administrativa->save();
-            // $adicional->update($datos);
 
           }
           else {
@@ -184,8 +141,6 @@ class ValorAdicionalController extends Controller
             $nuevo_saldo = $resta + $datos['valor'];
             $administrativa->saldo = $nuevo_saldo;
             $administrativa->save();
-            // $adicional->update($datos);
-
           }
 
         }
@@ -199,7 +154,6 @@ class ValorAdicionalController extends Controller
       Session::flash('class', 'success');
       return redirect()->route('administrativas.index');
 
-      // return redirect()->route('administrativas.index');
     }
 
     /**
@@ -208,6 +162,7 @@ class ValorAdicionalController extends Controller
      * @param  \App\Valor_adicional  $valor_adicional
      * @return \Illuminate\Http\Response
      */
+     // funcion que me permite eliminar valores adicionales asiganados a los contratos
     public function destroy($id)
     {
       $adicional = Valor_adicional::findOrFail($id);
@@ -256,7 +211,6 @@ class ValorAdicionalController extends Controller
       Session::flash('message', 'Valor adicional eliminado');
       Session::flash('class', 'danger');
       return redirect()->route('administrativas.index');
-
 
     }
 }

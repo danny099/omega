@@ -15,6 +15,7 @@ class Pu_finalController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+     // funcion que me permite mostrar los registros de proceso de uso final
     public function index()
     {
       $pu_finales=Pu_final::all();
@@ -27,6 +28,7 @@ class Pu_finalController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+     // funcion que me permite ver una vista con un formulario para crear un registro de proceso de uso final
     public function create()
     {
         $codigos = Administrativa::all();
@@ -41,6 +43,7 @@ class Pu_finalController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+     // funcion que me permite guardar un nuevos registros de proceso de uso final
     public function store(Request $request)
     {
        $input = $request->all();
@@ -53,19 +56,15 @@ class Pu_finalController extends Controller
          for ($i=0; $i<count($input['pu_final']['descripcion_pu']); $i++) {
              if (!is_null($input['pu_final']['descripcion_pu'][$i]) &&
                  !is_null($input['pu_final']['tipo_pu'][$i]) &&
-                //  !is_null($input['pu_final']['estrato_pu'][$i]) &&
                  !is_null($input['pu_final']['cantidad_pu'][$i]))
-                //  !is_null($input['pu_final']['metros_pu'][$i]) &&
-                //  !is_null($input['pu_final']['kva_pu'][$i]))
+
                 {
 
                    $datos3['descripcion'] = $input['pu_final']['descripcion_pu'][$i];
                    $datos3['tipo'] = $input['pu_final']['tipo_pu'][$i];
-                  //  $datos3['estrato'] = $input['pu_final']['estrato_pu'][$i];
                    $datos3['unidad'] = 'Und';
                    $datos3['cantidad'] = $input['pu_final']['cantidad_pu'][$i];
                    $datos3['metros'] = $input['pu_final']['metros_pu'][$i];
-
 
                    if ($datos3['tipo'] == 'Casa') {
 
@@ -93,11 +92,8 @@ class Pu_finalController extends Controller
 
                    if (isset($input['pu_final']['torres'][$i])) {
                      if (!is_null($input['pu_final']['torres'][$i])) {
-
                        $datos3['acometidas'] = $input['pu_final']['torres'][$i];
                        $datos3['torres'] = $datos3['acometidas'];
-
-
                      }
                    }
 
@@ -160,19 +156,6 @@ class Pu_finalController extends Controller
 
        }
 
-
-
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**
@@ -181,6 +164,7 @@ class Pu_finalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+     // funcion que me retorna una vista para editar un registros de uso final
     public function edit($id)
     {
       $ide = Administrativa::findOrFail($id);
@@ -195,6 +179,7 @@ class Pu_finalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+     // funcion que me permite editar los registros de proceso de uso final en la base de datos
      public function editar(Request $request)
      {
        $input = $request->all();
@@ -204,7 +189,6 @@ class Pu_finalController extends Controller
          $pu = Pu_final::findOrFail($request->pu_final['id'][$i]);
          $datos3['descripcion'] = $input['pu_final']['descripcion_pu'][$i];
          $datos3['tipo'] = $input['pu_final']['tipo_pu'][$i];
-        //  $datos3['estrato'] = $input['pu_final']['estrato_pu'][$i];
          $datos3['unidad'] = 'Und';
          $datos3['cantidad'] = $input['pu_final']['cantidad_pu'][$i];
          $datos3['metros'] = $input['pu_final']['metros_pu'][$i];
@@ -275,6 +259,8 @@ class Pu_finalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+     // funcion que me permite editar los procesos de uso final 
+
     public function destroy($id)
     {
       $pu = Pu_final::findOrFail($id);

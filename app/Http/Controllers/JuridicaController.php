@@ -18,6 +18,7 @@ class JuridicaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    // funcion que permite mostrar los clientes juridicos que hay en la base de datos
     public function index()
     {
       $juridicas=Juridica::all();
@@ -31,6 +32,7 @@ class JuridicaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+     // funcion que permite mostrar una vista con un formulario para crear los clientes juridicos
     public function create()
     {
       $juridicas=Juridica::all();
@@ -44,10 +46,9 @@ class JuridicaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+     // funcion que permite guardar en la base de datos los clientes juridicos
     public function store(Request $request)
     {
-
-
         $cliente = $request->all();
         $cliente['razon_social'] =$request->razon;
         $cliente['nit'] =$request->nit;
@@ -112,6 +113,7 @@ class JuridicaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+     // funcion que me permite ver un formulario con los datos consultados de un registro y poderlos editar
     public function edit($id)
     {
       $juridica = Juridica::findOrFail($id);
@@ -134,6 +136,7 @@ class JuridicaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+     // funcion que me permite acutalizar los datos de un cliente juridico
     public function update(Request $request, $id)
     {
       $juridica = Juridica::findOrFail($id);
@@ -155,9 +158,6 @@ class JuridicaController extends Controller
       Session::flash('class', 'success');
       return redirect()->route('clientes.index');
 
-
-
-
     }
 
     /**
@@ -166,6 +166,7 @@ class JuridicaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+     // funcion que me permite eliminar un cliente juridico
     public function destroy($id)
     {
 
@@ -184,7 +185,5 @@ class JuridicaController extends Controller
         Session::flash('class', 'danger');
         return redirect('clientes');
       }
-
-
     }
 }
