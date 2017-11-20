@@ -33,7 +33,7 @@ class PdfController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-     funcion que me permite descargar un pdf
+     // funcion que me permite descargar un pdf
     public function viewPdf($id)
     {
 

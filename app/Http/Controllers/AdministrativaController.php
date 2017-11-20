@@ -206,7 +206,6 @@ class AdministrativaController extends Controller
        }
 
        $transformaciones = Transformacion::where('transformacion.cotizacion_id', '=', $codigo_cot)->get();
-      //  $distribuciones = Distribucion::where('distribucion.cotizacion_id', '=', $codigo_cot)->get();
        $pu_finales = Pu_final::where('pu_final.cotizacion_id', '=', $codigo_cot)->get();
        $mts = DB::table('distribucion')->where('cotizacion_id', '=', $codigo_cot)->where('descripcion', 'like', '%MT%')->get();
        $bts = DB::table('distribucion')->where('cotizacion_id', '=', $codigo_cot)->where('descripcion', 'like', '%BT%')->get();
@@ -214,7 +213,6 @@ class AdministrativaController extends Controller
        $datos = Administrativa::count('codigo_proyecto');
        $num = Administrativa::max('codigo_proyecto');
 
-      //  $num = "COT-2017-A-999";
       // aqui se podra consultar y manejar codigo del contrato volviendolo generico y autoincrmentable
        $numero = explode("-", $num);
 
@@ -302,10 +300,7 @@ class AdministrativaController extends Controller
        $administrativa['contador_otro'] = 0;
        $administrativa['contador_fac'] = 0;
        $administrativa['adicional'] = $adicional->adicional;
-
        $administrativa['id_cotizacion'] = $request->id_cotizacion;
-
-
 
        $codigorepe = Administrativa::where('codigo_proyecto',$request->codigo)->get();
        //  condicional
@@ -350,7 +345,7 @@ class AdministrativaController extends Controller
               $distri->save();
             }
           }else {
-            # code...
+
           }
 
         }
@@ -382,9 +377,7 @@ class AdministrativaController extends Controller
        $obs['observacion'] = ucfirst(mb_strtolower($request->observacion));
        $obs['administrativa_id'] = $lastId_admin;
 
-
        Observacion::create($obs);
-
         return redirect()->route('administrativas.index');
 
    }
@@ -403,7 +396,6 @@ class AdministrativaController extends Controller
 
         while($f = readdir($dir))
          {
-
           if((time()-filemtime('documento/'.$f) > 3600*24*7) and !(is_dir('documento/'.$f)))
           unlink('documento/'.$f);
          }
@@ -425,8 +417,6 @@ class AdministrativaController extends Controller
        $facturas = Factura::where('factura.administrativa_id', '=', $id)->get();
        $juridicas = Juridica::select('razon_social')->where('id',$administrativa->juridica_id)->get();
 
-
-
       //  funcion que permite retornar una vista con los datos ya buscados
        return view('administrativas.show',compact('administrativa','municipio','otrosis','transformaciones','distribuciones','pu_finales','consignaciones','cuenta_cobros','facturas','adicionales','juridicas','observaciones'));
    }
@@ -444,18 +434,15 @@ class AdministrativaController extends Controller
      $document = new TemplateProcessor($main);
      $firma = public_path().'/firma.jpg';
 
-
      $muni =  explode(',',$contrato->municipio);
      $count = count($muni);
      $cadena = '';
      for ($x=0; $x < $count ; $x++) {
        $array_muni[] =  Municipio::where('municipio.id', '=', $muni[$x])->get();
      }
-     // dd($array_muni);
-     // die();
+
      if (count($muni) > 1) {
        for ($i=0; $i < $count; $i++) {
-
 
          foreach ($array_muni[$i] as $key => $value) {
            $conta = $count- 1;
@@ -525,8 +512,6 @@ class AdministrativaController extends Controller
        $document->setValue('marca','NIT:');
        $document->setValue('nit',$juridica->nit);
      }
-
-     //  $document->setValue('table',$table);
      $document->setValue('nombre_proyecto',$contrato->nombre_proyecto);
      $document->setValue('municipio',$texto);
 
@@ -544,7 +529,6 @@ class AdministrativaController extends Controller
        $document->setValue('empresa',$juridica->razon_social);
        $document->setValue('nit_empresa',$juridica->nit);
      }
-
 
      $document->setValue('departamento',$departamento->nombre);
      $document->setValue('adicional',$contrato->adicional);
@@ -630,7 +614,6 @@ class AdministrativaController extends Controller
        $administrativa['valor_contrato_final'] =str_replace(',','',$request->contrato_final);
        $administrativa['formas_pago'] = ucfirst(mb_strtolower($request->formas_pago));
 
-
        if ($request->tipo_regimen == 1) {
 
          $administrativa['cliente_id'] = $request->cliente_id;
@@ -650,8 +633,6 @@ class AdministrativaController extends Controller
          $administrativa2['codigo_proyecto'] = $request->codigo_proyecto;
          $administrativa2['nombre_proyecto'] = ucfirst(mb_strtolower($request->nombre_proyecto));
          $administrativa2['fecha_contrato'] = $request->fecha_contrato;
-        //  $administrativa['cliente_id'] = $request->cliente_id;
-        //  $administrativa['juridica_id'] = $request->juridica_id;
          $administrativa2['departamento_id'] = $request->departamento_id;
          $administrativa2['municipio'] = $municipio;
          $administrativa2['tipo_zona'] = $request->zona;
@@ -713,13 +694,11 @@ class AdministrativaController extends Controller
 
        }
 
-
        if ($administrativas->valor_total_contrato >= str_replace(',','',$administrativas->valor_contrato_final)) {
 
          $anexo = $administrativas->valor_total_contrato - str_replace(',','',$administrativas->valor_contrato_final);
          $suma = $administrativa['valor_contrato_final'] + $anexo;
          $administrativa['valor_total_contrato'] = $suma;
-
 
        }else {
 
@@ -811,18 +790,11 @@ class AdministrativaController extends Controller
 
      }
 
-     // $administrativas = Administrativa::select('id')->where('administrativa.id',$id)->get();
      $administrativa->delete();
-      //  //  funcion que permite encontrar o identificar un registro y almacenarlas en una variable
-
-
-      // dd($id);
-      // die();
        //  redireccionamiento a una vista
      Session::flash('message', 'Proyecto eliminado');
      Session::flash('class', 'danger');
      return redirect('administrativas');
-
 
    }
 
