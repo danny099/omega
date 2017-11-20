@@ -5,6 +5,7 @@
     resize: none;
   }
 </style>
+<!-- script encargado de poner los separadores de miles. -->
 <script type="text/javascript">
 function mascara(o,f){
   v_obj=o;
@@ -419,6 +420,7 @@ function addCommas(nStr){
 
 
 <script type="text/javascript">
+// evento encargado de el manejo de los clientes (juridico o natural)
 $('#cliente').change(function(){
     var valorCambiado =$(this).val();
     if((valorCambiado == "1")){
@@ -437,6 +439,7 @@ $('#cliente').change(function(){
         $("#select-natural").html('');
      }
 });
+//eventos encargados de segun el retie elegido poner dinamicamente los tipos correspondientes.
 $(document).on('change','#instalacion',function(){
   var  instalacion = $(this).val();
   if (instalacion == 'Inspección RETIE proceso uso final residencial') {
@@ -457,6 +460,7 @@ $(document).on('change','#instalacion',function(){
       $(this).parent().parent().parent().find("#tipo3").append('<option value="Bodega">Bodega</option>');
     }
 });
+//evento encargado de poner municipios de un departamento elegido
 $(document).ready(function(){
   var dep_id = $('#departamento').val();
   var div = $('#departamento').parents();
@@ -507,99 +511,6 @@ $(document).on('change','#departamento',function(){
 $(document).ready(function($){
   $('#codigo').inputmask('CPS-9999-999');
 });
-</script>
-<script src="../../plugins/input-mask/jquery.inputmask.js"></script>
-
-
-
-@endsection
-
-@section('scripts')
-
-
-<script type="text/javascript">
-
-$('#cliente').change(function(){
-    var valorCambiado =$(this).val();
-    if((valorCambiado == "1")){
-      $('#natural').css('display','block');
-       $('#juridica').css('display','none');
-       $("#select-natural").prop('required',true);
-       $("#juri").prop('required',false);
-       $("#juri").html('');
-     }
-     else if(valorCambiado == "2")
-     {
-       $('#juridica').css('display','block');
-        $('#natural').css('display','none');
-        $("#juri").prop('required',true);
-        $("#select-natural").prop('required',false);
-        $("#select-natural").html('');
-
-     }
-});
-
-$(document).on('change','#instalacion',function(){
-
-  var  instalacion = $(this).val();
-
-  if (instalacion == 'Inspección RETIE proceso uso final residencial') {
-    $(this).parent().parent().parent().find("#tipo3").html('');
-    $(this).parent().parent().parent().find("#tipo3").append('<option value="Casa">Casa</option>');
-    $(this).parent().parent().parent().find("#tipo3").append('<option value="Apartamentos">Apartamentos</option>');
-    $(this).parent().parent().parent().find("#tipo3").append('<option value="Zona común">Zona común</option>');
-    $(this).parent().parent().parent().find("#tipo3").append('<option value="Punto fijo">Punto fijo</option>');
-    $(this).parent().parent().parent().find("#tipo3").append('<option value="Acometidas">Acometidas</option>');
-
-
-
-  }
-    else if (instalacion == 'Inspección RETIE proceso uso final comercial') {
-      $(this).parent().parent().parent().find("#tipo3").html('');
-      $(this).parent().parent().parent().find("#tipo3").append('<option value="Local comercial">Local comercial</option>');
-      $(this).parent().parent().parent().find("#tipo3").append('<option value="Bodega">Bodega</option>');
-    }
-    else {
-      $(this).parent().parent().parent().find("#tipo3").html('');
-      $(this).parent().parent().parent().find("#tipo3").append('<option value="Bodega">Bodega</option>');
-    }
-
-});
-
-
-$(document).ready(function(){
-$(document).on('change','#departamento',function(){
-
-  var dep_id = $(this).val();
-  var div = $(this).parents();
-  var op=" ";
-  $.ajax({
-    type:'get',
-    url:'{{ url('selectmuni')}}',
-    data:{'id':dep_id},
-    success:function(data){
-    console.log(data);
-    op+='<option value="0" selected disabled>Seleccione</option>';
-
-    for (var i = 0; i < data.length; i++) {
-      op+='<option value="' +data[i].id+ '">' +data[i].nombre+ '</option>'
-    }
-
-      div.find('#municipio').html(" ");
-      div.find('#municipio').append(op);
-
-    },
-      error:function(){
-
-    }
-  });
-});
-});
-
-$(document).ready(function($){
-  $('#codigo').inputmask('CPS-9999-999');
-});
-
 </script>
 <script src="../../plugins/input-mask/jquery.inputmask.js"></script>
 

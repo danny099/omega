@@ -62,6 +62,7 @@
 
     });
 
+          // funcion encargada de manejar dinamicamente (eliminar y agregar campos) de el proceso de distribucion en MT
           $(function() {
               var count = 1;
              $(document).on("click","#btnadd13",function( event ) {
@@ -143,7 +144,7 @@
           });
 
 
-
+          // funcion encargada de manejar dinamicamente (eliminar y agregar campos) de el proceso de transformacion
           $(function() {
               var count = 1;
              $(document).on("click","#btnadd10",function( event ) {
@@ -165,7 +166,7 @@
                       '<option value="Poste">Tipo poste</option>'+' '+
                       '<option value="Interior">Tipo interior</option>'+' '+
                       '<option value="Pedestal/jardin">Tipo pedestal/jardin</option>'+' '+
-                      '<option value="Patio">Tipo Patio</option>'+' '+    
+                      '<option value="Patio">Tipo Patio</option>'+' '+
                     '</select>'+' '+
                   '</div>'+' '+
                 '</div>'+' '+
@@ -234,7 +235,7 @@
 
 
 
-
+          // funcion encargada de manejar dinamicamente (eliminar y agregar campos) de el proceso de distribucion BT
           $(function() {
               var count = 1;
              $(document).on("click","#btnadd11",function( event ) {
@@ -308,7 +309,7 @@
              });
           });
 
-
+          // funcion encargada de manejar dinamicamente (eliminar y agregar campos) de el proceso de uso final
           $(function() {
               var count = 1;
              $(document).on("click","#btnadd12",function( event ) {
@@ -371,7 +372,7 @@
              });
           });
 
-
+          // funcion encargada de manejar dinamicamente (eliminar y agregar campos) de el proceso de distribucion en la vista de alcances
           $(function() {
               var count = 1;
              $(document).on("click","#btnadd100",function( event ) {
@@ -456,225 +457,7 @@
 
 
 
-    $(function() {
-        var count = 1;
-       $(document).on("click","#btnadd",function( event ) {
-        count++;
-        $('#tblprod').after('<div class="col-md-11" id="quitar17"><input type="number" class="form-control" id="otrosi[]" placeholder= "Ingrese valor" name="otrosi[]"  onkeyup="sumar2()" > </div>   <div class="col-md-1" id="quitar18"><a class="btn btn-warning delete" id="btnadd[]" data-toggle="modal" href="#" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-minus"></i></a></div>');
-          event.preventDefault();
-       });
-       $(document).on("click",".delete",function( event ) {
-         $('#quitar17').remove();
-         $('#quitar18').remove();
-          return false;
-       });
-    });
-
-    $(function() {
-        var count = 1;
-       $(document).on("click","#btnadd5",function( event ) {
-        count++;
-        $('#tblprod5').after('<div class="row" id="quitar15"><div class="col-md-12"><div class="col-md-3"><div class="form-group"><center><label >Valor adicional</label></center><input type="text" class="form-control" placeholder= "Valor" onkeyup="mascara(this,cpf)" name="adicional[valor][]" required=""></div></div><div class="col-md-5"><div class="form-group"><center><label >Detalle</label></center><input type="text" class="form-control" placeholder= "Detalle" name="adicional[detalle][]"required=""></div></div><div class="col-md-1" id="tblprod5" ><div class="form-group"><br><a class="btn btn-warning delete5" id="btnadd[]" data-toggle="modal" href="#" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-minus"></i></a></div></div></div>'
-
-
-      );
-          event.preventDefault();
-       });
-       $(document).on("click",".delete5",function( event ) {
-         $(this).closest("#quitar15").remove();
-            return false;
-       });
-    });
-
-
-
-    $(function() {
-        var count = 1;
-       $(document).on("click","#btnadd2",function( event ) {
-        count++;
-        $('.tblprod2').after(' <div class="col-md-1 " id="tblprod2"><div class="form-group"><br><a class="btn btn-primary delete2" data-toggle="modal" href="#"  style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-minus"></i></a></div></div>');
-          event.preventDefault();
-       });
-         $(document).on("click",".delete2",function( event ) {
-           $('#quitar1').remove();
-           $('#quitar2').remove();
-           $('#quitar3').remove();
-           $('#quitar4').remove();
-           $('#quitar5').remove();
-           $('#tblprod2').remove();
-            return false;
-         });
-    });
-
-
-    $(function() {
-        var count = 1;
-       $(document).on("click","#btnadd2",function( event ) {
-        count++;
-        $('.tblprod2').after('<div class="col-md-1" id="quitar1"><div class="form-group"><center><label >Cantidad</label></center><input type="text" class="form-control" placeholder= "Cantidad" name="transformacion[cantidad][]"></div></div>');
-          event.preventDefault();
-       });
-    });
-
-    $(function() {
-        var count = 1;
-       $(document).on("click","#btnadd2",function( event ) {
-        count++;
-        $('.tblprod2').after('<div class="col-md-1" id="quitar2"><div class="form-group"><center><label>Unidad</label></center><center><input style="text-align:center;" type="text" class="form-control" value="Und"  readonly=”readonly” name="transformacion[unidad_transformacion][]"></center></div></div>');
-          event.preventDefault();
-       });
-    });
-
-    $(function() {
-        var count = 1;
-       $(document).on("click","#btnadd2",function( event ) {
-        count++;
-        $('.tblprod2').after('<div class="col-md-3" id="quitar3"><div class="form-group"><center><label >Capacidad (KVA)</label></center><input type="text" class="form-control" placeholder="Capacidad"   name="transformacion[capacidad][]"></div></div>');
-          event.preventDefault();
-       });
-    });
-
-    $(function() {
-        var count = 1;
-       $(document).on("click","#btnadd2",function( event ) {
-        count++;
-        $('.tblprod2').after('<div class="col-md-3" id="quitar4"><div class="form-group"><center><label >Tipo</label></center><select class="form-control" name="transformacion[tipo][]"><option value="Tipo_poste">Tipo poste</option><option value="Tipo_interior">Tipo interior</option><option value="Tipo_exterior">Tipo exterior</option></select></div></div>');
-          event.preventDefault();
-       });
-    });
-
-    $(function() {
-        var count = 1;
-       $(document).on("click","#btnadd2",function( event ) {
-        count++;
-        $('.tblprod2').after('<div class="col-md-3" id="quitar5"><div class="form-group"><center><label >Descripción</label></center><input type="text" class="form-control" value="Inspección RETIE proceso de transformación"  readonly=”readonly” name="transformacion[descripcion][]"></div</div>');
-          event.preventDefault();
-       });
-    });
-
-
-        $(function() {
-            var count = 1;
-           $(document).on("click","#btnadd3",function( event ) {
-            count++;
-            $('.tblprod3').after(' <div class="col-md-1" id="tblprod3"><div class="form-group"><br><a class="btn btn-primary delete3" data-toggle="modal" href="#"  style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-minus"></i></a></div></div>');
-              event.preventDefault();
-           });
-             $(document).on("click",".delete3",function( event ) {
-
-
-             $('#quitar6').remove();
-             $('#quitar7').remove();
-             $('#quitar8').remove();
-             $('#quitar9').remove();
-             $('#tblprod3').remove();
-
-                return false;
-             });
-        });
-
-
-        $(function() {
-            var count = 1;
-           $(document).on("click","#btnadd3",function( event ) {
-            count++;
-            $('.tblprod3').after('<div class="col-md-2 " id="quitar6"><div class="form-group"><center><label >Cantidad</label></center><input type="text" class="form-control" placeholder= "Cantidad" name="distribucion[cantidad_dis][]"></div></div>');
-              event.preventDefault();
-           });
-        });
-
-        $(function() {
-            var count = 1;
-           $(document).on("click","#btnadd3",function( event ) {
-            count++;
-            $('.tblprod3').after('<div class="col-md-2 " id="quitar7"><div class="form-group"><center><label >Unidad</label></center><center><input type="text" class="form-control" value="m"  readonly=”readonly” name="distribucion[unidad_distribucion][]"style="text-align:center"></center></div></div>');
-              event.preventDefault();
-           });
-        });
-
-
-
-        $(function() {
-            var count = 1;
-           $(document).on("click","#btnadd3",function( event ) {
-            count++;
-            $('.tblprod3').after('<div class="col-md-3 " id="quitar8"><div class="form-group"><center><label >Tipo</label></center><select class="form-control" name="distribucion[tipo_dis][]"><option value="">Seleccione..</option><option value="Aérea">tipo Aérea</option><option value="Subterránea">tipo subterránea</option><option value="Aérea/subterrénea">Aérea/Subterrénea</option></select></div></div>');
-              event.preventDefault();
-           });
-        });
-
-        $(function() {
-            var count = 1;
-           $(document).on("click","#btnadd3",function( event ) {
-            count++;
-            $('.tblprod3').after('<div class="col-md-4 " id="quitar9"><div class="form-group"><center><label >Descripción</label></center><select class="form-control" name="distribucion[descripcion_dis][]"><option value="Inspección RETIE proceso de distribución en MT">Inspección RETIE proceso de distribución en MT</option><option value="Inspección RETIE proceso de distribución en BT">Inspección RETIE proceso de distribución en BT</option></select></div></div>');
-              event.preventDefault();
-           });
-        });
-
-
-
-
-
-        $(function() {
-            var count = 1;
-           $(document).on("click","#btnadd4",function( event ) {
-            count++;
-            $('.tblprod4').after(' <div class="col-md-1" id="tblprod4"><div class="form-group"><br><a class="btn btn-primary delete4" data-toggle="modal" href="#"  style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-minus"></i></a></div></div>');
-              event.preventDefault();
-           });
-             $(document).on("click",".delete4",function( event ) {
-
-             $('#quitar10').remove();
-             $('#quitar11').remove();
-             $('#quitar12').remove();
-             $('#quitar13').remove();
-             $('#tblprod4').remove();
-                return false;
-             });
-        });
-
-
-        $(function() {
-            var count = 1;
-           $(document).on("click","#btnadd4",function( event ) {
-            count++;
-            $('.tblprod4').after('<div class="col-md-2"id="quitar10"><div class="form-group"><center><label >Cantidad</label></center><input type="text" class="form-control" placeholder= "Cantidad" name="pu_final[cantidad_pu][]"></div></div>');
-              event.preventDefault();
-           });
-        });
-        $(function() {
-            var count = 1;
-           $(document).on("click","#btnadd4",function( event ) {
-            count++;
-            $('.tblprod4').after('<div class="col-md-2" id="quitar11"><div class="form-group"><center><label >Unidad</label></center><center><input style="text-align:center;" type="text" class="form-control" value="Und"  readonly=”readonly” name="pu_final[unidad_pu_final][]"></center></div></div>');
-              event.preventDefault();
-           });
-        });
-
-
-
-        $(function() {
-            var count = 1;
-           $(document).on("click","#btnadd4",function( event ) {
-            count++;
-            $('.tblprod4').after('<div class="col-md-3" id="quitar12"><div class="form-group"><center><label >Tipo</label></center><select class="form-control" name="pu_final[tipo_pu][]"><option value="Casa">Casa</option><option value="Apartamentos">Apartamentos</option><option value="Zona común">Zona común</option><option value="Local comercial">Local comercial</option><option value="Punto fijo">Punto fijo</option></select></div></div>');
-              event.preventDefault();
-           });
-        });
-
-
-
-        $(function() {
-            var count = 1;
-           $(document).on("click","#btnadd4",function( event ) {
-            count++;
-            $('.tblprod4').after('<div class="col-md-4" id="quitar13"><div class="form-group"><center><label >Descripción</label></center><select class="form-control"name="pu_final[descripcion_pu][]"><option value="Inspección RETIE proceso uso final residencial">Inspección RETIE proceso uso final residencial</option><option value="Inspección RETIE proceso uso final comercial">Inspección RETIE proceso uso final comercial</option></select></div></div>');
-              event.preventDefault();
-           });
-        });
-
-
+          // funcion encargada de manejar el tipo de cliente
         $('#cliente').change(function(){
             var valorCambiado =$(this).val();
             if((valorCambiado == "1")){
@@ -692,14 +475,15 @@
 
              }
         });
-
+        // select 2 para todos los selects
         $(document).ready(function(){
           $("select").select2();
         });
 
 
 
-
+        // los sgtes eventos son los encargados de manejar matematicamente todos los calculos de impuestos operaciones y diferentes cosas que requiere
+        // el modulo de administrativa
        $('.valor').keyup(function(){
            var valor = $(this).val().replace(/,/g,"");
            var resultado = valor * 1.19;

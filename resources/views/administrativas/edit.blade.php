@@ -17,6 +17,7 @@
 </style>
 @section('scripts')
   <script type="text/javascript">
+  //evento encargado de poner municipios de un departamento elegido
   $(document).ready(function(){
       var dep_id = $('#departamento').val();
       var div = $('#departamento').parents();
@@ -75,7 +76,6 @@
       });
     });
 
-
   $(function () {
     $("table").DataTable({
       "language":{
@@ -104,6 +104,7 @@
   }
  });
   });
+  //script encargado de poner los separadores de miles.
     function mascara(o,f){
       v_obj=o;
       v_fun=f;
@@ -165,7 +166,7 @@
 
 
 
-
+    //evento para manejar los datos segun el tipo (aerea o subterranea)
     $(document).on('change','#tipo',function(){
 
       var  tipo = $(this).val();
@@ -188,7 +189,7 @@
 
 
     });
-
+    //evento para manejar los datos segun el tipo de distribucion
     $(document).on('change','#desc',function(){
 
       var  desc = $(this).val();
@@ -211,7 +212,7 @@
 
     });
 
-
+    //evento para manejar los datos segun el tipo de uso final
     $(document).on('change','#instalacion',function(){
 
       var  instalacion = $(this).val();
@@ -238,7 +239,8 @@
       $(document).ready(function($){
         $('#codigo_proyecto').inputmask('CPS-9999-999');
       });
-
+      // los sgtes eventos son los encargados de manejar matematicamente todos los calculos de impuestos operaciones y diferentes cosas que requiere
+      // el modulo de administrativa
       $('.antesiva').on('keyup',function(){
           var valor = $(this).val().replace(/,/g,"");
           var resultado = valor * 1.19;

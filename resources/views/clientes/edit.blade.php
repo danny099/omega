@@ -95,6 +95,7 @@
 
 @section('scripts')
   <script type="text/javascript">
+  //evento encargado de poner municipios de un departamento elegido
     $(document).ready(function(){
       $(document).on('change','#departamento',function(){
 

@@ -2,6 +2,7 @@
 
 @section('scripts')
 <script type="text/javascript">
+//script encargado de poner los separadores de miles.
   function mascara(o,f){
     v_obj=o;
     v_fun=f;
@@ -95,7 +96,8 @@
     } );
 
 
-
+    // los sgtes eventos son los encargados de manejar matematicamente todos los calculos de impuestos operaciones y diferentes cosas que requiere
+    // el modulo de administrativa
      $('.valor').keyup(function(){
          var valor = $(this).val().replace(/,/g,"");
          var resultado = valor * 1.19;

@@ -1,4 +1,5 @@
 @extends('index')
+<!-- script encargado de poner los separadores de miles. -->
 <script type="text/javascript">
   function mascara(o,f){
     v_obj=o;
