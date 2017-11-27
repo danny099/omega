@@ -32,32 +32,7 @@
         <div class="box box-primary">
           <div class="">
            <center><h2>Datos del Proyecto</h2></center>
-           <a class="btn btn-primary" href="<?php
-            // Rutas al archivo (local y FTP)
-              $local_file =  '/documento'.'/'.$administrativa->codigo_proyecto .'-'. $administrativa->nombre_proyecto.'.docx'; //Nombre archivo en nuestro PC
-              $server_file =  '/documento'.'/'.$administrativa->codigo_proyecto .'-'. $administrativa->nombre_proyecto.'.docx'; //Nombre archivo en FTP
-
-              // Establecer la conexión
-              $ftp_server='http://192.168.150.2:8080/omega/trunk/public';
-              $ftp_user_name='CT/desarrollo';
-              $ftp_user_pass='Cali2017';
-              $conn_id = ftp_connect($ftp_server);
-
-              // Loguearse con usuario y contraseña
-              $login_result = ftp_login($conn_id, $ftp_user_name, $ftp_user_pass);
-
-              // Descarga el $server_file y lo guarda en $local_file
-              if (ftp_get($conn_id, $local_file, $server_file, FTP_BINARY)) {
-              echo "Se descargado el archivo con éxito\n";
-              } else {
-              echo "Ha ocurrido un error\n";
-              }
-
-
-
-              // Cerrar la conexión
-              ftp_close($conn_id);
-           ?>" style="background-color: #33579A; border-color:#33579A;position: relative; left: 950; top: -40;" >Descargar contrato</a>
+           <a class="btn btn-primary" href="<?php echo '/documento'.'/'.$administrativa->codigo_proyecto .'-'. $administrativa->nombre_proyecto.'.docx'; ?>" style="background-color: #33579A; border-color:#33579A;position: relative; left: 950; top: -40;" >Descargar contrato</a>
 
           </div>
 
