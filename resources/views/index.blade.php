@@ -129,7 +129,6 @@
             <img src="{{url('Certicol.png')}}" >
           </a>
         </div>
-
       </div>
       <!-- search form -->
       <!-- /.search form -->
