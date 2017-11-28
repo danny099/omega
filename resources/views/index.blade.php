@@ -136,7 +136,7 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
         <li class="header">Modulos</li>
-        @if ( Auth::user()->rol_id == 1)
+        @if ( Auth::user()->rol_id == 1 || Auth::user()->rol_id == 4)
         <li>
           <a href="{{ url('inicio') }}">
             <i class="glyphicon glyphicon-home"></i> <span>Inicio</span>
@@ -157,7 +157,7 @@
         </li>
         @endif
       </ul>
-      @if ( Auth::user()->rol_id == 1 || Auth::user()->rol_id == 3)
+      @if ( Auth::user()->rol_id == 1 || Auth::user()->rol_id == 3 || Auth::user()->rol_id == 4)
       <ul class="sidebar-menu">
         <li class="treeview">
           <a href="#">
