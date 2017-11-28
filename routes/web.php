@@ -203,6 +203,9 @@ Route::group(['middleware' => 'auth'],function(){
 	/**************************************************************/
 
 
+	Route::get('disDeta',function(){
+		return view('disDeta.index');
+	});
 
 Auth::routes();
 
