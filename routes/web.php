@@ -38,6 +38,43 @@ Route::group(['middleware' => 'auth'],function(){
 		Route::resource('cotizaciones','CotizacionController');
 		Route::resource('clientes','ClienteController');
 		Route::get('deleteclientes/{id}','ClienteController@destroy');
+		Route::get('documentoscon', 'DocumentoController@indexContrato');
+		Route::post('documentoscon', 'DocumentoController@store');
+		Route::get('documentoscon/{id}/edit', 'DocumentoController@editar');
+		Route::get('documentoscon/create', 'DocumentoController@crearcontrato');
+
+	});
+
+	Route::group(['middleware' => 'administrativa'],function(){
+		Route::resource('otrosi','OtrosiController');
+		// Route::get('view/{id}','OtrosiController@view');
+		Route::get('deleteotrosi/{id}','OtrosiController@destroy');
+		Route::resource('administrativas','AdministrativaController');
+		Route::get('pdf','AdministrativaController@viewpdf');
+		Route::get('deleteadminstrativa/{id}','AdministrativaController@destroy');
+		Route::get('created','AdministrativaController@create');
+		Route::resource('consignaciones','ConsignacionController');
+		Route::post('editarconsignacion','ConsignacionController@editar');
+		Route::get('deleteconsignacion/{id}','ConsignacionController@destroy');
+		Route::resource('cuenta_cobros','Cuenta_cobroController');
+		Route::post('editarcobros','Cuenta_cobroController@editar');
+		Route::get('deletecuenta/{id}','Cuenta_cobroController@destroy');
+		Route::resource('facturas','FacturaController');
+		Route::post('edita/{id}','FacturaController@edita');
+		Route::get('deletefactura/{id}','FacturaController@destroy');
+		Route::resource('adicionales','ValorAdicionalController');
+		Route::post('editaradicionales','ValorAdicionalController@editar');
+		Route::get('deleteadicional/{id}','ValorAdicionalController@destroy');
+		Route::resource('transformaciones','TransformacionController');
+		// Route::get('transformaciones/{id}/crear','TransformacionController@create');
+		Route::post('editart','TransformacionController@editar');
+		Route::get('deletetransfor/{id}','TransformacionController@destroy');
+		Route::resource('distribuciones','DistribucionController');
+		Route::post('editard','DistribucionController@editar');
+		Route::get('deletedistri/{id}','DistribucionController@destroy');
+		Route::resource('pu_final','Pu_finalController');
+		Route::post('editarpu','Pu_finalController@editar');
+		Route::get('deletepu/{id}','Pu_finalController@destroy');
 
 	});
 
@@ -58,9 +95,7 @@ Route::group(['middleware' => 'auth'],function(){
 
 	/**************************************************************/
 	/**************************************************************/
-  Route::resource('otrosi','OtrosiController');
-	// Route::get('view/{id}','OtrosiController@view');
-	Route::get('deleteotrosi/{id}','OtrosiController@destroy');
+
   /**************************************************************/
   /**************************************************************/
   Route::resource('transformaciones','TransformacionController');
@@ -69,20 +104,20 @@ Route::group(['middleware' => 'auth'],function(){
 	Route::get('deletetransfor/{id}','TransformacionController@destroy');
   /**************************************************************/
   /**************************************************************/
-  Route::resource('distribuciones','DistribucionController');
+  	Route::resource('distribuciones','DistribucionController');
 	Route::post('editard','DistribucionController@editar');
 	Route::get('deletedistri/{id}','DistribucionController@destroy');
 
   /**************************************************************/
   /**************************************************************/
-  Route::resource('pu_final','Pu_finalController');
+	Route::resource('pu_final','Pu_finalController');
 	Route::post('editarpu','Pu_finalController@editar');
 	Route::get('deletepu/{id}','Pu_finalController@destroy');
 
   /**************************************************************/
   /**************************************************************/
-  Route::resource('clientes','ClienteController');
-  Route::get('deleteclientes/{id}','ClienteController@destroy');
+  	Route::resource('clientes','ClienteController');
+  	Route::get('deleteclientes/{id}','ClienteController@destroy');
 
   /**************************************************************/
   /**************************************************************/
@@ -91,7 +126,7 @@ Route::group(['middleware' => 'auth'],function(){
 
 
 	/**************************************************************/
-  Route::resource('administrativas','AdministrativaController');
+  	Route::resource('administrativas','AdministrativaController');
 	Route::get('pdf','AdministrativaController@viewpdf');
 	Route::get('deleteadminstrativa/{id}','AdministrativaController@destroy');
 	Route::get('created','AdministrativaController@create');
@@ -101,8 +136,8 @@ Route::group(['middleware' => 'auth'],function(){
 	Route::get('selectmuni','AdministrativaController@getMuni');
   /**************************************************************/
   /**************************************************************/
-  Route::resource('usuarios','UsuarioController');
-  Route::get('deleteusuarios/{id}','UsuarioController@destroy');
+  	Route::resource('usuarios','UsuarioController');
+  	Route::get('deleteusuarios/{id}','UsuarioController@destroy');
   /**************************************************************/
   /**************************************************************/
 	Route::resource('consignaciones','ConsignacionController');
