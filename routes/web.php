@@ -197,16 +197,21 @@ Route::group(['middleware' => 'auth'],function(){
 
 	Route::post( 'importExcel' , 'ExcelController@importExcel');
 
+
+	/**************************************************************/
+	/**************************************************************/
+
+	Route::get('disDeta/{tipo}','CriterioController@index');
+	Route::get('disDeta/{id}','CriterioController@index');
+
+
 	});
 
 	/**************************************************************/
 	/**************************************************************/
 
 
-	Route::get('disDeta',function(){
-		return view('disDeta.index');
-	});
-
+	
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');

@@ -69,6 +69,10 @@ class Administrativa extends Model implements AuditableContract
     return $this->belongsTo('App\Consignacion');
   }
 
+  public function criterios(){
+    return $this->belongsTo('App\Criterio');
+  }
+
   /**
    * Ingreso belongs to many (many-to-many) Elemento.
    *
