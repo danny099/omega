@@ -54,8 +54,8 @@
 
                 </div>
                 <div class="col-md-1">
-                  <label class="radio-inline"><input type="radio" name="cumple[]" value="Si">Si</label>
-                  <label class="radio-inline"><input type="radio" name="cumple[]" value="No">No</label>
+                  <label class="radio-inline"><input type="radio" name="cumple[][{{$key}}]" value="Si">Si</label>
+                  <label class="radio-inline"><input type="radio" name="cumple[][{{$key}}]" value="No">No</label>
                 </div>
                 <div class="col-md-4" >
                   <input type="text" class="form-control" name="observaciones[]">
