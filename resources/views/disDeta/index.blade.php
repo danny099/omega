@@ -28,7 +28,8 @@
                       <h4 class="modal-title">Crear diseño detallado</h4>
                     </div>
                     <div class="modal-body">
-                      <form action="{{ url('disDeta/crate/1') }}">
+                      <form action="{{ url('disDeta/create/1') }}" method="post">
+                        {{ csrf_field() }}
                         <div class="row">
                           <div class="col-md-12">
 
