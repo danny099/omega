@@ -68,17 +68,17 @@
                   </tr>
                 </thead>
                 <tbody>
-
+                  @foreach($criterios as $criterio)
                     <tr>
-                      <td>prueba</td>
-                      <td>prueba</td>
+                      <td>{{$criterio->codigo_proyecto}}</td>
+                      <td>{{$criterio->nombre_proyecto}}</td>
                       <td>
-                        <a href=""><i class="glyphicon glyphicon-pencil"></i></a>
+                        <a href="{{ url('disDeta/edit') }}/{{ $criterio->id }}"><i class="glyphicon glyphicon-pencil"></i></a>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <a href="" onClick="javascript: return confirm('Esta seguro de eliminar registro?');"><i class="glyphicon glyphicon-minus-sign"></i></a>
                       </td>
                     </tr>
-
+                  @endforeach
                 </tbody>
               </table>
             </div>
