@@ -49,16 +49,17 @@
 
                 </div>
                 <div class="col-md-1">
-                  <label class="radio-inline"><input type="radio" name="aplica">Si</label>
-                  <label class="radio-inline"><input type="radio" name="aplica">No</label>
+                  <label class="radio-inline"><input type="radio" name="aplica[]" value="Si">Si</label>
+                  <label class="radio-inline"><input type="radio" name="aplica[]" value="No">No</label>
 
                 </div>
                 <div class="col-md-1">
-                  <label class="radio-inline"><input type="radio" name="cumple">Si</label>
-                  <label class="radio-inline"><input type="radio" name="cumple">No</label>
+                  <label class="radio-inline"><input type="radio" name="cumple[]" value="Si">Si</label>
+                  <label class="radio-inline"><input type="radio" name="cumple[]" value="No">No</label>
                 </div>
                 <div class="col-md-4" >
-                  <input type="text" class="form-control" name="observaciones">
+                  <input type="text" class="form-control" name="observaciones[]">
+                  <input type="hidden" name="tipo[]" value="{{$item->tipo}}">
                 </div>
               </div>
             @endforeach
