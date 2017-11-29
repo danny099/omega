@@ -24,6 +24,7 @@
       <!-- form start -->
         <div class="row">
           <form class="" action="{{ url('disDeta') }}" method="post">
+            {{ csrf_field() }}
             <div class="col-md-12">
               <div class="col-md-6">
                 <label>Items</label>
