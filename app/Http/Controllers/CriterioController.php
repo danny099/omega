@@ -17,8 +17,8 @@ class CriterioController extends Controller
     public function index($tipo)
     {
         $criterios = DB::table('criterios')->where('tipo', $tipo);
-        
-        return view('disDeta.index',compact('criterios'));
+        $contratos = Administrativa::all();
+        return view('disDeta.index',compact('criterios','contratos'));
     }
 
     /**
