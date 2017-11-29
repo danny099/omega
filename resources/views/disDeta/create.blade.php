@@ -23,7 +23,7 @@
       <!-- /.box-header -->
       <!-- form start -->
         <div class="row">
-          <form class="" action="" method="post">
+          <form class="" action="{{ url('disDeta') }}" method="post">
             <div class="col-md-12">
               <div class="col-md-6">
                 <label>Items</label>
@@ -64,14 +64,15 @@
                 </div>
               </div>
             @endforeach
+            <div class="col-md-12" style="width:95%; margin-left:30px">
+              <button type="submit" class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;">Enviar</button>
+            </div>
           </form>
         </div>
         </div>
         <!-- /.box-body -->
         <br>
-        <div class="box-footer">
-          <button type="submit" class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;">Enviar</button>
-        </div>
+
       {!! Form::close() !!}
     </div>
   </div>
