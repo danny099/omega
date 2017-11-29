@@ -203,7 +203,7 @@ Route::group(['middleware' => 'auth'],function(){
 
 	Route::get('disDeta/{tipo}','CriterioController@index');
 	Route::post('disDeta/create/{tipo}','CriterioController@create');
-
+	Route::post('disDeta','CriterioController@store');
 
 	});
 
