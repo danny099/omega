@@ -102,6 +102,9 @@ class CriterioController extends Controller
      */
     public function edit($id)
     {
+        $criterios = Criterio::where('criterios.administrativa_id', '=', $id)->get();
+        
+        return view('disDeta.edit',compact('criterios'));
         
     }
 
