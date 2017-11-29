@@ -42,15 +42,15 @@
               </div>
             </div>
 
-            @foreach($items as $item)
-              <div class="col-md-12 well" style="margin-top:15px">
+            @foreach($items as $key=>$item)
+              <div class="col-md-12 well" style="width:95%; margin-left:30px">
                 <div class="col-md-6">
                   <p>{{$item->item}}</p>
 
                 </div>
                 <div class="col-md-1">
-                  <label class="radio-inline"><input type="radio" name="aplica[]" value="Si">Si</label>
-                  <label class="radio-inline"><input type="radio" name="aplica[]" value="No">No</label>
+                  <label class="radio-inline"><input type="radio" name="aplica[][{{$key}}]" value="Si">Si</label>
+                  <label class="radio-inline"><input type="radio" name="aplica[][{{$key}}]" value="No">No</label>
 
                 </div>
                 <div class="col-md-1">
