@@ -62,7 +62,7 @@ class CriterioController extends Controller
             }
             $datos['tipo'] = $input['tipo'][$i];
             $datos['administrativa_id'] = $input['id'][$i];
-            $datos['item_id'] = $input['iditem'][$i];
+            $datos['items_id'] = $input['iditem'][$i];
 
 
             Criterio::create($datos);

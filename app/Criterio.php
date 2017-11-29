@@ -12,7 +12,7 @@ class Criterio extends Model implements AuditableContract
   use Auditable;
 
   protected $table = 'criterios';
-  protected $fillable = ['id','aplica','cumple','observaciones','tipo','administrativa_id','item_id'];
+  protected $fillable = ['id','aplica','cumple','observaciones','tipo','administrativa_id','items_id'];
   public $timestamps = false;
 
   public function administrativa(){
