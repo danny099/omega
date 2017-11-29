@@ -50,16 +50,16 @@
 
                 </div>
                 <div class="col-md-1">
-                  <label class="radio-inline"><input type="radio" name="aplica[][{{$key}}]" value="Si">Si</label>
+                  <label class="radio-inline"><input type="radio" name="aplica[][{{$key}}]" value="Si" required>Si</label>
                   <label class="radio-inline"><input type="radio" name="aplica[][{{$key}}]" value="No">No</label>
 
                 </div>
                 <div class="col-md-1">
-                  <label class="radio-inline"><input type="radio" name="cumple[][{{$key}}]" value="Si">Si</label>
+                  <label class="radio-inline"><input type="radio" name="cumple[][{{$key}}]" value="Si" required>Si</label>
                   <label class="radio-inline"><input type="radio" name="cumple[][{{$key}}]" value="No">No</label>
                 </div>
                 <div class="col-md-4" >
-                  <input type="text" class="form-control" name="observaciones[]">
+                  <input type="text" class="form-control" name="observaciones[][{{$key}}]">
                   <input type="hidden" name="tipo[]" value="{{$item->tipo}}">
                   <input type="hidden" name="id[]" value="{{$contrato->id}}">
                 </div>
