@@ -65,7 +65,7 @@
                 </div>
               </div>
             @endforeach
-            <div class="col-md-12" style="width:95%; margin-left:30px">
+            <div class="box-footer" style="width:95%; margin-left:40px; margin-bottom:15px">
               <button type="submit" class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;">Enviar</button>
             </div>
           </form>
