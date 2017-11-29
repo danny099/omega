@@ -18,7 +18,7 @@
         <div class="row">
           <div class="col-md-12 well">
             <div class="box-body">
-              <a href="{{ url('disDeta/create') }}" class="btn btn-primary" data-toggle="modal" ><i class="fa fa-user-plus"></i> Crear diseño detallado</a>
+              <a href="{{ url('disDeta/create/1') }}" class="btn btn-primary" data-toggle="modal" ><i class="fa fa-user-plus"></i> Crear diseño detallado</a>
               <br>
               <br>
               <table id="example1" class="table table-bordered table-striped">
