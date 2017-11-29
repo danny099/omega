@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
-use App\Criterios;
+use App\Criterio;
 use App\Administrativa;
 use App\Item;
 class CriterioController extends Controller
@@ -43,8 +43,33 @@ class CriterioController extends Controller
      */
     public function store(Request $request)
     {
-        $datos = $request->all();
+        $input = $request->all();
 
+        $var = count($input['tipo']);
+      
+        for ($i=0; $i < count($input['tipo']); $i++) { 
+           
+            if (isset($input['aplica'][$i][$i])) {
+                $datos['aplica'] =  $input['aplica'][$i][$i];
+            }
+
+            if (isset($input['cumple'][$i][$i])) {
+                $datos['cumple'] =  $input['cumple'][$i][$i];
+            }
+
+            if (isset($input['observaciones'][$i][$i])) {
+                $datos['observaciones'] =  $input['observaciones'][$i][$i];
+            }
+            $datos['tipo'] = $input['tipo'][$i];
+            $datos['administrativa_id'] = $input['id'][$i];
+            $datos['item_id'] = $input['iditem'][$i];
+
+
+            Criterio::create($datos);
+
+
+        }
+        
 
     }
 

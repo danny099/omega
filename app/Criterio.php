@@ -19,7 +19,7 @@ class Criterio extends Model implements AuditableContract
     return $this->hasMany('App\Administrativa');
   }
 
-  public function administrativa(){
+  public function item(){
     return $this->hasMany('App\item_id');
   }
 }
