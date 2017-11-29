@@ -104,7 +104,15 @@ class CriterioController extends Controller
     {
         $criterios = Criterio::where('criterios.administrativa_id', '=', $id)->get();
         
-        return view('disDeta.edit',compact('criterios'));
+        foreach ($criterios as $key => $value) {
+            
+            $tipo[] = $value->tipo;
+        }
+
+        $items = Item::where('items.tipo', '=', $tipo[0])->get();
+
+        
+        return view('disDeta.edit',compact('criterios','items'));
         
     }
 
