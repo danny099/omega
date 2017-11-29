@@ -28,13 +28,13 @@
                       <h4 class="modal-title">Crear diseño detallado</h4>
                     </div>
                     <div class="modal-body">
-                      <form action="{{ url('disDeta/create/1') }}" method="post">
+                      <form action="{{ url('disDeta/create/disDeta') }}" method="post">
                         {{ csrf_field() }}
                         <div class="row">
                           <div class="col-md-12">
 
                                 <center><label >Código del contrato</label></center>
-                                <select class="form-control" name="codigo_cot" style="width: 100%;" id="select" required="">
+                                <select class="form-control" name="codigo_con" style="width: 100%;" id="select" required="">
                                   <option value="">Seleccione...</option>
                                   @foreach($contratos as $contrato)
                                   <option value="{{ $contrato->id }}">{{$contrato->codigo}} - {{$contrato->nombre}}</option>

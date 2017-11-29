@@ -3,10 +3,10 @@
 @section('contenido')
   <ol class="breadcrumb">
     <li><a href="{{ url('inicio') }}">Inicio</a></li>
-    <li><a href="{{ url('disDeta') }}">Disello detallado</a></li>
+    <li><a href="{{ url('disDeta/disDeta') }}">Disello detallado</a></li>
     <li class="active">Crear Disello detallado</li>
   </ol>
-  <div class="container">
+  <div class="container" style=" margin-left: 0px; margin-right: 0px; width:100%">
     <div class="box box-primary">
       <div class="box-header with-border">
         <h3 >Crear disello detallado</h3>
@@ -24,7 +24,44 @@
       <!-- form start -->
         <div class="row">
           <form class="" action="" method="post">
-            
+            <div class="col-md-12">
+              <div class="col-md-6">
+                <label>Items</label>
+
+              </div>
+              <div class="col-md-1">
+                <label>Aplica</label>
+
+              </div>
+              <div class="col-md-1">
+                <label >Cumple</label>
+
+              </div>
+              <div class="col-md-4" >
+                <label >Observaciones</label>
+              </div>
+            </div>
+
+            @foreach($items as $item)
+              <div class="col-md-12">
+                <div class="col-md-6">
+                  <p>{{$item->item}}</p>
+
+                </div>
+                <div class="col-md-1">
+                  <label class="radio-inline"><input type="radio" name="aplica">Si</label>
+                  <label class="radio-inline"><input type="radio" name="aplica">No</label>
+
+                </div>
+                <div class="col-md-1">
+                  <label class="radio-inline"><input type="radio" name="cumple">Si</label>
+                  <label class="radio-inline"><input type="radio" name="cumple">No</label>
+                </div>
+                <div class="col-md-4" >
+                  <input type="text" class="form-control" name="observaciones">
+                </div>
+              </div>
+            @endforeach
           </form>
         </div>
         </div>

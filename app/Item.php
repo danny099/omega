@@ -12,7 +12,7 @@ class Item extends Model implements AuditableContract
   use Auditable;
 
   protected $table = 'items';
-  protected $fillable = ['id','item'];
+  protected $fillable = ['id','item','tipo'];
   public $timestamps = false;
 
 }
