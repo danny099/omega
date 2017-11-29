@@ -62,6 +62,7 @@
                   <input type="text" class="form-control" name="observaciones[][{{$key}}]">
                   <input type="hidden" name="tipo[]" value="{{$item->tipo}}">
                   <input type="hidden" name="id[]" value="{{$contrato->id}}">
+                  <input type="hidden" name="iditem[]" value="{{$item->id}}">
                 </div>
               </div>
             @endforeach
