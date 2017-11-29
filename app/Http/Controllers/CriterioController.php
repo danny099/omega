@@ -31,7 +31,7 @@ class CriterioController extends Controller
         
         $items = Item::where('items.tipo', '=', $tipo)->get();
 
-        //$contratos = Administrativa::findOrFail($id);
+        $contratos = Administrativa::findOrFail($id);
         return view('disDeta.create',compact('items','contratos'));
     }
 
@@ -43,7 +43,10 @@ class CriterioController extends Controller
      */
     public function store(Request $request)
     {
-    
+        $datos = $request->all();
+
+
+
     }
 
     /**
