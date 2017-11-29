@@ -16,8 +16,11 @@ class CriterioController extends Controller
      */
     public function index($tipo)
     {
-        $criterios = DB::table('criterios')->where('tipo', $tipo);
+
         $contratos = Administrativa::all();
+        $dato = Criterio::distinct()->get(['administrativa_id']);
+        $criterios = Administrativa::findOrFail($dato);
+       
         return view('disDeta.index',compact('criterios','contratos'));
     }
 
@@ -92,7 +95,7 @@ class CriterioController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**
