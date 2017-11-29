@@ -18,8 +18,15 @@ class CriterioController extends Controller
     {
 
         $contratos = Administrativa::all();
-        $dato = Criterio::distinct()->get(['administrativa_id']);
-        $criterios = Administrativa::findOrFail($dato);
+        $var = Criterio::distinct()->get(['administrativa_id']);
+
+        foreach ($var as $key => $dato) {
+            
+            $criterios[] = Administrativa::findOrFail($dato->administrativa_id);
+
+        }
+        
+        //$criterios = Administrativa::findOrFail($dato);
        
         return view('disDeta.index',compact('criterios','contratos'));
     }
