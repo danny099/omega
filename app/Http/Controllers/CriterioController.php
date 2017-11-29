@@ -29,7 +29,8 @@ class CriterioController extends Controller
     public function create(Request $request,$tipo)            
     {
         
-        $items = Item::all();
+        $items = Item::where('items.tipo', '=', $tipo)->get();
+
         //$contratos = Administrativa::findOrFail($id);
         return view('disDeta.create',compact('items','contratos'));
     }
