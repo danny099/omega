@@ -15,4 +15,7 @@ class Item extends Model implements AuditableContract
   protected $fillable = ['id','item','tipo'];
   public $timestamps = false;
 
+  public function criterio(){
+    return $this->hasMany('App\Criterio');
+  }
 }

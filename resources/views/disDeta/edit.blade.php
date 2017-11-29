@@ -43,10 +43,10 @@
               </div>
             </div>
 
-            @foreach($items as $key=>$item)
+            @foreach($criterios as $key=>$criterio)
               <div class="col-md-12 well" style="width:95%; margin-left:30px">
                 <div class="col-md-6">
-                  <p>{{$item->item}}</p>
+                  <p>{{$criterio->items->item}}</p>
 
                 </div>
                 <div class="col-md-1">
@@ -60,9 +60,9 @@
                 </div>
                 <div class="col-md-4" >
                   <input type="text" class="form-control" name="observaciones[][{{$key}}]">
-                  <input type="hidden" name="tipo[]" value="{{$item->tipo}}">
-                  <input type="hidden" name="id[]" value="{{$contrato->id}}">
-                  <input type="hidden" name="iditem[]" value="{{$item->id}}">
+
+                  <input type="hidden" name="id_criterio[]" value="{{$criterio->id}}">
+
                 </div>
               </div>
             @endforeach
