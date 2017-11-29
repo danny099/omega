@@ -26,10 +26,11 @@ class CriterioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id)
+    public function create(Request $request,$tipo)            
     {
+        
         $items = Item::all();
-        $contratos = Administrativa::findOrFail($id);
+        //$contratos = Administrativa::findOrFail($id);
         return view('disDeta.create',compact('items','contratos'));
     }
 
