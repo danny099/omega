@@ -102,15 +102,18 @@ class CriterioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id,$tipo)
     {
-        $criterios = Criterio::where('criterios.administrativa_id', '=', $id)->get();
+        $criterios = Criterio::where('criterios.administrativa_id', '=', $id)->where('criterios.tipo','=',$tipo)->get();
 
         foreach ($criterios as $key => $value) {
 
             $tipo[] = $value->tipo;
         }
 
+        dd($tipo);
+        die();
+      
         $items = Item::where('items.tipo', '=', $tipo[0])->get();
 
 

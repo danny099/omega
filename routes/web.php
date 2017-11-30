@@ -204,7 +204,7 @@ Route::group(['middleware' => 'auth'],function(){
 	Route::get('criterio/{tipo}','CriterioController@index');
 	Route::post('criterio/create/{tipo}','CriterioController@create');
 	Route::post('criterio','CriterioController@store');
-	Route::get('criterio/edit/{id}','CriterioController@edit');
+	Route::get('criterio/edit/{id}/{tipo}','CriterioController@edit');
 	Route::post('criterio/update','CriterioController@update');
 
 
