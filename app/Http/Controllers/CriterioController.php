@@ -108,15 +108,14 @@ class CriterioController extends Controller
 
         foreach ($criterios as $key => $value) {
 
-            $tipo[] = $value->tipo;
+            $tipo2[] = $value->tipo;
         }
 
-        dd($tipo);
-        die();
+        
       
-        $items = Item::where('items.tipo', '=', $tipo[0])->get();
+        $items = Item::where('items.tipo', '=', $tipo2[0])->get();
 
-
+       
         return view($tipo[0].'.edit',compact('criterios','items'));
 
     }
