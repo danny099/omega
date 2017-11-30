@@ -50,16 +50,32 @@
 
                 </div>
                 <div class="col-md-1">
-                  <label class="radio-inline"><input type="radio" name="aplica[][{{$key}}]" value="Si" required>Si</label>
-                  <label class="radio-inline"><input type="radio" name="aplica[][{{$key}}]" value="No">No</label>
+                  @if($criterio->aplica == "Si")
+                    <label class="radio-inline"><input type="radio" name="aplica[][{{$key}}]" value="Si" checked="checked" required>Si</label>
+                    <label class="radio-inline"><input type="radio" name="aplica[][{{$key}}]" value="No" >No</label>
+                  @elseif($criterio->aplica == "No")
+                    <label class="radio-inline"><input type="radio" name="aplica[][{{$key}}]" value="Si"  required>Si</label>
+                    <label class="radio-inline"><input type="radio" name="aplica[][{{$key}}]" value="No" checked="checked" >No</label>
+                  @else
+                    <label class="radio-inline"><input type="radio" name="aplica[][{{$key}}]" value="Si"  required>Si</label>
+                    <label class="radio-inline"><input type="radio" name="aplica[][{{$key}}]" value="No" >No</label>
+                  @endif
 
                 </div>
                 <div class="col-md-1">
-                  <label class="radio-inline"><input type="radio" name="cumple[][{{$key}}]" value="Si" required>Si</label>
-                  <label class="radio-inline"><input type="radio" name="cumple[][{{$key}}]" value="No">No</label>
+                  @if($criterio->cumple == "Si")
+                    <label class="radio-inline"><input type="radio" name="cumple[][{{$key}}]" value="Si" checked="checked" required>Si</label>
+                    <label class="radio-inline"><input type="radio" name="cumple[][{{$key}}]" value="No">No</label>
+                  @elseif($criterio->cumple == "No")
+                    <label class="radio-inline"><input type="radio" name="cumple[][{{$key}}]" value="Si" required>Si</label>
+                    <label class="radio-inline"><input type="radio" name="cumple[][{{$key}}]" value="No" checked="checked">No</label>
+                  @else
+                    <label class="radio-inline"><input type="radio" name="cumple[][{{$key}}]" value="Si" required>Si</label>
+                    <label class="radio-inline"><input type="radio" name="cumple[][{{$key}}]" value="No">No</label>
+                  @endif
                 </div>
                 <div class="col-md-4" >
-                  <input type="text" class="form-control" name="observaciones[][{{$key}}]">
+                  <input type="text" class="form-control" name="observaciones[][{{$key}}]" value="{{$criterio->observaciones}}">
 
                   <input type="hidden" name="id_criterio[]" value="{{$criterio->id}}">
 
