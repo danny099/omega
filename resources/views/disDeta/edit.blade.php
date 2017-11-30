@@ -23,7 +23,7 @@
       <!-- /.box-header -->
       <!-- form start -->
         <div class="row">
-          <form class="" action="{{ url('disDeta') }}" method="post">
+          <form class="" action="{{ url('disDeta/update') }}" method="post">
             {{ csrf_field() }}
             <div class="col-md-12">
               <div class="col-md-6">
@@ -91,7 +91,6 @@
         <!-- /.box-body -->
         <br>
 
-      {!! Form::close() !!}
     </div>
   </div>
 
