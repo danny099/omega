@@ -3,7 +3,7 @@
 @section('contenido')
 <ol class="breadcrumb">
   <li><a href="{{ url('inicio') }}">Inicio</a></li>
-  <li class="active">Diseño Detallado</li>
+  <li class="active">Diseño Simplificado</li>
 </ol>
       <div class="container">
         @if(Session::has('message'))
@@ -18,17 +18,17 @@
         <div class="row">
           <div class="col-md-12 well">
             <div class="box-body">
-              <a class="btn btn-primary" data-toggle="modal" href="#myModal" style="background-color: #33579A; border-color:#33579A;"><i class="fa fa-user-plus"></i> Crear diseño detallado</a>
+              <a class="btn btn-primary" data-toggle="modal" href="#myModal" style="background-color: #33579A; border-color:#33579A;"><i class="fa fa-user-plus"></i> Crear diseño simplificado</a>
               <!-- inicio modal 5 -->
               <div class="modal fade" id="myModal" role="dialog">
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
                       <button type="button" class="close" data-dismiss="modal">&times;</button>
-                      <h4 class="modal-title">Crear diseño detallado</h4>
+                      <h4 class="modal-title">Crear diseño simplificado</h4>
                     </div>
                     <div class="modal-body">
-                      <form action="{{ url('criterio/create/disDeta') }}" method="post">
+                      <form action="{{ url('criterio/create/disSImp') }}" method="post">
                         {{ csrf_field() }}
                         <div class="row">
                           <div class="col-md-12">
@@ -68,25 +68,17 @@
                   </tr>
                 </thead>
                 <tbody>
-                  @if(empty($criterios ))
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  @else
                   @foreach($criterios as $criterio)
                     <tr>
                       <td>{{$criterio->codigo_proyecto}}</td>
                       <td>{{$criterio->nombre_proyecto}}</td>
                       <td>
-                        <a href="{{ url('criterio/edit') }}/{{ $criterio->id }}"><i class="glyphicon glyphicon-pencil"></i></a>
+                        <a href="{{ url('disDeta/edit') }}/{{ $criterio->id }}"><i class="glyphicon glyphicon-pencil"></i></a>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <a href="" onClick="javascript: return confirm('Esta seguro de eliminar registro?');"><i class="glyphicon glyphicon-minus-sign"></i></a>
                       </td>
                     </tr>
                   @endforeach
-                  @endif
                 </tbody>
               </table>
             </div>
