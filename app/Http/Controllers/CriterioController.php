@@ -18,7 +18,7 @@ class CriterioController extends Controller
     {
 
         $contratos = Administrativa::all();
-        $var = Criterio::distinct()->get(['administrativa_id']);
+        $var = Criterio::distinct()->where('criterios.tipo',$tipo)->get(['administrativa_id']);
 
         foreach ($var as $key => $dato) {
             
