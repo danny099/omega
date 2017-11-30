@@ -201,11 +201,13 @@ Route::group(['middleware' => 'auth'],function(){
 	/**************************************************************/
 	/**************************************************************/
 
-	Route::get('disDeta/{tipo}','CriterioController@index');
-	Route::post('disDeta/create/{tipo}','CriterioController@create');
-	Route::post('disDeta','CriterioController@store');
-	Route::get('disDeta/edit/{id}','CriterioController@edit');
-	Route::post('disDeta/update','CriterioController@update');
+	Route::get('creterio/{tipo}','CriterioController@index');
+	Route::post('creterio/create/{tipo}','CriterioController@create');
+	Route::post('creterio','CriterioController@store');
+	Route::get('creterio/edit/{id}','CriterioController@edit');
+	Route::post('creterio/update','CriterioController@update');
+
+
 
 
 	});
