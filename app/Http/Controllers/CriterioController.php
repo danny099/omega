@@ -126,7 +126,8 @@ class CriterioController extends Controller
     public function update(Request $request)
     {
         $input = $request->all();
-
+        //dd($input['observaciones']);
+        //die();
         $var = count($input['id_criterio']);
       
         for ($i=0; $i < count($input['id_criterio']); $i++) { 
@@ -139,9 +140,9 @@ class CriterioController extends Controller
                 $datos['cumple'] =  $input['cumple'][$i][$i];
             }
 
-            if (isset($input['observaciones'][$i][$i])) {
-                $datos['observaciones'] =  $input['observaciones'][$i][$i];
-            }
+
+            $datos['observaciones'] =  $input['observaciones'][$i][$i];
+           
             
 
             $criterio = Criterio::findOrFail($input['id_criterio'][$i]);
