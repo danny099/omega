@@ -28,7 +28,7 @@ class CriterioController extends Controller
         
         //$criterios = Administrativa::findOrFail($dato);
        
-        return view('disDeta.index',compact('criterios','contratos'));
+        return view($tipo.'.index',compact('criterios','contratos'));
     }
 
     /**
