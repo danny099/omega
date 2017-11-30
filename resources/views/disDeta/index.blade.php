@@ -28,7 +28,7 @@
                       <h4 class="modal-title">Crear diseño detallado</h4>
                     </div>
                     <div class="modal-body">
-                      <form action="{{ url('disDeta/create/disDeta') }}" method="post">
+                      <form action="{{ url('criterio/create/disDeta') }}" method="post">
                         {{ csrf_field() }}
                         <div class="row">
                           <div class="col-md-12">
@@ -73,7 +73,7 @@
                       <td>{{$criterio->codigo_proyecto}}</td>
                       <td>{{$criterio->nombre_proyecto}}</td>
                       <td>
-                        <a href="{{ url('disDeta/edit') }}/{{ $criterio->id }}"><i class="glyphicon glyphicon-pencil"></i></a>
+                        <a href="{{ url('criterio/edit') }}/{{ $criterio->id }}"><i class="glyphicon glyphicon-pencil"></i></a>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <a href="" onClick="javascript: return confirm('Esta seguro de eliminar registro?');"><i class="glyphicon glyphicon-minus-sign"></i></a>
                       </td>

@@ -3,7 +3,7 @@
 @section('contenido')
   <ol class="breadcrumb">
     <li><a href="{{ url('inicio') }}">Inicio</a></li>
-    <li><a href="{{ url('disDeta/disDeta') }}">Disello detallado</a></li>
+    <li><a href="{{ url('criterio/disDeta') }}">Disello detallado</a></li>
     <li class="active">Editar Disello detallado</li>
   </ol>
   <div class="container" style=" margin-left: 0px; margin-right: 0px; width:100%">
@@ -23,7 +23,7 @@
       <!-- /.box-header -->
       <!-- form start -->
         <div class="row">
-          <form class="" action="{{ url('disDeta/update') }}" method="post">
+          <form class="" action="{{ url('criterio/update') }}" method="post">
             {{ csrf_field() }}
             <div class="col-md-12">
               <div class="col-md-6">
