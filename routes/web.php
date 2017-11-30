@@ -205,6 +205,7 @@ Route::group(['middleware' => 'auth'],function(){
 	Route::post('disDeta/create/{tipo}','CriterioController@create');
 	Route::post('disDeta','CriterioController@store');
 	Route::get('disDeta/edit/{id}','CriterioController@edit');
+	Route::post('disDeta/update','CriterioController@update');
 
 
 	});

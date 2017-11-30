@@ -125,7 +125,30 @@ class CriterioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input = $request->all();
+
+        $var = count($input['id_criterio']);
+      
+        for ($i=0; $i < count($input['tipo']); $i++) { 
+           
+            if (isset($input['aplica'][$i][$i])) {
+                $datos['aplica'] =  $input['aplica'][$i][$i];
+            }
+
+            if (isset($input['cumple'][$i][$i])) {
+                $datos['cumple'] =  $input['cumple'][$i][$i];
+            }
+
+            if (isset($input['observaciones'][$i][$i])) {
+                $datos['observaciones'] =  $input['observaciones'][$i][$i];
+            }
+            
+
+            $criterio = Criterio::findOrFail($input['id_criterio'][$i]);
+            $criterio->update($datos);
+
+
+        }
     }
 
     /**
