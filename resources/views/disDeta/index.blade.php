@@ -80,7 +80,7 @@
                       <td>{{$criterio->codigo_proyecto}}</td>
                       <td>{{$criterio->nombre_proyecto}}</td>
                       <td>
-                        <a href="{{ url('criterio/edit') }}/{{ $criterio->id }/{{$criterio->tipo}}}"><i class="glyphicon glyphicon-pencil"></i></a>
+                        <a href="{{ url('criterio/edit') }}/{{ $criterio->id }/disDeta"><i class="glyphicon glyphicon-pencil"></i></a>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <a href="" onClick="javascript: return confirm('Esta seguro de eliminar registro?');"><i class="glyphicon glyphicon-minus-sign"></i></a>
                       </td>
