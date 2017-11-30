@@ -123,13 +123,13 @@ class CriterioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         $input = $request->all();
 
         $var = count($input['id_criterio']);
       
-        for ($i=0; $i < count($input['tipo']); $i++) { 
+        for ($i=0; $i < count($input['id_criterio']); $i++) { 
            
             if (isset($input['aplica'][$i][$i])) {
                 $datos['aplica'] =  $input['aplica'][$i][$i];
