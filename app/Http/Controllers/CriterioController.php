@@ -21,13 +21,13 @@ class CriterioController extends Controller
         $var = Criterio::distinct()->where('criterios.tipo',$tipo)->get(['administrativa_id']);
 
         foreach ($var as $key => $dato) {
-            
+
             $criterios[] = Administrativa::findOrFail($dato->administrativa_id);
 
         }
-        
+
         //$criterios = Administrativa::findOrFail($dato);
-       
+
         return view($tipo.'.index',compact('criterios','contratos'));
     }
 
@@ -36,9 +36,9 @@ class CriterioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request,$tipo)            
+    public function create(Request $request,$tipo)
     {
-        
+
         $items = Item::where('items.tipo', '=', $tipo)->get();
 
         $contrato = Administrativa::findOrFail($request->codigo_con);
@@ -57,9 +57,9 @@ class CriterioController extends Controller
 
         $var = count($input['tipo']);
 
-      
-        for ($i=0; $i < count($input['tipo']); $i++) { 
-           
+
+        for ($i=0; $i < count($input['tipo']); $i++) {
+
             if (isset($input['aplica'][$i][$i])) {
                 $datos['aplica'] =  $input['aplica'][$i][$i];
             }
@@ -79,9 +79,9 @@ class CriterioController extends Controller
             Criterio::create($datos);
 
         }
-        
-        return redirect()->route($input['tipo'][0].'administrativas.index');
-        
+
+        return redirect()->route('criterio/'.$input['tipo'][0].'');
+
 
     }
 
@@ -105,17 +105,17 @@ class CriterioController extends Controller
     public function edit($id)
     {
         $criterios = Criterio::where('criterios.administrativa_id', '=', $id)->get();
-        
+
         foreach ($criterios as $key => $value) {
-            
+
             $tipo[] = $value->tipo;
         }
 
         $items = Item::where('items.tipo', '=', $tipo[0])->get();
 
-        
-        return view('disDeta.edit',compact('criterios','items'));
-        
+
+        return view($tipo[0].'.edit',compact('criterios','items'));
+
     }
 
     /**
@@ -131,9 +131,9 @@ class CriterioController extends Controller
         //dd($input['observaciones']);
         //die();
         $var = count($input['id_criterio']);
-      
-        for ($i=0; $i < count($input['id_criterio']); $i++) { 
-           
+
+        for ($i=0; $i < count($input['id_criterio']); $i++) {
+
             if (isset($input['aplica'][$i][$i])) {
                 $datos['aplica'] =  $input['aplica'][$i][$i];
             }
@@ -144,8 +144,8 @@ class CriterioController extends Controller
 
 
             $datos['observaciones'] =  $input['observaciones'][$i][$i];
-           
-            
+
+
 
             $criterio = Criterio::findOrFail($input['id_criterio'][$i]);
             $criterio->update($datos);

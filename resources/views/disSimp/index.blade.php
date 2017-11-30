@@ -28,7 +28,7 @@
                       <h4 class="modal-title">Crear diseño simplificado</h4>
                     </div>
                     <div class="modal-body">
-                      <form action="{{ url('criterio/create/disSImp') }}" method="post">
+                      <form action="{{ url('criterio/create/disSimp') }}" method="post">
                         {{ csrf_field() }}
                         <div class="row">
                           <div class="col-md-12">
@@ -68,17 +68,25 @@
                   </tr>
                 </thead>
                 <tbody>
-                  @foreach($criterios as $criterio)
+                  @if(empty($criterios ))
                     <tr>
-                      <td>{{$criterio->codigo_proyecto}}</td>
-                      <td>{{$criterio->nombre_proyecto}}</td>
-                      <td>
-                        <a href="{{ url('disDeta/edit') }}/{{ $criterio->id }}"><i class="glyphicon glyphicon-pencil"></i></a>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="" onClick="javascript: return confirm('Esta seguro de eliminar registro?');"><i class="glyphicon glyphicon-minus-sign"></i></a>
-                      </td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
                     </tr>
-                  @endforeach
+                  @else
+                    @foreach($criterios as $criterio)
+                      <tr>
+                        <td>{{$criterio->codigo_proyecto}}</td>
+                        <td>{{$criterio->nombre_proyecto}}</td>
+                        <td>
+                          <a href="{{ url('criterio/edit') }}/{{ $criterio->id }}"><i class="glyphicon glyphicon-pencil"></i></a>
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          <a href="" onClick="javascript: return confirm('Esta seguro de eliminar registro?');"><i class="glyphicon glyphicon-minus-sign"></i></a>
+                        </td>
+                      </tr>
+                    @endforeach
+                  @endif
                 </tbody>
               </table>
             </div>

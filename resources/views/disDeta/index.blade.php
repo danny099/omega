@@ -69,11 +69,11 @@
                 </thead>
                 <tbody>
                   @if(empty($criterios ))
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
                   @else
                   @foreach($criterios as $criterio)
                     <tr>
