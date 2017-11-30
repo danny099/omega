@@ -201,11 +201,11 @@ Route::group(['middleware' => 'auth'],function(){
 	/**************************************************************/
 	/**************************************************************/
 
-	Route::get('creterio/{tipo}','CriterioController@index');
-	Route::post('creterio/create/{tipo}','CriterioController@create');
-	Route::post('creterio','CriterioController@store');
-	Route::get('creterio/edit/{id}','CriterioController@edit');
-	Route::post('creterio/update','CriterioController@update');
+	Route::get('criterio/{tipo}','CriterioController@index');
+	Route::post('criterio/create/{tipo}','CriterioController@create');
+	Route::post('criterio','CriterioController@store');
+	Route::get('criterio/edit/{id}','CriterioController@edit');
+	Route::post('criterio/update','CriterioController@update');
 
 
 
@@ -216,7 +216,7 @@ Route::group(['middleware' => 'auth'],function(){
 	/**************************************************************/
 
 
-	
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
