@@ -42,7 +42,7 @@ class CriterioController extends Controller
         $items = Item::where('items.tipo', '=', $tipo)->get();
 
         $contrato = Administrativa::findOrFail($request->codigo_con);
-        return view('disDeta.create',compact('items','contrato'));
+        return view($tipo.'.create',compact('items','contrato'));
     }
 
     /**
@@ -56,6 +56,7 @@ class CriterioController extends Controller
         $input = $request->all();
 
         $var = count($input['tipo']);
+
       
         for ($i=0; $i < count($input['tipo']); $i++) { 
            
@@ -77,8 +78,9 @@ class CriterioController extends Controller
 
             Criterio::create($datos);
 
-
         }
+        
+        return redirect()->route($input['tipo'][0].'administrativas.index');
         
 
     }
