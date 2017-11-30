@@ -116,7 +116,7 @@ class CriterioController extends Controller
         $items = Item::where('items.tipo', '=', $tipo2[0])->get();
 
        
-        return view($tipo[0].'.edit',compact('criterios','items'));
+        return view($tipo2[0].'.edit',compact('criterios','items'));
 
     }
 
