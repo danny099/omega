@@ -850,7 +850,7 @@ class AdministrativaController extends Controller
        $document->setValue('nit_empresa','');
 
      }else {
-       $document->setValue('nombres',md_strtoupper($juridica->nombre_representante));
+       $document->setValue('nombres',mb_strtoupper($juridica->nombre_representante));
        $document->setValue('cedula',$juridica->cedula);
        $document->setValue('representa','Representante Legal');
        $document->setValue('empresa',$juridica->razon_social);
