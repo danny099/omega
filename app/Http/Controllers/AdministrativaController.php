@@ -791,22 +791,22 @@ class AdministrativaController extends Controller
        }
      }else {
        $document->setValue('marca','NIT:');
-       $document->setValue('nit',number_format($cliente->nit,0));
+       $document->setValue('nit',number_format($juridica->nit,0));
      }
 
      $document->setValue('tabla',$table);
      $document->setValue('nombre_proyecto',strtoupper($contrato->nombre_proyecto));
-     $document->setValue('municipio',strtoupper($texto));
+     $document->setValue('MUNICIPIO',strtoupper($texto));
 
      if (!is_null($contrato->cliente_id)) {
-       $document->setValue('nombres',$cliente->nombre);
+       $document->setValue('nombres',strtoupper($cliente->nombre));
        $document->setValue('cedula',$cliente->cedula);
-       $document->setValue('representa','Representante Legal');
+       $document->setValue('representa','');
        $document->setValue('empresa','');
        $document->setValue('nit_empresa','');
 
      }else {
-       $document->setValue('nombres',$juridica->nombre_representante);
+       $document->setValue('nombres',strtoupper($juridica->nombre_representante));
        $document->setValue('cedula',$juridica->cedula);
        $document->setValue('representa','Representante Legal');
        $document->setValue('empresa',$juridica->razon_social);
