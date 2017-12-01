@@ -237,7 +237,7 @@
         </li>
       </ul>
       @endif
-      @if ( Auth::user()->rol_id == 1 || Auth::user()->rol_id == 3)
+      @if ( Auth::user()->rol_id == 1 || Auth::user()->rol_id == 3 || Auth::user()->rol_id == 4)
       <ul class="sidebar-menu">
         <li class="treeview">
           <a href="#">

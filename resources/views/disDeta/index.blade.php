@@ -82,7 +82,7 @@
                       <td>
                         <a href="{{ url('criterio/edit') }}/{{ $criterio->id }}/disDeta"><i class="glyphicon glyphicon-pencil"></i></a>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="{{ url('pdfCriterio') }}/{{ $criterio->id }}" target="_blank" data-toggle="model" data-target=""><i class="glyphicon glyphicon-eye-open" style="color: #33579A"></i></a>
+                        <a href="{{ url('pdfCriterio') }}/{{ $criterio->id }}/disDeta" target="_blank" data-toggle="model" data-target=""><i class="glyphicon glyphicon-eye-open" style="color: #33579A"></i></a>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <a href="{{ url('criterio/delete') }}/{{ $criterio->id }}" onClick="javascript: return confirm('Esta seguro de eliminar registro?');"><i class="glyphicon glyphicon-minus-sign"></i></a>
                       </td>
