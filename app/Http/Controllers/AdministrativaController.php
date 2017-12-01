@@ -1,5 +1,4 @@
 <?php
-setlocale(LC_CTYPE, 'es');
 
 namespace App\Http\Controllers;
 use App\Administrativa;
