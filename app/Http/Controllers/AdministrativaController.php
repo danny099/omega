@@ -797,7 +797,7 @@ class AdministrativaController extends Controller
      $document->setValue('tabla',$table);
      $document->setValue('nombre_proyecto',strtoupper($contrato->nombre_proyecto));
      setlocale(LC_CTYPE, 'es');
-     $document->setValue('MUNICIPIO',strtoupper($texto));
+     $document->setValue('MUNICIPIO',str_replace("Ñ", "ñ", strtoupper($texto)));
 
      if (!is_null($contrato->cliente_id)) {
        $document->setValue('nombres',strtoupper($cliente->nombre));
