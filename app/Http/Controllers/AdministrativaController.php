@@ -153,7 +153,7 @@ class AdministrativaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    function dater($x) {
+    public function dater($x) {
        $year = substr($x, 0, 4);
        $mon = substr($x, 5, 2);
        switch($mon) {
