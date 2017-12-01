@@ -778,7 +778,7 @@ class AdministrativaController extends Controller
      if (!is_null($contrato->cliente_id)) {
        $document->setValue('cliente',strtoupper($cliente->nombre));
      }else {
-       $document->setValue('cliente',strtoupper($juridica->nombre_representante);
+       $document->setValue('cliente',strtoupper($juridica->nombre_representante));
      }
 
      if (!is_null($contrato->cliente_id)) {
