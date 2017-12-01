@@ -772,13 +772,12 @@ class AdministrativaController extends Controller
        }
      $table .= '</w:tbl>';
 
-
      $document->setValue('codigo',$contrato->codigo_proyecto);
 
      if (!is_null($contrato->cliente_id)) {
-       $document->setValue('cliente',strtoupper($cliente->nombre));
+       $document->setValue('cliente',mb_strtoupper($cliente->nombre));
      }else {
-       $document->setValue('cliente',strtoupper($juridica->nombre_representante));
+       $document->setValue('cliente',mb_strtoupper($juridica->nombre_representante));
      }
 
      if (!is_null($contrato->cliente_id)) {
