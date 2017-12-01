@@ -580,6 +580,9 @@ class AdministrativaController extends Controller
        $table .=  '<w:tr>';
        $table .=    '<w:tc>';
        $table .=      '<w:p>';
+       $table .=        '<w:pPr>';
+       $table .=           '<w:jc w:val="center"/>';
+       $table .=        '</w:pPr>';
        $table .=        '<w:r>';
        $table .=          '<w:rPr>';
        $table .=            '<w:b />';
@@ -590,6 +593,9 @@ class AdministrativaController extends Controller
        $table .=    '</w:tc>';
        $table .=    '<w:tc>';
        $table .=      '<w:p>';
+       $table .=        '<w:pPr>';
+       $table .=           '<w:jc w:val="center"/>';
+       $table .=        '</w:pPr>';
        $table .=        '<w:r>';
        $table .=          '<w:rPr>';
        $table .=            '<w:b />';
@@ -600,6 +606,9 @@ class AdministrativaController extends Controller
        $table .=    '</w:tc>';
        $table .=    '<w:tc>';
        $table .=      '<w:p>';
+       $table .=        '<w:pPr>';
+       $table .=           '<w:jc w:val="center"/>';
+       $table .=        '</w:pPr>';
        $table .=        '<w:r>';
        $table .=          '<w:rPr>';
        $table .=            '<w:b />';
@@ -610,6 +619,9 @@ class AdministrativaController extends Controller
        $table .=    '</w:tc>';
        $table .=    '<w:tc>';
        $table .=      '<w:p>';
+       $table .=        '<w:pPr>';
+       $table .=           '<w:jc w:val="center"/>';
+       $table .=        '</w:pPr>';
        $table .=        '<w:r>';
        $table .=          '<w:rPr>';
        $table .=            '<w:b />';
@@ -764,9 +776,9 @@ class AdministrativaController extends Controller
      $document->setValue('codigo',$contrato->codigo_proyecto);
 
      if (!is_null($contrato->cliente_id)) {
-       $document->setValue('cliente',$cliente->nombre);
+       $document->setValue('cliente',strtoupper($cliente->nombre));
      }else {
-       $document->setValue('cliente',$juridica->nombre_representante);
+       $document->setValue('cliente',strtoupper($juridica->nombre_representante);
      }
 
      if (!is_null($contrato->cliente_id)) {
@@ -775,16 +787,16 @@ class AdministrativaController extends Controller
          $document->setValue('nit',$cliente->cedula);
        }else {
          $document->setValue('marca','NIT:');
-         $document->setValue('nit',$cliente->nit);
+         $document->setValue('nit',number_format($cliente->nit,0));
        }
      }else {
        $document->setValue('marca','NIT:');
-       $document->setValue('nit',$juridica->nit);
+       $document->setValue('nit',number_format($cliente->nit,0));
      }
 
      $document->setValue('tabla',$table);
-     $document->setValue('nombre_proyecto',$contrato->nombre_proyecto);
-     $document->setValue('municipio',$texto);
+     $document->setValue('nombre_proyecto',strtoupper($contrato->nombre_proyecto);
+     $document->setValue('municipio',strtoupper($texto);
 
      if (!is_null($contrato->cliente_id)) {
        $document->setValue('nombres',$cliente->nombre);
@@ -802,7 +814,7 @@ class AdministrativaController extends Controller
      }
 
 
-     $document->setValue('departamento',$departamento->nombre);
+     $document->setValue('departamento',strtoupper($departamento->nombre));
      $document->setValue('adicional',$contrato->adicional);
      $letras = NumeroALetras::convertir($contrato->valor_total_contrato, 'pesos', 'centavos');
 
