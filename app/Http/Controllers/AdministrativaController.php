@@ -1,4 +1,5 @@
 <?php
+setlocale(LC_CTYPE, 'es');
 
 namespace App\Http\Controllers;
 use App\Administrativa;
@@ -795,19 +796,18 @@ class AdministrativaController extends Controller
      }
 
      $document->setValue('tabla',$table);
-     $document->setValue('nombre_proyecto',strtoupper($contrato->nombre_proyecto));
-     setlocale(LC_CTYPE, 'es');
+     $document->setValue('nombre_proyecto',mb_strtoupper($contrato->nombre_proyecto));
      $document->setValue('municipio',str_replace("Ñ", "ñ", mb_strtoupper($texto,'UTF-8')));
 
      if (!is_null($contrato->cliente_id)) {
-       $document->setValue('nombres',strtoupper($cliente->nombre));
+       $document->setValue('nombres',mb_strtoupper($cliente->nombre));
        $document->setValue('cedula',$cliente->cedula);
        $document->setValue('representa','');
        $document->setValue('empresa','');
        $document->setValue('nit_empresa','');
 
      }else {
-       $document->setValue('nombres',strtoupper($juridica->nombre_representante));
+       $document->setValue('nombres',md_strtoupper($juridica->nombre_representante));
        $document->setValue('cedula',$juridica->cedula);
        $document->setValue('representa','Representante Legal');
        $document->setValue('empresa',$juridica->razon_social);
@@ -815,7 +815,7 @@ class AdministrativaController extends Controller
      }
 
 
-     $document->setValue('departamento',strtoupper($departamento->nombre)); 
+     $document->setValue('departamento',mb_strtoupper($departamento->nombre)); 
      $document->setValue('adicional',$contrato->adicional);
      $letras = NumeroALetras::convertir($contrato->valor_total_contrato, 'pesos', 'centavos');
 
