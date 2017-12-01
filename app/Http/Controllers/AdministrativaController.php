@@ -783,11 +783,11 @@ class AdministrativaController extends Controller
 
      if (!is_null($contrato->cliente_id)) {
        if (!is_null($cliente->cedula)) {
-         $document->setValue('marca','C.C:');
+         $document->setValue('marca','C.C.');
          $document->setValue('nit',$cliente->cedula);
        }else {
          $document->setValue('marca','NIT:');
-         $document->setValue('nit',number_format($cliente->nit,0));
+         $document->setValue('nit',$cliente->nit,0);
        }
      }else {
        $document->setValue('marca','NIT:');
@@ -796,6 +796,7 @@ class AdministrativaController extends Controller
 
      $document->setValue('tabla',$table);
      $document->setValue('nombre_proyecto',strtoupper($contrato->nombre_proyecto));
+     setlocale(LC_CTYPE, 'es');
      $document->setValue('MUNICIPIO',strtoupper($texto));
 
      if (!is_null($contrato->cliente_id)) {
