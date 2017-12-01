@@ -146,7 +146,7 @@ class PdfController extends Controller
       }
 
       $pdf = App::make('dompdf.wrapper');
-      $pdf = loadView('pdf.show-'.$tipo[0],compact('criterios'));
+      $pdf->loadView('pdf.show-'.$tipo[0],compact('criterios'));
       return $pdf->stream('diseño-detallado.pdf');
 
 
