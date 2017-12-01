@@ -814,7 +814,7 @@ class AdministrativaController extends Controller
      }
 
 
-     $document->setValue('departamento',strtoupper($departamento->nombre));
+     $document->setValue('departamento',strtoupper($departamento->nombre)); 
      $document->setValue('adicional',$contrato->adicional);
      $letras = NumeroALetras::convertir($contrato->valor_total_contrato, 'pesos', 'centavos');
 
