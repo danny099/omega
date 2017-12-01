@@ -848,7 +848,7 @@ class AdministrativaController extends Controller
      if (!is_null($contrato->cliente_id)) {
        $document->setValue('nombres',mb_strtoupper($cliente->nombre));
        $document->setValue('cedula',$cliente->cedula);
-       $document->setValue('representa','');
+       $document->setValue('representa','--');
        $document->setValue('empresa','');
        $document->setValue('nit_empresa','');
 
