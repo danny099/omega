@@ -144,11 +144,11 @@ class PdfController extends Controller
 
 
       foreach ($criterios as $key => $value) {
-        $tipo[] = $value->tipo;
+        $tipox[] = $value->tipo;
       }
 
       $pdf = App::make('dompdf.wrapper');
-      $pdf->loadView('pdf.show-'.$tipo[0],compact('criterios'));
+      $pdf->loadView('pdf.show-'.$tipox[0],compact('criterios'));
       return $pdf->stream('diseño-detallado.pdf');
 
 
