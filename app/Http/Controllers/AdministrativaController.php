@@ -24,52 +24,7 @@ use Illuminate\Support\Facades\Input;
 use DB;
 use PhpOffice\PhpWord\TemplateProcessor;
 
-class Dates{
-  public static function dater($x) {
-       $year = substr($x, 0, 4);
-       $mon = substr($x, 5, 2);
-       switch($mon) {
-          case "01":
-             $month = "Enero";
-             break;
-          case "02":
-             $month = "Febrero";
-             break;
-          case "03":
-             $month = "Marzo";
-             break;
-          case "04":
-             $month = "Abril";
-             break;
-          case "05":
-             $month = "Mayo";
-             break;
-          case "06":
-             $month = "Junio";
-             break;
-          case "07":
-             $month = "Julio";
-             break;
-          case "08":
-             $month = "Agosto";
-             break;
-          case "09":
-             $month = "Septiembre";
-             break;
-          case "10":
-             $month = "Octubre";
-             break;
-          case "11":
-             $month = "Noviembre";
-             break;
-          case "12":
-             $month = "Diciembre";
-             break;
-       }
-       $day = substr($x, 8, 2);
-       return $day." de ".$month." de ".$year;
-    }
-}
+
 class NumeroALetras
 {
     private static $UNIDADES = [
@@ -189,6 +144,51 @@ class NumeroALetras
             }
         }
         return $output;
+    }
+
+    public static function dater($x) {
+       $year = substr($x, 0, 4);
+       $mon = substr($x, 5, 2);
+       switch($mon) {
+          case "01":
+             $month = "Enero";
+             break;
+          case "02":
+             $month = "Febrero";
+             break;
+          case "03":
+             $month = "Marzo";
+             break;
+          case "04":
+             $month = "Abril";
+             break;
+          case "05":
+             $month = "Mayo";
+             break;
+          case "06":
+             $month = "Junio";
+             break;
+          case "07":
+             $month = "Julio";
+             break;
+          case "08":
+             $month = "Agosto";
+             break;
+          case "09":
+             $month = "Septiembre";
+             break;
+          case "10":
+             $month = "Octubre";
+             break;
+          case "11":
+             $month = "Noviembre";
+             break;
+          case "12":
+             $month = "Diciembre";
+             break;
+       }
+       $day = substr($x, 8, 2);
+       return $day." de ".$month." de ".$year;
     }
 }
 
@@ -868,7 +868,7 @@ class AdministrativaController extends Controller
      $document->setValue('letras',$letras);
      $valor_total = number_format($contrato->valor_total_contrato,0);
      $document->setValue('valor_total_contrato',$valor_total);
-     $document->setValue('fecha',Dates::dater($contrato->fecha_contrato));
+     $document->setValue('fecha',NumeroALetras::dater($contrato->fecha_contrato));
      $document->saveAs('documento/'.$contrato->codigo_proyecto.'-'.$contrato->nombre_proyecto.'.docx');
 
      // $ficher = 'documento/temp_contrato.docx';
