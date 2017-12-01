@@ -834,11 +834,11 @@ class AdministrativaController extends Controller
          $document->setValue('nit',$cliente->cedula);
        }else {
          $document->setValue('marca','NIT:');
-         $document->setValue('nit',$cliente->nit,0);
+         $document->setValue('nit',$cliente->nit);
        }
      }else {
        $document->setValue('marca','NIT:');
-       $document->setValue('nit',$juridica->nit,0);
+       $document->setValue('nit',$juridica->nit);
      }
 
      $document->setValue('tabla',$table);
