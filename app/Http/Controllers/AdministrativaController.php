@@ -791,7 +791,7 @@ class AdministrativaController extends Controller
        }
      }else {
        $document->setValue('marca','NIT:');
-       $document->setValue('nit',number_format($juridica->nit,0));
+       $document->setValue('nit',$juridica->nit,0);
      }
 
      $document->setValue('tabla',$table);
