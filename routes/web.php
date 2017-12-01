@@ -207,7 +207,7 @@ Route::group(['middleware' => 'auth'],function(){
 	Route::get('criterio/edit/{id}/{tipo}','CriterioController@edit');
 	Route::post('criterio/update','CriterioController@update');
 	Route::get('criterio/delete/{id}','CriterioController@destroy');
-	Route::get('pdfCriterio/{id}','PdfController@pdfTecnica');
+	Route::get('pdfCriterio/{id}/{tipo}','PdfController@pdfTecnica');
 
 	});
 
