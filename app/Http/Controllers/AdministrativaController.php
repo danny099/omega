@@ -188,7 +188,7 @@ class NumeroALetras
              break;
        }
        $day = substr($x, 8, 2);
-       return $day." de ".$month." de ".$year;
+       return $day." dias de ".$month." de ".$year;
     }
 }
 
