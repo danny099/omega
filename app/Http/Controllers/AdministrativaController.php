@@ -755,7 +755,7 @@ class AdministrativaController extends Controller
        $document->setValue('nit',$juridica->nit);
      }
 
-     $document->setValue('tabla','holaa');
+     $document->setValue('tabla',$table);
      $document->setValue('nombre_proyecto',$contrato->nombre_proyecto);
      $document->setValue('municipio',$texto);
 
