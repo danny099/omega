@@ -629,6 +629,9 @@ class AdministrativaController extends Controller
          $table .=  '<w:tr>';
          $table .=    '<w:tc>';
          $table .=      '<w:p>';
+         $table .=        '<w:pPr>';
+         $table .=           '<w:jc w:val="center"/>';
+         $table .=        '</w:pPr>';
          $table .=        '<w:r>';
          $table .=          '<w:t>'.$i++.'</w:t>';
          $table .=        '</w:r>';
@@ -643,6 +646,9 @@ class AdministrativaController extends Controller
          $table .=    '</w:tc>';
          $table .=    '<w:tc>';
          $table .=      '<w:p>';
+         $table .=        '<w:pPr>';
+         $table .=           '<w:jc w:val="center"/>';
+         $table .=        '</w:pPr>';
          $table .=        '<w:r>';
          $table .=          '<w:t>'.$transfor->unidad.'</w:t>';
          $table .=        '</w:r>';
@@ -650,6 +656,9 @@ class AdministrativaController extends Controller
          $table .=    '</w:tc>';
          $table .=    '<w:tc>';
          $table .=      '<w:p>';
+         $table .=        '<w:pPr>';
+         $table .=           '<w:jc w:val="center"/>';
+         $table .=        '</w:pPr>';
          $table .=        '<w:r>';
          $table .=          '<w:t>'.$transfor->cantidad.'</w:t>';
          $table .=        '</w:r>';
@@ -666,6 +675,9 @@ class AdministrativaController extends Controller
          $table .=  '<w:tr>';
          $table .=    '<w:tc>';
          $table .=      '<w:p>';
+         $table .=        '<w:pPr>';
+         $table .=           '<w:jc w:val="center"/>';
+         $table .=        '</w:pPr>';
          $table .=        '<w:r>';
          $table .=          '<w:t>'.$i++.'</w:t>';
          $table .=        '</w:r>';
@@ -680,6 +692,9 @@ class AdministrativaController extends Controller
          $table .=    '</w:tc>';
          $table .=    '<w:tc>';
          $table .=      '<w:p>';
+         $table .=        '<w:pPr>';
+         $table .=           '<w:jc w:val="center"/>';
+         $table .=        '</w:pPr>';
          $table .=        '<w:r>';
          $table .=          '<w:t>'.$distri->unidad.'</w:t>';
          $table .=        '</w:r>';
@@ -687,6 +702,9 @@ class AdministrativaController extends Controller
          $table .=    '</w:tc>';
          $table .=    '<w:tc>';
          $table .=      '<w:p>';
+         $table .=        '<w:pPr>';
+         $table .=           '<w:jc w:val="center"/>';
+         $table .=        '</w:pPr>';
          $table .=        '<w:r>';
          $table .=          '<w:t>'.$distri->cantidad.'</w:t>';
          $table .=        '</w:r>';
@@ -703,6 +721,9 @@ class AdministrativaController extends Controller
          $table .=  '<w:tr>';
          $table .=    '<w:tc>';
          $table .=      '<w:p>';
+         $table .=        '<w:pPr>';
+         $table .=           '<w:jc w:val="center"/>';
+         $table .=        '</w:pPr>';
          $table .=        '<w:r>';
          $table .=          '<w:t>'.$i++.'</w:t>';
          $table .=        '</w:r>';
@@ -717,6 +738,9 @@ class AdministrativaController extends Controller
          $table .=    '</w:tc>';
          $table .=    '<w:tc>';
          $table .=      '<w:p>';
+         $table .=        '<w:pPr>';
+         $table .=           '<w:jc w:val="center"/>';
+         $table .=        '</w:pPr>';
          $table .=        '<w:r>';
          $table .=          '<w:t>'.$pu->unidad.'</w:t>';
          $table .=        '</w:r>';
@@ -724,6 +748,9 @@ class AdministrativaController extends Controller
          $table .=    '</w:tc>';
          $table .=    '<w:tc>';
          $table .=      '<w:p>';
+         $table .=        '<w:pPr>';
+         $table .=           '<w:jc w:val="center"/>';
+         $table .=        '</w:pPr>';
          $table .=        '<w:r>';
          $table .=          '<w:t>'.$pu->cantidad.'</w:t>';
          $table .=        '</w:r>';
