@@ -141,7 +141,7 @@ class PdfController extends Controller
       $criterios = Criterio::where('criterios.administrativa_id', '=', $id)->get();
 
       foreach ($criterios as $key => $value) {
-        $tipo[] = $value->tipo
+        $tipo[] = $value->tipo;
       }
 
       $pdf = App::make('dompdf.wrapper');
