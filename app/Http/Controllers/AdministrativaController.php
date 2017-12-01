@@ -795,8 +795,8 @@ class AdministrativaController extends Controller
      }
 
      $document->setValue('tabla',$table);
-     $document->setValue('nombre_proyecto',strtoupper($contrato->nombre_proyecto);
-     $document->setValue('municipio',strtoupper($texto);
+     $document->setValue('nombre_proyecto',strtoupper($contrato->nombre_proyecto));
+     $document->setValue('municipio',strtoupper($texto));
 
      if (!is_null($contrato->cliente_id)) {
        $document->setValue('nombres',$cliente->nombre);
