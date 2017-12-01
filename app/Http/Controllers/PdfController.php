@@ -137,7 +137,7 @@ class PdfController extends Controller
 
     }
 
-    public function pdfTecnica($id){
+    public function pdfTecnica($id,$tipo){
 
       // $criterios = Criterio::where('criterios.administrativa_id', '=', $id)->get();
       $criterios = Criterio::where('criterios.administrativa_id', '=', $id)->where('criterios.tipo','=',$tipo)->get();
