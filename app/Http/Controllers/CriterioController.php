@@ -7,6 +7,8 @@ use DB;
 use App\Criterio;
 use App\Administrativa;
 use App\Item;
+use Session;
+
 class CriterioController extends Controller
 {
     /**
@@ -58,22 +60,32 @@ class CriterioController extends Controller
         $var = count($input['tipo']);
 
 
-        for ($i=0; $i < count($input['tipo']); $i++) {
+        for ($i=0; $i < $var; $i++) {
 
             if (isset($input['aplica'][$i][$i])) {
                 $datos['aplica'] =  $input['aplica'][$i][$i];
+            }else{
+                $datos['aplica'] =  null;               
             }
+
 
             if (isset($input['cumple'][$i][$i])) {
                 $datos['cumple'] =  $input['cumple'][$i][$i];
+            }else{
+                $datos['cumple'] =  null;            
             }
+
 
             if (isset($input['observaciones'][$i][$i])) {
                 $datos['observaciones'] =  $input['observaciones'][$i][$i];
+            }else{
+                $datos['observaciones'] =  null;                
             }
+
             $datos['tipo'] = $input['tipo'][$i];
             $datos['administrativa_id'] = $input['id'][$i];
             $datos['items_id'] = $input['iditem'][$i];
+            
 
 
             Criterio::create($datos);
@@ -144,10 +156,7 @@ class CriterioController extends Controller
                 $datos['cumple'] =  $input['cumple'][$i][$i];
             }
 
-
             $datos['observaciones'] =  $input['observaciones'][$i][$i];
-
-
 
             $criterio = Criterio::findOrFail($input['id_criterio'][$i]);
             $criterio->update($datos);
@@ -164,6 +173,18 @@ class CriterioController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+        $criterios = Criterio::where('criterios.administrativa_id', '=', $id)->get();
+
+        foreach ($criterios as $key => $val) {
+            $tips[]= $val->tipo;
+        }
+        foreach ($criterios as $key => $value) {           
+           $value->delete();
+        }   
+
+        Session::flash('message', 'Criterio eliminado');
+        Session::flash('class', 'danger');
+        return redirect()->back();
     }
 }

@@ -206,10 +206,8 @@ Route::group(['middleware' => 'auth'],function(){
 	Route::post('criterio','CriterioController@store');
 	Route::get('criterio/edit/{id}/{tipo}','CriterioController@edit');
 	Route::post('criterio/update','CriterioController@update');
-	Route::post('criterio/delete/{id}','CriterioController@destroy');
-	Route::get('pdfCriterios/{id}','PdfController@pdfTecnica');
-
-
+	Route::get('criterio/delete/{id}','CriterioController@destroy');
+	Route::get('pdfCriterio/{id}','PdfController@pdfTecnica');
 
 	});
 
