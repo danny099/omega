@@ -17,6 +17,7 @@ use App\Factura;
 use App\Valor_adicional;
 use App\Observacion;
 use App\Documento;
+use App\Criterio;
 use Illuminate\Http\Request;
 use Session;
 use Illuminate\Support\Facades\Validator;
