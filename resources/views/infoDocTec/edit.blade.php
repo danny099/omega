@@ -75,9 +75,11 @@
                   @endif
                 </div>
                 <div class="col-md-4" >
-                  <textarea class="form-control" rows="5"  name="observaciones[][{{$key}}]" value="{{$criterio->observaciones}}"></textarea>          
+                  <textarea class="form-control" rows="5"  name="observaciones[][{{$key}}]" value="{{$criterio->observaciones}}"></textarea>
 
                   <input type="hidden" name="id_criterio[]" value="{{$criterio->id}}">
+                  <input type="hidden" name="tipo[]" value="{{$criterio->tipo}}">
+                  
 
                 </div>
               </div>

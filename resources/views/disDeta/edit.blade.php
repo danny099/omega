@@ -78,6 +78,7 @@
                   <input type="text" class="form-control" name="observaciones[][{{$key}}]" value="{{$criterio->observaciones}}">
 
                   <input type="hidden" name="id_criterio[]" value="{{$criterio->id}}">
+                  <input type="hidden" name="tipo[]" value="{{$criterio->tipo}}">
 
                 </div>
               </div>
