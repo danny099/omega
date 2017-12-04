@@ -92,7 +92,10 @@ class CriterioController extends Controller
 
         }
 
-        return redirect()->route('criterio/'.$input['tipo'][0].'');
+        // return view('criterio/'.$input['tipo'][0].'');
+        // return index($input['tipo'][0]);
+        return redirect('criterio/'.$input['tipo'][0]);
+        // return redirect()->route('criterio/'.$input['tipo'][0].'');
 
 
     }

@@ -131,8 +131,7 @@ class PdfController extends Controller
   		// return $pdf->download('archivo.pdf');
 
       $pdf = App::make('dompdf.wrapper');
-      $pdf->loadView('pdf.show-cotizacion',compact('administrativa','clientes','juridicas','otrosis','distribuciones','transformaciones','pu_finales','departamentos','array_muni','numero1','numero2','total','iva','valor_total','cotizaciones','referencia','inicial','inspeccion','pago','docu','datos','objeto',
-                                                  'saludo','pago2'));
+      $pdf->loadView('pdf.show-cotizacion',compact('administrativa','clientes','juridicas','otrosis','distribuciones','transformaciones','pu_finales','departamentos','array_muni','numero1','numero2','total','iva','valor_total','cotizaciones','referencia','inicial','inspeccion','pago','docu','datos','objeto','saludo','pago2'));
       return $pdf->stream($cotizaciones->codigo.' - '.$cotizaciones->nombre.'.pdf');
 
     }
