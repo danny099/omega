@@ -175,7 +175,7 @@ class CriterioController extends Controller
      */
     public function destroy($id,$tipo)
     {
-       
+
         $criterios = Criterio::where('criterios.administrativa_id', '=', $id)->where('criterios.tipo','=',$tipo)->get();
 
         foreach ($criterios as $key => $val) {
@@ -187,7 +187,7 @@ class CriterioController extends Controller
 
         Session::flash('message', 'Criterio eliminado');
         Session::flash('class', 'danger');
-        return redirect('criterio/'.$input['tipo'][0]);
+        return redirect('criterio/'.$tipo);
         
     }
 }
