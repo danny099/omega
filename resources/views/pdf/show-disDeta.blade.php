@@ -23,6 +23,8 @@
         <th>No</th>
         <th></th>
       </tr>
+      @foreach($criterios as $key=>$criterio)
+      @endforeach
 
     </table>
   </body>
