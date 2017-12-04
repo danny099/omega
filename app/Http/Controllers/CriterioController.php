@@ -92,10 +92,8 @@ class CriterioController extends Controller
 
         }
 
-        // return view('criterio/'.$input['tipo'][0].'');
-        // return index($input['tipo'][0]);
         return redirect('criterio/'.$input['tipo'][0]);
-        // return redirect()->route('criterio/'.$input['tipo'][0].'');
+
 
 
     }
@@ -145,8 +143,7 @@ class CriterioController extends Controller
     public function update(Request $request)
     {
         $input = $request->all();
-        //dd($input['observaciones']);
-        //die();
+       
         $var = count($input['id_criterio']);
 
         for ($i=0; $i < count($input['id_criterio']); $i++) {
@@ -166,6 +163,8 @@ class CriterioController extends Controller
 
 
         }
+        return redirect('criterio/'.$input['tipo'][0]);
+
     }
 
     /**
@@ -174,10 +173,10 @@ class CriterioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id,$tipo)
     {
-
-        $criterios = Criterio::where('criterios.administrativa_id', '=', $id)->get();
+       
+        $criterios = Criterio::where('criterios.administrativa_id', '=', $id)->where('criterios.tipo','=',$tipo)->get();
 
         foreach ($criterios as $key => $val) {
             $tips[]= $val->tipo;
@@ -188,6 +187,7 @@ class CriterioController extends Controller
 
         Session::flash('message', 'Criterio eliminado');
         Session::flash('class', 'danger');
-        return redirect()->back();
+        return redirect('criterio/'.$input['tipo'][0]);
+        
     }
 }
