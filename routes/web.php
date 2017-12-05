@@ -75,6 +75,8 @@ Route::group(['middleware' => 'auth'],function(){
 		Route::resource('pu_final','Pu_finalController');
 		Route::post('editarpu','Pu_finalController@editar');
 		Route::get('deletepu/{id}','Pu_finalController@destroy');
+		Route::resource('cotizaciones','CotizacionController');
+		
 
 	});
 
