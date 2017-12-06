@@ -48,6 +48,9 @@
               <div class="col-md-12 well" style="width:95%; margin-left:30px">
                 <div class="col-md-12">
                   <p>{{$item->item}}</p>
+                  <label class="radio-inline"><input type="hidden" name="aplica[][{{$key}}]" value="Si" ></label>
+                  <label class="radio-inline"><input type="hidden" name="cumple[][{{$key}}]" value="Si" ></label>
+
                 </div>
               </div>
               @else
