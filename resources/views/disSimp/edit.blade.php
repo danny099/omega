@@ -49,7 +49,7 @@
                 <div class="col-md-12">
                   <p>{{$criterio->items->item}}</p>
                   <label class="radio-inline"><input type="hidden" name="aplica[][{{$key}}]" value="" ></label>
-                  <label class="radio-inline"><input type="radio" name="cumple[][{{$key}}]" value="" ></label>
+                  <label class="radio-inline"><input type="hidden" name="cumple[][{{$key}}]" value="" ></label>
                   <input type="hidden" class="form-control" name="observaciones[][{{$key}}]" >
                   <input type="hidden" name="id_criterio[]" value="{{$criterio->id}}">
                   <input type="hidden" name="tipo[]" value="{{$criterio->tipo}}">
