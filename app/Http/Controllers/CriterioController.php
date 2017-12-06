@@ -56,7 +56,8 @@ class CriterioController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-
+        // dd($input);
+        // die();
         $var = count($input['tipo']);
 
 
@@ -75,7 +76,6 @@ class CriterioController extends Controller
                 $datos['cumple'] =  null;            
             }
 
-
             if (isset($input['observaciones'][$i][$i])) {
                 $datos['observaciones'] =  $input['observaciones'][$i][$i];
             }else{
@@ -86,12 +86,11 @@ class CriterioController extends Controller
             $datos['administrativa_id'] = $input['id'][$i];
             $datos['items_id'] = $input['iditem'][$i];
             
-
-
             Criterio::create($datos);
 
         }
-
+        Session::flash('message', 'Detalle creado');
+        Session::flash('class', 'success');
         return redirect('criterio/'.$input['tipo'][0]);
 
 
@@ -143,6 +142,8 @@ class CriterioController extends Controller
     public function update(Request $request)
     {
         $input = $request->all();
+        // dd($input);
+        // die();
        
         $var = count($input['id_criterio']);
 
@@ -163,6 +164,9 @@ class CriterioController extends Controller
 
 
         }
+
+        Session::flash('message', 'Detalle editado');
+        Session::flash('class', 'success');
         return redirect('criterio/'.$input['tipo'][0]);
 
     }
@@ -185,7 +189,7 @@ class CriterioController extends Controller
            $value->delete();
         }   
 
-        Session::flash('message', 'Criterio eliminado');
+        Session::flash('message', 'Detalle eliminado');
         Session::flash('class', 'danger');
         return redirect('criterio/'.$tipo);
         
