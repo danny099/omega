@@ -44,18 +44,25 @@
             </div>
 
             @foreach($items as $key=>$item)
+              @if($key == 0 || $key == 9 || $key == 16 )
+              <div class="col-md-12 well" style="width:95%; margin-left:30px">
+                <div class="col-md-12">
+                  <p>{{$item->item}}</p>
+                </div>
+              </div>
+              @else
               <div class="col-md-12 well" style="width:95%; margin-left:30px">
                 <div class="col-md-6">
                   <p>{{$item->item}}</p>
 
                 </div>
                 <div class="col-md-1">
-                  <label class="radio-inline"><input type="radio" name="aplica[][{{$key}}]" value="Si" >Si</label>
+                  <label class="radio-inline"><input type="radio" name="aplica[][{{$key}}]" value="Si" checked="checked">Si</label>
                   <label class="radio-inline"><input type="radio" name="aplica[][{{$key}}]" value="No">No</label>
 
                 </div>
                 <div class="col-md-1">
-                  <label class="radio-inline"><input type="radio" name="cumple[][{{$key}}]" value="Si" >Si</label>
+                  <label class="radio-inline"><input type="radio" name="cumple[][{{$key}}]" value="Si" checked="checked">Si</label>
                   <label class="radio-inline"><input type="radio" name="cumple[][{{$key}}]" value="No">No</label>
                 </div>
                 <div class="col-md-4" >
@@ -65,6 +72,7 @@
                   <input type="hidden" name="iditem[]" value="{{$item->id}}">
                 </div>
               </div>
+              @endif
             @endforeach
             <div class="box-footer" style="width:95%; margin-left:40px; margin-bottom:15px">
               <button type="submit" class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;">Enviar</button>

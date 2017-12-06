@@ -44,6 +44,13 @@
             </div>
 
             @foreach($criterios as $key=>$criterio)
+              @if($key == 0 || $key == 9 || $key == 16 )
+              <div class="col-md-12 well" style="width:95%; margin-left:30px">
+                <div class="col-md-12">
+                  <p>{{$criterio->items->item}}</p>
+                </div>
+              </div>
+              @else
               <div class="col-md-12 well" style="width:95%; margin-left:30px">
                 <div class="col-md-6">
                   <p>{{$criterio->items->item}}</p>
@@ -79,10 +86,11 @@
 
                   <input type="hidden" name="id_criterio[]" value="{{$criterio->id}}">
                   <input type="hidden" name="tipo[]" value="{{$criterio->tipo}}">
-                  
+
 
                 </div>
               </div>
+              @endif
             @endforeach
             <div class="box-footer" style="width:95%; margin-left:40px; margin-bottom:15px">
               <button type="submit" class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;">Enviar</button>
