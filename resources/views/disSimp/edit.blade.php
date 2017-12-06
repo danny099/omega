@@ -57,9 +57,8 @@
                   <label class="radio-inline"><input type="radio" name="aplica[][{{$key}}]" value="" ></label>
                   <label class="radio-inline"><input type="radio" name="aplica[][{{$key}}]" value=""  ></label>
                   <input type="text" class="form-control" name="observaciones[][{{$key}}]" >
-                  <input type="hidden" name="tipo[]" value="{{$item->tipo}}">
-                  <input type="hidden" name="id[]" value="{{$contrato->id}}">
-                  <input type="hidden" name="iditem[]" value="{{$item->id}}">
+                  <input type="hidden" name="id_criterio[]" value="{{$criterio->id}}">
+                  <input type="hidden" name="tipo[]" value="{{$criterio->tipo}}">
 
                 </div>
                 <div class="col-md-1">
