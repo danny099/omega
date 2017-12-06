@@ -20,7 +20,6 @@
       .indice{
         font-weight: bold;
         text-align:center;
-        background-color:#D9D9D9;
 
       }
       @page { margin: 100px 50px; }
@@ -79,10 +78,16 @@
         <th class="indice">SI</th>
         <th class="indice">NO</th>
         <th class="indice">SI</th>
-        <th class="indice" >NO</th>
+        <th class="indice">NO</th>
       </tr>
 
       @foreach($criterios as $key=>$criterio)
+      @if($key == 0 || $key == 9 || $key == 16 )
+      <tr>
+        <th style="text-align:center; background-color:#D9D9D9">{{$key+1}}</th>
+        <th style="font-size: 8px; background-color:#D9D9D9" width="45%" colspan="6">{{$criterio->items->item}}</th>
+      </tr>
+      @else
       <tr>
         <th style="text-align:center">{{$key+1}}</th>
         <th style="font-size: 8px;" width="45%">{{$criterio->items->item}}</th>
@@ -111,13 +116,10 @@
 
         <th width="45%">{{$criterio->observaciones}}</th>
       </tr>
+      @endif
       @endforeach
 
     </table>
-    <p style="font-size: 8px; font-weight: bold; ">Nota 1. La profundidad con que se traten los ítems dependerá del tipo de instalación, para lo cual debe aplicarse el juicio profesional del responsable del diseño.</p>
 
-    <p style="font-size: 12.5px; font-weight: bold;text-decoration:underline; ">Nota 2. El diseñador deberá hacer mención expresa de aquellos ítems que a su juicio no apliquen.</p>
-    <p style="font-size: 9px; line-height:0.1; ">Nota 3. Para un análisis de riesgos de origen eléctrico, el diseñador debe hacer una descripción de los factores de riesgos potenciales  o presentes en la instalación y las </p>
-    <p style="font-size: 9px;line-height:0.0; ">recomendaciones para minimizarlos.</p>
   </body>
 </html>
