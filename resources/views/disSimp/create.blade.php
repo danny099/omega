@@ -50,6 +50,8 @@
                   <p>{{$item->item}}</p>
                   <label class="radio-inline"><input type="hidden" name="aplica[][{{$key}}]" value="" ></label>
                   <label class="radio-inline"><input type="hidden" name="cumple[][{{$key}}]" value="" ></label>
+                  <input type="hidden" class="form-control" name="observaciones[][{{$key}}]">
+
 
                 </div>
               </div>
