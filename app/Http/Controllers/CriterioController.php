@@ -197,6 +197,9 @@ class CriterioController extends Controller
         $input = $request->all();
         // dd($input);
         // die();
+        $now = new \DateTime();
+        $fech = $now->format('Y-m-d');
+        $fecha = Fechas::dater($fecha);
        
         $var = count($input['id_criterio']);
 
@@ -211,6 +214,7 @@ class CriterioController extends Controller
             }
 
             $datos['observaciones'] =  $input['observaciones'][$i][$i];
+            $datos['fecha'] = $fecha;
 
             $criterio = Criterio::findOrFail($input['id_criterio'][$i]);
             $criterio->update($datos);
