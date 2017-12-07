@@ -91,7 +91,7 @@ class CriterioController extends Controller
         $items = Item::where('items.tipo', '=', $tipo)->get();
         $now = new \DateTime();
         $fech = $now->format('Y-m-d');
-        $fecha = Fechas::dater($fecha);
+        $fecha = Fechas::dater($fech);
 
         $contrato = Administrativa::findOrFail($request->codigo_con);
         return view($tipo.'.create',compact('items','contrato','fecha'));
