@@ -12,7 +12,7 @@ class Descripcion extends Model implements AuditableContract
   use Auditable;
 
   protected $table = 'descripcion';
-  protected $fillable = ['id','descripcion','fecha','administrativa_id','nc_id'];
+  protected $fillable = ['id','descripcion','fecha','administrativa_id'];
   public $timestamps = false;
 
   public function administrativa(){

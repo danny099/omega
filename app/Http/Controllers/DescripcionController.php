@@ -67,7 +67,9 @@ class DescripcionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $descripcion = Descripcion::where('descripcion.administrativa_id','=',$id);
+        $noconformidades = Nc::where('nc.descripcion_id','=',$descripcion->id);
+        return view('ncObra.edit',compact('noconformidades'));
     }
 
     /**

@@ -12,7 +12,7 @@ class Nc extends Model implements AuditableContract
   use Auditable;
 
   protected $table = 'nc';
-  protected $fillable = ['id','nc'];
+  protected $fillable = ['id','nc','descripcion_id'];
   public $timestamps = false;
 
   public function descripcion(){
