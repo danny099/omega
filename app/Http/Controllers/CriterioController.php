@@ -9,6 +9,52 @@ use App\Administrativa;
 use App\Item;
 use Session;
 
+class Fechas{
+    public static function dater($x) {
+       $year = substr($x, 0, 4);
+       $mon = substr($x, 5, 2);
+       switch($mon) {
+          case "01":
+             $month = "Enero";
+             break;
+          case "02":
+             $month = "Febrero";
+             break;
+          case "03":
+             $month = "Marzo";
+             break;
+          case "04":
+             $month = "Abril";
+             break;
+          case "05":
+             $month = "Mayo";
+             break;
+          case "06":
+             $month = "Junio";
+             break;
+          case "07":
+             $month = "Julio";
+             break;
+          case "08":
+             $month = "Agosto";
+             break;
+          case "09":
+             $month = "Septiembre";
+             break;
+          case "10":
+             $month = "Octubre";
+             break;
+          case "11":
+             $month = "Noviembre";
+             break;
+          case "12":
+             $month = "Diciembre";
+             break;
+       }
+       $day = substr($x, 8, 2);
+       return $day." dias del mes de ".$month." del ".$year;
+    }
+}
 class CriterioController extends Controller
 {
     /**
@@ -16,6 +62,7 @@ class CriterioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index($tipo)
     {
 
@@ -42,9 +89,12 @@ class CriterioController extends Controller
     {
 
         $items = Item::where('items.tipo', '=', $tipo)->get();
+        $now = new \DateTime();
+        $fech = $now->format('Y-m-d');
+        $fecha = Fechas::dater($fecha);
 
         $contrato = Administrativa::findOrFail($request->codigo_con);
-        return view($tipo.'.create',compact('items','contrato'));
+        return view($tipo.'.create',compact('items','contrato','fecha'));
     }
 
     /**
@@ -56,8 +106,9 @@ class CriterioController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-        // dd($input);
-        // die();
+        $now = new \DateTime();
+        $fech = $now->format('Y-m-d');
+        $fecha = Fechas::dater($fecha);
         $var = count($input['tipo']);
 
 
@@ -83,8 +134,10 @@ class CriterioController extends Controller
             }
 
             $datos['tipo'] = $input['tipo'][$i];
+            $datos['fecha'] = $fecha;
             $datos['administrativa_id'] = $input['id'][$i];
             $datos['items_id'] = $input['iditem'][$i];
+
             
             Criterio::create($datos);
 
