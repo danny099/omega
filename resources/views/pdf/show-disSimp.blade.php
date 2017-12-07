@@ -6,7 +6,7 @@
     <style media="screen">
       body{
         font-family: "Arial Narrow", Arial, sans-serif;
-      	font-size: 12px;
+      	font-size: 10px;
 
       }
       table {
@@ -61,12 +61,22 @@
     <br>
     <p style="font-size: 12.5px; font-weight: bold;text-decoration:underline;margin-left:200px; line-height:0.1;">INFORME DE NO CONFORMIDADES DOCUMENTALES  </p>
     <p style="font-size: 12.5px; font-weight: bold;text-decoration:underline;margin-left:310px; line-height:0.1;">HOJA 2 DE 2  </p>
-    <br>
-    <img src="Diseño detallado.png" style="width:250px; margin-left:130px">
-    <p style="font-size: 8px;font-weight: bold;margin-left:70px;">Nombre del proyecto: {{$contrato->nombre_proyecto}}</p>
-    <p style="font-size: 8px;font-weight: bold;margin-left:70px;">Codigo del proyecto: {{$contrato->codigo_proyecto}}</p>
-    <p style="font-size: 8px;font-weight: bold;margin-left:81px;line-height:0.1;">Fecha de revision:</p>
+
+
     <table border="1">
+
+      <tr>
+        <th style="text-align:center;font-weight: bold; background-color:#D9D9D9" colspan="7">
+          LISTA DE CHEQUEO DISEÑO SIMPLIFICADO Y CASOS DE REEMPLAZO DE DISEÑO
+        </th>
+      </tr>
+      <tr>
+        <th colspan="7">
+          <p style="font-size: 8px;font-weight: bold;margin-left:70px;">Nombre del proyecto: {{$contrato->nombre_proyecto}}</p>
+          <p style="font-size: 8px;font-weight: bold;margin-left:70px;">Codigo del proyecto: {{$contrato->codigo_proyecto}}</p>
+          <p style="font-size: 8px;font-weight: bold;margin-left:81px;line-height:0.1;">Fecha de revision: {{$fecha}}</p>
+        </th>
+      </tr>
       <tr >
         <th rowspan="2" class="indice" >ÍTEM</th>
         <th coslpan="6" class="indice" rowspan="2">DESCRIPCIÓN</th>
@@ -84,13 +94,13 @@
       @foreach($criterios as $key=>$criterio)
       @if($key == 0 || $key == 9 || $key == 16 )
       <tr>
-        <th style="text-align:center; background-color:#D9D9D9">{{$key+1}}</th>
-        <th style="font-size: 8px; background-color:#D9D9D9" width="45%" colspan="6">{{$criterio->items->item}}</th>
+        <th style="text-align:center;font-weight: bold; background-color:#D9D9D9">{{$key+1}}</th>
+        <th style="font-size: 9px;font-weight: bold; background-color:#D9D9D9" width="45%" colspan="6">{{$criterio->items->item}}</th>
       </tr>
       @else
       <tr>
         <th style="text-align:center">{{$key+1}}</th>
-        <th style="font-size: 8px;" width="45%">{{$criterio->items->item}}</th>
+        <th style="font-size: 9px;" width="45%">{{$criterio->items->item}}</th>
 
         @if($criterio->aplica == "Si")
           <th style="font-weight: bold;text-align:center">X</th>
@@ -118,7 +128,14 @@
       </tr>
       @endif
       @endforeach
-
+      <tr>
+        <th colspan="7" style="font-weight: bold; background-color:#D9D9D9">Nota</th>
+      </tr>
+      <tr>
+        <th colspan="7" >
+          El diseño simplificado debe ser suscrito por el profesional competente responsable de la construcción de la instalación eléctrica o quien la supervise, con su nombre, apellido, numero de cedula de ciudadanía y
+          numero de matricula profesional de conformidad con la ley que regula el ejercicio de la profesión. Dicho diseño debe ser entregado al propietario de la instalación.</th>
+      </tr>
     </table>
 
   </body>

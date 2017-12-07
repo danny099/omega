@@ -66,7 +66,7 @@
     <img src="Diseño detallado.png" style="width:250px; margin-left:130px">
     <p style="font-size: 8px;font-weight: bold;margin-left:70px;">Nombre del proyecto: {{$contrato->nombre_proyecto}}</p>
     <p style="font-size: 8px;font-weight: bold;margin-left:70px;">Codigo del proyecto: {{$contrato->codigo_proyecto}}</p>
-    <p style="font-size: 8px;font-weight: bold;margin-left:81px;line-height:0.1;">Fecha de revision:</p>
+    <p style="font-size: 8px;font-weight: bold;margin-left:81px;line-height:0.1;">Fecha de revision:  {{$fecha}}</p>
     <table border="1">
       <tr >
         <th rowspan="2" class="indice" >ÍTEM</th>

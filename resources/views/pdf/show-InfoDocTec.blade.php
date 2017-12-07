@@ -64,7 +64,7 @@
     <img src="DocTec.png" style="width:350px; margin-left:130px">
     <p style="font-size: 12px;font-weight: bold;">Nombre del proyecto: {{$contrato->nombre_proyecto}}</p>
     <p style="font-size: 12px;font-weight: bold;">Codigo del proyecto: {{$contrato->codigo_proyecto}}</p>
-    <p style="font-size: 12px;font-weight: bold;margin-left:15px;line-height:0.1;">Fecha de revision:</p>
+    <p style="font-size: 12px;font-weight: bold;margin-left:15px;line-height:0.1;">Fecha de revision:  {{$fecha}}</p>
     <table border="1">
       <tr >
         <th rowspan="2" class="indice" >ÍTEM</th>

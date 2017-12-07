@@ -186,6 +186,7 @@
             <li><a href="{{ url('criterio/disSimp') }}"><i class="fa fa-circle-o"></i>Diseño Simplificado</a></li>
             <li><a href="{{ url('criterio/disDeta') }}"><i class="fa fa-circle-o"></i>Diseño Detallado</a></li>
             <li><a href="{{ url('criterio/infoDocTec') }}"><i class="fa fa-circle-o"></i>Informe tecnico detallado</a></li>
+            <li><a href="{{ url('ncObra') }}"><i class="fa fa-circle-o"></i>Reporte de no conformidades</a></li>
           </ul>
         </li>
       </ul>
