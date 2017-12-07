@@ -213,9 +213,10 @@ Route::group(['middleware' => 'auth'],function(){
 
 	
 	Route::get('ncObra','DescripcionController@index');
-	Route::get('ncObra/create','DescripcionController@create');
+	Route::post('ncObra/create','DescripcionController@create');	
+	Route::post('ncObra/store','DescripcionController@store');
 	Route::get('ncObra/edit/{id}');
-	Route::get('ncObra/store','DescripcionController@store');
+	Route::post('ncObra/update','DescripcionController@update');
 	Route::get('pdfNc/{id}','PdfController@pdfNc');
 
 
