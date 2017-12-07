@@ -19,6 +19,6 @@ class Descripcion extends Model implements AuditableContract
     return $this->hasMany('App\Administrativa');
   }
   public function ncs(){
-    return $this->hasMany('App\Nc');
+    return $this->belongsTo('App\Nc');
   }
 }

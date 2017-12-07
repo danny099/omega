@@ -16,6 +16,6 @@ class Nc extends Model implements AuditableContract
   public $timestamps = false;
 
   public function descripcion(){
-    return $this->belongsTo('App\Descripcion');
+    return $this->hasMany('App\Descripcion');
   }
 }
