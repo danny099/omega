@@ -216,6 +216,8 @@ Route::group(['middleware' => 'auth'],function(){
 	Route::get('ncObra/create/{id}','DescripcionController@create');
 	Route::get('ncObra/edit/{id}');
 	Route::get('ncObra/store','DescripcionController@store');
+	Route::get('pdfNc/{id}','PdfController@pdfNc');
+
 
 
 	});
