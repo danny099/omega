@@ -149,7 +149,7 @@ class PdfController extends Controller
         $ids[] = $val->administrativa_id;
       }
       foreach ($criterios as $key => $fech) {
-        $array[] = $fech;
+        $array[] = $fech->fecha;
       }
 
       $fecha = $array[0];
@@ -157,7 +157,7 @@ class PdfController extends Controller
       $contrato = Administrativa::findOrFail($ids[0]);
     
       $pdf = App::make('dompdf.wrapper');
-      $pdf->loadView('pdf.show-'.$tipox[0],compact('criterios','contrato','fecha'));
+      $pdf->loadView('pdf.show-'.$tipox[0],compact('criterios','contrato','foreachecha'));
       return $pdf->stream('diseño-detallado.pdf');
 
 
