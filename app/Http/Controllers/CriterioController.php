@@ -52,7 +52,7 @@ class Fechas{
              break;
        }
        $day = substr($x, 8, 2);
-       return $day." dias del mes de ".$month." del ".$year;
+       return $day." de ".$month." del ".$year;
     }
 }
 class CriterioController extends Controller
