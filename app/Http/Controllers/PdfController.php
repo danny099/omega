@@ -148,11 +148,16 @@ class PdfController extends Controller
       foreach ($criterios as $key => $val) {
         $ids[] = $val->administrativa_id;
       }
+      foreach ($criterios as $key => $fech) {
+        $array[] = $fech;
+      }
+
+      $fecha = $array[0];
 
       $contrato = Administrativa::findOrFail($ids[0]);
     
       $pdf = App::make('dompdf.wrapper');
-      $pdf->loadView('pdf.show-'.$tipox[0],compact('criterios','contrato'));
+      $pdf->loadView('pdf.show-'.$tipox[0],compact('criterios','contrato','fecha'));
       return $pdf->stream('diseño-detallado.pdf');
 
 
