@@ -108,7 +108,7 @@ class CriterioController extends Controller
         $input = $request->all();
         $now = new \DateTime();
         $fech = $now->format('Y-m-d');
-        $fecha = Fechas::dater($fecha);
+        $fecha = Fechas::dater($fech);
         $var = count($input['tipo']);
 
 
@@ -199,7 +199,7 @@ class CriterioController extends Controller
         // die();
         $now = new \DateTime();
         $fech = $now->format('Y-m-d');
-        $fecha = Fechas::dater($fecha);
+        $fecha = Fechas::dater($fech);
        
         $var = count($input['id_criterio']);
 
