@@ -157,7 +157,7 @@ class PdfController extends Controller
       $contrato = Administrativa::findOrFail($ids[0]);
     
       $pdf = App::make('dompdf.wrapper');
-      $pdf->loadView('pdf.show-'.$tipox[0],compact('criterios','contrato','foreachecha'));
+      $pdf->loadView('pdf.show-'.$tipox[0],compact('criterios','contrato','fecha'));
       return $pdf->stream('diseño-detallado.pdf');
 
 
