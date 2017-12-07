@@ -31,8 +31,9 @@ class DescripcionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id)
+    public function create(Request $request)
     {
+        $id = $request->codigo_con;
         $contrato = Administrativa::findOrFail($id);
         return view('ncObra.create',compact('contrato'));    
     }
