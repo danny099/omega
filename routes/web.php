@@ -211,6 +211,13 @@ Route::group(['middleware' => 'auth'],function(){
 	Route::get('criterio/delete/{id}/{tipo}','CriterioController@destroy');
 	Route::get('pdfCriterio/{id}/{tipo}','PdfController@pdfTecnica');
 
+	Route::get('ncObra',function(){
+		return view('ncObra.index');
+	});
+	Route::get('ncObra/create',function(){
+		return view('ncObra.create');
+	});
+
 	});
 
 	/**************************************************************/
