@@ -220,7 +220,7 @@ Route::group(['middleware' => 'auth'],function(){
 	Route::get('pdfNc/{id}','PdfController@pdfNc');
 
 
-	Route::resource('autorizacion','AuditoriaController');
+	Route::resource('autorizacion','AutorizacionController');
 
 
 
