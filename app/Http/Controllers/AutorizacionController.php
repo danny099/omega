@@ -8,6 +8,7 @@ use App\Administrativa;
 use App\Transformacion;
 use App\Distribucion;
 use App\Pu_final;
+use App\Cantidad_autorizada;
 class AutorizacionController extends Controller
 {
     /**
@@ -79,13 +80,61 @@ class AutorizacionController extends Controller
         $now = new \DateTime();
         $fecha = $now->format('Y-m-d');
 
-        $c_autorizada['transformacion'] = $request->transformacion;
-        $c_autorizada['red_mt'] = $request->red_mt;
-        $c_autorizada['red_bt'] = $request->red_bt;
-        $c_autorizada['casas'] = $request->casas;
-        $c_autorizada['apartmentos'] = $request->apartmentos;
-        $c_autorizada['bodegas'] = $request->bodegas;
-        $c_autorizada['puntos_fijos'] = $request->puntos_fijos;
+        if (isset($request->transformacion)) {
+            $c_autorizada['transformacion'] = $request->transformacion;
+            # code...
+        }else{
+            $c_autorizada['transformacion'] = null;
+        }
+
+        if (iseet($request->red_mt)) {
+            $c_autorizada['red_mt'] = $request->red_mt;
+        }else{
+            $c_autorizada['red_mt'] = null;            
+        }
+
+        if (isset($request->red_bt)) {
+            $c_autorizada['red_bt'] = $request->red_bt;
+        }else{
+            $c_autorizada['red_bt'] = null;
+        }
+
+        if (isset($request->casas)) {
+            $c_autorizada['casas'] = $request->casas;
+        }else{
+            $c_autorizada['casas'] = null;            
+        }
+
+        if (isset($request->apartmentos)) {
+            $c_autorizada['apartmentos'] = $request->apartmentos;            
+        }else{
+            $c_autorizada['apartmentos'] = null;
+        }
+
+        if (isset($request->zonas)) {
+            $c_autorizada['zonas'] = $request->zonas;
+        }else{
+            $c_autorizada['zonas'] = null;
+        }
+
+        if (isset($request->locales)) {
+            $c_autorizada['locales'] = $request->locales;
+        }else{
+            $c_autorizada['locales'] = null;
+        }
+
+        if (isset($request->bodegas)) {
+            $c_autorizada['bodegas'] = $request->bodegas;
+        }else{
+            $c_autorizada['bodegas'] = null;
+        }
+
+        if (isset($request->puntos_fijos)) {
+            $c_autorizada['puntos_fijos'] = $request->puntos_fijos;
+        }else{
+            $c_autorizada['puntos_fijos'] = null;
+        }
+        
 
         Cantidad_autorizada::create($c_autorizada);
         
