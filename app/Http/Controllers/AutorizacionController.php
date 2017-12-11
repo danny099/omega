@@ -234,7 +234,11 @@ class AutorizacionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $autorizados = Autorizacion::where('autorizacion.administrativa_id','=',$id)->get();
+
+        $cantidades = Cantidad_autorizada::where('cantidad_autorizada.administrativa_id','=',$id)->get();
+
+        return view('autorizacion.create',compact('autorizadas','cantidades'));
     }
 
     /**
