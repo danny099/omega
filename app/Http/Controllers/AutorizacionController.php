@@ -87,7 +87,7 @@ class AutorizacionController extends Controller
             $c_autorizada['transformacion'] = null;
         }
 
-        if (iseet($request->red_mt)) {
+        if (isset($request->red_mt)) {
             $c_autorizada['red_mt'] = $request->red_mt;
         }else{
             $c_autorizada['red_mt'] = null;            
