@@ -105,10 +105,10 @@ class AutorizacionController extends Controller
             $c_autorizada['casas'] = null;            
         }
 
-        if (isset($request->apartmentos)) {
-            $c_autorizada['apartmentos'] = $request->apartmentos;            
+        if (isset($request->apartamentos)) {
+            $c_autorizada['apartamentos'] = $request->apartamentos;            
         }else{
-            $c_autorizada['apartmentos'] = null;
+            $c_autorizada['apartamentos'] = null;
         }
 
         if (isset($request->zonas)) {
