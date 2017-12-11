@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Autorizacion;
 use App\Administrativa;
+use App\Transformacion;
+use App\Distribucion;
+use App\Pu_final;
 class AutorizacionController extends Controller
 {
     /**
@@ -32,9 +35,33 @@ class AutorizacionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $cantida_t = 0;
+        $cantida_dm = 0;
+        $cantida_db = 0;
+        // $cantida_pu = 0;
+
+        $contrato = Administrativa::findOrFail($request->codigo_con);        
+        $t = Transformacion::where('transformacion.administrativa_id', '=', $contrato->id)->get();
+        $dm = Distribucion::where('distribucion.administrativa_id', '=', $contrato->id)->where('descripcion','like','%MT%')->get();
+        $db = Distribucion::where('distribucion.administrativa_id', '=', $contrato->id)->where('descripcion','like','%BT%')->get();
+        $pu_final = Pu_final::where('pu_final.administrativa_id', '=', $contrato->id)->get();
+
+        foreach ($t as $key => $trans) {
+            $cantidad_t = cantidad_t + $trans->cantidad;
+        }
+        foreach ($dm as $key => $media) {
+            $cantidad_dm = cantidad_dm + $media->cantidad;
+        }
+        foreach ($db as $key => $baja) {
+            $cantidad_db = cantidad_db + $baja->cantidad;
+        }
+        // foreach ($pu as $key => $pu_final) {
+        //     $cantidad_pu = cantidad_pu + $pu_final->cantidad;
+        // }
+        
+        return view('autorizacion.create',compact('cantidad_t','cantidad_dm','cantidad_db','pu_final'));
     }
 
     /**
