@@ -24,6 +24,7 @@
       <!-- form start -->
         <div class="row">
           <form class="" action="{{ url('autorizacion') }}" method="post">
+            {{csrf_field()}}
             <div class="col-md-8">
               <input type="hidden" name="administrativa_id" value="{{$contrato->id}}">
               <div class="col-md-12">
@@ -138,7 +139,7 @@
                   <label>Transformacion</label>
                 </div>
                 <div class="col-md-6">
-                  <input type="text" name="Transformacion" value="">
+                  <input type="text" name="transformacion" value="">
                 </div>
               </div>
               @endif
@@ -172,7 +173,7 @@
                     <label>Casas</label>
                   </div>
                   <div class="col-md-6">
-                    <input type="text" name="Casas" value="">
+                    <input type="text" name="casas" value="">
                   </div>
                 </div>
                 @endif
@@ -183,7 +184,7 @@
                     <label>Apartamentos</label>
                   </div>
                   <div class="col-md-6">
-                    <input type="text" name="Apartamentos" value="">
+                    <input type="text" name="apartamentos" value="">
                   </div>
                 </div>
                 @endif
@@ -194,7 +195,7 @@
                     <label>Zonas comunes</label>
                   </div>
                   <div class="col-md-6">
-                    <input type="text" name="Zonas" value="">
+                    <input type="text" name="zonas" value="">
                   </div>
                 </div>
                 @endif
@@ -205,7 +206,7 @@
                     <label>Locales comerciales</label>
                   </div>
                   <div class="col-md-6">
-                    <input type="text" name="Locales" value="">
+                    <input type="text" name="locales" value="">
                   </div>
                 </div>
                 @endif
@@ -216,7 +217,7 @@
                     <label>Bodegas</label>
                   </div>
                   <div class="col-md-6">
-                    <input type="text" name="Bodegas" value="">
+                    <input type="text" name="bodegas" value="">
                   </div>
                 </div>
                 @endif
