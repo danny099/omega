@@ -30,7 +30,7 @@
                 <div class="col-md-4">
                   <center><p> Autorizado por:</p></center>
                   <center><p>Jhon Jairo Escobar Segura</p></center>
-                  <input type="hidden" name="nombre_jefe" value="Jhon Jairo Escobar Segura">
+                  <input type="hidden" name="nombre_jefe" class="jefe1" value="">
                   <center><label>Jefe de poyectos</label><br></center>
                   <center><label>Fecha de autorizacion</label></center>
                 </div>
@@ -49,7 +49,7 @@
                 <div class="col-md-4">
                   <center><p> Autorizado por:</p></center>
                   <center><p>Jairo Ivan Ibarra Ruales</p></center>
-                  <input type="hidden" name="nombre_director" value="Jairo Ivan Ibarra Ruales">
+                  <input type="hidden" name="nombre_director" class"director1" value="">
                   <center><label>Director tecnico</label><br></center>
                   <center><label>Fecha de autorizacion</label></center>
                 </div>
@@ -68,7 +68,7 @@
                 <div class="col-md-4">
                   <center><p> Autorizado por:</p></center>
                   <center><p>Alejandra Vitali</p></center>
-                  <input type="hidden" name="nombre_administrativa" value="Alejandra Vitali">
+                  <input type="hidden" name="nombre_administrativa" class="administrativa1" value="">
                   <center><label>Gerente administrativa</label><br></center>
                   <center><label>Fecha de autorizacion</label></center>
                 </div>
@@ -87,7 +87,7 @@
                 <div class="col-md-4">
                   <center><p> Autorizado por:</p></center>
                   <center><p>Juan Manuel Leon S.</p></center>
-                  <input type="hidden" name="nombre_general" value="Juan Manuel Leon S.">
+                  <input type="hidden" name="nombre_general"  class="general1" value="">
                   <center><label>Gerente general</label><br></center>
                   <center><label>Fecha de autorizacion</label></center>
                 </div>
@@ -106,7 +106,7 @@
                 <div class="col-md-4">
                   <center><p> Autorizado por:</p></center>
                   <center><p>Oscar Andres Sanclemente R.</p></center>
-                  <input type="hidden" name="nombre_presidente" value="Oscar Andres Sanclemente R.">
+                  <input type="hidden" name="nombre_presidente" class="presidente1" value="">
                   <center><label>Presidente</label><br></center>
                   <center><label>Fecha de autorizacion</label></center>
                 </div>
@@ -258,27 +258,27 @@
 @section('scripts')
 <script type="text/javascript">
   $(document).on("click",".jefe",function( event ) {
-
+    $('.jefe1').val("Jhon Jairo Escobar Segura");
     $('.firma_jefe').val("firmas/Certicol.png");
   });
 
   $(document).on("click",".director",function( event ) {
-
+    $('.director1').val("Jairo Ivan Ibarra Ruales");
     $('.firma_director').val("firmas/Certicol.png");
   });
 
   $(document).on("click",".general",function( event ) {
-
     $('.firma_general').val("firmas/Certicol.png");
+    $('.general1').val("Juan Manuel Leon S.");
   });
 
   $(document).on("click",".administrativa",function( event ) {
-
+    $('.administrativa1').val("Alejandra Vitali");
     $('.firma_administrativa').val("firmas/Certicol.png");
   });
 
   $(document).on("click",".presidente",function( event ) {
-
+    $('.presidente1').val("Oscar Andres Sanclemente R.");
     $('.firma_presidente').val("firmas/Certicol.png");
   });
 </script>
