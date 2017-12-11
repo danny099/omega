@@ -242,7 +242,7 @@ class AutorizacionController extends Controller
 
         $cantidades = Cantidad_autorizada::findOrFail($idc[0]);
 
-        return view('autorizacion.create',compact('autorizadas','cantidades'));
+        return view('autorizacion.edit',compact('autorizadas','cantidades'));
     }
 
     /**
