@@ -49,13 +49,15 @@ class AutorizacionController extends Controller
         $pu_final = Pu_final::where('pu_final.administrativa_id', '=', $contrato->id)->get();
 
         foreach ($t as $key => $trans) {
-            $cantidad_t = cantidad_t + $trans->cantidad;
+
+            $cantidad_t = $cantidad_t + $trans->cantidad;
+
         }
         foreach ($dm as $key => $media) {
-            $cantidad_dm = cantidad_dm + $media->cantidad;
+            $cantidad_dm = $cantidad_dm + $media->cantidad;
         }
         foreach ($db as $key => $baja) {
-            $cantidad_db = cantidad_db + $baja->cantidad;
+            $cantidad_db = $cantidad_db + $baja->cantidad;
         }
         // foreach ($pu as $key => $pu_final) {
         //     $cantidad_pu = cantidad_pu + $pu_final->cantidad;
