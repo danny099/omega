@@ -236,7 +236,11 @@ class AutorizacionController extends Controller
     {
         $autorizados = Autorizacion::where('autorizacion.administrativa_id','=',$id)->get();
 
-        $cantidades = Cantidad_autorizada::where('cantidad_autorizada.administrativa_id','=',$id)->get();
+        foreach ($autorizados as $key => $valu) {
+            $idc[] = $valu->cantidad_autorizada_id;
+        }
+
+        $cantidades = Cantidad_autorizada::findOrFail($idc[0]);
 
         return view('autorizacion.create',compact('autorizadas','cantidades'));
     }
