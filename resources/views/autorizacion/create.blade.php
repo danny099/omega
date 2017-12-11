@@ -25,7 +25,7 @@
         <div class="row">
           <form class="" action="{{ url('autorizacion') }}" method="post">
             <div class="col-md-8">
-
+              <input type="hidden" name="administrativa_id" value="{{$contrato->id}}">
               <div class="col-md-12">
                 <div class="col-md-4">
                   <center><p> Autorizado por:</p></center>
@@ -55,7 +55,7 @@
                 </div>
                 <div class="col-md-4">
                   <center><label>Firma:</label></center>
-                  <input type="button" class="btn btn-primary director" style="background-color: #33579A; border-color:#33579A;" value="Firma">
+                  <center><input type="button" class="btn btn-primary director" style="background-color: #33579A; border-color:#33579A;" value="Firma"></center>
                   <input type="hidden" name="firma_director" class="firma_director" value="">
                 </div>
                 <div class="col-md-4">
@@ -74,7 +74,7 @@
                 </div>
                 <div class="col-md-4">
                   <center><label>Firma:</label></center>
-                  <input type="button" class="btn btn-primary administrativa" style="background-color: #33579A; border-color:#33579A;" value="Firma">
+                  <center><input type="button" class="btn btn-primary administrativa" style="background-color: #33579A; border-color:#33579A;" value="Firma"></center>
                   <input type="hidden" name="firma_administrativa" class="administrativa" value="">
                 </div>
                 <div class="col-md-4">
@@ -93,7 +93,7 @@
                 </div>
                 <div class="col-md-4">
                   <center><label>Firma:</label></center>
-                  <input type="button" class="btn btn-primary general" style="background-color: #33579A; border-color:#33579A;" value="Firma">
+                  <center><input type="button" class="btn btn-primary general" style="background-color: #33579A; border-color:#33579A;" value="Firma"></center>
                   <input type="hidden" name="firma_general" class="general" value="">
                 </div>
                 <div class="col-md-4">
@@ -112,7 +112,7 @@
                 </div>
                 <div class="col-md-4">
                   <center><label>Firma:</label></center>
-                  <input type="button" class="btn btn-primary presidente" style="background-color: #33579A; border-color:#33579A;" value="Firma">
+                  <center><input type="button" class="btn btn-primary presidente" style="background-color: #33579A; border-color:#33579A;" value="Firma"></center>
                   <input type="hidden" name="firma_presidente" class="presidente" value="">
                 </div>
                 <div class="col-md-4">
