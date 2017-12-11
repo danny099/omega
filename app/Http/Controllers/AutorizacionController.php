@@ -142,7 +142,7 @@ class AutorizacionController extends Controller
         $lastId_cant = $cant->last()->id;
         $cant_autorizada = Cantidad_autorizada::findOrFail($cant);
 
-        if (!empty($request->nombre_jefe) && !empty($request->firma_jefe) && !empty($request->obs_jefe)) {
+        // if (!empty($request->nombre_jefe) && !empty($request->firma_jefe) && !empty($request->obs_jefe)) {
             
             $autorizacion1['autorizado'] = $request->nombre_jefe;
             $autorizacion1['firma'] = $request->firma_jefe;
@@ -153,9 +153,9 @@ class AutorizacionController extends Controller
 
             Autorizacion::create($autorizacion1);
 
-        }
+        // }
 
-        if (!empty($request->nombre_director) && !empty($request->firma_director) && !empty($request->obs_director)) {
+        // if (!empty($request->nombre_director) && !empty($request->firma_director) && !empty($request->obs_director)) {
 
             $autorizacion2['autorizado'] = $request->nombre_director;
             $autorizacion2['firma'] = $request->firma_director;
@@ -166,9 +166,9 @@ class AutorizacionController extends Controller
             
             Autorizacion::create($autorizacion2);
 
-        }
+        // }
         
-        if (!empty($request->nombre_administrativa) && !empty($request->firma_administrativa) && !empty($request->obs_administrativa)) {
+        // if (!empty($request->nombre_administrativa) && !empty($request->firma_administrativa) && !empty($request->obs_administrativa)) {
 
             $autorizacion3['autorizado'] = $request->nombre_administrativa;
             $autorizacion3['firma'] = $request->firma_administrativa;
@@ -179,11 +179,11 @@ class AutorizacionController extends Controller
 
             Autorizacion::create($autorizacion3);
 
-        }
+        // }
 
         
 
-        if (!empty($request->nombre_general) && !empty($request->firma_general) && !empty($request->obs_general)) {
+        // if (!empty($request->nombre_general) && !empty($request->firma_general) && !empty($request->obs_general)) {
 
             $autorizacion4['autorizado'] = $request->nombre_general;
             $autorizacion4['firma'] = $request->firma_general;
@@ -194,10 +194,10 @@ class AutorizacionController extends Controller
 
             Autorizacion::create($autorizacion4);
 
-        }
+        // }
         
 
-        if (!empty($request->nombre_presidente) && !empty($request->firma_presidente) && !empty($request->obs_presidente)) {
+        // if (!empty($request->nombre_presidente) && !empty($request->firma_presidente) && !empty($request->obs_presidente)) {
 
             $autorizacion5['autorizado'] = $request->nombre_presidente;
             $autorizacion5['firma'] = $request->firma_presidente;
@@ -208,7 +208,7 @@ class AutorizacionController extends Controller
 
             Autorizacion::create($autorizacion5autorizado);
 
-        }
+        // }
 
         return redirect()->route('autorizacion.index');
 
