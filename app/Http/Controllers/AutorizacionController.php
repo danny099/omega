@@ -74,7 +74,7 @@ class AutorizacionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
