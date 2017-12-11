@@ -9,7 +9,7 @@ use Illuminate\Support\Arr;
 
 class Autorizacion extends Model
 {
-	  use Auditable;
+	  // use Auditable;
 	  protected $table = 'Autorizacion';
 
 	  protected $fillable = ['id','autorizado','firma','observaciones','fecha','administrativa_id','cantidad_autorizada_id'];
