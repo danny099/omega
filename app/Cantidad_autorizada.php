@@ -12,7 +12,7 @@ class Cantidad_autorizada extends Model implements AuditableContract
   use Auditable;
 
   protected $table = 'cantidad_autorizada';
-  protected $fillable = ['id','transformacion','red_mt','red_bt','casas','apartamentos','zonas','locales','puntos_fijos'];
+  protected $fillable = ['id','transformacion','red_mt','red_bt','casas','apartamentos','zonas','locales','bodegas','puntos_fijos'];
   public $timestamps = false;
 
   public function autorizadas(){
