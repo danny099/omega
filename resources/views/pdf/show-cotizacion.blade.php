@@ -842,12 +842,21 @@
             echo $refer;
           ?>
         </div>
-      @else
+      @elseif($cotizaciones->metodo == "1")
         <div class="pago">
           <p><b>7. METODOS DE PAGO</b></p>
           <br>
           <?php
             $refer = html_entity_decode($pago2->detalles);
+            echo $refer;
+          ?>
+        </div>
+      @else
+        <div class="pago">
+          <p><b>7. METODOS DE PAGO</b></p>
+          <br>
+          <?php
+            $refer = html_entity_decode($pago3->detalles);
             echo $refer;
           ?>
         </div>
