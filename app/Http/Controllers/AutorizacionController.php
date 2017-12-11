@@ -99,7 +99,7 @@ class AutorizacionController extends Controller
             $autorizacion1['firma'] = $request->firma_jefe;
             $autorizacion1['observaciones'] = $request->obs_jefe;
             $autorizacion1['fecha'] = $fecha;        
-            $autorizacion1['administrativa_id'] = '';        
+            $autorizacion1['administrativa_id'] = $request->administrativa_id;        
             $autorizacion1['cantidad_autorizada_id'] = $lastId_cant;    
 
             Autorizacion::create($autorizacion1);
@@ -112,7 +112,7 @@ class AutorizacionController extends Controller
             $autorizacion2['firma'] = $request->firma_director;
             $autorizacion2['observaciones'] = $request->obs_director;
             $autorizacion2['fecha'] = $fecha;      
-            $autorizacion2['administrativa_id'] = '';      
+            $autorizacion2['administrativa_id'] = $request->administrativa_id;      
             $autorizacion2['cantidad_autorizada_id'] = $lastId_cant;      
             
             Autorizacion::create($autorizacion2);
@@ -125,7 +125,7 @@ class AutorizacionController extends Controller
             $autorizacion3['firma'] = $request->firma_administrativa;
             $autorizacion3['observaciones'] = $request->obs_administrativa;
             $autorizacion3['fecha'] = $fecha;        
-            $autorizacion3['administrativa_id'] = '';        
+            $autorizacion3['administrativa_id'] = $request->administrativa_id;        
             $autorizacion3['cantidad_autorizada_id'] = $lastId_cant;        
 
             Autorizacion::create($autorizacion3);
@@ -140,7 +140,7 @@ class AutorizacionController extends Controller
             $autorizacion4['firma'] = $request->firma_general;
             $autorizacion4['observaciones'] = $request->obs_general;
             $autorizacion4['fecha'] = $fecha;        
-            $autorizacion4['administrativa_id'] = '';        
+            $autorizacion4['administrativa_id'] = $request->administrativa_id;        
             $autorizacion4['cantidad_autorizada_id'] = $lastId_cant;        
 
             Autorizacion::create($autorizacion4);
@@ -154,7 +154,7 @@ class AutorizacionController extends Controller
             $autorizacion5['firma'] = $request->firma_presidente;
             $autorizacion5['observaciones'] = $request->obs_presidente;
             $autorizacion5['fecha'] = $fecha;        
-            $autorizacion5['administrativa_id'] = '';        
+            $autorizacion5['administrativa_id'] = $request->administrativa_id;        
             $autorizacion5['cantidad_autorizada_id'] = $lastId_cant;        
 
             Autorizacion::create($autorizacion5autorizado);
