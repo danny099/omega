@@ -24,7 +24,7 @@ class AutorizacionController extends Controller
 
         foreach ($var as $key => $value) {
 
-            $autorizados[] = Administrativa::findOrFail($dato->administrativa_id);
+            $autorizados[] = Administrativa::findOrFail($value->administrativa_id);
 
         }
 
@@ -209,6 +209,9 @@ class AutorizacionController extends Controller
             Autorizacion::create($autorizacion5autorizado);
 
         }
+
+        return redirect()->route('autorizacion.index');
+
         
     }
 
