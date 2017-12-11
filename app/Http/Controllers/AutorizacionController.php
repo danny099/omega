@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Autorizacion;
+use App\Administrativa;
 class AutorizacionController extends Controller
 {
     /**
