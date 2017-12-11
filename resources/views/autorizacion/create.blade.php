@@ -36,6 +36,8 @@
                 </div>
                 <div class="col-md-4">
                   <center><label>Firma:</label></center>
+                  <center><button type="submit" class="btn btn-primary" style="background-color: #33579A; border-color:#33579A;">Firma</button></center>
+                  <input type="hidden" name="firma_jefe" value="{{url('firmas/firma.png')}}">
                 </div>
                 <div class="col-md-4">
                   <center><label>Observaciones:</label></center>
@@ -53,6 +55,8 @@
                 </div>
                 <div class="col-md-4">
                   <center><label>Firma:</label></center>
+                  <center><button type="submit" class="btn btn-primary" style="background-color: #33579A; border-color:#33579A;">Firma</button></center>
+                  <input type="hidden" name="firma_director" value="{{url('firmas/firma.png')}}">
                 </div>
                 <div class="col-md-4">
                   <center><label>Observaciones:</label></center>
@@ -70,6 +74,8 @@
                 </div>
                 <div class="col-md-4">
                   <center><label>Firma:</label></center>
+                  <center><button type="submit" class="btn btn-primary" style="background-color: #33579A; border-color:#33579A;">Firma</button></center>
+                  <input type="hidden" name="firma_administrativa" value="{{url('firmas/firma.png')}}">
                 </div>
                 <div class="col-md-4">
                   <center><label>Observaciones:</label></center>
@@ -87,6 +93,8 @@
                 </div>
                 <div class="col-md-4">
                   <center><label>Firma:</label></center>
+                  <center><button type="submit" class="btn btn-primary" style="background-color: #33579A; border-color:#33579A;">Firma</button></center>
+                  <input type="hidden" name="firma_general" value="{{url('firmas/firma.png')}}">
                 </div>
                 <div class="col-md-4">
                   <center><label>Observaciones:</label></center>
@@ -104,6 +112,8 @@
                 </div>
                 <div class="col-md-4">
                   <center><label>Firma:</label></center>
+                  <center><button type="submit" class="btn btn-primary" style="background-color: #33579A; border-color:#33579A;">Firma</button></center>
+                  <input type="hidden" name="firma_presidente" value="{{url('firmas/firma.png')}}">
                 </div>
                 <div class="col-md-4">
                   <center><label>Observaciones:</label></center>
