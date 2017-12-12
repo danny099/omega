@@ -110,8 +110,15 @@ class NcController extends Controller
         foreach ($descripciones as $key => $value) {
 
             $registros[] = Nc::where('nc.descripcion_id','=',$value->id)->get();
+            
         }
-     
+        for ($i=0; $i < count($registros) ; $i++) { 
+
+          
+        }
+        
+        dd($registros[1]);
+        die();
 
         return view('ncObra.edit',compact('descripciones','registros'));
         
