@@ -9,7 +9,7 @@
   <div class="container" style=" margin-left: 0px; margin-right: 0px; width:100%">
     <div class="box box-primary">
       <div class="box-header with-border">
-        <h3 >Crear reporte de no conformidades</h3>
+        <h3 >Estado de la No conformidad (A : Abierta  C : Cerrada   N/A : No Aplica) </h3>
       </div>
       @if(Session::has('message'))
         <div id="alert">
