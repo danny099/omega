@@ -23,7 +23,8 @@
       <!-- /.box-header -->
       <!-- form start -->
         <div class="row">
-          <form class="" action="" method="post">
+          <form class="" action="{{ url('ncObra')}}" method="post">
+            <input type="hidden" name="codigo_con" value="{{$contrato->id}}">
             <div class="col-md-12">
               <div class="col-md-12">
                 <input type="button" id="añadirFila" class="btn btn-primary pull-right " style="background-color: #33579A; border-color:#33579A;" value="agregar fila">

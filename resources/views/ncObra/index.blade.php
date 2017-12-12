@@ -3,7 +3,7 @@
 @section('contenido')
 <ol class="breadcrumb">
   <li><a href="{{ url('inicio') }}">Inicio</a></li>
-  <li class="active">Informe tecnico detallado</li>
+  <li class="active">Reporte de no conformidades</li>
 </ol>
       <div class="container">
         @if(Session::has('message'))
@@ -18,14 +18,14 @@
         <div class="row">
           <div class="col-md-12 well">
             <div class="box-body">
-              <a class="btn btn-primary" data-toggle="modal" href="#myModal" style="background-color: #33579A; border-color:#33579A;"><i class="fa fa-user-plus"></i> Crear informe tecnico detallado</a>
+              <a class="btn btn-primary" data-toggle="modal" href="#myModal" style="background-color: #33579A; border-color:#33579A;"><i class="fa fa-user-plus"></i> Crear reporte de no conformidades</a>
               <!-- inicio modal 5 -->
               <div class="modal fade" id="myModal" role="dialog">
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
                       <button type="button" class="close" data-dismiss="modal">&times;</button>
-                      <h4 class="modal-title">Crear informe tecnico detallado</h4>
+                      <h4 class="modal-title">Crear reporte de no conformidades</h4>
                     </div>
                     <div class="modal-body">
                       <form action="{{ url('ncObra/create')}}" method="post">
@@ -68,7 +68,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  @if(empty($criterios ))
+                  @if(empty($descripciones ))
                     <tr>
                       <td></td>
                       <td></td>
@@ -77,8 +77,8 @@
                   @else
                   @foreach($descripciones as $descripcion)
                       <tr>
-                        <td>prueba</td>
-                        <td>prueba</td>
+                        <td>{{$descripion->codigo_proyecto}}</td>
+                        <td>{{$descripcion->nombre_proyecto}}</td>
                         <td>
                           <a href="{{ url('ncObra/edit') }}/{{ $descripcion->id }}"><i class="glyphicon glyphicon-pencil"></i></a>
                           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
