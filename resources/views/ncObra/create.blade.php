@@ -24,6 +24,7 @@
       <!-- form start -->
         <div class="row">
           <form class="" action="{{ url('ncObra')}}" method="post">
+            {{ csrf_field() }}
             <input type="hidden" name="codigo_con" value="{{$contrato->id}}">
             <div class="col-md-12">
               <div class="col-md-12">
