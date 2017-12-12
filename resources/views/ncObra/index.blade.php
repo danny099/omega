@@ -28,7 +28,7 @@
                       <h4 class="modal-title">Crear reporte de no conformidades </h4>
                     </div>
                     <div class="modal-body">
-                      <form action="{{ url('ncObra/create')}}" method="post">
+                      <form action="{{ url('ncObra/create')}}" method="get">
                         {{ csrf_field() }}
                         <div class="row">
                           <div class="col-md-12">
