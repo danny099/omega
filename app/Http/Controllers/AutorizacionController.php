@@ -9,6 +9,8 @@ use App\Transformacion;
 use App\Distribucion;
 use App\Pu_final;
 use App\Cantidad_autorizada;
+use Session;
+
 class AutorizacionController extends Controller
 {
     /**
@@ -76,7 +78,7 @@ class AutorizacionController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-
+       
         $now = new \DateTime();
         $fecha = $now->format('Y-m-d');
 
@@ -135,7 +137,6 @@ class AutorizacionController extends Controller
             $c_autorizada['puntos_fijos'] = null;
         }
         
-
         Cantidad_autorizada::create($c_autorizada);
         
         $cant = Cantidad_autorizada::all();
@@ -233,16 +234,21 @@ class AutorizacionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
+    {   
+        $id_contrato = $id;
         $autorizados = Autorizacion::where('autorizacion.administrativa_id','=',$id)->get();
-
+        
         foreach ($autorizados as $key => $valu) {
             $idc[] = $valu->cantidad_autorizada_id;
         }
 
-        $cantidades = Cantidad_autorizada::findOrFail($idc[0]);
+        $nombres = array('Jhon Jairo Escobar Segura','Jairo Ivan Ibarra Ruales','Alejandra Vitali','Juan Manuel Leon S.','Oscar Andres Sanclemente R');
 
-        return view('autorizacion.edit',compact('autorizados','cantidades'));
+        $cargos = array('Jefe de poyectos','Director tecnico','Gerente administrativa','Gerente general','Presidente');
+
+        $cantidades = Cantidad_autorizada::findOrFail($idc[0]);
+        
+        return view('autorizacion.edit',compact('autorizados','cantidades','nombres','cargos','id_contrato'));
     }
 
     /**
@@ -252,9 +258,91 @@ class AutorizacionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $now = new \DateTime();
+        $fecha = $now->format('Y-m-d');
+
+        $input = $request->all();        
+        $id_auto = $request->id_auto;
+        $nombre = $request->nombre;
+        $firma = $request->firma;
+        $observaciones = $request->observaciones;
+        for ($i=0; $i < count($id_auto); $i++) { 
+            
+            $registro1 = Autorizacion::findOrFail($id_auto[$i]);
+
+            $datos['autorizado'] = $nombre[$i];
+            $datos['firma'] = $firma[$i];
+            $datos['observaciones'] = $observaciones[$i];
+            $datos['fecha'] = $fecha;
+
+            $registro1->update($datos);
+        }
+
+        $cantidad = Cantidad_autorizada::findOrFail($request->id_cantidades);
+
+        if (isset($request->transformacion)) {
+            $datos2['transformacion'] = $request->transformacion;
+            # code...
+        }else{
+            $datos2['transformacion'] = null;
+        }
+
+        if (isset($request->red_mt)) {
+            $datos2['red_mt'] = $request->red_mt;
+        }else{
+            $datos2['red_mt'] = null;            
+        }
+
+        if (isset($request->red_bt)) {
+            $datos2['red_bt'] = $request->red_bt;
+        }else{
+            $datos2['red_bt'] = null;
+        }
+
+        if (isset($request->casas)) {
+            $datos2['casas'] = $request->casas;
+        }else{
+            $datos2['casas'] = null;            
+        }
+
+        if (isset($request->apartamentos)) {
+            $datos2['apartamentos'] = $request->apartamentos;            
+        }else{
+            $datos2['apartamentos'] = null;
+        }
+
+        if (isset($request->zonas)) {
+            $datos2['zonas'] = $request->zonas;
+        }else{
+            $datos2['zonas'] = null;
+        }
+
+        if (isset($request->locales)) {
+            $datos2['locales'] = $request->locales;
+        }else{
+            $datos2['locales'] = null;
+        }
+
+        if (isset($request->bodegas)) {
+            $datos2['bodegas'] = $request->bodegas;
+        }else{
+            $datos2['bodegas'] = null;
+        }
+
+        if (isset($request->puntos_fijos)) {
+            $datos2['puntos_fijos'] = $request->puntos_fijos;
+        }else{
+            $datos2['puntos_fijos'] = null;
+        }
+
+        $cantidad->update($datos2);
+
+        Session::flash('message', 'Autorizacion editada');
+        Session::flash('class', 'success');
+        return redirect('autorizacion');
+       
     }
 
     /**
@@ -265,6 +353,17 @@ class AutorizacionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $autorizados = Autorizacion::where('autorizacion.administrativa_id','=',$id)->get();
+
+        foreach ($autorizados as $key => $auto) {
+            
+            $registro = Autorizacion::findOrFail($auto->id);
+
+            $registro->delete();
+        }
+
+        Session::flash('message', 'Autorizacion eliminado');
+        Session::flash('class', 'danger');
+        return redirect('autorizacion');
     }
 }

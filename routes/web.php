@@ -76,6 +76,10 @@ Route::group(['middleware' => 'auth'],function(){
 		Route::post('editarpu','Pu_finalController@editar');
 		Route::get('deletepu/{id}','Pu_finalController@destroy');
 		Route::resource('cotizaciones','CotizacionController');
+
+		Route::resource('autorizacion','AutorizacionController');
+		Route::post('autorizacion/update','AutorizacionController@update');
+		Route::get('delete_autoriza/{id}','AutorizacionController@destroy');
 		
 
 	});
@@ -221,6 +225,8 @@ Route::group(['middleware' => 'auth'],function(){
 
 
 	Route::resource('autorizacion','AutorizacionController');
+	Route::post('autorizacion/update','AutorizacionController@update');
+	Route::get('delete_autoriza/{id}','AutorizacionController@destroy');
 
 
 
