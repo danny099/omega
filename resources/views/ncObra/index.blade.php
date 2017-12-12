@@ -80,7 +80,7 @@
                         <td>{{$descripcion->codigo_proyecto}}</td>
                         <td>{{$descripcion->nombre_proyecto}}</td>
                         <td>
-                          <a href="{{ url('ncObra/edit') }}/{{ $descripcion->id }}"><i class="glyphicon glyphicon-pencil"></i></a>
+                          <a href="{{ url('ncObra') }}/{{ $descripcion->id }}/edit"><i class="glyphicon glyphicon-pencil"></i></a>
                           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                           <a href="{{ url('pdfNc') }}/{{ $descripcion->id }}" target="_blank" data-toggle="model" data-target=""><i class="glyphicon glyphicon-eye-open" style="color: #33579A"></i></a>
                           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
