@@ -77,7 +77,7 @@
                   @else
                   @foreach($descripciones as $descripcion)
                       <tr>
-                        <td>{{$descripion->codigo_proyecto}}</td>
+                        <td>{{$descripcion->codigo_proyecto}}</td>
                         <td>{{$descripcion->nombre_proyecto}}</td>
                         <td>
                           <a href="{{ url('ncObra/edit') }}/{{ $descripcion->id }}"><i class="glyphicon glyphicon-pencil"></i></a>

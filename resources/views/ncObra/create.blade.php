@@ -43,6 +43,7 @@
                   <div class="form-group">
                     <center><label >NC1</label></center>
                       <select class="form-control" name="nc[1][]">
+                        <option></option>
                         <option>A</option>
                         <option>C</option>
                         <option>N/A</option>
@@ -92,6 +93,7 @@ $(function() {
                 '<center><label >NC1</label></center>'+' '+
                 '<input type="hidden" class="numero" value="'+count+'">'+' '+
                 '<select class="form-control" name="nc['+count+'][]" >'+' '+
+                  '<option></option>'+' '+
                   '<option>A</option>'+' '+
                   '<option>C</option>'+' '+
                   '<option>N/A</option>'+' '+
@@ -117,6 +119,7 @@ $(function() {
             '<div class="form-group">'+' '+
               '<center><label >NC'+count3+'</label></center>'+' '+
               '<select class="form-control" name="nc['+numero+'][]">'+' '+
+                '<option></option>'+' '+
                 '<option>A</option>'+' '+
                 '<option>C</option>'+' '+
                 '<option>N/A</option>'+' '+
@@ -146,6 +149,7 @@ $(function() {
         '<div class="form-group">'+' '+
           '<center><label >NC'+count+'</label></center>'+' '+
           '<select class="form-control" name="nc[1][]">'+' '+
+            '<option></option>'+' '+
             '<option>A</option>'+' '+
             '<option>C</option>'+' '+
             '<option>N/A</option>'+' '+
