@@ -24,7 +24,7 @@ class NcController extends Controller
         }
 
 
-        return view('autorizacion.index',compact('descripciones','contratos'));
+        return view('ncObra.index',compact('descripciones','contratos'));
     }
 
     /**
