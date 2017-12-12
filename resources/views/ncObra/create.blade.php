@@ -23,7 +23,7 @@
       <!-- /.box-header -->
       <!-- form start -->
         <div class="row">
-          <form class="" action="index.html" method="post">
+          <form class="" action="" method="post">
             <div class="col-md-12">
               <div class="col-md-12">
                 <input type="button" id="añadirFila" class="btn btn-primary pull-right " style="background-color: #33579A; border-color:#33579A;" value="agregar fila">
@@ -39,7 +39,11 @@
                 <div class="col-md-1" id="nc1">
                   <div class="form-group">
                     <center><label >NC1</label></center>
-                    <input type="text" class="form-control" name="" value="">
+                      <select class="form-control">
+                        <option>A</option>
+                        <option>C</option>
+                        <option>N/A</option>
+                      </select>
                   </div>
                 </div>
                 <div class="col-md-1">
@@ -47,7 +51,9 @@
                 </div>
               </div>
             </div>
-
+            <div class="box-footer" style="width:95%; margin-left:40px; margin-bottom:15px">
+              <button type="submit" class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;">Enviar</button>
+            </div>
           </form>
         </div>
         <!-- /.box-body -->
@@ -80,7 +86,11 @@ $(function() {
             '<div class="col-md-1" id="nc1">'+' '+
               '<div class="form-group">'+' '+
                 '<center><label >NC1</label></center>'+' '+
-                '<input type="text" class="form-control" name="" value="">'+' '+
+                '<select class="form-control" style="width: 75px;">'+' '+
+                  '<option>A</option>'+' '+
+                  '<option>C</option>'+' '+
+                  '<option>N/A</option>'+' '+
+                '</select>'+' '+
               '</div>'+' '+
             '</div>'+' '+
             '<div class="col-md-1">'+' '+
@@ -100,7 +110,11 @@ $(function() {
           '<div class="col-md-1" id="nc'+count3+'">'+' '+
             '<div class="form-group">'+' '+
               '<center><label >NC'+count3+'</label></center>'+' '+
-              '<input type="text" class="form-control" name="" value="">'+' '+
+              '<select class="form-control"style="width: 75px;">'+' '+
+                '<option>A</option>'+' '+
+                '<option>C</option>'+' '+
+                '<option>N/A</option>'+' '+
+              '</select>'+' '+
             '</div>'+' '+
           '</div>'
         );
@@ -124,7 +138,11 @@ $(function() {
       '<div class="col-md-1" id="nc'+count+'">'+' '+
         '<div class="form-group">'+' '+
           '<center><label >NC'+count+'</label></center>'+' '+
-          '<input type="text" class="form-control" name="" value="">'+' '+
+          '<select class="form-control"style="width: 75px;">'+' '+
+            '<option>A</option>'+' '+
+            '<option>C</option>'+' '+
+            '<option>N/A</option>'+' '+
+          '</select>'+' '+
         '</div>'+' '+
       '</div>'
     );
