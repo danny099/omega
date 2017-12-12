@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Administrativa;
 use App\Descripcion;
+use App\Nc;
+use Session;
+
 class NcController extends Controller
 {
     /**
@@ -47,8 +50,39 @@ class NcController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-        dd($input);
-        die();
+        // dd($input);
+        // die();
+        $now = new \DateTime();
+        $fecha = $now->format('Y-m-d');
+
+        $conta = count($request->nc);
+
+        for ($i=1; $i <= $conta; $i++) { 
+            
+            $descripcion['descripcion'] = $request->descripcion[$i];
+            $descripcion['fecha'] = $fecha;
+            $descripcion['administrativa_id'] = $request->codigo_con;
+
+            Descripcion::create($descripcion);
+          
+
+            $des = Descripcion::all();
+            $lastId_des = $des->last()->id;
+
+            for ($x=0; $x < count($request->nc[$i]); $x++) { 
+                
+                $ncs['nc'] = $request->nc[$i][$x];
+                $ncs['descripcion_id'] = $lastId_des;
+
+                Nc::create($ncs);
+                
+            }
+        }
+
+        Session::flash('message', 'No conformidad creada');
+        Session::flash('class', 'success');
+        return redirect('ncObra');
+
     }
 
     /**
