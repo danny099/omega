@@ -35,7 +35,7 @@
               <div class="col-md-3">
                 <div class="col-md-12">
                   <p style="margin-top: 32px;">Informe de No conformidades de Obra N.1</p>
-                  <input type="hidden" name="" value="Informe de No conformidades de Obra N.1">
+                  <input type="hidden" name="descripcion[]" value="Informe de No conformidades de Obra N.1">
                 </div>
               </div>
               <div class="col-md-9">
@@ -83,7 +83,7 @@ $(function() {
           '<div class="col-md-3">'+' '+
             '<div class="col-md-12">'+' '+
               '<p style="margin-top: 32px;">Informe de No conformidades de Obra N.'+count+'</p>'+' '+
-              '<input type="hidden" name="" value="Informe de No conformidades de Obra N.'+count+'">'+' '+
+              '<input type="hidden" name="descripcion[]" value="Informe de No conformidades de Obra N.'+count+'">'+' '+
             '</div>'+' '+
           '</div>'+' '+
           '<div class="col-md-9">'+' '+
