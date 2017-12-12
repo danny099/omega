@@ -170,10 +170,20 @@ class PdfController extends Controller
         $noconformidades = Nc::where('nc.descripcion_id','=',$descripcion->id);
 
         $pdf = App::make('dompdf.wrapper');
+
         $pdf->loadView('pdf.show-ncObra',compact('descripcion','noconformidades'));
         return $pdf->stream('No conformidades.pdf');
 
         // return view('ncObra.edit',compact('noconformidades','descripcion'));
 
+    }
+
+    public function pdfAutorizacion(){
+
+
+      $pdf = App::make('dompdf.wrapper');
+      $pdf->loadView('pdf.show-autorizacion');
+      $pdf->setPaper('a4','landscape');  
+      return $pdf->stream('autorizacion.pdf');
     }
 }

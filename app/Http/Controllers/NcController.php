@@ -13,8 +13,17 @@ class NcController extends Controller
      */
     public function index()
     {
-        $nc = Noconformidad::distinct()->get(['administrativa_id']);        
-        return view('ncObra.index');
+        $contratos = Administrativa::all();
+        $des = Descripcion::distinct()->get(['administrativa_id']);
+
+        foreach ($des $key => $value) {
+
+            $descripciones[] = Administrativa::findOrFail($value->administrativa_id);
+
+        }
+
+
+        return view('autorizacion.index',compact('descripciones','contratos'));
     }
 
     /**
