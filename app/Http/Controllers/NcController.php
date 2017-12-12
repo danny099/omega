@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Administrativa;
+use App\Descripcion;
 class NcController extends Controller
 {
     /**
@@ -16,7 +17,7 @@ class NcController extends Controller
         $contratos = Administrativa::all();
         $des = Descripcion::distinct()->get(['administrativa_id']);
 
-        foreach ($des $key => $value) {
+        foreach ($des as $key => $value) {
 
             $descripciones[] = Administrativa::findOrFail($value->administrativa_id);
 
@@ -31,9 +32,9 @@ class NcController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id)
+    public function create(Request $request)
     {
-        $contrato = Administrativa::findOrFail($id);
+        $contrato = Administrativa::findOrFail($request->codigo_con);
         return view('ncObra.create',compact('contrato'));    
     }
 
@@ -45,7 +46,9 @@ class NcController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $input = $request->all();
+        dd($input);
+        die();
     }
 
     /**

@@ -216,19 +216,21 @@ Route::group(['middleware' => 'auth'],function(){
 	Route::get('pdfCriterio/{id}/{tipo}','PdfController@pdfTecnica');
 
 	
-	Route::get('ncObra','DescripcionController@index');
-	Route::post('ncObra/create','DescripcionController@create');	
-	Route::post('ncObra/store','DescripcionController@store');
-	Route::get('ncObra/edit/{id}');
-	Route::post('ncObra/update','DescripcionController@update');
+	// Route::get('ncObra','DescripcionController@index');
+	// Route::post('ncObra/create','DescripcionController@create');	
+	// Route::post('ncObra/store','DescripcionController@store');
+	// Route::get('ncObra/edit/{id}');
+	// Route::post('ncObra/update','DescripcionController@update');
+	Route::resource('ncObra','NcController');
 	Route::get('pdfNc/{id}','PdfController@pdfNc');
 
 
 	Route::resource('autorizacion','AutorizacionController');
 	Route::post('autorizacion/update','AutorizacionController@update');
 	Route::get('delete_autoriza/{id}','AutorizacionController@destroy');
+	Route::get('pdfAutorizacion','PdfController@pdfAutorizacion');
 
-
+	
 
 	});
 
