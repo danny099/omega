@@ -3,13 +3,13 @@
 @section('contenido')
   <ol class="breadcrumb">
     <li><a href="{{ url('inicio') }}">Inicio</a></li>
-    <li><a href="{{ url('criterio/disDeta') }}">Disello detallado</a></li>
-    <li class="active">Editar Disello detallado</li>
+    <li><a href="{{ url('criterio/disDeta') }}">Autorización de dictámenes</a></li>
+    <li class="active">Editar autorización de dictámenes</li>
   </ol>
   <div class="container" style=" margin-left: 0px; margin-right: 0px; width:100%">
     <div class="box box-primary">
       <div class="box-header with-border">
-        <h3 >Editar disello detallado</h3>
+        <h3 >Crear autorización de dictámenes</h3>
       </div>
       @if(Session::has('message'))
         <div id="alert">
@@ -23,68 +23,227 @@
       <!-- /.box-header -->
       <!-- form start -->
         <div class="row">
-          <form class="" action="{{ url('criterio/update') }}" method="post">
-            {{ csrf_field() }}
-            <div class="col-md-12">
-              <div class="col-md-6">
-                <label>Items</label>
-
-              </div>
-              <div class="col-md-1">
-                <label>Aplica</label>
-
-              </div>
-              <div class="col-md-1">
-                <label >Cumple</label>
-
-              </div>
-              <div class="col-md-4" >
-                <label >Observaciones</label>
-              </div>
-            </div>
-
-            @foreach($criterios as $key=>$criterio)
-              <div class="col-md-12 well" style="width:95%; margin-left:30px">
-                <div class="col-md-6">
-                  <p>{{$criterio->items->item}}</p>
-
+          <form class="" action="{{ url('autorizacion') }}" method="post">
+            {{csrf_field()}}
+            @foreach($autorizados as $autorizada)
+              <div class="col-md-8">
+                <input type="hidden" name="administrativa_id" value="{{$autorizada->administrativa_id}}">
+                <div class="col-md-12">
+                  <div class="col-md-4">
+                    <center><p> Autorizado por:</p></center>
+                    <center><p>Jhon Jairo Escobar Segura</p></center>
+                    <input type="hidden" name="nombre_jefe" class="jefe1" value="{{$autorizada->autorizado}}">
+                    <center><label>Jefe de poyectos</label><br></center>
+                    <center><label>Fecha de autorizacion</label></center>
+                  </div>
+                  <div class="col-md-4">
+                    <center><label>Firma:</label></center>
+                    <center> <input type="button" class="btn btn-primary jefe" style="background-color: #33579A; border-color:#33579A;" value="Firma"></center>
+                    <input type="hidden" name="firma_jefe" class="firma_jefe" value="">
+                  </div>
+                  <div class="col-md-4">
+                    <center><label>Observaciones:</label></center>
+                    <textarea class="form-control" rows="3" class="jefe" name="obs_jefe">{{$autorizada->observaciones}}</textarea>
+                  </div>
                 </div>
-                <div class="col-md-1">
-                  @if($criterio->aplica == "Si")
-                    <label class="radio-inline"><input type="radio" name="aplica[][{{$key}}]" value="Si" checked="checked" required>Si</label>
-                    <label class="radio-inline"><input type="radio" name="aplica[][{{$key}}]" value="No" >No</label>
-                  @elseif($criterio->aplica == "No")
-                    <label class="radio-inline"><input type="radio" name="aplica[][{{$key}}]" value="Si"  required>Si</label>
-                    <label class="radio-inline"><input type="radio" name="aplica[][{{$key}}]" value="No" checked="checked" >No</label>
-                  @else
-                    <label class="radio-inline"><input type="radio" name="aplica[][{{$key}}]" value="Si"  required>Si</label>
-                    <label class="radio-inline"><input type="radio" name="aplica[][{{$key}}]" value="No" >No</label>
-                  @endif
 
+                <div class="col-md-12">
+                  <div class="col-md-4">
+                    <center><p> Autorizado por:</p></center>
+                    <center><p>Jairo Ivan Ibarra Ruales</p></center>
+                    <input type="hidden" name="nombre_director" class"director1" value="{{$autorizada->autorizado}}">
+                    <center><label>Director tecnico</label><br></center>
+                    <center><label>Fecha de autorizacion</label></center>
+                  </div>
+                  <div class="col-md-4">
+                    <center><label>Firma:</label></center>
+                    <center><input type="button" class="btn btn-primary director" style="background-color: #33579A; border-color:#33579A;" value="Firma"></center>
+                    <input type="hidden" name="firma_director" class="firma_director" value="">
+                  </div>
+                  <div class="col-md-4">
+                    <center><label>Observaciones:</label></center>
+                    <textarea class="form-control" rows="3"  class"director" name="obs_director">{{$autorizada->observaciones}}</textarea>
+                  </div>
                 </div>
-                <div class="col-md-1">
-                  @if($criterio->cumple == "Si")
-                    <label class="radio-inline"><input type="radio" name="cumple[][{{$key}}]" value="Si" checked="checked" required>Si</label>
-                    <label class="radio-inline"><input type="radio" name="cumple[][{{$key}}]" value="No">No</label>
-                  @elseif($criterio->cumple == "No")
-                    <label class="radio-inline"><input type="radio" name="cumple[][{{$key}}]" value="Si" required>Si</label>
-                    <label class="radio-inline"><input type="radio" name="cumple[][{{$key}}]" value="No" checked="checked">No</label>
-                  @else
-                    <label class="radio-inline"><input type="radio" name="cumple[][{{$key}}]" value="Si" required>Si</label>
-                    <label class="radio-inline"><input type="radio" name="cumple[][{{$key}}]" value="No">No</label>
-                  @endif
+
+                <div class="col-md-12">
+                  <div class="col-md-4">
+                    <center><p> Autorizado por:</p></center>
+                    <center><p>Alejandra Vitali</p></center>
+                    <input type="hidden" name="nombre_administrativa" class="administrativa1" value="{{$autorizada->autorizado}}">
+                    <center><label>Gerente administrativa</label><br></center>
+                    <center><label>Fecha de autorizacion</label></center>
+                  </div>
+                  <div class="col-md-4">
+                    <center><label>Firma:</label></center>
+                    <center><input type="button" class="btn btn-primary administrativa" style="background-color: #33579A; border-color:#33579A;" value="Firma"></center>
+                    <input type="hidden" name="firma_administrativa" class="administrativa" value="">
+                  </div>
+                  <div class="col-md-4">
+                    <center><label>Observaciones:</label></center>
+                    <textarea class="form-control" rows="3"  name="obs_administrativa">{{$autorizada->observaciones}}</textarea>
+                  </div>
                 </div>
-                <div class="col-md-4" >
-                  <input type="text" class="form-control" name="observaciones[][{{$key}}]" value="{{$criterio->observaciones}}">
 
-                  <input type="hidden" name="id_criterio[]" value="{{$criterio->id}}">
-                  <input type="hidden" name="tipo[]" value="{{$criterio->tipo}}">
+                <div class="col-md-12">
+                  <div class="col-md-4">
+                    <center><p> Autorizado por:</p></center>
+                    <center><p>Juan Manuel Leon S.</p></center>
+                    <input type="hidden" name="nombre_general"  class="general1" value="{{$autorizada->autorizado}}">
+                    <center><label>Gerente general</label><br></center>
+                    <center><label>Fecha de autorizacion</label></center>
+                  </div>
+                  <div class="col-md-4">
+                    <center><label>Firma:</label></center>
+                    <center><input type="button" class="btn btn-primary general" style="background-color: #33579A; border-color:#33579A;" value="Firma"></center>
+                    <input type="hidden" name="firma_general" class="general" value="">
+                  </div>
+                  <div class="col-md-4">
+                    <center><label>Observaciones:</label></center>
+                    <textarea class="form-control" rows="3"  name="obs_general">{{$autorizada->observaciones}}</textarea>
+                  </div>
+                </div>
 
+                <div class="col-md-12">
+                  <div class="col-md-4">
+                    <center><p> Autorizado por:</p></center>
+                    <center><p>Oscar Andres Sanclemente R.</p></center>
+                    <input type="hidden" name="nombre_presidente" class="presidente1" value="{{$autorizada->autorizado}}">
+                    <center><label>Presidente</label><br></center>
+                    <center><label>Fecha de autorizacion</label></center>
+                  </div>
+                  <div class="col-md-4">
+                    <center><label>Firma:</label></center>
+                    <center><input type="button" class="btn btn-primary presidente" style="background-color: #33579A; border-color:#33579A;" value="Firma"></center>
+                    <input type="hidden" name="firma_presidente" class="presidente" value="">
+                  </div>
+                  <div class="col-md-4">
+                    <center><label>Observaciones:</label></center>
+                    <textarea class="form-control" rows="3"  name="obs_presidente">{{$autorizada->observaciones}}</textarea>
+                  </div>
                 </div>
               </div>
+
             @endforeach
-            <div class="box-footer" style="width:95%; margin-left:40px; margin-bottom:15px">
-              <button type="submit" class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;">Enviar</button>
+
+            <div class="col-md-4">
+              <div class="col-md-12">
+                <div class="col-md-6">
+                  <center><label>Proceso</label></center>
+                </div>
+                <div class="col-md-6">
+                  <center><label>Cant autorizada</label></center>
+                </div>
+              </div>
+
+
+              <div class="col-md-12">
+                <div class="col-md-6">
+                  <label>Transformacion</label>
+                </div>
+                <div class="col-md-6">
+                  <input type="text" name="transformacion" value="">
+                </div>
+              </div>
+
+
+
+              <div class="col-md-12">
+                <div class="col-md-6">
+                  <label>Red MT (m)</label>
+                </div>
+                <div class="col-md-6">
+                  <input type="text" name="red_mt" value="">
+                </div>
+              </div>
+
+
+
+              <div class="col-md-12">
+                <div class="col-md-6">
+                  <label>Red BT (m)</label>
+                </div>
+                <div class="col-md-6">
+                  <input type="text" name="red_bt" value="">
+                </div>
+              </div>
+
+
+
+
+                <div class="col-md-12">
+                  <div class="col-md-6">
+                    <label>Casas</label>
+                  </div>
+                  <div class="col-md-6">
+                    <input type="text" name="casas" value="">
+                  </div>
+                </div>
+
+
+
+                <div class="col-md-12">
+                  <div class="col-md-6">
+                    <label>Apartamentos</label>
+                  </div>
+                  <div class="col-md-6">
+                    <input type="text" name="apartamentos" value="">
+                  </div>
+                </div>
+
+
+
+                <div class="col-md-12">
+                  <div class="col-md-6">
+                    <label>Zonas comunes</label>
+                  </div>
+                  <div class="col-md-6">
+                    <input type="text" name="zonas" value="">
+                  </div>
+                </div>
+
+
+
+                <div class="col-md-12">
+                  <div class="col-md-6">
+                    <label>Locales comerciales</label>
+                  </div>
+                  <div class="col-md-6">
+                    <input type="text" name="locales" value="">
+                  </div>
+                </div>
+
+
+
+                <div class="col-md-12">
+                  <div class="col-md-6">
+                    <label>Bodegas</label>
+                  </div>
+                  <div class="col-md-6">
+                    <input type="text" name="bodegas" value="">
+                  </div>
+                </div>
+
+
+
+                <div class="col-md-12">
+                  <div class="col-md-6">
+                    <label>Puntos fijos</label>
+                  </div>
+                  <div class="col-md-6">
+                    <input type="text" name="puntos_fijos" value="">
+                  </div>
+
+
+              <div class="col-md-12">
+                <div class="col-md-6">
+
+                </div>
+                <div class="col-md-6">
+                  <button type="submit" class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;">Enviar</button>
+                </div>
+              </div>
+
             </div>
           </form>
         </div>
@@ -92,12 +251,38 @@
         <!-- /.box-body -->
         <br>
 
+      {!! Form::close() !!}
     </div>
   </div>
 
 @endsection
 
 @section('scripts')
+<script type="text/javascript">
+  $(document).on("click",".jefe",function( event ) {
+    $('.jefe1').val("Jhon Jairo Escobar Segura");
+    $('.firma_jefe').val("firmas/Certicol.png");
+  });
 
+  $(document).on("click",".director",function( event ) {
+    $('.director1').val("Jairo Ivan Ibarra Ruales");
+    $('.firma_director').val("firmas/Certicol.png");
+  });
+
+  $(document).on("click",".general",function( event ) {
+    $('.firma_general').val("firmas/Certicol.png");
+    $('.general1').val("Juan Manuel Leon S.");
+  });
+
+  $(document).on("click",".administrativa",function( event ) {
+    $('.administrativa1').val("Alejandra Vitali");
+    $('.firma_administrativa').val("firmas/Certicol.png");
+  });
+
+  $(document).on("click",".presidente",function( event ) {
+    $('.presidente1').val("Oscar Andres Sanclemente R.");
+    $('.firma_presidente').val("firmas/Certicol.png");
+  });
+</script>
 
 @endsection
