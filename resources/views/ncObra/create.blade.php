@@ -25,22 +25,26 @@
         <div class="row">
           <form class="" action="index.html" method="post">
             <div class="col-md-12">
-              <div class="col-md-3">
-                <p>Informe de No conformidades de Obra N.1</p>
+              <div class="col-md-12">
+                <input type="button" id="añadirFila" class="btn btn-primary pull-right " style="background-color: #33579A; border-color:#33579A;" value="agregar fila">
               </div>
-              <div class="col-md-1">
-                <div class="form-group">
-                  <center><label >NC1</label></center>
-                  <input type="text" name="" value="">
+            </div>
+            <div class="col-md-12" id="fila1">
+              <div class="col-md-3">
+                <div class="col-md-12">
+                  <p style="margin-top: 32px;">Informe de No conformidades de Obra N.1</p>
                 </div>
               </div>
-              <div class="col-md-1">
-                <button type="button" class="btn btn-primary " style="background-color: #33579A; border-color:#33579A;" name="button">agregar fila</button>
-              </div>
-              <div class="col-md-1">
-                <button type="button" class="btn btn-primary " style="background-color: #33579A; border-color:#33579A;" name="button">agregar NC</button>
-
-
+              <div class="col-md-9">
+                <div class="col-md-1" id="nc1">
+                  <div class="form-group">
+                    <center><label >NC1</label></center>
+                    <input type="text" class="form-control" name="" value="">
+                  </div>
+                </div>
+                <div class="col-md-1">
+                  <input type="button" id="añadirNC" class="btn btn-primary " style="background-color: #33579A; border-color:#33579A;margin-top: 26px;" value="agregar NC">
+                </div>
               </div>
             </div>
 
@@ -57,5 +61,81 @@
 
 @section('scripts')
 
+<script type="text/javascript">
+
+$(function() {
+  var count = 1;
+  var count2 = 0;
+   $(document).on("click","#añadirFila",function( event ) {
+    count++;
+    count2++;
+    $('#fila'+count2+'').after(
+        '<div class="col-md-12" id="fila'+count+'">'+' '+
+          '<div class="col-md-3">'+' '+
+            '<div class="col-md-12">'+' '+
+              '<p style="margin-top: 32px;">Informe de No conformidades de Obra N.'+count+'</p>'+' '+
+            '</div>'+' '+
+          '</div>'+' '+
+          '<div class="col-md-9">'+' '+
+            '<div class="col-md-1" id="nc1">'+' '+
+              '<div class="form-group">'+' '+
+                '<center><label >NC1</label></center>'+' '+
+                '<input type="text" class="form-control" name="" value="">'+' '+
+              '</div>'+' '+
+            '</div>'+' '+
+            '<div class="col-md-1">'+' '+
+              '<input type="button" id="añadirNC'+count+'" class="btn btn-primary " style="background-color: #33579A; border-color:#33579A;margin-top: 26px;" value="agregar NC">'+' '+
+            '</div>'+' '+
+          '</div> '+' '+
+      '</div>'
+    );
+
+    $(function() {
+      var count3 = 1;
+      var count4 = 0;
+       $(document).on("click","#añadirNC"+count+"",function( event ) {
+        count3++;
+        count4++;
+        $(this).parent().parent().find('#nc'+count4+'').after(
+          '<div class="col-md-1" id="nc'+count3+'">'+' '+
+            '<div class="form-group">'+' '+
+              '<center><label >NC'+count3+'</label></center>'+' '+
+              '<input type="text" class="form-control" name="" value="">'+' '+
+            '</div>'+' '+
+          '</div>'
+        );
+
+
+       });
+
+    });
+   });
+
+});
+
+
+$(function() {
+  var count = 1;
+  var count2 = 0;
+   $(document).on("click","#añadirNC",function( event ) {
+    count++;
+    count2++;
+    $(this).parent().parent().find('#nc'+count2+'').after(
+      '<div class="col-md-1" id="nc'+count+'">'+' '+
+        '<div class="form-group">'+' '+
+          '<center><label >NC'+count+'</label></center>'+' '+
+          '<input type="text" class="form-control" name="" value="">'+' '+
+        '</div>'+' '+
+      '</div>'
+    );
+
+
+   });
+
+});
+
+
+
+</script>
 
 @endsection

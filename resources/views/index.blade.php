@@ -187,6 +187,20 @@
             <li><a href="{{ url('criterio/disDeta') }}"><i class="fa fa-circle-o"></i>Diseño Detallado</a></li>
             <li><a href="{{ url('criterio/infoDocTec') }}"><i class="fa fa-circle-o"></i>Informe tecnico detallado</a></li>
             <li><a href="{{ url('ncObra') }}"><i class="fa fa-circle-o"></i>Reporte de no conformidades</a></li>
+          </ul>
+        </li>
+      </ul>
+      @endif
+      @if ( Auth::user()->rol_id == 4 || Auth::user()->rol_id == 1)
+      <ul class="sidebar-menu">
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-book"></i> <span>Autorizacion</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
             <li><a href="{{ url('autorizacion') }}"><i class="fa fa-circle-o"></i>Atorización de dictámenes</a></li>
           </ul>
         </li>
