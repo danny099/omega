@@ -33,13 +33,14 @@
               <div class="col-md-3">
                 <div class="col-md-12">
                   <p style="margin-top: 32px;">Informe de No conformidades de Obra N.1</p>
+                  <input type="hidden" name="" value="Informe de No conformidades de Obra N.1">
                 </div>
               </div>
               <div class="col-md-9">
                 <div class="col-md-1" id="nc1">
                   <div class="form-group">
                     <center><label >NC1</label></center>
-                      <select class="form-control">
+                      <select class="form-control" name="nc[1][]">
                         <option>A</option>
                         <option>C</option>
                         <option>N/A</option>
@@ -80,13 +81,15 @@ $(function() {
           '<div class="col-md-3">'+' '+
             '<div class="col-md-12">'+' '+
               '<p style="margin-top: 32px;">Informe de No conformidades de Obra N.'+count+'</p>'+' '+
+              '<input type="hidden" name="" value="Informe de No conformidades de Obra N.'+count+'">'+' '+
             '</div>'+' '+
           '</div>'+' '+
           '<div class="col-md-9">'+' '+
             '<div class="col-md-1" id="nc1">'+' '+
               '<div class="form-group">'+' '+
                 '<center><label >NC1</label></center>'+' '+
-                '<select class="form-control" style="width: 75px;">'+' '+
+                '<input type="hidden" class="numero" value="'+count+'">'+' '+
+                '<select class="form-control" name="nc['+count+'][]" >'+' '+
                   '<option>A</option>'+' '+
                   '<option>C</option>'+' '+
                   '<option>N/A</option>'+' '+
@@ -106,11 +109,12 @@ $(function() {
        $(document).on("click","#añadirNC"+count+"",function( event ) {
         count3++;
         count4++;
+        var numero = $(this).parent().parent().find('.numero').val();
         $(this).parent().parent().find('#nc'+count4+'').after(
           '<div class="col-md-1" id="nc'+count3+'">'+' '+
             '<div class="form-group">'+' '+
               '<center><label >NC'+count3+'</label></center>'+' '+
-              '<select class="form-control"style="width: 75px;">'+' '+
+              '<select class="form-control" name="nc['+numero+'][]">'+' '+
                 '<option>A</option>'+' '+
                 '<option>C</option>'+' '+
                 '<option>N/A</option>'+' '+
@@ -118,11 +122,12 @@ $(function() {
             '</div>'+' '+
           '</div>'
         );
-
+        $("select").select2();
 
        });
 
     });
+    $("select").select2();
    });
 
 });
@@ -138,7 +143,7 @@ $(function() {
       '<div class="col-md-1" id="nc'+count+'">'+' '+
         '<div class="form-group">'+' '+
           '<center><label >NC'+count+'</label></center>'+' '+
-          '<select class="form-control"style="width: 75px;">'+' '+
+          '<select class="form-control" name="nc[1][]">'+' '+
             '<option>A</option>'+' '+
             '<option>C</option>'+' '+
             '<option>N/A</option>'+' '+
@@ -146,7 +151,7 @@ $(function() {
         '</div>'+' '+
       '</div>'
     );
-
+    $("select").select2();
 
    });
 
