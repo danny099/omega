@@ -206,7 +206,7 @@ class AutorizacionController extends Controller
             $autorizacion5['administrativa_id'] = $request->administrativa_id;        
             $autorizacion5['cantidad_autorizada_id'] = $lastId_cant;        
 
-            Autorizacion::create($autorizacion5autorizado);
+            Autorizacion::create($autorizacion5);
 
         // }
 
