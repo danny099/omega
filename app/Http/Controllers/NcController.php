@@ -104,10 +104,15 @@ class NcController extends Controller
      */
     public function edit($id)
     {
-        $id_contrato = $id;
+        // $id_contrato = $id;
         $descripciones = Descripcion::where('descripcion.administrativa_id','=',$id)->get();
 
-        return view('ncObra.edit',compact('descripciones'));
+        foreach ($descripciones as $key => $value) {
+
+            $regitros[] = Nc::where('nc.descripcion_id','=',$value->id);
+        }
+
+        return view('ncObra.edit',compact('descripciones','registros'));
         
     }
 
