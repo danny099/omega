@@ -181,9 +181,10 @@ class PdfController extends Controller
     public function pdfAutorizacion($id){
 
       $autorizaciones = Autorizacion::where('autorizacion.administrativa_id','=',$id);
+      $contrato = Administrativa::findOrFail($id);
 
       $pdf = App::make('dompdf.wrapper');
-      $pdf->loadView('pdf.show-autorizacion',compact('autorizaciones'));
+      $pdf->loadView('pdf.show-autorizacion',compact('autorizaciones','contrato'));
       $pdf->setPaper('a4','landscape');  
       return $pdf->stream('autorizacion.pdf');
     }
