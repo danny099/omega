@@ -201,7 +201,7 @@ class CriterioController extends Controller
 
             $datos['aplica'] =  'Si';
             $datos['cumple'] =  null;          
-            $datos['observaciones'] =  null;                
+            $datos['observaciones'] = 'falta o debe hacer mención expresa y justificar lo que no le aplica';                
 
             $datos['tipo'] = $tipo;
             $datos['fecha'] = $fecha;
