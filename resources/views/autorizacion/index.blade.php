@@ -82,9 +82,8 @@
                       <td>
                         <a href="{{ url('autorizacion')}}/{{$contrato->id}}/edit"><i class="glyphicon glyphicon-pencil"></i></a>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="{{ url('pdfAutorizacion') }}" target="_blank" data-toggle="model" data-target=""><i class="glyphicon glyphicon-eye-open" style="color: #33579A"></i></a>
+                        <a href="{{ url('pdfAutorizacion')}}/{{$contrato->id}}" target="_blank" data-toggle="model" data-target=""><i class="glyphicon glyphicon-eye-open" style="color: #33579A"></i></a>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="{{ url('autorizacion/delete') }}" onClick="javascript: return confirm('Esta seguro de eliminar registro?');"><i class="glyphicon glyphicon-minus-sign"></i></a>
                       </td>
                     </tr>
                   @endforeach
