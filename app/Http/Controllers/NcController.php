@@ -130,35 +130,35 @@ class NcController extends Controller
     public function update(Request $request)
     {
         $input = $request->all();
-        
+        // dd($input);
+        // die();
         $now = new \DateTime();
         $fecha = $now->format('Y-m-d');
 
-        $conta = count($request->nc);
+        $conta = count($request->descripcion_id);
 
         for ($i=1; $i <= $conta; $i++) { 
             
-            $descripcion['descripcion'] = $request->descripcion[$i];
-            $descripcion['fecha'] = $fecha;
-            $descripcion['administrativa_id'] = $request->codigo_con;
+            $dato = Descripcion::findOrFail($request->descripcion_id[$i]);
+            $dato->fecha = $fecha;
 
-            Descripcion::create($descripcion);
-          
-
-            $des = Descripcion::all();
-            $lastId_des = $des->last()->id;
-
-            for ($x=0; $x < count($request->nc[$i]); $x++) { 
-                
-                $ncs['nc'] = $request->nc[$i][$x];
-                $ncs['descripcion_id'] = $lastId_des;
-
-                Nc::create($ncs);
-                
-            }
+            $dato->save();
+                  
         }
 
-        Session::flash('message', 'No conformidad creada');
+        for ($x=0; $x < count($request->nc_id); $x++) { 
+                
+            for ($y=0; $y < count($request->nc_id[$x]); $y++) { 
+                
+                $dato2 = Nc::findOrFail($request->nc_id[$x][$y]);
+                $dato2->nc = $request->nc[$x][$y];
+                $dato2->save();
+
+            }
+                
+        }
+
+        Session::flash('message', 'No conformidad Editada');
         Session::flash('class', 'success');
         return redirect('ncObra');
     }
@@ -171,6 +171,24 @@ class NcController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $descripciones = Descripcion::where('descripcion.administrativa_id','=',$id)->get();
+        
+        foreach ($descripciones as $key => $values) {
+
+            $regs = Descripcion::findOrFail($values->id);
+            $ncs = Nc::where('nc.descripcion_id','=',$regs->id)->get();
+
+            foreach ($ncs as $key => $var) {
+                
+                $registro = Nc::findOrFail($var->id);
+                $registro->delete();
+            }
+
+            $regs->delete();
+        }
+
+        Session::flash('message', 'No conformidad eliminada');
+        Session::flash('class', 'danger');
+        return redirect('ncObra');
     }
 }

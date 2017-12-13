@@ -19,6 +19,7 @@ use App\Observacion;
 use App\Documento;
 use App\Criterio;
 use App\Autorizacion;
+use App\Descripcion;
 use App\Cantidad_autorizada;
 use Illuminate\Http\Request;
 use Session;

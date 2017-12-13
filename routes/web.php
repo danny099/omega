@@ -219,7 +219,7 @@ Route::group(['middleware' => 'auth'],function(){
 	Route::resource('ncObra','NcController');
 	Route::post('ncObra/update','NcController@update');
 	Route::get('pdfNc/{id}','PdfController@pdfNc');
-
+	Route::get('delete_nc/{id}','NcController@destroy');	
 
 	Route::resource('autorizacion','AutorizacionController');
 	Route::post('autorizacion/update','AutorizacionController@update');
