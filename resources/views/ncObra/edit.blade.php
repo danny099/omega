@@ -23,7 +23,7 @@
       <!-- /.box-header -->
       <!-- form start -->
         <div class="row">
-          <form class="" action="{{ url('ncObra')}}" method="post">
+          <form class="" action="{{ url('ncObra/update')}}" method="post">
             {{ csrf_field() }}
 
             <div class="col-md-12">
