@@ -45,8 +45,9 @@
                 @inject('nc','App\Http\Controllers\NcController')
                 @foreach($nc->ncs($descripcion->id) as $key => $registro)
 
-                  <p>{{$registro[$key]['id']}}</p>
-                  <p>{{$registro[$key+1]['id']}}</p>
+                  @foreach($registro as $reg)
+                    <p>{{$reg->nc}}</p>
+                  @endforeach
 
                 @endforeach
               
