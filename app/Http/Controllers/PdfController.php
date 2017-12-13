@@ -174,7 +174,7 @@ class PdfController extends Controller
 
 
         $pdf = App::make('dompdf.wrapper');
-        $pdf->loadView('pdf.show-ncObra',compact('descripcion'));
+        $pdf->loadView('pdf.show-ncObra',compact('descripciones'));
         return $pdf->stream('No conformidades.pdf');
 
         // return view('ncObra.edit',compact('noconformidades','descripcion'));
@@ -190,7 +190,7 @@ class PdfController extends Controller
 
     }
 
-    
+
     public function pdfAutorizacion($id){
 
       $autorizaciones = Autorizacion::where('autorizacion.administrativa_id','=',$id)->get();
