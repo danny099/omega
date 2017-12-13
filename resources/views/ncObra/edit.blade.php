@@ -37,7 +37,7 @@
                 <div class="col-md-12">
                   <p style="margin-top: 32px;">{{$descripcion->descripcion}}</p>
                   <input type="hidden" name="descripcion[{{$key+1}}]" value="{{$descripcion->descripcion}}">
-                  <input type="hidden" name="descripcion_id[{{$key}}]" value="{{$descripcion->id}}">
+                  <input type="hidden" name="descripcion_id[{{$key+1}}]" value="{{$descripcion->id}}">
                 </div>
               </div>
               <div class="col-md-9">
@@ -50,7 +50,7 @@
                     <div class="col-md-1" id="nc1">
                       <div class="form-group">
                         <center><label >NC1</label></center>
-                        <select class="form-control" name="nc[{{$key+1}}][]">
+                        <select class="form-control" name="nc[{{$key}}][]">
                           <option>{{$reg->nc}}</option>
                           <option>A</option>
                           <option>C</option>
