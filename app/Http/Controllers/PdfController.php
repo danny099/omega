@@ -18,6 +18,7 @@ use App\Valor_adicional;
 use App\Observacion;
 use App\Documento;
 use App\Criterio;
+use App\Autorizacion;
 use Illuminate\Http\Request;
 use Session;
 use Illuminate\Support\Facades\Validator;
