@@ -180,7 +180,7 @@ class PdfController extends Controller
 
     public function pdfAutorizacion($id){
 
-      $autorizaciones = Autorizacion::where('autorizacion.administrativa_id','=',$id);
+      $autorizaciones = Autorizacion::where('autorizacion.administrativa_id','=',$id)->get();
       $contrato = Administrativa::findOrFail($id);
 
       $pdf = App::make('dompdf.wrapper');
