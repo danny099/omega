@@ -31,26 +31,36 @@
                 <input type="button" id="añadirFila" class="btn btn-primary pull-right " style="background-color: #33579A; border-color:#33579A;" value="agregar fila">
               </div>
             </div>
-            @foreach($descripciones as $descripcion)
+            @foreach($descripciones as $key =>$descripcion)
             <div class="col-md-12" id="fila1">
               <div class="col-md-3">
                 <div class="col-md-12">
                   <p style="margin-top: 32px;">{{$descripcion->descripcion}}</p>
-                  <input type="hidden" name="descripcion[1]" value="{{$descripcion->descripcion}}">
+                  <input type="hidden" name="descripcion[{{$key+1}}]" value="{{$descripcion->descripcion}}">
                 </div>
               </div>
               <div class="col-md-9">
-       
-                
+
+
                 @inject('nc','App\Http\Controllers\NcController')
-                @foreach($nc->ncs($descripcion->id) as $key => $registro)
+                @foreach($nc->ncs($descripcion->id) as $key2 => $registro)
 
                   @foreach($registro as $reg)
-                    <p>{{$reg->nc}}</p>
+                    <div class="col-md-1" id="nc1">
+                      <div class="form-group">
+                        <center><label >NC1</label></center>
+                        <select class="form-control" name="nc[{{$key+1}}][]">
+                          <option>{{$reg->nc}}</option>
+                          <option>A</option>
+                          <option>C</option>
+                          <option>N/A</option>
+                        </select>
+                      </div>
+                    </div>
                   @endforeach
 
                 @endforeach
-              
+
                 <div class="col-md-1">
                   <input type="button" id="añadirNC" class="btn btn-primary " style="background-color: #33579A; border-color:#33579A;margin-top: 26px;" value="agregar NC">
                 </div>
