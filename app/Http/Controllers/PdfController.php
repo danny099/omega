@@ -19,6 +19,7 @@ use App\Observacion;
 use App\Documento;
 use App\Criterio;
 use App\Autorizacion;
+use App\Cantidad_autorizada;
 use Illuminate\Http\Request;
 use Session;
 use Illuminate\Support\Facades\Validator;
@@ -192,7 +193,7 @@ class PdfController extends Controller
       }
 
       $cantidades = Cantidad_autorizada::findOrFail($cant_id[0]);
-      
+
       $pdf = App::make('dompdf.wrapper');
       $pdf->loadView('pdf.show-autorizacion',compact('autorizaciones','contrato','nombres','cargos','cantidades'));
       $pdf->setPaper('a4','landscape');  
