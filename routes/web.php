@@ -217,13 +217,14 @@ Route::group(['middleware' => 'auth'],function(){
 
 	
 	Route::resource('ncObra','NcController');
+	Route::post('ncObra/update','NcController@update');
 	Route::get('pdfNc/{id}','PdfController@pdfNc');
 
 
 	Route::resource('autorizacion','AutorizacionController');
 	Route::post('autorizacion/update','AutorizacionController@update');
 	Route::get('delete_autoriza/{id}','AutorizacionController@destroy');
-	Route::get('pdfAutorizacion','PdfController@pdfAutorizacion');
+	Route::get('pdfAutorizacion/{id}','PdfController@pdfAutorizacion');
 
 
 
