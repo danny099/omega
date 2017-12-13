@@ -37,6 +37,7 @@
                 <div class="col-md-12">
                   <p style="margin-top: 32px;">{{$descripcion->descripcion}}</p>
                   <input type="hidden" name="descripcion[{{$key+1}}]" value="{{$descripcion->descripcion}}">
+                  <input type="hidden" name="descripcion_id[{{$key+1}}]" value="{{$descripcion->id}}">
                 </div>
               </div>
               <div class="col-md-9">
@@ -55,6 +56,7 @@
                           <option>C</option>
                           <option>N/A</option>
                         </select>
+                        <input type="hidden" name="nc_id[{{$key+1}}][]" value="{{$reg->id}}">
                       </div>
                     </div>
                   @endforeach
