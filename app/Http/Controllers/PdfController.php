@@ -183,9 +183,11 @@ class PdfController extends Controller
 
       $autorizaciones = Autorizacion::where('autorizacion.administrativa_id','=',$id)->get();
       $contrato = Administrativa::findOrFail($id);
+      $nombres = array('Jhon Jairo Escobar Segura','Jairo Ivan Ibarra Ruales','Alejandra Vitali','Juan Manuel Leon S.','Oscar Andres Sanclemente R');
+      $cargos = array('Jefe de poyectos','Director tecnico','Gerente administrativa','Gerente general','Presidente');
 
       $pdf = App::make('dompdf.wrapper');
-      $pdf->loadView('pdf.show-autorizacion',compact('autorizaciones','contrato'));
+      $pdf->loadView('pdf.show-autorizacion',compact('autorizaciones','contrato','nombres','cargos'));
       $pdf->setPaper('a4','landscape');  
       return $pdf->stream('autorizacion.pdf');
     }
