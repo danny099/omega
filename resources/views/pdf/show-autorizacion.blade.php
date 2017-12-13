@@ -64,15 +64,68 @@
 			</tr>
 		@endforeach
 	</table>
+	<br>
 	<table>
 		<tr>
-			<th>Proceso</th>
-			<th>Cantidad autorizada</th>
+
+			<th style="font-weight: bold;text-align:center;background-color:#F2F2F2;width:160px">Proceso</th>
+			<th style="font-weight: bold;text-align:center;background-color:#F2F2F2;width:250px">Cantidad autorizada</th>
 		</tr>
+		@if($cantidades->transformacion != null)
 		<tr>
 			<th>Transformacion</th>
-			<th>{{$cantidades->transformacion}}</th>
+			<th style="text-align:center">{{$cantidades->transformacion}}</th>
 		</tr>
+		@endif
+		@if($cantidades->red_mt != null)
+		<tr>
+			<th>Red mt (m)</th>
+			<th style="text-align:center">{{$cantidades->red_mt}}</th>
+		</tr>
+		@endif
+		@if($cantidades->red_bt != null)
+		<tr>
+			<th>Red bt (m)</th>
+			<th style="text-align:center">{{$cantidades->red_bt}}</th>
+		</tr>
+		@endif
+		@if($cantidades->casas != null)
+		<tr>
+			<th>Casas</th>
+			<th style="text-align:center">{{$cantidades->casas}}</th>
+		</tr>
+		@endif
+		@if($cantidades->apartamentos != null)
+		<tr>
+			<th>Apartamentos</th>
+			<th style="text-align:center">{{$cantidades->apartamentos}}</th>
+		</tr>
+		@endif
+		@if($cantidades->zonas != null)
+		<tr>
+			<th>Zonas</th>
+			<th style="text-align:center">{{$cantidades->zonas}}</th>
+		</tr>
+		@endif
+		@if($cantidades->locales != null)
+		<tr>
+			<th>Locales</th>
+			<th style="text-align:center">{{$cantidades->locales}}</th>
+		</tr>
+		@endif
+		@if($cantidades->bodegas != null)
+		<tr>
+			<th>Bodegas</th>
+			<th style="text-align:center">{{$cantidades->bodegas}}</th>
+		</tr>
+		@endif
+		@if($cantidades->puntos_fijos != null)
+		<tr>
+			<th>Puntos Fijos</th>
+			<th style="text-align:center">{{$cantidades->puntos_fijos}}</th>
+		</tr>
+		@endif
+
 	</table>
 </body>
 </html>
