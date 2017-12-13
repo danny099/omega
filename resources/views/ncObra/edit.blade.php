@@ -40,29 +40,16 @@
                 </div>
               </div>
               <div class="col-md-9">
-                <!-- @foreach($registros as $registro)
-                  @for($i=0; $i < count($registro); $i++)
-                    <div class="col-md-1" id="nc1">
-                      <div class="form-group">
-                        <center><label >NC1</label></center>
-                          <select class="form-control" name="nc[1][]">
-                            <option>{{$registro[$i]->id}}</option>
-                            <option>A</option>
-                            <option>C</option>
-                            <option>N/A</option>
-                          </select>
-                          <p>{{$registro[$i]->id}}</p>
-                      </div>
-                    </div>
-                  @endfor
-                @endforeach -->
-                @for($i=0; $i < count($registros); $i++)
-                  @foreach($registros as $registro)
+       
+                
+                @inject('nc','App\Http\Controllers\NcController')
+                @foreach($nc->ncs($descripcion->id) as $key => $registro)
 
-                    <p>{{$registro}}</p>
+                  <p>{{$registro[$key]['id']}}</p>
+                  <p>{{$registro[$key+1]['id']}}</p>
 
-                  @endforeach
-                @endfor
+                @endforeach
+              
                 <div class="col-md-1">
                   <input type="button" id="añadirNC" class="btn btn-primary " style="background-color: #33579A; border-color:#33579A;margin-top: 26px;" value="agregar NC">
                 </div>

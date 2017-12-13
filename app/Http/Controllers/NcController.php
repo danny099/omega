@@ -107,21 +107,26 @@ class NcController extends Controller
         // $id_contrato = $id;
         $descripciones = Descripcion::where('descripcion.administrativa_id','=',$id)->get();
 
-        foreach ($descripciones as $key => $value) {
+        // foreach ($descripciones as $key => $value) {
 
-            $registros[] = Nc::where('nc.descripcion_id','=',$value->id)->get();
+        //     $registros[] = Nc::where('nc.descripcion_id','=',$value->id)->get();
             
-        }
-        for ($i=0; $i < count($registros) ; $i++) { 
+        // }
+        // for ($i=0; $i < count($registros) ; $i++) { 
 
-          
-        }
-        
-        dd($registros[1]);
-        die();
+            
+        // }
 
-        return view('ncObra.edit',compact('descripciones','registros'));
+        return view('ncObra.edit',compact('descripciones'));
         
+    }
+
+    public function ncs($id){
+
+        $ncs[] = Nc::where('nc.descripcion_id','=',$id)->get();
+
+        return $ncs;
+
     }
 
     /**
