@@ -214,7 +214,7 @@ class CriterioController extends Controller
         }
         Session::flash('message', 'Detalle creado');
         Session::flash('class', 'success');
-        return redirect('criterio/'.$input['tipo'][0]);
+        return redirect('criterio/'.$tipo);
 
 
     }
