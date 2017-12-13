@@ -191,7 +191,6 @@ class CriterioController extends Controller
         $now = new \DateTime();
         $fech = $now->format('Y-m-d');
         $fecha = Fechas::dater($fech);
-        $var = count($input['tipo']);
         $contrato = Administrativa::findOrFail($id);
         $items = Item::where('items.tipo', '=', $tipo)->get();
 
