@@ -187,7 +187,7 @@ class CriterioController extends Controller
 
     public function auto($id,$tipo){
 
-        $input = $request->all();
+      
         $now = new \DateTime();
         $fech = $now->format('Y-m-d');
         $fecha = Fechas::dater($fech);
