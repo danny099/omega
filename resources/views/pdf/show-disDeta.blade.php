@@ -109,7 +109,7 @@
           <th></th>
         @endif
 
-        <th width="45%">{{$criterio->observaciones}}</th>
+        <th width="45%" style="font-size: 8px; ">{{$criterio->observaciones}}</th>
       </tr>
       @endforeach
 

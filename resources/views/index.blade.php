@@ -206,6 +206,22 @@
         </li>
       </ul>
       @endif
+      @if ( Auth::user()->rol_id == 1)
+      <ul class="sidebar-menu">
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-book"></i> <span>Dictamenes</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{ url('dictamenes') }}"><i class="fa fa-circle-o"></i>Dictamenes</a></li>
+
+          </ul>
+        </li>
+      </ul>
+      @endif
       @if ( Auth::user()->rol_id == 1 )
       <ul class="sidebar-menu">
         <li class="treeview">

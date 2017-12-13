@@ -44,6 +44,7 @@
                                 <br>
                                 <div class="box-footer">
                                   <button type="submit" class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;">Enviar</button>
+                                  <button class="btn btn-primary " href="{{ url('criterio_auto') }}/{{ $contrato->id }}/disDeta" style="background-color: #33579A; border-color:#33579A; margin-left:120px">Pdf automatico</button>
                                   <button type="submit" data-dismiss="modal" class="btn btn-primary pull-left" style="background-color: #33579A; border-color:#33579A;">Cancelar</button>
                                 </div>
 

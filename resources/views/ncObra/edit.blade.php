@@ -46,10 +46,10 @@
                 @inject('nc','App\Http\Controllers\NcController')
                 @foreach($nc->ncs($descripcion->id) as $key2 => $registro)
 
-                  @foreach($registro as $reg)
+                  @foreach($registro as $indice=>$reg)
                     <div class="col-md-1" id="nc1">
                       <div class="form-group">
-                        <center><label >NC1</label></center>
+                        <center><label >NC{{$indice+1}}</label></center>
                         <select class="form-control" name="nc[{{$key}}][]">
                           <option>{{$reg->nc}}</option>
                           <option>A</option>

@@ -35,7 +35,7 @@
                   <center><label>Jefe de poyectos</label><br></center>
                   <center><label>Fecha de autorizacion</label></center>
                 </div>
-                <div class="col-md-4" class="firma_jef">
+                <div class="col-md-4">
                   <center><label>Firma:</label></center>
                   <center> <input type="button" class="btn btn-primary jefe" style="background-color: #33579A; border-color:#33579A;" value="Firma"></center>
                   <input type="hidden" name="firma_jefe" class="firma_jefe" value="">
@@ -54,7 +54,7 @@
                   <center><label>Director tecnico</label><br></center>
                   <center><label>Fecha de autorizacion</label></center>
                 </div>
-                <div class="col-md-4" >
+                <div class="col-md-4">
                   <center><label>Firma:</label></center>
                   <center><input type="button" class="btn btn-primary director" style="background-color: #33579A; border-color:#33579A;" value="Firma"></center>
                   <input type="hidden" name="firma_director" class="firma_director" value="">
@@ -261,7 +261,6 @@
   $(document).on("click",".jefe",function( event ) {
     $('.jefe1').val("Jhon Jairo Escobar Segura");
     $('.firma_jefe').val("firmas/Certicol.png");
-    $('.firma_jef').append('<img src="firmas/Certicol.png"');
   });
 
   $(document).on("click",".director",function( event ) {
