@@ -189,11 +189,11 @@ class PdfController extends Controller
 
       foreach ($autorizaciones as $key => $value) {
         
-          $cant_id[] = $value->cant_autorizada_id;
+          $cant_id[] = $value->cantidad_autorizada_id;
       }
-
+      
       $cantidades = Cantidad_autorizada::findOrFail($cant_id[0]);
-
+      
       $pdf = App::make('dompdf.wrapper');
       $pdf->loadView('pdf.show-autorizacion',compact('autorizaciones','contrato','nombres','cargos','cantidades'));
       $pdf->setPaper('a4','landscape');  
