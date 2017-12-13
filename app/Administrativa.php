@@ -29,6 +29,12 @@ class Administrativa extends Model implements AuditableContract
   public function cliente(){
     return $this->belongsTo('App\Cliente');
   }
+  public function distribuciones(){
+    return $this->belongsTo('App\Distribucion');
+  }
+  public function dictamenes(){
+    return $this->belongsTo('App\Dictamen');
+  }
 
   public function juridica(){
     return $this->belongsTo('App\Juridica');

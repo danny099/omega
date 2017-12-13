@@ -21,4 +21,13 @@ class Descripcion extends Model implements AuditableContract
   public function ncs(){
     return $this->belongsTo('App\Nc');
   }
+
+  public function transformAudit(array $data)
+  {
+      if (Arr::has($data, 'auditable_id')) {
+          Arr::set($data, 'auditable_id',  $this->descripcion);
+      }
+
+      return $data;
+  }
 }

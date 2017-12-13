@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Auditable;
 use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
+use Illuminate\Support\Arr;
 
 class Juridica extends Model implements AuditableContract
 {
@@ -26,6 +27,15 @@ class Juridica extends Model implements AuditableContract
   
   public function departamento(){
     return $this->belongsTo('App\Departamento');
+  }
+
+  public function transformAudit(array $data)
+  {
+      if (Arr::has($data, 'auditable_id')) {
+          Arr::set($data, 'auditable_id',  $this->razon_social);
+      }
+
+      return $data;
   }
 
 }

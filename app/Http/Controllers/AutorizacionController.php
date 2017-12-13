@@ -148,7 +148,12 @@ class AutorizacionController extends Controller
             $autorizacion1['autorizado'] = $request->nombre_jefe;
             $autorizacion1['firma'] = $request->firma_jefe;
             $autorizacion1['observaciones'] = $request->obs_jefe;
-            $autorizacion1['fecha'] = $fecha;        
+            if ($autorizacion1['firma'] == null) {
+                $autorizacion1['fecha'] = null;
+            }else{
+                $autorizacion1['fecha'] = $fecha; 
+            }
+                   
             $autorizacion1['administrativa_id'] = $request->administrativa_id;        
             $autorizacion1['cantidad_autorizada_id'] = $lastId_cant;    
 
@@ -161,7 +166,12 @@ class AutorizacionController extends Controller
             $autorizacion2['autorizado'] = $request->nombre_director;
             $autorizacion2['firma'] = $request->firma_director;
             $autorizacion2['observaciones'] = $request->obs_director;
-            $autorizacion2['fecha'] = $fecha;      
+            if ($autorizacion2['firma'] == null) {
+                $autorizacion2['fecha'] = null;
+            }else{
+                $autorizacion2['fecha'] = $fecha; 
+            }
+               
             $autorizacion2['administrativa_id'] = $request->administrativa_id;      
             $autorizacion2['cantidad_autorizada_id'] = $lastId_cant;      
             
@@ -174,7 +184,11 @@ class AutorizacionController extends Controller
             $autorizacion3['autorizado'] = $request->nombre_administrativa;
             $autorizacion3['firma'] = $request->firma_administrativa;
             $autorizacion3['observaciones'] = $request->obs_administrativa;
-            $autorizacion3['fecha'] = $fecha;        
+            if ($autorizacion3['firma'] == null) {
+                $autorizacion3['fecha'] = null;
+            }else{
+                $autorizacion3['fecha'] = $fecha; 
+            }            
             $autorizacion3['administrativa_id'] = $request->administrativa_id;        
             $autorizacion3['cantidad_autorizada_id'] = $lastId_cant;        
 
@@ -189,7 +203,11 @@ class AutorizacionController extends Controller
             $autorizacion4['autorizado'] = $request->nombre_general;
             $autorizacion4['firma'] = $request->firma_general;
             $autorizacion4['observaciones'] = $request->obs_general;
-            $autorizacion4['fecha'] = $fecha;        
+            if ($autorizacion4['firma'] == null) {
+                $autorizacion4['fecha'] = null;
+            }else{
+                $autorizacion4['fecha'] = $fecha; 
+            }            
             $autorizacion4['administrativa_id'] = $request->administrativa_id;        
             $autorizacion4['cantidad_autorizada_id'] = $lastId_cant;        
 

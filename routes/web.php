@@ -214,6 +214,7 @@ Route::group(['middleware' => 'auth'],function(){
 	Route::post('criterio/update','CriterioController@update');
 	Route::get('criterio/delete/{id}/{tipo}','CriterioController@destroy');
 	Route::get('pdfCriterio/{id}/{tipo}','PdfController@pdfTecnica');
+	Route::get('criterio_auto/{id}/{tipo}','CriterioController@auto');
 
 	
 	Route::resource('ncObra','NcController');
@@ -225,6 +226,8 @@ Route::group(['middleware' => 'auth'],function(){
 	Route::post('autorizacion/update','AutorizacionController@update');
 	Route::get('delete_autoriza/{id}','AutorizacionController@destroy');
 	Route::get('pdfAutorizacion/{id}','PdfController@pdfAutorizacion');
+
+	Route::resource('dictamenes','DictamenController');
 
 
 

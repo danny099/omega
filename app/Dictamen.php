@@ -7,22 +7,22 @@ use OwenIt\Auditing\Auditable;
 use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
 use Illuminate\Support\Arr;
 
-class Consignacion extends Model implements AuditableContract
+class Dictamen extends Model implements AuditableContract
 {
   use Auditable;
 
-  protected $table = 'consignacion';
-  protected $fillable = ['id','fecha_pago','valor','valor_iva','valor_total','observaciones','administrativa_id'];
+  protected $table = 'dictamenes';
+  protected $fillable = ['id','inspector','matricula','director_tec','matricula_tec','codigo_dic','proceso_dic','cantidad','fecha_dic','fecha_act','administrativa_id'];
   public $timestamps = false;
 
   public function administrativa(){
-    return $this->hasMany('App\Administrativa');
+      	return $this->hasMany('App\Administrativa');
   }
 
   public function transformAudit(array $data)
   {
       if (Arr::has($data, 'auditable_id')) {
-          Arr::set($data, 'auditable_id',  $this->fecha_pago);
+          Arr::set($data, 'auditable_id',  $this->id);
       }
 
       return $data;

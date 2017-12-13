@@ -18,4 +18,13 @@ class Nc extends Model implements AuditableContract
   public function descripcion(){
     return $this->hasMany('App\Descripcion');
   }
+
+  public function transformAudit(array $data)
+  {
+      if (Arr::has($data, 'auditable_id')) {
+          Arr::set($data, 'auditable_id',  $this->nc);
+      }
+
+      return $data;
+  }
 }

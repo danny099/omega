@@ -185,6 +185,40 @@ class CriterioController extends Controller
 
     }
 
+    public function auto($id,$tipo){
+
+        $input = $request->all();
+        $now = new \DateTime();
+        $fech = $now->format('Y-m-d');
+        $fecha = Fechas::dater($fech);
+        $var = count($input['tipo']);
+        $contrato = Administrativa::findOrFail($id);
+        $items = Item::where('items.tipo', '=', $tipo)->get();
+
+
+        for ($i=0; $i < 22; $i++) {
+
+
+            $datos['aplica'] =  'Si';
+            $datos['cumple'] =  null;          
+            $datos['observaciones'] =  null;                
+
+            $datos['tipo'] = $tipo;
+            $datos['fecha'] = $fecha;
+            $datos['administrativa_id'] = $id;
+            $datos['items_id'] = $items[$i];
+
+            
+            Criterio::create($datos);
+
+        }
+        Session::flash('message', 'Detalle creado');
+        Session::flash('class', 'success');
+        return redirect('criterio/'.$input['tipo'][0]);
+
+
+    }
+
     /**
      * Update the specified resource in storage.
      *

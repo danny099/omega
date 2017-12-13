@@ -1,10 +1,12 @@
 <?php
 
 namespace App;
-
 use Illuminate\Database\Eloquent\Model;
+use OwenIt\Auditing\Auditable;
+use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
+use Illuminate\Support\Arr;
 
-class Valorcot extends Model
+class Valorcot extends Model implements AuditableContract
 {
   protected $table = 'valorcot';
 
@@ -14,5 +16,14 @@ class Valorcot extends Model
 
   public function cotizacion(){
     return $this->hasMany('App\Cotizacion');
+  }
+
+  public function transformAudit(array $data)
+  {
+      if (Arr::has($data, 'auditable_id')) {
+          Arr::set($data, 'auditable_id',  $this->id);
+      }
+
+      return $data;
   }
 }

@@ -16,6 +16,15 @@ class Cantidad_autorizada extends Model implements AuditableContract
   public $timestamps = false;
 
   public function autorizadas(){
-     return $this->hasMany('App\Autorizacion');
+     return $this->belongsTo('App\Autorizacion');
+  }
+
+  public function transformAudit(array $data)
+  {
+      if (Arr::has($data, 'auditable_id')) {
+          Arr::set($data, 'auditable_id',  $this->id);
+      }
+
+      return $data;
   }
 }

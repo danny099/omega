@@ -22,4 +22,13 @@ class Criterio extends Model implements AuditableContract
   public function items(){
     return $this->belongsTo('App\Item');
   }
+
+  public function transformAudit(array $data)
+    {
+        if (Arr::has($data, 'auditable_id')) {
+            Arr::set($data, 'auditable_id',  $this->id);
+        }
+
+        return $data;
+    }
 }
