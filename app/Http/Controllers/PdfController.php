@@ -170,18 +170,27 @@ class PdfController extends Controller
 
     public function pdfNc($id){
 
-        $descripcion = Descripcion::where('descripcion.administrativa_id','=',$id);
-        $noconformidades = Nc::where('nc.descripcion_id','=',$descripcion->id);
+        $descripciones = Descripcion::where('descripcion.administrativa_id','=',$id)->get();
+
 
         $pdf = App::make('dompdf.wrapper');
-
-        $pdf->loadView('pdf.show-ncObra',compact('descripcion','noconformidades'));
+        $pdf->loadView('pdf.show-ncObra',compact('descripcion'));
         return $pdf->stream('No conformidades.pdf');
 
         // return view('ncObra.edit',compact('noconformidades','descripcion'));
 
     }
 
+
+    public function ncs($id){
+
+        $ncs[] = Nc::where('nc.descripcion_id','=',$id)->get();
+
+        return $ncs;
+
+    }
+
+    
     public function pdfAutorizacion($id){
 
       $autorizaciones = Autorizacion::where('autorizacion.administrativa_id','=',$id)->get();
