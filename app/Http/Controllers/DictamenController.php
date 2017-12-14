@@ -13,7 +13,16 @@ class DictamenController extends Controller
      */
     public function index()
     {
-        //
+        $contratos = Administrativa::all();
+        $var = Dictamen::distinct()->get(['administrativa_id']);
+
+        foreach ($var as $key => $value) {
+
+            $dictamenes[] = Administrativa::findOrFail($value->administrativa_id);
+
+        }
+
+        return view('autorizacion.index',compact('dictamenes','contratos'));
     }
 
     /**

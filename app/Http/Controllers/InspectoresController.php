@@ -106,7 +106,8 @@ class InspectoresController extends Controller
     public function destroy($id)
     {
         $inspector = Inspector::findOrFail($id);
-
+        dd($inspector);
+        die();
         $inspector->delete();
         Session::flash('message', 'Inspector eliminado');
         Session::flash('class', 'danger');
