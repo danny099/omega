@@ -230,7 +230,7 @@ Route::group(['middleware' => 'auth'],function(){
 
 
 	Route::resource('dictamenes','DictamenController');
-
+	Route::post('dictamenes/update','DictamenController@update');
 
 	Route::resource('inspectores','InspectoresController');
 	Route::get('detele_inspector/{id}','InspectoresController@destroy');	

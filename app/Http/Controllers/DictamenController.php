@@ -157,9 +157,35 @@ class DictamenController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $input = $request->all();
+
+        for ($i=0; $i < count($input['dictamenes']['dictamen_id']); $i++) { 
+            
+            $dictamen = Dictamen::findOrFail($input['dictamenes']['dictamen_id'][$i]);
+
+            $datos['matricula'] = $input['dictamenes']['matricula'][$i];
+            $datos['director_tec'] = $input['dictamenes']['director'][$i];
+            $datos['matricula_tec'] = $input['dictamenes']['matricula_dir'][$i];
+            $datos['codigo_dic'] = $input['dictamenes']['codigo'][$i];
+            $datos['proceso_dic'] = $input['dictamenes']['proceso'][$i];
+            $datos['cantidad'] = $input['dictamenes']['cantidad'][$i];
+            $datos['equipo'] = $input['dictamenes']['equipo'][$i];
+            $datos['fecha_des'] = $input['dictamenes']['fecha_des'][$i];
+            $datos['fecha_has'] = $input['dictamenes']['fecha_has'][$i];
+            $datos['fecha_auto'] = $input['dictamenes']['fecha_auto'][$i];
+            $datos['inspectores_id'] = $input['dictamenes']['inspector'][$i];
+
+            $dictamen->update($datos);
+
+
+        }
+
+        Session::flash('message', 'Dictamenes editados');
+        Session::flash('class', 'success');
+        return redirect('dictamenes');
+        
     }
 
     /**
