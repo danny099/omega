@@ -28,11 +28,12 @@
             <div class="row">
               <div class="col-md-12">
                 <div class="col-md-12">
+                  <input type="hidden" name="codigo" value="{{$contrato_id}}">
                   <div class="col-md-2 form-group">
                     <center><label>Inspector</label></center>
                     <select class="form-control" name="dictamenes[inspector][]">
                       @foreach($inspectores as $inspector)
-                      <option value="{{$inspector->nombres}} {{$inspector->apellidos}}">{{$inspector->nombres}} {{$inspector->apellidos}}</option>
+                      <option value="{{$inspector->id}}">{{$inspector->nombres}} {{$inspector->apellidos}}</option>
                       @endforeach
                     </select>
                   </div>
@@ -155,7 +156,7 @@ $(function() {
           '<center><label>Inspector</label></center>'+' '+
           '<select class="form-control" name="dictamenes[inspector][]">'+' '+
             '@foreach($inspectores as $inspector)'+' '+
-            '<option value="{{$inspector->nombres}} {{$inspector->apellidos}}">{{$inspector->nombres}} {{$inspector->apellidos}}</option>'+' '+
+            '<option value="{{$inspector->id}}">{{$inspector->nombres}} {{$inspector->apellidos}}</option>'+' '+
             '@endforeach'+' '+
           '</select>'+' '+
         '</div>'+' '+
