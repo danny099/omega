@@ -28,7 +28,7 @@
                       <h4 class="modal-title">Crear dictamen</h4>
                     </div>
                     <div class="modal-body">
-                      <form action="{{ url('dictamenes/create') }}" method="post">
+                      <form action="{{ url('dictamenes/create') }}" method="get">
                         {{ csrf_field() }}
                         <div class="row">
                           <div class="col-md-12">
