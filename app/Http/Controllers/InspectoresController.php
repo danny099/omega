@@ -14,7 +14,7 @@ class InspectoresController extends Controller
      */
     public function index()
     {
-        $inspectores::all();
+        $inspectores = Inspector::all();
         return view('inspectores.index',compact('inspectores'));
     }
 
