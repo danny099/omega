@@ -147,7 +147,7 @@ class DictamenController extends Controller
             $cantidad_db = $cantidad_db + $baja->cantidad;
         }
 
-        return view('dictamenes.edit',compact('dictamenes','inspectores','cantidad_t','cantidad_dm','cantidad_db'));
+        return view('dictamenes.edit',compact('dictamenes','inspectores','cantidad_t','cantidad_dm','cantidad_db','pu_final'));
     }
 
     /**
