@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Session;
 use App\Administrativa;
 use App\Dictamen;
+use App\Inspector;
 
 class DictamenController extends Controller
 {
