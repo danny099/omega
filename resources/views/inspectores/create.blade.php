@@ -65,8 +65,8 @@
             <div class="form-group">
               <label for="">Rol inspector</label>
               <select class="form-control" name="rol_inspector">
-                <option value="1">rol1</option>
-                <option value="2">rol2</option>
+                <option value="rol1">rol1</option>
+                <option value="rol2">rol2</option>
               </select>
             </div>
           </div>

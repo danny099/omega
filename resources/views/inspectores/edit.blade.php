@@ -36,7 +36,7 @@
       @endif
       <!-- /.box-header -->
       <!-- form start -->
-        {!! Form::model($inspectores, ['method' => 'PATCH', 'action' => ['InspectorController@update',$usuarios->id],'enctype'=>'multipart/form-data']) !!}
+        {!! Form::model($inspector, ['method' => 'PATCH', 'action' => ['InspectoresController@update',$inspector->id],'enctype'=>'multipart/form-data']) !!}
         {{ csrf_field() }}
         <div class="row">
         <div class="box-body col-md-12">
@@ -51,7 +51,6 @@
             <div class="form-group">
               {!! Form::label('apellidos', 'Apellidos') !!}
               {!! Form::text('apellidos', null, ['class' => 'form-control' , 'required' => 'required']) !!}
-              <span id="show-pass" class="glyphicon glyphicon-eye-open"></span>
             </div>
           </div>
         </div>
@@ -63,48 +62,17 @@
               {!! Form::text('matricula', null, ['class' => 'form-control' , 'required' => 'required']) !!}
             </div>
           </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              {!! Form::label('rol_id', 'Rol') !!}
-              {!! Form::select('rol_id',$roles,['class' => 'form-control','required' => 'required','style'=>'width=100%']) !!}
-            </div>
-          </div>
+
 
             <div class="col-md-6">
               <label for="">Rol inspector</label>
               <select class="form-control" name="">
-                <option value="">rol1</option>
-                <option value="">rol2</option>
+                <option value="{{$inspector->rol_inspector}}">{{$inspector->rol_inspector}}</option>
+                <option value="rol1">rol1</option>
+                <option value="rol2">rol2</option>
               </select>
             </div>
 
-        </div>
-        <div class="box-body col-md-12">
-          <div class="col-md-6">
-            <div class="form-group">
-              {!! Form::label('apellidos', 'Apellidos') !!}
-              {!! Form::text('apellidos', null, ['class' => 'form-control' , 'required' => 'required']) !!}
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              {!! Form::label('foto', 'Foto') !!}
-              <input type="file" id="files" name="files" />
-            </div>
-          </div>
-        </div>
-        <div class="box-body col-md-12">
-          <div class="col-md-6">
-            <div class="form-group">
-              {!! Form::label('email', 'Email') !!}
-              {!! Form::text('email', null, ['class' => 'form-control' , 'required' => 'required']) !!}
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <output id="list"><img src="{{url('photos')}}/{{$usuarios->foto}}" class="thumb"></output>
-            </div>
-          </div>
         </div>
 
         </div>
