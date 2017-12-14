@@ -71,7 +71,7 @@ class InspectoresController extends Controller
     {
         $inspector = Inspector::findOrFail($id);
 
-        return view('inspectores.edit',compact('inspectores'));
+        return view('inspectores.edit',compact('inspector'));
     }
 
     /**
