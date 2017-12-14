@@ -75,7 +75,30 @@ class DictamenController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+
+
+        for ($i=0; $i < count($input['dictamenes']['inspector']); $i++) { 
+
+            $dictamen['matricula'] = $input['dictamenes']['matricula'][$i];
+            $dictamen['diretor_tec'] = $input['dictamenes']['matricula_dir'][$i];
+            $dictamen['matricula_tec'] = $input['dictamenes']['codigo'][$i];
+            $dictamen['codigo_dic'] = $input['dictamenes']['proceso'][$i];
+            $dictamen['proceso_dic'] = $input['dictamenes']['cantidad'][$i];
+            $dictamen['cantidad'] = $input['dictamenes']['equipo'][$i];
+            $dictamen['fecha_dic'] = $input['dictamenes']['fecha_des'][$i];
+            $dictamen['fecha_act'] = $input['dictamenes']['fecha_has'][$i];
+            $dictamen['administrativa_id'] = $request->codigo;
+            $dictamen['inspectores_id'] = $input['dictamenes']['inspector'][$i];
+
+            Dictamen::create($dictamen);
+
+        }
+
+        Session::flash('message', 'Dictamenes creados');
+        Session::flash('class', 'success');
+        return redirect('dictamenes');
+
     }
 
     /**
