@@ -40,6 +40,10 @@ class DictamenController extends Controller
      */
     public function create(Request $request)
     {
+        $cantidad_t = 0;
+        $cantidad_dm = 0;
+        $cantidad_db = 0;
+
         $inspectores = Inspector::all();
 
         $contrato = Administrativa::findOrFail($request->codigo_con);
