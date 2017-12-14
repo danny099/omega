@@ -39,8 +39,12 @@ class DictamenController extends Controller
         $inspectores = Inspector::all();
 
         $contrato = Administrativa::findOrFail($request->codigo_con);
+        $t = Transformacion::where('transformacion.administrativa_id', '=', $contrato->id)->get();
+        $dm = Distribucion::where('distribucion.administrativa_id', '=', $contrato->id)->where('descripcion','like','%MT%')->get();
+        $db = Distribucion::where('distribucion.administrativa_id', '=', $contrato->id)->where('descripcion','like','%BT%')->get();
+        $pu_final = Pu_final::where('pu_final.administrativa_id', '=', $contrato->id)->get();
 
-        return view('dictamenes.create',compact('inspectores','contrato'));
+        return view('dictamenes.create',compact('inspectores','contrato','t','dm','db','pu_final'));
     }
 
     /**
