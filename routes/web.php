@@ -229,7 +229,9 @@ Route::group(['middleware' => 'auth'],function(){
 
 	Route::resource('dictamenes','DictamenController');
 
-	Route::resource('inspectores','InspectorController');
+	Route::resource('inspectores','InspectoresController');
+
+
 
 
 
