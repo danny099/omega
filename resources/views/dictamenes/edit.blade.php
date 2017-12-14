@@ -27,7 +27,7 @@
             {{ csrf_field() }}
             <div class="row">
               @foreach($dictamenes as $dictamen)
-              <div class="col-md-12">
+              <div class="col-md-12" id="dic">
                 <div class="col-md-12">
                   <input type="hidden" name="dictamenes[dictamen_id][]" value="{{$dictamen->id}}">
                   <div class="col-md-2 form-group">
@@ -61,8 +61,12 @@
                     <center><label>Codigo Dictamen(es)</label></center>
                     <center><input type="text" name="dictamenes[codigo][]" value="{{$dictamen->codigo_dic}}"></center>
                   </div>
-                  <div class="col-md-2 form-group">
+                  <div class="col-md-2" >
+                    <div class="form-group">
 
+                      <center><a class="btn btn-primary eliminar4" id="del-{{ $dictamen->id }}" href="#" style="background-color: #fdea08; border-color:#fdea08;"><i class="glyphicon glyphicon-minus"></i></a><center>
+
+                    </div>
                   </div>
 
                 </div>
@@ -147,5 +151,22 @@
 
 @section('scripts')
 
+<script type="text/javascript">
 
+$('#del-'+{{$dictamen->id}}).click(function(e){
+
+});
+$(document).on("click",".eliminar4",function( event ) {
+
+  p = confirm('¿esta seguro de eliminar?');
+  if (p) {
+    $.get("{{url('eliminar_dictamen')}}/{{$dictamen->id}}",function(data){
+
+    });
+
+  }
+  $(this).closest("#dic").remove();
+     return false;
+});
+</script>
 @endsection
