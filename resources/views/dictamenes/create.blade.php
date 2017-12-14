@@ -166,7 +166,7 @@ $(function() {
         '</div>'+' '+
         '<div class="col-md-2 form-group">'+' '+
           '<center><label>Director tecnico</label></center>'+' '+
-          '<select class="form-control" name="dictamenes[director[]">'+' '+
+          '<select class="form-control" name="dictamenes[director][]">'+' '+
             '@foreach($inspectores as $inspector)'+' '+
               '@if($inspector->rol_inspector == "Director tecnico")'+' '+
               '<option value="{{$inspector->nombres}} {{$inspector->apellidos}}">{{$inspector->nombres}} {{$inspector->apellidos}}</option>'+' '+

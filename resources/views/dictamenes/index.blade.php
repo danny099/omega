@@ -69,11 +69,27 @@
                 </thead>
                 <tbody>
 
+                  @if(empty($dictamenes ))
                     <tr>
                       <td></td>
                       <td></td>
                       <td></td>
                     </tr>
+                  @else
+                  @foreach($dictamenes as $dictamen)
+                    <tr>
+                      <td>{{$dictamen->codigo_proyecto}}</td>
+                      <td>{{$dictamen->nombre_proyecto}}</td>
+                      <td>
+                        <a href="{{ url('criterio/edit') }}"><i class="glyphicon glyphicon-pencil"></i></a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="{{ url('pdfCriterio') }}" target="_blank" data-toggle="model" data-target=""><i class="glyphicon glyphicon-eye-open" style="color: #33579A"></i></a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="{{ url('criterio/delete') }}" onClick="javascript: return confirm('Esta seguro de eliminar registro?');"><i class="glyphicon glyphicon-minus-sign"></i></a>
+                      </td>
+                    </tr>
+                  @endforeach
+                  @endif
 
                 </tbody>
               </table>
