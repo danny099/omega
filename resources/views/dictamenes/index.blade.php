@@ -28,7 +28,7 @@
                       <h4 class="modal-title">Crear dictamen</h4>
                     </div>
                     <div class="modal-body">
-                      <form action="{{ url('criterio/create/disDeta') }}" method="post">
+                      <form action="{{ url('dictamenes/create') }}" method="post">
                         {{ csrf_field() }}
                         <div class="row">
                           <div class="col-md-12">
