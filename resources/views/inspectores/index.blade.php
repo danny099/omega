@@ -33,25 +33,19 @@
                 </thead>
                 <tbody>
 
-                    <tr>
                       @foreach($inspectores as $inspector)
                         <tr>
-                        <td>{{ $inspector->nombres }}</td>
-                        <td>{{ $inspector->apellidos }}</td>
-                        <td>{{ $inspector->matricula }}</td>
-                        <td>
-                          <a href="{{ route('inspectores')}}/{{ $inspector->id }}/edit"><i class="glyphicon glyphicon-pencil"></i></a>
-                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                          <a href="{{ url('deleteusuarios') }}" onClick="javascript: return confirm('Esta seguro de eliminar registro?');"><i class="glyphicon glyphicon-minus-sign"></i></a>
-                        </td>
-
-
+                          <td>{{ $inspector->nombres }}</td>
+                          <td>{{ $inspector->apellidos }}</td>
+                          <td>{{ $inspector->matricula }}</td>
+                          <td>
+                            <a href="{{ url('inspectores')}}/{{ $inspector->id}}/edit"><i class="glyphicon glyphicon-pencil"></i></a>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <a href="{{ url('') }}" onClick="javascript: return confirm('Esta seguro de eliminar registro?');"><i class="glyphicon glyphicon-minus-sign"></i></a>
+                          </td>
                         </tr>
 
                       @endforeach
-
-
-                    </tr>
 
                 </tbody>
               </table>
