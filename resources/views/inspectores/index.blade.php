@@ -41,7 +41,7 @@
                           <td>
                             <a href="{{ url('inspectores')}}/{{ $inspector->id}}/edit"><i class="glyphicon glyphicon-pencil"></i></a>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <a href="{{ url('') }}" onClick="javascript: return confirm('Esta seguro de eliminar registro?');"><i class="glyphicon glyphicon-minus-sign"></i></a>
+                            <a href="{{ url('delete_inspector') }}/{{ $inspector->id}}" onClick="javascript: return confirm('Esta seguro de eliminar registro?');"><i class="glyphicon glyphicon-minus-sign"></i></a>
                           </td>
                         </tr>
 

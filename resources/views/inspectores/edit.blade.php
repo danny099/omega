@@ -66,7 +66,7 @@
 
             <div class="col-md-6">
               <label for="">Rol inspector</label>
-              <select class="form-control" name="">
+              <select class="form-control" name="rol_inspector">
                 <option value="{{$inspector->rol_inspector}}">{{$inspector->rol_inspector}}</option>
                 <option value="rol1">rol1</option>
                 <option value="rol2">rol2</option>
