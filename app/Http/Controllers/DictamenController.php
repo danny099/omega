@@ -129,7 +129,7 @@ class DictamenController extends Controller
         $dictamenes = Dictamen::where('dictamenes.administrativa_id','=',$id)->get();
         $inspectores = Inspector::all();
 
-        $contrato = Administrativa::findOrFail($request->codigo_con);
+        $contrato = Administrativa::findOrFail($id);
         $t = Transformacion::where('transformacion.administrativa_id', '=', $contrato->id)->get();
         $dm = Distribucion::where('distribucion.administrativa_id', '=', $contrato->id)->where('descripcion','like','%MT%')->get();
         $db = Distribucion::where('distribucion.administrativa_id', '=', $contrato->id)->where('descripcion','like','%BT%')->get();
