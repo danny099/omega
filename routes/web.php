@@ -222,14 +222,18 @@ Route::group(['middleware' => 'auth'],function(){
 	Route::get('pdfNc/{id}','PdfController@pdfNc');
 	Route::get('delete_nc/{id}','NcController@destroy');	
 
+
 	Route::resource('autorizacion','AutorizacionController');
 	Route::post('autorizacion/update','AutorizacionController@update');
 	Route::get('delete_autoriza/{id}','AutorizacionController@destroy');
 	Route::get('pdfAutorizacion/{id}','PdfController@pdfAutorizacion');
 
+
 	Route::resource('dictamenes','DictamenController');
 
+
 	Route::resource('inspectores','InspectoresController');
+	Route::get('detele_inspector/{id}','InspectoresController@destroy');	
 
 
 

@@ -84,6 +84,7 @@ class InspectoresController extends Controller
     public function update(Request $request, $id)    
     {
         $inspector = Inspector::findOrFail($id);
+
         $datos['nombres'] = $request->nombres;
         $datos['apellidos'] = $request->apellidos;
         $datos['matricula'] = $request->matricula;
@@ -104,6 +105,11 @@ class InspectoresController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $inspector = Inspector::findOrFail($id);
+
+        $inspector->delete();
+        Session::flash('message', 'Inspector eliminado');
+        Session::flash('class', 'danger');
+        return redirect('inspectores');
     }
 }
