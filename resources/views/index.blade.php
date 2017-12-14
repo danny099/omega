@@ -217,6 +217,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="{{ url('dictamenes') }}"><i class="fa fa-circle-o"></i>Dictamenes</a></li>
+            <li><a href="{{ url('añadirDictamen') }}"><i class="fa fa-circle-o"></i>Añadir dictamenes</a></li>
             <li><a href="{{ url('inspectores') }}"><i class="fa fa-circle-o"></i>Inspectores</a></li>
 
           </ul>

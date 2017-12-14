@@ -154,10 +154,7 @@
 <script type="text/javascript">
 
 $('#del-'+{{$dictamen->id}}).click(function(e){
-
-});
-$(document).on("click",".eliminar4",function( event ) {
-
+  e.preventDefault();
   p = confirm('¿esta seguro de eliminar?');
   if (p) {
     $.get("{{url('eliminar_dictamen')}}/{{$dictamen->id}}",function(data){
@@ -165,6 +162,9 @@ $(document).on("click",".eliminar4",function( event ) {
     });
 
   }
+});
+$(document).on("click",".eliminar4",function( event ) {
+
   $(this).closest("#dic").remove();
      return false;
 });
