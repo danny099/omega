@@ -22,7 +22,7 @@ class Inspector extends Model implements AuditableContract
   public function transformAudit(array $data)
   {
       if (Arr::has($data, 'auditable_id')) {
-          Arr::set($data, 'auditable_id',  $this->nombre);
+          Arr::set($data, 'auditable_id',  $this->id);
       }
 
       return $data;
