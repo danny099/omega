@@ -12,7 +12,7 @@ class Dictamen extends Model implements AuditableContract
   use Auditable;
 
   protected $table = 'dictamenes';
-  protected $fillable = ['id','matricula','director_tec','matricula_tec','codigo_dic','proceso_dic','cantidad','fecha_dic','fecha_act','administrativa_id','inspectores_id'];
+  protected $fillable = ['id','matricula','director_tec','matricula_tec','codigo_dic','proceso_dic','cantidad','equipo','fecha_des','fecha_has','fecha_auto','administrativa_id','inspectores_id'];
   public $timestamps = false;
 
   public function administrativa(){

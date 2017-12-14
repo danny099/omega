@@ -76,22 +76,23 @@ class DictamenController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-
-
         for ($i=0; $i < count($input['dictamenes']['inspector']); $i++) { 
 
             $dictamen['matricula'] = $input['dictamenes']['matricula'][$i];
-            $dictamen['diretor_tec'] = $input['dictamenes']['matricula_dir'][$i];
-            $dictamen['matricula_tec'] = $input['dictamenes']['codigo'][$i];
-            $dictamen['codigo_dic'] = $input['dictamenes']['proceso'][$i];
-            $dictamen['proceso_dic'] = $input['dictamenes']['cantidad'][$i];
-            $dictamen['cantidad'] = $input['dictamenes']['equipo'][$i];
-            $dictamen['fecha_dic'] = $input['dictamenes']['fecha_des'][$i];
-            $dictamen['fecha_act'] = $input['dictamenes']['fecha_has'][$i];
+            $dictamen['director_tec'] = $input['dictamenes']['director'][$i];
+            $dictamen['matricula_tec'] = $input['dictamenes']['matricula_dir'][$i];
+            $dictamen['codigo_dic'] = $input['dictamenes']['codigo'][$i];
+            $dictamen['proceso_dic'] = $input['dictamenes']['proceso'][$i];
+            $dictamen['cantidad'] = $input['dictamenes']['cantidad'][$i];
+            $dictamen['equipo'] = $input['dictamenes']['equipo'][$i];
+            $dictamen['fecha_des'] = $input['dictamenes']['fecha_des'][$i];
+            $dictamen['fecha_has'] = $input['dictamenes']['fecha_has'][$i];
+            $dictamen['fecha_auto'] = $input['dictamenes']['fecha_auto'][$i];
             $dictamen['administrativa_id'] = $request->codigo;
             $dictamen['inspectores_id'] = $input['dictamenes']['inspector'][$i];
 
             Dictamen::create($dictamen);
+       
 
         }
 
