@@ -236,6 +236,7 @@ Route::group(['middleware' => 'auth'],function(){
 	Route::get('añadirDictamen','DictamenController@añadirDictamen');
 	Route::get('añadirDictamen/create','DictamenController@guardarDictamen');
 
+
 	Route::resource('inspectores','InspectoresController');
 	Route::get('detele_inspector/{id}','InspectoresController@destroy');	
 
