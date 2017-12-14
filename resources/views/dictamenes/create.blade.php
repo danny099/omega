@@ -28,7 +28,7 @@
             <div class="row">
               <div class="col-md-12">
                 <div class="col-md-12">
-                  <input type="hidden" name="codigo" value="{{$contrato_id}}">
+                  <input type="hidden" name="codigo" value="{{$contrato->id}}">
                   <div class="col-md-2 form-group">
                     <center><label>Inspector</label></center>
                     <select class="form-control" name="dictamenes[inspector][]">
