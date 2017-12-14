@@ -23,7 +23,7 @@
       <!-- /.box-header -->
       <!-- form start -->
         <div class="row">
-          <form class="" action="{{ url('dictamenes') }}" method="post">
+          <form class="" action="{{ url('dictamenes') }}/update" method="post">
             {{ csrf_field() }}
             <div class="row">
               @foreach($dictamenes as $dictamen)
