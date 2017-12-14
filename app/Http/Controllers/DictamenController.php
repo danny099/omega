@@ -76,6 +76,7 @@ class DictamenController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
+
         for ($i=0; $i < count($input['dictamenes']['inspector']); $i++) { 
 
             $dictamen['matricula'] = $input['dictamenes']['matricula'][$i];
@@ -92,7 +93,7 @@ class DictamenController extends Controller
             $dictamen['inspectores_id'] = $input['dictamenes']['inspector'][$i];
 
             Dictamen::create($dictamen);
-       
+
 
         }
 
@@ -121,7 +122,32 @@ class DictamenController extends Controller
      */
     public function edit($id)
     {
-        //
+        $cantidad_t = 0;
+        $cantidad_dm = 0;
+        $cantidad_db = 0;
+
+        $dictamenes = Dictamen::where('dictamenes.administrativa_id','=',$id)->get();
+        $inspectores = Inspector::all();
+
+        $contrato = Administrativa::findOrFail($request->codigo_con);
+        $t = Transformacion::where('transformacion.administrativa_id', '=', $contrato->id)->get();
+        $dm = Distribucion::where('distribucion.administrativa_id', '=', $contrato->id)->where('descripcion','like','%MT%')->get();
+        $db = Distribucion::where('distribucion.administrativa_id', '=', $contrato->id)->where('descripcion','like','%BT%')->get();
+        $pu_final = Pu_final::where('pu_final.administrativa_id', '=', $contrato->id)->get();
+
+        foreach ($t as $key => $trans) {
+
+            $cantidad_t = $cantidad_t + $trans->cantidad;
+
+        }
+        foreach ($dm as $key => $media) {
+            $cantidad_dm = $cantidad_dm + $media->cantidad;
+        }
+        foreach ($db as $key => $baja) {
+            $cantidad_db = $cantidad_db + $baja->cantidad;
+        }
+
+        return view('dictamenes.edit',compact('dictamenes','inspectores','cantidad_t','cantidad_dm','cantidad_db'));
     }
 
     /**
