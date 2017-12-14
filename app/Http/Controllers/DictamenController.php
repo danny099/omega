@@ -193,7 +193,7 @@ class DictamenController extends Controller
         $dictamen = Dictamen::findOrFail($id);
 
         $dictamen->delete();
-        return true;
+        
     }
     /**
      * Remove the specified resource from storage.
