@@ -103,6 +103,36 @@ class DictamenController extends Controller
 
     }
 
+    public function añadirDictamen(){
+
+        $cantidad_t = 0;
+        $cantidad_dm = 0;
+        $cantidad_db = 0;
+
+        $inspectores = Inspector::all();
+
+        $contratos = Administrativa::all();
+        $t = Transformacion::where('transformacion.administrativa_id', '=', $contrato->id)->get();
+        $dm = Distribucion::where('distribucion.administrativa_id', '=', $contrato->id)->where('descripcion','like','%MT%')->get();
+        $db = Distribucion::where('distribucion.administrativa_id', '=', $contrato->id)->where('descripcion','like','%BT%')->get();
+        $pu_final = Pu_final::where('pu_final.administrativa_id', '=', $contrato->id)->get();
+
+        foreach ($t as $key => $trans) {
+
+            $cantidad_t = $cantidad_t + $trans->cantidad;
+
+        }
+        foreach ($dm as $key => $media) {
+            $cantidad_dm = $cantidad_dm + $media->cantidad;
+        }
+        foreach ($db as $key => $baja) {
+            $cantidad_db = $cantidad_db + $baja->cantidad;
+        }
+
+        return view('dictamenes.añadirDictamen',compact('inspectores','contratos','cantidad_t','cantidad_dm','cantidad_db','pu_final'));
+
+    }
+
     /**
      * Display the specified resource.
      *
@@ -193,7 +223,7 @@ class DictamenController extends Controller
         $dictamen = Dictamen::findOrFail($id);
 
         $dictamen->delete();
-        
+
     }
     /**
      * Remove the specified resource from storage.

@@ -104,7 +104,7 @@ Route::group(['middleware' => 'auth'],function(){
 
   /**************************************************************/
   /**************************************************************/
-  Route::resource('transformaciones','TransformacionController');
+  	Route::resource('transformaciones','TransformacionController');
 	// Route::get('transformaciones/{id}/crear','TransformacionController@create');
 	Route::post('editart','TransformacionController@editar');
 	Route::get('deletetransfor/{id}','TransformacionController@destroy');
@@ -201,6 +201,7 @@ Route::group(['middleware' => 'auth'],function(){
 	Route::get('perfil','UsuarioController@verPerfil');
 	Route::get('editarPerfil','UsuarioController@editarPerfil');
 
+
 	Route::post( 'importExcel' , 'ExcelController@importExcel');
 
 
@@ -232,6 +233,8 @@ Route::group(['middleware' => 'auth'],function(){
 	Route::resource('dictamenes','DictamenController');
 	Route::post('dictamenes/update','DictamenController@update');
 	Route::get('eliminar_dictamen/{id}','DictamenController@eliminar');
+	Route::get('añadirDictamen','DictamenController@añadirDictamen');
+	Route::get('añadirDictamen/create','DictamenController@guardarDictamen');
 
 	Route::resource('inspectores','InspectoresController');
 	Route::get('detele_inspector/{id}','InspectoresController@destroy');	
