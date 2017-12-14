@@ -36,7 +36,17 @@ class InspectorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+
+        $inspector['nombres'] = $request->nombres
+        $inspector['apellidos'] = $request->apellidos
+        $inspector['matricula'] = $request->matricula;
+        $inspector['rol_inspector'] = $request->rol_inspector;
+
+        Inspector::create($inspector);
+        Session::flash('message', 'Inspector creado');
+        Session::flash('class', 'success');
+        return redirect('inspectores');
     }
 
     /**
