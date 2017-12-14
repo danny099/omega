@@ -114,7 +114,7 @@ class DictamenController extends Controller
         $contratos = Administrativa::all();
        
 
-        return view('dictamenes.añadirDictamen',compact('inspectores','contratos','cantidad_t','cantidad_dm','cantidad_db','pu_final'));
+        return view('dictamenes.añadirDictamen',compact('inspectores','contratos'));
 
     }
 
