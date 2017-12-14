@@ -117,20 +117,20 @@ class CriterioController extends Controller
             if (isset($input['aplica'][$i][$i])) {
                 $datos['aplica'] =  $input['aplica'][$i][$i];
             }else{
-                $datos['aplica'] =  null;               
+                $datos['aplica'] =  null;
             }
 
 
             if (isset($input['cumple'][$i][$i])) {
                 $datos['cumple'] =  $input['cumple'][$i][$i];
             }else{
-                $datos['cumple'] =  null;            
+                $datos['cumple'] =  null;
             }
 
             if (isset($input['observaciones'][$i][$i])) {
                 $datos['observaciones'] =  $input['observaciones'][$i][$i];
             }else{
-                $datos['observaciones'] =  null;                
+                $datos['observaciones'] =  null;
             }
 
             $datos['tipo'] = $input['tipo'][$i];
@@ -138,7 +138,7 @@ class CriterioController extends Controller
             $datos['administrativa_id'] = $input['id'][$i];
             $datos['items_id'] = $input['iditem'][$i];
 
-            
+
             Criterio::create($datos);
 
         }
@@ -176,18 +176,18 @@ class CriterioController extends Controller
             $tipo2[] = $value->tipo;
         }
 
-        
-      
+
+
         $items = Item::where('items.tipo', '=', $tipo2[0])->get();
 
-       
+
         return view($tipo2[0].'.edit',compact('criterios','items'));
 
     }
 
     public function auto($id,$tipo){
 
-      
+
         $now = new \DateTime();
         $fech = $now->format('Y-m-d');
         $fecha = Fechas::dater($fech);
@@ -199,15 +199,15 @@ class CriterioController extends Controller
 
 
             $datos['aplica'] =  'Si';
-            $datos['cumple'] =  null;          
-            $datos['observaciones'] = 'falta o debe hacer mención expresa y justificar lo que no le aplica';                
+            $datos['cumple'] =  null;
+            $datos['observaciones'] = 'falta o debe hacer mención expresa y justificar lo que no le aplica';
 
             $datos['tipo'] = $tipo;
             $datos['fecha'] = $fecha;
             $datos['administrativa_id'] = $id;
             $datos['items_id'] = $items[$i];
 
-            
+
             Criterio::create($datos);
 
         }
@@ -233,7 +233,7 @@ class CriterioController extends Controller
         $now = new \DateTime();
         $fech = $now->format('Y-m-d');
         $fecha = Fechas::dater($fech);
-       
+
         $var = count($input['id_criterio']);
 
         for ($i=0; $i < count($input['id_criterio']); $i++) {
@@ -275,13 +275,13 @@ class CriterioController extends Controller
         foreach ($criterios as $key => $val) {
             $tips[]= $val->tipo;
         }
-        foreach ($criterios as $key => $value) {           
+        foreach ($criterios as $key => $value) {
            $value->delete();
-        }   
+        }
 
         Session::flash('message', 'Detalle eliminado');
         Session::flash('class', 'danger');
         return redirect('criterio/'.$tipo);
-        
+
     }
 }
