@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Inspector;
+use Session;
 use Illuminate\Http\Request;
 
 class InspectorController extends Controller
