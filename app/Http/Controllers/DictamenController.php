@@ -33,9 +33,13 @@ class DictamenController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $inspectores = Inspector::all();
+
+        $contrato = Administrativa::findOrFail($request->codigo_con);
+
+        return view('inspectores.create',compact('inspectores','contrato'));
     }
 
     /**
