@@ -29,7 +29,7 @@
               @foreach($dictamenes as $dictamen)
               <div class="col-md-12">
                 <div class="col-md-12">
-
+                  <input type="hidden" name="dictamenes[dictamen_id][]" value="{{$dictamen->id}}">
                   <div class="col-md-2 form-group">
                     <center><label>Inspector</label></center>
                     <select class="form-control" name="dictamenes[inspector][]">
