@@ -25,7 +25,7 @@ class DictamenController extends Controller
 
         }
 
-        return view('autorizacion.index',compact('dictamenes','contratos'));
+        return view('dictamenes.index',compact('dictamenes','contratos'));
     }
 
     /**
@@ -39,7 +39,7 @@ class DictamenController extends Controller
 
         $contrato = Administrativa::findOrFail($request->codigo_con);
 
-        return view('inspectores.create',compact('inspectores','contrato'));
+        return view('dictamenes.create',compact('inspectores','contrato'));
     }
 
     /**
