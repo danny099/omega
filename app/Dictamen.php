@@ -12,11 +12,14 @@ class Dictamen extends Model implements AuditableContract
   use Auditable;
 
   protected $table = 'dictamenes';
-  protected $fillable = ['id','inspector','matricula','director_tec','matricula_tec','codigo_dic','proceso_dic','cantidad','fecha_dic','fecha_act','administrativa_id'];
+  protected $fillable = ['id','inspector','matricula','director_tec','matricula_tec','codigo_dic','proceso_dic','cantidad','fecha_dic','fecha_act','administrativa_id','inspectores_id'];
   public $timestamps = false;
 
   public function administrativa(){
       	return $this->hasMany('App\Administrativa');
+  }
+  public function inspectores(){
+        return $this->hasMany('App\Inspector');
   }
 
   public function transformAudit(array $data)

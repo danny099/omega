@@ -229,6 +229,8 @@ Route::group(['middleware' => 'auth'],function(){
 
 	Route::resource('dictamenes','DictamenController');
 
+	Route::resource('inspectores','InspectorController');
+
 
 
 	});
