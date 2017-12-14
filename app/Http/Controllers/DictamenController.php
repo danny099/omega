@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Session;
 use App\Administrativa;
+use App\Dictamen;
 
 class DictamenController extends Controller
 {
