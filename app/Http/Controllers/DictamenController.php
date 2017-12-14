@@ -7,6 +7,10 @@ use Session;
 use App\Administrativa;
 use App\Dictamen;
 use App\Inspector;
+use App\Transformacion;
+use App\Distribucion;
+use App\Pu_final;
+
 
 class DictamenController extends Controller
 {
