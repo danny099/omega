@@ -16,7 +16,7 @@ class Inspector extends Model implements AuditableContract
   public $timestamps = false;
 
   public function dictamenes(){
-      	return $this->belongsTo('App\Dictamen');
+      	return $this->hasMany('App\Dictamen');
   }
 
   public function transformAudit(array $data)

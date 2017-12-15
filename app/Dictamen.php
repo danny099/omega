@@ -19,7 +19,7 @@ class Dictamen extends Model implements AuditableContract
       	return $this->hasMany('App\Administrativa');
   }
   public function inspectores(){
-        return $this->hasMany('App\Inspector');
+        return $this->belongsTo('App\Inspector');
   }
 
   public function transformAudit(array $data)

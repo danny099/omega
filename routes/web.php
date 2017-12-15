@@ -236,6 +236,7 @@ Route::group(['middleware' => 'auth'],function(){
 	Route::get('eliminar_dictamen/{id}','DictamenController@eliminar');
 	Route::get('añadirDictamen','DictamenController@añadirDictamen');
 	Route::get('añadirDictamen/create','DictamenController@guardarDictamen');
+	Route::get('pdfDictamen/{id}','PdfController@pdfDictamen');
 
 
 	Route::resource('inspectores','InspectoresController');

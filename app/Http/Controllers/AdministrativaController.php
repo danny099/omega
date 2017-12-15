@@ -15,6 +15,8 @@ use App\Cuenta_cobro;
 use App\Factura;
 use App\Valor_adicional;
 use App\Observacion;
+use App\Autorizacion;
+use App\Descripcion;
 use App\Documento;
 use App\Cotizacion;
 use Illuminate\Http\Request;
@@ -1095,6 +1097,7 @@ class AdministrativaController extends Controller
 
      $administrativa = Administrativa::findOrFail($id);
 
+     // funciones para eliminar las relaciones con los demas registros si es necesario, si esta relacionado no se puede eliminar
      $transfor = Transformacion::where('transformacion.administrativa_id', '=', $id)->get();
 
      foreach ($transfor as $key => $trans) {
@@ -1137,7 +1140,33 @@ class AdministrativaController extends Controller
        }
 
      }
+     $autorizaciones = Autorizacion::where('autorizacion.administrativa_id','=',$id)->get();
+     foreach ($autorizaciones as $key => $auto) {
+       
+        $registro = Autorizacion::findOrFail($auto->id);
 
+        if ($registro->administrativa_id == null) {
+          $registro->delete();
+        }else{
+          $registro->administrativa_id = null;
+          $registro->save();
+        }
+
+     }
+
+     $descripciones = Descripcion::where('descripcion.administrativa_id','=',$id)->get();
+     foreach ($descripciones as $key => $desc) {
+       
+        $registro = Descripcion::findOrFail($desc->id);
+
+        if ($registro->administrativa_id == null) {
+          $registro->delete();
+        }else{
+          $registro->administrativa_id = null;
+          $registro->save();
+        }
+
+     }
      // $administrativas = Administrativa::select('id')->where('administrativa.id',$id)->get();
      $administrativa->delete();
       //  //  funcion que permite encontrar o identificar un registro y almacenarlas en una variable

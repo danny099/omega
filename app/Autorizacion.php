@@ -27,7 +27,7 @@ class Autorizacion extends Model implements AuditableContract
       public function transformAudit(array $data)
 	  {
 	      if (Arr::has($data, 'auditable_id')) {
-	          Arr::set($data, 'auditable_id',  $this->autorizado);
+	          Arr::set($data, 'auditable_id',  $this->id);
 	      }
 
 	      return $data;
