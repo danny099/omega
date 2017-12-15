@@ -251,7 +251,7 @@ $(function() {
 });
 
 $(document).on('change','#inspector',function(){
-  alert("holi")
+  
   var ins_id = $(this).val();
   var div = $(this).parents();
   var op=" ";

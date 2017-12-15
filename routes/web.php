@@ -228,7 +228,7 @@ Route::group(['middleware' => 'auth'],function(){
 	Route::post('autorizacion/update','AutorizacionController@update');
 	Route::get('delete_autoriza/{id}','AutorizacionController@destroy');
 	Route::get('pdfAutorizacion/{id}','PdfController@pdfAutorizacion');
-	Route::get('selctmatri','AuditoriaController@getMatricula');
+	Route::get('selectmatri','Autorizacion@getMatricula');
 
 
 	Route::resource('dictamenes','DictamenController');

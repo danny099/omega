@@ -33,11 +33,7 @@ class AutorizacionController extends Controller
         return view('autorizacion.index',compact('autorizados','contratos'));
     }
 
-    public function getMatricula(Request $request){
-
-       $data = Ispector::select('matricual')->where('inspectores.id',$request->id)->get();
-       return response()->json($data);
-    }
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -71,9 +67,19 @@ class AutorizacionController extends Controller
         //     $cantidad_pu = cantidad_pu + $pu_final->cantidad;
         // }
 
-        return view('autorizacion.create',compact('cantidad_t','cantidad_dm','cantidad_db','pu_final','contrato'));
+        $cantidad_contratada = Dictamen::where('dictamenes.administrativa_id','=',$contrato->id); 
+
+
+        return view('autorizacion.create',compact('cantidad_t','cantidad_dm','cantidad_db','pu_final','contrato','cantidad_contratada'));
     }
 
+    public function getMatricula(Request $request){
+
+       $data = Ispector::select('matricual','id')->where('inspectores.id',$request->id)->get();
+       dd($data);
+       die();
+       return response()->json($data);
+    }
     /**
      * Store a newly created resource in storage.
      *
