@@ -65,25 +65,34 @@ class CriterioController extends Controller
 
     public function index($tipo)
     {
-
+        $variable = '';
         $contratos = Administrativa::all();
         $var = Criterio::distinct()->where('criterios.tipo',$tipo)->get(['administrativa_id']);
         $items = Item::where('items.tipo', '=', $tipo)->get();
         $reglas = Criterio::where('criterios.tipo','=',$tipo)->get();
 
+       // dd(count($reglas));
+       // die();
+
+       if (count($reglas) > 0) {
+           
+           foreach ($reglas as $key => $val) {
+
+               $datox[] = $val->administrativa_id;
+           }
+           $id = $datox[0];
+       }else{
+        $id = null;
+       }
+        
+
+        
         foreach ($var as $key => $dato) {
 
             $criterios[] = Administrativa::findOrFail($dato->administrativa_id);
 
-        }
+        }  
 
-        foreach ($reglas as $key => $regl) {
-            $datosx[] = $regl->administrativa_id;
-        }
-
-        
-            
-        $id = $datosx[0];
 
         //$criterios = Administrativa::findOrFail($dato);
 
