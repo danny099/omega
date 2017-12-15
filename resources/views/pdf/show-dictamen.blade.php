@@ -33,6 +33,8 @@
 
 	<div class="titulo">
 		<center style="display: inline-block;">
+			<img id="img" src="logo.jpg" style="width:100px; position:absolute;">
+
 			<h1>ESTADO DE DICTÁMENES</h1>
 		<center>
 	</div>
@@ -69,7 +71,7 @@
 					<td style="text-align: center;font-size: 11px">{{ $dictamen->fecha_des }}</td>
 					<td style="text-align: center;font-size: 11px">{{ $dictamen->fecha_has }}</td>
 					<td style="text-align: center;font-size: 11px">{{ $dictamen->fecha_auto }}</td>
-					
+
 				</tr>
 			@endforeach
 			</table>
