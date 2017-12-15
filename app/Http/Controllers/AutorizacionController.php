@@ -33,6 +33,11 @@ class AutorizacionController extends Controller
         return view('autorizacion.index',compact('autorizados','contratos'));
     }
 
+    public function getMatricula(Request $request){
+
+       $data = Ispector::select('matricual')->where('inspectores.id',$request->id)->get();
+       return response()->json($data);
+    }
     /**
      * Show the form for creating a new resource.
      *

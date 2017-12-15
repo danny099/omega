@@ -193,19 +193,22 @@ class CriterioController extends Controller
         $fecha = Fechas::dater($fech);
         $contrato = Administrativa::findOrFail($id);
         $items = Item::where('items.tipo', '=', $tipo)->get();
-
+        foreach ($items as $key => $item) {
+            $arreglo[] = $item->id;
+        }
+        
 
         for ($i=0; $i < 22; $i++) {
 
 
             $datos['aplica'] =  'Si';
-            $datos['cumple'] =  null;
+            $datos['cumple'] =  '';
             $datos['observaciones'] = 'falta o debe hacer mención expresa y justificar lo que no le aplica';
 
             $datos['tipo'] = $tipo;
             $datos['fecha'] = $fecha;
             $datos['administrativa_id'] = $id;
-            $datos['items_id'] = $items[$i];
+            $datos['items_id'] = $arreglo[$i];
 
 
             Criterio::create($datos);
