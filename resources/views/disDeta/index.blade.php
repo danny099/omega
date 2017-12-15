@@ -39,6 +39,7 @@
 
                                     @if($id == $contrato->id)
                                     @else
+                                    
                                       @foreach($contratos as $contrato)
                                       <option value="{{ $contrato->id }}">{{$contrato->codigo_proyecto}} - {{$contrato->nombre_proyecto}}</option>
                                       @endforeach
