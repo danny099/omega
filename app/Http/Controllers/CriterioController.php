@@ -76,9 +76,15 @@ class CriterioController extends Controller
 
         }
 
+        foreach ($reglas as $key => $regla) {
+            $dato[] = $regla->administrativa_id;
+        }
+
+        $id = $datp[0];
+
         //$criterios = Administrativa::findOrFail($dato);
 
-        return view($tipo.'.index',compact('criterios','contratos','reglas'));
+        return view($tipo.'.index',compact('criterios','contratos','id'));
     }
 
     /**
