@@ -339,7 +339,7 @@ class AutorizacionController extends Controller
         $dic_bodegas = 0;
         $dic_fijos = 0;
 
-        $dicataminado = Dictamen::where('administrativa_id','=',$contrato->id)->get();
+        $dicataminado = Dictamen::where('administrativa_id','=',$id_contrato)->get();
 
         foreach ($dicataminado as $key => $dic) {
             
