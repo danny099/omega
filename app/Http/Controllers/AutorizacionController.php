@@ -8,6 +8,7 @@ use App\Administrativa;
 use App\Transformacion;
 use App\Distribucion;
 use App\Pu_final;
+use App\Dictamen;
 use App\Cantidad_autorizada;
 use Session;
 
