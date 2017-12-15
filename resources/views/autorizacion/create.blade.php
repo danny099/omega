@@ -135,7 +135,7 @@
                   <center><label>Cant autorizada</label></center>
                 </div>
               </div>
-              
+
               @if($cantidad_t > 0)
               <div class="col-md-12">
                 <div class="col-md-6">
@@ -244,6 +244,106 @@
                 <div class="col-md-6">
                   <button type="submit" class="btn btn-primary pull-right" style="background-color: #33579A; border-color:#33579A;">Enviar</button>
                 </div>
+              </div>
+
+              <div class="col-md-12">
+                <table border=1>
+                  <tr>
+                    <th>Proceso</th>
+                    <th>Cantidad contratada</th>
+                    <th>Cantidad dictaminada</th>
+                    <th>Falta dictaminar</th>
+                  </tr>
+                    @if($cantidad_t > 0)
+                    <tr>
+                        <th>Transformacion</th>
+                        <th>{{$cantidad_t}}</th>
+                        <th>{{$dictaminado_t}}</th>
+                        <th>{{$cantidad_t-$dictaminado_t}}</th>
+                    </tr>
+                    @endif
+
+                    @if($cantidad_dm > 0)
+                    <tr>
+                        <th>Red MT (m)</th>
+                        <th>{{$cantidad_dm}}</th>
+                        <th>{{$dictaminado_dm}}</th>
+                        <th>{{$cantidad_dm-$dictaminado_dm}}</th>
+                    </tr>
+                    @endif
+
+                    @if($cantidad_db > 0)
+                    <tr>
+                        <th>Red BT (m)</th>
+                        <th>{{$cantidad_db}}</th>
+                        <th>{{$dictaminado_db}}</th>
+                        <th>{{$cantidad_db-$dictaminado_db}}</th>
+                    </tr>
+                    @endif
+
+                    @foreach($pu_final as $pu)
+                      @if($pu->tipo == "Casa")
+                      <tr>
+                          <th>Casas</th>
+                          <th>{{$pu->cantidad}}</th>
+                          <th>{{$dic_casas}}</th>
+                          <th>{{$pu->cantidad-$dic_casas}}</th>
+                      </tr>
+
+                      @endif
+
+                      @if($pu->tipo == "Apartamentos")
+                      <tr>
+                          <th>Apartamentos</th>
+                          <th>{{$pu->cantidad}}</th>
+                          <th>{{$dic_aparta}}</th>
+                          <th>{{$pu->cantidad-$dic_aparta}}</th>
+
+                      </tr>
+                      @endif
+
+                      @if($pu->tipo == "Zona común")
+                      <tr>
+                          <th>Zonas comunes</th>
+                          <th>{{$pu->cantidad}}</th>
+                          <th>{{$dic_zonas}}</th>
+                          <th>{{$pu->cantidad-$dic_zonas}}</th>
+
+                      </tr>
+                      @endif
+
+                      @if($pu->tipo == "Local comercial")
+                      <tr>
+                          <th>Locales comerciales</th>
+                          <th>{{$pu->cantidad}}</th>
+                          <th>{{$dic_locales}}</th>
+                          <th>{{$pu->cantidad-$dic_locales}}</th>
+
+                      </tr>
+                      @endif
+
+                      @if($pu->tipo == "Bodega")
+                      <tr>
+                          <th>Bodegas</th>
+                          <th>{{$pu->cantidad}}</th>
+                          <th>{{$dic_bodegas}}</th>
+                          <th>{{$pu->cantidad-$dic_bodegas}}</th>
+
+                      </tr>
+                      @endif
+
+                      @if($pu->tipo == "Punto fijo")
+                      <tr>
+                          <th>Puntos fijos</th>
+                          <th>{{$pu->cantidad}}</th>
+                          <th>{{$dic_fijos}}</th>
+                          <th>{{$pu->cantidad-$dic_fijos}}</th>
+
+                      </tr>
+                      @endif
+                    @endforeach
+                  </tr>
+                </table>
               </div>
 
             </div>

@@ -65,6 +65,8 @@
                   </div>
 
                 </div>
+                <br>
+                <br>
                 <div class="col-md-12 " id="dic">
                   <div class="col-md-2 form-group">
                     <center><label>Proceso dictaminado</label></center>
@@ -251,7 +253,7 @@ $(function() {
 });
 
 $(document).on('change','#inspector',function(){
-  
+
   var ins_id = $(this).val();
   var div = $(this).parents();
   var op=" ";
