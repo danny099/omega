@@ -50,12 +50,12 @@
 
                 </div>
                 <div class="col-md-1">
-                  <label class="radio-inline"><input type="radio" name="aplica[][{{$key}}]" value="Si" checked="cheked" required>Si</label>
+                  <label class="radio-inline"><input type="radio" name="aplica[][{{$key}}]" value="Si"  required>Si</label>
                   <label class="radio-inline"><input type="radio" name="aplica[][{{$key}}]" value="No">No</label>
 
                 </div>
                 <div class="col-md-1">
-                  <label class="radio-inline"><input type="radio" name="cumple[][{{$key}}]" value="Si" checked="cheked" required>Si</label>
+                  <label class="radio-inline"><input type="radio" name="cumple[][{{$key}}]" value="Si" required>Si</label>
                   <label class="radio-inline"><input type="radio" name="cumple[][{{$key}}]" value="No">No</label>
                 </div>
                 <div class="col-md-4" >

@@ -39,7 +39,7 @@
                   </div>
                   <div class="col-md-2 form-group">
                     <center><label>Matricula profesional</label></center>
-                    <center><input type="text" name="dictamenes[matricula][]" value=""></center>
+                    <center><input type="text" name="dictamenes[matricula][]" id="matri" value=""></center>
                   </div>
                   <div class="col-md-2 form-group">
                     <center><label>Director tecnico</label></center>
@@ -264,8 +264,8 @@ $(document).on('change','#inspector',function(){
 
       op+='"' +data[i].matricula+ '"'
 
-      div.find('.matri').html(" ");
-      div.find('.matri').val(op);
+      div.find('#matri').html(" ");
+      div.find('#matri').val(op);
 
     },
     error:function(){
