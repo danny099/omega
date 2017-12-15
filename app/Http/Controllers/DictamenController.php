@@ -67,7 +67,6 @@ class DictamenController extends Controller
         $dictaminado_t = 0;
         $dictaminado_dm = 0;
         $dictaminado_db  = 0;
-        $dictaminado_db = 0;
         $dictaminado_pu = 0;
         $dic_casas = 0;
         $dic_aparta = 0;
@@ -117,7 +116,7 @@ class DictamenController extends Controller
             }
         }
 
-        return view('dictamenes.create',compact('inspectores','contrato','cantidad_t','cantidad_dm','cantidad_db','pu_final','dic_casas','dic_aparta','dic_zonas','dic_locales','dic_bodegas','dic_fijos'));
+        return view('dictamenes.create',compact('inspectores','contrato','cantidad_t','cantidad_dm','cantidad_db','pu_final','dictaminado_t','dictaminado_dm','dictaminado_db','dic_casas','dic_aparta','dic_zonas','dic_locales','dic_bodegas','dic_fijos'));
     }
 
     /**
