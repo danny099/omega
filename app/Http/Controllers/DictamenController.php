@@ -322,6 +322,16 @@ class DictamenController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $dictamenes = Dictamen::where('dictamenes.administrativa_id','=',$id)->get();
+
+        foreach ($dictamenes as $key => $dic) {
+            
+            $registro = Dictamen::findOrFail($dic->id);
+            $registro->delete();
+        }
+
+        Session::flash('message', 'Dictamen eliminado');
+        Session::flash('class', 'danger');
+        return redirect('dictamenes');
     }
 }

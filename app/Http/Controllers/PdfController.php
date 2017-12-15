@@ -246,7 +246,7 @@ class PdfController extends Controller
         $dictaminado_pu = 0;
         $dic_casas = 0;
         $dic_aparta = 0;
-        $dic_zonas = 0;
+        $dic_zonas = 0;      
         $dic_locales = 0;
         $dic_bodegas = 0;
         $dic_fijos = 0;
