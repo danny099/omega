@@ -80,7 +80,7 @@ class CriterioController extends Controller
             $dato[] = $regla->administrativa_id;
         }
 
-        $id = $datp[0];
+        $id = $dato[0];
 
         //$criterios = Administrativa::findOrFail($dato);
 
