@@ -68,6 +68,7 @@ class CriterioController extends Controller
 
         $contratos = Administrativa::all();
         $var = Criterio::distinct()->where('criterios.tipo',$tipo)->get(['administrativa_id']);
+        $reglas = Criterio::where('criterios.tipo','=',$tipo)->get();
 
         foreach ($var as $key => $dato) {
 
@@ -77,7 +78,7 @@ class CriterioController extends Controller
 
         //$criterios = Administrativa::findOrFail($dato);
 
-        return view($tipo.'.index',compact('criterios','contratos'));
+        return view($tipo.'.index',compact('criterios','contratos','reglas'));
     }
 
     /**
