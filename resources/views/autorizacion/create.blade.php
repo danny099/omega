@@ -37,6 +37,7 @@
                 </div>
                 <div class="col-md-4">
                   <center><label>Firma:</label></center>
+
                   <center> <input type="button" class="btn btn-primary jefe" style="background-color: #33579A; border-color:#33579A;" value="Firma"></center>
                   <input type="hidden" name="firma_jefe" class="firma_jefe" value="">
                 </div>
@@ -132,7 +133,7 @@
                   <center><label>Cant autorizada</label></center>
                 </div>
               </div>
-
+              
               @if($cantidad_t > 0)
               <div class="col-md-12">
                 <div class="col-md-6">
@@ -260,27 +261,27 @@
 <script type="text/javascript">
   $(document).on("click",".jefe",function( event ) {
     $('.jefe1').val("Jhon Jairo Escobar Segura");
-    $('.firma_jefe').val("firmas/Certicol.png");
+    $('.firma_jefe').val("firmas/FirmaJJES.png");
   });
 
   $(document).on("click",".director",function( event ) {
     $('.director1').val("Jairo Ivan Ibarra Ruales");
-    $('.firma_director').val("firmas/Certicol.png");
+    $('.firma_director').val("firmas/FirmaJIIR.png");
   });
 
   $(document).on("click",".general",function( event ) {
-    $('.firma_general').val("firmas/Certicol.png");
+    $('.firma_general').val("firmas/FirmaJMLS.png");
     $('.general1').val("Juan Manuel Leon S.");
   });
 
   $(document).on("click",".administrativa",function( event ) {
     $('.administrativa1').val("Alejandra Vitali");
-    $('.firma_administrativa').val("firmas/Certicol.png");
+    $('.firma_administrativa').val("firmas/FirmaAlejandra.png");
   });
 
   $(document).on("click",".presidente",function( event ) {
     $('.presidente1').val("Oscar Andres Sanclemente R.");
-    $('.firma_presidente').val("firmas/Certicol.png");
+    $('.firma_presidente').val("firmas/FirmaOASR.png");
   });
 </script>
 

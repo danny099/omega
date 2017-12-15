@@ -31,7 +31,7 @@
                   <input type="hidden" name="codigo" value="{{$contrato->id}}">
                   <div class="col-md-2 form-group">
                     <center><label>Inspector</label></center>
-                    <select class="form-control" name="dictamenes[inspector][]">
+                    <select class="form-control inspector" id="inspector"name="dictamenes[inspector][]">
                       @foreach($inspectores as $inspector)
                       <option value="{{$inspector->id}}">{{$inspector->nombres}} {{$inspector->apellidos}}</option>
                       @endforeach
@@ -248,6 +248,30 @@ $(function() {
 
    });
 
+});
+
+$(document).on('change','#inspector',function(){
+  alert("holi")
+  var ins_id = $(this).val();
+  var div = $(this).parents();
+  var op=" ";
+  $.ajax({
+    type:'get',
+    url:'{{ url('selectmatri')}}',
+    data:{'id':ins_id},
+    success:function(data){
+      console.log(data);
+
+      op+='"' +data[i].matricula+ '"'
+
+      div.find('.matri').html(" ");
+      div.find('.matri').val(op);
+
+    },
+    error:function(){
+
+    }
+  });
 });
 </script>
 
