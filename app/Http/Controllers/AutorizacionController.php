@@ -31,7 +31,21 @@ class AutorizacionController extends Controller
 
         }
 
-        return view('autorizacion.index',compact('autorizados','contratos'));
+        if (count($var) > 0) {
+
+            foreach ($var as $key => $datico) {
+            
+                $idc[] = $datico->administrativa_id;
+             }
+
+             $id = $idc[0];
+        }else{
+            $id = null;
+        }
+        
+
+
+        return view('autorizacion.index',compact('autorizados','contratos','id'));
     }
 
     
