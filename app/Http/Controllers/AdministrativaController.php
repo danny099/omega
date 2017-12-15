@@ -940,8 +940,6 @@ class AdministrativaController extends Controller
        $facturas = Factura::where('factura.administrativa_id', '=', $administrativas->id)->get();
 
        $municipio = implode(',',$request->municipio);
-       dd($municipio);
-       die();
 
        $administrativa['codigo_proyecto'] = $request->codigo_proyecto;
        $administrativa['nombre_proyecto'] = ucfirst(mb_strtolower($request->nombre_proyecto));

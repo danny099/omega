@@ -25,6 +25,8 @@
         <div class="row">
           <form class="" action="{{ url('autorizacion') }}" method="post">
             {{csrf_field()}}
+            <input type="hidden" name="usuario" id="usuario" value="{{Auth::User()->id}}">
+            <input type="hidden" name="usuario" id="rol" value="{{Auth::User()->rol_id}}">
             <div class="col-md-8">
               <input type="hidden" name="administrativa_id" value="{{$contrato->id}}">
               <div class="col-md-12">
@@ -282,6 +284,105 @@
   $(document).on("click",".presidente",function( event ) {
     $('.presidente1').val("Oscar Andres Sanclemente R.");
     $('.firma_presidente').val("firmas/FirmaOASR.png");
+  });
+
+  $(document).ready(function(){
+    var rol = $('#rol').val();
+    // if (rol == 1 ) {
+    //   $('#contenedor0').addClass('well');
+    //   $("#observaciones0").attr('readonly','readonly');
+    //   $("#btnfirma0").attr('disabled','disabled');
+    // }
+    if (rol == 3 ) {
+      $('#contenedor0').addClass('well');
+      $("#observaciones0").attr('readonly','readonly');
+      $("#btnfirma0").attr('disabled','disabled');
+
+      $('#contenedor1').addClass('well');
+      $("#observaciones1").attr('readonly','readonly');
+      $("#btnfirma1").attr('disabled','disabled');
+
+      $('#contenedor2').addClass('well');
+      $("#observaciones2").attr('readonly','readonly');
+      $("#btnfirma2").attr('disabled','disabled');
+
+      $('#contenedor4').addClass('well');
+      $("#observaciones4").attr('readonly','readonly');
+      $("#btnfirma4").attr('disabled','disabled');
+    }
+
+    if (rol == 4 ) {
+      $('#contenedor0').addClass('well');
+      $("#observaciones0").attr('readonly','readonly');
+      $("#btnfirma0").attr('disabled','disabled');
+
+      $('#contenedor1').addClass('well');
+      $("#observaciones1").attr('readonly','readonly');
+      $("#btnfirma1").attr('disabled','disabled');
+
+      $('#contenedor3').addClass('well');
+      $("#observaciones3").attr('readonly','readonly');
+      $("#btnfirma3").attr('disabled','disabled');
+
+      $('#contenedor4').addClass('well');
+      $("#observaciones4").attr('readonly','readonly');
+      $("#btnfirma4").attr('disabled','disabled');
+    }
+
+    if (rol == 5 ) {
+      $('#contenedor1').addClass('well');
+      $("#observaciones1").attr('readonly','readonly');
+      $("#btnfirma1").attr('disabled','disabled');
+
+      $('#contenedor2').addClass('well');
+      $("#observaciones2").attr('readonly','readonly');
+      $("#btnfirma2").attr('disabled','disabled');
+
+      $('#contenedor3').addClass('well');
+      $("#observaciones3").attr('readonly','readonly');
+      $("#btnfirma3").attr('disabled','disabled');
+
+      $('#contenedor4').addClass('well');
+      $("#observaciones4").attr('readonly','readonly');
+      $("#btnfirma4").attr('disabled','disabled');
+    }
+
+    if (rol == 6 ) {
+      $('#contenedor0').addClass('well');
+      $("#observaciones0").attr('readonly','readonly');
+      $("#btnfirma0").attr('disabled','disabled');
+
+      $('#contenedor2').addClass('well');
+      $("#observaciones2").attr('readonly','readonly');
+      $("#btnfirma2").attr('disabled','disabled');
+
+      $('#contenedor3').addClass('well');
+      $("#observaciones3").attr('readonly','readonly');
+      $("#btnfirma3").attr('disabled','disabled');
+
+      $('#contenedor4').addClass('well');
+      $("#observaciones4").attr('readonly','readonly');
+      $("#btnfirma4").attr('disabled','disabled');
+    }
+
+    if (rol == 7 ) {
+      $('#contenedor0').addClass('well');
+      $("#observaciones0").attr('readonly','readonly');
+      $("#btnfirma0").attr('disabled','disabled');
+
+      $('#contenedor1').addClass('well');
+      $("#observaciones1").attr('readonly','readonly');
+      $("#btnfirma1").attr('disabled','disabled');
+
+      $('#contenedor2').addClass('well');
+      $("#observaciones2").attr('readonly','readonly');
+      $("#btnfirma2").attr('disabled','disabled');
+
+      $('#contenedor3').addClass('well');
+      $("#observaciones3").attr('readonly','readonly');
+      $("#btnfirma3").attr('disabled','disabled');
+    }
+    
   });
 </script>
 

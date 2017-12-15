@@ -483,8 +483,7 @@ class CotizacionController extends Controller
 
 
         $municipio = implode(',',$request->municipio);
-        // dd($municipio);
-        // die();
+       
         $now = new \DateTime();
         $fecha = $now->format('Y-m-d');
 
