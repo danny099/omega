@@ -116,7 +116,7 @@ class DictamenController extends Controller
             }
         }
 
-        return view('dictamenes.create',compact('inspectores','contrato','cantidad_t','cantidad_dm','cantidad_db','pu_final'));
+        return view('dictamenes.create',compact('inspectores','contrato','cantidad_t','cantidad_dm','cantidad_db','pu_final','dictaminado_t','dictaminado_dm','dictaminado_db','dic_casas','dic_aparta','dic_zonas','dic_locales','dic_bodegas','dic_fijos'));
     }
 
     /**
@@ -214,7 +214,59 @@ class DictamenController extends Controller
             $cantidad_db = $cantidad_db + $baja->cantidad;
         }
 
-        return view('dictamenes.edit',compact('dictamenes','inspectores','cantidad_t','cantidad_dm','cantidad_db','pu_final'));
+        $dictaminado_t = 0;
+        $dictaminado_dm = 0;
+        $dictaminado_db  = 0;
+        $dictaminado_pu = 0;
+        $dic_casas = 0;
+        $dic_aparta = 0;
+        $dic_zonas = 0;
+        $dic_locales = 0;
+        $dic_bodegas = 0;
+        $dic_fijos = 0;
+
+        $dicataminado = Dictamen::where('administrativa_id','=',$contrato->id)->get();
+
+        foreach ($dicataminado as $key => $dic) {
+            
+            if ($dic->proceso_dic == 'Transformacion') {
+                
+                $dictaminado_t = $dictaminado_t + $dic->cantidad;
+            }
+
+            if ($dic->proceso_dic == 'Red MT (m)') {
+                $dictaminado_dm = $dictaminado_dm + $dic->cantidad;
+            }
+
+            if ($dic->proceso_dic == 'Red BT (m)') {
+               $dictaminado_db = $dictaminado_db + $dic->cantidad;
+            }
+
+            if ($dic->proceso_dic == 'Casas') {
+               $dic_casas = $dic_casas + $dic->cantidad;
+            }
+
+            if ($dic->proceso_dic == 'Apartamentos') {
+               $dic_aparta = $dic_aparta + $dic->cantidad;
+            }
+
+            if ($dic->proceso_dic == 'Zonas comunes') {
+               $dic_zonas = $dic_zonas + $dic->cantidad;
+            }
+
+            if ($dic->proceso_dic == 'Locales comerciales') {
+               $dic_locales = $dic_locales + $dic->cantidad;
+            }
+
+            if ($dic->proceso_dic == 'Bodegas') {
+               $dic_bodegas = $dic_bodegas + $dic->cantidad;
+            }
+            if ($dic->proceso_dic == 'Puntos fijos') {
+               $dic_fijos = $dic_fijos + $dic->cantidad;
+            }
+        }
+
+        return view('dictamenes.edit',compact('dictamenes','inspectores','cantidad_t','cantidad_dm','cantidad_db','pu_final','dictaminado_t','dictaminado_dm','dictaminado_db','dic_casas','dic_aparta','dic_zonas','dic_locales','dic_bodegas','dic_fijos'));
     }
 
     /**
