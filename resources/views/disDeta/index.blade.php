@@ -37,13 +37,13 @@
                                 <select class="form-control" name="codigo_con" style="width: 100%;" id="select" required="">
                                   <option value="">Seleccione...</option>
 
-                                   
-                                    
                                       @foreach($contratos as $contrato)
-                                      <option value="{{ $contrato->id }}">{{$contrato->codigo_proyecto}} - {{$contrato->nombre_proyecto}}</option>
-                                      @endforeach
-                         
+                                      @if($id == $contrato->administrativa_id)
+                                        <option value="{{ $contrato->id }}">{{$contrato->codigo_proyecto}} - {{$contrato->nombre_proyecto}}</option>
+                                      @else
 
+                                      @endif
+                                      @endforeach
 
                                 </select>
                                 <br>
